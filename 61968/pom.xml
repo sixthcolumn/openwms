@@ -101,6 +101,20 @@
 									</extraargs>
 								</wsdlOption>
 								<wsdlOption>
+									<wsdl>${basedir}/wsdl/WO_Server.wsdl</wsdl>
+									<extraargs>
+										<extraarg>-client</extraarg>
+										<extraarg>-autoNameResolution</extraarg>
+									</extraargs>
+								</wsdlOption>
+								<wsdlOption>
+									<wsdl>${basedir}/wsdl/RequestWorkRequest.wsdl</wsdl>
+									<extraargs>
+										<extraarg>-client</extraarg>
+										<extraarg>-autoNameResolution</extraarg>
+									</extraargs>
+								</wsdlOption>
+								<wsdlOption>
 									<wsdl>${basedir}/wsdl/GetMeterReadings.wsdl</wsdl>
 									<extraargs>
 										<extraarg>-client</extraarg>
@@ -251,7 +265,7 @@
 	</build>
 
 	<dependencies>
- 		<!-- Common DAO and logging classes -->
+		<!-- Common DAO and logging classes -->
 		<dependency>
 			<groupId>com.sixthc</groupId>
 			<artifactId>common</artifactId>
