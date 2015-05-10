@@ -1,0 +1,235 @@
+90671 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+90708 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+90754 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1217
+91871 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+16702 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+16731 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+16774 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1219
+17812 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+68109 [http-bio-8080-exec-3] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+68116 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+68194 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1221
+68209 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.DetailValidationHandler  - handleEvent called
+68209 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.DetailValidationHandler  - message => cvc-enumeration-valid: Value '?' is not facet-valid with respect to enumeration '[anySimpleType, anyType, anyURI, base64Binary, boolean, byte, date, dateTime, decimal, double, duration, ENTITIES, ENTITY, float, gDay, gMonth, gMonthDay, gYear, gYearMonth, hexBinary, ID, IDREF, IDREFS, int, integer, language, long, Name, NCName, negativeInteger, NMTOKEN, NMTOKENS, nonNegativeInteger, nonPositiveInteger, normalizedString, NOTATION, positiveInteger, QName, short, string, time, token, unsignedByte, unsignedInt, unsignedLong, unsignedShort]'. It must be a value from the enumeration.
+68209 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.DetailValidationHandler  - line number => 86
+68213 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id fault = 1221
+68275 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+474765 [http-bio-8080-exec-4] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+474772 [http-bio-8080-exec-4] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+475058 [http-bio-8080-exec-4] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1223
+475062 [http-bio-8080-exec-4] DEBUG com.sixthc.interceptor.DetailValidationHandler  - handleEvent called
+475062 [http-bio-8080-exec-4] DEBUG com.sixthc.interceptor.DetailValidationHandler  - message => cvc-complex-type.2.4.a: Invalid content was found starting with element 'url'. One of '{WC[##other:"http://www.multispeak.org/V5.0/commonTypes"]}' is expected.
+475062 [http-bio-8080-exec-4] DEBUG com.sixthc.interceptor.DetailValidationHandler  - line number => 37
+475062 [http-bio-8080-exec-4] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id fault = 1223
+475076 [http-bio-8080-exec-4] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+519733 [http-bio-8080-exec-5] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+519740 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+519752 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1225
+519762 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.DetailValidationHandler  - handleEvent called
+519762 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.DetailValidationHandler  - message => cvc-enumeration-valid: Value '?' is not facet-valid with respect to enumeration '[Unknown, Milliseconds, Seconds, Minutes, Hours, Days, Weeks, Months, Years, Other]'. It must be a value from the enumeration.
+519762 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.DetailValidationHandler  - line number => 74
+519762 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id fault = 1225
+519777 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+564715 [http-bio-8080-exec-6] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+564719 [http-bio-8080-exec-6] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+564729 [http-bio-8080-exec-6] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1227
+564733 [http-bio-8080-exec-6] DEBUG com.sixthc.interceptor.DetailValidationHandler  - handleEvent called
+564733 [http-bio-8080-exec-6] DEBUG com.sixthc.interceptor.DetailValidationHandler  - message => cvc-enumeration-valid: Value 'TIME' is not facet-valid with respect to enumeration '[Unknown, Milliseconds, Seconds, Minutes, Hours, Days, Weeks, Months, Years, Other]'. It must be a value from the enumeration.
+564733 [http-bio-8080-exec-6] DEBUG com.sixthc.interceptor.DetailValidationHandler  - line number => 74
+564733 [http-bio-8080-exec-6] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id fault = 1227
+564745 [http-bio-8080-exec-6] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+587439 [http-bio-8080-exec-7] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+587449 [http-bio-8080-exec-7] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+587461 [http-bio-8080-exec-7] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1229
+587481 [http-bio-8080-exec-7] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+605045 [http-bio-8080-exec-8] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+605053 [http-bio-8080-exec-8] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+605061 [http-bio-8080-exec-8] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1231
+605070 [http-bio-8080-exec-8] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+16327 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+16372 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+16432 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1233
+17524 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+16013 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+16043 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+16083 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1235
+17147 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+68768 [http-bio-8080-exec-3] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+68775 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+68789 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1237
+68797 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+101657 [http-bio-8080-exec-5] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+101662 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+101673 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1239
+101680 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.DetailValidationHandler  - handleEvent called
+101680 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.DetailValidationHandler  - message => cvc-complex-type.2.4.a: Invalid content was found starting with element 'com:extValue'. One of '{"http://www.multispeak.org/V5.0/commonTypes":extName}' is expected.
+101680 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.DetailValidationHandler  - line number => 46
+101684 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id fault = 1239
+101726 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+16433 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+16477 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+16526 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1241
+17401 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.DetailValidationHandler  - handleEvent called
+17401 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.DetailValidationHandler  - message => cvc-complex-type.2.4.a: Invalid content was found starting with element 'url'. One of '{WC[##other:"http://www.multispeak.org/V5.0/commonTypes"]}' is expected.
+17401 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.DetailValidationHandler  - line number => 37
+17404 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id fault = 1241
+17477 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+53953 [http-bio-8080-exec-2] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+53958 [http-bio-8080-exec-2] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+53970 [http-bio-8080-exec-2] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1243
+53975 [http-bio-8080-exec-2] DEBUG com.sixthc.interceptor.DetailValidationHandler  - handleEvent called
+53975 [http-bio-8080-exec-2] DEBUG com.sixthc.interceptor.DetailValidationHandler  - message => cvc-complex-type.2.3: Element 'v5:extensions' cannot have character [children], because the type's content type is element-only.
+53975 [http-bio-8080-exec-2] DEBUG com.sixthc.interceptor.DetailValidationHandler  - line number => 38
+53976 [http-bio-8080-exec-2] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id fault = 1243
+53994 [http-bio-8080-exec-2] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+194762 [http-bio-8080-exec-3] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+194768 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+195050 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1245
+195156 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+260110 [http-bio-8080-exec-5] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+260116 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+260395 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1247
+260404 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+19310 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+19392 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+19451 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1249
+20557 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+19664 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+19707 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+19758 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1251
+20969 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+307014 [http-bio-8080-exec-3] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+307021 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+307038 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1253
+307049 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+343861 [http-bio-8080-exec-5] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+343887 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+343917 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1255
+343936 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+17567 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+17598 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+17650 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1257
+18830 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+16873 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+16903 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+16950 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1259
+18321 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+20430 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+20473 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+20524 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1261
+21589 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+17921 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+17948 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+17988 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1263
+19163 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+18874 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+18902 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+18943 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1265
+20013 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id fault = 1265
+20061 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+18733 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+18770 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+18845 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1267
+19917 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id fault = 1267
+19976 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+20942 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+20988 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+21082 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1269
+22191 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id fault = 1269
+22245 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+21688 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+21714 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+21751 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1271
+22815 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id fault = 1271
+22878 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+18583 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+18625 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+18663 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1273
+19462 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id fault = 1273
+19547 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+23173 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+23220 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+23280 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1275
+24482 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id fault = 1275
+24819 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+55615301 [http-bio-8080-exec-2] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+55615323 [http-bio-8080-exec-2] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+55615399 [http-bio-8080-exec-2] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1277
+55615440 [http-bio-8080-exec-2] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id fault = 1277
+55615468 [http-bio-8080-exec-2] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+369426 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+369458 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+369506 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1279
+370726 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.DetailValidationHandler  - handleEvent called
+370726 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.DetailValidationHandler  - message => cvc-complex-type.2.4.a: Invalid content was found starting with element 'images'. One of '{WC[##other:"http://www.multispeak.org/V5.0/commonTypes"]}' is expected.
+370726 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.DetailValidationHandler  - line number => 37
+370729 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id fault = 1279
+370777 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+394808 [http-bio-8080-exec-2] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+394816 [http-bio-8080-exec-2] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+394830 [http-bio-8080-exec-2] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1281
+394838 [http-bio-8080-exec-2] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id fault = 1281
+394853 [http-bio-8080-exec-2] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+444800 [http-bio-8080-exec-3] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+444805 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+444817 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1283
+444883 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id fault = 1283
+444900 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+21102 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+21131 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+21180 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1285
+22633 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id fault = 1285
+22698 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+21089 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+21116 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+21156 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1287
+22335 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id fault = 1287
+22380 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+18485 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+18513 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+18549 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1289
+19670 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id fault = 1289
+19730 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+44360 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+44391 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+44428 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1291
+45556 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id fault = 1291
+45598 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+63832 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+63861 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+63900 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1293
+65047 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id fault = 1293
+65090 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+18656 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+18682 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+18718 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1295
+19922 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id fault = 1295
+19972 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+19269 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+19306 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+19612 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1297
+20777 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id fault = 1297
+20826 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+18515 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+18547 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+18589 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1299
+19727 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id fault = 1299
+19773 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+19588 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+19620 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+19663 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1301
+20889 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id fault = 1301
+20938 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+19121 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+19152 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+19191 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1303
+20385 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id fault = 1303
+20437 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+18856 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+18886 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+18926 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1305
+20341 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+23179 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+23209 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+23258 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 1307
+24837 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
