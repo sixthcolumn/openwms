@@ -6,13 +6,15 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.sql.Timestamp;
 import java.util.List;
-import java.util.Set;
 import java.util.Vector;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.apache.log4j.Logger;
 import org.apache.xerces.dom.ElementImpl;
+import org.multispeak.v5.Attachment;
+import org.multispeak.v5.Attachments;
+import org.multispeak.v5.ContentReference;
 import org.multispeak.v5.ExpirationTime;
 import org.multispeak.v5.WorkRequest;
 import org.multispeak.v5_0.commonarrays.ArrayOfAttachment;
@@ -260,86 +262,77 @@ public class WOServer implements WOServerSoap {
 		List<WorkOrderImage> images = wo.getWorkOrderImages();
 		if( images != null )
 			for( WorkOrderImage image : images ) {
-				saveImage(image.getUrl(), image.getId().toString());
+				ImageLoader.getImage(image.getUrl(), image.getFileName());
 			}
 	}
 
-	private void saveImage(String url, String filename) throws ImageLoadFileException {
-		WebResource resource = Client.create().resource(url);
-		log.debug("save image : url = " + url + ", filename = " + filename);
-		ClientResponse response = resource.get(ClientResponse.class);
-		int r = response.getStatus();
-		if( r != 200 ) {
-			throw new ImageLoadFileException("image server returned code (" + r + ") for " + url);
-		}
-		InputStream stream = response.getEntityInputStream();
-		byte[] bytes;
-		try {
-			bytes = ByteStreams.toByteArray(stream);
 
-			log.debug("images bytes read : " + bytes.length);
 
-			BufferedOutputStream bos = null;
-
-			// create an object of FileOutputStream
-			FileOutputStream fos;
-
-			fos = new FileOutputStream(new File("/tmp/" + filename));
-			// create an object of BufferedOutputStream
-			bos = new BufferedOutputStream(fos);
-			bos.write(bytes);
-			bos.close();
-
-		} catch (Exception e) {
-			log.error(e);
-			throw new ImageLoadFileException("load : ", e);
-		}
-
-	}
-
-	private List<String> getURLExtensions(
-			org.multispeak.v5_0.commontypes.Extensions extensions) {
-		log.debug("get url extensions");
-		Vector<String> urls = new Vector<String>();
-		if (extensions == null)
-			return urls;
-
-		for (Object images : extensions.getAny()) {
-			NodeList cn = ((ElementImpl) images).getChildNodes();
-			for (int i = 0; i < cn.getLength(); i++) {
-				if (cn.item(i) instanceof ElementImpl) {
-					NodeList url = (NodeList) cn.item(i);
-					if (url != null)
-						for (int j = 0; j < url.getLength(); j++) {
-							log.debug("url : " + url.item(j).getTextContent());
-							urls.add(url.item(j).getTextContent());
-						}
-				}
-			}
-
-		}
-		return urls;
-	}
+//	private List<String> getURLExtensions(
+//			org.multispeak.v5_0.commontypes.Extensions extensions) {
+//		log.debug("get url extensions");
+//		Vector<String> urls = new Vector<String>();
+//		if (extensions == null)
+//			return urls;
+//
+//		for (Object images : extensions.getAny()) {
+//			NodeList cn = ((ElementImpl) images).getChildNodes();
+//			for (int i = 0; i < cn.getLength(); i++) {
+//				if (cn.item(i) instanceof ElementImpl) {
+//					NodeList url = (NodeList) cn.item(i);
+//					if (url != null)
+//						for (int j = 0; j < url.getLength(); j++) {
+//							log.debug("url : " + url.item(j).getTextContent());
+//							urls.add(url.item(j).getTextContent());
+//						}
+//				}
+//			}
+//
+//		}
+//		return urls;
+//	}
+	
+//	private List<String> getAttachments(Attachments attachments) {
+//		List<Attachment> atts = attachments.getAttachment();
+//		Vector<String> result = new Vector<String>();
+//		if( atts != null ) {
+//			for( Attachment a : atts ) {
+//				ContentReference cr = a.getContentReference();
+//				log.debug("content reference value : " + cr.getURI());
+//				result.add(cr.getURI());
+//			}
+//		}
+//		return result;
+//	}
 
 	@Override
 	public void initiateWorkRequest(ArrayOfWorkRequest arrayOfWorkRequest,
 			String responseURL, String transactionID,
-			ExpirationTime expirationTime) throws Exception {
+			ExpirationTime expirationTime) {
 		log.debug("initiateWorkRequest called");
 		List<WorkRequest> a = arrayOfWorkRequest.getWorkRequest();
+		boolean imageFileProcessingError = false;
 		for (WorkRequest w : a) {
 			WorkOrder wo = new WorkOrder();
-			List<String> urls = getURLExtensions(w.getExtensions());
 			wo.setMessage("test 1");
 			wo.setCreateDate(new Timestamp(System.currentTimeMillis()));
 			List<WorkOrderImage> images = new Vector<WorkOrderImage>();
-			for (String s : urls) {
-				log.debug("work request image : " + s);
-				images.add(new WorkOrderImage(s));
+			for( Attachment  att : w.getAttachments().getAttachment()) {
+				WorkOrderImage woi = new WorkOrderImage(att.getContentReference().getURI());
+				try {
+					ImageLoader.getImage(woi.getUrl(), woi.getFileName());
+				} catch (ImageLoadFileException e) {
+					log.error(e);
+					woi.setError(e.getMessage());
+					imageFileProcessingError = true;
+				}
+				images.add(woi);
 			}
 			wo.setWorkOrderImages(images);
 			workOrderDao.save(wo);
-			saveImages(wo);
+		}
+		if( imageFileProcessingError == true ) {
+			throw new RuntimeException("Failed to load some attachments");
 		}
 	}
 

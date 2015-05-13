@@ -1,5 +1,7 @@
 package com.sixthc.model;
 
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,22 +19,33 @@ public class WorkOrderImage {
 	@Column(name = "create_date")
 	private java.sql.Timestamp createDate;
 	private String url;
+	private String fileName;
+	String error;
 	
 	public WorkOrderImage(String url) {
 		this.url = url;
+		fileName = UUID.randomUUID().toString();
 	}
 	
+	public String getFileName() {
+		return fileName;
+	}
+
+	public String getError() {
+		return error;
+	}
+
+	public void setError(String error) {
+		this.error = error.substring(1,999);
+	}
+
 	public Integer getId() {
 		return id;
 	}
 
-
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-
 
 	public String getUrl() {
 		return url;

@@ -39452,9 +39452,12 @@ Disclaimer: Modifications of this document have been made, and will be made, on 
             <!--Zero or more repetitions:-->
             <com1:workRequest objectGUID="sixc1" utility="sixc">
                <!--Optional:-->
-<!--               <v5:extensions>
-                  <url>http://sixc.com</url>
-               </v5:extensions> -->
+               <v5:extensions>
+                  <sixc:images xmlns:sixc="http://www.sixc.com/sic">
+                  	<url>http://sixc.com/image1.jpg</url>
+                  	<url>http://sixc.com/image2.jpg</url>
+                  </sixc:images>
+               </v5:extensions>
                <!--Optional:-->
                <v5:comments>ytest</v5:comments>
                <!--Optional:-->
@@ -39482,11 +39485,16 @@ Disclaimer: Modifications of this document have been made, and will be made, on 
                <v5:description>testing</v5:description>
                <!--Optional:-->
                <v5:title>testing wms</v5:title>
-               <v5:workLocation>
-
-                 
+               <v5:workLocation>                 
                </v5:workLocation>
-               
+               <!--Optional:-->
+               <v5:attachments>
+                  <!--1 or more repetitions:-->
+                  <v5:attachment objectGUID="1234" utility="sixc">
+                     <v5:primaryIdentifier identifierName="1" identifierLabel="ab">1</v5:primaryIdentifier>
+                     <v5:contentReference URI="http://localhost:127.0.0.1:tiger.jpg" name="tiger" category="jpg"></v5:contentReference>
+                  </v5:attachment>
+               </v5:attachments>
             </com1:workRequest>
          </wo:ArrayOfWorkRequest>
          <!--Optional:-->
@@ -39497,7 +39505,2039 @@ Disclaimer: Modifications of this document have been made, and will be made, on 
          <wo:expirationTime units="Minutes">60</wo:expirationTime>
       </wo:InitiateWorkRequest>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://www.multispeak.org/Version_5.0_Release/InitiateWorkRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="InitiateWorkScheduleChanges TestCase" searchProperties="true"><con:settings/><con:testStep type="request" name="InitiateWorkScheduleChanges"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>WO_ServerSoap</con:interface><con:operation>InitiateWorkScheduleChanges</con:operation><con:request name="InitiateWorkScheduleChanges"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.msp5.0.example.org</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://www.multispeak.org/V5.0/ws/request" xmlns:com="http://www.multispeak.org/V5.0/commonTypes" xmlns:wo="http://www.multispeak.org/V5.0/wsdl/WO_Server" xmlns:com1="http://www.multispeak.org/V5.0/commonArrays" xmlns:v5="http://www.multispeak.org/V5.0">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://www.multispeak.org/Version_5.0_Release/InitiateWorkRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="default"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>WO_ServerSoap</con:interface><con:operation>InitiateWorkRequest</con:operation><con:request name="default"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.msp5.0.example.org</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://www.multispeak.org/V5.0/ws/request" xmlns:com="http://www.multispeak.org/V5.0/commonTypes" xmlns:wo="http://www.multispeak.org/V5.0/wsdl/WO_Server" xmlns:com1="http://www.multispeak.org/V5.0/commonArrays" xmlns:v5="http://www.multispeak.org/V5.0" xmlns:cpsm="http://www.multispeak.org/V5.0/cpsm" xmlns:gml="http://www.multispeak.org/V5.0/gml">
+   <soapenv:Header>
+      <req:MultiSpeakRequestMsgHeader DefaultRegisteredName="?" DefaultSystemName="?" DefaultUtility="?" DefaultCurrencyCode="?" RegistrationID="?" MessageID="?" TimeStamp="?" MessageCreatedTimeStamp="?" Context="?">
+         <req:MultiSpeakVersion>
+            <com:MajorVersion>?</com:MajorVersion>
+            <com:MinorVersion>?</com:MinorVersion>
+            <com:Build>?</com:Build>
+            <!--Optional:-->
+            <com:Branch>?</com:Branch>
+            <com:BuildString>?</com:BuildString>
+         </req:MultiSpeakVersion>
+         <req:Caller>
+            <com:AppName>?</com:AppName>
+            <!--Optional:-->
+            <com:AppVersion>?</com:AppVersion>
+            <com:Company>?</com:Company>
+            <!--Optional:-->
+            <com:AuditID>?</com:AuditID>
+            <!--Optional:-->
+            <com:AuditPassword>?</com:AuditPassword>
+            <com:SystemID>?</com:SystemID>
+            <!--Optional:-->
+            <com:Password>?</com:Password>
+         </req:Caller>
+         <!--Optional:-->
+         <req:CodedNames>
+            <!--1 or more repetitions:-->
+            <com:codedName codedNameType="?">
+               <com:codedValue>?</com:codedValue>
+               <com:namePart>?</com:namePart>
+               <!--Optional:-->
+               <com:description>?</com:description>
+            </com:codedName>
+         </req:CodedNames>
+         <!--Optional:-->
+         <req:CoordinateSystemInformation>
+            <com:CSUnits otherKind="?">?</com:CSUnits>
+            <com:CSAuthorities>
+               <!--1 or more repetitions:-->
+               <com:CSAuthority>
+                  <com:CSAuthorityName otherKind="?">?</com:CSAuthorityName>
+                  <com:CoordinateSystemAuthorityCode>?</com:CoordinateSystemAuthorityCode>
+                  <com:Datum>?</com:Datum>
+               </com:CSAuthority>
+            </com:CSAuthorities>
+         </req:CoordinateSystemInformation>
+         <!--Optional:-->
+         <req:DataSetState>
+            <!--You have a CHOICE of the next 2 items at this level-->
+            <com:PublishDataSetState>
+               <com:DataSetID>?</com:DataSetID>
+               <com:PreviousDataSetID>?</com:PreviousDataSetID>
+            </com:PublishDataSetState>
+            <com:RequestDataSetState>
+               <!--Optional:-->
+               <com:DataSetID>?</com:DataSetID>
+               <com:PreviousDataSetID>?</com:PreviousDataSetID>
+            </com:RequestDataSetState>
+         </req:DataSetState>
+         <!--Optional:-->
+         <req:DoNotReply>
+            <!--1 or more repetitions:-->
+            <com:registrationID>?</com:registrationID>
+         </req:DoNotReply>
+      </req:MultiSpeakRequestMsgHeader>
+   </soapenv:Header>
+   <soapenv:Body>
+      <wo:InitiateWorkRequest>
+         <!--Optional:-->
+         <wo:ArrayOfWorkRequest>
+            <!--Zero or more repetitions:-->
+            <com1:workRequest objectGUID="?" utility="?">
+               <!--Optional:-->
+               <v5:extensions>
+                  <!--You may enter ANY elements at this point-->
+               </v5:extensions>
+               <!--Optional:-->
+               <v5:comments>?</v5:comments>
+               <!--Optional:-->
+               <v5:extensionsList>
+                  <!--1 or more repetitions:-->
+                  <com:extensionsItem>
+                     <com:extName>?</com:extName>
+                     <com:extValue units="?">?</com:extValue>
+                     <!--Optional:-->
+                     <com:extType>?</com:extType>
+                  </com:extensionsItem>
+               </v5:extensionsList>
+               <!--Optional:-->
+               <v5:errorObjects>
+                  <!--1 or more repetitions:-->
+                  <com:errorObject referenceID="?" nounType="?">
+                     <!--Optional:-->
+                     <com:extensions>
+                        <!--You may enter ANY elements at this point-->
+                     </com:extensions>
+                     <!--Optional:-->
+                     <com:extensionsList>
+                        <!--1 or more repetitions:-->
+                        <com:extensionsItem>
+                           <com:extName>?</com:extName>
+                           <com:extValue units="?">?</com:extValue>
+                           <!--Optional:-->
+                           <com:extType>?</com:extType>
+                        </com:extensionsItem>
+                     </com:extensionsList>
+                     <!--Optional:-->
+                     <com:errorCode>
+                        <com:replyCodeCategory otherKind="?">?</com:replyCodeCategory>
+                        <com:index>?</com:index>
+                     </com:errorCode>
+                     <com:eventTime>?</com:eventTime>
+                     <!--Optional:-->
+                     <com:displayString>?</com:displayString>
+                     <!--Optional:-->
+                     <com:detailedString>?</com:detailedString>
+                  </com:errorObject>
+               </v5:errorObjects>
+               <v5:primaryIdentifier identifierName="?" identifierLabel="?">?</v5:primaryIdentifier>
+               <!--Optional:-->
+               <v5:secondaryIdentifier identifierName="?" identifierLabel="?">?</v5:secondaryIdentifier>
+               <!--Optional:-->
+               <v5:IdentifiedObject>
+                  <!--Optional:-->
+                  <cpsm:mRID>?</cpsm:mRID>
+                  <!--Optional:-->
+                  <cpsm:description>?</cpsm:description>
+                  <!--Optional:-->
+                  <cpsm:Names>
+                     <!--1 or more repetitions:-->
+                     <cpsm:Name>
+                        <!--Optional:-->
+                        <cpsm:nameString>?</cpsm:nameString>
+                        <!--Optional:-->
+                        <cpsm:description>?</cpsm:description>
+                        <cpsm:NameType>
+                           <!--Optional:-->
+                           <cpsm:nameString>?</cpsm:nameString>
+                           <!--Optional:-->
+                           <cpsm:description>?</cpsm:description>
+                           <!--Optional:-->
+                           <cpsm:NameTypeAuthority>
+                              <!--Optional:-->
+                              <cpsm:nameString>?</cpsm:nameString>
+                              <!--Optional:-->
+                              <cpsm:description>?</cpsm:description>
+                           </cpsm:NameTypeAuthority>
+                        </cpsm:NameType>
+                     </cpsm:Name>
+                  </cpsm:Names>
+               </v5:IdentifiedObject>
+               <v5:workTypeRef objectGUID="?" workTypeName="?" workSubTypeName="?"/>
+               <!--Optional:-->
+               <v5:createdDate>?</v5:createdDate>
+               <!--Optional:-->
+               <v5:requestingPerson objectGUID="?" utility="?">
+                  <!--Optional:-->
+                  <v5:extensions>
+                     <!--You may enter ANY elements at this point-->
+                  </v5:extensions>
+                  <!--Optional:-->
+                  <v5:comments>?</v5:comments>
+                  <!--Optional:-->
+                  <v5:extensionsList>
+                     <!--1 or more repetitions:-->
+                     <com:extensionsItem>
+                        <com:extName>?</com:extName>
+                        <com:extValue units="?">?</com:extValue>
+                        <!--Optional:-->
+                        <com:extType>?</com:extType>
+                     </com:extensionsItem>
+                  </v5:extensionsList>
+                  <!--Optional:-->
+                  <v5:errorObjects>
+                     <!--1 or more repetitions:-->
+                     <com:errorObject referenceID="?" nounType="?">
+                        <!--Optional:-->
+                        <com:extensions>
+                           <!--You may enter ANY elements at this point-->
+                        </com:extensions>
+                        <!--Optional:-->
+                        <com:extensionsList>
+                           <!--1 or more repetitions:-->
+                           <com:extensionsItem>
+                              <com:extName>?</com:extName>
+                              <com:extValue units="?">?</com:extValue>
+                              <!--Optional:-->
+                              <com:extType>?</com:extType>
+                           </com:extensionsItem>
+                        </com:extensionsList>
+                        <!--Optional:-->
+                        <com:errorCode>
+                           <com:replyCodeCategory otherKind="?">?</com:replyCodeCategory>
+                           <com:index>?</com:index>
+                        </com:errorCode>
+                        <com:eventTime>?</com:eventTime>
+                        <!--Optional:-->
+                        <com:displayString>?</com:displayString>
+                        <!--Optional:-->
+                        <com:detailedString>?</com:detailedString>
+                     </com:errorObject>
+                  </v5:errorObjects>
+                  <v5:primaryIdentifier identifierName="?" identifierLabel="?">?</v5:primaryIdentifier>
+                  <!--Optional:-->
+                  <v5:secondaryIdentifier identifierName="?" identifierLabel="?">?</v5:secondaryIdentifier>
+                  <!--Optional:-->
+                  <v5:IdentifiedObject>
+                     <!--Optional:-->
+                     <cpsm:mRID>?</cpsm:mRID>
+                     <!--Optional:-->
+                     <cpsm:description>?</cpsm:description>
+                     <!--Optional:-->
+                     <cpsm:Names>
+                        <!--1 or more repetitions:-->
+                        <cpsm:Name>
+                           <!--Optional:-->
+                           <cpsm:nameString>?</cpsm:nameString>
+                           <!--Optional:-->
+                           <cpsm:description>?</cpsm:description>
+                           <cpsm:NameType>
+                              <!--Optional:-->
+                              <cpsm:nameString>?</cpsm:nameString>
+                              <!--Optional:-->
+                              <cpsm:description>?</cpsm:description>
+                              <!--Optional:-->
+                              <cpsm:NameTypeAuthority>
+                                 <!--Optional:-->
+                                 <cpsm:nameString>?</cpsm:nameString>
+                                 <!--Optional:-->
+                                 <cpsm:description>?</cpsm:description>
+                              </cpsm:NameTypeAuthority>
+                           </cpsm:NameType>
+                        </cpsm:Name>
+                     </cpsm:Names>
+                  </v5:IdentifiedObject>
+                  <!--Optional:-->
+                  <v5:lastName>?</v5:lastName>
+                  <!--Optional:-->
+                  <v5:firstName>?</v5:firstName>
+                  <!--Optional:-->
+                  <v5:middleName>?</v5:middleName>
+                  <!--Optional:-->
+                  <v5:prefix>?</v5:prefix>
+                  <!--Optional:-->
+                  <v5:suffix>?</v5:suffix>
+                  <!--Optional:-->
+                  <v5:governmentID>?</v5:governmentID>
+                  <!--Optional:-->
+                  <v5:contactInfo>
+                     <!--Optional:-->
+                     <com:extensions>
+                        <!--You may enter ANY elements at this point-->
+                     </com:extensions>
+                     <!--Optional:-->
+                     <com:extensionsList>
+                        <!--1 or more repetitions:-->
+                        <com:extensionsItem>
+                           <com:extName>?</com:extName>
+                           <com:extValue units="?">?</com:extValue>
+                           <!--Optional:-->
+                           <com:extType>?</com:extType>
+                        </com:extensionsItem>
+                     </com:extensionsList>
+                     <!--Optional:-->
+                     <com:phoneNumbers>
+                        <!--1 or more repetitions:-->
+                        <com:phoneNumber>
+                           <!--Optional:-->
+                           <com:extensions>
+                              <!--You may enter ANY elements at this point-->
+                           </com:extensions>
+                           <!--Optional:-->
+                           <com:extensionsList>
+                              <!--1 or more repetitions:-->
+                              <com:extensionsItem>
+                                 <com:extName>?</com:extName>
+                                 <com:extValue units="?">?</com:extValue>
+                                 <!--Optional:-->
+                                 <com:extType>?</com:extType>
+                              </com:extensionsItem>
+                           </com:extensionsList>
+                           <com:phone>
+                              <!--Optional:-->
+                              <com:extensions>
+                                 <!--You may enter ANY elements at this point-->
+                              </com:extensions>
+                              <!--Optional:-->
+                              <com:extensionsList>
+                                 <!--1 or more repetitions:-->
+                                 <com:extensionsItem>
+                                    <com:extName>?</com:extName>
+                                    <com:extValue units="?">?</com:extValue>
+                                    <!--Optional:-->
+                                    <com:extType>?</com:extType>
+                                 </com:extensionsItem>
+                              </com:extensionsList>
+                              <!--Optional:-->
+                              <com:areaCode>?</com:areaCode>
+                              <!--Optional:-->
+                              <com:cityCode>?</com:cityCode>
+                              <!--Optional:-->
+                              <com:countryCode>?</com:countryCode>
+                              <!--Optional:-->
+                              <com:localNumber>?</com:localNumber>
+                              <!--Optional:-->
+                              <com:extension>?</com:extension>
+                           </com:phone>
+                           <!--Optional:-->
+                           <com:phoneType otherKind="?">?</com:phoneType>
+                           <!--Optional:-->
+                           <com:priorityOrder>?</com:priorityOrder>
+                        </com:phoneNumber>
+                     </com:phoneNumbers>
+                     <!--Optional:-->
+                     <com:addressItems>
+                        <!--1 or more repetitions:-->
+                        <com:addressItem>
+                           <!--Optional:-->
+                           <com:extensions>
+                              <!--You may enter ANY elements at this point-->
+                           </com:extensions>
+                           <!--Optional:-->
+                           <com:extensionsList>
+                              <!--1 or more repetitions:-->
+                              <com:extensionsItem>
+                                 <com:extName>?</com:extName>
+                                 <com:extValue units="?">?</com:extValue>
+                                 <!--Optional:-->
+                                 <com:extType>?</com:extType>
+                              </com:extensionsItem>
+                           </com:extensionsList>
+                           <com:address>
+                              <!--Optional:-->
+                              <com:extensions>
+                                 <!--You may enter ANY elements at this point-->
+                              </com:extensions>
+                              <!--Optional:-->
+                              <com:extensionsList>
+                                 <!--1 or more repetitions:-->
+                                 <com:extensionsItem>
+                                    <com:extName>?</com:extName>
+                                    <com:extValue units="?">?</com:extValue>
+                                    <!--Optional:-->
+                                    <com:extType>?</com:extType>
+                                 </com:extensionsItem>
+                              </com:extensionsList>
+                              <!--Optional:-->
+                              <com:address1>?</com:address1>
+                              <!--Optional:-->
+                              <com:address2>?</com:address2>
+                              <!--Optional:-->
+                              <com:detailedAddressFields>
+                                 <!--Optional:-->
+                                 <com:extensions>
+                                    <!--You may enter ANY elements at this point-->
+                                 </com:extensions>
+                                 <!--Optional:-->
+                                 <com:extensionsList>
+                                    <!--1 or more repetitions:-->
+                                    <com:extensionsItem>
+                                       <com:extName>?</com:extName>
+                                       <com:extValue units="?">?</com:extValue>
+                                       <!--Optional:-->
+                                       <com:extType>?</com:extType>
+                                    </com:extensionsItem>
+                                 </com:extensionsList>
+                                 <!--Optional:-->
+                                 <com:streetPrefix>?</com:streetPrefix>
+                                 <!--Optional:-->
+                                 <com:streetNumber>?</com:streetNumber>
+                                 <!--Optional:-->
+                                 <com:streetSuffix>?</com:streetSuffix>
+                                 <!--Optional:-->
+                                 <com:streetType>?</com:streetType>
+                                 <!--Optional:-->
+                                 <com:buildingNumber>?</com:buildingNumber>
+                                 <!--Optional:-->
+                                 <com:suiteNumber>?</com:suiteNumber>
+                                 <!--Optional:-->
+                                 <com:addressGeneral>?</com:addressGeneral>
+                                 <!--Optional:-->
+                                 <com:postOfficeBox>?</com:postOfficeBox>
+                                 <!--Optional:-->
+                                 <com:region>?</com:region>
+                              </com:detailedAddressFields>
+                              <!--Optional:-->
+                              <com:townCode>?</com:townCode>
+                              <!--Optional:-->
+                              <com:city>?</com:city>
+                              <!--Optional:-->
+                              <com:state>?</com:state>
+                              <!--Optional:-->
+                              <com:postalCode>?</com:postalCode>
+                              <!--Optional:-->
+                              <com:country>?</com:country>
+                           </com:address>
+                           <!--Optional:-->
+                           <com:addressType otherKind="?">?</com:addressType>
+                           <!--Optional:-->
+                           <com:priorityOrder>?</com:priorityOrder>
+                        </com:addressItem>
+                     </com:addressItems>
+                     <!--Optional:-->
+                     <com:eMailAddresses>
+                        <!--1 or more repetitions:-->
+                        <com:eMailAddress>
+                           <!--Optional:-->
+                           <com:extensions>
+                              <!--You may enter ANY elements at this point-->
+                           </com:extensions>
+                           <!--Optional:-->
+                           <com:extensionsList>
+                              <!--1 or more repetitions:-->
+                              <com:extensionsItem>
+                                 <com:extName>?</com:extName>
+                                 <com:extValue units="?">?</com:extValue>
+                                 <!--Optional:-->
+                                 <com:extType>?</com:extType>
+                              </com:extensionsItem>
+                           </com:extensionsList>
+                           <com:eMail>?</com:eMail>
+                           <!--Optional:-->
+                           <com:eMailType otherKind="?">?</com:eMailType>
+                           <!--Optional:-->
+                           <com:priorityOrder>?</com:priorityOrder>
+                        </com:eMailAddress>
+                     </com:eMailAddresses>
+                     <!--Optional:-->
+                     <com:otherContactInformation>
+                        <!--1 or more repetitions:-->
+                        <com:otherContactItem>
+                           <!--Optional:-->
+                           <com:extensions>
+                              <!--You may enter ANY elements at this point-->
+                           </com:extensions>
+                           <!--Optional:-->
+                           <com:extensionsList>
+                              <!--1 or more repetitions:-->
+                              <com:extensionsItem>
+                                 <com:extName>?</com:extName>
+                                 <com:extValue units="?">?</com:extValue>
+                                 <!--Optional:-->
+                                 <com:extType>?</com:extType>
+                              </com:extensionsItem>
+                           </com:extensionsList>
+                           <com:details>?</com:details>
+                           <!--Optional:-->
+                           <com:infoType>?</com:infoType>
+                        </com:otherContactItem>
+                     </com:otherContactInformation>
+                  </v5:contactInfo>
+                  <!--Optional:-->
+                  <v5:affiliation>?</v5:affiliation>
+               </v5:requestingPerson>
+               <!--Optional:-->
+               <v5:requestingSystem>?</v5:requestingSystem>
+               <!--Optional:-->
+               <v5:description>?</v5:description>
+               <!--Optional:-->
+               <v5:title>?</v5:title>
+               <!--Optional:-->
+               <v5:requestedWorkPriority>?</v5:requestedWorkPriority>
+               <!--Optional:-->
+               <v5:workLocation>
+                  <!--Optional:-->
+                  <com:extensions>
+                     <!--You may enter ANY elements at this point-->
+                  </com:extensions>
+                  <!--Optional:-->
+                  <com:extensionsList>
+                     <!--1 or more repetitions:-->
+                     <com:extensionsItem>
+                        <com:extName>?</com:extName>
+                        <com:extValue units="?">?</com:extValue>
+                        <!--Optional:-->
+                        <com:extType>?</com:extType>
+                     </com:extensionsItem>
+                  </com:extensionsList>
+                  <!--Optional:-->
+                  <v5:address>
+                     <!--Optional:-->
+                     <com:extensions>
+                        <!--You may enter ANY elements at this point-->
+                     </com:extensions>
+                     <!--Optional:-->
+                     <com:extensionsList>
+                        <!--1 or more repetitions:-->
+                        <com:extensionsItem>
+                           <com:extName>?</com:extName>
+                           <com:extValue units="?">?</com:extValue>
+                           <!--Optional:-->
+                           <com:extType>?</com:extType>
+                        </com:extensionsItem>
+                     </com:extensionsList>
+                     <!--Optional:-->
+                     <com:address1>?</com:address1>
+                     <!--Optional:-->
+                     <com:address2>?</com:address2>
+                     <!--Optional:-->
+                     <com:detailedAddressFields>
+                        <!--Optional:-->
+                        <com:extensions>
+                           <!--You may enter ANY elements at this point-->
+                        </com:extensions>
+                        <!--Optional:-->
+                        <com:extensionsList>
+                           <!--1 or more repetitions:-->
+                           <com:extensionsItem>
+                              <com:extName>?</com:extName>
+                              <com:extValue units="?">?</com:extValue>
+                              <!--Optional:-->
+                              <com:extType>?</com:extType>
+                           </com:extensionsItem>
+                        </com:extensionsList>
+                        <!--Optional:-->
+                        <com:streetPrefix>?</com:streetPrefix>
+                        <!--Optional:-->
+                        <com:streetNumber>?</com:streetNumber>
+                        <!--Optional:-->
+                        <com:streetSuffix>?</com:streetSuffix>
+                        <!--Optional:-->
+                        <com:streetType>?</com:streetType>
+                        <!--Optional:-->
+                        <com:buildingNumber>?</com:buildingNumber>
+                        <!--Optional:-->
+                        <com:suiteNumber>?</com:suiteNumber>
+                        <!--Optional:-->
+                        <com:addressGeneral>?</com:addressGeneral>
+                        <!--Optional:-->
+                        <com:postOfficeBox>?</com:postOfficeBox>
+                        <!--Optional:-->
+                        <com:region>?</com:region>
+                     </com:detailedAddressFields>
+                     <!--Optional:-->
+                     <com:townCode>?</com:townCode>
+                     <!--Optional:-->
+                     <com:city>?</com:city>
+                     <!--Optional:-->
+                     <com:state>?</com:state>
+                     <!--Optional:-->
+                     <com:postalCode>?</com:postalCode>
+                     <!--Optional:-->
+                     <com:country>?</com:country>
+                  </v5:address>
+                  <!--Optional:-->
+                  <v5:GPSLocation GPSValidity="?">
+                     <!--Optional:-->
+                     <com:extensions>
+                        <!--You may enter ANY elements at this point-->
+                     </com:extensions>
+                     <!--Optional:-->
+                     <com:extensionsList>
+                        <!--1 or more repetitions:-->
+                        <com:extensionsItem>
+                           <com:extName>?</com:extName>
+                           <com:extValue units="?">?</com:extValue>
+                           <!--Optional:-->
+                           <com:extType>?</com:extType>
+                        </com:extensionsItem>
+                     </com:extensionsList>
+                     <com:latitude>?</com:latitude>
+                     <com:longitude>?</com:longitude>
+                     <!--Optional:-->
+                     <com:altitude>?</com:altitude>
+                     <!--Optional:-->
+                     <com:GPSMetadata>
+                        <!--Optional:-->
+                        <com:extensions>
+                           <!--You may enter ANY elements at this point-->
+                        </com:extensions>
+                        <!--Optional:-->
+                        <com:extensionsList>
+                           <!--1 or more repetitions:-->
+                           <com:extensionsItem>
+                              <com:extName>?</com:extName>
+                              <com:extValue units="?">?</com:extValue>
+                              <!--Optional:-->
+                              <com:extType>?</com:extType>
+                           </com:extensionsItem>
+                        </com:extensionsList>
+                        <!--Optional:-->
+                        <com:easting>?</com:easting>
+                        <!--Optional:-->
+                        <com:northing>?</com:northing>
+                        <!--Optional:-->
+                        <com:source>?</com:source>
+                        <!--Optional:-->
+                        <com:number>?</com:number>
+                        <!--Optional:-->
+                        <com:isRealTimeDiffCorrection>?</com:isRealTimeDiffCorrection>
+                        <!--Optional:-->
+                        <com:hdop>?</com:hdop>
+                        <!--Optional:-->
+                        <com:vdop>?</com:vdop>
+                        <!--Optional:-->
+                        <com:diffID>?</com:diffID>
+                        <!--Optional:-->
+                        <com:collected>?</com:collected>
+                        <!--Optional:-->
+                        <com:numSat>?</com:numSat>
+                     </com:GPSMetadata>
+                  </v5:GPSLocation>
+                  <!--Optional:-->
+                  <v5:geometry>
+                     <!--Optional:-->
+                     <com:extensions>
+                        <!--You may enter ANY elements at this point-->
+                     </com:extensions>
+                     <!--Optional:-->
+                     <com:extensionsList>
+                        <!--1 or more repetitions:-->
+                        <com:extensionsItem>
+                           <com:extName>?</com:extName>
+                           <com:extValue units="?">?</com:extValue>
+                           <!--Optional:-->
+                           <com:extType>?</com:extType>
+                        </com:extensionsItem>
+                     </com:extensionsList>
+                     <!--Optional:-->
+                     <v5:GMLPolygons>
+                        <!--1 or more repetitions:-->
+                        <com:GMLPolygon gid="?" srsName="?">
+                           <gml:outerBoundaryIs gid="?" srsName="?">
+                              <!--You have a CHOICE of the next 2 items at this level-->
+                              <!--4 or more repetitions:-->
+                              <gml:coord>
+                                 <gml:X>?</gml:X>
+                                 <!--Optional:-->
+                                 <gml:Y>?</gml:Y>
+                                 <!--Optional:-->
+                                 <gml:Z>?</gml:Z>
+                                 <!--Optional:-->
+                                 <gml:Bulge>?</gml:Bulge>
+                              </gml:coord>
+                              <gml:coord>
+                                 <gml:X>?</gml:X>
+                                 <!--Optional:-->
+                                 <gml:Y>?</gml:Y>
+                                 <!--Optional:-->
+                                 <gml:Z>?</gml:Z>
+                                 <!--Optional:-->
+                                 <gml:Bulge>?</gml:Bulge>
+                              </gml:coord>
+                              <gml:coord>
+                                 <gml:X>?</gml:X>
+                                 <!--Optional:-->
+                                 <gml:Y>?</gml:Y>
+                                 <!--Optional:-->
+                                 <gml:Z>?</gml:Z>
+                                 <!--Optional:-->
+                                 <gml:Bulge>?</gml:Bulge>
+                              </gml:coord>
+                              <gml:coord>
+                                 <gml:X>?</gml:X>
+                                 <!--Optional:-->
+                                 <gml:Y>?</gml:Y>
+                                 <!--Optional:-->
+                                 <gml:Z>?</gml:Z>
+                                 <!--Optional:-->
+                                 <gml:Bulge>?</gml:Bulge>
+                              </gml:coord>
+                              <gml:coordinates decimal="." cs="," ts=" ">?</gml:coordinates>
+                           </gml:outerBoundaryIs>
+                           <!--Zero or more repetitions:-->
+                           <gml:innerBoundaryIs gid="?" srsName="?">
+                              <!--You have a CHOICE of the next 2 items at this level-->
+                              <!--4 or more repetitions:-->
+                              <gml:coord>
+                                 <gml:X>?</gml:X>
+                                 <!--Optional:-->
+                                 <gml:Y>?</gml:Y>
+                                 <!--Optional:-->
+                                 <gml:Z>?</gml:Z>
+                                 <!--Optional:-->
+                                 <gml:Bulge>?</gml:Bulge>
+                              </gml:coord>
+                              <gml:coord>
+                                 <gml:X>?</gml:X>
+                                 <!--Optional:-->
+                                 <gml:Y>?</gml:Y>
+                                 <!--Optional:-->
+                                 <gml:Z>?</gml:Z>
+                                 <!--Optional:-->
+                                 <gml:Bulge>?</gml:Bulge>
+                              </gml:coord>
+                              <gml:coord>
+                                 <gml:X>?</gml:X>
+                                 <!--Optional:-->
+                                 <gml:Y>?</gml:Y>
+                                 <!--Optional:-->
+                                 <gml:Z>?</gml:Z>
+                                 <!--Optional:-->
+                                 <gml:Bulge>?</gml:Bulge>
+                              </gml:coord>
+                              <gml:coord>
+                                 <gml:X>?</gml:X>
+                                 <!--Optional:-->
+                                 <gml:Y>?</gml:Y>
+                                 <!--Optional:-->
+                                 <gml:Z>?</gml:Z>
+                                 <!--Optional:-->
+                                 <gml:Bulge>?</gml:Bulge>
+                              </gml:coord>
+                              <gml:coordinates decimal="." cs="," ts=" ">?</gml:coordinates>
+                           </gml:innerBoundaryIs>
+                        </com:GMLPolygon>
+                     </v5:GMLPolygons>
+                     <!--Optional:-->
+                     <v5:GMLLines>
+                        <!--1 or more repetitions:-->
+                        <com:GMLLine gid="?" srsName="?">
+                           <!--You have a CHOICE of the next 2 items at this level-->
+                           <!--2 or more repetitions:-->
+                           <gml:coord>
+                              <gml:X>?</gml:X>
+                              <!--Optional:-->
+                              <gml:Y>?</gml:Y>
+                              <!--Optional:-->
+                              <gml:Z>?</gml:Z>
+                              <!--Optional:-->
+                              <gml:Bulge>?</gml:Bulge>
+                           </gml:coord>
+                           <gml:coord>
+                              <gml:X>?</gml:X>
+                              <!--Optional:-->
+                              <gml:Y>?</gml:Y>
+                              <!--Optional:-->
+                              <gml:Z>?</gml:Z>
+                              <!--Optional:-->
+                              <gml:Bulge>?</gml:Bulge>
+                           </gml:coord>
+                           <gml:coordinates decimal="." cs="," ts=" ">?</gml:coordinates>
+                        </com:GMLLine>
+                     </v5:GMLLines>
+                     <!--Optional:-->
+                     <v5:GMLLocations>
+                        <!--1 or more repetitions:-->
+                        <v5:GMLLocation gid="?" srsName="?">
+                           <!--You have a CHOICE of the next 2 items at this level-->
+                           <gml:coord>
+                              <gml:X>?</gml:X>
+                              <!--Optional:-->
+                              <gml:Y>?</gml:Y>
+                              <!--Optional:-->
+                              <gml:Z>?</gml:Z>
+                              <!--Optional:-->
+                              <gml:Bulge>?</gml:Bulge>
+                           </gml:coord>
+                           <gml:coordinates decimal="." cs="," ts=" ">?</gml:coordinates>
+                        </v5:GMLLocation>
+                     </v5:GMLLocations>
+                  </v5:geometry>
+                  <!--Optional:-->
+                  <v5:gridLocation>?</v5:gridLocation>
+                  <!--Optional:-->
+                  <v5:locationComment>?</v5:locationComment>
+                  <!--Optional:-->
+                  <v5:supplementalNotes>
+                     <!--1 or more repetitions:-->
+                     <v5:supplementalNote>
+                        <!--Optional:-->
+                        <com:extensions>
+                           <!--You may enter ANY elements at this point-->
+                        </com:extensions>
+                        <!--Optional:-->
+                        <com:extensionsList>
+                           <!--1 or more repetitions:-->
+                           <com:extensionsItem>
+                              <com:extName>?</com:extName>
+                              <com:extValue units="?">?</com:extValue>
+                              <!--Optional:-->
+                              <com:extType>?</com:extType>
+                           </com:extensionsItem>
+                        </com:extensionsList>
+                        <v5:noteType>?</v5:noteType>
+                        <!--Optional:-->
+                        <v5:noteSubtype>?</v5:noteSubtype>
+                        <v5:noteValue>?</v5:noteValue>
+                     </v5:supplementalNote>
+                  </v5:supplementalNotes>
+                  <!--Optional:-->
+                  <v5:locationInformation>
+                     <!--Optional:-->
+                     <com:extensions>
+                        <!--You may enter ANY elements at this point-->
+                     </com:extensions>
+                     <!--Optional:-->
+                     <com:extensionsList>
+                        <!--1 or more repetitions:-->
+                        <com:extensionsItem>
+                           <com:extName>?</com:extName>
+                           <com:extValue units="?">?</com:extValue>
+                           <!--Optional:-->
+                           <com:extType>?</com:extType>
+                        </com:extensionsItem>
+                     </com:extensionsList>
+                     <!--Optional:-->
+                     <v5:city>?</v5:city>
+                     <!--Optional:-->
+                     <v5:county>?</v5:county>
+                     <!--Optional:-->
+                     <v5:townshipName>?</v5:townshipName>
+                     <!--Optional:-->
+                     <v5:subdivision>?</v5:subdivision>
+                     <!--Optional:-->
+                     <v5:block>?</v5:block>
+                     <!--Optional:-->
+                     <v5:lot>?</v5:lot>
+                     <!--Optional:-->
+                     <v5:state>?</v5:state>
+                     <!--Optional:-->
+                     <v5:TRSQ>
+                        <!--Optional:-->
+                        <v5:township>?</v5:township>
+                        <!--Optional:-->
+                        <v5:range>?</v5:range>
+                        <!--Optional:-->
+                        <v5:section>?</v5:section>
+                        <!--Optional:-->
+                        <v5:quarterSection>?</v5:quarterSection>
+                     </v5:TRSQ>
+                     <!--Optional:-->
+                     <v5:districts>
+                        <!--1 or more repetitions:-->
+                        <v5:district>
+                           <!--Optional:-->
+                           <com:extensions>
+                              <!--You may enter ANY elements at this point-->
+                           </com:extensions>
+                           <!--Optional:-->
+                           <com:extensionsList>
+                              <!--1 or more repetitions:-->
+                              <com:extensionsItem>
+                                 <com:extName>?</com:extName>
+                                 <com:extValue units="?">?</com:extValue>
+                                 <!--Optional:-->
+                                 <com:extType>?</com:extType>
+                              </com:extensionsItem>
+                           </com:extensionsList>
+                           <v5:districtType otherKind="?">?</v5:districtType>
+                           <v5:districtName>?</v5:districtName>
+                           <v5:districtCode>?</v5:districtCode>
+                           <!--Optional:-->
+                           <v5:description>?</v5:description>
+                        </v5:district>
+                     </v5:districts>
+                     <!--Optional:-->
+                     <v5:timeZone DSTEnabled="?" UTCOffset="?" name="?" comment="?">?</v5:timeZone>
+                  </v5:locationInformation>
+                  <!--Optional:-->
+                  <v5:locationReferences>
+                     <!--Optional:-->
+                     <com:extensions>
+                        <!--You may enter ANY elements at this point-->
+                     </com:extensions>
+                     <!--Optional:-->
+                     <com:extensionsList>
+                        <!--1 or more repetitions:-->
+                        <com:extensionsItem>
+                           <com:extName>?</com:extName>
+                           <com:extValue units="?">?</com:extValue>
+                           <!--Optional:-->
+                           <com:extType>?</com:extType>
+                        </com:extensionsItem>
+                     </com:extensionsList>
+                     <!--1 or more repetitions:-->
+                     <v5:locationReference primaryIdentifierName="?" secondaryIdentifierName="?" noun="?" objectGUID="?" utility="?" registeredName="?" systemName="?">?</v5:locationReference>
+                  </v5:locationReferences>
+                  <!--Optional:-->
+                  <v5:locationContact objectGUID="?" utility="?">
+                     <!--Optional:-->
+                     <v5:extensions>
+                        <!--You may enter ANY elements at this point-->
+                     </v5:extensions>
+                     <!--Optional:-->
+                     <v5:comments>?</v5:comments>
+                     <!--Optional:-->
+                     <v5:extensionsList>
+                        <!--1 or more repetitions:-->
+                        <com:extensionsItem>
+                           <com:extName>?</com:extName>
+                           <com:extValue units="?">?</com:extValue>
+                           <!--Optional:-->
+                           <com:extType>?</com:extType>
+                        </com:extensionsItem>
+                     </v5:extensionsList>
+                     <!--Optional:-->
+                     <v5:errorObjects>
+                        <!--1 or more repetitions:-->
+                        <com:errorObject referenceID="?" nounType="?">
+                           <!--Optional:-->
+                           <com:extensions>
+                              <!--You may enter ANY elements at this point-->
+                           </com:extensions>
+                           <!--Optional:-->
+                           <com:extensionsList>
+                              <!--1 or more repetitions:-->
+                              <com:extensionsItem>
+                                 <com:extName>?</com:extName>
+                                 <com:extValue units="?">?</com:extValue>
+                                 <!--Optional:-->
+                                 <com:extType>?</com:extType>
+                              </com:extensionsItem>
+                           </com:extensionsList>
+                           <!--Optional:-->
+                           <com:errorCode>
+                              <com:replyCodeCategory otherKind="?">?</com:replyCodeCategory>
+                              <com:index>?</com:index>
+                           </com:errorCode>
+                           <com:eventTime>?</com:eventTime>
+                           <!--Optional:-->
+                           <com:displayString>?</com:displayString>
+                           <!--Optional:-->
+                           <com:detailedString>?</com:detailedString>
+                        </com:errorObject>
+                     </v5:errorObjects>
+                     <v5:primaryIdentifier identifierName="?" identifierLabel="?">?</v5:primaryIdentifier>
+                     <!--Optional:-->
+                     <v5:secondaryIdentifier identifierName="?" identifierLabel="?">?</v5:secondaryIdentifier>
+                     <!--Optional:-->
+                     <v5:IdentifiedObject>
+                        <!--Optional:-->
+                        <cpsm:mRID>?</cpsm:mRID>
+                        <!--Optional:-->
+                        <cpsm:description>?</cpsm:description>
+                        <!--Optional:-->
+                        <cpsm:Names>
+                           <!--1 or more repetitions:-->
+                           <cpsm:Name>
+                              <!--Optional:-->
+                              <cpsm:nameString>?</cpsm:nameString>
+                              <!--Optional:-->
+                              <cpsm:description>?</cpsm:description>
+                              <cpsm:NameType>
+                                 <!--Optional:-->
+                                 <cpsm:nameString>?</cpsm:nameString>
+                                 <!--Optional:-->
+                                 <cpsm:description>?</cpsm:description>
+                                 <!--Optional:-->
+                                 <cpsm:NameTypeAuthority>
+                                    <!--Optional:-->
+                                    <cpsm:nameString>?</cpsm:nameString>
+                                    <!--Optional:-->
+                                    <cpsm:description>?</cpsm:description>
+                                 </cpsm:NameTypeAuthority>
+                              </cpsm:NameType>
+                           </cpsm:Name>
+                        </cpsm:Names>
+                     </v5:IdentifiedObject>
+                     <!--Optional:-->
+                     <v5:lastName>?</v5:lastName>
+                     <!--Optional:-->
+                     <v5:firstName>?</v5:firstName>
+                     <!--Optional:-->
+                     <v5:middleName>?</v5:middleName>
+                     <!--Optional:-->
+                     <v5:prefix>?</v5:prefix>
+                     <!--Optional:-->
+                     <v5:suffix>?</v5:suffix>
+                     <!--Optional:-->
+                     <v5:governmentID>?</v5:governmentID>
+                     <!--Optional:-->
+                     <v5:contactInfo>
+                        <!--Optional:-->
+                        <com:extensions>
+                           <!--You may enter ANY elements at this point-->
+                        </com:extensions>
+                        <!--Optional:-->
+                        <com:extensionsList>
+                           <!--1 or more repetitions:-->
+                           <com:extensionsItem>
+                              <com:extName>?</com:extName>
+                              <com:extValue units="?">?</com:extValue>
+                              <!--Optional:-->
+                              <com:extType>?</com:extType>
+                           </com:extensionsItem>
+                        </com:extensionsList>
+                        <!--Optional:-->
+                        <com:phoneNumbers>
+                           <!--1 or more repetitions:-->
+                           <com:phoneNumber>
+                              <!--Optional:-->
+                              <com:extensions>
+                                 <!--You may enter ANY elements at this point-->
+                              </com:extensions>
+                              <!--Optional:-->
+                              <com:extensionsList>
+                                 <!--1 or more repetitions:-->
+                                 <com:extensionsItem>
+                                    <com:extName>?</com:extName>
+                                    <com:extValue units="?">?</com:extValue>
+                                    <!--Optional:-->
+                                    <com:extType>?</com:extType>
+                                 </com:extensionsItem>
+                              </com:extensionsList>
+                              <com:phone>
+                                 <!--Optional:-->
+                                 <com:extensions>
+                                    <!--You may enter ANY elements at this point-->
+                                 </com:extensions>
+                                 <!--Optional:-->
+                                 <com:extensionsList>
+                                    <!--1 or more repetitions:-->
+                                    <com:extensionsItem>
+                                       <com:extName>?</com:extName>
+                                       <com:extValue units="?">?</com:extValue>
+                                       <!--Optional:-->
+                                       <com:extType>?</com:extType>
+                                    </com:extensionsItem>
+                                 </com:extensionsList>
+                                 <!--Optional:-->
+                                 <com:areaCode>?</com:areaCode>
+                                 <!--Optional:-->
+                                 <com:cityCode>?</com:cityCode>
+                                 <!--Optional:-->
+                                 <com:countryCode>?</com:countryCode>
+                                 <!--Optional:-->
+                                 <com:localNumber>?</com:localNumber>
+                                 <!--Optional:-->
+                                 <com:extension>?</com:extension>
+                              </com:phone>
+                              <!--Optional:-->
+                              <com:phoneType otherKind="?">?</com:phoneType>
+                              <!--Optional:-->
+                              <com:priorityOrder>?</com:priorityOrder>
+                           </com:phoneNumber>
+                        </com:phoneNumbers>
+                        <!--Optional:-->
+                        <com:addressItems>
+                           <!--1 or more repetitions:-->
+                           <com:addressItem>
+                              <!--Optional:-->
+                              <com:extensions>
+                                 <!--You may enter ANY elements at this point-->
+                              </com:extensions>
+                              <!--Optional:-->
+                              <com:extensionsList>
+                                 <!--1 or more repetitions:-->
+                                 <com:extensionsItem>
+                                    <com:extName>?</com:extName>
+                                    <com:extValue units="?">?</com:extValue>
+                                    <!--Optional:-->
+                                    <com:extType>?</com:extType>
+                                 </com:extensionsItem>
+                              </com:extensionsList>
+                              <com:address>
+                                 <!--Optional:-->
+                                 <com:extensions>
+                                    <!--You may enter ANY elements at this point-->
+                                 </com:extensions>
+                                 <!--Optional:-->
+                                 <com:extensionsList>
+                                    <!--1 or more repetitions:-->
+                                    <com:extensionsItem>
+                                       <com:extName>?</com:extName>
+                                       <com:extValue units="?">?</com:extValue>
+                                       <!--Optional:-->
+                                       <com:extType>?</com:extType>
+                                    </com:extensionsItem>
+                                 </com:extensionsList>
+                                 <!--Optional:-->
+                                 <com:address1>?</com:address1>
+                                 <!--Optional:-->
+                                 <com:address2>?</com:address2>
+                                 <!--Optional:-->
+                                 <com:detailedAddressFields>
+                                    <!--Optional:-->
+                                    <com:extensions>
+                                       <!--You may enter ANY elements at this point-->
+                                    </com:extensions>
+                                    <!--Optional:-->
+                                    <com:extensionsList>
+                                       <!--1 or more repetitions:-->
+                                       <com:extensionsItem>
+                                          <com:extName>?</com:extName>
+                                          <com:extValue units="?">?</com:extValue>
+                                          <!--Optional:-->
+                                          <com:extType>?</com:extType>
+                                       </com:extensionsItem>
+                                    </com:extensionsList>
+                                    <!--Optional:-->
+                                    <com:streetPrefix>?</com:streetPrefix>
+                                    <!--Optional:-->
+                                    <com:streetNumber>?</com:streetNumber>
+                                    <!--Optional:-->
+                                    <com:streetSuffix>?</com:streetSuffix>
+                                    <!--Optional:-->
+                                    <com:streetType>?</com:streetType>
+                                    <!--Optional:-->
+                                    <com:buildingNumber>?</com:buildingNumber>
+                                    <!--Optional:-->
+                                    <com:suiteNumber>?</com:suiteNumber>
+                                    <!--Optional:-->
+                                    <com:addressGeneral>?</com:addressGeneral>
+                                    <!--Optional:-->
+                                    <com:postOfficeBox>?</com:postOfficeBox>
+                                    <!--Optional:-->
+                                    <com:region>?</com:region>
+                                 </com:detailedAddressFields>
+                                 <!--Optional:-->
+                                 <com:townCode>?</com:townCode>
+                                 <!--Optional:-->
+                                 <com:city>?</com:city>
+                                 <!--Optional:-->
+                                 <com:state>?</com:state>
+                                 <!--Optional:-->
+                                 <com:postalCode>?</com:postalCode>
+                                 <!--Optional:-->
+                                 <com:country>?</com:country>
+                              </com:address>
+                              <!--Optional:-->
+                              <com:addressType otherKind="?">?</com:addressType>
+                              <!--Optional:-->
+                              <com:priorityOrder>?</com:priorityOrder>
+                           </com:addressItem>
+                        </com:addressItems>
+                        <!--Optional:-->
+                        <com:eMailAddresses>
+                           <!--1 or more repetitions:-->
+                           <com:eMailAddress>
+                              <!--Optional:-->
+                              <com:extensions>
+                                 <!--You may enter ANY elements at this point-->
+                              </com:extensions>
+                              <!--Optional:-->
+                              <com:extensionsList>
+                                 <!--1 or more repetitions:-->
+                                 <com:extensionsItem>
+                                    <com:extName>?</com:extName>
+                                    <com:extValue units="?">?</com:extValue>
+                                    <!--Optional:-->
+                                    <com:extType>?</com:extType>
+                                 </com:extensionsItem>
+                              </com:extensionsList>
+                              <com:eMail>?</com:eMail>
+                              <!--Optional:-->
+                              <com:eMailType otherKind="?">?</com:eMailType>
+                              <!--Optional:-->
+                              <com:priorityOrder>?</com:priorityOrder>
+                           </com:eMailAddress>
+                        </com:eMailAddresses>
+                        <!--Optional:-->
+                        <com:otherContactInformation>
+                           <!--1 or more repetitions:-->
+                           <com:otherContactItem>
+                              <!--Optional:-->
+                              <com:extensions>
+                                 <!--You may enter ANY elements at this point-->
+                              </com:extensions>
+                              <!--Optional:-->
+                              <com:extensionsList>
+                                 <!--1 or more repetitions:-->
+                                 <com:extensionsItem>
+                                    <com:extName>?</com:extName>
+                                    <com:extValue units="?">?</com:extValue>
+                                    <!--Optional:-->
+                                    <com:extType>?</com:extType>
+                                 </com:extensionsItem>
+                              </com:extensionsList>
+                              <com:details>?</com:details>
+                              <!--Optional:-->
+                              <com:infoType>?</com:infoType>
+                           </com:otherContactItem>
+                        </com:otherContactInformation>
+                     </v5:contactInfo>
+                  </v5:locationContact>
+               </v5:workLocation>
+               <!--Optional:-->
+               <v5:scheduleRequests>
+                  <!--Optional:-->
+                  <com:extensions>
+                     <!--You may enter ANY elements at this point-->
+                  </com:extensions>
+                  <!--Optional:-->
+                  <com:extensionsList>
+                     <!--1 or more repetitions:-->
+                     <com:extensionsItem>
+                        <com:extName>?</com:extName>
+                        <com:extValue units="?">?</com:extValue>
+                        <!--Optional:-->
+                        <com:extType>?</com:extType>
+                     </com:extensionsItem>
+                  </com:extensionsList>
+                  <!--Optional:-->
+                  <v5:dateTimeRequests>
+                     <!--1 or more repetitions:-->
+                     <v5:dateTimeRequest>
+                        <!--Optional:-->
+                        <com:extensions>
+                           <!--You may enter ANY elements at this point-->
+                        </com:extensions>
+                        <!--Optional:-->
+                        <com:extensionsList>
+                           <!--1 or more repetitions:-->
+                           <com:extensionsItem>
+                              <com:extName>?</com:extName>
+                              <com:extValue units="?">?</com:extValue>
+                              <!--Optional:-->
+                              <com:extType>?</com:extType>
+                           </com:extensionsItem>
+                        </com:extensionsList>
+                        <!--Optional:-->
+                        <v5:requestByType>?</v5:requestByType>
+                        <!--Optional:-->
+                        <v5:requestByValue>?</v5:requestByValue>
+                     </v5:dateTimeRequest>
+                  </v5:dateTimeRequests>
+                  <!--Optional:-->
+                  <v5:durationRequest units="?">?</v5:durationRequest>
+               </v5:scheduleRequests>
+               <!--Optional:-->
+               <v5:resourceRequest objectGUID="?" utility="?">
+                  <!--Optional:-->
+                  <v5:extensions>
+                     <!--You may enter ANY elements at this point-->
+                  </v5:extensions>
+                  <!--Optional:-->
+                  <v5:comments>?</v5:comments>
+                  <!--Optional:-->
+                  <v5:extensionsList>
+                     <!--1 or more repetitions:-->
+                     <com:extensionsItem>
+                        <com:extName>?</com:extName>
+                        <com:extValue units="?">?</com:extValue>
+                        <!--Optional:-->
+                        <com:extType>?</com:extType>
+                     </com:extensionsItem>
+                  </v5:extensionsList>
+                  <!--Optional:-->
+                  <v5:errorObjects>
+                     <!--1 or more repetitions:-->
+                     <com:errorObject referenceID="?" nounType="?">
+                        <!--Optional:-->
+                        <com:extensions>
+                           <!--You may enter ANY elements at this point-->
+                        </com:extensions>
+                        <!--Optional:-->
+                        <com:extensionsList>
+                           <!--1 or more repetitions:-->
+                           <com:extensionsItem>
+                              <com:extName>?</com:extName>
+                              <com:extValue units="?">?</com:extValue>
+                              <!--Optional:-->
+                              <com:extType>?</com:extType>
+                           </com:extensionsItem>
+                        </com:extensionsList>
+                        <!--Optional:-->
+                        <com:errorCode>
+                           <com:replyCodeCategory otherKind="?">?</com:replyCodeCategory>
+                           <com:index>?</com:index>
+                        </com:errorCode>
+                        <com:eventTime>?</com:eventTime>
+                        <!--Optional:-->
+                        <com:displayString>?</com:displayString>
+                        <!--Optional:-->
+                        <com:detailedString>?</com:detailedString>
+                     </com:errorObject>
+                  </v5:errorObjects>
+                  <v5:primaryIdentifier identifierName="?" identifierLabel="?">?</v5:primaryIdentifier>
+                  <!--Optional:-->
+                  <v5:secondaryIdentifier identifierName="?" identifierLabel="?">?</v5:secondaryIdentifier>
+                  <!--Optional:-->
+                  <v5:IdentifiedObject>
+                     <!--Optional:-->
+                     <cpsm:mRID>?</cpsm:mRID>
+                     <!--Optional:-->
+                     <cpsm:description>?</cpsm:description>
+                     <!--Optional:-->
+                     <cpsm:Names>
+                        <!--1 or more repetitions:-->
+                        <cpsm:Name>
+                           <!--Optional:-->
+                           <cpsm:nameString>?</cpsm:nameString>
+                           <!--Optional:-->
+                           <cpsm:description>?</cpsm:description>
+                           <cpsm:NameType>
+                              <!--Optional:-->
+                              <cpsm:nameString>?</cpsm:nameString>
+                              <!--Optional:-->
+                              <cpsm:description>?</cpsm:description>
+                              <!--Optional:-->
+                              <cpsm:NameTypeAuthority>
+                                 <!--Optional:-->
+                                 <cpsm:nameString>?</cpsm:nameString>
+                                 <!--Optional:-->
+                                 <cpsm:description>?</cpsm:description>
+                              </cpsm:NameTypeAuthority>
+                           </cpsm:NameType>
+                        </cpsm:Name>
+                     </cpsm:Names>
+                  </v5:IdentifiedObject>
+                  <!--Optional:-->
+                  <v5:resourceType>?</v5:resourceType>
+                  <!--Optional:-->
+                  <v5:resourceGroups>
+                     <!--1 or more repetitions:-->
+                     <v5:resourceGroup>
+                        <!--Optional:-->
+                        <com:extensions>
+                           <!--You may enter ANY elements at this point-->
+                        </com:extensions>
+                        <!--Optional:-->
+                        <com:extensionsList>
+                           <!--1 or more repetitions:-->
+                           <com:extensionsItem>
+                              <com:extName>?</com:extName>
+                              <com:extValue units="?">?</com:extValue>
+                              <!--Optional:-->
+                              <com:extType>?</com:extType>
+                           </com:extensionsItem>
+                        </com:extensionsList>
+                        <v5:groupName>?</v5:groupName>
+                     </v5:resourceGroup>
+                  </v5:resourceGroups>
+                  <v5:resourceCompositionHistory>
+                     <!--1 or more repetitions:-->
+                     <v5:resourceComposition>
+                        <v5:effectivePeriod>
+                           <v5:startTime>?</v5:startTime>
+                           <!--Optional:-->
+                           <v5:endTime>?</v5:endTime>
+                        </v5:effectivePeriod>
+                        <!--Optional:-->
+                        <v5:responsibleWorkerID>
+                           <com:objectGUID>?</com:objectGUID>
+                           <!--Optional:-->
+                           <com:primaryIdentifier identifierName="?" identifierLabel="?">?</com:primaryIdentifier>
+                        </v5:responsibleWorkerID>
+                        <!--Optional:-->
+                        <v5:baseLocation>?</v5:baseLocation>
+                        <!--Optional:-->
+                        <v5:contactInfo>
+                           <!--Optional:-->
+                           <com:extensions>
+                              <!--You may enter ANY elements at this point-->
+                           </com:extensions>
+                           <!--Optional:-->
+                           <com:extensionsList>
+                              <!--1 or more repetitions:-->
+                              <com:extensionsItem>
+                                 <com:extName>?</com:extName>
+                                 <com:extValue units="?">?</com:extValue>
+                                 <!--Optional:-->
+                                 <com:extType>?</com:extType>
+                              </com:extensionsItem>
+                           </com:extensionsList>
+                           <!--Optional:-->
+                           <com:phoneNumbers>
+                              <!--1 or more repetitions:-->
+                              <com:phoneNumber>
+                                 <!--Optional:-->
+                                 <com:extensions>
+                                    <!--You may enter ANY elements at this point-->
+                                 </com:extensions>
+                                 <!--Optional:-->
+                                 <com:extensionsList>
+                                    <!--1 or more repetitions:-->
+                                    <com:extensionsItem>
+                                       <com:extName>?</com:extName>
+                                       <com:extValue units="?">?</com:extValue>
+                                       <!--Optional:-->
+                                       <com:extType>?</com:extType>
+                                    </com:extensionsItem>
+                                 </com:extensionsList>
+                                 <com:phone>
+                                    <!--Optional:-->
+                                    <com:extensions>
+                                       <!--You may enter ANY elements at this point-->
+                                    </com:extensions>
+                                    <!--Optional:-->
+                                    <com:extensionsList>
+                                       <!--1 or more repetitions:-->
+                                       <com:extensionsItem>
+                                          <com:extName>?</com:extName>
+                                          <com:extValue units="?">?</com:extValue>
+                                          <!--Optional:-->
+                                          <com:extType>?</com:extType>
+                                       </com:extensionsItem>
+                                    </com:extensionsList>
+                                    <!--Optional:-->
+                                    <com:areaCode>?</com:areaCode>
+                                    <!--Optional:-->
+                                    <com:cityCode>?</com:cityCode>
+                                    <!--Optional:-->
+                                    <com:countryCode>?</com:countryCode>
+                                    <!--Optional:-->
+                                    <com:localNumber>?</com:localNumber>
+                                    <!--Optional:-->
+                                    <com:extension>?</com:extension>
+                                 </com:phone>
+                                 <!--Optional:-->
+                                 <com:phoneType otherKind="?">?</com:phoneType>
+                                 <!--Optional:-->
+                                 <com:priorityOrder>?</com:priorityOrder>
+                              </com:phoneNumber>
+                           </com:phoneNumbers>
+                           <!--Optional:-->
+                           <com:addressItems>
+                              <!--1 or more repetitions:-->
+                              <com:addressItem>
+                                 <!--Optional:-->
+                                 <com:extensions>
+                                    <!--You may enter ANY elements at this point-->
+                                 </com:extensions>
+                                 <!--Optional:-->
+                                 <com:extensionsList>
+                                    <!--1 or more repetitions:-->
+                                    <com:extensionsItem>
+                                       <com:extName>?</com:extName>
+                                       <com:extValue units="?">?</com:extValue>
+                                       <!--Optional:-->
+                                       <com:extType>?</com:extType>
+                                    </com:extensionsItem>
+                                 </com:extensionsList>
+                                 <com:address>
+                                    <!--Optional:-->
+                                    <com:extensions>
+                                       <!--You may enter ANY elements at this point-->
+                                    </com:extensions>
+                                    <!--Optional:-->
+                                    <com:extensionsList>
+                                       <!--1 or more repetitions:-->
+                                       <com:extensionsItem>
+                                          <com:extName>?</com:extName>
+                                          <com:extValue units="?">?</com:extValue>
+                                          <!--Optional:-->
+                                          <com:extType>?</com:extType>
+                                       </com:extensionsItem>
+                                    </com:extensionsList>
+                                    <!--Optional:-->
+                                    <com:address1>?</com:address1>
+                                    <!--Optional:-->
+                                    <com:address2>?</com:address2>
+                                    <!--Optional:-->
+                                    <com:detailedAddressFields>
+                                       <!--Optional:-->
+                                       <com:extensions>
+                                          <!--You may enter ANY elements at this point-->
+                                       </com:extensions>
+                                       <!--Optional:-->
+                                       <com:extensionsList>
+                                          <!--1 or more repetitions:-->
+                                          <com:extensionsItem>
+                                             <com:extName>?</com:extName>
+                                             <com:extValue units="?">?</com:extValue>
+                                             <!--Optional:-->
+                                             <com:extType>?</com:extType>
+                                          </com:extensionsItem>
+                                       </com:extensionsList>
+                                       <!--Optional:-->
+                                       <com:streetPrefix>?</com:streetPrefix>
+                                       <!--Optional:-->
+                                       <com:streetNumber>?</com:streetNumber>
+                                       <!--Optional:-->
+                                       <com:streetSuffix>?</com:streetSuffix>
+                                       <!--Optional:-->
+                                       <com:streetType>?</com:streetType>
+                                       <!--Optional:-->
+                                       <com:buildingNumber>?</com:buildingNumber>
+                                       <!--Optional:-->
+                                       <com:suiteNumber>?</com:suiteNumber>
+                                       <!--Optional:-->
+                                       <com:addressGeneral>?</com:addressGeneral>
+                                       <!--Optional:-->
+                                       <com:postOfficeBox>?</com:postOfficeBox>
+                                       <!--Optional:-->
+                                       <com:region>?</com:region>
+                                    </com:detailedAddressFields>
+                                    <!--Optional:-->
+                                    <com:townCode>?</com:townCode>
+                                    <!--Optional:-->
+                                    <com:city>?</com:city>
+                                    <!--Optional:-->
+                                    <com:state>?</com:state>
+                                    <!--Optional:-->
+                                    <com:postalCode>?</com:postalCode>
+                                    <!--Optional:-->
+                                    <com:country>?</com:country>
+                                 </com:address>
+                                 <!--Optional:-->
+                                 <com:addressType otherKind="?">?</com:addressType>
+                                 <!--Optional:-->
+                                 <com:priorityOrder>?</com:priorityOrder>
+                              </com:addressItem>
+                           </com:addressItems>
+                           <!--Optional:-->
+                           <com:eMailAddresses>
+                              <!--1 or more repetitions:-->
+                              <com:eMailAddress>
+                                 <!--Optional:-->
+                                 <com:extensions>
+                                    <!--You may enter ANY elements at this point-->
+                                 </com:extensions>
+                                 <!--Optional:-->
+                                 <com:extensionsList>
+                                    <!--1 or more repetitions:-->
+                                    <com:extensionsItem>
+                                       <com:extName>?</com:extName>
+                                       <com:extValue units="?">?</com:extValue>
+                                       <!--Optional:-->
+                                       <com:extType>?</com:extType>
+                                    </com:extensionsItem>
+                                 </com:extensionsList>
+                                 <com:eMail>?</com:eMail>
+                                 <!--Optional:-->
+                                 <com:eMailType otherKind="?">?</com:eMailType>
+                                 <!--Optional:-->
+                                 <com:priorityOrder>?</com:priorityOrder>
+                              </com:eMailAddress>
+                           </com:eMailAddresses>
+                           <!--Optional:-->
+                           <com:otherContactInformation>
+                              <!--1 or more repetitions:-->
+                              <com:otherContactItem>
+                                 <!--Optional:-->
+                                 <com:extensions>
+                                    <!--You may enter ANY elements at this point-->
+                                 </com:extensions>
+                                 <!--Optional:-->
+                                 <com:extensionsList>
+                                    <!--1 or more repetitions:-->
+                                    <com:extensionsItem>
+                                       <com:extName>?</com:extName>
+                                       <com:extValue units="?">?</com:extValue>
+                                       <!--Optional:-->
+                                       <com:extType>?</com:extType>
+                                    </com:extensionsItem>
+                                 </com:extensionsList>
+                                 <com:details>?</com:details>
+                                 <!--Optional:-->
+                                 <com:infoType>?</com:infoType>
+                              </com:otherContactItem>
+                           </com:otherContactInformation>
+                        </v5:contactInfo>
+                        <v5:resourceMembers>
+                           <!--1 or more repetitions:-->
+                           <v5:resourceMember>
+                              <!--Optional:-->
+                              <com:extensions>
+                                 <!--You may enter ANY elements at this point-->
+                              </com:extensions>
+                              <!--Optional:-->
+                              <com:extensionsList>
+                                 <!--1 or more repetitions:-->
+                                 <com:extensionsItem>
+                                    <com:extName>?</com:extName>
+                                    <com:extValue units="?">?</com:extValue>
+                                    <!--Optional:-->
+                                    <com:extType>?</com:extType>
+                                 </com:extensionsItem>
+                              </com:extensionsList>
+                              <v5:memberRef>
+                                 <!--You have a CHOICE of the next 3 items at this level-->
+                                 <v5:equipmentItemID>
+                                    <com:objectGUID>?</com:objectGUID>
+                                    <!--Optional:-->
+                                    <com:primaryIdentifier identifierName="?" identifierLabel="?">?</com:primaryIdentifier>
+                                 </v5:equipmentItemID>
+                                 <v5:resourceID>
+                                    <com:objectGUID>?</com:objectGUID>
+                                    <!--Optional:-->
+                                    <com:primaryIdentifier identifierName="?" identifierLabel="?">?</com:primaryIdentifier>
+                                 </v5:resourceID>
+                                 <v5:workerID>
+                                    <com:objectGUID>?</com:objectGUID>
+                                    <!--Optional:-->
+                                    <com:primaryIdentifier identifierName="?" identifierLabel="?">?</com:primaryIdentifier>
+                                 </v5:workerID>
+                              </v5:memberRef>
+                              <!--Optional:-->
+                              <v5:LTDeviceRefs>
+                                 <!--1 or more repetitions:-->
+                                 <v5:LTDeviceRef LTDID="?" sourceSystemID="?" LTCommunicationsAddress="?"/>
+                              </v5:LTDeviceRefs>
+                           </v5:resourceMember>
+                        </v5:resourceMembers>
+                        <!--Optional:-->
+                        <v5:abilityRefs>
+                           <!--1 or more repetitions:-->
+                           <v5:abilityRef primaryIdentifierName="?" secondaryIdentifierName="?" noun="?" objectGUID="?" utility="?" registeredName="?" systemName="?">?</v5:abilityRef>
+                        </v5:abilityRefs>
+                        <!--Optional:-->
+                        <v5:organizationAssociations>
+                           <!--1 or more repetitions:-->
+                           <v5:organizationAssociation>
+                              <!--Optional:-->
+                              <com:extensions>
+                                 <!--You may enter ANY elements at this point-->
+                              </com:extensions>
+                              <!--Optional:-->
+                              <com:extensionsList>
+                                 <!--1 or more repetitions:-->
+                                 <com:extensionsItem>
+                                    <com:extName>?</com:extName>
+                                    <com:extValue units="?">?</com:extValue>
+                                    <!--Optional:-->
+                                    <com:extType>?</com:extType>
+                                 </com:extensionsItem>
+                              </com:extensionsList>
+                              <v5:organizationRef primaryIdentifierName="?" secondaryIdentifierName="?" noun="?" objectGUID="?" utility="?" registeredName="?" systemName="?">?</v5:organizationRef>
+                              <v5:organizationRole>?</v5:organizationRole>
+                              <!--Optional:-->
+                              <v5:contactInfo>
+                                 <!--Optional:-->
+                                 <com:extensions>
+                                    <!--You may enter ANY elements at this point-->
+                                 </com:extensions>
+                                 <!--Optional:-->
+                                 <com:extensionsList>
+                                    <!--1 or more repetitions:-->
+                                    <com:extensionsItem>
+                                       <com:extName>?</com:extName>
+                                       <com:extValue units="?">?</com:extValue>
+                                       <!--Optional:-->
+                                       <com:extType>?</com:extType>
+                                    </com:extensionsItem>
+                                 </com:extensionsList>
+                                 <!--Optional:-->
+                                 <com:phoneNumbers>
+                                    <!--1 or more repetitions:-->
+                                    <com:phoneNumber>
+                                       <!--Optional:-->
+                                       <com:extensions>
+                                          <!--You may enter ANY elements at this point-->
+                                       </com:extensions>
+                                       <!--Optional:-->
+                                       <com:extensionsList>
+                                          <!--1 or more repetitions:-->
+                                          <com:extensionsItem>
+                                             <com:extName>?</com:extName>
+                                             <com:extValue units="?">?</com:extValue>
+                                             <!--Optional:-->
+                                             <com:extType>?</com:extType>
+                                          </com:extensionsItem>
+                                       </com:extensionsList>
+                                       <com:phone>
+                                          <!--Optional:-->
+                                          <com:extensions>
+                                             <!--You may enter ANY elements at this point-->
+                                          </com:extensions>
+                                          <!--Optional:-->
+                                          <com:extensionsList>
+                                             <!--1 or more repetitions:-->
+                                             <com:extensionsItem>
+                                                <com:extName>?</com:extName>
+                                                <com:extValue units="?">?</com:extValue>
+                                                <!--Optional:-->
+                                                <com:extType>?</com:extType>
+                                             </com:extensionsItem>
+                                          </com:extensionsList>
+                                          <!--Optional:-->
+                                          <com:areaCode>?</com:areaCode>
+                                          <!--Optional:-->
+                                          <com:cityCode>?</com:cityCode>
+                                          <!--Optional:-->
+                                          <com:countryCode>?</com:countryCode>
+                                          <!--Optional:-->
+                                          <com:localNumber>?</com:localNumber>
+                                          <!--Optional:-->
+                                          <com:extension>?</com:extension>
+                                       </com:phone>
+                                       <!--Optional:-->
+                                       <com:phoneType otherKind="?">?</com:phoneType>
+                                       <!--Optional:-->
+                                       <com:priorityOrder>?</com:priorityOrder>
+                                    </com:phoneNumber>
+                                 </com:phoneNumbers>
+                                 <!--Optional:-->
+                                 <com:addressItems>
+                                    <!--1 or more repetitions:-->
+                                    <com:addressItem>
+                                       <!--Optional:-->
+                                       <com:extensions>
+                                          <!--You may enter ANY elements at this point-->
+                                       </com:extensions>
+                                       <!--Optional:-->
+                                       <com:extensionsList>
+                                          <!--1 or more repetitions:-->
+                                          <com:extensionsItem>
+                                             <com:extName>?</com:extName>
+                                             <com:extValue units="?">?</com:extValue>
+                                             <!--Optional:-->
+                                             <com:extType>?</com:extType>
+                                          </com:extensionsItem>
+                                       </com:extensionsList>
+                                       <com:address>
+                                          <!--Optional:-->
+                                          <com:extensions>
+                                             <!--You may enter ANY elements at this point-->
+                                          </com:extensions>
+                                          <!--Optional:-->
+                                          <com:extensionsList>
+                                             <!--1 or more repetitions:-->
+                                             <com:extensionsItem>
+                                                <com:extName>?</com:extName>
+                                                <com:extValue units="?">?</com:extValue>
+                                                <!--Optional:-->
+                                                <com:extType>?</com:extType>
+                                             </com:extensionsItem>
+                                          </com:extensionsList>
+                                          <!--Optional:-->
+                                          <com:address1>?</com:address1>
+                                          <!--Optional:-->
+                                          <com:address2>?</com:address2>
+                                          <!--Optional:-->
+                                          <com:detailedAddressFields>
+                                             <!--Optional:-->
+                                             <com:extensions>
+                                                <!--You may enter ANY elements at this point-->
+                                             </com:extensions>
+                                             <!--Optional:-->
+                                             <com:extensionsList>
+                                                <!--1 or more repetitions:-->
+                                                <com:extensionsItem>
+                                                   <com:extName>?</com:extName>
+                                                   <com:extValue units="?">?</com:extValue>
+                                                   <!--Optional:-->
+                                                   <com:extType>?</com:extType>
+                                                </com:extensionsItem>
+                                             </com:extensionsList>
+                                             <!--Optional:-->
+                                             <com:streetPrefix>?</com:streetPrefix>
+                                             <!--Optional:-->
+                                             <com:streetNumber>?</com:streetNumber>
+                                             <!--Optional:-->
+                                             <com:streetSuffix>?</com:streetSuffix>
+                                             <!--Optional:-->
+                                             <com:streetType>?</com:streetType>
+                                             <!--Optional:-->
+                                             <com:buildingNumber>?</com:buildingNumber>
+                                             <!--Optional:-->
+                                             <com:suiteNumber>?</com:suiteNumber>
+                                             <!--Optional:-->
+                                             <com:addressGeneral>?</com:addressGeneral>
+                                             <!--Optional:-->
+                                             <com:postOfficeBox>?</com:postOfficeBox>
+                                             <!--Optional:-->
+                                             <com:region>?</com:region>
+                                          </com:detailedAddressFields>
+                                          <!--Optional:-->
+                                          <com:townCode>?</com:townCode>
+                                          <!--Optional:-->
+                                          <com:city>?</com:city>
+                                          <!--Optional:-->
+                                          <com:state>?</com:state>
+                                          <!--Optional:-->
+                                          <com:postalCode>?</com:postalCode>
+                                          <!--Optional:-->
+                                          <com:country>?</com:country>
+                                       </com:address>
+                                       <!--Optional:-->
+                                       <com:addressType otherKind="?">?</com:addressType>
+                                       <!--Optional:-->
+                                       <com:priorityOrder>?</com:priorityOrder>
+                                    </com:addressItem>
+                                 </com:addressItems>
+                                 <!--Optional:-->
+                                 <com:eMailAddresses>
+                                    <!--1 or more repetitions:-->
+                                    <com:eMailAddress>
+                                       <!--Optional:-->
+                                       <com:extensions>
+                                          <!--You may enter ANY elements at this point-->
+                                       </com:extensions>
+                                       <!--Optional:-->
+                                       <com:extensionsList>
+                                          <!--1 or more repetitions:-->
+                                          <com:extensionsItem>
+                                             <com:extName>?</com:extName>
+                                             <com:extValue units="?">?</com:extValue>
+                                             <!--Optional:-->
+                                             <com:extType>?</com:extType>
+                                          </com:extensionsItem>
+                                       </com:extensionsList>
+                                       <com:eMail>?</com:eMail>
+                                       <!--Optional:-->
+                                       <com:eMailType otherKind="?">?</com:eMailType>
+                                       <!--Optional:-->
+                                       <com:priorityOrder>?</com:priorityOrder>
+                                    </com:eMailAddress>
+                                 </com:eMailAddresses>
+                                 <!--Optional:-->
+                                 <com:otherContactInformation>
+                                    <!--1 or more repetitions:-->
+                                    <com:otherContactItem>
+                                       <!--Optional:-->
+                                       <com:extensions>
+                                          <!--You may enter ANY elements at this point-->
+                                       </com:extensions>
+                                       <!--Optional:-->
+                                       <com:extensionsList>
+                                          <!--1 or more repetitions:-->
+                                          <com:extensionsItem>
+                                             <com:extName>?</com:extName>
+                                             <com:extValue units="?">?</com:extValue>
+                                             <!--Optional:-->
+                                             <com:extType>?</com:extType>
+                                          </com:extensionsItem>
+                                       </com:extensionsList>
+                                       <com:details>?</com:details>
+                                       <!--Optional:-->
+                                       <com:infoType>?</com:infoType>
+                                    </com:otherContactItem>
+                                 </com:otherContactInformation>
+                              </v5:contactInfo>
+                           </v5:organizationAssociation>
+                        </v5:organizationAssociations>
+                     </v5:resourceComposition>
+                  </v5:resourceCompositionHistory>
+               </v5:resourceRequest>
+               <!--Optional:-->
+               <v5:primaryReference primaryIdentifierName="?" secondaryIdentifierName="?" noun="?" objectGUID="?" utility="?" registeredName="?" systemName="?">?</v5:primaryReference>
+               <!--Optional:-->
+               <v5:workItemRelationships>
+                  <!--1 or more repetitions:-->
+                  <v5:workItemRelationship>
+                     <!--Optional:-->
+                     <com:extensions>
+                        <!--You may enter ANY elements at this point-->
+                     </com:extensions>
+                     <!--Optional:-->
+                     <com:extensionsList>
+                        <!--1 or more repetitions:-->
+                        <com:extensionsItem>
+                           <com:extName>?</com:extName>
+                           <com:extValue units="?">?</com:extValue>
+                           <!--Optional:-->
+                           <com:extType>?</com:extType>
+                        </com:extensionsItem>
+                     </com:extensionsList>
+                     <v5:relatedObject primaryIdentifierName="?" secondaryIdentifierName="?" noun="?" objectGUID="?" utility="?" registeredName="?" systemName="?">?</v5:relatedObject>
+                     <!--Optional:-->
+                     <v5:relationType otherKind="?">?</v5:relationType>
+                  </v5:workItemRelationship>
+               </v5:workItemRelationships>
+               <!--Optional:-->
+               <v5:requiredObjectRefs>
+                  <!--1 or more repetitions:-->
+                  <v5:objectRef primaryIdentifierName="?" secondaryIdentifierName="?" noun="?" objectGUID="?" utility="?" registeredName="?" systemName="?">?</v5:objectRef>
+               </v5:requiredObjectRefs>
+               <!--Optional:-->
+               <v5:attachments>
+                  <!--1 or more repetitions:-->
+                  <v5:attachment objectGUID="?" utility="?">
+                     <!--Optional:-->
+                     <v5:extensions>
+                        <!--You may enter ANY elements at this point-->
+                     </v5:extensions>
+                     <!--Optional:-->
+                     <v5:comments>?</v5:comments>
+                     <!--Optional:-->
+                     <v5:extensionsList>
+                        <!--1 or more repetitions:-->
+                        <com:extensionsItem>
+                           <com:extName>?</com:extName>
+                           <com:extValue units="?">?</com:extValue>
+                           <!--Optional:-->
+                           <com:extType>?</com:extType>
+                        </com:extensionsItem>
+                     </v5:extensionsList>
+                     <!--Optional:-->
+                     <v5:errorObjects>
+                        <!--1 or more repetitions:-->
+                        <com:errorObject referenceID="?" nounType="?">
+                           <!--Optional:-->
+                           <com:extensions>
+                              <!--You may enter ANY elements at this point-->
+                           </com:extensions>
+                           <!--Optional:-->
+                           <com:extensionsList>
+                              <!--1 or more repetitions:-->
+                              <com:extensionsItem>
+                                 <com:extName>?</com:extName>
+                                 <com:extValue units="?">?</com:extValue>
+                                 <!--Optional:-->
+                                 <com:extType>?</com:extType>
+                              </com:extensionsItem>
+                           </com:extensionsList>
+                           <!--Optional:-->
+                           <com:errorCode>
+                              <com:replyCodeCategory otherKind="?">?</com:replyCodeCategory>
+                              <com:index>?</com:index>
+                           </com:errorCode>
+                           <com:eventTime>?</com:eventTime>
+                           <!--Optional:-->
+                           <com:displayString>?</com:displayString>
+                           <!--Optional:-->
+                           <com:detailedString>?</com:detailedString>
+                        </com:errorObject>
+                     </v5:errorObjects>
+                     <v5:primaryIdentifier identifierName="?" identifierLabel="?">?</v5:primaryIdentifier>
+                     <!--Optional:-->
+                     <v5:secondaryIdentifier identifierName="?" identifierLabel="?">?</v5:secondaryIdentifier>
+                     <!--Optional:-->
+                     <v5:IdentifiedObject>
+                        <!--Optional:-->
+                        <cpsm:mRID>?</cpsm:mRID>
+                        <!--Optional:-->
+                        <cpsm:description>?</cpsm:description>
+                        <!--Optional:-->
+                        <cpsm:Names>
+                           <!--1 or more repetitions:-->
+                           <cpsm:Name>
+                              <!--Optional:-->
+                              <cpsm:nameString>?</cpsm:nameString>
+                              <!--Optional:-->
+                              <cpsm:description>?</cpsm:description>
+                              <cpsm:NameType>
+                                 <!--Optional:-->
+                                 <cpsm:nameString>?</cpsm:nameString>
+                                 <!--Optional:-->
+                                 <cpsm:description>?</cpsm:description>
+                                 <!--Optional:-->
+                                 <cpsm:NameTypeAuthority>
+                                    <!--Optional:-->
+                                    <cpsm:nameString>?</cpsm:nameString>
+                                    <!--Optional:-->
+                                    <cpsm:description>?</cpsm:description>
+                                 </cpsm:NameTypeAuthority>
+                              </cpsm:NameType>
+                           </cpsm:Name>
+                        </cpsm:Names>
+                     </v5:IdentifiedObject>
+                     <!--You have a CHOICE of the next 2 items at this level-->
+                     <v5:content objectGUID="?" utility="?">
+                        <!--Optional:-->
+                        <v5:extensions>
+                           <!--You may enter ANY elements at this point-->
+                        </v5:extensions>
+                        <!--Optional:-->
+                        <v5:comments>?</v5:comments>
+                        <!--Optional:-->
+                        <v5:extensionsList>
+                           <!--1 or more repetitions:-->
+                           <com:extensionsItem>
+                              <com:extName>?</com:extName>
+                              <com:extValue units="?">?</com:extValue>
+                              <!--Optional:-->
+                              <com:extType>?</com:extType>
+                           </com:extensionsItem>
+                        </v5:extensionsList>
+                        <!--Optional:-->
+                        <v5:errorObjects>
+                           <!--1 or more repetitions:-->
+                           <com:errorObject referenceID="?" nounType="?">
+                              <!--Optional:-->
+                              <com:extensions>
+                                 <!--You may enter ANY elements at this point-->
+                              </com:extensions>
+                              <!--Optional:-->
+                              <com:extensionsList>
+                                 <!--1 or more repetitions:-->
+                                 <com:extensionsItem>
+                                    <com:extName>?</com:extName>
+                                    <com:extValue units="?">?</com:extValue>
+                                    <!--Optional:-->
+                                    <com:extType>?</com:extType>
+                                 </com:extensionsItem>
+                              </com:extensionsList>
+                              <!--Optional:-->
+                              <com:errorCode>
+                                 <com:replyCodeCategory otherKind="?">?</com:replyCodeCategory>
+                                 <com:index>?</com:index>
+                              </com:errorCode>
+                              <com:eventTime>?</com:eventTime>
+                              <!--Optional:-->
+                              <com:displayString>?</com:displayString>
+                              <!--Optional:-->
+                              <com:detailedString>?</com:detailedString>
+                           </com:errorObject>
+                        </v5:errorObjects>
+                        <v5:primaryIdentifier identifierName="?" identifierLabel="?">?</v5:primaryIdentifier>
+                        <!--Optional:-->
+                        <v5:secondaryIdentifier identifierName="?" identifierLabel="?">?</v5:secondaryIdentifier>
+                        <!--Optional:-->
+                        <v5:IdentifiedObject>
+                           <!--Optional:-->
+                           <cpsm:mRID>?</cpsm:mRID>
+                           <!--Optional:-->
+                           <cpsm:description>?</cpsm:description>
+                           <!--Optional:-->
+                           <cpsm:Names>
+                              <!--1 or more repetitions:-->
+                              <cpsm:Name>
+                                 <!--Optional:-->
+                                 <cpsm:nameString>?</cpsm:nameString>
+                                 <!--Optional:-->
+                                 <cpsm:description>?</cpsm:description>
+                                 <cpsm:NameType>
+                                    <!--Optional:-->
+                                    <cpsm:nameString>?</cpsm:nameString>
+                                    <!--Optional:-->
+                                    <cpsm:description>?</cpsm:description>
+                                    <!--Optional:-->
+                                    <cpsm:NameTypeAuthority>
+                                       <!--Optional:-->
+                                       <cpsm:nameString>?</cpsm:nameString>
+                                       <!--Optional:-->
+                                       <cpsm:description>?</cpsm:description>
+                                    </cpsm:NameTypeAuthority>
+                                 </cpsm:NameType>
+                              </cpsm:Name>
+                           </cpsm:Names>
+                        </v5:IdentifiedObject>
+                        <!--Optional:-->
+                        <v5:contentBinary>cid:1430905682594</v5:contentBinary>
+                        <!--Optional:-->
+                        <v5:contentEncoding>?</v5:contentEncoding>
+                        <!--Optional:-->
+                        <v5:contentType type="?" subType="?" charset="?">?</v5:contentType>
+                        <!--Optional:-->
+                        <v5:fileName>?</v5:fileName>
+                        <!--Optional:-->
+                        <v5:sourceFilePath>?</v5:sourceFilePath>
+                        <!--Optional:-->
+                        <v5:attachDateTime>?</v5:attachDateTime>
+                        <!--Optional:-->
+                        <v5:caption>?</v5:caption>
+                     </v5:content>
+                     <v5:contentReference URI="?" name="?" category="?">?</v5:contentReference>
+                  </v5:attachment>
+               </v5:attachments>
+            </com1:workRequest>
+         </wo:ArrayOfWorkRequest>
+         <!--Optional:-->
+         <wo:responseURL>?</wo:responseURL>
+         <!--Optional:-->
+         <wo:transactionID>?</wo:transactionID>
+         <!--Optional:-->
+         <wo:expirationTime units="?">?</wo:expirationTime>
+      </wo:InitiateWorkRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="InitiateWorkScheduleChanges TestCase" searchProperties="true"><con:settings/><con:testStep type="request" name="InitiateWorkScheduleChanges"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>WO_ServerSoap</con:interface><con:operation>InitiateWorkScheduleChanges</con:operation><con:request name="InitiateWorkScheduleChanges"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.msp5.0.example.org</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://www.multispeak.org/V5.0/ws/request" xmlns:com="http://www.multispeak.org/V5.0/commonTypes" xmlns:wo="http://www.multispeak.org/V5.0/wsdl/WO_Server" xmlns:com1="http://www.multispeak.org/V5.0/commonArrays" xmlns:v5="http://www.multispeak.org/V5.0">
    <soapenv:Header>
       <req:MultiSpeakRequestMsgHeader DefaultRegisteredName="?" DefaultSystemName="?" DefaultUtility="?" DefaultCurrencyCode="?" RegistrationID="?" MessageID="?" TimeStamp="?" MessageCreatedTimeStamp="?" Context="?">
          <req:MultiSpeakVersion>

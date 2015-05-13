@@ -3,7 +3,7 @@ package com.sixthc.server.ws;
 import javax.xml.ws.WebFault;
 
 @WebFault(name = "ImageLoadFileException")  
-public class ImageLoadFileException extends Exception{
+public class ImageLoadFileException extends Exception {
 	/**
 	 * 
 	 */

@@ -49,5 +49,4 @@ public class WorkOrderDaoImpl extends CustomHibernateDaoSupport implements
 	public void saveOrUpdate(WorkOrder log) {
 		getHibernateTemplate().saveOrUpdate(log);
 	}
-
 }
