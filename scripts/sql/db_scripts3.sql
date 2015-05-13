@@ -24,7 +24,8 @@ create table workorder (
   id int auto_increment,
   data varchar(100),
   message varchar(100),
- create_date timestamp
+ create_date timestamp,
+primary key (id)
 );
 
 create table workorderimage (
