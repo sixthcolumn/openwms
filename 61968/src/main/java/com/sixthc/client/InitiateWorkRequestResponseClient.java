@@ -1,20 +1,12 @@
-package com.sixthc.server.ws;
+package com.sixthc.client;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.sql.Timestamp;
-import java.util.List;
-import java.util.Set;
-import java.util.Vector;
+import java.net.URL;
 
 import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.namespace.QName;
 
 import org.apache.log4j.Logger;
-import org.apache.xerces.dom.ElementImpl;
 import org.multispeak.v5.ExpirationTime;
-import org.multispeak.v5.WorkRequest;
 import org.multispeak.v5_0.commonarrays.ArrayOfAttachment;
 import org.multispeak.v5_0.commonarrays.ArrayOfAttachmentContainer;
 import org.multispeak.v5_0.commonarrays.ArrayOfAttachmentUnlinkContainer;
@@ -42,41 +34,32 @@ import org.multispeak.v5_0.commonarrays.ArrayOfWorkStatusCode;
 import org.multispeak.v5_0.commonarrays.ArrayOfWorkType;
 import org.multispeak.v5_0.commonarrays.ArrayOfWorkUnassignment;
 import org.multispeak.v5_0.commontypes.BoundingBox;
-import org.multispeak.v5_0.wsdl.wo_server.WOServerSoap;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.w3c.dom.NodeList;
 
-import com.google.common.io.ByteStreams;
-import com.sixthc.dao.WorkOrderDao;
-import com.sixthc.model.WorkOrder;
-import com.sixthc.model.WorkOrderImage;
-import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.ClientResponse;
-import com.sun.jersey.api.client.WebResource;
-
-public class WOServer implements WOServerSoap {
-	static Logger log = Logger.getLogger(WOServerSoap.class);
-	
-	@Autowired
-	private WorkOrderDao workOrderDao;
-
+public class InitiateWorkRequestResponseClient implements org.multispeak.v5_0.wsdl.wo_server.WOServerSoap {
+	private static org.apache.log4j.Logger log = Logger
+			.getLogger(WorkRequestClient.class);
+	private static final QName SERVICE_NAME = new QName(
+			"http://iec.ch/TC57/2010/WorkRequest", "RequestWorkRequest");
+	URL wsdlURL = WorkRequestClient.class
+			.getResource("/resources/wsdl/61968-6/RequestWorkRequest.wsdl");
+	public void respond() {
+		
+	}
 	@Override
 	public void deleteClearanceInstance(
 			ArrayOfClearanceInstance arrayOfClearanceInstance,
 			String responseURL, String transactionID) {
 		// TODO Auto-generated method stub
-
+		
 	}
-
 	@Override
 	public void initiateWorkUnassignment(
 			ArrayOfWorkUnassignment arrayOfWorkUnassignment,
 			XMLGregorianCalendar mustChangeBy, String responseURL,
 			String transactionID) {
 		// TODO Auto-generated method stub
-
+		
 	}
-
 	@Override
 	public ArrayOfWorkItemRef getWorkItemRefsByBoundsAndWorkStatusCategory(
 			BoundingBox boundingBox,
@@ -84,51 +67,40 @@ public class WOServer implements WOServerSoap {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
 	public ArrayOfWorkType getSupportedWorkTypes(String lastReceived) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
 	public ArrayOfWorkItemSummary getWorkItemSummaries(String lastReceived) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
 	public ArrayOfWorkItem getWorkItemsByWorkItemRefs(
 			ArrayOfWorkItemRef arrayOfWorkItemRef) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
 	public void pingURL() {
 		// TODO Auto-generated method stub
-
+		
 	}
-
 	@Override
 	public ArrayOfString getMethods() {
-		ArrayOfString methods = new ArrayOfString();
-		List<String> list = methods.getTheString();
-		list.add("getMethods");
-		list.add("pingURL");
-		list.add("initiateWorkRequest");
-		return methods;
+		// TODO Auto-generated method stub
+		return null;
 	}
-
 	@Override
 	public void initiateWorkItemsDeletion(
 			ArrayOfWorkItemDeletionRequest arrayOfWorkItemDeletionRequest,
 			String responseURL, String transactionID,
 			ExpirationTime expirationTime) {
 		// TODO Auto-generated method stub
-
+		
 	}
-
 	@Override
 	public ArrayOfWorkItemRef getWorkItemRefsByResourceIDsAndWorkStatusCategory(
 			ArrayOfObjectID arrayOfObjectID,
@@ -136,39 +108,34 @@ public class WOServer implements WOServerSoap {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
 	public void unlinkAttachmentsFromObjects(
 			ArrayOfAttachmentUnlinkContainer arrayOfAttachmentUnlinkContainer) {
 		// TODO Auto-generated method stub
-
+		
 	}
-
 	@Override
 	public void initiateClearanceTagRequestByTaggedDeviceIDs(
 			ArrayOfTaggedDeviceRef arrayOfTaggedDeviceRef, String responseURL,
 			String transactionID) {
 		// TODO Auto-generated method stub
-
+		
 	}
-
 	@Override
 	public void initiateClearanceInstanceRequest(
 			ArrayOfClearanceInstanceRequest arrayOfClearanceInstanceRequest,
 			String responseURL, String transactionID) {
 		// TODO Auto-generated method stub
-
+		
 	}
-
 	@Override
 	public void initiateWorkScheduleDeletion(
 			ArrayOfWorkItemRef arrayOfWorkItemRef,
 			XMLGregorianCalendar mustChangeBy, String responseURL,
 			String transactionID) {
 		// TODO Auto-generated method stub
-
+		
 	}
-
 	@Override
 	public ArrayOfWorkItemRef getWorkItemRefsByScheduleDateAndWorkStatusCategory(
 			ArrayOfScheduleDate arrayOfScheduleDate,
@@ -176,173 +143,81 @@ public class WOServer implements WOServerSoap {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
 	public ArrayOfWorkHistoryReferable getWorkHistoriesByWorkItemRefs(
 			ArrayOfWorkItemRef arrayOfWorkItemRef) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
 	public ArrayOfString getDomainNames() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
 	public void linkAttachmentsToObjects(
 			ArrayOfAttachmentContainer arrayOfAttachmentContainer) {
 		// TODO Auto-generated method stub
-
+		
 	}
-
 	@Override
 	public ArrayOfWorkItemSummary getWorkItemSummariesByWorkItemRefs(
 			ArrayOfWorkItemRef arrayOfWorkItemRef) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
 	public void initiateWorkAssignmentChanges(
 			ArrayOfWorkAssignmentChange arrayOfWorkAssignmentChange,
 			XMLGregorianCalendar mustChangeBy, String responseURL,
 			String transactionID) {
 		// TODO Auto-generated method stub
-
+		
 	}
-
 	@Override
 	public ArrayOfAttachment getAttachmentsByObjectRefs(
 			ArrayOfObjectRef arrayOfObjectRef) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
 	public ArrayOfWorkRequestStatusReferable getWorkRequestStatuses(
 			ArrayOfWorkRequestRef arrayOfWorkRequestRef) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
 	public ArrayOfWorkItemRef getWorkItemRefsByWorkStatusCodes(
 			ArrayOfWorkStatusCode arrayOfWorkStatusCode) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
 	public ArrayOfClearanceTag getClearanceTagsByTaggedDeviceIDs(
 			ArrayOfTaggedDeviceRef arrayOfTaggedDeviceRef) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
 	public ArrayOfWorkItemSummary getActiveWorkItemSummaries(String lastReceived) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
 	public void initiateWorkScheduleChanges(
 			ArrayOfWorkScheduleChange arrayOfWorkScheduleChange,
 			XMLGregorianCalendar mustChangeBy, String responseURL,
 			String transactionID) {
 		// TODO Auto-generated method stub
-
+		
 	}
-	
-	private void saveImages(WorkOrder wo) throws ImageLoadFileException {
-		List<WorkOrderImage> images = wo.getWorkOrderImages();
-		if( images != null )
-			for( WorkOrderImage image : images ) {
-				saveImage(image.getUrl(), image.getId().toString());
-			}
-	}
-
-	private void saveImage(String url, String filename) throws ImageLoadFileException {
-		WebResource resource = Client.create().resource(url);
-		log.debug("save image : url = " + url + ", filename = " + filename);
-		ClientResponse response = resource.get(ClientResponse.class);
-		int r = response.getStatus();
-		if( r != 200 ) {
-			throw new ImageLoadFileException("image server returned code (" + r + ") for " + url);
-		}
-		InputStream stream = response.getEntityInputStream();
-		byte[] bytes;
-		try {
-			bytes = ByteStreams.toByteArray(stream);
-
-			log.debug("images bytes read : " + bytes.length);
-
-			BufferedOutputStream bos = null;
-
-			// create an object of FileOutputStream
-			FileOutputStream fos;
-
-			fos = new FileOutputStream(new File("/tmp/" + filename));
-			// create an object of BufferedOutputStream
-			bos = new BufferedOutputStream(fos);
-			bos.write(bytes);
-			bos.close();
-
-		} catch (Exception e) {
-			log.error(e);
-			throw new ImageLoadFileException("load : ", e);
-		}
-
-	}
-
-	private List<String> getURLExtensions(
-			org.multispeak.v5_0.commontypes.Extensions extensions) {
-		log.debug("get url extensions");
-		Vector<String> urls = new Vector<String>();
-		if (extensions == null)
-			return urls;
-
-		for (Object images : extensions.getAny()) {
-			NodeList cn = ((ElementImpl) images).getChildNodes();
-			for (int i = 0; i < cn.getLength(); i++) {
-				if (cn.item(i) instanceof ElementImpl) {
-					NodeList url = (NodeList) cn.item(i);
-					if (url != null)
-						for (int j = 0; j < url.getLength(); j++) {
-							log.debug("url : " + url.item(j).getTextContent());
-							urls.add(url.item(j).getTextContent());
-						}
-				}
-			}
-
-		}
-		return urls;
-	}
-
 	@Override
 	public void initiateWorkRequest(ArrayOfWorkRequest arrayOfWorkRequest,
 			String responseURL, String transactionID,
-			ExpirationTime expirationTime) throws Exception {
-		log.debug("initiateWorkRequest called");
-		List<WorkRequest> a = arrayOfWorkRequest.getWorkRequest();
-		for (WorkRequest w : a) {
-			WorkOrder wo = new WorkOrder();
-			List<String> urls = getURLExtensions(w.getExtensions());
-			wo.setMessage("test 1");
-			wo.setCreateDate(new Timestamp(System.currentTimeMillis()));
-			List<WorkOrderImage> images = new Vector<WorkOrderImage>();
-			for (String s : urls) {
-				log.debug("work request image : " + s);
-				images.add(new WorkOrderImage(s));
-			}
-			wo.setWorkOrderImages(images);
-			workOrderDao.save(wo);
-			saveImages(wo);
-		}
+			ExpirationTime expirationTime) {
+		// TODO Auto-generated method stub
+		
 	}
-
 	@Override
 	public ArrayOfWorkItemRef getWorkItemRefsByWorkTypesAndWorkStatusCategory(
 			ArrayOfWorkType arrayOfWorkType,
@@ -350,11 +225,9 @@ public class WOServer implements WOServerSoap {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
 	public ArrayOfDomainMember getDomainMembers(String domainName) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }

@@ -19,3 +19,18 @@ insert into vendor_role_type (id, name) values (7, "LM");
 insert into interface (id, name, package_id, proxy_flag, required_flag, vendor_role_type_id) values (70, 'LM(RequestInitiate)', 9, 0, 0, 7);
 insert into interface (id, name, package_id, proxy_flag, required_flag, vendor_role_type_id) values (71, 'LM(Initiate)', 9, 0, 0, 7);
 
+/* temporary scripts to create workorder mini schema */
+create table workorder (
+  id int auto_increment,
+  data varchar(100),
+  message varchar(100),
+ create_date timestamp
+);
+
+create table workorderimage (
+  id int AUTO_INCREMENT,
+  create_date timestamp,
+  workorder_id int,
+url varchar(800),
+primary key (id)
+);
