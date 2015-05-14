@@ -52,6 +52,8 @@ import com.google.common.io.ByteStreams;
 import com.sixthc.dao.WorkOrderDao;
 import com.sixthc.model.WorkOrder;
 import com.sixthc.model.WorkOrderImage;
+import com.sixthc.util.ImageLoadFileException;
+import com.sixthc.util.ImageLoader;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
