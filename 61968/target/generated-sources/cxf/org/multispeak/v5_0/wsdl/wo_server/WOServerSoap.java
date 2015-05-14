@@ -493,6 +493,7 @@ public interface WOServerSoap {
     /**
      * This method is used
      * 				to submit work requests to the Work Owner for management.
+     * @throws Exception 
      * 			
      */
     @RequestWrapper(localName = "InitiateWorkRequest", targetNamespace = "http://www.multispeak.org/V5.0/wsdl/WO_Server", className = "org.multispeak.v5_0.wsdl.wo_server.InitiateWorkRequest")
