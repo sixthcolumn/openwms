@@ -41,8 +41,8 @@ public class BoxType
 {
 
     @XmlElements({
-        @XmlElement(name = "coord", type = CoordType.class),
-        @XmlElement(name = "coordinates", type = CoordinatesType.class)
+        @XmlElement(name = "coordinates", type = CoordinatesType.class),
+        @XmlElement(name = "coord", type = CoordType.class)
     })
     protected List<Object> coordOrCoordinates;
 
@@ -64,8 +64,8 @@ public class BoxType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link CoordType }
      * {@link CoordinatesType }
+     * {@link CoordType }
      * 
      * 
      */

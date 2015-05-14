@@ -42,11 +42,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MeterReadSchedulePayload }
+     * Create an instance of {@link MeterServiceRequestsPayload }
      * 
      */
-    public MeterReadSchedulePayload createMeterReadSchedulePayload() {
-        return new MeterReadSchedulePayload();
+    public MeterServiceRequestsPayload createMeterServiceRequestsPayload() {
+        return new MeterServiceRequestsPayload();
     }
 
     /**
@@ -58,11 +58,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MeterServiceRequestsPayload }
+     * Create an instance of {@link MeterReadSchedulePayload }
      * 
      */
-    public MeterServiceRequestsPayload createMeterServiceRequestsPayload() {
-        return new MeterServiceRequestsPayload();
+    public MeterReadSchedulePayload createMeterReadSchedulePayload() {
+        return new MeterReadSchedulePayload();
     }
 
     /**

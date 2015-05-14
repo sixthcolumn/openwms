@@ -46,10 +46,10 @@ import javax.xml.bind.annotation.XmlType;
 public class Registers {
 
     @XmlElements({
-        @XmlElement(name = "cumDemand", type = CumulativeDemand.class),
-        @XmlElement(name = "demand", type = FlowDemand.class),
+        @XmlElement(name = "coincidentalValue", type = CoincidentalValue.class),
         @XmlElement(name = "summation", type = Summation.class),
-        @XmlElement(name = "coincidentalValue", type = CoincidentalValue.class)
+        @XmlElement(name = "demand", type = FlowDemand.class),
+        @XmlElement(name = "cumDemand", type = CumulativeDemand.class)
     })
     protected List<Object> summationOrDemandOrCumDemand;
     @XmlAttribute(name = "tier")
@@ -74,10 +74,10 @@ public class Registers {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link CumulativeDemand }
-     * {@link FlowDemand }
-     * {@link Summation }
      * {@link CoincidentalValue }
+     * {@link Summation }
+     * {@link FlowDemand }
+     * {@link CumulativeDemand }
      * 
      * 
      */

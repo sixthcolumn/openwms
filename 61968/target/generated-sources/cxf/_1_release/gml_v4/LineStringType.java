@@ -46,8 +46,8 @@ public class LineStringType
 {
 
     @XmlElements({
-        @XmlElement(name = "coordinates", type = CoordinatesType.class),
-        @XmlElement(name = "coord", type = CoordType.class)
+        @XmlElement(name = "coord", type = CoordType.class),
+        @XmlElement(name = "coordinates", type = CoordinatesType.class)
     })
     protected List<Object> coordOrCoordinates;
 
@@ -69,8 +69,8 @@ public class LineStringType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link CoordinatesType }
      * {@link CoordType }
+     * {@link CoordinatesType }
      * 
      * 
      */

@@ -34,19 +34,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ReadingType.Names.NameType.NameTypeAuthority }
+     * Create an instance of {@link MeterReadSchedule }
      * 
      */
-    public ReadingType.Names.NameType.NameTypeAuthority createReadingTypeNamesNameTypeNameTypeAuthority() {
-        return new ReadingType.Names.NameType.NameTypeAuthority();
-    }
-
-    /**
-     * Create an instance of {@link TimeSchedule.ScheduleInterval }
-     * 
-     */
-    public TimeSchedule.ScheduleInterval createTimeScheduleScheduleInterval() {
-        return new TimeSchedule.ScheduleInterval();
+    public MeterReadSchedule createMeterReadSchedule() {
+        return new MeterReadSchedule();
     }
 
     /**
@@ -58,11 +50,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CustomerAgreement }
+     * Create an instance of {@link CustomerAgreement.Names.NameType.NameTypeAuthority }
      * 
      */
-    public CustomerAgreement createCustomerAgreement() {
-        return new CustomerAgreement();
+    public CustomerAgreement.Names.NameType.NameTypeAuthority createCustomerAgreementNamesNameTypeNameTypeAuthority() {
+        return new CustomerAgreement.Names.NameType.NameTypeAuthority();
     }
 
     /**
@@ -74,147 +66,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link EndDeviceGroup }
+     * Create an instance of {@link EndDeviceGroup.Names.NameType }
      * 
      */
-    public EndDeviceGroup createEndDeviceGroup() {
-        return new EndDeviceGroup();
+    public EndDeviceGroup.Names.NameType createEndDeviceGroupNamesNameType() {
+        return new EndDeviceGroup.Names.NameType();
     }
 
     /**
-     * Create an instance of {@link CustomerAccount }
+     * Create an instance of {@link UsagePointGroup }
      * 
      */
-    public CustomerAccount createCustomerAccount() {
-        return new CustomerAccount();
-    }
-
-    /**
-     * Create an instance of {@link UsagePoint.Names.NameType.NameTypeAuthority }
-     * 
-     */
-    public UsagePoint.Names.NameType.NameTypeAuthority createUsagePointNamesNameTypeNameTypeAuthority() {
-        return new UsagePoint.Names.NameType.NameTypeAuthority();
-    }
-
-    /**
-     * Create an instance of {@link CustomerAccount.Names }
-     * 
-     */
-    public CustomerAccount.Names createCustomerAccountNames() {
-        return new CustomerAccount.Names();
-    }
-
-    /**
-     * Create an instance of {@link UsagePoint }
-     * 
-     */
-    public UsagePoint createUsagePoint() {
-        return new UsagePoint();
-    }
-
-    /**
-     * Create an instance of {@link ReadingType.Names.NameType }
-     * 
-     */
-    public ReadingType.Names.NameType createReadingTypeNamesNameType() {
-        return new ReadingType.Names.NameType();
-    }
-
-    /**
-     * Create an instance of {@link TimeSchedule.TimePoints.Window }
-     * 
-     */
-    public TimeSchedule.TimePoints.Window createTimeScheduleTimePointsWindow() {
-        return new TimeSchedule.TimePoints.Window();
-    }
-
-    /**
-     * Create an instance of {@link CustomerAgreement.Names }
-     * 
-     */
-    public CustomerAgreement.Names createCustomerAgreementNames() {
-        return new CustomerAgreement.Names();
-    }
-
-    /**
-     * Create an instance of {@link UsagePointGroup.Names.NameType }
-     * 
-     */
-    public UsagePointGroup.Names.NameType createUsagePointGroupNamesNameType() {
-        return new UsagePointGroup.Names.NameType();
-    }
-
-    /**
-     * Create an instance of {@link UsagePoint.Names.NameType }
-     * 
-     */
-    public UsagePoint.Names.NameType createUsagePointNamesNameType() {
-        return new UsagePoint.Names.NameType();
-    }
-
-    /**
-     * Create an instance of {@link UsagePointGroup.Names }
-     * 
-     */
-    public UsagePointGroup.Names createUsagePointGroupNames() {
-        return new UsagePointGroup.Names();
-    }
-
-    /**
-     * Create an instance of {@link EndDeviceGroup.Names }
-     * 
-     */
-    public EndDeviceGroup.Names createEndDeviceGroupNames() {
-        return new EndDeviceGroup.Names();
-    }
-
-    /**
-     * Create an instance of {@link MeterReadSchedule }
-     * 
-     */
-    public MeterReadSchedule createMeterReadSchedule() {
-        return new MeterReadSchedule();
-    }
-
-    /**
-     * Create an instance of {@link EndDevice.Names.NameType }
-     * 
-     */
-    public EndDevice.Names.NameType createEndDeviceNamesNameType() {
-        return new EndDevice.Names.NameType();
-    }
-
-    /**
-     * Create an instance of {@link TimeSchedule.TimePoints }
-     * 
-     */
-    public TimeSchedule.TimePoints createTimeScheduleTimePoints() {
-        return new TimeSchedule.TimePoints();
-    }
-
-    /**
-     * Create an instance of {@link CustomerAgreement.Names.NameType.NameTypeAuthority }
-     * 
-     */
-    public CustomerAgreement.Names.NameType.NameTypeAuthority createCustomerAgreementNamesNameTypeNameTypeAuthority() {
-        return new CustomerAgreement.Names.NameType.NameTypeAuthority();
-    }
-
-    /**
-     * Create an instance of {@link EndDevice }
-     * 
-     */
-    public EndDevice createEndDevice() {
-        return new EndDevice();
-    }
-
-    /**
-     * Create an instance of {@link EndDevice.Names }
-     * 
-     */
-    public EndDevice.Names createEndDeviceNames() {
-        return new EndDevice.Names();
+    public UsagePointGroup createUsagePointGroup() {
+        return new UsagePointGroup();
     }
 
     /**
@@ -226,51 +90,43 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ReadingType.Names }
+     * Create an instance of {@link EndDeviceGroup.Names }
      * 
      */
-    public ReadingType.Names createReadingTypeNames() {
-        return new ReadingType.Names();
+    public EndDeviceGroup.Names createEndDeviceGroupNames() {
+        return new EndDeviceGroup.Names();
     }
 
     /**
-     * Create an instance of {@link CustomerAccount.Names.NameType.NameTypeAuthority }
+     * Create an instance of {@link CustomerAccount.Names }
      * 
      */
-    public CustomerAccount.Names.NameType.NameTypeAuthority createCustomerAccountNamesNameTypeNameTypeAuthority() {
-        return new CustomerAccount.Names.NameType.NameTypeAuthority();
+    public CustomerAccount.Names createCustomerAccountNames() {
+        return new CustomerAccount.Names();
     }
 
     /**
-     * Create an instance of {@link CustomerAccount.Names.NameType }
+     * Create an instance of {@link UsagePoint.Names.NameType }
      * 
      */
-    public CustomerAccount.Names.NameType createCustomerAccountNamesNameType() {
-        return new CustomerAccount.Names.NameType();
+    public UsagePoint.Names.NameType createUsagePointNamesNameType() {
+        return new UsagePoint.Names.NameType();
     }
 
     /**
-     * Create an instance of {@link EndDeviceGroup.Names.NameType }
+     * Create an instance of {@link EndDevice.Names.NameType }
      * 
      */
-    public EndDeviceGroup.Names.NameType createEndDeviceGroupNamesNameType() {
-        return new EndDeviceGroup.Names.NameType();
+    public EndDevice.Names.NameType createEndDeviceNamesNameType() {
+        return new EndDevice.Names.NameType();
     }
 
     /**
-     * Create an instance of {@link TimeSchedule }
+     * Create an instance of {@link UsagePointGroup.Names }
      * 
      */
-    public TimeSchedule createTimeSchedule() {
-        return new TimeSchedule();
-    }
-
-    /**
-     * Create an instance of {@link UsagePointGroup.Names.NameType.NameTypeAuthority }
-     * 
-     */
-    public UsagePointGroup.Names.NameType.NameTypeAuthority createUsagePointGroupNamesNameTypeNameTypeAuthority() {
-        return new UsagePointGroup.Names.NameType.NameTypeAuthority();
+    public UsagePointGroup.Names createUsagePointGroupNames() {
+        return new UsagePointGroup.Names();
     }
 
     /**
@@ -282,6 +138,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ReadingType.Names }
+     * 
+     */
+    public ReadingType.Names createReadingTypeNames() {
+        return new ReadingType.Names();
+    }
+
+    /**
      * Create an instance of {@link CustomerAgreement.Names.NameType }
      * 
      */
@@ -290,11 +154,147 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link UsagePointGroup }
+     * Create an instance of {@link CustomerAccount.Names.NameType.NameTypeAuthority }
      * 
      */
-    public UsagePointGroup createUsagePointGroup() {
-        return new UsagePointGroup();
+    public CustomerAccount.Names.NameType.NameTypeAuthority createCustomerAccountNamesNameTypeNameTypeAuthority() {
+        return new CustomerAccount.Names.NameType.NameTypeAuthority();
+    }
+
+    /**
+     * Create an instance of {@link UsagePointGroup.Names.NameType.NameTypeAuthority }
+     * 
+     */
+    public UsagePointGroup.Names.NameType.NameTypeAuthority createUsagePointGroupNamesNameTypeNameTypeAuthority() {
+        return new UsagePointGroup.Names.NameType.NameTypeAuthority();
+    }
+
+    /**
+     * Create an instance of {@link CustomerAgreement }
+     * 
+     */
+    public CustomerAgreement createCustomerAgreement() {
+        return new CustomerAgreement();
+    }
+
+    /**
+     * Create an instance of {@link UsagePointGroup.Names.NameType }
+     * 
+     */
+    public UsagePointGroup.Names.NameType createUsagePointGroupNamesNameType() {
+        return new UsagePointGroup.Names.NameType();
+    }
+
+    /**
+     * Create an instance of {@link CustomerAgreement.Names }
+     * 
+     */
+    public CustomerAgreement.Names createCustomerAgreementNames() {
+        return new CustomerAgreement.Names();
+    }
+
+    /**
+     * Create an instance of {@link ReadingType.Names.NameType.NameTypeAuthority }
+     * 
+     */
+    public ReadingType.Names.NameType.NameTypeAuthority createReadingTypeNamesNameTypeNameTypeAuthority() {
+        return new ReadingType.Names.NameType.NameTypeAuthority();
+    }
+
+    /**
+     * Create an instance of {@link ReadingType.Names.NameType }
+     * 
+     */
+    public ReadingType.Names.NameType createReadingTypeNamesNameType() {
+        return new ReadingType.Names.NameType();
+    }
+
+    /**
+     * Create an instance of {@link TimeSchedule.TimePoints }
+     * 
+     */
+    public TimeSchedule.TimePoints createTimeScheduleTimePoints() {
+        return new TimeSchedule.TimePoints();
+    }
+
+    /**
+     * Create an instance of {@link TimeSchedule.TimePoints.Window }
+     * 
+     */
+    public TimeSchedule.TimePoints.Window createTimeScheduleTimePointsWindow() {
+        return new TimeSchedule.TimePoints.Window();
+    }
+
+    /**
+     * Create an instance of {@link EndDeviceGroup }
+     * 
+     */
+    public EndDeviceGroup createEndDeviceGroup() {
+        return new EndDeviceGroup();
+    }
+
+    /**
+     * Create an instance of {@link UsagePoint.Names.NameType.NameTypeAuthority }
+     * 
+     */
+    public UsagePoint.Names.NameType.NameTypeAuthority createUsagePointNamesNameTypeNameTypeAuthority() {
+        return new UsagePoint.Names.NameType.NameTypeAuthority();
+    }
+
+    /**
+     * Create an instance of {@link TimeSchedule }
+     * 
+     */
+    public TimeSchedule createTimeSchedule() {
+        return new TimeSchedule();
+    }
+
+    /**
+     * Create an instance of {@link EndDevice.Names }
+     * 
+     */
+    public EndDevice.Names createEndDeviceNames() {
+        return new EndDevice.Names();
+    }
+
+    /**
+     * Create an instance of {@link CustomerAccount }
+     * 
+     */
+    public CustomerAccount createCustomerAccount() {
+        return new CustomerAccount();
+    }
+
+    /**
+     * Create an instance of {@link EndDevice }
+     * 
+     */
+    public EndDevice createEndDevice() {
+        return new EndDevice();
+    }
+
+    /**
+     * Create an instance of {@link CustomerAccount.Names.NameType }
+     * 
+     */
+    public CustomerAccount.Names.NameType createCustomerAccountNamesNameType() {
+        return new CustomerAccount.Names.NameType();
+    }
+
+    /**
+     * Create an instance of {@link UsagePoint }
+     * 
+     */
+    public UsagePoint createUsagePoint() {
+        return new UsagePoint();
+    }
+
+    /**
+     * Create an instance of {@link TimeSchedule.ScheduleInterval }
+     * 
+     */
+    public TimeSchedule.ScheduleInterval createTimeScheduleScheduleInterval() {
+        return new TimeSchedule.ScheduleInterval();
     }
 
     /**

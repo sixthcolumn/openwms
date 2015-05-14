@@ -30,19 +30,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LineStringMemberType }
+     * Create an instance of {@link LineStringType }
      * 
      */
-    public LineStringMemberType createLineStringMemberType() {
-        return new LineStringMemberType();
+    public LineStringType createLineStringType() {
+        return new LineStringType();
     }
 
     /**
-     * Create an instance of {@link MultiLineStringType }
+     * Create an instance of {@link MultiPointType }
      * 
      */
-    public MultiLineStringType createMultiLineStringType() {
-        return new MultiLineStringType();
+    public MultiPointType createMultiPointType() {
+        return new MultiPointType();
     }
 
     /**
@@ -54,11 +54,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CoordinatesType }
+     * Create an instance of {@link LineStringMemberType }
      * 
      */
-    public CoordinatesType createCoordinatesType() {
-        return new CoordinatesType();
+    public LineStringMemberType createLineStringMemberType() {
+        return new LineStringMemberType();
     }
 
     /**
@@ -78,30 +78,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LineStringType }
-     * 
-     */
-    public LineStringType createLineStringType() {
-        return new LineStringType();
-    }
-
-    /**
-     * Create an instance of {@link PointMemberType }
-     * 
-     */
-    public PointMemberType createPointMemberType() {
-        return new PointMemberType();
-    }
-
-    /**
-     * Create an instance of {@link MultiPointType }
-     * 
-     */
-    public MultiPointType createMultiPointType() {
-        return new MultiPointType();
-    }
-
-    /**
      * Create an instance of {@link GeometryCollectionType }
      * 
      */
@@ -110,27 +86,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LinearRingMemberType }
+     * Create an instance of {@link CoordinatesType }
      * 
      */
-    public LinearRingMemberType createLinearRingMemberType() {
-        return new LinearRingMemberType();
+    public CoordinatesType createCoordinatesType() {
+        return new CoordinatesType();
     }
 
     /**
-     * Create an instance of {@link LinearRingType }
+     * Create an instance of {@link PointMemberType }
      * 
      */
-    public LinearRingType createLinearRingType() {
-        return new LinearRingType();
-    }
-
-    /**
-     * Create an instance of {@link MultiPolygonType }
-     * 
-     */
-    public MultiPolygonType createMultiPolygonType() {
-        return new MultiPolygonType();
+    public PointMemberType createPointMemberType() {
+        return new PointMemberType();
     }
 
     /**
@@ -147,6 +115,38 @@ public class ObjectFactory {
      */
     public GeometryAssociationType createGeometryAssociationType() {
         return new GeometryAssociationType();
+    }
+
+    /**
+     * Create an instance of {@link LinearRingMemberType }
+     * 
+     */
+    public LinearRingMemberType createLinearRingMemberType() {
+        return new LinearRingMemberType();
+    }
+
+    /**
+     * Create an instance of {@link MultiPolygonType }
+     * 
+     */
+    public MultiPolygonType createMultiPolygonType() {
+        return new MultiPolygonType();
+    }
+
+    /**
+     * Create an instance of {@link LinearRingType }
+     * 
+     */
+    public LinearRingType createLinearRingType() {
+        return new LinearRingType();
+    }
+
+    /**
+     * Create an instance of {@link MultiLineStringType }
+     * 
+     */
+    public MultiLineStringType createMultiLineStringType() {
+        return new MultiLineStringType();
     }
 
     /**

@@ -54,14 +54,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MeterReadingsFaultMessageType }
-     * 
-     */
-    public MeterReadingsFaultMessageType createMeterReadingsFaultMessageType() {
-        return new MeterReadingsFaultMessageType();
-    }
-
-    /**
      * Create an instance of {@link MeterReadingsRequestMessageType }
      * 
      */
@@ -70,11 +62,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MeterReadingsResponseMessageType }
+     * Create an instance of {@link MeterReadingsFaultMessageType }
      * 
      */
-    public MeterReadingsResponseMessageType createMeterReadingsResponseMessageType() {
-        return new MeterReadingsResponseMessageType();
+    public MeterReadingsFaultMessageType createMeterReadingsFaultMessageType() {
+        return new MeterReadingsFaultMessageType();
     }
 
     /**
@@ -83,6 +75,14 @@ public class ObjectFactory {
      */
     public MeterReadingsPayloadType createMeterReadingsPayloadType() {
         return new MeterReadingsPayloadType();
+    }
+
+    /**
+     * Create an instance of {@link MeterReadingsResponseMessageType }
+     * 
+     */
+    public MeterReadingsResponseMessageType createMeterReadingsResponseMessageType() {
+        return new MeterReadingsResponseMessageType();
     }
 
     /**

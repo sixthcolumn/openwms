@@ -39,9 +39,9 @@ import org.multispeak.v5_0.cpsm.Discrete;
 public class MeasurementItems {
 
     @XmlElements({
-        @XmlElement(name = "accumulator", type = AccumulatedValue.class),
         @XmlElement(name = "analog", type = ScadaAnalog.class),
-        @XmlElement(name = "discrete", type = Discrete.class)
+        @XmlElement(name = "discrete", type = Discrete.class),
+        @XmlElement(name = "accumulator", type = AccumulatedValue.class)
     })
     protected List<Object> analogAndAccumulatorAndDiscrete;
 
@@ -63,9 +63,9 @@ public class MeasurementItems {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link AccumulatedValue }
      * {@link ScadaAnalog }
      * {@link Discrete }
+     * {@link AccumulatedValue }
      * 
      * 
      */

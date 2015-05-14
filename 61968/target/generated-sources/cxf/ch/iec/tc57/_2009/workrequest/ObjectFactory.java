@@ -34,11 +34,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link WorkTimeSchedule.ScheduleInterval }
+     * Create an instance of {@link WorkLocation }
      * 
      */
-    public WorkTimeSchedule.ScheduleInterval createWorkTimeScheduleScheduleInterval() {
-        return new WorkTimeSchedule.ScheduleInterval();
+    public WorkLocation createWorkLocation() {
+        return new WorkLocation();
     }
 
     /**
@@ -58,131 +58,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link WorkLocation.MainAddress.StreetDetail }
+     * Create an instance of {@link Organisation.Names.NameType }
      * 
      */
-    public WorkLocation.MainAddress.StreetDetail createWorkLocationMainAddressStreetDetail() {
-        return new WorkLocation.MainAddress.StreetDetail();
-    }
-
-    /**
-     * Create an instance of {@link Name }
-     * 
-     */
-    public Name createName() {
-        return new Name();
-    }
-
-    /**
-     * Create an instance of {@link Asset }
-     * 
-     */
-    public Asset createAsset() {
-        return new Asset();
-    }
-
-    /**
-     * Create an instance of {@link Asset.Names.NameType }
-     * 
-     */
-    public Asset.Names.NameType createAssetNamesNameType() {
-        return new Asset.Names.NameType();
-    }
-
-    /**
-     * Create an instance of {@link Work.Priority }
-     * 
-     */
-    public Work.Priority createWorkPriority() {
-        return new Work.Priority();
-    }
-
-    /**
-     * Create an instance of {@link Asset.Names }
-     * 
-     */
-    public Asset.Names createAssetNames() {
-        return new Asset.Names();
-    }
-
-    /**
-     * Create an instance of {@link WorkLocation.Hazards }
-     * 
-     */
-    public WorkLocation.Hazards createWorkLocationHazards() {
-        return new WorkLocation.Hazards();
-    }
-
-    /**
-     * Create an instance of {@link Crew.Names.NameType }
-     * 
-     */
-    public Crew.Names.NameType createCrewNamesNameType() {
-        return new Crew.Names.NameType();
-    }
-
-    /**
-     * Create an instance of {@link WorkLocation.MainAddress.Status }
-     * 
-     */
-    public WorkLocation.MainAddress.Status createWorkLocationMainAddressStatus() {
-        return new WorkLocation.MainAddress.Status();
-    }
-
-    /**
-     * Create an instance of {@link Name.NameType.NameTypeAuthority }
-     * 
-     */
-    public Name.NameType.NameTypeAuthority createNameNameTypeNameTypeAuthority() {
-        return new Name.NameType.NameTypeAuthority();
-    }
-
-    /**
-     * Create an instance of {@link Organisation.StreetAddress.TownDetail }
-     * 
-     */
-    public Organisation.StreetAddress.TownDetail createOrganisationStreetAddressTownDetail() {
-        return new Organisation.StreetAddress.TownDetail();
-    }
-
-    /**
-     * Create an instance of {@link Crew.Names }
-     * 
-     */
-    public Crew.Names createCrewNames() {
-        return new Crew.Names();
-    }
-
-    /**
-     * Create an instance of {@link WorkLocation.CoordinateSystem }
-     * 
-     */
-    public WorkLocation.CoordinateSystem createWorkLocationCoordinateSystem() {
-        return new WorkLocation.CoordinateSystem();
-    }
-
-    /**
-     * Create an instance of {@link WorkLocation.MainAddress }
-     * 
-     */
-    public WorkLocation.MainAddress createWorkLocationMainAddress() {
-        return new WorkLocation.MainAddress();
-    }
-
-    /**
-     * Create an instance of {@link WorkLocation.PositionPoints }
-     * 
-     */
-    public WorkLocation.PositionPoints createWorkLocationPositionPoints() {
-        return new WorkLocation.PositionPoints();
-    }
-
-    /**
-     * Create an instance of {@link ActivityRecord }
-     * 
-     */
-    public ActivityRecord createActivityRecord() {
-        return new ActivityRecord();
+    public Organisation.Names.NameType createOrganisationNamesNameType() {
+        return new Organisation.Names.NameType();
     }
 
     /**
@@ -194,51 +74,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link WorkTask }
+     * Create an instance of {@link Crew.Names }
      * 
      */
-    public WorkTask createWorkTask() {
-        return new WorkTask();
+    public Crew.Names createCrewNames() {
+        return new Crew.Names();
     }
 
     /**
-     * Create an instance of {@link Work }
+     * Create an instance of {@link Name.NameType.NameTypeAuthority }
      * 
      */
-    public Work createWork() {
-        return new Work();
+    public Name.NameType.NameTypeAuthority createNameNameTypeNameTypeAuthority() {
+        return new Name.NameType.NameTypeAuthority();
     }
 
     /**
-     * Create an instance of {@link Organisation.Names.NameType }
+     * Create an instance of {@link WorkLocation.CoordinateSystem }
      * 
      */
-    public Organisation.Names.NameType createOrganisationNamesNameType() {
-        return new Organisation.Names.NameType();
+    public WorkLocation.CoordinateSystem createWorkLocationCoordinateSystem() {
+        return new WorkLocation.CoordinateSystem();
     }
 
     /**
-     * Create an instance of {@link Organisation }
+     * Create an instance of {@link Asset.Names.NameType }
      * 
      */
-    public Organisation createOrganisation() {
-        return new Organisation();
-    }
-
-    /**
-     * Create an instance of {@link WorkRequest }
-     * 
-     */
-    public WorkRequest createWorkRequest() {
-        return new WorkRequest();
-    }
-
-    /**
-     * Create an instance of {@link WorkTimeSchedule }
-     * 
-     */
-    public WorkTimeSchedule createWorkTimeSchedule() {
-        return new WorkTimeSchedule();
+    public Asset.Names.NameType createAssetNamesNameType() {
+        return new Asset.Names.NameType();
     }
 
     /**
@@ -250,11 +114,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Organisation.StreetAddress.StreetDetail }
+     * Create an instance of {@link Name }
      * 
      */
-    public Organisation.StreetAddress.StreetDetail createOrganisationStreetAddressStreetDetail() {
-        return new Organisation.StreetAddress.StreetDetail();
+    public Name createName() {
+        return new Name();
+    }
+
+    /**
+     * Create an instance of {@link Organisation }
+     * 
+     */
+    public Organisation createOrganisation() {
+        return new Organisation();
+    }
+
+    /**
+     * Create an instance of {@link WorkLocation.PositionPoints }
+     * 
+     */
+    public WorkLocation.PositionPoints createWorkLocationPositionPoints() {
+        return new WorkLocation.PositionPoints();
+    }
+
+    /**
+     * Create an instance of {@link Crew.Names.NameType }
+     * 
+     */
+    public Crew.Names.NameType createCrewNamesNameType() {
+        return new Crew.Names.NameType();
     }
 
     /**
@@ -266,11 +154,51 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link WorkLocation }
+     * Create an instance of {@link WorkLocation.MainAddress.Status }
      * 
      */
-    public WorkLocation createWorkLocation() {
-        return new WorkLocation();
+    public WorkLocation.MainAddress.Status createWorkLocationMainAddressStatus() {
+        return new WorkLocation.MainAddress.Status();
+    }
+
+    /**
+     * Create an instance of {@link Work.Priority }
+     * 
+     */
+    public Work.Priority createWorkPriority() {
+        return new Work.Priority();
+    }
+
+    /**
+     * Create an instance of {@link WorkLocation.MainAddress }
+     * 
+     */
+    public WorkLocation.MainAddress createWorkLocationMainAddress() {
+        return new WorkLocation.MainAddress();
+    }
+
+    /**
+     * Create an instance of {@link WorkTimeSchedule.ScheduleInterval }
+     * 
+     */
+    public WorkTimeSchedule.ScheduleInterval createWorkTimeScheduleScheduleInterval() {
+        return new WorkTimeSchedule.ScheduleInterval();
+    }
+
+    /**
+     * Create an instance of {@link WorkLocation.Hazards }
+     * 
+     */
+    public WorkLocation.Hazards createWorkLocationHazards() {
+        return new WorkLocation.Hazards();
+    }
+
+    /**
+     * Create an instance of {@link Organisation.StreetAddress.TownDetail }
+     * 
+     */
+    public Organisation.StreetAddress.TownDetail createOrganisationStreetAddressTownDetail() {
+        return new Organisation.StreetAddress.TownDetail();
     }
 
     /**
@@ -279,6 +207,78 @@ public class ObjectFactory {
      */
     public Crew createCrew() {
         return new Crew();
+    }
+
+    /**
+     * Create an instance of {@link Work }
+     * 
+     */
+    public Work createWork() {
+        return new Work();
+    }
+
+    /**
+     * Create an instance of {@link Asset }
+     * 
+     */
+    public Asset createAsset() {
+        return new Asset();
+    }
+
+    /**
+     * Create an instance of {@link WorkTimeSchedule }
+     * 
+     */
+    public WorkTimeSchedule createWorkTimeSchedule() {
+        return new WorkTimeSchedule();
+    }
+
+    /**
+     * Create an instance of {@link WorkLocation.MainAddress.StreetDetail }
+     * 
+     */
+    public WorkLocation.MainAddress.StreetDetail createWorkLocationMainAddressStreetDetail() {
+        return new WorkLocation.MainAddress.StreetDetail();
+    }
+
+    /**
+     * Create an instance of {@link Organisation.StreetAddress.StreetDetail }
+     * 
+     */
+    public Organisation.StreetAddress.StreetDetail createOrganisationStreetAddressStreetDetail() {
+        return new Organisation.StreetAddress.StreetDetail();
+    }
+
+    /**
+     * Create an instance of {@link Asset.Names }
+     * 
+     */
+    public Asset.Names createAssetNames() {
+        return new Asset.Names();
+    }
+
+    /**
+     * Create an instance of {@link WorkRequest }
+     * 
+     */
+    public WorkRequest createWorkRequest() {
+        return new WorkRequest();
+    }
+
+    /**
+     * Create an instance of {@link WorkTask }
+     * 
+     */
+    public WorkTask createWorkTask() {
+        return new WorkTask();
+    }
+
+    /**
+     * Create an instance of {@link ActivityRecord }
+     * 
+     */
+    public ActivityRecord createActivityRecord() {
+        return new ActivityRecord();
     }
 
     /**

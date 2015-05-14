@@ -45,6 +45,30 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link WorkRequestPayloadType }
+     * 
+     */
+    public WorkRequestPayloadType createWorkRequestPayloadType() {
+        return new WorkRequestPayloadType();
+    }
+
+    /**
+     * Create an instance of {@link WorkRequestFaultMessageType }
+     * 
+     */
+    public WorkRequestFaultMessageType createWorkRequestFaultMessageType() {
+        return new WorkRequestFaultMessageType();
+    }
+
+    /**
+     * Create an instance of {@link WorkRequestEventMessageType }
+     * 
+     */
+    public WorkRequestEventMessageType createWorkRequestEventMessageType() {
+        return new WorkRequestEventMessageType();
+    }
+
+    /**
      * Create an instance of {@link WorkRequestRequestMessageType }
      * 
      */
@@ -58,30 +82,6 @@ public class ObjectFactory {
      */
     public WorkRequestResponseMessageType createWorkRequestResponseMessageType() {
         return new WorkRequestResponseMessageType();
-    }
-
-    /**
-     * Create an instance of {@link WorkRequestEventMessageType }
-     * 
-     */
-    public WorkRequestEventMessageType createWorkRequestEventMessageType() {
-        return new WorkRequestEventMessageType();
-    }
-
-    /**
-     * Create an instance of {@link WorkRequestFaultMessageType }
-     * 
-     */
-    public WorkRequestFaultMessageType createWorkRequestFaultMessageType() {
-        return new WorkRequestFaultMessageType();
-    }
-
-    /**
-     * Create an instance of {@link WorkRequestPayloadType }
-     * 
-     */
-    public WorkRequestPayloadType createWorkRequestPayloadType() {
-        return new WorkRequestPayloadType();
     }
 
     /**
