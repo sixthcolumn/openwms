@@ -39492,7 +39492,11 @@ Disclaimer: Modifications of this document have been made, and will be made, on 
                   <!--1 or more repetitions:-->
                   <v5:attachment objectGUID="1234" utility="sixc">
                      <v5:primaryIdentifier identifierName="1" identifierLabel="ab">1</v5:primaryIdentifier>
-                     <v5:contentReference URI="http://localhost:127.0.0.1:tiger.jpg" name="tiger" category="jpg"></v5:contentReference>
+                     <v5:contentReference URI="http://127.0.0.1/myface.jpg" name="tiger" category="jpg"></v5:contentReference>
+                  </v5:attachment>
+                  <v5:attachment objectGUID="1234" utility="sixc">
+                     <v5:primaryIdentifier identifierName="1" identifierLabel="ab">1</v5:primaryIdentifier>
+                     <v5:contentReference URI="http://127.0.0.1/myface3.jpg" name="tiger" category="jpg"></v5:contentReference>
                   </v5:attachment>
                </v5:attachments>
             </com1:workRequest>
