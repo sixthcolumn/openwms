@@ -13,6 +13,28 @@
 	<artifactId>61968</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
+	<!-- the default is for compile phase -->
+	<profiles>
+		<profile>
+			<id>default</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>org.apache.ws.commons.axiom</groupId>
+					<artifactId>axiom-api</artifactId>
+					<version>1.2.5</version>
+				</dependency>
+			</dependencies>
+		</profile>
+		<!-- in order to do generate sources, due to a library conflict, you must 
+			execute command : mvn generate-sources -Pwsdl. This excludes the axiom
+			library, which will cause wsdl2java to fail if included -->
+		<profile>
+			<id>wsdl</id>
+		</profile>
+	</profiles>
 	<name>61968</name>
 	<url>http://maven.apache.org</url>
 	<properties>
@@ -308,6 +330,15 @@
 			<artifactId>common</artifactId>
 			<version>0.1</version>
 		</dependency>
-
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>1.6</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>r08</version>
+		</dependency>
 	</dependencies>
 </project>

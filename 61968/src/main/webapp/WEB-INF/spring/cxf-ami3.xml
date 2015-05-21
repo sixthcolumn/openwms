@@ -23,7 +23,7 @@
 						<property name="interfaceName"
 							value="MD_AMI-MDM_Request_Created(MeterReadings)" />
 						<property name="packageName" value="Meter Connect" />
-						<property name="vendorRoleType" value="AMI" />
+						<property name="vendorRoleType" value="WO" />
 						<property name="resultCode" value="success" />
 						<property name="stage" value="clientIn" />
 					</bean>

@@ -9,6 +9,8 @@ import javax.xml.ws.Holder;
 import org.apache.cxf.endpoint.Client;
 import org.apache.cxf.frontend.ClientProxy;
 import org.apache.log4j.Logger;
+import org.multispeak.v5_0.wsdl.wo_server.WOServer;
+import org.multispeak.v5_0.wsdl.wo_server.WOServerSoap;
 
 import ch.iec.tc57._2010.schema.message.HeaderType;
 import ch.iec.tc57._2010.schema.message.ReplyType;
@@ -24,10 +26,9 @@ import ch.iec.tc57._2011.enddeviceeventsmessage.EndDeviceEventsPayloadType;
 public class WorkRequestClient extends RequestClient {
 	private static org.apache.log4j.Logger log = Logger
 			.getLogger(WorkRequestClient.class);
-	private static final QName SERVICE_NAME = new QName(
-			"http://iec.ch/TC57/2010/WorkRequest", "RequestWorkRequest");
+    private static final QName SERVICE_NAME = new QName("http://www.multispeak.org/V5.0/wsdl/WO_Server", "WO_Server");
 	URL wsdlURL = WorkRequestClient.class
-			.getResource("/resources/wsdl/61968-6/RequestWorkRequest.wsdl");
+			.getResource("/resources/wsdl/WO_Server.wsdl");
 
 	private Holder<HeaderType> header = new Holder<HeaderType>();
 	private Holder<WorkRequestPayloadType> payload = new Holder<WorkRequestPayloadType>();
@@ -49,8 +50,11 @@ public class WorkRequestClient extends RequestClient {
 
 		log.debug("wsdlURL " + wsdlURL);
 		log.debug("SERVICE_NAME " + SERVICE_NAME);
-		RequestWorkRequest ss = new RequestWorkRequest(wsdlURL, SERVICE_NAME);
-		WorkRequestPort port = ss.getWorkRequestPort();
+		
+		WOServer ss = new WOServer(wsdlURL, SERVICE_NAME);
+        WOServerSoap port = ss.getWOServerSoap();  
+		
+
 		BindingProvider provider = (BindingProvider) port;
 		log.debug("end point address " + address);
 		provider.getRequestContext().put(
@@ -69,7 +73,8 @@ public class WorkRequestClient extends RequestClient {
 		reply.value = new ReplyType();
 		reply.value.setResult("OK");
 
-		port.createWorkRequest(header, request, payload, reply);
+		//port.initiateWorkAssignmentChanges(arrayOfWorkAssignmentChange, mustChangeBy, responseURL, transactionID);
+		//port.createWorkRequest(header, request, payload, reply);
 	}
 
 	public HeaderType getHeader() {
