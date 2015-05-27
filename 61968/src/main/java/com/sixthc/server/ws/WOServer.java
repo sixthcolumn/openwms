@@ -1,14 +1,13 @@
 package com.sixthc.server.ws;
 
 import java.math.BigInteger;
-import java.sql.Timestamp;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Vector;
+import java.util.UUID;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.apache.log4j.Logger;
-import org.multispeak.v5.Attachment;
 import org.multispeak.v5.ExpirationTime;
 import org.multispeak.v5.Geometry;
 import org.multispeak.v5.RequestingPerson;
@@ -60,12 +59,23 @@ import org.multispeak.v5_0.cpsm.Names;
 import org.multispeak.v5_0.enumerations.AddressType;
 import org.multispeak.v5_0.enumerations.EMailType;
 import org.multispeak.v5_0.enumerations.PhoneType;
+import org.multispeak.v5_0.gml.CoordType;
+import org.multispeak.v5_0.gml.LinearRingType;
 import org.multispeak.v5_0.wsdl.wo_server.WOServerSoap;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.sixthc.dao.WorkOrderDao;
-import com.sixthc.model.WorkOrder;
-import com.sixthc.model.WorkOrderImage;
+import com.sixthc.hbm.Attachment;
+import com.sixthc.hbm.Contactperson;
+import com.sixthc.hbm.ContactpersonAddresses;
+import com.sixthc.hbm.ContactpersonEmails;
+import com.sixthc.hbm.ContactpersonOtherContactinfos;
+import com.sixthc.hbm.ContactpersonPhones;
+import com.sixthc.hbm.Email;
+import com.sixthc.hbm.OtherContactinfo;
+import com.sixthc.hbm.Phone;
+import com.sixthc.hbm.WorkOrder;
+import com.sixthc.hbm.WorkOrderAttachments;
 import com.sixthc.util.ImageLoadFileException;
 import com.sixthc.util.ImageLoader;
 
@@ -271,19 +281,13 @@ public class WOServer implements WOServerSoap {
 
 	}
 
-	private void saveImages(WorkOrder wo) throws ImageLoadFileException {
-		List<WorkOrderImage> images = wo.getWorkOrderImages();
-		if (images != null)
-			for (WorkOrderImage image : images) {
-				ImageLoader.getImage(image.getUrl(), image.getFileName());
-			}
-	}
-
-	private void parseIdentiedObject(IdentifiedObject io) {
-		if (io != null) {
-			io.getMRID();
-			io.getDescription();
-			Names names = io.getNames();
+	// TODO : This appears more than once in wsdl, what to do?
+	private void parseIdentiedObject(IdentifiedObject from,
+			com.sixthc.hbm.IdentifiedObject to) {
+		if (from != null && to != null) {
+			to.setMrid(from.getMRID());
+			to.setDescription(from.getDescription());
+			Names names = from.getNames(); // TODO : ?
 			if (names != null) {
 				for (Name n : names.getName()) {
 					n.getNameString();
@@ -303,43 +307,51 @@ public class WOServer implements WOServerSoap {
 		}
 	}
 
-	private void parsePhoneNumber(PhoneNumber pn) {
-		TelephoneNumber p = pn.getPhone();
-		p.getAreaCode();
-		p.getCityCode();
-		p.getCountryCode();
-		p.getCountryCode();
-		p.getLocalNumber();
-		p.getExtension();
-		PhoneType ptype = pn.getPhoneType();
-		ptype.getOtherKind();
-		ptype.getValue();
-		BigInteger priority = pn.getPriorityOrder();
+	private Phone parsePhoneNumber(PhoneNumber pn) {
+		Phone p2 = new Phone();
+		if (pn != null) {
+			TelephoneNumber p = pn.getPhone();
+			p2.setAreacode(p.getAreaCode());
+			p2.setCitycode(p.getCityCode());
+			p2.setCountrycode(p.getCountryCode());
+			p2.setLocalnumber(p.getLocalNumber());
+			// TODO : Change to string p2.setExtension(p.getExtension());
+			PhoneType ptype = pn.getPhoneType();
+			ptype.getOtherKind(); // TODO : ?
+			ptype.getValue(); // TODO : ?
+			BigInteger priority = pn.getPriorityOrder();
+			if (priority != null)
+				p2.setPriorityorder(priority.intValue());
+		}
+		return p2;
 	}
 
-	private void parseAddress(Address addr) {
+	private com.sixthc.hbm.Address parseAddress(Address addr) {
+		com.sixthc.hbm.Address addr2 = new com.sixthc.hbm.Address();
 		if (addr == null)
-			return;
+			return addr2;
 
-		addr.getAddress1();
-		addr.getAddress2();
+		addr2.setSdAddress1(addr.getAddress1());
+		addr2.setSdAddress2(addr.getAddress2());
 		DetailedAddressFields dafs = addr.getDetailedAddressFields();
 		if (dafs != null) {
-			dafs.getStreetPrefix();
-			dafs.getStreetNumber();
-			dafs.getStreetSuffix();
-			dafs.getStreetType();
-			dafs.getBuildingNumber();
-			dafs.getSuiteNumber();
-			dafs.getAddressGeneral();
-			dafs.getPostOfficeBox();
-			dafs.getRegion();
+			addr2.setSdPrefix(dafs.getStreetPrefix());
+			addr2.setSdNumber(dafs.getStreetNumber());
+			addr2.setSdSuffix(dafs.getStreetSuffix());
+			addr2.setSdType(dafs.getStreetType());
+			addr2.setSdBuildingName(dafs.getBuildingNumber()); // TODO : Verify
+			addr2.setSdSuiteNumber(dafs.getSuiteNumber());
+			dafs.getAddressGeneral(); // TODO : ?
+			addr2.setTdPobox(dafs.getPostOfficeBox());
+			addr2.setTdRegion(dafs.getRegion());
 		}
-		addr.getTownCode();
-		addr.getCity();
-		addr.getState();
-		addr.getPostalCode();
-		addr.getCountry();
+		addr2.setTownshipName(addr.getTownCode()); // TODO : ?
+		addr2.setTownshipName(addr.getCity()); // TODO : ?
+		addr2.setTdStateProvince(addr.getState()); // TODO : ?
+		addr2.setTdPostalCode(addr.getPostalCode());
+		addr2.setTdCountry(addr.getCountry());
+
+		return addr2;
 	}
 
 	private void parseAddressType(AddressType at) {
@@ -348,67 +360,65 @@ public class WOServer implements WOServerSoap {
 
 	}
 
-	private void parseAddressItem(AddressItem ai) {
+	private ContactpersonAddresses parseAddressItem(AddressItem ai) {
+		ContactpersonAddresses addr2 = new ContactpersonAddresses();
 		Address addr = ai.getAddress();
-		parseAddress(addr);
+		addr2.setAddress(parseAddress(addr));
 		parseAddressType(ai.getAddressType());
 		ai.getPriorityOrder();
+		return addr2;
 	}
 
-	private void parseEmail(EMailAddress ea) {
-		ea.getEMail();
+	private ContactpersonEmails parseEmail(EMailAddress ea) {
+		ContactpersonEmails email = new ContactpersonEmails();
+		Email email2 = new Email();
+		email.setEmail(email2);
+		email2.setEmail(ea.getEMail());
 		EMailType eat = ea.getEMailType();
 		if (eat != null) {
-			eat.getOtherKind();
-			eat.getValue();
+			eat.getOtherKind(); // TODO : ?
+			eat.getValue(); // TODO : ?
 		}
-		ea.getPriorityOrder();
+		BigInteger po = ea.getPriorityOrder();
+		if (po != null)
+			email2.setPriorityOrder(po.intValue());
+
+		return email;
 	}
 
-	private void parseOther(OtherContactItem oci) {
-		oci.getDetails();
-		oci.getInfoType();
+	private OtherContactinfo parseOther(OtherContactItem oci) {
+		OtherContactinfo oci2 = new OtherContactinfo();
+		oci2.setDetails(oci.getDetails());
+		oci2.setInfoType(oci.getInfoType());
+		return oci2;
 	}
 
-	// private List<String> getURLExtensions(
-	// org.multispeak.v5_0.commontypes.Extensions extensions) {
-	// log.debug("get url extensions");
-	// Vector<String> urls = new Vector<String>();
-	// if (extensions == null)
-	// return urls;
-	//
-	// for (Object images : extensions.getAny()) {
-	// NodeList cn = ((ElementImpl) images).getChildNodes();
-	// for (int i = 0; i < cn.getLength(); i++) {
-	// if (cn.item(i) instanceof ElementImpl) {
-	// NodeList url = (NodeList) cn.item(i);
-	// if (url != null)
-	// for (int j = 0; j < url.getLength(); j++) {
-	// log.debug("url : " + url.item(j).getTextContent());
-	// urls.add(url.item(j).getTextContent());
-	// }
-	// }
-	// }
-	//
-	// }
-	// return urls;
-	// }
+	private void parsePolygon(GMLPolygon gp) {
+		Iterator<LinearRingType> iti = gp.getInnerBoundaryIs().iterator();
+		// TODO : Need a type in the workpositionpoints for inner, outer?
+		// TODO : note below, two level, multiple rings contain coords
+		while (iti.hasNext()) {
+			LinearRingType lrt = iti.next();
+			List<CoordType> coords = lrt.getCoord();
+			for (CoordType c : coords) {
+				// TODO : missing bulge?
+				c.getBulge();
+				c.getX();
+				c.getY();
+				c.getZ();
+			}
+		}
 
-	// private List<String> getAttachments(Attachments attachments) {
-	// List<Attachment> atts = attachments.getAttachment();
-	// Vector<String> result = new Vector<String>();
-	// if( atts != null ) {
-	// for( Attachment a : atts ) {
-	// ContentReference cr = a.getContentReference();
-	// log.debug("content reference value : " + cr.getURI());
-	// result.add(cr.getURI());
-	// }
-	// }
-	// return result;
-	// }
-	
-	private bvoid parsePolygon(GMLPolygon gp) {
-		
+		// TODO : There is ONE outer ring
+		LinearRingType lrt = gp.getOuterBoundaryIs();
+		List<CoordType> coords = lrt.getCoord();
+		for (CoordType c : coords) {
+			// TODO : missing bulge?
+			c.getBulge();
+			c.getX();
+			c.getY();
+			c.getZ();
+		}
 	}
 
 	@Override
@@ -418,66 +428,116 @@ public class WOServer implements WOServerSoap {
 		log.debug("initiateWorkRequest called");
 		List<WorkRequest> a = arrayOfWorkRequest.getWorkRequest();
 		boolean imageFileProcessingError = false;
-		for (WorkRequest w : a) {
-			WorkOrder wo = new WorkOrder();
-			w.getComments();
-			w.getPrimaryIdentifier();
-			w.getSecondaryIdentifier();
+		for (WorkRequest request : a) {
+			WorkOrder workOrder = new WorkOrder();
+			workOrder.setComments(request.getComments());
 
-			// identified object and children
-			parseIdentiedObject(w.getIdentifiedObject());
+			request.getPrimaryIdentifier(); // TODO : ?
+			request.getSecondaryIdentifier(); // TODO : ?
 
-			w.getWorkTypeRef();
-			w.getCreatedDate();
+			workOrder.setCreatedBy("WMS"); // TODO : ?
+			log.debug("setCreatedBY : " + workOrder.getCreatedBy());
+			workOrder.setKind("unknown"); // TODO : ?
+			log.debug("setKind : " + workOrder.getKind());
+
+			workOrder.setWorkOrderName(request.getTitle());
+			log.debug("setWorkOrderName : " + workOrder.getWorkOrderName());
+			workOrder.setMrid("1234");
+			log.debug("setMrid : " + workOrder.getMrid());
+			workOrder.setStatus("screwed up");
+			log.debug("setStatus : " + workOrder.getStatus());
+
+			request.getWorkTypeRef(); // TODO : ?
 
 			// requesting person
-			RequestingPerson rp = w.getRequestingPerson();
-			rp.getComments();
-			rp.getPrimaryIdentifier();
-			rp.getSecondaryIdentifier();
-			parseIdentiedObject(rp.getIdentifiedObject());
-			rp.getLastName();
-			rp.getFirstName();
-			rp.getMiddleName();
-			rp.getPrefix();
-			rp.getSuffix();
-			rp.getGovernmentID();
-			ContactInfo ci = rp.getContactInfo();
-			if (ci != null) {
-				for (PhoneNumber pn : ci.getPhoneNumbers().getPhoneNumber()) {
-					parsePhoneNumber(pn);
+			RequestingPerson rp = request.getRequestingPerson();
+			if (rp != null) {
+				// TODO : bill verify the rp = cp?
+				Contactperson cp = new Contactperson();
+				workOrder.setContactpersonByRequestContactId(cp);
+
+				if (rp.getPrimaryIdentifier() != null) {
+					log.debug("primary identifier : " + rp.getPrimaryIdentifier().getIdentifierName());
+					cp.setPrimaryId(rp.getPrimaryIdentifier()
+							.getIdentifierName());
+				}
+				rp.getComments(); // TODO : ?
+//				cp.setSecondaryId(rp.getSecondaryIdentifier()
+//						.getIdentifierName());
+//				parseIdentiedObject(rp.getIdentifiedObject(),
+//						cp.getIdentifiedObject()); // TODO: dup?
+
+				cp.setLastname(rp.getLastName());
+				log.debug("contact person last name : " + rp.getLastName());
+				cp.setFirstname(rp.getFirstName());
+				log.debug("contact person first name : " + rp.getFirstName());
+				cp.setMiddle(rp.getMiddleName());
+				cp.setPrefix(rp.getPrefix());
+				cp.setSuffix(rp.getSuffix());
+				cp.setGovernmentid(rp.getGovernmentID());
+				ContactInfo ci = rp.getContactInfo();
+				if (ci != null) {
+
+					ContactpersonPhones phones = new ContactpersonPhones();	
+					cp.getContactpersonPhoneses().add(phones);
+
+					
+//					for (PhoneNumber pn : ci.getPhoneNumbers().getPhoneNumber()) {
+//						Phone p = parsePhoneNumber(pn);
+//						ContactpersonPhones phones = new ContactpersonPhones();
+//						phones.setPhone(p);
+//						cp.getContactpersonPhoneses().add(phones);
+//					}
+
+//					for (AddressItem ai : ci.getAddressItems().getAddressItem()) {
+//						ContactpersonAddresses addr = parseAddressItem(ai);
+//						cp.getContactpersonAddresseses().add(addr);
+//					}
+//
+//					for (EMailAddress ea : ci.getEMailAddresses()
+//							.getEMailAddress()) {
+//						ContactpersonEmails email = parseEmail(ea);
+//						cp.getContactpersonEmailses().add(email);
+//					}
+//
+//					for (OtherContactItem oci : ci.getOtherContactInformation()
+//							.getOtherContactItem()) {
+//						ContactpersonOtherContactinfos other = new ContactpersonOtherContactinfos();
+//						other.setOtherContactinfo(parseOther(oci));
+//						cp.getContactpersonOtherContactinfoses().add(other);
+//					}
 				}
 
-				for (AddressItem ai : ci.getAddressItems().getAddressItem()) {
-					parseAddressItem(ai);
-				}
-
-				for (EMailAddress ea : ci.getEMailAddresses().getEMailAddress()) {
-					parseEmail(ea);
-				}
-
-				for (OtherContactItem oci : ci.getOtherContactInformation()
-						.getOtherContactItem()) {
-					parseOther(oci);
-				}
+				rp.getAffiliation();
 			}
 
-			rp.getAffiliation();
-
-			w.getRequestingSystem();
-			w.getDescription();
-			w.getTitle();
-			w.getRequestedWorkPriority();
+			request.getRequestingSystem(); // TODO : ?
+			workOrder.setDescription(request.getDescription());
+			log.debug("setDescription : " + workOrder.getDescription());
+			request.getTitle(); // TODO : ?
+			request.getRequestedWorkPriority(); // TODO : ?
 
 			// work location
-			WorkLocation wl = w.getWorkLocation();
-			parseAddress(wl.getAddress());
+			WorkLocation wl = request.getWorkLocation();
+			// parseAddress(wl.getAddress());
+			// TODO : Where is address location?
 
 			// GPS Location
 			GPSLocation gps = wl.getGPSLocation();
 			if (gps != null) {
-				gps.getLatitude();
-				gps.getLongitude();
+				workOrder.setGpsLatitude((float) gps.getLatitude()); // TODO :
+																		// Change
+				// to double
+				workOrder.setGpsLongitude((float) gps.getLongitude()); // TODO :
+																		// Change
+				// to double
+				workOrder
+						.setGpsAltitude((float) gps.getAltitude().floatValue()); // TODO
+				// :
+				// Change
+				// to
+				// double
+				// TODO : Bill, do we support the below items in the schema?
 				GPSMetadata gmd = gps.getGPSMetadata();
 				gmd.getEasting();
 				gmd.getNorthing();
@@ -492,29 +552,38 @@ public class WOServer implements WOServerSoap {
 			}
 
 			// Geometry
+			// TODO : polygon contains polygons contains see parsePolygon
 			Geometry geo = wl.getGeometry();
-			if( geo != null ) {
-				for( GMLPolygon gp : geo.getGMLPolygons().getGMLPolygon() ) {
+			if (geo != null) {
+				for (GMLPolygon gp : geo.getGMLPolygons().getGMLPolygon()) {
 					parsePolygon(gp);
 				}
 			}
 
-			wo.setCreateDate(new Timestamp(System.currentTimeMillis()));
-			List<WorkOrderImage> images = new Vector<WorkOrderImage>();
-			for (Attachment att : w.getAttachments().getAttachment()) {
-				WorkOrderImage woi = new WorkOrderImage(att
-						.getContentReference().getURI());
+			for (org.multispeak.v5.Attachment att : request.getAttachments()
+					.getAttachment()) {
 				try {
-					ImageLoader.getImage(woi.getUrl(), woi.getFileName());
+					String file = UUID.randomUUID().toString();
+					String uri = att.getContentReference().getURI();
+
+					ImageLoader.getImage(uri, file);
+
+					Attachment attachment = new Attachment();
+					attachment.setFilename(file);
+					attachment.setType("jpg"); // TODO : Get file suffix?
+					WorkOrderAttachments woa = new WorkOrderAttachments();
+					woa.setAttachment(attachment);
+					attachment.setWorkOrderAttachmentses(workOrder
+							.getWorkOrderAttachmentses());
+					woa.setWorkOrder(workOrder);
+					workOrder.getWorkOrderAttachmentses().add(woa);
 				} catch (ImageLoadFileException e) {
 					log.error(e);
-					woi.setError(e.getMessage());
 					imageFileProcessingError = true;
 				}
-				images.add(woi);
 			}
-			wo.setWorkOrderImages(images);
-			workOrderDao.save(wo);
+			workOrderDao.save(workOrder);
+			break;
 		}
 		if (imageFileProcessingError == true) {
 			throw new RuntimeException("Failed to load some attachments");
