@@ -457,15 +457,16 @@ public class WOServer implements WOServerSoap {
 				workOrder.setContactpersonByRequestContactId(cp);
 
 				if (rp.getPrimaryIdentifier() != null) {
-					log.debug("primary identifier : " + rp.getPrimaryIdentifier().getIdentifierName());
+					log.debug("primary identifier : "
+							+ rp.getPrimaryIdentifier().getIdentifierName());
 					cp.setPrimaryId(rp.getPrimaryIdentifier()
 							.getIdentifierName());
 				}
 				rp.getComments(); // TODO : ?
-//				cp.setSecondaryId(rp.getSecondaryIdentifier()
-//						.getIdentifierName());
-//				parseIdentiedObject(rp.getIdentifiedObject(),
-//						cp.getIdentifiedObject()); // TODO: dup?
+				// cp.setSecondaryId(rp.getSecondaryIdentifier()
+				// .getIdentifierName());
+				parseIdentiedObject(rp.getIdentifiedObject(),
+						cp.getIdentifiedObject());
 
 				cp.setLastname(rp.getLastName());
 				log.debug("contact person last name : " + rp.getLastName());
@@ -475,111 +476,114 @@ public class WOServer implements WOServerSoap {
 				cp.setPrefix(rp.getPrefix());
 				cp.setSuffix(rp.getSuffix());
 				cp.setGovernmentid(rp.getGovernmentID());
+
 				ContactInfo ci = rp.getContactInfo();
 				if (ci != null) {
 
-					ContactpersonPhones phones = new ContactpersonPhones();	
-					cp.getContactpersonPhoneses().add(phones);
+					for (PhoneNumber pn : ci.getPhoneNumbers().getPhoneNumber()) {
+						Phone p = parsePhoneNumber(pn);
+						ContactpersonPhones phones = new ContactpersonPhones();
+						phones.setPhone(p);
+						phones.setContactperson(cp);
+						cp.getContactpersonPhoneses().add(phones);
+					}
 
-					
-//					for (PhoneNumber pn : ci.getPhoneNumbers().getPhoneNumber()) {
-//						Phone p = parsePhoneNumber(pn);
-//						ContactpersonPhones phones = new ContactpersonPhones();
-//						phones.setPhone(p);
-//						cp.getContactpersonPhoneses().add(phones);
-//					}
+					for (AddressItem ai : ci.getAddressItems().getAddressItem()) {
+						ContactpersonAddresses addr = parseAddressItem(ai);
+						cp.getContactpersonAddresseses().add(addr);
+						addr.setContactperson(cp);
+					}
 
-//					for (AddressItem ai : ci.getAddressItems().getAddressItem()) {
-//						ContactpersonAddresses addr = parseAddressItem(ai);
-//						cp.getContactpersonAddresseses().add(addr);
-//					}
-//
-//					for (EMailAddress ea : ci.getEMailAddresses()
-//							.getEMailAddress()) {
-//						ContactpersonEmails email = parseEmail(ea);
-//						cp.getContactpersonEmailses().add(email);
-//					}
-//
-//					for (OtherContactItem oci : ci.getOtherContactInformation()
-//							.getOtherContactItem()) {
-//						ContactpersonOtherContactinfos other = new ContactpersonOtherContactinfos();
-//						other.setOtherContactinfo(parseOther(oci));
-//						cp.getContactpersonOtherContactinfoses().add(other);
-//					}
+					for (EMailAddress ea : ci.getEMailAddresses()
+							.getEMailAddress()) {
+						ContactpersonEmails email = parseEmail(ea);
+						cp.getContactpersonEmailses().add(email);
+						email.setContactperson(cp);
+					}
+
+					for (OtherContactItem oci : ci.getOtherContactInformation()
+							.getOtherContactItem()) {
+						ContactpersonOtherContactinfos other = new ContactpersonOtherContactinfos();
+						other.setOtherContactinfo(parseOther(oci));
+						cp.getContactpersonOtherContactinfoses().add(other);
+						other.setContactperson(cp);
+					}
 				}
 
 				rp.getAffiliation();
-			}
 
-			request.getRequestingSystem(); // TODO : ?
-			workOrder.setDescription(request.getDescription());
-			log.debug("setDescription : " + workOrder.getDescription());
-			request.getTitle(); // TODO : ?
-			request.getRequestedWorkPriority(); // TODO : ?
+				request.getRequestingSystem(); // TODO : ?
+				workOrder.setDescription(request.getDescription());
+				log.debug("setDescription : " + workOrder.getDescription());
+				request.getTitle(); // TODO : ?
+				request.getRequestedWorkPriority(); // TODO : ?
 
-			// work location
-			WorkLocation wl = request.getWorkLocation();
-			// parseAddress(wl.getAddress());
-			// TODO : Where is address location?
+				// work location
+				WorkLocation workLocation = request.getWorkLocation();
+				parseAddress(workLocation.getAddress());
+				// TODO : Where is address location?
+				//
+				// GPS Location
+				GPSLocation gps = workLocation.getGPSLocation();
+				if (gps != null) {
+					workOrder.setGpsLatitude((float) gps.getLatitude()); // TODO
 
-			// GPS Location
-			GPSLocation gps = wl.getGPSLocation();
-			if (gps != null) {
-				workOrder.setGpsLatitude((float) gps.getLatitude()); // TODO :
-																		// Change
-				// to double
-				workOrder.setGpsLongitude((float) gps.getLongitude()); // TODO :
-																		// Change
-				// to double
-				workOrder
-						.setGpsAltitude((float) gps.getAltitude().floatValue()); // TODO
-				// :
-				// Change
-				// to
-				// double
-				// TODO : Bill, do we support the below items in the schema?
-				GPSMetadata gmd = gps.getGPSMetadata();
-				gmd.getEasting();
-				gmd.getNorthing();
-				gmd.getSource();
-				gmd.getNumber();
-				gmd.isIsRealTimeDiffCorrection();
-				gmd.getHdop();
-				gmd.getVdop();
-				gmd.getDiffID();
-				gmd.getCollected();
-				gmd.getNumSat();
-			}
-
-			// Geometry
-			// TODO : polygon contains polygons contains see parsePolygon
-			Geometry geo = wl.getGeometry();
-			if (geo != null) {
-				for (GMLPolygon gp : geo.getGMLPolygons().getGMLPolygon()) {
-					parsePolygon(gp);
+					// Change
+					// to double
+					workOrder.setGpsLongitude((float) gps.getLongitude()); // TODO
+																			// :
+					// Change
+					// to double
+					workOrder.setGpsAltitude((float) gps.getAltitude()
+							.floatValue()); // TODO
+					// :
+					// Change
+					// to
+					// double
+					// TODO : Bill, do we support the below items in the schema?
+					GPSMetadata gmd = gps.getGPSMetadata();
+					gmd.getEasting();
+					gmd.getNorthing();
+					gmd.getSource();
+					gmd.getNumber();
+					gmd.isIsRealTimeDiffCorrection();
+					gmd.getHdop();
+					gmd.getVdop();
+					gmd.getDiffID();
+					gmd.getCollected();
+					gmd.getNumSat();
 				}
-			}
 
-			for (org.multispeak.v5.Attachment att : request.getAttachments()
-					.getAttachment()) {
-				try {
-					String file = UUID.randomUUID().toString();
-					String uri = att.getContentReference().getURI();
+				// Geometry
+				// TODO : polygon contains polygons contains see parsePolygon
+				Geometry geo = workLocation.getGeometry();
+				if (geo != null) {
+					for (GMLPolygon gp : geo.getGMLPolygons().getGMLPolygon()) {
+						parsePolygon(gp);
+					}
+				}
 
-					ImageLoader.getImage(uri, file);
+				for (org.multispeak.v5.Attachment att : request
+						.getAttachments().getAttachment()) {
+					try {
+						String file = UUID.randomUUID().toString();
+						String uri = att.getContentReference().getURI();
 
-					Attachment attachment = new Attachment();
-					attachment.setFilename(file);
-					attachment.setType("jpg"); // TODO : Get file suffix?
-					WorkOrderAttachments woa = new WorkOrderAttachments();
-					woa.setAttachment(attachment);
-					attachment.setWorkOrderAttachmentses(workOrder
-							.getWorkOrderAttachmentses());
-					woa.setWorkOrder(workOrder);
-					workOrder.getWorkOrderAttachmentses().add(woa);
-				} catch (ImageLoadFileException e) {
-					log.error(e);
-					imageFileProcessingError = true;
+						ImageLoader.getImage(uri, file);
+
+						Attachment attachment = new Attachment();
+						attachment.setFilename(file);
+						attachment.setType("jpg"); // TODO : Get file suffix?
+						WorkOrderAttachments woa = new WorkOrderAttachments();
+						woa.setAttachment(attachment);
+						attachment.setWorkOrderAttachmentses(workOrder
+								.getWorkOrderAttachmentses());
+						woa.setWorkOrder(workOrder);
+						workOrder.getWorkOrderAttachmentses().add(woa);
+					} catch (ImageLoadFileException e) {
+						log.error(e);
+						imageFileProcessingError = true;
+					}
 				}
 			}
 			workOrderDao.save(workOrder);
