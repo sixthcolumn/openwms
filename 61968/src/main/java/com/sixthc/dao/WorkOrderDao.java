@@ -1,6 +1,8 @@
 package com.sixthc.dao;
 
-import com.sixthc.model.WorkOrder;
+import com.sixthc.hbm.WorkOrder;
+
+//import com.sixthc.model.WorkOrder;
 
 public interface WorkOrderDao {
 
