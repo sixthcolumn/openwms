@@ -29,8 +29,8 @@
 			</dependencies>
 		</profile>
 		<!-- in order to do generate sources, due to a library conflict, you must 
-			execute command : mvn generate-sources -Pwsdl. This excludes the axiom
-			library, which will cause wsdl2java to fail if included -->
+			execute command : mvn generate-sources -Pwsdl. This excludes the axiom library, 
+			which will cause wsdl2java to fail if included -->
 		<profile>
 			<id>wsdl</id>
 		</profile>
@@ -283,43 +283,64 @@
 					<warFile>${project.basedir}/target/${project.build.finalName}.war</warFile>
 				</configuration>
 			</plugin>
-                        <plugin>
-                               <groupId>org.codehaus.mojo</groupId>
-                               <artifactId>hibernate3-maven-plugin</artifactId>
-                               <version>2.2</version>
-                                 <configuration>
-                                   <components>
-                                     <component>
-                                       <name>hbm2hbmxml</name>
-                                       <implementation>jdbcconfiguration</implementation>
-                                       <outputDirectory>target/generated-resources/hibernate3</outputDirectory>
-                                     </component>
-                                     <component>
-                                       <name>hbm2java</name>
-                                       <implementation>jdbcconfiguration</implementation>
-                                       <outputDirectory>target/generated-sources/hibernate3</outputDirectory>
-                                     </component>
-                                   </components>
-                                   <componentProperties>
-                                     <revengfile>drc/main/resources/reveng.xml</revengfile>
-                                     <propertyfile>src/main/resources/hibernate.properties</propertyfile>
-                                     <packagename>com.sixthc.hbm</packagename>
-                                     <ejb3>true</ejb3>
-                                   </componentProperties>
-                                 </configuration>
-                                 <dependencies>
-                                   <dependency>
-                                     <groupId>cglib</groupId>
-                                     <artifactId>cglib-nodep</artifactId>
-                                     <version>2.2.2</version>
-                                   </dependency>
-                <dependency>
-                        <groupId>mysql</groupId>
-                        <artifactId>mysql-connector-java</artifactId>
-                        <version>5.1.16</version>
-                </dependency>
-                                 </dependencies>
-                        </plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>hibernate3-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<components>
+						<component>
+							<name>
+								hbm2hbmxml</name>
+							<implementation>jdbcconfiguration</implementation>
+							<outputDirectory>target/generated-resources/hibernate3</outputDirectory>
+						</component>
+						<component>
+							<name>hbm2java</name>
+							<implementation>jdbcconfiguration</implementation>
+							<outputDirectory>target/generated-sources/hibernate3</outputDirectory>
+						</component>
+					</components>
+					<componentProperties>
+						<revengfile>drc/main/resources/reveng.xml</revengfile>
+						<propertyfile>src/main/resources/hibernate.properties</propertyfile>
+						<packagename>com.sixthc.hbm</packagename>
+						<ejb3>true</ejb3>
+						<jdk5>true</jdk5>
+					</componentProperties>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>cglib</groupId>
+						<artifactId>cglib-nodep</artifactId>
+						<version>2.2.2</version>
+					</dependency>
+					<dependency>
+						<groupId>mysql</groupId>
+						<artifactId>mysql-connector-java</artifactId>
+						<version>5.1.16</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.9.1</version>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>target/generated-sources/hibernate3</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
