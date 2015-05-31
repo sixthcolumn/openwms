@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.sixthc.hbm.WorkOrder;
+
 @Entity
 @Table(name = "workorderimage")
 public class WorkOrderImage {
@@ -67,5 +69,4 @@ public class WorkOrderImage {
 		return "Id = " + id + ", URL = " + url + ", Timestamp = "
 				+ createDate;
 	}
-
 }

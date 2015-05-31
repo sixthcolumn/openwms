@@ -1,21 +1,18 @@
 package com.sixthc.dao.impl;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.sixthc.dao.IfaceDao;
-import com.sixthc.dao.PkgDao;
-import com.sixthc.dao.Sequence;
-import com.sixthc.dao.VendorRoleTypeDao;
 import com.sixthc.dao.WorkOrderDao;
-import com.sixthc.model.WorkOrder;
-import com.sixthc.model.Iface;
-import com.sixthc.model.Pkg;
-import com.sixthc.model.VendorRoleType;
+import com.sixthc.hbm.Contactperson;
+import com.sixthc.hbm.ContactpersonAddresses;
+import com.sixthc.hbm.ContactpersonEmails;
+import com.sixthc.hbm.ContactpersonOtherContactinfos;
+import com.sixthc.hbm.ContactpersonPhones;
+import com.sixthc.hbm.WorkOrder;
+//import com.sixthc.model.WorkOrder;
 import com.sixthc.util.CustomHibernateDaoSupport;
 
 @Repository("workOrderDao")
@@ -24,15 +21,23 @@ public class WorkOrderDaoImpl extends CustomHibernateDaoSupport implements
 	private static org.apache.log4j.Logger log = Logger
 			.getLogger(WorkOrderDaoImpl.class);
 
-
 	@Override
-	public void save(WorkOrder log) {
-		if (log.getCreateDate() == null)
-			log.setCreateDate(new Timestamp(System.currentTimeMillis()));
+	public void save(WorkOrder workOrder) {
+		if (workOrder.getCreatedAt() == null)
+			workOrder.setCreatedAt(new Timestamp(System.currentTimeMillis()));
+		
+		/*
+		 * Please note : for the contactperson subs (phone, addr, email, other),
+		 * if you don't set twice ie : 
+		 * 		phones.setPhone(p);
+		 *		phones.setContactperson(cp);
+		 *
+		 * you will get null transient errors. This is because for these four items,
+		 * (for example) phone and contactPerson are the parents of contactperson_phone
+		 */
 
-		getHibernateTemplate().save(log);
-		// TODO : I know this way of setting default date is kludge. should
-		// probably write an even handler or use jpa
+		getHibernateTemplate().save(workOrder);
+
 	}
 
 	@Override
@@ -44,7 +49,6 @@ public class WorkOrderDaoImpl extends CustomHibernateDaoSupport implements
 	public void delete(WorkOrder log) {
 		getHibernateTemplate().delete(log);
 	}
-
 
 	public void saveOrUpdate(WorkOrder log) {
 		getHibernateTemplate().saveOrUpdate(log);
