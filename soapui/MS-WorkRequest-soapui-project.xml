@@ -41606,7 +41606,8 @@ Disclaimer: Modifications of this document have been made, and will be made, on 
                         
                         <v5:secondaryIdentifier identifierName="rp2.0" identifierLabel="rp label 2">rp secondary id</v5:secondaryIdentifier>
                         
-                        <!--                        <v5:IdentifiedObject>
+                    <!--    
+                    	<v5:IdentifiedObject>
                             <cpsm:mRID>7766</cpsm:mRID>
                             <cpsm:description>rp io description</cpsm:description>
                             <cpsm:Names>
@@ -41623,7 +41624,8 @@ Disclaimer: Modifications of this document have been made, and will be made, on 
                                     </cpsm:NameType>
                                 </cpsm:Name>
                             </cpsm:Names>
-                        </v5:IdentifiedObject> -->
+                        </v5:IdentifiedObject>
+                    -->
                         
                         <v5:lastName>Goodwin</v5:lastName>
                         
@@ -41736,6 +41738,7 @@ Disclaimer: Modifications of this document have been made, and will be made, on 
                     </v5:requestingPerson>
                     
                     <v5:requestingSystem>sixcbeta</v5:requestingSystem>
+                    <v5:requestedWorkPriority>1</v5:requestedWorkPriority>
                     
                     <v5:description>testing</v5:description>
                     
