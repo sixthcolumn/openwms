@@ -130,7 +130,7 @@
 									</extraargs>
 								</wsdlOption>
 								<wsdlOption>
-									<wsdl>${basedir}/wsdl/RequestWorkRequest.wsdl</wsdl>
+									<wsdl>${basedir}/wsdl/SendMaintenanceOrder.wsdl</wsdl>
 									<extraargs>
 										<extraarg>-client</extraarg>
 										<extraarg>-autoNameResolution</extraarg>
@@ -300,11 +300,16 @@
 							<implementation>jdbcconfiguration</implementation>
 							<outputDirectory>target/generated-sources/hibernate3</outputDirectory>
 						</component>
+						<component>
+							<name>hbm2cfgxml</name>
+							<implementation>jdbcconfiguration</implementation>
+						</component>
 					</components>
 					<componentProperties>
 						<revengfile>drc/main/resources/reveng.xml</revengfile>
 						<propertyfile>src/main/resources/hibernate.properties</propertyfile>
 						<packagename>com.sixthc.hbm</packagename>
+						<revengfile>src/main/resources/hibernate.reveng.xml</revengfile>
 						<ejb3>true</ejb3>
 						<jdk5>true</jdk5>
 					</componentProperties>

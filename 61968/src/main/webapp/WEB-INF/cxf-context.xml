@@ -14,7 +14,7 @@
 
 	<import resource="spring/DataSource.xml" />
 	<import resource="spring/Hibernate.xml" />
- 	<import resource="spring/tamper-cxf-mdms1.xml" />
+<!-- <import resource="spring/tamper-cxf-mdms1.xml" />
 	<import resource="spring/tamper-cxf-mdms2.xml" />
 	<import resource="spring/tamper-cxf-ami1.xml" />
 	<import resource="spring/tamper-cxf-cis1.xml" />
@@ -58,9 +58,11 @@
 	<import resource="spring/ondemand-cxf-mdms5.xml" />
 	<import resource="spring/ondemand-cxf-mdms6.xml" />
 	<import resource="spring/mo-cxf-mdms2.xml" />
-	<import resource="spring/wms1.xml" /> 
-	<import resource="spring/wms2.xml" /> 
+	<import resource="spring/wms1.xml" />
+	<import resource="spring/wms2.xml" />
+-->
 	<import resource="spring/wo_server.xml" />
+	<import resource="spring/wo_server2.xml" />
 
 	<!-- <import resource="spring/rest-event.xml" /> -->
 	<!-- <import resource="spring/request-cxf.xml" /> Do not uncomment this! -->

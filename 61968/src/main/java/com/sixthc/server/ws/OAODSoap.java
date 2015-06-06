@@ -10,8 +10,6 @@ import org.multispeak.version_3.ArrayOfMeterConnectivity;
 import org.multispeak.version_3.ArrayOfOutageDetectionDevice;
 import org.multispeak.version_3.ArrayOfOutageDetectionEvent;
 import org.multispeak.version_3.ArrayOfString;
-import org.multispeak.version_3.ErrorObject;
-import org.multispeak.version_3.OutageDetectionEvent;
 import org.multispeak.version_3.OutageEventStatus;
 import org.multispeak.version_3.OutageLocation;
 
