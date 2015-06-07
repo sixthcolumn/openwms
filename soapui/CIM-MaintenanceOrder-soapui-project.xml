@@ -10874,7 +10874,7 @@
                            <!--Optional:-->
                            <main1:type>Residential</main1:type>
                            <!--Optional:-->
-                           <main1:withinTownLimits>?</main1:withinTownLimits>
+                           <main1:withinTownLimits>true</main1:withinTownLimits>
                         </main1:streetDetail>
                         <main1:townDetail>
                            <!--Optional:-->
