@@ -65,6 +65,9 @@ public class Address implements java.io.Serializable {
 			0);
 	private Set<AddressHazards> addressHazardses = new HashSet<AddressHazards>(
 			0);
+	private Set<WorkOrder> addressWorkOrders = new HashSet<WorkOrder>(
+			0);
+	
 
 	public Address() {
 	}
@@ -435,6 +438,15 @@ public class Address implements java.io.Serializable {
 
 	public void setAddressHazardses(Set<AddressHazards> addressHazardses) {
 		this.addressHazardses = addressHazardses;
+	}
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "address")
+	public Set<WorkOrder> getAddressWorkorders() {
+		return this.addressWorkOrders;
+	}
+
+	public void setAddressWorkorders(Set<WorkOrder> addressWorkorders) {
+		this.addressWorkOrders = addressWorkorders;
 	}
 
 }

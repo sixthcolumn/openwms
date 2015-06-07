@@ -10924,6 +10924,85 @@
                         <!--Optional:-->
                         <main1:type>business</main1:type>
                      </main1:priority>
+                     <main1:WorkLocation>
+                        <!--Optional:-->
+                        <main1:mRID>3343</main1:mRID>
+                        <!--Optional:-->
+                        <main1:direction>N</main1:direction>
+                        <!--Optional:-->
+                        <main1:CoordinateSystem>
+                           <main1:crsUrn>urn1</main1:crsUrn>
+                        </main1:CoordinateSystem>
+                        <!--Zero or more repetitions:-->
+                        <main1:Hazards>
+                           <!--Optional:-->
+                           <main1:type>f</main1:type>
+                        </main1:Hazards>
+                        <main1:Hazards>
+                           <!--Optional:-->
+                           <main1:type>g</main1:type>
+                        </main1:Hazards>
+                        <!--Optional:-->
+                        <main1:mainAddress>
+                           <main1:status>
+                              <main1:dateTime>2011-03-03T12:07:56.590-05:00</main1:dateTime>
+                              <main1:reason>x</main1:reason>
+                              <main1:remark>remark</main1:remark>
+                              <main1:value>12</main1:value>
+                           </main1:status>
+                           <main1:streetDetail>
+                              <main1:addressGeneral>100 north street suite 101</main1:addressGeneral>
+                              <!--Optional:-->
+                              <main1:buildingName>EagleNest</main1:buildingName>
+                              <!--Optional:-->
+                              <main1:code>cd1</main1:code>
+                              <!--Optional:-->
+                              <main1:name>EagleNest</main1:name>
+                              <!--Optional:-->
+                              <main1:number>101</main1:number>
+                              <!--Optional:-->
+                              <main1:prefix>North</main1:prefix>
+                              <!--Optional:-->
+                              <main1:suffix>West</main1:suffix>
+                              <!--Optional:-->
+                              <main1:suiteNumber>101</main1:suiteNumber>
+                              <!--Optional:-->
+                              <main1:type>Res</main1:type>
+                              <!--Optional:-->
+                              <main1:withinTownLimits>true</main1:withinTownLimits>
+                           </main1:streetDetail>
+                           <main1:townDetail>
+                              <!--Optional:-->
+                              <main1:code>cd</main1:code>
+                              <!--Optional:-->
+                              <main1:country>US</main1:country>
+                              <main1:name>USA</main1:name>
+                              <!--Optional:-->
+                              <main1:section>A</main1:section>
+                              <!--Optional:-->
+                              <main1:stateOrProvince>NC</main1:stateOrProvince>
+                           </main1:townDetail>
+                        </main1:mainAddress>
+                        <!--Zero or more repetitions:-->
+                        <main1:PositionPoints>
+                           <!--Optional:-->
+                           <main1:sequenceNumber>12</main1:sequenceNumber>
+                           <!--Optional:-->
+                           <main1:xPosition>709.22</main1:xPosition>
+                           <!--Optional:-->
+                           <main1:yPosition>44.22</main1:yPosition>
+                           <!--Optional:-->
+                           <main1:zPosition>102</main1:zPosition>
+                        </main1:PositionPoints>
+                        <!--Optional:-->
+                        <main1:InternalLocation>
+                           <!--Optional:-->
+                           <main1:BuildingName>IEagle</main1:BuildingName>
+                           <main1:BuildingNumber>402</main1:BuildingNumber>
+                           <main1:Floor>2</main1:Floor>
+                           <main1:RoomNumber>101</main1:RoomNumber>
+                        </main1:InternalLocation>
+                     </main1:WorkLocation>
                   </main1:Work>
                   <main1:Names>
                      <main1:name>cim1 name</main1:name>
@@ -10945,7 +11024,7 @@
          </main:Payload>
       </main:CreateMaintenanceOrder>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://iec.ch/TC57/2011/MaintenanceOrder/CreateMaintenanceOrder" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="Maint Order Default"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MaintenanceOrder_Binding</con:interface><con:operation>CreateMaintenanceOrder</con:operation><con:request name="Maint Order Default"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://iec.ch/TC57/2011/SendMaintenanceOrder</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:main="http://iec.ch/TC57/2011/MaintenanceOrderMessage" xmlns:mes="http://www.iec.ch/TC57/2011/schema/message" xmlns:main1="http://iec.ch/TC57/2014/MaintenanceOrders#">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://iec.ch/TC57/2011/MaintenanceOrder/CreateMaintenanceOrder" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="Maint Order Default"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MaintenanceOrder_Binding</con:interface><con:operation>CreateMaintenanceOrder</con:operation><con:request name="Maint Order Default"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://iec.ch/TC57/2011/SendMaintenanceOrder</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:main="http://iec.ch/TC57/2011/MaintenanceOrderMessage" xmlns:mes="http://www.iec.ch/TC57/2011/schema/message" xmlns:main1="http://iec.ch/TC57/2014/MaintenanceOrders#">
    <soapenv:Header/>
    <soapenv:Body>
       <main:CreateMaintenanceOrder>

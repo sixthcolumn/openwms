@@ -36,12 +36,18 @@ import ch.iec.tc57._2014.maintenanceorders.WorkLocation;
 import ch.iec.tc57._2014.maintenanceorders.WorkLocation.CoordinateSystem;
 import ch.iec.tc57._2014.maintenanceorders.WorkLocation.MainAddress;
 import ch.iec.tc57._2014.maintenanceorders.WorkLocation.MainAddress.Status;
+import ch.iec.tc57._2014.maintenanceorders.WorkLocation.MainAddress.StreetDetail;
 import ch.iec.tc57._2014.maintenanceorders.WorkLocation.PositionPoints;
 import ch.iec.tc57._2014.maintenanceorders.WorkTask;
 
 import com.sixthc.dao.OrganizationDao;
 import com.sixthc.dao.WorkOrderDao;
+import com.sixthc.hbm.Address;
+import com.sixthc.hbm.AddressPositionPoints;
+import com.sixthc.hbm.ConstraintException;
+import com.sixthc.hbm.Hazards;
 import com.sixthc.hbm.WorkOrder;
+import com.sixthc.hbm.WorkOrderHazards;
 import com.sixthc.hbm.WorkOrderNames;
 
 public class MaintenanceOrderImpl implements MaintenanceOrderPort {
@@ -141,36 +147,6 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 					names.setOrganization(org);
 					org.getOrganizationNameses().add(names);
 				}
-				// for (Names reqNames : reqOrg.getNames()) {
-				// com.sixthc.hbm.OrganizationNames names = new
-				// com.sixthc.hbm.OrganizationNames();
-				// names.setName(reqNames.getName());
-				// names.setOrganization(org);
-				// org.getOrganizationNameses().add(names);
-				//
-				// ch.iec.tc57._2014.maintenanceorders.Organisation.Names.NameType
-				// reqNameType = reqNames
-				// .getNameType();
-				// if (reqNameType != null) {
-				// com.sixthc.hbm.Nametype nameType = new
-				// com.sixthc.hbm.Nametype();
-				// nameType.setName(reqNameType.getName());
-				// nameType.setDescription(reqNameType.getDescription());
-				// names.setNametype(nameType);
-				// nameType.getOrganizationNameses().add(names);
-				//
-				// NameTypeAuthority reqNameTypeAuthority = reqNameType
-				// .getNameTypeAuthority();
-				// if (reqNameTypeAuthority != null) {
-				// com.sixthc.hbm.NameTypeAuthority nameTypeAuthority = new
-				// com.sixthc.hbm.NameTypeAuthority();
-				// nameTypeAuthority.setName(reqNameTypeAuthority.getName());
-				// nameTypeAuthority.setDescription(reqNameTypeAuthority.getDescription());
-				// nameType.setNameTypeAuthority(nameTypeAuthority);
-				// }
-				//
-				// }
-				// }
 
 				Phone1 ph1 = reqOrg.getPhone1();
 				if (ph1 != null) {
@@ -226,22 +202,21 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 				WorkOrder workOrder = new WorkOrder();
 				workOrder.setMrid(reqWork.getMRID());
 				workOrder.setCreatedBy("WMS"); // TODO : ?
-				workOrder.setKind(reqWork.getKind() != null ? reqWork
-						.getKind().value() : "Not Set");
+				workOrder.setKind(reqWork.getKind() != null ? reqWork.getKind()
+						.value() : "Not Set");
 				reqWork.getLastModifiedDateTime();
 				workOrder.setWorkOrderName("NOT SET"); // TODO : ?
 				workOrder.setStatus("TBD"); // TODO : ?
-				
-				for( Name reqName : reqWork.getNames() ) {
+
+				for (Name reqName : reqWork.getNames()) {
 					WorkOrderNames workOrderNames = new WorkOrderNames();
 					workOrderNames.setName(reqName.getName());
 					workOrder.getWorkOrderNameses().add(workOrderNames);
 					workOrderNames.setWorkOrder(workOrder);
 
-					 NameType reqNameType = reqName
-							.getNameType();
+					NameType reqNameType = reqName.getNameType();
 
-					if (reqNameType != null) {						
+					if (reqNameType != null) {
 						com.sixthc.hbm.Nametype nameType = new com.sixthc.hbm.Nametype();
 						nameType.setName(reqNameType.getName());
 						nameType.setDescription(reqNameType.getDescription());
@@ -252,9 +227,11 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 								.getNameTypeAuthority();
 						if (reqNameTypeAuthority != null) {
 							com.sixthc.hbm.NameTypeAuthority nameTypeAuthority = new com.sixthc.hbm.NameTypeAuthority();
-							nameTypeAuthority.setName(reqNameTypeAuthority.getName());
-							nameTypeAuthority.setDescription(reqNameTypeAuthority
-									.getDescription());
+							nameTypeAuthority.setName(reqNameTypeAuthority
+									.getName());
+							nameTypeAuthority
+									.setDescription(reqNameTypeAuthority
+											.getDescription());
 							nameType.setNameTypeAuthority(nameTypeAuthority);
 						}
 					}
@@ -282,33 +259,94 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 				workOrder.setStatusKind(reqWork.getStatusKind().value());
 				workOrder.setStatus(workOrder.getStatus());
 
-				WorkLocation loc = reqWork.getWorkLocation();
-				if (loc != null) {
-					loc.getCoordinateSystem();
-					loc.getDirection();
-					for (AssetLocationHazard haz : loc.getHazards()) {
-						haz.getType();
+				WorkLocation reqLoc = reqWork.getWorkLocation();
+				if (reqLoc != null) {
+					Address address = new Address();
+					address.getAddressWorkorders().add(workOrder);
+					workOrder.setAddress(address);
+
+					CoordinateSystem coordSystem = reqLoc.getCoordinateSystem();
+					if (coordSystem != null) {
+						address.setCoordSystem(coordSystem.getCrsUrn());
 					}
-					InternalLocation iloc = loc.getInternalLocation();
-					iloc.getBuildingName();
-					iloc.getBuildingNumber();
-					iloc.getFloor();
-					iloc.getRoomNumber();
+					reqLoc.getDirection(); // TODO : ?
 
-					MainAddress maddr = loc.getMainAddress();
+					for (AssetLocationHazard reqHazard : reqLoc.getHazards()) {
+						Hazards hazards = new Hazards();
+						hazards.setHazardName(reqHazard.getType());
+						WorkOrderHazards workOrderHazards = new WorkOrderHazards();
+
+						workOrderHazards.setHazards(hazards);
+						workOrderHazards.setWorkOrder(workOrder);
+						workOrder.getWorkOrderHazardses().add(workOrderHazards);
+					}
+
+					InternalLocation iloc = reqLoc.getInternalLocation();
+					if (iloc != null) {
+						iloc.getBuildingName(); // TODO : ?
+						iloc.getBuildingNumber(); // TODO : ?
+						iloc.getFloor(); // TODO : ?
+						iloc.getRoomNumber(); // TODO : ?
+					}
+
+					MainAddress maddr = reqLoc.getMainAddress();
+					if (maddr != null) {
+						StreetDetail streetDetail = maddr.getStreetDetail();
+						ch.iec.tc57._2014.maintenanceorders.WorkLocation.MainAddress.TownDetail townDetail = maddr
+								.getTownDetail();
+
+						if (streetDetail != null) {
+							streetDetail.getAddressGeneral(); // TODO : ?
+							streetDetail.getName(); // TODO : ?
+
+							address.setSdBuildingName(streetDetail
+									.getBuildingName());
+							address.setSdCode(streetDetail.getCode());
+							address.setSdNumber(streetDetail.getNumber());
+							address.setSdPrefix(streetDetail.getPrefix());
+							address.setSdSuffix(streetDetail.getSuffix());
+							address.setSdSuffix(streetDetail.getSuiteNumber());
+							address.setSdType(streetDetail.getType());
+						}
+
+						if (townDetail != null) {
+							address.setTdCode(townDetail.getCode());
+							;
+							address.setTdCountry(townDetail.getCountry());
+							address.setTdName(townDetail.getName());
+							address.setTdSection(townDetail.getSection());
+							address.setTdStateProvince(townDetail
+									.getStateOrProvince());
+						}
+
+					}
+
 					Status mstatus = maddr.getStatus();
-					mstatus.getDateTime();
-					mstatus.getDateTime();
-					mstatus.getReason();
-					mstatus.getRemark();
-					mstatus.getValue();
+					if (mstatus != null) {
+						mstatus.getDateTime(); // TODO : ?
+						mstatus.getDateTime(); // TODO : ?
+						mstatus.getReason(); // TODO : ?
+						mstatus.getRemark(); // TODO : ?
+						mstatus.getValue(); // TODO : ?
+					}
 
-					loc.getMRID();
-					for (PositionPoints p : loc.getPositionPoints()) {
-						p.getSequenceNumber();
-						p.getXPosition();
-						p.getYPosition();
-						p.getZPosition();
+					reqLoc.getMRID(); // TODO : TBD ?
+					for (PositionPoints p : reqLoc.getPositionPoints()) {
+						AddressPositionPoints points = new AddressPositionPoints();
+						address.getAddressPositionPointses().add(points);
+						points.setAddress(address);
+						try {
+							points.setZposition(Integer.valueOf(p
+									.getZPosition()));
+							points.setXposition(Integer.valueOf(p
+									.getXPosition()));
+							points.setYposition(Integer.valueOf(p
+									.getYPosition()));
+							points.setSequence(p.getSequenceNumber().intValue());
+						} catch (NumberFormatException nfe) {
+							log.error("position value ignored, not number");
+							throw new ConstraintException("address position points : non integer value passed");
+						}
 					}
 				}
 

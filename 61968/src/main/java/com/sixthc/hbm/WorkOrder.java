@@ -55,7 +55,7 @@ public class WorkOrder implements java.io.Serializable {
 	private String comments;
 	private String description;
 	private String title;
-	private Integer addressId;
+	private Address address;
 	private String gridLocation;
 	private String locationComment;
 	private Float gpsLatitude;
@@ -103,7 +103,7 @@ public class WorkOrder implements java.io.Serializable {
 			String updatedBy, String status, String statusKind,
 			String priorityJustification, Integer priorityRank,
 			String priorityType, String comments, String description,
-			String title, Integer addressId, String gridLocation,
+			String title, Address address, String gridLocation,
 			String locationComment, Float gpsLatitude, Float gpsLongitude,
 			Float gpsAltitude, String internalBuildingName,
 			String internalBuildingNum, String internalFloor,
@@ -135,7 +135,7 @@ public class WorkOrder implements java.io.Serializable {
 		this.comments = comments;
 		this.description = description;
 		this.title = title;
-		this.addressId = addressId;
+		this.address = address;
 		this.gridLocation = gridLocation;
 		this.locationComment = locationComment;
 		this.gpsLatitude = gpsLatitude;
@@ -359,15 +359,16 @@ public class WorkOrder implements java.io.Serializable {
 		con.check( "setTitle", title, true, 40);
 		this.title = title;
 	}
-
-	@Column(name = "address_id")
-	public Integer getAddressId() {
-		return this.addressId;
+	
+	public void setAddress(Address address) {
+		this.address = address;
 	}
-
-	public void setAddressId(Integer addressId) {
-		this.addressId = addressId;
-	}
+	
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "address_id")	
+	public Address getAddress() {
+		return address;
+	}	
 
 	@Column(name = "grid_location", length = 40)
 	public String getGridLocation() {
