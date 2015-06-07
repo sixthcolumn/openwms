@@ -1,13 +1,15 @@
 package com.sixthc.server.ws;
 
 import java.sql.Timestamp;
+import java.util.List;
+import java.util.Vector;
 
+import javax.annotation.Resource;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.ws.Holder;
 
 import org.apache.log4j.Logger;
 import org.multispeak.v5_0.wsdl.wo_server.WOServerSoap;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import ch.iec.tc57._2011.maintenanceordermessage.MaintenanceOrderPayloadType;
 import ch.iec.tc57._2011.schema.message.HeaderType;
@@ -34,20 +36,59 @@ import ch.iec.tc57._2014.maintenanceorders.WorkLocation;
 import ch.iec.tc57._2014.maintenanceorders.WorkLocation.CoordinateSystem;
 import ch.iec.tc57._2014.maintenanceorders.WorkLocation.MainAddress;
 import ch.iec.tc57._2014.maintenanceorders.WorkLocation.MainAddress.Status;
-import ch.iec.tc57._2014.maintenanceorders.WorkLocation.MainAddress.StreetDetail;
 import ch.iec.tc57._2014.maintenanceorders.WorkLocation.PositionPoints;
 import ch.iec.tc57._2014.maintenanceorders.WorkTask;
 
+import com.sixthc.dao.OrganizationDao;
 import com.sixthc.dao.WorkOrderDao;
-import com.sixthc.hbm.Nametype;
 import com.sixthc.hbm.WorkOrder;
 import com.sixthc.hbm.WorkOrderNames;
 
 public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 	static Logger log = Logger.getLogger(WOServerSoap.class);
 
-	@Autowired
+	@Resource(name = "workOrderDao")
 	private WorkOrderDao workOrderDao;
+	/*
+	 * DeviceDao deviceDao;
+	 * 
+	 * @Autowired
+	 * 
+	 * 
+	 * @Autowired
+	 */
+	@Resource(name = "organizationDao")
+	private OrganizationDao orgDao;
+
+	List<com.sixthc.hbm.OrganizationNames> parseNames(List<Names> reqNames) {
+		Vector<com.sixthc.hbm.OrganizationNames> namesList = new Vector<com.sixthc.hbm.OrganizationNames>();
+		for (Names reqName : reqNames) {
+			com.sixthc.hbm.OrganizationNames names = new com.sixthc.hbm.OrganizationNames();
+			namesList.add(names);
+			names.setName(reqName.getName());
+
+			ch.iec.tc57._2014.maintenanceorders.Organisation.Names.NameType reqNameType = reqName
+					.getNameType();
+			if (reqNameType != null) {
+				com.sixthc.hbm.Nametype nameType = new com.sixthc.hbm.Nametype();
+				nameType.setName(reqNameType.getName());
+				nameType.setDescription(reqNameType.getDescription());
+				names.setNametype(nameType);
+				nameType.getOrganizationNameses().add(names);
+
+				NameTypeAuthority reqNameTypeAuthority = reqNameType
+						.getNameTypeAuthority();
+				if (reqNameTypeAuthority != null) {
+					com.sixthc.hbm.NameTypeAuthority nameTypeAuthority = new com.sixthc.hbm.NameTypeAuthority();
+					nameTypeAuthority.setName(reqNameTypeAuthority.getName());
+					nameTypeAuthority.setDescription(reqNameTypeAuthority
+							.getDescription());
+					nameType.setNameTypeAuthority(nameTypeAuthority);
+				}
+			}
+		}
+		return namesList;
+	}
 
 	@Override
 	public void createMaintenanceOrder(Holder<HeaderType> header,
@@ -91,94 +132,135 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 
 			// TODO : get this, create multiple org records, link to work orders
 			// from below
-			for (Organisation org : req.getOrganisation()) {
-				org.getMRID();
-				for (Names n : org.getNames()) {
-					n.getName();
-					ch.iec.tc57._2014.maintenanceorders.Organisation.Names.NameType ont = n
-							.getNameType();
-					ont.getDescription();
-					ont.getName();
-					NameTypeAuthority onta = ont.getNameTypeAuthority();
-					onta.getDescription();
-					onta.getName();
+			for (Organisation reqOrg : req.getOrganisation()) {
+				com.sixthc.hbm.Organization org = new com.sixthc.hbm.Organization();
+				org.setMrid(reqOrg.getMRID());
+				List<com.sixthc.hbm.OrganizationNames> namesList = parseNames(reqOrg
+						.getNames());
+				for (com.sixthc.hbm.OrganizationNames names : namesList) {
+					names.setOrganization(org);
+					org.getOrganizationNameses().add(names);
 				}
-				Phone1 ph1 = org.getPhone1();
+				// for (Names reqNames : reqOrg.getNames()) {
+				// com.sixthc.hbm.OrganizationNames names = new
+				// com.sixthc.hbm.OrganizationNames();
+				// names.setName(reqNames.getName());
+				// names.setOrganization(org);
+				// org.getOrganizationNameses().add(names);
+				//
+				// ch.iec.tc57._2014.maintenanceorders.Organisation.Names.NameType
+				// reqNameType = reqNames
+				// .getNameType();
+				// if (reqNameType != null) {
+				// com.sixthc.hbm.Nametype nameType = new
+				// com.sixthc.hbm.Nametype();
+				// nameType.setName(reqNameType.getName());
+				// nameType.setDescription(reqNameType.getDescription());
+				// names.setNametype(nameType);
+				// nameType.getOrganizationNameses().add(names);
+				//
+				// NameTypeAuthority reqNameTypeAuthority = reqNameType
+				// .getNameTypeAuthority();
+				// if (reqNameTypeAuthority != null) {
+				// com.sixthc.hbm.NameTypeAuthority nameTypeAuthority = new
+				// com.sixthc.hbm.NameTypeAuthority();
+				// nameTypeAuthority.setName(reqNameTypeAuthority.getName());
+				// nameTypeAuthority.setDescription(reqNameTypeAuthority.getDescription());
+				// nameType.setNameTypeAuthority(nameTypeAuthority);
+				// }
+				//
+				// }
+				// }
+
+				Phone1 ph1 = reqOrg.getPhone1();
 				if (ph1 != null) {
-					ph1.getAreaCode();
-					ph1.getCityCode();
-					ph1.getCountryCode();
-					ph1.getExtension();
-					ph1.getLocalNumber();
+					com.sixthc.hbm.Phone phone = new com.sixthc.hbm.Phone();
+					phone.setAreacode(ph1.getAreaCode());
+					phone.setCitycode(ph1.getCityCode());
+					phone.setCountrycode(ph1.getCountryCode());
+					phone.setExtension(ph1.getExtension());
+					phone.setLocalnumber(ph1.getLocalNumber());
+					org.setPhone(phone);
+					phone.getOrganizations().add(org);
 				}
 
-				StreetAddress addr = org.getStreetAddress();
-				if (addr != null) {
+				StreetAddress addr = reqOrg.getStreetAddress();
 
+				if (addr != null) {
+					com.sixthc.hbm.Address woAddress = new com.sixthc.hbm.Address();
 					ch.iec.tc57._2014.maintenanceorders.Organisation.StreetAddress.StreetDetail streetDetail = addr
 							.getStreetDetail();
 					if (streetDetail != null) {
-						streetDetail.getAddressGeneral();
-						streetDetail.getBuildingName();
-						streetDetail.getCode();
-						streetDetail.getName();
-						streetDetail.getNumber();
-						streetDetail.getPrefix();
-						streetDetail.getSuffix();
-						streetDetail.getSuiteNumber();
-						streetDetail.getType();
+						woAddress.setSdBuildingName(streetDetail
+								.getBuildingName());
+						woAddress.setSdCode(streetDetail.getCode());
+						woAddress.setSdNumber(streetDetail.getNumber());
+						woAddress.setSdSuffix(streetDetail.getSuffix());
+						woAddress.setSdPrefix(streetDetail.getPrefix());
+						woAddress.setSdSuiteNumber(streetDetail
+								.getSuiteNumber());
+						woAddress.setSdBuildingName(streetDetail
+								.getBuildingName());
+
+						streetDetail.getAddressGeneral(); // TODO : ?
+						streetDetail.getName(); // TODO : ?
+						streetDetail.getType(); // TODO : ?
+						org.setAddress(woAddress);
 					}
 
 					TownDetail townDetail = addr.getTownDetail();
 					if (townDetail != null) {
-						townDetail.getCode();
-						townDetail.getCountry();
-						townDetail.getName();
-						townDetail.getSection();
-						townDetail.getStateOrProvince();
+						woAddress.setTdCode(townDetail.getCode());
+						woAddress.setTdCountry(townDetail.getCountry());
+						woAddress.setTdName(townDetail.getName());
+						woAddress.setTdSection(townDetail.getSection());
+						woAddress.setTdSection(townDetail.getStateOrProvince());
 					}
+					org.setAddress(woAddress);
+					woAddress.getOrganizations().add(org);
 				}
+				orgDao.save(org);
 			}
 
-			for (Work reqWorkOrder : req.getWork()) {
+			for (Work reqWork : req.getWork()) {
 				WorkOrder workOrder = new WorkOrder();
-				workOrder.setMrid(reqWorkOrder.getMRID());
+				workOrder.setMrid(reqWork.getMRID());
 				workOrder.setCreatedBy("WMS"); // TODO : ?
-				workOrder.setKind(reqWorkOrder.getKind() != null ? reqWorkOrder
+				workOrder.setKind(reqWork.getKind() != null ? reqWork
 						.getKind().value() : "Not Set");
-				reqWorkOrder.getLastModifiedDateTime();
+				reqWork.getLastModifiedDateTime();
 				workOrder.setWorkOrderName("NOT SET"); // TODO : ?
 				workOrder.setStatus("TBD"); // TODO : ?
-				for (Name n : reqWorkOrder.getNames()) {
-					NameType reqNameType = n.getNameType();
-					if (reqNameType != null) {
-						WorkOrderNames won = new WorkOrderNames();
+				
+				for( Name reqName : reqWork.getNames() ) {
+					WorkOrderNames workOrderNames = new WorkOrderNames();
+					workOrderNames.setName(reqName.getName());
+					workOrder.getWorkOrderNameses().add(workOrderNames);
+					workOrderNames.setWorkOrder(workOrder);
 
-						Nametype nametype = new Nametype();
-						nametype.setDescription(reqNameType.getDescription());
-						nametype.setName(reqNameType.getName());
-						won.setNametype(nametype);
+					 NameType reqNameType = reqName
+							.getNameType();
+
+					if (reqNameType != null) {						
+						com.sixthc.hbm.Nametype nameType = new com.sixthc.hbm.Nametype();
+						nameType.setName(reqNameType.getName());
+						nameType.setDescription(reqNameType.getDescription());
+						workOrderNames.setNametype(nameType);
+						nameType.getWorkOrderNameses().add(workOrderNames);
 
 						NameTypeAuthority reqNameTypeAuthority = reqNameType
 								.getNameTypeAuthority();
 						if (reqNameTypeAuthority != null) {
 							com.sixthc.hbm.NameTypeAuthority nameTypeAuthority = new com.sixthc.hbm.NameTypeAuthority();
-							nameTypeAuthority
-									.setDescription(reqNameTypeAuthority
-											.getDescription());
-							nameTypeAuthority.setName(reqNameTypeAuthority
-									.getName());
-							nametype.setNameTypeAuthority(nameTypeAuthority);
-							nameTypeAuthority.getNametypes().add(nametype);
+							nameTypeAuthority.setName(reqNameTypeAuthority.getName());
+							nameTypeAuthority.setDescription(reqNameTypeAuthority
+									.getDescription());
+							nameType.setNameTypeAuthority(nameTypeAuthority);
 						}
-						won.setName(n.getName());
-						won.setWorkOrder(workOrder);
-						won.setNametype(nametype);
-						workOrder.getWorkOrderNameses().add(won);
 					}
-
 				}
-				Priority priority = reqWorkOrder.getPriority();
+
+				Priority priority = reqWork.getPriority();
 				if (priority != null) {
 					if (priority.getRank() != null)
 						workOrder
@@ -188,7 +270,7 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 					workOrder.setPriorityType(priority.getType());
 				}
 
-				XMLGregorianCalendar dt = reqWorkOrder.getRequestDateTime();
+				XMLGregorianCalendar dt = reqWork.getRequestDateTime();
 				Timestamp timestamp = new Timestamp(dt.toGregorianCalendar()
 						.getTimeInMillis());
 				if (dt != null) {
@@ -197,10 +279,10 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 					workOrder.setRequestDatetime(timestamp);
 				}
 
-				workOrder.setStatusKind(reqWorkOrder.getStatusKind().value());
+				workOrder.setStatusKind(reqWork.getStatusKind().value());
 				workOrder.setStatus(workOrder.getStatus());
 
-				WorkLocation loc = reqWorkOrder.getWorkLocation();
+				WorkLocation loc = reqWork.getWorkLocation();
 				if (loc != null) {
 					loc.getCoordinateSystem();
 					loc.getDirection();
@@ -230,7 +312,7 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 					}
 				}
 
-				for (WorkTask task : reqWorkOrder.getWorkTasks()) {
+				for (WorkTask task : reqWork.getWorkTasks()) {
 					for (Asset as : task.getAssets()) {
 						WorkLocation loc2 = as.getLocation();
 						CoordinateSystem cs = loc2.getCoordinateSystem();

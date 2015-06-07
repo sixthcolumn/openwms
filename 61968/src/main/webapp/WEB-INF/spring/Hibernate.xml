@@ -135,6 +135,21 @@
 		</property>
 	</bean>
 
+	<bean id="organizationDaoTarget" class="com.sixthc.dao.impl.OrganizationDaoImpl"
+		autowire="byName" />
+	<bean id="organizationDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		autowire="byName">
+		<property name="proxyInterfaces">
+			<value>com.sixthc.dao.OrganizationDao</value>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>hibernateInterceptor</value>
+				<value>organizationDaoTarget</value>
+			</list>
+		</property>
+	</bean>
+
 	<bean id="ifaceDaoTarget" class="com.sixthc.dao.impl.IfaceDaoImpl"
 		autowire="byName" />
 	<bean id="ifaceDao" class="org.springframework.aop.framework.ProxyFactoryBean"

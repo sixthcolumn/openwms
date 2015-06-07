@@ -10821,6 +10821,74 @@
                      </main1:Names>
                      
                   </main1:Organisation>
+                  <main1:Organisation>
+                     <!--Optional:-->
+                     <main1:mRID>1255</main1:mRID>
+                     <!--Zero or more repetitions:-->
+                     <main1:Names>
+                        <main1:name>org1</main1:name>
+                        <!--Optional:-->
+                        <main1:NameType>
+                           <!--Optional:-->
+                           <main1:description>orgnt</main1:description>
+                           <main1:name>orgn51</main1:name>
+                           <!--Optional:-->
+                           <main1:NameTypeAuthority>
+                              <!--Optional:-->
+                              <main1:description>orgnt2</main1:description>
+                              <main1:name>orgnt3</main1:name>
+                           </main1:NameTypeAuthority>
+                        </main1:NameType>
+                     </main1:Names>
+                     <!--Optional:-->
+                     <main1:phone1>
+                        <!--Optional:-->
+                        <main1:areaCode>231</main1:areaCode>
+                        <!--Optional:-->
+                        <main1:cityCode>122</main1:cityCode>
+                        <!--Optional:-->
+                        <main1:countryCode>011</main1:countryCode>
+                        <!--Optional:-->
+                        <main1:extension>375</main1:extension>
+                        <!--Optional:-->
+                        <main1:localNumber>271833</main1:localNumber>
+                     </main1:phone1>
+                     <!--Optional:-->
+                     <main1:streetAddress>
+                        <main1:streetDetail>
+                           <main1:addressGeneral>100 north street</main1:addressGeneral>
+                           <!--Optional:-->
+                           <main1:buildingName>Lannister</main1:buildingName>
+                           <!--Optional:-->
+                           <main1:code>na</main1:code>
+                           <!--Optional:-->
+                           <main1:name>Lancaster St</main1:name>
+                           <!--Optional:-->
+                           <main1:number>12</main1:number>
+                           <!--Optional:-->
+                           <main1:prefix>Nt</main1:prefix>
+                           <!--Optional:-->
+                           <main1:suffix>Est</main1:suffix>
+                           <!--Optional:-->
+                           <main1:suiteNumber>102</main1:suiteNumber>
+                           <!--Optional:-->
+                           <main1:type>Residential</main1:type>
+                           <!--Optional:-->
+                           <main1:withinTownLimits>?</main1:withinTownLimits>
+                        </main1:streetDetail>
+                        <main1:townDetail>
+                           <!--Optional:-->
+                           <main1:code>North</main1:code>
+                           <!--Optional:-->
+                           <main1:country>US</main1:country>
+                           <main1:name>Cary</main1:name>
+                           <!--Optional:-->
+                           <main1:section>234</main1:section>
+                           <!--Optional:-->
+                           <main1:stateOrProvince>?</main1:stateOrProvince>
+                        </main1:townDetail>
+                     </main1:streetAddress>
+                  </main1:Organisation>
                   <!--1 or more repetitions:-->
                   <main1:Work>
                      <!--Optional:-->
@@ -10845,7 +10913,7 @@
                            <main1:NameTypeAuthority>
                               <!--Optional:-->
                               <main1:description>work name type auth desc</main1:description>
-                              <main1:name>work name type auth name</main1:name>
+                              <main1:name>work name</main1:name>
                            </main1:NameTypeAuthority>
                         </main1:NameType>
                      </main1:Names>
@@ -16404,4 +16472,4 @@
          </main:Payload>
       </main:MaintenanceOrderResponseMessage>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://iec.ch/TC57/2011/MaintenanceOrder/DeleteMaintenanceOrder"/></con:response><con:dispatchConfig/></con:mockOperation><con:properties/></con:mockService><con:properties/><con:wssContainer/></con:soapui-project>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://iec.ch/TC57/2011/MaintenanceOrder/DeleteMaintenanceOrder"/></con:response><con:dispatchConfig/></con:mockOperation><con:properties/></con:mockService><con:properties/><con:wssContainer/><con:sensitiveInformation/></con:soapui-project>
