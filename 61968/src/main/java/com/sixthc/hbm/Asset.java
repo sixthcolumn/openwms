@@ -10,6 +10,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -32,7 +34,7 @@ public class Asset implements java.io.Serializable {
 	private String mrid;
 	private int criticalFlag;
 	private String utcNumber;
-	private Integer addressId;
+	private Address address;
 	private Set<WorkTask> workTasks = new HashSet<WorkTask>(0);
 	private Set<AssetProcedures> assetProcedureses = new HashSet<AssetProcedures>(
 			0);
@@ -49,13 +51,13 @@ public class Asset implements java.io.Serializable {
 	}
 
 	public Asset(String mrid, int criticalFlag, String utcNumber,
-			Integer addressId, Set<WorkTask> workTasks,
+			Address address, Set<WorkTask> workTasks,
 			Set<AssetProcedures> assetProcedureses,
 			Set<AssetNames> assetNameses, Set<WorkTaskAssets> workTaskAssetses) {
 		this.mrid = mrid;
 		this.criticalFlag = criticalFlag;
 		this.utcNumber = utcNumber;
-		this.addressId = addressId;
+		this.address = address;
 		this.workTasks = workTasks;
 		this.assetProcedureses = assetProcedureses;
 		this.assetNameses = assetNameses;
@@ -103,14 +105,14 @@ public class Asset implements java.io.Serializable {
 		this.utcNumber = utcNumber;
 	}
 
-	@Column(name = "address_id")
-	public Integer getAddressId() {
-		return this.addressId;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
-
-	public void setAddressId(Integer addressId) {
-		log.debug("setAddressId : " + addressId);
-		this.addressId = addressId;
+	
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "address_id")	
+	public Address getAddress() {
+		return address;
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "asset")

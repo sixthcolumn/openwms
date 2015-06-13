@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -66,7 +67,7 @@ public class WorkTaskAssets implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	@JoinColumn(name = "work_task_id", nullable = false)
 	public WorkTask getWorkTask() {
 		return this.workTask;
@@ -76,7 +77,7 @@ public class WorkTaskAssets implements java.io.Serializable {
 		this.workTask = workTask;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	@JoinColumn(name = "asset_id", nullable = false)
 	public Asset getAsset() {
 		return this.asset;

@@ -774,6 +774,17 @@ CREATE TABLE `work_order_attachments` (
   CONSTRAINT `fk_work_order_attachments_work_order_id` FOREIGN KEY (`work_order_id`) REFERENCES `work_order` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `work_order_organizations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `work_order_id` int(11) NOT NULL COMMENT 'foreign to work_order',
+  `organization_id` int(11) NOT NULL COMMENT 'foreign to organization',
+  PRIMARY KEY (`id`),
+  KEY `fk_work_order_organizations_organization_id` (`organization_id`),
+  KEY `fk_work_order_organizations_work_order_id` (`work_order_id`),
+  CONSTRAINT `fk_work_order_organizations_organization_id` FOREIGN KEY (`organization_id`) REFERENCES `organization` (`id`),
+  CONSTRAINT `fk_work_order_organizations_work_order_id` FOREIGN KEY (`work_order_id`) REFERENCES `work_order` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 /*Data for the table `work_order_attachments` */
 
 /*Table structure for table `work_order_comments` */

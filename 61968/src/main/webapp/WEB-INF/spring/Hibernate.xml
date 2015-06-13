@@ -73,6 +73,7 @@
 				<value>com.sixthc.hbm.WorkOrderNames</value>
 				<value>com.sixthc.hbm.WorkOrderSchedule</value>
 				<value>com.sixthc.hbm.WorkOrderWorkTasks</value>
+				<value>com.sixthc.hbm.WorkOrderOrganizations</value>
 				<value>com.sixthc.hbm.WorkPositionPoints</value>
 				<value>com.sixthc.hbm.WorkTask</value>
 				<value>com.sixthc.hbm.WorkTaskAssets</value>

@@ -81,6 +81,8 @@ public class WorkOrder implements java.io.Serializable {
 			0);
 	private Set<WorkOrderHazards> workOrderHazardses = new HashSet<WorkOrderHazards>(
 			0);
+	private Set<WorkOrderOrganizations> workOrderOrganizations = new HashSet<WorkOrderOrganizations>(
+			0);
 
 	public WorkOrder() {
 	}
@@ -531,6 +533,16 @@ public class WorkOrder implements java.io.Serializable {
 
 	public void setWorkOrderHazardses(Set<WorkOrderHazards> workOrderHazardses) {
 		this.workOrderHazardses = workOrderHazardses;
+	}
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "workOrder")
+	public Set<WorkOrderOrganizations> getWorkOrderOrganizations() {
+		return this.workOrderOrganizations;
+	}
+
+	public void setWorkOrderOrganizations(
+			Set<WorkOrderOrganizations> WorkOrderOrganization) {
+		this.workOrderOrganizations = WorkOrderOrganization;
 	}
 
 }

@@ -36,6 +36,8 @@ public class Organization implements java.io.Serializable {
 	private Phone phone;
 	private Address address;
 	private String mrid;
+	private Set<WorkOrderOrganizations> workOrderOrganizations = new HashSet<WorkOrderOrganizations>(
+			0);
 	private Set<OrganizationNames> organizationNameses = new HashSet<OrganizationNames>(
 			0);
 
@@ -54,12 +56,6 @@ public class Organization implements java.io.Serializable {
 		this.organizationNameses = organizationNameses;
 	}
 	
-//	public Organization(Phone phone, Address address, String mrid) {
-//		this.phone = phone;
-//		this.address = address;
-//		this.mrid = mrid;
-//	}
-
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
@@ -90,6 +86,16 @@ public class Organization implements java.io.Serializable {
 
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "organization")
+	public Set<WorkOrderOrganizations> getWorkOrderOrganizations() {
+		return workOrderOrganizations;
+	}
+
+	public void setWorkOrderOrganizations(
+			Set<WorkOrderOrganizations> workOrderOrganizations) {
+		this.workOrderOrganizations = workOrderOrganizations;
 	}
 
 	@Column(name = "mRid", nullable = false, length = 40)

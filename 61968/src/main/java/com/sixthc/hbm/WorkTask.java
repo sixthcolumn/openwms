@@ -99,7 +99,7 @@ public class WorkTask implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "old_asset_id")
 	public Asset getAsset() {
 		return this.asset;
