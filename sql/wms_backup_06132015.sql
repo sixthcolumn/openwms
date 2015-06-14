@@ -24,32 +24,32 @@ DROP TABLE IF EXISTS `address`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `address` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `sd_address_1` varchar(20) DEFAULT NULL COMMENT 'msp.address.address_1, cim.work_location.streetaddress.address_general',
-  `sd_address_2` varchar(20) DEFAULT NULL COMMENT 'msp.address.address_2, cim.worklocation.streetdetail.name',
-  `sd_building_name` varchar(20) DEFAULT NULL COMMENT 'msp.address..building_number, cim.work_location.streetdetail.building_name',
-  `sd_code` varchar(20) DEFAULT NULL COMMENT 'cim.worklocation.streetdetail.code',
-  `sd_number` varchar(8) DEFAULT NULL COMMENT 'msp.address..streetnumber, cim.worklocation.streetdetail.number',
-  `sd_prefix` varchar(10) DEFAULT NULL COMMENT 'msp.address..streetprefix, cim.worklocation.streetdetail.prefix',
-  `sd_suffix` varchar(10) DEFAULT NULL COMMENT 'msp.address..streetsuffix, cim.worklocation.streetdetail.suffix',
-  `sd_suite_number` varchar(10) DEFAULT NULL COMMENT 'msp.address..suiteNumber, cim.worklocation.streetdetail.suitenumber',
-  `sd_type` varchar(10) DEFAULT NULL COMMENT 'msp.address..streettype, cim.worklocation.streetdetail.type',
+  `sd_address_1` varchar(512) DEFAULT NULL COMMENT 'msp.address.address_1, cim.work_location.streetaddress.address_general',
+  `sd_address_2` varchar(512) DEFAULT NULL COMMENT 'msp.address.address_2, cim.worklocation.streetdetail.name',
+  `sd_building_name` varchar(512) DEFAULT NULL COMMENT 'msp.address..building_number, cim.work_location.streetdetail.building_name',
+  `sd_code` varchar(512) DEFAULT NULL COMMENT 'cim.worklocation.streetdetail.code',
+  `sd_number` varchar(512) DEFAULT NULL COMMENT 'msp.address..streetnumber, cim.worklocation.streetdetail.number',
+  `sd_prefix` varchar(512) DEFAULT NULL COMMENT 'msp.address..streetprefix, cim.worklocation.streetdetail.prefix',
+  `sd_suffix` varchar(512) DEFAULT NULL COMMENT 'msp.address..streetsuffix, cim.worklocation.streetdetail.suffix',
+  `sd_suite_number` varchar(512) DEFAULT NULL COMMENT 'msp.address..suiteNumber, cim.worklocation.streetdetail.suitenumber',
+  `sd_type` varchar(512) DEFAULT NULL COMMENT 'msp.address..streettype, cim.worklocation.streetdetail.type',
   `sd_within_town_limits_flag` int(1) NOT NULL DEFAULT '0' COMMENT 'cim.worklocation.streetdetail.withintownlimits',
-  `td_code` varchar(20) DEFAULT NULL COMMENT 'msp.address.townCode, cim.worklocation.towndetail.code',
-  `td_country` varchar(20) DEFAULT NULL COMMENT 'cim.worklocation.towndetail.country, msp.address..country',
-  `td_name` varchar(20) DEFAULT NULL COMMENT 'msp.address.city,cim.worklocation.towndetail.name',
-  `td_section` varchar(3) DEFAULT NULL COMMENT 'cim.worklocation.towndetail.section,msp.',
-  `td_state_province` varchar(20) DEFAULT NULL COMMENT 'cim.worklocation.towndetail.state,msp.address.state',
+  `td_code` varchar(512) DEFAULT NULL COMMENT 'msp.address.townCode, cim.worklocation.towndetail.code',
+  `td_country` varchar(512) DEFAULT NULL COMMENT 'cim.worklocation.towndetail.country, msp.address..country',
+  `td_name` varchar(512) DEFAULT NULL COMMENT 'msp.address.city,cim.worklocation.towndetail.name',
+  `td_section` varchar(512) DEFAULT NULL COMMENT 'cim.worklocation.towndetail.section,msp.',
+  `td_state_province` varchar(512) DEFAULT NULL COMMENT 'cim.worklocation.towndetail.state,msp.address.state',
   `directions` varchar(512) DEFAULT NULL COMMENT 'msp.worklocation.locationComment,cim.worklocation.direction',
-  `td_pobox` varchar(10) DEFAULT NULL COMMENT 'msp.worklocation.address.pobox',
-  `td_postal_code` varchar(10) DEFAULT NULL COMMENT 'msp.worklocation.postalcode',
-  `td_region` varchar(12) DEFAULT NULL COMMENT 'msp.worklocation.address.region',
-  `county` varchar(20) DEFAULT NULL COMMENT 'msp.worklocation.locationinformation.county',
-  `township_name` varchar(30) DEFAULT NULL COMMENT 'msp.worklocation.locationinformation.townshipname',
-  `subdivision` varchar(20) DEFAULT NULL COMMENT 'msp.worklocation.locationinformation.subdivision',
-  `block` varchar(6) DEFAULT NULL COMMENT 'msp.worklocation.locationinformation.block',
-  `lot` varchar(6) DEFAULT NULL COMMENT 'msp.worklocation.locationinformation.lot',
-  `time_zone` varchar(15) DEFAULT NULL COMMENT 'msp.worklocation.locationinformation.time_zone',
-  `coord_system` varchar(12) DEFAULT NULL COMMENT 'cim.work.worklocation.coordinatesystem',
+  `td_pobox` varchar(512) DEFAULT NULL COMMENT 'msp.worklocation.address.pobox',
+  `td_postal_code` varchar(512) DEFAULT NULL COMMENT 'msp.worklocation.postalcode',
+  `td_region` varchar(512) DEFAULT NULL COMMENT 'msp.worklocation.address.region',
+  `county` varchar(512) DEFAULT NULL COMMENT 'msp.worklocation.locationinformation.county',
+  `township_name` varchar(512) DEFAULT NULL COMMENT 'msp.worklocation.locationinformation.townshipname',
+  `subdivision` varchar(512) DEFAULT NULL COMMENT 'msp.worklocation.locationinformation.subdivision',
+  `block` varchar(512) DEFAULT NULL COMMENT 'msp.worklocation.locationinformation.block',
+  `lot` varchar(512) DEFAULT NULL COMMENT 'msp.worklocation.locationinformation.lot',
+  `time_zone` varchar(512) DEFAULT NULL COMMENT 'msp.worklocation.locationinformation.time_zone',
+  `coord_system` varchar(512) DEFAULT NULL COMMENT 'cim.work.worklocation.coordinatesystem',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=134 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -157,9 +157,9 @@ DROP TABLE IF EXISTS `asset`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `asset` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `mRID` varchar(40) NOT NULL COMMENT 'cim.asset.mRID',
+  `mRID` varchar(512) NOT NULL COMMENT 'cim.asset.mRID',
   `critical_flag` int(1) NOT NULL DEFAULT '0' COMMENT 'cim.asset',
-  `utc_number` varchar(40) DEFAULT NULL COMMENT 'cim.asset',
+  `utc_number` varchar(512) DEFAULT NULL COMMENT 'cim.asset',
   `address_id` int(11) DEFAULT NULL COMMENT 'cim.asset.location',
   PRIMARY KEY (`id`),
   KEY `address_id` (`address_id`),
@@ -186,7 +186,7 @@ DROP TABLE IF EXISTS `asset_names`;
 CREATE TABLE `asset_names` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `asset_id` int(11) NOT NULL COMMENT 'foreign to asset',
-  `name` varchar(40) NOT NULL COMMENT 'cim.name',
+  `name` varchar(512) NOT NULL COMMENT 'cim.name',
   `name_type_id` int(11) DEFAULT NULL COMMENT 'foreign to nametype',
   PRIMARY KEY (`id`),
   KEY `fk_asset_names_nametype_id` (`name_type_id`),
@@ -242,8 +242,8 @@ DROP TABLE IF EXISTS `attachment`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `attachment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `type` varchar(12) NOT NULL COMMENT 'picture/video',
-  `filename` varchar(256) NOT NULL COMMENT 'path to file on server',
+  `type` varchar(512) NOT NULL COMMENT 'picture/video',
+  `filename` varchar(512) NOT NULL COMMENT 'path to file on server',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -267,8 +267,8 @@ DROP TABLE IF EXISTS `comment`;
 CREATE TABLE `comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `comment` varchar(512) NOT NULL COMMENT 'msp.supplementalnote.notevalue',
-  `comment_type` varchar(12) DEFAULT NULL COMMENT 'msp.supplementalnote.notetype',
-  `comment_subtype` varchar(12) DEFAULT NULL COMMENT 'msp.supplementalnote.notesubtype',
+  `comment_type` varchar(512) DEFAULT NULL COMMENT 'msp.supplementalnote.notetype',
+  `comment_subtype` varchar(512) DEFAULT NULL COMMENT 'msp.supplementalnote.notesubtype',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -291,16 +291,16 @@ DROP TABLE IF EXISTS `contactperson`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `contactperson` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `lastname` varchar(20) NOT NULL COMMENT 'msp.workrequest.requestingperson',
-  `firstname` varchar(20) NOT NULL COMMENT 'msp.workrequest.requestingperson',
-  `middle` varchar(20) DEFAULT NULL COMMENT 'msp.workrequest.requestingperson',
-  `prefix` varchar(5) DEFAULT NULL COMMENT 'msp.workrequest.requestingperson',
-  `suffix` varchar(5) DEFAULT NULL COMMENT 'msp.workrequest.requestingperson',
-  `governmentid` varchar(20) DEFAULT NULL COMMENT 'msp.workrequest.requestingperson',
-  `affiliation` varchar(20) DEFAULT NULL COMMENT 'msp.workrequest.requestingperson',
-  `primary_id` varchar(20) DEFAULT NULL COMMENT 'msp.workrequest.requestingperson',
-  `secondary_id` varchar(20) DEFAULT NULL COMMENT 'msp.workrequest.requestingperson',
-  `objectid` varchar(40) DEFAULT NULL COMMENT 'msp identified_object',
+  `lastname` varchar(512) NOT NULL COMMENT 'msp.workrequest.requestingperson',
+  `firstname` varchar(512) NOT NULL COMMENT 'msp.workrequest.requestingperson',
+  `middle` varchar(512) DEFAULT NULL COMMENT 'msp.workrequest.requestingperson',
+  `prefix` varchar(512) DEFAULT NULL COMMENT 'msp.workrequest.requestingperson',
+  `suffix` varchar(512) DEFAULT NULL COMMENT 'msp.workrequest.requestingperson',
+  `governmentid` varchar(512) DEFAULT NULL COMMENT 'msp.workrequest.requestingperson',
+  `affiliation` varchar(512) DEFAULT NULL COMMENT 'msp.workrequest.requestingperson',
+  `primary_id` varchar(512) DEFAULT NULL COMMENT 'msp.workrequest.requestingperson',
+  `secondary_id` varchar(512) DEFAULT NULL COMMENT 'msp.workrequest.requestingperson',
+  `objectid` varchar(512) DEFAULT NULL COMMENT 'msp identified_object',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -325,7 +325,7 @@ CREATE TABLE `contactperson_addresses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `contactperson_id` int(11) NOT NULL COMMENT 'foreign to contact_person',
   `address_id` int(11) NOT NULL COMMENT 'foreign to address',
-  `address_type` varchar(12) DEFAULT NULL COMMENT 'msp.requestingperson.contactinfo.addressitems.addressitem',
+  `address_type` varchar(512) DEFAULT NULL COMMENT 'msp.requestingperson.contactinfo.addressitems.addressitem',
   `priority_order` int(3) DEFAULT NULL COMMENT 'msp.requestingperson.contactinfo.addressitems.addressitem',
   PRIMARY KEY (`id`),
   KEY `fk_contactperson_addresses_contactperson_id` (`contactperson_id`),
@@ -437,7 +437,7 @@ DROP TABLE IF EXISTS `crew`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `crew` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `mRid` varchar(20) NOT NULL COMMENT 'cim.crew',
+  `mRid` varchar(512) NOT NULL COMMENT 'cim.crew',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -461,7 +461,7 @@ DROP TABLE IF EXISTS `crew_names`;
 CREATE TABLE `crew_names` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `crew_id` int(11) NOT NULL COMMENT 'foreign key to crew',
-  `name` varchar(20) NOT NULL COMMENT 'cim.crew',
+  `name` varchar(512) NOT NULL COMMENT 'cim.crew',
   `name_type_id` int(11) DEFAULT NULL COMMENT 'foreign key to name_type',
   PRIMARY KEY (`id`),
   KEY `fk_crew_names_crew_id` (`crew_id`),
@@ -489,9 +489,9 @@ DROP TABLE IF EXISTS `district`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `district` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `type` varchar(12) DEFAULT NULL COMMENT 'msp.worklocation.locationinformation.district',
-  `name` varchar(20) NOT NULL COMMENT 'msp.worklocation.locationinformation.district',
-  `code` varchar(12) DEFAULT NULL COMMENT 'msp.worklocation.locationinformation.district',
+  `type` varchar(512) DEFAULT NULL COMMENT 'msp.worklocation.locationinformation.district',
+  `name` varchar(512) NOT NULL COMMENT 'msp.worklocation.locationinformation.district',
+  `code` varchar(512) DEFAULT NULL COMMENT 'msp.worklocation.locationinformation.district',
   `description` varchar(512) DEFAULT NULL COMMENT 'msp.worklocation.locationinformation.district',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -515,8 +515,8 @@ DROP TABLE IF EXISTS `email`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `email` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `email` varchar(30) NOT NULL COMMENT 'msp.requestingperson.contactinfo.emailaddresses',
-  `email_type` varchar(10) DEFAULT NULL COMMENT 'msp.requestingperson.contactinfo.emailaddresses',
+  `email` varchar(512) NOT NULL COMMENT 'msp.requestingperson.contactinfo.emailaddresses',
+  `email_type` varchar(512) DEFAULT NULL COMMENT 'msp.requestingperson.contactinfo.emailaddresses',
   `priority_order` int(3) DEFAULT NULL COMMENT 'msp.requestingperson.contactinfo.emailaddresses',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -541,21 +541,21 @@ DROP TABLE IF EXISTS `eprilog`;
 CREATE TABLE `eprilog` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `address` longtext,
-  `contentType` varchar(255) DEFAULT NULL,
+  `contentType` varchar(512) DEFAULT NULL,
   `create_date` datetime DEFAULT NULL,
-  `data` varchar(255) DEFAULT NULL,
-  `encoding` varchar(255) DEFAULT NULL,
+  `data` varchar(512) DEFAULT NULL,
+  `encoding` varchar(512) DEFAULT NULL,
   `faultCode` longtext,
   `header` longtext,
   `httpMethod` longtext,
-  `message` varchar(255) DEFAULT NULL,
-  `messageId` varchar(255) DEFAULT NULL,
-  `operation` varchar(255) DEFAULT NULL,
+  `message` varchar(512) DEFAULT NULL,
+  `messageId` varchar(512) DEFAULT NULL,
+  `operation` varchar(512) DEFAULT NULL,
   `payload` longtext,
   `responseCode` longtext,
-  `resultCode` varchar(255) DEFAULT NULL,
+  `resultCode` varchar(512) DEFAULT NULL,
   `INTERFACE_ID` int(11) DEFAULT NULL,
-  `stage` varchar(50) DEFAULT NULL,
+  `stage` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `INTERFACE_ID` (`INTERFACE_ID`),
   CONSTRAINT `EpriLog_ibfk_1` FOREIGN KEY (`INTERFACE_ID`) REFERENCES `interface` (`id`)
@@ -580,7 +580,7 @@ DROP TABLE IF EXISTS `hazards`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `hazards` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `hazard_name` varchar(12) NOT NULL COMMENT 'cim.asset.location.hazards',
+  `hazard_name` varchar(512) NOT NULL COMMENT 'cim.asset.location.hazards',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -603,11 +603,11 @@ DROP TABLE IF EXISTS `identified_object`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `identified_object` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `mRID` varchar(40) NOT NULL COMMENT 'cim.asset.mRID, msp.identifiedobject.mRID',
+  `mRID` varchar(512) NOT NULL COMMENT 'cim.asset.mRID, msp.identifiedobject.mRID',
   `description` varchar(512) DEFAULT NULL COMMENT 'map.identifiedobject',
   `critical_flag` int(1) NOT NULL DEFAULT '0' COMMENT 'cim.asset',
-  `utc_number` varchar(40) DEFAULT NULL COMMENT 'cim.asset',
-  `coord_system` varchar(12) DEFAULT NULL COMMENT 'cim.asset',
+  `utc_number` varchar(512) DEFAULT NULL COMMENT 'cim.asset',
+  `coord_system` varchar(512) DEFAULT NULL COMMENT 'cim.asset',
   `address_id` int(11) DEFAULT NULL COMMENT 'cim.asset.location',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='this is a combination of cim.asset and msp.identified_object';
@@ -660,7 +660,7 @@ DROP TABLE IF EXISTS `identified_object_names`;
 CREATE TABLE `identified_object_names` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `identified_object_id` int(11) NOT NULL COMMENT 'foreign to identified_object',
-  `name` varchar(40) NOT NULL COMMENT 'msp.name,cim.name',
+  `name` varchar(512) NOT NULL COMMENT 'msp.name,cim.name',
   `name_type_id` int(11) DEFAULT NULL COMMENT 'foreign to nametype',
   PRIMARY KEY (`id`),
   KEY `fk_identified_object_names_objectid` (`identified_object_id`),
@@ -745,7 +745,7 @@ DROP TABLE IF EXISTS `interface`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `interface` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) DEFAULT NULL,
+  `name` varchar(512) DEFAULT NULL,
   `package_id` int(11) NOT NULL,
   `proxy_flag` int(1) DEFAULT '0',
   `required_flag` int(1) DEFAULT '1',
@@ -779,7 +779,7 @@ DROP TABLE IF EXISTS `material_item`;
 CREATE TABLE `material_item` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `multiplier` float DEFAULT NULL,
-  `unit` varchar(12) DEFAULT NULL,
+  `unit` varchar(512) DEFAULT NULL,
   `quantity` float DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='cim.work.worktask.materialitem';
@@ -804,7 +804,7 @@ DROP TABLE IF EXISTS `material_item_names`;
 CREATE TABLE `material_item_names` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `material_item_id` int(11) NOT NULL COMMENT 'foreign to material_item',
-  `name` varchar(40) NOT NULL,
+  `name` varchar(512) NOT NULL,
   `name_type_id` int(11) DEFAULT NULL COMMENT 'foreign to nametype',
   PRIMARY KEY (`id`),
   KEY `fk_material_item_material_id` (`material_item_id`),
@@ -832,10 +832,10 @@ DROP TABLE IF EXISTS `measurement`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `measurement` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `type` varchar(12) DEFAULT NULL,
-  `phases` varchar(4) DEFAULT NULL,
+  `type` varchar(512) DEFAULT NULL,
+  `phases` varchar(512) DEFAULT NULL,
   `unit_multiplier` float DEFAULT NULL,
-  `unit_symbol` varchar(12) DEFAULT NULL,
+  `unit_symbol` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -858,8 +858,8 @@ DROP TABLE IF EXISTS `name_type_authority`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `name_type_authority` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL COMMENT 'cim.nametypeauthority, msp.nametypeauthority',
+  `name` varchar(512) DEFAULT NULL,
+  `description` varchar(512) DEFAULT NULL COMMENT 'cim.nametypeauthority, msp.nametypeauthority',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=199 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -882,9 +882,9 @@ DROP TABLE IF EXISTS `nametype`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `nametype` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) DEFAULT NULL,
+  `name` varchar(512) DEFAULT NULL,
   `name_type_authority_id` int(11) DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
+  `description` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_name_type_authority_id` (`name_type_authority_id`),
   CONSTRAINT `fk_name_type_authority_id` FOREIGN KEY (`name_type_authority_id`) REFERENCES `name_type_authority` (`id`)
@@ -909,13 +909,13 @@ DROP TABLE IF EXISTS `objectref`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `objectref` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `primary_name` varchar(40) NOT NULL COMMENT 'msp.objectref',
-  `secondary_name` varchar(40) DEFAULT NULL COMMENT 'msp.objectref',
-  `noun` varchar(12) DEFAULT NULL COMMENT 'msp.objectref',
-  `object_guid` varchar(40) DEFAULT NULL COMMENT 'msp.objectref',
-  `utility` varchar(12) DEFAULT NULL COMMENT 'msp.objectref',
-  `registered_name` varchar(40) DEFAULT NULL COMMENT 'msp.objectref',
-  `system_name` varchar(40) DEFAULT NULL COMMENT 'msp.objectref',
+  `primary_name` varchar(512) NOT NULL COMMENT 'msp.objectref',
+  `secondary_name` varchar(512) DEFAULT NULL COMMENT 'msp.objectref',
+  `noun` varchar(512) DEFAULT NULL COMMENT 'msp.objectref',
+  `object_guid` varchar(512) DEFAULT NULL COMMENT 'msp.objectref',
+  `utility` varchar(512) DEFAULT NULL COMMENT 'msp.objectref',
+  `registered_name` varchar(512) DEFAULT NULL COMMENT 'msp.objectref',
+  `system_name` varchar(512) DEFAULT NULL COMMENT 'msp.objectref',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -938,7 +938,7 @@ DROP TABLE IF EXISTS `organization`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `organization` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `mRid` varchar(40) NOT NULL COMMENT 'cim.organization',
+  `mRid` varchar(512) NOT NULL COMMENT 'cim.organization',
   `address_id` int(11) DEFAULT NULL COMMENT 'foreign to address',
   `phone_id` int(11) DEFAULT NULL COMMENT 'foreign to phone',
   PRIMARY KEY (`id`),
@@ -968,7 +968,7 @@ DROP TABLE IF EXISTS `organization_names`;
 CREATE TABLE `organization_names` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `organization_id` int(11) DEFAULT NULL,
-  `name` varchar(20) DEFAULT NULL,
+  `name` varchar(512) DEFAULT NULL,
   `name_type_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_organization_names_organization_id` (`organization_id`),
@@ -996,8 +996,8 @@ DROP TABLE IF EXISTS `other_contactinfo`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `other_contactinfo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `details` varchar(30) NOT NULL COMMENT 'msp.other_contactinfo',
-  `info_type` varchar(10) DEFAULT NULL COMMENT 'msp.other_contactinfo',
+  `details` varchar(512) NOT NULL COMMENT 'msp.other_contactinfo',
+  `info_type` varchar(512) DEFAULT NULL COMMENT 'msp.other_contactinfo',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1020,7 +1020,7 @@ DROP TABLE IF EXISTS `package`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `package` (
   `id` int(11) NOT NULL,
-  `name` varchar(20) DEFAULT NULL,
+  `name` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `i_package_name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -1068,12 +1068,12 @@ DROP TABLE IF EXISTS `phone`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `phone` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `areacode` varchar(5) DEFAULT NULL COMMENT 'msp.phone, cim.phone',
-  `citycode` varchar(5) DEFAULT NULL COMMENT 'msp.phone, cim.phone',
-  `countrycode` varchar(3) DEFAULT NULL COMMENT 'msp.phone, cim.phone',
-  `localnumber` varchar(10) DEFAULT NULL COMMENT 'msp.phone, cim.phone',
-  `extension` varchar(10) DEFAULT NULL,
-  `phonetype` varchar(10) DEFAULT NULL COMMENT 'msp.phone',
+  `areacode` varchar(512) DEFAULT NULL COMMENT 'msp.phone, cim.phone',
+  `citycode` varchar(512) DEFAULT NULL COMMENT 'msp.phone, cim.phone',
+  `countrycode` varchar(512) DEFAULT NULL COMMENT 'msp.phone, cim.phone',
+  `localnumber` varchar(512) DEFAULT NULL COMMENT 'msp.phone, cim.phone',
+  `extension` varchar(512) DEFAULT NULL,
+  `phonetype` varchar(512) DEFAULT NULL COMMENT 'msp.phone',
   `priorityorder` int(3) DEFAULT NULL COMMENT 'msp.phone',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8;
@@ -1098,7 +1098,7 @@ DROP TABLE IF EXISTS `procedure`;
 CREATE TABLE `procedure` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `instruction` varchar(512) NOT NULL,
-  `kind` varchar(20) DEFAULT NULL,
+  `kind` varchar(512) DEFAULT NULL,
   `sequence` int(3) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='cim.asset';
@@ -1176,10 +1176,10 @@ DROP TABLE IF EXISTS `request`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `request` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `data` varchar(255) DEFAULT NULL,
+  `data` varchar(512) DEFAULT NULL,
   `create_date` datetime DEFAULT NULL,
-  `request` varchar(255) DEFAULT NULL,
-  `result` varchar(255) DEFAULT NULL,
+  `request` varchar(512) DEFAULT NULL,
+  `result` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1202,7 +1202,7 @@ DROP TABLE IF EXISTS `resultcode`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `resultcode` (
   `id` int(11) NOT NULL,
-  `name` varchar(20) DEFAULT NULL,
+  `name` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1224,7 +1224,7 @@ DROP TABLE IF EXISTS `seqs`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `seqs` (
-  `seq_name` varchar(30) DEFAULT NULL,
+  `seq_name` varchar(512) DEFAULT NULL,
   `start` int(11) DEFAULT NULL,
   `increment` int(11) DEFAULT NULL,
   `curval` int(11) DEFAULT NULL,
@@ -1250,7 +1250,7 @@ DROP TABLE IF EXISTS `time_schedule`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `time_schedule` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `type` varchar(12) NOT NULL COMMENT 'cim.timeschedule',
+  `type` varchar(512) NOT NULL COMMENT 'cim.timeschedule',
   `start_tstamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'cim.timeschedule',
   `end_tstamp` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT 'cim.timeschedule',
   PRIMARY KEY (`id`)
@@ -1275,7 +1275,7 @@ DROP TABLE IF EXISTS `vendor_role`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `vendor_role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(10) DEFAULT NULL,
+  `name` varchar(512) DEFAULT NULL,
   `vendor_role_type_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `vendor_role_type_id` (`vendor_role_type_id`),
@@ -1301,7 +1301,7 @@ DROP TABLE IF EXISTS `vendor_role_type`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `vendor_role_type` (
   `id` int(11) NOT NULL,
-  `name` varchar(10) DEFAULT NULL,
+  `name` varchar(512) DEFAULT NULL,
   `active_flag` int(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -1326,35 +1326,35 @@ DROP TABLE IF EXISTS `work_order`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `work_order` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `work_order_name` varchar(40) NOT NULL,
+  `work_order_name` varchar(512) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `created_by` varchar(20) NOT NULL,
-  `mRid` varchar(40) NOT NULL COMMENT 'master resource id',
-  `kind` varchar(12) NOT NULL COMMENT 'type of work',
+  `created_by` varchar(512) NOT NULL,
+  `mRid` varchar(512) NOT NULL COMMENT 'master resource id',
+  `kind` varchar(512) NOT NULL COMMENT 'type of work',
   `updated_at` timestamp NULL DEFAULT NULL,
   `request_datetime` timestamp NULL DEFAULT NULL COMMENT 'date and time work was requested',
-  `updated_by` varchar(20) DEFAULT NULL,
-  `status` varchar(10) NOT NULL COMMENT 'status of work order',
-  `status_kind` varchar(10) DEFAULT NULL COMMENT 'kind of work status',
-  `priority_justification` varchar(10) DEFAULT NULL COMMENT 'justification for rank',
+  `updated_by` varchar(512) DEFAULT NULL,
+  `status` varchar(512) NOT NULL COMMENT 'status of work order',
+  `status_kind` varchar(512) DEFAULT NULL COMMENT 'kind of work status',
+  `priority_justification` varchar(512) DEFAULT NULL COMMENT 'justification for rank',
   `priority_rank` int(5) DEFAULT NULL COMMENT 'lower number = higher priority',
-  `priority_type` varchar(10) DEFAULT NULL COMMENT 'type of priority',
-  `comments` varchar(1024) DEFAULT NULL,
-  `description` varchar(256) DEFAULT NULL,
-  `title` varchar(40) DEFAULT NULL,
+  `priority_type` varchar(512) DEFAULT NULL COMMENT 'type of priority',
+  `comments` varchar(512) DEFAULT NULL,
+  `description` varchar(512) DEFAULT NULL,
+  `title` varchar(512) DEFAULT NULL,
   `request_contact_id` int(11) DEFAULT NULL COMMENT 'foreign to contact_person',
   `address_id` int(11) DEFAULT NULL COMMENT 'foreign to address',
   `primary_object_ref_id` int(11) DEFAULT NULL COMMENT 'foreign to objectref',
-  `grid_location` varchar(40) DEFAULT NULL COMMENT 'grid location',
+  `grid_location` varchar(512) DEFAULT NULL COMMENT 'grid location',
   `location_comment` varchar(512) DEFAULT NULL COMMENT 'comment about location',
   `location_contact_id` int(11) DEFAULT NULL COMMENT 'foreign to contactperson',
   `gps_latitude` float DEFAULT NULL COMMENT 'msp.workrequest.worklocation',
   `gps_longitude` float DEFAULT NULL COMMENT 'msp.workrequest.worklocation',
   `gps_altitude` float DEFAULT NULL COMMENT 'msp.workrequest.worklocation',
-  `internal_building_name` varchar(20) DEFAULT NULL COMMENT 'cim.work.worklocation.internallocation',
-  `internal_building_num` varchar(8) DEFAULT NULL COMMENT 'cim.work.worklocation.internallocation',
-  `internal_floor` varchar(3) DEFAULT NULL COMMENT 'cim.work.worklocation.internallocation',
-  `internal_room_num` varchar(5) DEFAULT NULL COMMENT 'cim.work.worklocation.internallocation',
+  `internal_building_name` varchar(512) DEFAULT NULL COMMENT 'cim.work.worklocation.internallocation',
+  `internal_building_num` varchar(512) DEFAULT NULL COMMENT 'cim.work.worklocation.internallocation',
+  `internal_floor` varchar(512) DEFAULT NULL COMMENT 'cim.work.worklocation.internallocation',
+  `internal_room_num` varchar(512) DEFAULT NULL COMMENT 'cim.work.worklocation.internallocation',
   PRIMARY KEY (`id`),
   KEY `fk_work_order_request_contact_id` (`request_contact_id`),
   KEY `fk_work_order_primary_object_id` (`primary_object_ref_id`),
@@ -1495,7 +1495,7 @@ DROP TABLE IF EXISTS `work_order_names`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `work_order_names` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) NOT NULL,
+  `name` varchar(512) NOT NULL,
   `name_type_id` int(11) DEFAULT NULL COMMENT 'foreign to name_type',
   `work_order_id` int(11) NOT NULL COMMENT 'foreign to work_order',
   PRIMARY KEY (`id`),
@@ -1637,11 +1637,11 @@ DROP TABLE IF EXISTS `work_task`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `work_task` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `mRID` varchar(20) NOT NULL COMMENT 'master resource id',
-  `instructions` varchar(1024) DEFAULT NULL COMMENT 'instructions for performing this task',
-  `subject` varchar(20) NOT NULL COMMENT 'document subject',
+  `mRID` varchar(512) NOT NULL COMMENT 'master resource id',
+  `instructions` varchar(512) DEFAULT NULL COMMENT 'instructions for performing this task',
+  `subject` varchar(512) NOT NULL COMMENT 'document subject',
   `crew_eta` timestamp NULL DEFAULT NULL COMMENT 'cim work.worktask.creweta',
-  `task_type` varchar(12) DEFAULT NULL COMMENT 'cim.work.worktask.taskKind',
+  `task_type` varchar(512) DEFAULT NULL COMMENT 'cim.work.worktask.taskKind',
   `old_asset_id` int(11) DEFAULT NULL COMMENT 'cim.work.worktask.oldAsset',
   PRIMARY KEY (`id`),
   KEY `fk_work_task_old_asset_id` (`old_asset_id`),
@@ -1670,7 +1670,7 @@ CREATE TABLE `work_task_assets` (
   `work_task_id` int(11) NOT NULL COMMENT 'foreign to work_task',
   `asset_id` int(11) NOT NULL COMMENT 'foreign to asset',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'created timestamp',
-  `created_by` varchar(20) DEFAULT NULL COMMENT 'created by',
+  `created_by` varchar(512) DEFAULT NULL COMMENT 'created by',
   PRIMARY KEY (`id`),
   KEY `fk_work_task_asset_id` (`asset_id`),
   KEY `fk_work_task_assets_work_id` (`work_task_id`),
@@ -1728,7 +1728,7 @@ CREATE TABLE `work_task_identified_objects` (
   `work_task_id` int(11) NOT NULL COMMENT 'foreign to work_task',
   `identified_object_id` int(11) NOT NULL COMMENT 'foreign to identified_object',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'created timestamp',
-  `created_by` varchar(20) DEFAULT NULL COMMENT 'created by',
+  `created_by` varchar(512) DEFAULT NULL COMMENT 'created by',
   PRIMARY KEY (`id`),
   KEY `fk_work_task_identified_objects_identified_object_id` (`identified_object_id`),
   KEY `fk_work_task_identified_object_work_id` (`work_task_id`),
@@ -1783,7 +1783,7 @@ DROP TABLE IF EXISTS `work_task_names`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `work_task_names` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) NOT NULL,
+  `name` varchar(512) NOT NULL,
   `work_task_id` int(11) NOT NULL COMMENT 'foreign to work_task',
   `name_type_id` int(11) DEFAULT NULL COMMENT 'foreign to name_type',
   PRIMARY KEY (`id`),
@@ -1842,9 +1842,9 @@ CREATE TABLE `workorderimage` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `workorder_id` int(11) DEFAULT NULL,
-  `url` varchar(800) DEFAULT NULL,
-  `error` varchar(256) DEFAULT NULL,
-  `filename` varchar(1025) DEFAULT NULL,
+  `url` varchar(512) DEFAULT NULL,
+  `error` varchar(512) DEFAULT NULL,
+  `filename` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
