@@ -2,6 +2,8 @@ package com.sixthc.hbm;
 
 // Generated Jun 3, 2015 2:34:41 PM by Hibernate Tools 3.2.2.GA
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -11,9 +13,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-
-import static javax.persistence.GenerationType.IDENTITY;
-
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -43,6 +42,8 @@ public class WorkTask implements java.io.Serializable {
 	private Date crewEta;
 	private String taskType;
 	private Set<WorkTaskAssets> workTaskAssetses = new HashSet<WorkTaskAssets>(
+			0);
+	private Set<WorkTaskOldAssets> workTaskOldAssetses = new HashSet<WorkTaskOldAssets>(
 			0);
 	private Set<WorkOrderWorkTasks> workOrderWorkTaskses = new HashSet<WorkOrderWorkTasks>(
 			0);
@@ -167,6 +168,15 @@ public class WorkTask implements java.io.Serializable {
 
 	public void setWorkTaskAssetses(Set<WorkTaskAssets> workTaskAssetses) {
 		this.workTaskAssetses = workTaskAssetses;
+	}
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "workTask")
+	public Set<WorkTaskOldAssets> getWorkTaskOldAssetses() {
+		return this.workTaskOldAssetses;
+	}
+
+	public void setWorkTaskOldAssetses(Set<WorkTaskOldAssets> workTaskOldAssetses) {
+		this.workTaskOldAssetses = workTaskOldAssetses;
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "workTask")

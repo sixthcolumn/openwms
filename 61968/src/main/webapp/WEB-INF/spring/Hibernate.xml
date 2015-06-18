@@ -42,6 +42,7 @@
 				<value>com.sixthc.hbm.AssetProcedures</value>
 				<value>com.sixthc.hbm.Comment</value>
 				<value>com.sixthc.hbm.Crew</value>
+				<value>com.sixthc.hbm.CrewAssets</value>
 				<value>com.sixthc.hbm.CrewNames</value>
 				<value>com.sixthc.hbm.District</value>
 				<value>com.sixthc.hbm.Email</value>
@@ -77,6 +78,7 @@
 				<value>com.sixthc.hbm.WorkPositionPoints</value>
 				<value>com.sixthc.hbm.WorkTask</value>
 				<value>com.sixthc.hbm.WorkTaskAssets</value>
+				<value>com.sixthc.hbm.WorkTaskOldAssets</value>
 				<value>com.sixthc.hbm.WorkTaskCrews</value>
 				<value>com.sixthc.hbm.WorkTaskIdentifiedObjects</value>
 				<value>com.sixthc.hbm.WorkTaskMaterialItems</value>

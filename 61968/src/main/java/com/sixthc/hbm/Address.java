@@ -383,15 +383,15 @@ public class Address implements java.io.Serializable {
 		this.timeZone = timeZone;
 	}
 
-	@Column(name = "coord_system", length = 12)
+	@Column(name = "coord_system", length = 512)
 	public String getCoordSystem() {
 		return this.coordSystem;
 	}
 
 	public void setCoordSystem(String coordSystem) {
-		con.check( "setCoordSystem", coordSystem, true, 12);
+		con.check( "setCoordSystem", coordSystem, true, 512);
 		this.coordSystem = coordSystem;
-	}
+	}	
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "address")
 	public Set<AddressDistricts> getAddressDistrictses() {

@@ -35,12 +35,19 @@ public class Asset implements java.io.Serializable {
 	private int criticalFlag;
 	private String utcNumber;
 	private Address address;
+	private String internalBuildingName;
+	private String internalBuildingNumber;
+	private String internalFloor;
+	private String internalRoomNumber;
 	private Set<WorkTask> workTasks = new HashSet<WorkTask>(0);
 	private Set<AssetProcedures> assetProcedureses = new HashSet<AssetProcedures>(
 			0);
 	private Set<AssetNames> assetNameses = new HashSet<AssetNames>(0);
 	private Set<WorkTaskAssets> workTaskAssetses = new HashSet<WorkTaskAssets>(
 			0);
+	private Set<WorkTaskOldAssets> workTaskOldAssetses = new HashSet<WorkTaskOldAssets>(
+			0);
+	private Set<CrewAssets> workCrewAssets = new HashSet<CrewAssets>(0);
 
 	public Asset() {
 	}
@@ -109,6 +116,43 @@ public class Asset implements java.io.Serializable {
 		this.address = address;
 	}
 	
+	
+	@Column(name = "internal_building_name", length = 512)
+	public String getInternalBuildingName() {
+		return internalBuildingName;
+	}
+
+	public void setInternalBuildingName(String internalBuildingName) {
+		this.internalBuildingName = internalBuildingName;
+	}
+
+	@Column(name = "internal_building_number", length = 512)
+	public String getInternalBuildingNumber() {
+		return internalBuildingNumber;
+	}
+
+	public void setInternalBuildingNumber(String internalBuildingNumber) {
+		this.internalBuildingNumber = internalBuildingNumber;
+	}
+
+	@Column(name = "internal_floor", length = 512)
+	public String getInternalFloor() {
+		return internalFloor;
+	}
+
+	public void setInternalFloor(String internalFloor) {
+		this.internalFloor = internalFloor;
+	}
+
+	@Column(name = "internal_room_number", length = 512)
+	public String getInternalRoomNumber() {
+		return internalRoomNumber;
+	}
+
+	public void setInternalRoomNumber(String internalRoomNumber) {
+		this.internalRoomNumber = internalRoomNumber;
+	}
+
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "address_id")	
 	public Address getAddress() {
@@ -150,5 +194,25 @@ public class Asset implements java.io.Serializable {
 	public void setWorkTaskAssetses(Set<WorkTaskAssets> workTaskAssetses) {
 		this.workTaskAssetses = workTaskAssetses;
 	}
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "asset")
+	public Set<WorkTaskOldAssets> getWorkTaskOldAssetses() {
+		return this.workTaskOldAssetses;
+	}
+
+	public void setWorkTaskOldAssetses(Set<WorkTaskOldAssets> workTaskOldAssetses) {
+		this.workTaskOldAssetses = workTaskOldAssetses;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "asset")
+	public Set<CrewAssets> getWorkCrewAssets() {
+		return workCrewAssets;
+	}
+
+	public void setWorkCrewAssets(Set<CrewAssets> workCrewAssets) {
+		this.workCrewAssets = workCrewAssets;
+	}
+	
+	
 
 }

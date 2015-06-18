@@ -21,6 +21,8 @@ import ch.iec.tc57._2011.schema.message.RequestType;
 import ch.iec.tc57._2011.sendmaintenanceorder.FaultMessage;
 import ch.iec.tc57._2011.sendmaintenanceorder.MaintenanceOrderPort;
 import ch.iec.tc57._2014.maintenanceorders.Asset;
+import ch.iec.tc57._2014.maintenanceorders.Asset.Procedures;
+import ch.iec.tc57._2014.maintenanceorders.Asset.Procedures.Measurements;
 import ch.iec.tc57._2014.maintenanceorders.AssetLocationHazard;
 import ch.iec.tc57._2014.maintenanceorders.Crew;
 import ch.iec.tc57._2014.maintenanceorders.CrewMember;
@@ -38,11 +40,11 @@ import ch.iec.tc57._2014.maintenanceorders.Organisation.StreetAddress;
 import ch.iec.tc57._2014.maintenanceorders.Organisation.StreetAddress.TownDetail;
 import ch.iec.tc57._2014.maintenanceorders.Work;
 import ch.iec.tc57._2014.maintenanceorders.Work.Priority;
+import ch.iec.tc57._2014.maintenanceorders.WorkAsset;
 import ch.iec.tc57._2014.maintenanceorders.WorkLocation;
 import ch.iec.tc57._2014.maintenanceorders.WorkLocation.CoordinateSystem;
 import ch.iec.tc57._2014.maintenanceorders.WorkLocation.MainAddress;
 import ch.iec.tc57._2014.maintenanceorders.WorkLocation.MainAddress.Status;
-import ch.iec.tc57._2014.maintenanceorders.WorkLocation.MainAddress.StreetDetail;
 import ch.iec.tc57._2014.maintenanceorders.WorkLocation.PositionPoints;
 import ch.iec.tc57._2014.maintenanceorders.WorkTask;
 import ch.iec.tc57._2014.maintenanceorders.WorkTask.MaterialItems;
@@ -56,13 +58,19 @@ import com.sixthc.hbm.Address;
 import com.sixthc.hbm.AddressDistricts;
 import com.sixthc.hbm.AddressHazards;
 import com.sixthc.hbm.AddressPositionPoints;
+import com.sixthc.hbm.AssetNames;
+import com.sixthc.hbm.AssetProcedures;
 import com.sixthc.hbm.ConstraintException;
+import com.sixthc.hbm.CrewAssets;
 import com.sixthc.hbm.CrewNames;
 import com.sixthc.hbm.Hazards;
 import com.sixthc.hbm.MaterialItem;
 import com.sixthc.hbm.MaterialItemNames;
+import com.sixthc.hbm.Measurement;
 import com.sixthc.hbm.Nametype;
 import com.sixthc.hbm.Organization;
+import com.sixthc.hbm.Procedure;
+import com.sixthc.hbm.ProcedureMeasurements;
 import com.sixthc.hbm.WorkOrder;
 import com.sixthc.hbm.WorkOrderHazards;
 import com.sixthc.hbm.WorkOrderNames;
@@ -74,6 +82,7 @@ import com.sixthc.hbm.WorkTaskAssets;
 import com.sixthc.hbm.WorkTaskCrews;
 import com.sixthc.hbm.WorkTaskMaterialItems;
 import com.sixthc.hbm.WorkTaskNames;
+import com.sixthc.hbm.WorkTaskOldAssets;
 import com.sixthc.hbm.WorkTaskTimeSchedules;
 
 public class MaintenanceOrderImpl implements MaintenanceOrderPort {
@@ -92,7 +101,7 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 	@Resource(name = "organizationDao")
 	private OrganizationDao orgDao;
 
-	List<com.sixthc.hbm.OrganizationNames> parseNames(List<Names> reqNames) {
+	private List<com.sixthc.hbm.OrganizationNames> parseNames(List<Names> reqNames) {
 		Vector<com.sixthc.hbm.OrganizationNames> namesList = new Vector<com.sixthc.hbm.OrganizationNames>();
 		for (Names reqName : reqNames) {
 			com.sixthc.hbm.OrganizationNames names = new com.sixthc.hbm.OrganizationNames();
@@ -121,6 +130,94 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 		}
 		return namesList;
 	}
+	
+	private List<com.sixthc.hbm.WorkTaskNames> parseWorkTaskNames(List<WorkTask.Names> reqNames) {
+		Vector<com.sixthc.hbm.WorkTaskNames> namesList = new Vector<com.sixthc.hbm.WorkTaskNames>();
+		for (WorkTask.Names reqName : reqNames) {
+			com.sixthc.hbm.WorkTaskNames names = new com.sixthc.hbm.WorkTaskNames();
+			namesList.add(names);
+			names.setName(reqName.getName());
+
+			NameType reqNameType = reqName.getNameType();
+			if (reqNameType != null) {
+				com.sixthc.hbm.Nametype nameType = new com.sixthc.hbm.Nametype();
+				nameType.setName(reqNameType.getName());
+				nameType.setDescription(reqNameType.getDescription());
+				names.setNametype(nameType);
+				nameType.getWorkTaskNameses().add(names);
+
+				NameTypeAuthority reqNameTypeAuthority = reqNameType
+						.getNameTypeAuthority();
+				if (reqNameTypeAuthority != null) {
+					com.sixthc.hbm.NameTypeAuthority nameTypeAuthority = new com.sixthc.hbm.NameTypeAuthority();
+					nameTypeAuthority.setName(reqNameTypeAuthority.getName());
+					nameTypeAuthority.setDescription(reqNameTypeAuthority
+							.getDescription());
+					nameType.setNameTypeAuthority(nameTypeAuthority);
+				}
+			}
+		}
+		return namesList;
+	}
+
+	private List<com.sixthc.hbm.AssetNames> parseAssetNames(List<Asset.Names> reqNames) {
+		Vector<com.sixthc.hbm.AssetNames> namesList = new Vector<com.sixthc.hbm.AssetNames>();
+		for (Asset.Names reqName : reqNames) {
+			com.sixthc.hbm.AssetNames names = new com.sixthc.hbm.AssetNames();
+			namesList.add(names);
+			names.setName(reqName.getName());
+
+			NameType reqNameType = reqName.getNameType();
+			if (reqNameType != null) {
+				com.sixthc.hbm.Nametype nameType = new com.sixthc.hbm.Nametype();
+				nameType.setName(reqNameType.getName());
+				nameType.setDescription(reqNameType.getDescription());
+				names.setNametype(nameType);
+				nameType.getAssetNameses().add(names);
+
+				NameTypeAuthority reqNameTypeAuthority = reqNameType
+						.getNameTypeAuthority();
+				if (reqNameTypeAuthority != null) {
+					com.sixthc.hbm.NameTypeAuthority nameTypeAuthority = new com.sixthc.hbm.NameTypeAuthority();
+					nameTypeAuthority.setName(reqNameTypeAuthority.getName());
+					nameTypeAuthority.setDescription(reqNameTypeAuthority
+							.getDescription());
+					nameType.setNameTypeAuthority(nameTypeAuthority);
+				}
+			}
+		}
+		return namesList;
+	}
+
+	private List<com.sixthc.hbm.CrewNames> parseCrewNames(List<Crew.Names> reqNames) {
+		Vector<com.sixthc.hbm.CrewNames> namesList = new Vector<com.sixthc.hbm.CrewNames>();
+		for (Crew.Names reqName : reqNames) {
+			com.sixthc.hbm.CrewNames names = new com.sixthc.hbm.CrewNames();
+			namesList.add(names);
+			names.setName(reqName.getName());
+
+			ch.iec.tc57._2014.maintenanceorders.Crew.Names.NameType reqNameType = reqName
+					.getNameType();
+			if (reqNameType != null) {
+				com.sixthc.hbm.Nametype nameType = new com.sixthc.hbm.Nametype();
+				nameType.setName(reqNameType.getName());
+				nameType.setDescription(reqNameType.getDescription());
+				names.setNametype(nameType);
+				nameType.getCrewNameses().add(names);
+
+				ch.iec.tc57._2014.maintenanceorders.Crew.Names.NameType.NameTypeAuthority reqNameTypeAuthority = reqNameType
+						.getNameTypeAuthority();
+				if (reqNameTypeAuthority != null) {
+					com.sixthc.hbm.NameTypeAuthority nameTypeAuthority = new com.sixthc.hbm.NameTypeAuthority();
+					nameTypeAuthority.setName(reqNameTypeAuthority.getName());
+					nameTypeAuthority.setDescription(reqNameTypeAuthority
+							.getDescription());
+					nameType.setNameTypeAuthority(nameTypeAuthority);
+				}
+			}
+		}
+		return namesList;
+	}
 
 	private void parseStreetDetail(com.sixthc.hbm.Address woAddress,
 			WorkLocation.MainAddress addr) {
@@ -136,9 +233,11 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 			woAddress.setSdSuiteNumber(streetDetail.getSuiteNumber());
 			woAddress.setSdBuildingName(streetDetail.getBuildingName());
 
-			streetDetail.getAddressGeneral(); // TODO : ?
-			streetDetail.getName(); // TODO : ?
-			streetDetail.getType(); // TODO : ?
+			streetDetail.getAddressGeneral(); // TODO : not in hbm address
+			streetDetail.getName(); // TODO : not in hbm address
+			streetDetail.isWithinTownLimits(); // TODO : not in hbm address
+			woAddress.setSdType(streetDetail.getType());
+
 		}
 
 		ch.iec.tc57._2014.maintenanceorders.WorkLocation.MainAddress.TownDetail townDetail = addr
@@ -178,9 +277,9 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 			woAddress.setSdSuiteNumber(streetDetail.getSuiteNumber());
 			woAddress.setSdBuildingName(streetDetail.getBuildingName());
 
-			streetDetail.getAddressGeneral(); // TODO : ?
-			streetDetail.getName(); // TODO : ?
-			streetDetail.getType(); // TODO : ?
+			streetDetail.getAddressGeneral(); // TODO : no field in hbm address
+			streetDetail.getName(); // TODO : no field in hbm address
+			woAddress.setSdType(streetDetail.getType());
 		}
 
 		TownDetail townDetail = addr.getTownDetail();
@@ -190,12 +289,12 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 			woAddress.setTdCountry(townDetail.getCountry());
 			woAddress.setTdName(townDetail.getName());
 			woAddress.setTdSection(townDetail.getSection());
-			woAddress.setTdSection(townDetail.getStateOrProvince());
+			woAddress.setTdStateProvince(townDetail.getStateOrProvince());
 		}
 
 	}
 
-	public com.sixthc.hbm.Nametype parseNameType(NameType from) {
+	private com.sixthc.hbm.Nametype parseNameType(ch.iec.tc57._2014.maintenanceorders.NameType from) {
 		if (from != null) {
 			com.sixthc.hbm.Nametype nameType = new com.sixthc.hbm.Nametype();
 			nameType.setName(from.getName());
@@ -215,7 +314,7 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 		return null;
 	}
 
-	public com.sixthc.hbm.Nametype parseNameType(Crew.Names.NameType from) {
+	private com.sixthc.hbm.Nametype parseNameType(Crew.Names.NameType from) {
 		if (from != null) {
 			com.sixthc.hbm.Nametype nameType = new com.sixthc.hbm.Nametype();
 			nameType.setName(from.getName());
@@ -233,6 +332,148 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 			return nameType;
 		}
 		return null;
+	}
+
+	private com.sixthc.hbm.Asset parseAsset(Asset reqAsset) {
+		com.sixthc.hbm.Asset workAsset = new com.sixthc.hbm.Asset();
+		workAsset.setMrid(reqAsset.getMRID());
+		WorkLocation reqAssetLoc = reqAsset.getLocation();
+		reqAsset.isCritical(); // TODO : Add to hbm asset
+		workAsset.setUtcNumber(reqAsset.getUtcNumber());
+		if (reqAssetLoc != null) {
+			MainAddress reqMainAddress = reqAssetLoc.getMainAddress();
+
+			Address workAssetAddress = new Address();
+			workAsset.setAddress(workAssetAddress);
+			reqAssetLoc.getMRID(); // TODO : ?
+
+			InternalLocation reqInternalLoc = reqAssetLoc.getInternalLocation();
+			if (reqInternalLoc != null) {
+				workAsset.setInternalBuildingName(reqInternalLoc
+						.getBuildingName());
+				workAsset.setInternalBuildingNumber(reqInternalLoc
+						.getBuildingNumber());
+				workAsset.setInternalFloor(reqInternalLoc.getFloor());
+				workAsset.setInternalRoomNumber(reqInternalLoc.getRoomNumber());
+			}
+
+			// TODO : What value is it that we're supposed to return, a uuid for the work order
+			if (reqMainAddress != null) {
+				parseStreetDetail(workAssetAddress, reqMainAddress);
+				reqMainAddress.getStatus(); // TODO : ??
+				workAsset.setAddress(workAssetAddress);
+			}
+
+			if (reqAssetLoc.getCoordinateSystem() != null) {
+				workAssetAddress.setCoordSystem(reqAssetLoc
+						.getCoordinateSystem().getCrsUrn());
+
+				workAssetAddress.setDirections(reqAssetLoc.getDirection());
+			}
+
+			for (AssetLocationHazard reqHaz : reqAssetLoc.getHazards()) {
+
+				Hazards workhaz = new Hazards();
+				AddressHazards addrHazards = new AddressHazards();
+				workAssetAddress.getAddressHazardses().add(addrHazards);
+				addrHazards.setAddress(workAssetAddress);
+				addrHazards.setHazards(workhaz);
+
+				workhaz.setHazardName(reqHaz.getType()); // TODO : Wrong?
+			}
+
+			InternalLocation reqIloc = reqAssetLoc.getInternalLocation();
+			if (reqIloc != null) {
+				reqIloc.getBuildingName(); // TODO : ?
+				reqIloc.getBuildingNumber(); // TODO : ?
+				reqIloc.getFloor(); // TODO : ?
+				reqIloc.getRoomNumber(); // TODO : ?
+			}
+
+			reqAssetLoc.getMRID(); // TODO : ?
+
+			Set<AddressDistricts> districts = workAssetAddress
+					.getAddressDistrictses();
+
+			if (districts != null) {
+				for (AddressDistricts addr : districts) {
+					AddressDistricts d = new AddressDistricts();
+				}
+			}
+
+			List<PositionPoints> reqPoints = reqAssetLoc.getPositionPoints();
+			for (PositionPoints p : reqPoints) {
+				AddressPositionPoints workPoints = new AddressPositionPoints();
+				try {
+					workPoints.setZposition(Integer.valueOf(p.getZPosition()));
+					workPoints.setXposition(Integer.valueOf(p.getXPosition()));
+					workPoints.setYposition(Integer.valueOf(p.getYPosition()));
+					workPoints.setSequence(p.getSequenceNumber().intValue());
+				} catch (NumberFormatException nfe) {
+					log.error("position value ignored, not number");
+					throw new ConstraintException(
+							"address position points : non integer value passed");
+				}
+				workAssetAddress.getAddressPositionPointses().add(workPoints);
+				workPoints.setAddress(workAssetAddress);
+
+			}
+
+		}
+
+		for (Procedures reqProc : reqAsset.getProcedures()) {
+			AssetProcedures workProcs = new AssetProcedures();
+			Procedure workProc = new Procedure();
+
+			workAsset.getAssetProcedureses().add(workProcs);
+			workProcs.setProcedure(workProc);
+			workProcs.setAsset(workAsset);
+			workProc.getAssetProcedureses().add(workProcs);
+
+			workProc.setInstruction(reqProc.getInstruction());
+			if (reqProc.getKind() != null)
+				workProc.setKind(reqProc.getKind().value());
+			try {
+				workProc.setSequence(Integer.valueOf(reqProc
+						.getSequenceNumber()));
+			} catch (NumberFormatException nfe) {
+				log.error("position value ignored, not number");
+				throw new ConstraintException(
+						"asset sequence : non integer value passed");
+			}
+
+			for (Measurements reqMeasure : reqProc.getMeasurements()) {
+				ProcedureMeasurements workMeasures = new ProcedureMeasurements();
+				workMeasures.setProcedure(workProc);
+				workProc.getProcedureMeasurementses().add(workMeasures);
+
+				Measurement workMeasure = new Measurement();
+				workMeasures.setMeasurement(workMeasure);
+				workMeasure.getProcedureMeasurementses().add(workMeasures);
+
+				workMeasure.setType(reqMeasure.getMeasurementType());
+				if (reqMeasure.getPhases() != null)
+					workMeasure.setPhases(reqMeasure.getPhases().value());
+				try {
+					workMeasure.setUnitMultiplier(Float.valueOf(reqMeasure
+							.getUnitMultiplier()));
+				} catch (NumberFormatException nfe) {
+					log.error("position value ignored, not number");
+					throw new ConstraintException(
+							"asset procedure measure unit multiplier : non float value passed");
+				}
+				workMeasure.setUnitSymbol(reqMeasure.getUnitSymbol());
+			}
+		}
+
+		List<com.sixthc.hbm.AssetNames> namesList = parseAssetNames(reqAsset
+				.getNames());
+		for (AssetNames assetNames : namesList) {
+			workAsset.getAssetNameses().add(assetNames);
+			assetNames.setAsset(workAsset);
+		}
+
+		return workAsset;
 	}
 
 	@Override
@@ -273,26 +514,33 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 					workOrg.setAddress(woAddress);
 					woAddress.getOrganizations().add(workOrg);
 				}
-			//	orgDao.save(workOrg);
+				//	orgDao.save(workOrg);
 				orgList.add(workOrg);
 			}
 
 			for (Work reqWork : req.getWork()) {
 				WorkOrder workOrder = new WorkOrder();
-				
+
 				// add orgs to all work orders
-				for( Organization workOrg : orgList ) {
+				for (Organization workOrg : orgList) {
 					WorkOrderOrganizations workOrgs = new WorkOrderOrganizations();
 					workOrgs.setOrganization(workOrg);
 					workOrg.getWorkOrderOrganizations().add(workOrgs);
-					workOrder.getWorkOrderOrganizations().add(workOrgs);	
+					workOrder.getWorkOrderOrganizations().add(workOrgs);
 					workOrgs.setWorkOrder(workOrder);
 				}
-				
+
 				workOrder.setMrid(reqWork.getMRID());
 				workOrder.setCreatedBy("WMS"); // TODO : ?
+				// TODO : Following could be either work_order statusKind or Kind. which?
 				workOrder.setKind(reqWork.getKind() != null ? reqWork.getKind()
 						.value() : "Not Set");
+
+				Timestamp workUpdatedDateTime = parseDate(reqWork
+						.getLastModifiedDateTime());
+				if (workUpdatedDateTime != null)
+					workOrder.setUpdatedAt(workUpdatedDateTime);
+
 				reqWork.getLastModifiedDateTime();
 				workOrder.setWorkOrderName("NOT SET"); // TODO : ?
 				workOrder.setStatus("TBD"); // TODO : ?
@@ -353,7 +601,8 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 
 				WorkLocation reqLoc = reqWork.getWorkLocation();
 				if (reqLoc != null) {
-					reqLoc.getDirection(); // TODO : ?
+					reqLoc.getDirection(); // TODO : Need loc_Direction in work_order
+					reqLoc.getMRID(); // TODO : Need loc_MRID in work_order
 
 					for (AssetLocationHazard reqHazard : reqLoc.getHazards()) {
 						Hazards hazards = new Hazards();
@@ -367,14 +616,16 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 
 					InternalLocation iloc = reqLoc.getInternalLocation();
 					if (iloc != null) {
-						iloc.getBuildingName(); // TODO : ?
-						iloc.getBuildingNumber(); // TODO : ?
-						iloc.getFloor(); // TODO : ?
-						iloc.getRoomNumber(); // TODO : ?
+						workOrder.setInternalBuildingName(iloc
+								.getBuildingName());
+						workOrder.setInternalBuildingNum(iloc
+								.getBuildingNumber());
+						workOrder.setInternalFloor(iloc.getFloor());
+						workOrder.setInternalRoomNum(iloc.getRoomNumber());
 					}
 
-					MainAddress maddr = reqLoc.getMainAddress();
-					if (maddr != null) {
+					MainAddress reqMaddr = reqLoc.getMainAddress();
+					if (reqMaddr != null) {
 						Address address = new Address();
 
 						address.getAddressWorkorders().add(workOrder);
@@ -385,20 +636,16 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 						if (coordSystem != null) {
 							address.setCoordSystem(coordSystem.getCrsUrn());
 						}
-						parseStreetDetail(address, maddr);
-						StreetDetail streetDetail = maddr.getStreetDetail();
-						ch.iec.tc57._2014.maintenanceorders.WorkLocation.MainAddress.TownDetail townDetail = maddr
-								.getTownDetail();
+						parseStreetDetail(address, reqMaddr);
 
-					}
-
-					Status mstatus = maddr.getStatus();
-					if (mstatus != null) {
-						mstatus.getDateTime(); // TODO : ?
-						mstatus.getDateTime(); // TODO : ?
-						mstatus.getReason(); // TODO : ?
-						mstatus.getRemark(); // TODO : ?
-						mstatus.getValue(); // TODO : ?
+						Status mstatus = reqMaddr.getStatus();
+						if (mstatus != null) {
+							mstatus.getDateTime(); // TODO : not in hbm address
+							mstatus.getDateTime(); // TODO : not in hbm address
+							mstatus.getReason(); // TODO : not in hbm address
+							mstatus.getRemark(); // TODO : not in hbm address
+							mstatus.getValue(); // TODO : not in hbm address
+						}
 					}
 
 					for (PositionPoints p : reqLoc.getPositionPoints()) {
@@ -432,108 +679,20 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 
 					for (Asset reqAsset : reqTask.getAssets()) {
 						WorkTaskAssets workTaskAssets = new WorkTaskAssets();
-						com.sixthc.hbm.Asset workAsset = new com.sixthc.hbm.Asset();
+						com.sixthc.hbm.Asset workAsset = parseAsset(reqAsset);
 						workTaskAssets.setAsset(workAsset);
 						workTask.getWorkTaskAssetses().add(workTaskAssets);
 						workTaskAssets.setWorkTask(workTask);
 						workAsset.setMrid(reqAsset.getMRID());
-						workTaskAssets.setCreatedAt(new Date(System.currentTimeMillis())); // TODO : Not passed?
+						workTaskAssets.setCreatedAt(new Date(System
+								.currentTimeMillis())); // TODO : Not passed?
 
-						WorkLocation reqAssetLoc = reqAsset.getLocation();
-						if (reqAssetLoc != null) {
-							MainAddress reqMainAddress = reqAssetLoc
-									.getMainAddress();
-
-							Address workAssetAddress = new Address();
-							workAsset.setAddress(workAssetAddress);
-							reqAssetLoc.getMRID(); // TODO : ?
-
-							if (reqMainAddress != null) {
-								parseStreetDetail(workAssetAddress,
-										reqMainAddress);
-								reqMainAddress.getStatus(); // TODO : ??
-								workAsset.setAddress(workAssetAddress);
-							}
-
-							if (reqAssetLoc.getCoordinateSystem() != null) {
-								workAssetAddress.setCoordSystem(reqAssetLoc
-										.getCoordinateSystem().getCrsUrn());
-
-								workAssetAddress.setDirections(reqAssetLoc
-										.getDirection());
-							}
-
-							for (AssetLocationHazard reqHaz : reqAssetLoc
-									.getHazards()) {
-								
-								Hazards workhaz = new Hazards();	
-								AddressHazards addrHazards = new AddressHazards();
-								workAssetAddress.getAddressHazardses().add(addrHazards);
-								addrHazards.setAddress(workAssetAddress);
-								addrHazards.setHazards(workhaz);
-								
-								workhaz.setHazardName(reqHaz.getType()); // TODO : Wrong?
-							}
-
-							InternalLocation reqIloc = reqAssetLoc
-									.getInternalLocation();
-							if (reqIloc != null) {
-								reqIloc.getBuildingName(); // TODO : ?
-								reqIloc.getBuildingNumber(); // TODO : ?
-								reqIloc.getFloor(); // TODO : ?
-								reqIloc.getRoomNumber(); // TODO : ?
-							}
-
-							reqAssetLoc.getMRID(); // TODO : ?
-
-							Set<AddressDistricts> districts = workAssetAddress
-									.getAddressDistrictses();
-
-							if (districts != null) {
-								for (AddressDistricts addr : districts) {
-									AddressDistricts d = new AddressDistricts();
-								}
-							}
-
-							List<PositionPoints> reqPoints = reqAssetLoc
-									.getPositionPoints();
-							for (PositionPoints p : reqPoints) {
-								AddressPositionPoints workPoints = new AddressPositionPoints();
-								try {
-									workPoints.setZposition(Integer.valueOf(p
-											.getZPosition()));
-									workPoints.setXposition(Integer.valueOf(p
-											.getXPosition()));
-									workPoints.setYposition(Integer.valueOf(p
-											.getYPosition()));
-									workPoints.setSequence(p
-											.getSequenceNumber().intValue());
-								} catch (NumberFormatException nfe) {
-									log.error("position value ignored, not number");
-									throw new ConstraintException(
-											"address position points : non integer value passed");
-								}
-								workAssetAddress.getAddressPositionPointses()
-										.add(workPoints);
-								workPoints.setAddress(workAssetAddress);
-
-							}
-						}
-					}
-
-					XMLGregorianCalendar dt = reqWork.getRequestDateTime();
-					Timestamp timestamp = new Timestamp(dt
-							.toGregorianCalendar().getTimeInMillis());
-					if (dt != null) {
-						log.debug("request date : " + dt);
-						dt.toGregorianCalendar().getTime();
-						workOrder.setRequestDatetime(timestamp);
 					}
 
 					Timestamp reqCrewEta = parseDate(reqTask.getCrewETA());
 					if (reqCrewEta != null)
 						if (reqDateTime != null)
-							workOrder.setRequestDatetime(reqCrewEta);
+							workTask.setCrewEta(reqCrewEta);
 
 					for (Crew reqCrew : reqTask.getCrews()) {
 						WorkTaskCrews workCrews = new WorkTaskCrews();
@@ -542,22 +701,24 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 						com.sixthc.hbm.Crew workCrew = new com.sixthc.hbm.Crew();
 						workCrews.setCrew(workCrew);
 						workCrew.setMrid(reqCrew.getMRID());
-						Set<CrewNames> workCrewNames = workCrew
-								.getCrewNameses();
-						for (ch.iec.tc57._2014.maintenanceorders.Crew.Names reqCrewName : reqCrew
-								.getNames()) {
-							CrewNames workCrewName = new CrewNames();
-							workCrewName.setName(reqCrewName.getName());
 
-							com.sixthc.hbm.Nametype crewNameType = parseNameType(reqCrewName
-									.getNameType());
-							if (crewNameType != null) {
-								workCrewName.setNametype(crewNameType);
-								// TODO : Probably have to point back to crew
-								// names (crewNameType.get...)
-							}
+						parseCrewNames(reqCrew.getNames());
+
+						List<com.sixthc.hbm.CrewNames> namesList = parseCrewNames(reqCrew
+								.getNames());
+						for (CrewNames crewNames : namesList) {
+							workCrew.getCrewNameses().add(crewNames);
+							crewNames.setCrew(workCrew);
 						}
-						reqCrew.getWorkAssets();
+
+						for (WorkAsset reqCrewAsset : reqCrew.getWorkAssets()) {
+							com.sixthc.hbm.Asset workCrewAsset = parseAsset(reqCrewAsset);
+							CrewAssets crewAssets = new CrewAssets();
+							workCrewAsset.getWorkCrewAssets().add(crewAssets);
+							crewAssets.setAsset(workCrewAsset);
+							workCrew.getCrewAssets().add(crewAssets);
+							crewAssets.setCrew(workCrew);
+						}
 
 						for (CrewMember reqCrewMember : reqCrew
 								.getCrewMembers()) {
@@ -566,24 +727,38 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 														// for crew member
 														// first/last?
 							reqPerson.getLastName(); // TODO : see above
+
 						}
 					}
 
 					workTask.setInstructions(reqTask.getInstruction());
 
-					WorkTaskMaterialItems workTaskItems = new WorkTaskMaterialItems();
 					for (MaterialItems reqMat : reqTask.getMaterialItems()) {
+						WorkTaskMaterialItems workTaskItems = new WorkTaskMaterialItems();
 						MaterialItem workMatItem = new MaterialItem();
+
+						workTaskItems.setWorkTask(workTask);
+						workTask.getWorkTaskMaterialItemses()
+								.add(workTaskItems);
+
 						workTaskItems.setMaterialItem(workMatItem);
 						workMatItem.getWorkTaskMaterialItemses().add(
 								workTaskItems);
 
 						Quantity reqMatQuantity = reqMat.getQuantity();
-						BigInteger reqMatQuantityValue = reqMatQuantity
-								.getValue();
-						if (reqMatQuantityValue != null)
-							workMatItem.setQuantity(reqMatQuantityValue
-									.floatValue());
+						if (reqMatQuantity != null) {
+							BigInteger reqMatQuantityValue = reqMatQuantity
+									.getValue();
+							if (reqMatQuantityValue != null)
+								workMatItem.setQuantity(reqMatQuantityValue
+										.floatValue());
+
+							workMatItem.setMultiplier(reqMatQuantity
+									.getMultiplier());
+							
+							workMatItem.setUnit(reqMatQuantity.getUnit());
+
+						}
 
 						Name reqMatNames = reqMat.getNames();
 						MaterialItemNames workMatItemName = new MaterialItemNames();
@@ -604,24 +779,30 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 					}
 
 					workTask.setMrid(reqTask.getMRID());
-					for (ch.iec.tc57._2014.maintenanceorders.WorkTask.Names reqNames : reqTask
-							.getNames()) {
-						WorkTaskNames workTaskName = new WorkTaskNames();
-						workTaskName.setName(reqNames.getName());
-						NameType reqNamesType = reqNames.getNameType();
-						if (reqNamesType != null) {
-							Nametype workTaskNameType = parseNameType(reqNamesType);
-							workTaskNameType.getWorkTaskNameses().add(
-									workTaskName);
-							workTaskName.setNametype(workTaskNameType);
-						}
+					
+					for( WorkTaskNames workTaskNames : parseWorkTaskNames(reqTask.getNames())) {
+						workTaskNames.setWorkTask(workTask);
+						workTask.getWorkTaskNameses().add(workTaskNames);
 					}
 
-					reqTask.getOldAsset(); // TODO : ?
+					com.sixthc.hbm.Asset oldAsset = parseAsset(reqTask
+							.getOldAsset());
+					com.sixthc.hbm.WorkTaskOldAssets workTaskOldAssets = new WorkTaskOldAssets();
+					
+					workTaskOldAssets.setAsset(oldAsset);
+					oldAsset.getWorkTaskOldAssetses().add(workTaskOldAssets);
+					
+					workTaskOldAssets.setWorkTask(workTask);
+					workTask.getWorkTaskOldAssetses().add(workTaskOldAssets);
+					
+					workTaskOldAssets.setCreatedAt(new Date(System
+							.currentTimeMillis())); // TODO : Not passed?
 
-					reqTask.getStatusKind(); // TODO : ?
+					reqTask.getStatusKind(); // TODO : need to add to hbm.work_task
+					reqTask.getTaskKind(); // TODO : need to add to hbm.work_task
 
 					workTask.setSubject(reqTask.getSubject());
+
 
 					WorkTimeSchedule reqTaskSchedules = reqTask
 							.getTimeSchedules();

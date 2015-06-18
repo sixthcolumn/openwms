@@ -31,6 +31,7 @@ public class Crew implements java.io.Serializable {
 	private Integer id;
 	private String mrid;
 	private Set<WorkTaskCrews> workTaskCrewses = new HashSet<WorkTaskCrews>(0);
+	private Set<CrewAssets> crewAssets = new HashSet<CrewAssets>(0);
 	private Set<CrewNames> crewNameses = new HashSet<CrewNames>(0);
 
 	public Crew() {
@@ -86,5 +87,16 @@ public class Crew implements java.io.Serializable {
 	public void setCrewNameses(Set<CrewNames> crewNameses) {
 		this.crewNameses = crewNameses;
 	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "crew")
+	public Set<CrewAssets> getCrewAssets() {
+		return crewAssets;
+	}
+
+	public void setCrewAssets(Set<CrewAssets> crewAssets) {
+		this.crewAssets = crewAssets;
+	}
+	
+	
 
 }

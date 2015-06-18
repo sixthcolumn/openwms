@@ -31,7 +31,7 @@ public class MaterialItem implements java.io.Serializable {
 			.getLogger(MaterialItem.class);
 
 	private Integer id;
-	private Float multiplier;
+	private String multiplier;
 	private String unit;
 	private Float quantity;
 	private Set<WorkTaskMaterialItems> workTaskMaterialItemses = new HashSet<WorkTaskMaterialItems>(
@@ -42,7 +42,7 @@ public class MaterialItem implements java.io.Serializable {
 	public MaterialItem() {
 	}
 
-	public MaterialItem(Float multiplier, String unit, Float quantity,
+	public MaterialItem(String multiplier, String unit, Float quantity,
 			Set<WorkTaskMaterialItems> workTaskMaterialItemses,
 			Set<MaterialItemNames> materialItemNameses) {
 		this.multiplier = multiplier;
@@ -64,12 +64,12 @@ public class MaterialItem implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "multiplier", precision = 12, scale = 0)
-	public Float getMultiplier() {
+	@Column(name = "multiplier")
+	public String getMultiplier() {
 		return this.multiplier;
 	}
 
-	public void setMultiplier(Float multiplier) {
+	public void setMultiplier(String multiplier) {
 		log.debug("setMultiplier : " + multiplier);
 		this.multiplier = multiplier;
 	}

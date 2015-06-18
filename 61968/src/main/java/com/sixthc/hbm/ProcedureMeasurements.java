@@ -2,6 +2,7 @@ package com.sixthc.hbm;
 
 // Generated Jun 3, 2015 2:34:41 PM by Hibernate Tools 3.2.2.GA
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -49,7 +50,7 @@ public class ProcedureMeasurements implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	@JoinColumn(name = "measurement_id", nullable = false)
 	public Measurement getMeasurement() {
 		return this.measurement;
@@ -59,7 +60,7 @@ public class ProcedureMeasurements implements java.io.Serializable {
 		this.measurement = measurement;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	@JoinColumn(name = "procedure_id", nullable = false)
 	public Procedure getProcedure() {
 		return this.procedure;

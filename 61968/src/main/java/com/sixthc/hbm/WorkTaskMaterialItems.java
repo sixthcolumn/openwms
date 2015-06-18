@@ -2,6 +2,7 @@ package com.sixthc.hbm;
 
 // Generated Jun 3, 2015 2:34:41 PM by Hibernate Tools 3.2.2.GA
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -49,7 +50,7 @@ public class WorkTaskMaterialItems implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	@JoinColumn(name = "material_item_id", nullable = false)
 	public MaterialItem getMaterialItem() {
 		return this.materialItem;
@@ -59,7 +60,7 @@ public class WorkTaskMaterialItems implements java.io.Serializable {
 		this.materialItem = materialItem;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	@JoinColumn(name = "work_task_id", nullable = false)
 	public WorkTask getWorkTask() {
 		return this.workTask;
