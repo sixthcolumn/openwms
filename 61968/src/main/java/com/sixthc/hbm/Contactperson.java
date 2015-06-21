@@ -38,7 +38,6 @@ public class Contactperson implements java.io.Serializable {
 			.getLogger(Contactperson.class);
 
 	private Integer id;
-	private IdentifiedObject identifiedObject;
 	private String lastname;
 	private String firstname;
 	private String middle;
@@ -70,7 +69,6 @@ public class Contactperson implements java.io.Serializable {
 	}
 
 	public Contactperson(
-			IdentifiedObject identifiedObject,
 			String lastname,
 			String firstname,
 			String middle,
@@ -86,7 +84,6 @@ public class Contactperson implements java.io.Serializable {
 			Set<ContactpersonAddresses> contactpersonAddresseses,
 			Set<ContactpersonEmails> contactpersonEmailses,
 			Set<WorkOrder> workOrdersForRequestContactId) {
-		this.identifiedObject = identifiedObject;
 		this.lastname = lastname;
 		this.firstname = firstname;
 		this.middle = middle;
@@ -113,16 +110,6 @@ public class Contactperson implements java.io.Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "identified_object_id")
-	public IdentifiedObject getIdentifiedObject() {
-		return this.identifiedObject;
-	}
-
-	public void setIdentifiedObject(IdentifiedObject identifiedObject) {
-		this.identifiedObject = identifiedObject;
 	}
 
 	@Column(name = "lastname", nullable = false, length = 20)

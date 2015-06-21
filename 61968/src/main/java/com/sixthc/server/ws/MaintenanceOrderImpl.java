@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 import java.util.Vector;
 
 import javax.annotation.Resource;
@@ -15,6 +16,7 @@ import org.apache.log4j.Logger;
 import org.multispeak.v5_0.wsdl.wo_server.WOServerSoap;
 
 import ch.iec.tc57._2011.maintenanceordermessage.MaintenanceOrderPayloadType;
+import ch.iec.tc57._2011.schema.message.ErrorType;
 import ch.iec.tc57._2011.schema.message.HeaderType;
 import ch.iec.tc57._2011.schema.message.ReplyType;
 import ch.iec.tc57._2011.schema.message.RequestType;
@@ -60,6 +62,7 @@ import com.sixthc.hbm.AddressHazards;
 import com.sixthc.hbm.AddressPositionPoints;
 import com.sixthc.hbm.AssetNames;
 import com.sixthc.hbm.AssetProcedures;
+import com.sixthc.hbm.Attachment;
 import com.sixthc.hbm.ConstraintException;
 import com.sixthc.hbm.CrewAssets;
 import com.sixthc.hbm.CrewNames;
@@ -72,6 +75,7 @@ import com.sixthc.hbm.Organization;
 import com.sixthc.hbm.Procedure;
 import com.sixthc.hbm.ProcedureMeasurements;
 import com.sixthc.hbm.WorkOrder;
+import com.sixthc.hbm.WorkOrderAttachments;
 import com.sixthc.hbm.WorkOrderHazards;
 import com.sixthc.hbm.WorkOrderNames;
 import com.sixthc.hbm.WorkOrderOrganizations;
@@ -84,6 +88,8 @@ import com.sixthc.hbm.WorkTaskMaterialItems;
 import com.sixthc.hbm.WorkTaskNames;
 import com.sixthc.hbm.WorkTaskOldAssets;
 import com.sixthc.hbm.WorkTaskTimeSchedules;
+import com.sixthc.util.ImageLoadFileException;
+import com.sixthc.util.ImageLoader;
 
 public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 	static Logger log = Logger.getLogger(WOServerSoap.class);
@@ -101,7 +107,8 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 	@Resource(name = "organizationDao")
 	private OrganizationDao orgDao;
 
-	private List<com.sixthc.hbm.OrganizationNames> parseNames(List<Names> reqNames) {
+	private List<com.sixthc.hbm.OrganizationNames> parseNames(
+			List<Names> reqNames) {
 		Vector<com.sixthc.hbm.OrganizationNames> namesList = new Vector<com.sixthc.hbm.OrganizationNames>();
 		for (Names reqName : reqNames) {
 			com.sixthc.hbm.OrganizationNames names = new com.sixthc.hbm.OrganizationNames();
@@ -130,8 +137,9 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 		}
 		return namesList;
 	}
-	
-	private List<com.sixthc.hbm.WorkTaskNames> parseWorkTaskNames(List<WorkTask.Names> reqNames) {
+
+	private List<com.sixthc.hbm.WorkTaskNames> parseWorkTaskNames(
+			List<WorkTask.Names> reqNames) {
 		Vector<com.sixthc.hbm.WorkTaskNames> namesList = new Vector<com.sixthc.hbm.WorkTaskNames>();
 		for (WorkTask.Names reqName : reqNames) {
 			com.sixthc.hbm.WorkTaskNames names = new com.sixthc.hbm.WorkTaskNames();
@@ -160,7 +168,8 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 		return namesList;
 	}
 
-	private List<com.sixthc.hbm.AssetNames> parseAssetNames(List<Asset.Names> reqNames) {
+	private List<com.sixthc.hbm.AssetNames> parseAssetNames(
+			List<Asset.Names> reqNames) {
 		Vector<com.sixthc.hbm.AssetNames> namesList = new Vector<com.sixthc.hbm.AssetNames>();
 		for (Asset.Names reqName : reqNames) {
 			com.sixthc.hbm.AssetNames names = new com.sixthc.hbm.AssetNames();
@@ -189,7 +198,8 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 		return namesList;
 	}
 
-	private List<com.sixthc.hbm.CrewNames> parseCrewNames(List<Crew.Names> reqNames) {
+	private List<com.sixthc.hbm.CrewNames> parseCrewNames(
+			List<Crew.Names> reqNames) {
 		Vector<com.sixthc.hbm.CrewNames> namesList = new Vector<com.sixthc.hbm.CrewNames>();
 		for (Crew.Names reqName : reqNames) {
 			com.sixthc.hbm.CrewNames names = new com.sixthc.hbm.CrewNames();
@@ -294,7 +304,8 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 
 	}
 
-	private com.sixthc.hbm.Nametype parseNameType(ch.iec.tc57._2014.maintenanceorders.NameType from) {
+	private com.sixthc.hbm.Nametype parseNameType(
+			ch.iec.tc57._2014.maintenanceorders.NameType from) {
 		if (from != null) {
 			com.sixthc.hbm.Nametype nameType = new com.sixthc.hbm.Nametype();
 			nameType.setName(from.getName());
@@ -480,6 +491,8 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 	public void createMaintenanceOrder(Holder<HeaderType> header,
 			RequestType request, Holder<MaintenanceOrderPayloadType> payload,
 			Holder<ReplyType> reply) throws FaultMessage {
+		boolean imageFileProcessingError = false;
+		reply.value = new ReplyType();
 
 		MaintenanceOrders orders = payload.value.getMaintenanceOrders();
 		for (MaintenanceOrder req : orders.getMaintenanceOrder()) {
@@ -755,7 +768,7 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 
 							workMatItem.setMultiplier(reqMatQuantity
 									.getMultiplier());
-							
+
 							workMatItem.setUnit(reqMatQuantity.getUnit());
 
 						}
@@ -779,8 +792,9 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 					}
 
 					workTask.setMrid(reqTask.getMRID());
-					
-					for( WorkTaskNames workTaskNames : parseWorkTaskNames(reqTask.getNames())) {
+
+					for (WorkTaskNames workTaskNames : parseWorkTaskNames(reqTask
+							.getNames())) {
 						workTaskNames.setWorkTask(workTask);
 						workTask.getWorkTaskNameses().add(workTaskNames);
 					}
@@ -788,13 +802,13 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 					com.sixthc.hbm.Asset oldAsset = parseAsset(reqTask
 							.getOldAsset());
 					com.sixthc.hbm.WorkTaskOldAssets workTaskOldAssets = new WorkTaskOldAssets();
-					
+
 					workTaskOldAssets.setAsset(oldAsset);
 					oldAsset.getWorkTaskOldAssetses().add(workTaskOldAssets);
-					
+
 					workTaskOldAssets.setWorkTask(workTask);
 					workTask.getWorkTaskOldAssetses().add(workTaskOldAssets);
-					
+
 					workTaskOldAssets.setCreatedAt(new Date(System
 							.currentTimeMillis())); // TODO : Not passed?
 
@@ -802,7 +816,6 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 					reqTask.getTaskKind(); // TODO : need to add to hbm.work_task
 
 					workTask.setSubject(reqTask.getSubject());
-
 
 					WorkTimeSchedule reqTaskSchedules = reqTask
 							.getTimeSchedules();
@@ -830,13 +843,47 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 											// non-nillable value from
 					}
 
+					if (reqWork.getAttachments() != null) {
+						for (String reqAtt : reqWork.getAttachments()
+								.getAttachment()) {
+							try {
+								String file = UUID.randomUUID().toString();
+								String uri = reqAtt;
+
+								ImageLoader.getImage(uri, file);
+
+								Attachment attachment = new Attachment();
+								attachment.setFilename(file);
+								attachment.setType("jpg"); // TODO : Get file suffix
+								WorkOrderAttachments woa = new WorkOrderAttachments();
+								woa.setAttachment(attachment);
+								attachment.setWorkOrderAttachmentses(workOrder
+										.getWorkOrderAttachmentses());
+								woa.setWorkOrder(workOrder);
+								workOrder.getWorkOrderAttachmentses().add(woa);
+							} catch (ImageLoadFileException e) {
+								log.error(e);
+								imageFileProcessingError = true;
+								ErrorType et = new ErrorType();
+								et.setCode("WARNING");
+								et.setDetails("failed to load image from url : " + reqAtt);
+								reply.value.getError().add(et);
+							}
+						}
+					}
 				}
 				workOrderDao.save(workOrder);
 			}
 		}
+		
 
-		reply.value = new ReplyType();
-		reply.value.setResult("OK");
+		
+		if (imageFileProcessingError == true) {
+			reply.value.setResult("Partial");
+
+		} else
+			reply.value.setResult("OK");
+		
 
 	}
 

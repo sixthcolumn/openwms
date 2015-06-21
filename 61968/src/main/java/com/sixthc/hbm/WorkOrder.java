@@ -220,13 +220,13 @@ public class WorkOrder implements java.io.Serializable {
 		this.createdAt = createdAt;
 	}
 
-	@Column(name = "created_by", nullable = false, length = 20)
+	@Column(name = "created_by", nullable = true, length = 20)
 	public String getCreatedBy() {
 		return this.createdBy;
 	}
 
 	public void setCreatedBy(String createdBy) {
-		con.check( "setCreatedBy", createdBy, false, 20);
+		con.check( "setCreatedBy", createdBy, true, 20);
 		this.createdBy = createdBy;
 	}
 
@@ -268,7 +268,7 @@ public class WorkOrder implements java.io.Serializable {
 	}
 
 	public void setRequestDatetime(java.sql.Timestamp requestDatetime) {
-		log.debug("setRequestDatetime : " + requestDatetime.toString());
+		log.debug("setRequestDatetime : " + ((requestDatetime == null ) ? "null" : requestDatetime.toString()));
 		this.requestDatetime = requestDatetime;
 	}
 

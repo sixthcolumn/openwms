@@ -1,6 +1,7 @@
 package com.sixthc.server.ws;
 
 import java.math.BigInteger;
+import java.sql.Timestamp;
 import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
@@ -13,6 +14,7 @@ import org.multispeak.v5.Geometry;
 import org.multispeak.v5.LocationContact;
 import org.multispeak.v5.MspPerson;
 import org.multispeak.v5.RequestingPerson;
+import org.multispeak.v5.SupplementalNote;
 import org.multispeak.v5.WorkLocation;
 import org.multispeak.v5.WorkRequest;
 import org.multispeak.v5_0.commonarrays.ArrayOfAttachment;
@@ -47,6 +49,7 @@ import org.multispeak.v5_0.commontypes.BoundingBox;
 import org.multispeak.v5_0.commontypes.ContactInfo;
 import org.multispeak.v5_0.commontypes.DetailedAddressFields;
 import org.multispeak.v5_0.commontypes.EMailAddress;
+import org.multispeak.v5_0.commontypes.GMLLocation;
 import org.multispeak.v5_0.commontypes.GMLPolygon;
 import org.multispeak.v5_0.commontypes.GPSLocation;
 import org.multispeak.v5_0.commontypes.OtherContactItem;
@@ -67,15 +70,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.sixthc.dao.WorkOrderDao;
 import com.sixthc.hbm.Attachment;
+import com.sixthc.hbm.Comment;
 import com.sixthc.hbm.Contactperson;
 import com.sixthc.hbm.ContactpersonAddresses;
 import com.sixthc.hbm.ContactpersonEmails;
+import com.sixthc.hbm.ContactpersonOtherContactinfos;
 import com.sixthc.hbm.ContactpersonPhones;
 import com.sixthc.hbm.Email;
 import com.sixthc.hbm.OtherContactinfo;
 import com.sixthc.hbm.Phone;
 import com.sixthc.hbm.WorkOrder;
 import com.sixthc.hbm.WorkOrderAttachments;
+import com.sixthc.hbm.WorkOrderComments;
+import com.sixthc.hbm.WorkPositionPoints;
 import com.sixthc.util.ImageLoadFileException;
 import com.sixthc.util.ImageLoader;
 
@@ -316,11 +323,11 @@ public class WOServer implements WOServerSoap {
 			p2.setCitycode(p.getCityCode());
 			p2.setCountrycode(p.getCountryCode());
 			p2.setLocalnumber(p.getLocalNumber());
-			// TODO : Change to string p2.setExtension(p.getExtension());
+			p2.setExtension(p.getExtension());
 			PhoneType ptype = pn.getPhoneType();
-			ptype.getOtherKind(); // TODO : ?
-			// bb: other kind is not mapped in db, just a string for phonetype
-			ptype.getValue(); // TODO : ? see above
+			if (ptype != null && ptype.getValue() != null)
+				p2.setPhonetype(ptype.getValue().value());
+			ptype.getOtherKind(); // TODO : probably not necessary, but maybe...
 			BigInteger priority = pn.getPriorityOrder();
 			if (priority != null)
 				p2.setPriorityorder(priority.intValue());
@@ -331,7 +338,7 @@ public class WOServer implements WOServerSoap {
 	private com.sixthc.hbm.Address parseAddress(Address addr) {
 		com.sixthc.hbm.Address addr2 = new com.sixthc.hbm.Address();
 		if (addr == null)
-			return addr2;
+			return null;
 
 		addr2.setSdAddress1(addr.getAddress1());
 		addr2.setSdAddress2(addr.getAddress2());
@@ -351,12 +358,13 @@ public class WOServer implements WOServerSoap {
 			addr2.setTdPobox(dafs.getPostOfficeBox());
 			addr2.setTdRegion(dafs.getRegion());
 		}
-		addr2.setTownshipName(addr.getTownCode()); // TODO : ? // bb: cim has no
-													// equivalent field, leave
-													// null multispeak equiv is
-													// msp.worklocation.locationinformation.townshipname
-		addr2.setTownshipName(addr.getCity()); // TODO : ? bb: see above
-		addr2.setTdStateProvince(addr.getState()); // TODO : ? bb: correct
+		
+		/* TODO : Please verify that <locationInformation> is not to be
+		 * persisted.
+		 */
+		addr2.setTownshipName(addr.getTownCode());
+		addr2.setTownshipName(addr.getCity());
+		addr2.setTdStateProvince(addr.getState());
 		addr2.setTdPostalCode(addr.getPostalCode());
 		addr2.setTdCountry(addr.getCountry());
 
@@ -378,29 +386,30 @@ public class WOServer implements WOServerSoap {
 		return addr2;
 	}
 
-	private ContactpersonEmails parseEmail(EMailAddress ea) {
+	private ContactpersonEmails parseEmail(EMailAddress from) {
 		ContactpersonEmails email = new ContactpersonEmails();
-		Email email2 = new Email();
-		email.setEmail(email2);
-		email2.setEmail(ea.getEMail());
-		EMailType eat = ea.getEMailType();
-		if (eat != null) {
+		Email to = new Email();
+		email.setEmail(to);
+		to.setEmail(from.getEMail());
+		EMailType eat = from.getEMailType();
+		if (from.getEMailType() != null
+				&& from.getEMailType().getValue() != null) {
+			to.setEmailType(from.getEMailType().getValue().value());
 			eat.getOtherKind(); // TODO : ? bb: use value as type, or just
-								// ignore -
-			eat.getValue(); // TODO : ?
 		}
-		BigInteger po = ea.getPriorityOrder();
+
+		BigInteger po = from.getPriorityOrder();
 		if (po != null)
-			email2.setPriorityOrder(po.intValue());
+			to.setPriorityOrder(po.intValue());
 
 		return email;
 	}
 
-	private OtherContactinfo parseOther(OtherContactItem oci) {
-		OtherContactinfo oci2 = new OtherContactinfo();
-		oci2.setDetails(oci.getDetails());
-		oci2.setInfoType(oci.getInfoType());
-		return oci2;
+	private OtherContactinfo parseOther(OtherContactItem from) {
+		OtherContactinfo to = new OtherContactinfo();
+		to.setDetails(from.getDetails());
+		to.setInfoType(from.getInfoType());
+		return to;
 	}
 
 	// bb: not supporting this - only supporting GMLLocations, mapped into
@@ -433,6 +442,17 @@ public class WOServer implements WOServerSoap {
 		}
 	}
 
+	private Timestamp parseDate(XMLGregorianCalendar from) {
+		if (from != null) {
+			Timestamp timestamp = new Timestamp(from.toGregorianCalendar()
+					.getTimeInMillis());
+			log.debug("parseDate : " + from);
+
+			return timestamp;
+		}
+		return null;
+	}
+
 	private void parseContact(MspPerson from, Contactperson to) {
 		if (from.getPrimaryIdentifier() != null) {
 			log.debug("primary identifier : "
@@ -443,8 +463,8 @@ public class WOServer implements WOServerSoap {
 		from.getComments(); // TODO : contactperson.comments
 		// cp.setSecondaryId(from.getSecondaryIdentifier()
 		// .getIdentifierName());
-		parseIdentiedObject(from.getIdentifiedObject(),
-				to.getIdentifiedObject());
+		//parseIdentiedObject(from.getIdentifiedObject(),
+		//		to.getIdentifiedObject());
 
 		to.setLastname(from.getLastName());
 		log.debug("contact person last name : " + from.getLastName());
@@ -478,14 +498,13 @@ public class WOServer implements WOServerSoap {
 				email.setContactperson(to);
 			}
 
-			// for (OtherContactItem oci : ci.getOtherContactInformation()
-			// .getOtherContactItem()) {
-			// ContactpersonOtherContactinfos other = new
-			// ContactpersonOtherContactinfos();
-			// other.setOtherContactinfo(parseOther(oci));
-			// to.getContactpersonOtherContactinfoses().add(other);
-			// other.setContactperson(to);
-			// }
+			for (OtherContactItem oci : ci.getOtherContactInformation()
+					.getOtherContactItem()) {
+				ContactpersonOtherContactinfos other = new ContactpersonOtherContactinfos();
+				other.setOtherContactinfo(parseOther(oci));
+				to.getContactpersonOtherContactinfoses().add(other);
+				other.setContactperson(to);
+			}
 		}
 
 	}
@@ -496,6 +515,9 @@ public class WOServer implements WOServerSoap {
 			ExpirationTime expirationTime) {
 		log.debug("initiateWorkRequest called");
 		List<WorkRequest> a = arrayOfWorkRequest.getWorkRequest();
+		
+		// expirationTime; // TODO : Not persisted
+		// transactionID; // TODO : Not persisted
 		boolean imageFileProcessingError = false;
 		for (WorkRequest request : a) {
 			WorkOrder workOrder = new WorkOrder();
@@ -505,11 +527,14 @@ public class WOServer implements WOServerSoap {
 			request.getSecondaryIdentifier(); // TODO : add schema
 			if (request.getWorkTypeRef() != null)
 				workOrder
-						.setKind(request.getWorkTypeRef().getWorkSubTypeName());
+						.setKind(request.getWorkTypeRef().getWorkSubTypeName()); // TODO : Bill, verify?
 
 			workOrder.setWorkOrderName(request.getTitle());
 			workOrder.setMrid("1234"); // auto-generated by db
 			workOrder.setStatus("TBD"); // no MS equivilent
+			workOrder.setCreatedAt(parseDate(request.getCreatedDate()));
+			workOrder.setTitle(request.getTitle());
+			workOrder.setDescription(request.getDescription());
 
 			// requesting person
 			RequestingPerson rp = request.getRequestingPerson();
@@ -525,9 +550,6 @@ public class WOServer implements WOServerSoap {
 			}
 
 			request.getRequestingSystem(); // TODO : not mapped in DB
-			workOrder.setDescription(request.getDescription());
-			log.debug("setDescription : " + workOrder.getDescription());
-			workOrder.setTitle(request.getTitle());
 
 			String workPriority = request.getRequestedWorkPriority();
 			log.debug("work priority : " + workPriority);
@@ -541,7 +563,14 @@ public class WOServer implements WOServerSoap {
 			// work location
 			WorkLocation workLocation = request.getWorkLocation();
 			if (workLocation != null) {
-				// TODO : Where is address location?
+
+				com.sixthc.hbm.Address workAddress = parseAddress(workLocation.getAddress());
+				if( workAddress != null ) {
+					workAddress.getAddressWorkorders().add(workOrder);
+					workOrder.setAddress(workAddress);
+				}
+				
+				
 				//
 				// GPS Location
 				GPSLocation gps = workLocation.getGPSLocation();
@@ -551,7 +580,7 @@ public class WOServer implements WOServerSoap {
 					workOrder.setGpsAltitude((float) gps.getAltitude()
 							.floatValue()); // TODO
 
-					// TODO : Below items not supported in schema
+					// Below items not supported in schema
 					// GPSMetadata gmd = gps.getGPSMetadata();
 					// gmd.getEasting();
 					// gmd.getNorthing();
@@ -565,14 +594,49 @@ public class WOServer implements WOServerSoap {
 					// gmd.getNumSat();
 
 				}
+				
+				
+				if( workLocation.getGeometry() != null && workLocation.getGeometry().getGMLLocations() != null ) {
+					int i = 1;
+					  for( GMLLocation reqGML : workLocation.getGeometry().getGMLLocations().getGMLLocation()) {
+						  WorkPositionPoints workPoints = new WorkPositionPoints();
+						  workPoints.setXposition(reqGML.getCoord().getX().intValue());
+						  workPoints.setYposition(reqGML.getCoord().getY().intValue());
+						  workPoints.setZposition(reqGML.getCoord().getZ().intValue());
+						  workPoints.setBulge(reqGML.getCoord().getBulge());
+						  workPoints.setSequenceNum(i++);
+						  workPoints.setWorkOrder(workOrder);
+						  workOrder.getWorkPositionPointses().add(workPoints);
+						  
+						  reqGML.getCoordinates().getValue(); // TODO : Not sure what this is for. See soap message
+					  }					 
+				}
+				
+				workLocation.getGridLocation(); // TODO : Where to persist?
+				workOrder.setLocationComment(workLocation.getLocationComment());
 
-				// TODO : Where to store Bill?
+				// TODO : Where to persist?
 				Geometry geo = workLocation.getGeometry();
 				if (geo != null) {
 					for (GMLPolygon gp : geo.getGMLPolygons().getGMLPolygon()) {
 						parsePolygon(gp);
 					}
 
+				}
+				
+				if( workLocation.getSupplementalNotes() != null  ) {
+					for( SupplementalNote reqNotes : workLocation.getSupplementalNotes().getSupplementalNote()) {
+						WorkOrderComments workComments = new WorkOrderComments();
+						Comment workComment = new Comment();
+						workComments.setWorkOrder(workOrder);
+						workOrder.getWorkOrderCommentses().add(workComments);
+						workComment.getWorkOrderCommentses().add(workComments);
+						workComments.setComment(workComment);
+						
+						workComment.setComment(reqNotes.getNoteValue());
+						workComment.setCommentType(reqNotes.getNoteType());
+						workComment.setCommentSubtype(reqNotes.getNoteSubtype());
+					}
 				}
 
 				LocationContact contact = workLocation.getLocationContact();
@@ -607,6 +671,8 @@ public class WOServer implements WOServerSoap {
 				}
 
 			}
+			
+
 
 			workOrderDao.save(workOrder);
 			break;

@@ -16,17 +16,22 @@ import com.sun.jersey.api.client.WebResource;
 public class ImageLoader {
 	static Logger log = Logger.getLogger(WOServerSoap.class);
 
-	public static void getImage(String url, String filename) throws ImageLoadFileException {
+	public static void getImage(String url, String filename)
+			throws ImageLoadFileException {
 		WebResource resource = Client.create().resource(url);
 		log.debug("save image : url = " + url + ", filename = " + filename);
-		ClientResponse response = resource.get(ClientResponse.class);
-		int r = response.getStatus();
-		if( r != 200 ) {
-			throw new ImageLoadFileException("image server returned code (" + r + ") for " + url);
-		}
-		InputStream stream = response.getEntityInputStream();
-		byte[] bytes;
+
 		try {
+			ClientResponse response = resource.get(ClientResponse.class);
+			int r = response.getStatus();
+
+			if (r != 200) {
+				throw new ImageLoadFileException("image server returned code ("
+						+ r + ") for " + url);
+			}
+			InputStream stream = response.getEntityInputStream();
+			byte[] bytes;
+
 			bytes = ByteStreams.toByteArray(stream);
 
 			BufferedOutputStream bos = null;
@@ -39,10 +44,14 @@ public class ImageLoader {
 			bos = new BufferedOutputStream(fos);
 			bos.write(bytes);
 			bos.close();
-			log.debug("url : " + url + ", filename : " + filename + ", images bytes read : " + bytes.length);
-		} catch (Exception e) {
+			log.debug("url : " + url + ", filename : " + filename
+					+ ", images bytes read : " + bytes.length);
+		} catch (ImageLoadFileException fe) {
+			throw fe;
+		}
+		catch (Exception e) {
 			log.error(e);
-			throw new ImageLoadFileException("load : ", e);
+			throw new ImageLoadFileException("load for url " + url + " failed.", e);
 		}
 	}
 }

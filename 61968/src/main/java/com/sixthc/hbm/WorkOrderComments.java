@@ -2,6 +2,7 @@ package com.sixthc.hbm;
 
 // Generated Jun 3, 2015 2:34:41 PM by Hibernate Tools 3.2.2.GA
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -49,7 +50,7 @@ public class WorkOrderComments implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "comment_id", nullable = false)
 	public Comment getComment() {
 		return this.comment;
@@ -59,7 +60,7 @@ public class WorkOrderComments implements java.io.Serializable {
 		this.comment = comment;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "work_order_id", nullable = false)
 	public WorkOrder getWorkOrder() {
 		return this.workOrder;

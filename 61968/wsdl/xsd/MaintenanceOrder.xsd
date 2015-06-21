@@ -30,8 +30,10 @@ ActivityRecord">
 		<xs:annotation>
 			<xs:documentation>Records activity for an entity at a point in time;
 				activity
-				may be for an event that has already occurred or for a planned
-				activity.</xs:documentation>
+				may be for an event that has already occurred or for a
+				planned
+				activity.
+			</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="createdDateTime" type="xs:dateTime"
@@ -40,30 +42,35 @@ ActivityRecord">
 ActivityRecord.createdDateTime">
 				<xs:annotation>
 					<xs:documentation>Date and time this activity record has
-						been created (different from the 'status.dateTime', which is the time
+						been
+						created (different from the 'status.dateTime', which is the time
 						of a status change of the
-						associated object, if applicable).</xs:documentation>
+						associated object, if applicable).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="reason" type="xs:string" minOccurs="0"
 				maxOccurs="1" sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#ActivityRecord.reason">
 				<xs:annotation>
 					<xs:documentation>Reason for event resulting in this activity
-						record, typically supplied when user initiated.</xs:documentation>
+						record, typically supplied when user initiated.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="severity" type="xs:string" minOccurs="0"
 				maxOccurs="1" sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#ActivityRecord.severity">
 				<xs:annotation>
 					<xs:documentation>Severity level of event resulting in this
-						activity record.</xs:documentation>
+						activity record.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="type" type="xs:string" minOccurs="1"
 				maxOccurs="1" sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#ActivityRecord.type">
 				<xs:annotation>
 					<xs:documentation>Type of event resulting in this activity
-						record.</xs:documentation>
+						record.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -74,33 +81,42 @@ Asset">
 		<xs:annotation>
 			<xs:documentation>Tangible resource of the utility, including power
 				system
-				equipment, various end devices, cabinets, buildings, etc. For electrical
+				equipment, various end devices, cabinets, buildings, etc. For
+				electrical
 				network equipment, the role of
-				the asset is defined through PowerSystemResource and its subclasses,
+				the asset is defined through
+				PowerSystemResource and its subclasses,
 				defined mainly in the Wires
-				model (refer to IEC61970-301 and model package IEC61970::Wires). Asset
+				model (refer to IEC61970-301 and model package IEC61970::Wires).
+				Asset
 				description places
-				emphasis on the physical characteristics of the equipment fulfilling that
-				role.</xs:documentation>
+				emphasis on the physical characteristics of
+				the equipment fulfilling that
+				role.
+			</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="mRID" type="m:mRID" minOccurs="0"
 				maxOccurs="1" sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#IdentifiedObject.mRID">
 				<xs:annotation>
 					<xs:documentation>Master resource identifier issued by a
-						model authority. The mRID is unique within an exchange context. Global
+						model
+						authority. The mRID is unique within an exchange context. Global
 						uniqueness is easily achieved by using a UUID, as specified in RFC
 						4122, for the mRID. The use of UUID is strongly
-						recommended. For CIMXML data files in RDF syntax conforming to IEC 61970-552
+						recommended. For
+						CIMXML data files in RDF syntax conforming to IEC 61970-552
 						Edition 1, the mRID is mapped to rdf:ID or rdf:about attributes
-						that identify CIM object elements.</xs:documentation>
+						that identify CIM object elements.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="critical" type="xs:boolean" minOccurs="1"
 				maxOccurs="1" sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#Asset.critical">
 				<xs:annotation>
 					<xs:documentation>True if asset is considered critical for
-						some reason (for example, a pole with critical attachments).
+						some
+						reason (for example, a pole with critical attachments).
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
@@ -108,7 +124,8 @@ Asset">
 				maxOccurs="1" sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#Asset.utcNumber">
 				<xs:annotation>
 					<xs:documentation>Uniquely tracked commodity (UTC)
-						number.</xs:documentation>
+						number.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Location" type="m:WorkLocation"
@@ -116,14 +133,16 @@ Asset">
 				sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#Asset.Location">
 				<xs:annotation>
 					<xs:documentation>Location of this
-						asset.</xs:documentation>
+						asset.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Names" minOccurs="0" maxOccurs="unbounded"
 				sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#IdentifiedObject.Names">
 				<xs:annotation>
 					<xs:documentation>All names of this identified
-						object.</xs:documentation>
+						object.
+					</xs:documentation>
 				</xs:annotation>
 				<xs:complexType sawsdl:modelReference="http://www.w3.org/2002/07/owl#Thing">
 					<xs:sequence>
@@ -132,7 +151,8 @@ Asset">
 Name.name">
 							<xs:annotation>
 								<xs:documentation>Any free text
-									that name the object.</xs:documentation>
+									that name the object.
+								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 						<xs:element name="NameType" type="m:NameType"
@@ -140,7 +160,8 @@ Name.name">
 							sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#Name.NameType">
 							<xs:annotation>
 								<xs:documentation>Type of this
-									name.</xs:documentation>
+									name.
+								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 					</xs:sequence>
@@ -150,7 +171,8 @@ Name.name">
 				sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#Asset.Procedures">
 				<xs:annotation>
 					<xs:documentation>All procedures applicable to this
-						asset.</xs:documentation>
+						asset.
+					</xs:documentation>
 				</xs:annotation>
 				<xs:complexType sawsdl:modelReference="http://iec.ch/TC57/CIMgeneric#
 Procedure">
@@ -161,7 +183,8 @@ Procedure">
 Procedure.instruction">
 							<xs:annotation>
 								<xs:documentation>Textual
-									description of this procedure.</xs:documentation>
+									description of this procedure.
+								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 						<xs:element name="kind" type="m:ProcedureKind"
@@ -170,7 +193,8 @@ Procedure.instruction">
 Procedure.kind">
 							<xs:annotation>
 								<xs:documentation>Kind of
-									procedure.</xs:documentation>
+									procedure.
+								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 						<xs:element name="sequenceNumber" type="xs:string"
@@ -179,7 +203,8 @@ Procedure.kind">
 Procedure.sequenceNumber">
 							<xs:annotation>
 								<xs:documentation>Sequence
-									number in a sequence of procedures being performed.
+									number in a sequence of procedures
+									being performed.
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -189,7 +214,8 @@ Procedure.sequenceNumber">
 Procedure.Measurements">
 							<xs:annotation>
 								<xs:documentation>Document
-									containing this measurement.</xs:documentation>
+									containing this measurement.
+								</xs:documentation>
 							</xs:annotation>
 							<xs:complexType sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#Measurement">
 								<xs:sequence>
@@ -199,9 +225,12 @@ Procedure.Measurements">
 										<xs:annotation>
 											<xs:documentation>Specifies the type of measurement. For
 												example, this specifies if the
-												measurement represents an indoor temperature, outdoor temperature, bus
-												voltage, line flow,
-												etc.</xs:documentation>
+												measurement represents an
+												indoor temperature, outdoor temperature, bus
+												voltage, line
+												flow,
+												etc.
+											</xs:documentation>
 										</xs:annotation>
 									</xs:element>
 									<xs:element name="phases" type="m:PhaseCode"
@@ -210,17 +239,23 @@ Procedure.Measurements">
 										<xs:annotation>
 											<xs:documentation>Indicates to which phases the measurement
 												applies and avoids the need
-												to use 'measurementType' to also encode phase information
+												to use 'measurementType' to also
+												encode phase information
 												(which would explode the types). The
-												phase information in Measurement, along with 'measurementType'
+												phase information in Measurement, along with
+												'measurementType'
 												and 'phases' uniquely defines a
-												Measurement for a device, based on normal network phase. Their meaning
+												Measurement
+												for a device, based on normal network phase. Their meaning
 												will not change when the
-												computed energizing phasing is changed due to jumpers or other
-												reasons.</xs:documentation>
+												computed energizing phasing is
+												changed due to jumpers or other
+												reasons.
+											</xs:documentation>
 											<xs:documentation>If the attribute is missing three phases
 												(ABC) shall be
-												assumed.</xs:documentation>
+												assumed.
+											</xs:documentation>
 										</xs:annotation>
 									</xs:element>
 									<xs:element name="unitMultiplier" type="m:UnitMultiplier"
@@ -228,7 +263,8 @@ Procedure.Measurements">
 										sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#Measurement.unitMultiplier">
 										<xs:annotation>
 											<xs:documentation>The unit multiplier of the measured
-												quantity.</xs:documentation>
+												quantity.
+											</xs:documentation>
 										</xs:annotation>
 									</xs:element>
 									<xs:element name="unitSymbol" type="m:UnitSymbol"
@@ -236,7 +272,8 @@ Procedure.Measurements">
 										sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#Measurement.unitSymbol">
 										<xs:annotation>
 											<xs:documentation>The unit of measure of the measured
-												quantity.</xs:documentation>
+												quantity.
+											</xs:documentation>
 										</xs:annotation>
 									</xs:element>
 								</xs:sequence>
@@ -252,11 +289,14 @@ Procedure.Measurements">
 		<xs:annotation>
 			<xs:documentation>Potential hazard related to the location of an
 				asset.
-				Examples are trees growing under overhead power lines, a park being located
+				Examples are trees growing under overhead power lines, a park
+				being located
 				by a substation (i.e.,
-				children climb fence to recover a ball), a lake near an overhead
+				children climb fence to recover a
+				ball), a lake near an overhead
 				distribution line (fishing pole/line
-				contacting power lines), dangerous neighbour, etc.</xs:documentation>
+				contacting power lines), dangerous neighbour, etc.
+			</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="type" type="xs:string" minOccurs="0"
@@ -272,7 +312,8 @@ Procedure.Measurements">
 Crew">
 		<xs:annotation>
 			<xs:documentation>Group of people with specific skills, tools, and
-				vehicles.</xs:documentation>
+				vehicles.
+			</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="mRID" type="m:mRID" minOccurs="0"
@@ -281,11 +322,16 @@ Crew">
 					<xs:documentation>Master resource identifier issued by a model
 						authority. The mRID is unique within an exchange context. Global
 						uniqueness is easily
-						achieved by using a UUID, as specified in RFC 4122, for the mRID. The use
-						of UUID is strongly recommended. For CIMXML data files in RDF
-						syntax conforming to IEC 61970-552 Edition 1, the mRID is mapped
-						to rdf:ID or rdf:about attributes that identify CIM object
-						elements.</xs:documentation>
+						achieved by using a UUID, as specified in RFC
+						4122, for the mRID. The use
+						of UUID is strongly recommended. For
+						CIMXML data files in RDF
+						syntax conforming to IEC 61970-552 Edition
+						1, the mRID is mapped
+						to rdf:ID or rdf:about attributes that
+						identify CIM object
+						elements.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="CrewMembers" type="m:CrewMember"
@@ -294,14 +340,16 @@ Crew">
 Crew.CrewMembers">
 				<xs:annotation>
 					<xs:documentation>All members of this
-						crew.</xs:documentation>
+						crew.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Names" minOccurs="0" maxOccurs="unbounded"
 				sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#IdentifiedObject.Names">
 				<xs:annotation>
 					<xs:documentation>All names of this identified
-						object.</xs:documentation>
+						object.
+					</xs:documentation>
 				</xs:annotation>
 				<xs:complexType sawsdl:modelReference="http://www.w3.org/2002/07/owl#Thing">
 					<xs:sequence>
@@ -310,14 +358,16 @@ Crew.CrewMembers">
 Name.name">
 							<xs:annotation>
 								<xs:documentation>Any free text
-									that name the object.</xs:documentation>
+									that name the object.
+								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 						<xs:element name="NameType" minOccurs="0" maxOccurs="1"
 							sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#Name.NameType">
 							<xs:annotation>
 								<xs:documentation>Type of this
-									name.</xs:documentation>
+									name.
+								</xs:documentation>
 							</xs:annotation>
 							<xs:complexType sawsdl:modelReference="http://www.w3.org/2002/07/owl#Thing">
 								<xs:sequence>
@@ -342,7 +392,8 @@ NameType.name">
 										<xs:annotation>
 											<xs:documentation>Authority responsible for managing names of
 												this
-												type.</xs:documentation>
+												type.
+											</xs:documentation>
 										</xs:annotation>
 										<xs:complexType sawsdl:modelReference="http://www.w3.org/2002/07/owl#Thing">
 											<xs:sequence>
@@ -377,7 +428,8 @@ NameType.name">
 Crew.WorkAssets">
 				<xs:annotation>
 					<xs:documentation>All work assets used by this
-						crew.</xs:documentation>
+						crew.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -393,7 +445,8 @@ CrewMember">
 				sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#PersonRole.Person">
 				<xs:annotation>
 					<xs:documentation>Person having this
-						role.</xs:documentation>
+						role.
+					</xs:documentation>
 				</xs:annotation>
 				<xs:complexType sawsdl:modelReference="http://iec.ch/TC57/CIMgeneric#
 Person">
@@ -404,7 +457,8 @@ Person">
 Person.firstName">
 							<xs:annotation>
 								<xs:documentation>Person's first
-									name.</xs:documentation>
+									name.
+								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 						<xs:element name="lastName" type="xs:string" minOccurs="1"
@@ -412,7 +466,8 @@ Person.firstName">
 Person.lastName">
 							<xs:annotation>
 								<xs:documentation>Person's last
-									(family, sir) name.</xs:documentation>
+									(family, sir) name.
+								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 					</xs:sequence>
@@ -426,11 +481,15 @@ DiagramObject">
 		<xs:annotation>
 			<xs:documentation>An object that defines one or more points in a
 				given
-				space. This object can be associated with anything that specializes
+				space. This object can be associated with anything that
+				specializes
 				IdentifiedObject. For single line
-				diagrams such objects typically include such items as analog values,
-				breakers, disconnectors, power
-				transformers, and transmission lines.</xs:documentation>
+				diagrams such objects
+				typically include such items as analog values,
+				breakers,
+				disconnectors, power
+				transformers, and transmission lines.
+			</xs:documentation>
 		</xs:annotation>
 		<xs:sequence />
 	</xs:complexType>
@@ -441,16 +500,20 @@ Name">
 			<xs:documentation>The Name class provides the means to define any
 				number of human readable names for an object. A name is
 				&lt;b&gt;not&lt;/b&gt; to be used for
-				defining inter-object relationships. For inter-object relationships instead
-				use the object identification
-				'mRID'.</xs:documentation>
+				defining inter-object
+				relationships. For inter-object relationships instead
+				use the object
+				identification
+				'mRID'.
+			</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="name" type="xs:string" minOccurs="1"
 				maxOccurs="1" sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#Name.name">
 				<xs:annotation>
 					<xs:documentation>Any free text that name the
-						object.</xs:documentation>
+						object.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="NameType" type="m:NameType" minOccurs="0"
@@ -467,37 +530,49 @@ NameType">
 		<xs:annotation>
 			<xs:documentation>Type of name. Possible values for attribute 'name'
 				are
-				implementation dependent but standard profiles may specify types. An enterprise
+				implementation dependent but standard profiles may specify types.
+				An enterprise
 				may have multiple IT
-				systems each having its own local name for the same object, e.g. a planning
+				systems each having its own local
+				name for the same object, e.g. a planning
 				system may have
-				different names from an EMS. An object may also have different names within
+				different
+				names from an EMS. An object may also have different names within
 				the same IT system,
-				e.g. localName as defined in CIM version 14. The definition from CIM14
-				is:</xs:documentation>
+				e.g. localName as defined in CIM version 14. The
+				definition from CIM14
+				is:
+			</xs:documentation>
 			<xs:documentation>The localName is a human readable name of the
 				object.
-				It is a free text name local to a node in a naming hierarchy similar
+				It is a free text name local to a node in a naming hierarchy
+				similar
 				to a file directory structure. A power
-				system related naming hierarchy may be: Substation, VoltageLevel,
-				Equipment etc. Children of the
-				same parent in such a hierarchy have names that typically are unique
+				system related naming
+				hierarchy may be: Substation, VoltageLevel,
+				Equipment etc. Children
+				of the
+				same parent in such a hierarchy have names that typically are
+				unique
 				among
-				them.</xs:documentation>
+				them.
+			</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="description" type="xs:string" minOccurs="0"
 				maxOccurs="1" sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#NameType.description">
 				<xs:annotation>
 					<xs:documentation>Description of the name
-						type.</xs:documentation>
+						type.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="name" type="xs:string" minOccurs="1"
 				maxOccurs="1" sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#NameType.name">
 				<xs:annotation>
 					<xs:documentation>Name of the name
-						type.</xs:documentation>
+						type.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="NameTypeAuthority" type="m:NameTypeAuthority"
@@ -506,7 +581,9 @@ NameType">
 NameType.NameTypeAuthority">
 				<xs:annotation>
 					<xs:documentation>Authority responsible for managing
-						names of this type.</xs:documentation>
+						names of this
+						type.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -516,7 +593,8 @@ NameType.NameTypeAuthority">
 		<xs:annotation>
 			<xs:documentation>Authority responsible for creation and management
 				of
-				names of a given type; typically an organization or an enterprise system.
+				names of a given type; typically an organization or an enterprise
+				system.
 			</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
@@ -526,14 +604,16 @@ NameType.NameTypeAuthority">
 NameTypeAuthority.description">
 				<xs:annotation>
 					<xs:documentation>Description of the name type
-						authority.</xs:documentation>
+						authority.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="name" type="xs:string" minOccurs="1"
 				maxOccurs="1" sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#NameTypeAuthority.name">
 				<xs:annotation>
 					<xs:documentation>Name of the name type
-						authority.</xs:documentation>
+						authority.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -544,7 +624,8 @@ Organisation">
 		<xs:annotation>
 			<xs:documentation>Organisation that might have roles as utility,
 				contractor,
-				supplier, manufacturer, customer, etc.</xs:documentation>
+				supplier, manufacturer, customer, etc.
+			</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="mRID" type="m:mRID" minOccurs="0"
@@ -553,18 +634,24 @@ Organisation">
 					<xs:documentation>Master resource identifier issued by a model
 						authority. The mRID is unique within an exchange context. Global
 						uniqueness is easily
-						achieved by using a UUID, as specified in RFC 4122, for the mRID. The use
-						of UUID is strongly recommended. For CIMXML data files in RDF
-						syntax conforming to IEC 61970-552 Edition 1, the mRID is mapped
-						to rdf:ID or rdf:about attributes that identify CIM object
-						elements.</xs:documentation>
+						achieved by using a UUID, as specified in RFC
+						4122, for the mRID. The use
+						of UUID is strongly recommended. For
+						CIMXML data files in RDF
+						syntax conforming to IEC 61970-552 Edition
+						1, the mRID is mapped
+						to rdf:ID or rdf:about attributes that
+						identify CIM object
+						elements.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Names" minOccurs="0" maxOccurs="unbounded"
 				sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#IdentifiedObject.Names">
 				<xs:annotation>
 					<xs:documentation>All names of this identified
-						object.</xs:documentation>
+						object.
+					</xs:documentation>
 				</xs:annotation>
 				<xs:complexType sawsdl:modelReference="http://iec.ch/TC57/CIMgeneric#
 Name">
@@ -574,14 +661,16 @@ Name">
 Name.name">
 							<xs:annotation>
 								<xs:documentation>Any free text
-									that name the object.</xs:documentation>
+									that name the object.
+								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 						<xs:element name="NameType" minOccurs="0" maxOccurs="1"
 							sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#Name.NameType">
 							<xs:annotation>
 								<xs:documentation>Type of this
-									name.</xs:documentation>
+									name.
+								</xs:documentation>
 							</xs:annotation>
 							<xs:complexType sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#NameType">
 								<xs:sequence>
@@ -606,7 +695,8 @@ NameType.name">
 										<xs:annotation>
 											<xs:documentation>Authority responsible for managing names of
 												this
-												type.</xs:documentation>
+												type.
+											</xs:documentation>
 										</xs:annotation>
 									</xs:element>
 								</xs:sequence>
@@ -628,7 +718,8 @@ NameType.name">
 TelephoneNumber.areaCode">
 							<xs:annotation>
 								<xs:documentation>(if applicable)
-									Area or region code.</xs:documentation>
+									Area or region code.
+								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 						<xs:element name="cityCode" type="xs:string" minOccurs="0"
@@ -637,7 +728,8 @@ TelephoneNumber.areaCode">
 TelephoneNumber.cityCode">
 							<xs:annotation>
 								<xs:documentation>City
-									code.</xs:documentation>
+									code.
+								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 						<xs:element name="countryCode" type="xs:string"
@@ -646,7 +738,8 @@ TelephoneNumber.cityCode">
 TelephoneNumber.countryCode">
 							<xs:annotation>
 								<xs:documentation>Country
-									code.</xs:documentation>
+									code.
+								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 						<xs:element name="extension" type="xs:string"
@@ -655,7 +748,9 @@ TelephoneNumber.countryCode">
 TelephoneNumber.extension">
 							<xs:annotation>
 								<xs:documentation>(if applicable)
-									Extension for this telephone number.</xs:documentation>
+									Extension for this telephone
+									number.
+								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 						<xs:element name="localNumber" type="xs:string"
@@ -664,7 +759,8 @@ TelephoneNumber.extension">
 TelephoneNumber.localNumber">
 							<xs:annotation>
 								<xs:documentation>Main (local) part
-									of this telephone number.</xs:documentation>
+									of this telephone number.
+								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 					</xs:sequence>
@@ -683,7 +779,8 @@ TelephoneNumber.localNumber">
 StreetAddress.streetDetail">
 							<xs:annotation>
 								<xs:documentation>Street
-									detail.</xs:documentation>
+									detail.
+								</xs:documentation>
 							</xs:annotation>
 							<xs:complexType sawsdl:modelReference="http://www.w3.org/2002/07/owl#Thing">
 								<xs:sequence>
@@ -693,7 +790,8 @@ StreetAddress.streetDetail">
 										<xs:annotation>
 											<xs:documentation>First line of a free form address or some
 												additional address information
-												(for example a mail stop).</xs:documentation>
+												(for example a mail stop).
+											</xs:documentation>
 										</xs:annotation>
 									</xs:element>
 									<xs:element name="buildingName" type="xs:string"
@@ -702,9 +800,12 @@ StreetAddress.streetDetail">
 										<xs:annotation>
 											<xs:documentation>(if applicable) In certain cases the
 												physical location of the place of interest
-												does not have a direct point of entry from the street, but may
-												be located inside a larger structure such
-												as a building, complex, office block, apartment, etc.
+												does not have a
+												direct point of entry from the street, but may
+												be located
+												inside a larger structure such
+												as a building, complex, office
+												block, apartment, etc.
 											</xs:documentation>
 										</xs:annotation>
 									</xs:element>
@@ -714,9 +815,12 @@ StreetDetail.code">
 										<xs:annotation>
 											<xs:documentation>(if applicable) Utilities often make use of
 												external reference systems, such
-												as those of the town-planner's department or surveyor
-												general's mapping system, that allocate global
-												reference codes to streets.</xs:documentation>
+												as those of the
+												town-planner's department or surveyor
+												general's mapping
+												system, that allocate global
+												reference codes to streets.
+											</xs:documentation>
 										</xs:annotation>
 									</xs:element>
 									<xs:element name="name" type="xs:string" minOccurs="0"
@@ -732,7 +836,8 @@ StreetDetail.name">
 StreetDetail.number">
 										<xs:annotation>
 											<xs:documentation>Designator of the specific location on the
-												street.</xs:documentation>
+												street.
+											</xs:documentation>
 										</xs:annotation>
 									</xs:element>
 									<xs:element name="prefix" type="xs:string"
@@ -742,7 +847,8 @@ StreetDetail.prefix">
 										<xs:annotation>
 											<xs:documentation>Prefix to the street name. For example:
 												North, South, East,
-												West.</xs:documentation>
+												West.
+											</xs:documentation>
 										</xs:annotation>
 									</xs:element>
 									<xs:element name="suffix" type="xs:string"
@@ -752,7 +858,8 @@ StreetDetail.suffix">
 										<xs:annotation>
 											<xs:documentation>Suffix to the street name. For example:
 												North, South, East,
-												West.</xs:documentation>
+												West.
+											</xs:documentation>
 										</xs:annotation>
 									</xs:element>
 									<xs:element name="suiteNumber" type="xs:string"
@@ -769,7 +876,8 @@ StreetDetail.type">
 										<xs:annotation>
 											<xs:documentation>Type of street. Examples include: street,
 												circle, boulevard, avenue, road,
-												drive, etc.</xs:documentation>
+												drive, etc.
+											</xs:documentation>
 										</xs:annotation>
 									</xs:element>
 									<xs:element name="withinTownLimits" type="xs:boolean"
@@ -778,7 +886,8 @@ StreetDetail.type">
 										<xs:annotation>
 											<xs:documentation>True if this street is within the legal
 												geographical boundaries of the
-												specified town (default).</xs:documentation>
+												specified town (default).
+											</xs:documentation>
 										</xs:annotation>
 									</xs:element>
 								</xs:sequence>
@@ -788,7 +897,8 @@ StreetDetail.type">
 							sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#StreetAddress.townDetail">
 							<xs:annotation>
 								<xs:documentation>Town
-									detail.</xs:documentation>
+									detail.
+								</xs:documentation>
 							</xs:annotation>
 							<xs:complexType sawsdl:modelReference="http://www.w3.org/2002/07/owl#Thing">
 								<xs:sequence>
@@ -821,7 +931,8 @@ TownDetail.section">
 										<xs:annotation>
 											<xs:documentation>Town section. For example, it is common for
 												there to be 36 sections per
-												township.</xs:documentation>
+												township.
+											</xs:documentation>
 										</xs:annotation>
 									</xs:element>
 									<xs:element name="stateOrProvince" type="xs:string"
@@ -846,22 +957,31 @@ PhaseCode">
 		<xs:annotation>
 			<xs:documentation>An unordered enumeration of phase identifiers.
 				Allows
-				designation of phases for both transmission and distribution equipment,
+				designation of phases for both transmission and distribution
+				equipment,
 				circuits and loads. The
-				enumeration, by itself, does not describe how the phases are connected together
+				enumeration, by itself, does not
+				describe how the phases are connected together
 				or connected to
-				ground. Ground is not explicitly denoted as a phase.</xs:documentation>
+				ground. Ground is not explicitly denoted as a phase.
+			</xs:documentation>
 			<xs:documentation>Residential and small commercial loads are often
 				served
-				from single-phase, or split-phase, secondary circuits. For example of
+				from single-phase, or split-phase, secondary circuits. For
+				example of
 				s12N, phases 1 and 2 refer to
-				hot wires that are 180 degrees out of phase, while N refers to the
-				neutral wire. Through single-phase
-				transformer connections, these secondary circuits may be served from one or two
+				hot wires that are 180
+				degrees out of phase, while N refers to the
+				neutral wire. Through
+				single-phase
+				transformer connections, these secondary circuits may be
+				served from one or two
 				of the primary
-				phases A, B, and C. For three-phase loads, use the A, B, C phase codes
+				phases A, B, and C. For
+				three-phase loads, use the A, B, C phase codes
 				instead of
-				s12N.</xs:documentation>
+				s12N.
+			</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="A">
@@ -882,13 +1002,15 @@ PhaseCode">
 			<xs:enumeration value="ABCN">
 				<xs:annotation>
 					<xs:documentation>Phases A, B, C, and
-						N.</xs:documentation>
+						N.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="ABN">
 				<xs:annotation>
 					<xs:documentation>Phases A, B, and
-						neutral.</xs:documentation>
+						neutral.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="AC">
@@ -899,13 +1021,15 @@ PhaseCode">
 			<xs:enumeration value="ACN">
 				<xs:annotation>
 					<xs:documentation>Phases A, C and
-						neutral.</xs:documentation>
+						neutral.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="AN">
 				<xs:annotation>
 					<xs:documentation>Phases A and
-						neutral.</xs:documentation>
+						neutral.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="B">
@@ -921,13 +1045,15 @@ PhaseCode">
 			<xs:enumeration value="BCN">
 				<xs:annotation>
 					<xs:documentation>Phases B, C, and
-						neutral.</xs:documentation>
+						neutral.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="BN">
 				<xs:annotation>
 					<xs:documentation>Phases B and
-						neutral.</xs:documentation>
+						neutral.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="C">
@@ -938,7 +1064,8 @@ PhaseCode">
 			<xs:enumeration value="CN">
 				<xs:annotation>
 					<xs:documentation>Phases C and
-						neutral.</xs:documentation>
+						neutral.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="N">
@@ -949,7 +1076,8 @@ PhaseCode">
 			<xs:enumeration value="none">
 				<xs:annotation>
 					<xs:documentation>No phases
-						specified.</xs:documentation>
+						specified.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="s1">
@@ -960,19 +1088,22 @@ PhaseCode">
 			<xs:enumeration value="s12">
 				<xs:annotation>
 					<xs:documentation>Secondary phase 1 and
-						2.</xs:documentation>
+						2.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="s12N">
 				<xs:annotation>
 					<xs:documentation>Secondary phases 1, 2, and
-						neutral.</xs:documentation>
+						neutral.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="s1N">
 				<xs:annotation>
 					<xs:documentation>Secondary phase 1 and
-						neutral.</xs:documentation>
+						neutral.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="s2">
@@ -983,7 +1114,8 @@ PhaseCode">
 			<xs:enumeration value="s2N">
 				<xs:annotation>
 					<xs:documentation>Secondary phase 2 and
-						neutral.</xs:documentation>
+						neutral.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 		</xs:restriction>
@@ -994,14 +1126,16 @@ Procedure">
 		<xs:annotation>
 			<xs:documentation>Documented procedure for various types of work or
 				work
-				tasks on assets.</xs:documentation>
+				tasks on assets.
+			</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="instruction" type="xs:string" minOccurs="0"
 				maxOccurs="1" sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#Procedure.instruction">
 				<xs:annotation>
 					<xs:documentation>Textual description of this
-						procedure.</xs:documentation>
+						procedure.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="kind" minOccurs="0" maxOccurs="1"
@@ -1017,7 +1151,8 @@ Procedure">
 				sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#Procedure.ProcedureDataSets">
 				<xs:annotation>
 					<xs:documentation>All data sets captured by this
-						procedure.</xs:documentation>
+						procedure.
+					</xs:documentation>
 				</xs:annotation>
 				<xs:element name="DiagnosisDataSet" minOccurs="1"
 					maxOccurs="1" sawsdl:modelReference="">
@@ -1030,7 +1165,8 @@ Procedure">
 DiagnosisDataSet.effect">
 								<xs:annotation>
 									<xs:documentation>Effect of
-										problem.</xs:documentation>
+										problem.
+									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
 							<xs:element name="failureMode" type="xs:string"
@@ -1039,9 +1175,12 @@ DiagnosisDataSet.effect">
 DiagnosisDataSet.failureMode">
 								<xs:annotation>
 									<xs:documentation>Failuer
-										mode, for example: Failure to Insulate; Failure to conduct; Failure
-										to contain oil; Failure to provide
-										ground plane; Other.</xs:documentation>
+										mode, for example: Failure to
+										Insulate; Failure to conduct; Failure
+										to contain oil; Failure
+										to provide
+										ground plane; Other.
+									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
 							<xs:element name="finalCause" type="xs:string"
@@ -1050,7 +1189,8 @@ DiagnosisDataSet.failureMode">
 DiagnosisDataSet.finalCause">
 								<xs:annotation>
 									<xs:documentation>Cause
-										of problem determined during diagnosis.</xs:documentation>
+										of problem determined during diagnosis.
+									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
 							<xs:element name="finalCode" type="xs:string"
@@ -1059,7 +1199,8 @@ DiagnosisDataSet.finalCause">
 DiagnosisDataSet.finalCode">
 								<xs:annotation>
 									<xs:documentation>Code for
-										diagnosed probem type.</xs:documentation>
+										diagnosed probem type.
+									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
 							<xs:element name="finalOrigin" type="xs:string"
@@ -1068,7 +1209,8 @@ DiagnosisDataSet.finalCode">
 DiagnosisDataSet.finalOrigin">
 								<xs:annotation>
 									<xs:documentation>Origin of
-										problem determined during diagnosis.</xs:documentation>
+										problem determined during diagnosis.
+									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
 							<xs:element name="finalRemark" type="xs:string"
@@ -1077,7 +1219,8 @@ DiagnosisDataSet.finalOrigin">
 DiagnosisDataSet.finalRemark">
 								<xs:annotation>
 									<xs:documentation>Remarks pertaining to findings during problem
-										diagnosis.</xs:documentation>
+										diagnosis.
+									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
 							<xs:element name="phaseCode" minOccurs="0" maxOccurs="1"
@@ -1096,7 +1239,8 @@ DiagnosisDataSet.phaseCode">
 DiagnosisDataSet.preliminaryCode">
 								<xs:annotation>
 									<xs:documentation>Code for
-										problem type determined during preliminary assessment.
+										problem type determined during
+										preliminary assessment.
 									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
@@ -1106,7 +1250,8 @@ DiagnosisDataSet.preliminaryCode">
 DiagnosisDataSet.preliminaryDateTime">
 								<xs:annotation>
 									<xs:documentation>Date
-										and time preliminary assessment of problem was performed.
+										and time preliminary assessment of
+										problem was performed.
 									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
@@ -1117,7 +1262,8 @@ DiagnosisDataSet.preliminaryRemark">
 								<xs:annotation>
 									<xs:documentation>Remarks pertaining to preliminary assessment
 										of
-										problem.</xs:documentation>
+										problem.
+									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
 							<xs:element name="rootCause" type="xs:string"
@@ -1126,7 +1272,9 @@ DiagnosisDataSet.preliminaryRemark">
 DiagnosisDataSet.rootCause">
 								<xs:annotation>
 									<xs:documentation>Root
-										cause of problem determined during diagnosis.</xs:documentation>
+										cause of problem determined during
+										diagnosis.
+									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
 							<xs:element name="rootOrigin" type="xs:string"
@@ -1135,7 +1283,9 @@ DiagnosisDataSet.rootCause">
 DiagnosisDataSet.rootOrigin">
 								<xs:annotation>
 									<xs:documentation>Root
-										origin of problem determined during diagnosis.</xs:documentation>
+										origin of problem determined during
+										diagnosis.
+									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
 							<xs:element name="rootRemark" type="xs:string"
@@ -1145,7 +1295,8 @@ DiagnosisDataSet.rootRemark">
 								<xs:annotation>
 									<xs:documentation>Remarks pertaining to root cause findings
 										during problem
-										diagnosis.</xs:documentation>
+										diagnosis.
+									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
 						</xs:sequence>
@@ -1163,7 +1314,8 @@ InspectionDataSet.locationCondition">
 								<xs:annotation>
 									<xs:documentation>Description of the conditions of the location
 										where the asset
-										resides.</xs:documentation>
+										resides.
+									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
 						</xs:sequence>
@@ -1180,7 +1332,8 @@ InspectionDataSet.locationCondition">
 MaintenanceDataSet.conditionAfter">
 								<xs:annotation>
 									<xs:documentation>Condition of asset just following maintenance
-										procedure.</xs:documentation>
+										procedure.
+									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
 							<xs:element name="conditionBefore" type="xs:string"
@@ -1190,7 +1343,8 @@ MaintenanceDataSet.conditionBefore">
 								<xs:annotation>
 									<xs:documentation>Description of the condition of the asset
 										just prior to maintenance being
-										performed.</xs:documentation>
+										performed.
+									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
 							<xs:element name="maintCode" type="xs:string"
@@ -1199,7 +1353,8 @@ MaintenanceDataSet.conditionBefore">
 MaintenanceDataSet.maintCode">
 								<xs:annotation>
 									<xs:documentation>Code for
-										the type of maintenance performed.</xs:documentation>
+										the type of maintenance performed.
+									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
 						</xs:sequence>
@@ -1225,7 +1380,9 @@ TestDataSet.conclusion">
 TestDataSet.specimenID">
 								<xs:annotation>
 									<xs:documentation>Identifier
-										of specimen used in inspection or test.</xs:documentation>
+										of specimen used in inspection or
+										test.
+									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
 							<xs:element name="specimenToLabDateTime" type="xs:dateTime"
@@ -1233,7 +1390,9 @@ TestDataSet.specimenID">
 								sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#TestDataSet.specimenToLabDateTime">
 								<xs:annotation>
 									<xs:documentation>Date
-										and time the specimen was received by the lab.</xs:documentation>
+										and time the specimen was received by the
+										lab.
+									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
 						</xs:sequence>
@@ -1252,19 +1411,22 @@ ProcedureKind">
 			<xs:enumeration value="diagnosis">
 				<xs:annotation>
 					<xs:documentation>Diagnosis
-						procedure.</xs:documentation>
+						procedure.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="inspection">
 				<xs:annotation>
 					<xs:documentation>Inspection
-						procedure.</xs:documentation>
+						procedure.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="maintenance">
 				<xs:annotation>
 					<xs:documentation>Maintenance
-						procedure.</xs:documentation>
+						procedure.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="other">
@@ -1284,37 +1446,45 @@ ProcedureKind">
 Status">
 		<xs:annotation>
 			<xs:documentation>Current status information relevant to an
-				entity.</xs:documentation>
+				entity.
+			</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="dateTime" type="xs:dateTime" minOccurs="1"
 				maxOccurs="1" sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#Status.dateTime">
 				<xs:annotation>
 					<xs:documentation>Date and time for which status 'value'
-						applies.</xs:documentation>
+						applies.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="reason" type="xs:string" minOccurs="1"
 				maxOccurs="1" sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#Status.reason">
 				<xs:annotation>
 					<xs:documentation>Reason code or explanation for why an
-						object went to the current status 'value'.</xs:documentation>
+						object went
+						to the current status 'value'.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="remark" type="xs:string" minOccurs="1"
 				maxOccurs="1" sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#Status.remark">
 				<xs:annotation>
 					<xs:documentation>Pertinent information regarding the
-						current 'value', as free form text.</xs:documentation>
+						current
+						'value', as free form text.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="value" type="xs:string" minOccurs="1"
 				maxOccurs="1" sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#Status.value">
 				<xs:annotation>
 					<xs:documentation>Status value at 'dateTime'; prior status
-						changes may have been kept in instances of activity records associated
+						changes
+						may have been kept in instances of activity records associated
 						with the object to which this
-						status applies.</xs:documentation>
+						status applies.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -1325,11 +1495,15 @@ UnitMultiplier">
 		<xs:annotation>
 			<xs:documentation>The unit multipliers defined for the CIM. When
 				applied to
-				unit symbols that already contain a multiplier, both multipliers are
+				unit symbols that already contain a multiplier, both
+				multipliers are
 				used. For example, to exchange
-				kilograms using unit symbol of kg, one uses the "none" multiplier, to
-				exchange metric ton (Mg), one
-				uses the "k" multiplier.</xs:documentation>
+				kilograms using unit
+				symbol of kg, one uses the "none" multiplier, to
+				exchange metric ton
+				(Mg), one
+				uses the "k" multiplier.
+			</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="E">
@@ -1420,7 +1594,8 @@ UnitMultiplier">
 			<xs:enumeration value="none">
 				<xs:annotation>
 					<xs:documentation>No multiplier or equivalently multiply by
-						1.</xs:documentation>
+						1.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="p">
@@ -1445,7 +1620,8 @@ UnitMultiplier">
 UnitSymbol">
 		<xs:annotation>
 			<xs:documentation>The units defined for usage in the
-				CIM.</xs:documentation>
+				CIM.
+			</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="A">
@@ -1456,32 +1632,38 @@ UnitSymbol">
 			<xs:enumeration value="A2">
 				<xs:annotation>
 					<xs:documentation>Ampere squared
-						(A²).</xs:documentation>
+						(A²).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="A2h">
 				<xs:annotation>
 					<xs:documentation>ampere-squared hour, Ampere-squared
-						hour.</xs:documentation>
+						hour.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="A2s">
 				<xs:annotation>
 					<xs:documentation>Ampere squared time in square ampere
-						(A²s).</xs:documentation>
+						(A²s).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="APerA">
 				<xs:annotation>
 					<xs:documentation>Current, Ratio of Amperages Note:
-						Users may need to supply a prefix such as ‘m’ to show rates such as
-						‘mA/A’.</xs:documentation>
+						Users may need
+						to supply a prefix such as ‘m’ to show rates such as
+						‘mA/A’.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="APerm">
 				<xs:annotation>
 					<xs:documentation>A/m, magnetic field strength, Ampere per
-						metre.</xs:documentation>
+						metre.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="Ah">
@@ -1492,209 +1674,248 @@ UnitSymbol">
 			<xs:enumeration value="As">
 				<xs:annotation>
 					<xs:documentation>Ampere seconds
-						(A·s).</xs:documentation>
+						(A·s).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="Bq">
 				<xs:annotation>
 					<xs:documentation>Radioactivity in Becquerel
-						(1/s).</xs:documentation>
+						(1/s).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="Btu">
 				<xs:annotation>
 					<xs:documentation>Energy, British Thermal
-						Unit.</xs:documentation>
+						Unit.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="C">
 				<xs:annotation>
 					<xs:documentation>Electric charge in Coulomb
-						(A·s).</xs:documentation>
+						(A·s).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="CPerkg">
 				<xs:annotation>
 					<xs:documentation>exposure (x rays), Coulomb per
-						kilogram.</xs:documentation>
+						kilogram.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="CPerm2">
 				<xs:annotation>
 					<xs:documentation>surface charge density, Coulomb per
-						square metre.</xs:documentation>
+						square metre.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="CPerm3">
 				<xs:annotation>
 					<xs:documentation>electric charge density, Coulomb per
-						cubic metre.</xs:documentation>
+						cubic metre.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="F">
 				<xs:annotation>
 					<xs:documentation>Electric capacitance in Farad
-						(C/V).</xs:documentation>
+						(C/V).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="FPerm">
 				<xs:annotation>
 					<xs:documentation>permittivity, Farad per
-						metre.</xs:documentation>
+						metre.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="G">
 				<xs:annotation>
 					<xs:documentation>Magnetic flux density, Gauss (1 G = 10-4
-						T).</xs:documentation>
+						T).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="Gy">
 				<xs:annotation>
 					<xs:documentation>Absorbed dose in Gray
-						(J/kg).</xs:documentation>
+						(J/kg).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="GyPers">
 				<xs:annotation>
 					<xs:documentation>absorbed dose rate, Gray per
-						second.</xs:documentation>
+						second.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="H">
 				<xs:annotation>
 					<xs:documentation>Electric inductance in Henry
-						(Wb/A).</xs:documentation>
+						(Wb/A).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="HPerm">
 				<xs:annotation>
 					<xs:documentation>permeability, Henry per
-						metre.</xs:documentation>
+						metre.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="Hz">
 				<xs:annotation>
 					<xs:documentation>Frequency in Hertz
-						(1/s).</xs:documentation>
+						(1/s).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="HzPerHz">
 				<xs:annotation>
 					<xs:documentation>Frequency, Rate of frequency change
-						Note: Users may need to supply a prefix such as ‘m’ to show rates such
+						Note: Users
+						may need to supply a prefix such as ‘m’ to show rates such
 						as
-						‘mHz/Hz’.</xs:documentation>
+						‘mHz/Hz’.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="HzPers">
 				<xs:annotation>
 					<xs:documentation>Rate of change of frequency in Hertz per
-						second.</xs:documentation>
+						second.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="J">
 				<xs:annotation>
 					<xs:documentation>Energy in joule (N·m = C·V =
-						W·s).</xs:documentation>
+						W·s).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="JPerK">
 				<xs:annotation>
 					<xs:documentation>Heat capacity in
-						Joule/Kelvin.</xs:documentation>
+						Joule/Kelvin.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="JPerkg">
 				<xs:annotation>
 					<xs:documentation>Specific energy, Joule /
-						kg.</xs:documentation>
+						kg.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="JPerkgK">
 				<xs:annotation>
 					<xs:documentation>Specific heat capacity, specific entropy,
-						Joule per kilogram Kelvin.</xs:documentation>
+						Joule
+						per kilogram Kelvin.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="JPerm3">
 				<xs:annotation>
 					<xs:documentation>energy density, Joule per cubic
-						metre.</xs:documentation>
+						metre.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="JPermol">
 				<xs:annotation>
 					<xs:documentation>molar energy, Joule per
-						mole.</xs:documentation>
+						mole.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="JPermolK">
 				<xs:annotation>
 					<xs:documentation>molar entropy, molar heat capacity, Joule
-						per mole kelvin.</xs:documentation>
+						per mole
+						kelvin.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="JPers">
 				<xs:annotation>
 					<xs:documentation>Energy rate joule per second
-						(J/s),</xs:documentation>
+						(J/s),
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="K">
 				<xs:annotation>
 					<xs:documentation>Temperature in
-						Kelvin.</xs:documentation>
+						Kelvin.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="M">
 				<xs:annotation>
 					<xs:documentation>Length, nautical mile (1 M = 1852
-						m).</xs:documentation>
+						m).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="Mx">
 				<xs:annotation>
 					<xs:documentation>Magnetic flux, Maxwell (1 Mx = 10-8
-						Wb).</xs:documentation>
+						Wb).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="N">
 				<xs:annotation>
 					<xs:documentation>Force in Newton
-						(kg·m/s²).</xs:documentation>
+						(kg·m/s²).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="NPerm">
 				<xs:annotation>
 					<xs:documentation>Surface tension, Newton per
-						metre.</xs:documentation>
+						metre.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="Nm">
 				<xs:annotation>
 					<xs:documentation>Moment of force, Newton
-						metre.</xs:documentation>
+						metre.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="Oe">
 				<xs:annotation>
 					<xs:documentation>Magnetic field, OErsted (1 Oe = (103/4p)
-						A/m).</xs:documentation>
+						A/m).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="Pa">
 				<xs:annotation>
 					<xs:documentation>Pressure in Pascal (N/m²). Note: the
-						absolute or relative measurement of pressure is implied with this entry.
-						See below for more explicit
-						forms.</xs:documentation>
+						absolute or
+						relative measurement of pressure is implied with this entry.
+						See
+						below for more explicit
+						forms.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="Pas">
 				<xs:annotation>
 					<xs:documentation>Dynamic viscosity, Pascal
-						second.</xs:documentation>
+						second.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="Q">
@@ -1705,43 +1926,50 @@ UnitSymbol">
 			<xs:enumeration value="Qh">
 				<xs:annotation>
 					<xs:documentation>Quantity energy,
-						Qh.</xs:documentation>
+						Qh.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="S">
 				<xs:annotation>
 					<xs:documentation>Conductance in
-						Siemens.</xs:documentation>
+						Siemens.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="SPerm">
 				<xs:annotation>
 					<xs:documentation>Conductance per length
-						(F/m).</xs:documentation>
+						(F/m).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="Sv">
 				<xs:annotation>
 					<xs:documentation>Dose equivalent in Sievert
-						(J/kg).</xs:documentation>
+						(J/kg).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="T">
 				<xs:annotation>
 					<xs:documentation>Magnetic flux density in Tesla
-						(Wb/m2).</xs:documentation>
+						(Wb/m2).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="V">
 				<xs:annotation>
 					<xs:documentation>Electric potential in Volt
-						(W/A).</xs:documentation>
+						(W/A).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="V2">
 				<xs:annotation>
 					<xs:documentation>Volt squared
-						(W²/A²).</xs:documentation>
+						(W²/A²).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="V2h">
@@ -1753,81 +1981,102 @@ UnitSymbol">
 			<xs:enumeration value="VA">
 				<xs:annotation>
 					<xs:documentation>Apparent power in Volt Ampere (See
-						also real power and reactive power.)</xs:documentation>
+						also real power
+						and reactive power.)
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="VAh">
 				<xs:annotation>
 					<xs:documentation>Apparent energy in Volt Ampere
-						hours.</xs:documentation>
+						hours.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="VAr">
 				<xs:annotation>
 					<xs:documentation>Reactive power in Volt Ampere reactive.
-						The “reactive” or “imaginary” component of electrical power
+						The
+						“reactive” or “imaginary” component of electrical power
 						(VIsin(phi)). (See also real power and
-						apparent power).</xs:documentation>
+						apparent power).
+					</xs:documentation>
 					<xs:documentation>Note: Different meter designs use
-						different methods to arrive at their results. Some meters may compute
+						different
+						methods to arrive at their results. Some meters may compute
 						reactive power as an arithmetic
-						value, while others compute the value vectorially. The data consumer
+						value, while others compute the
+						value vectorially. The data consumer
 						should determine the method in
-						use and the suitability of the measurement for the intended purpose.
+						use and the suitability of the measurement for the intended
+						purpose.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="VArh">
 				<xs:annotation>
 					<xs:documentation>Reactive energy in Volt Ampere reactive
-						hours.</xs:documentation>
+						hours.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="VPerHz">
 				<xs:annotation>
 					<xs:documentation>Magnetic flux in Volt per
-						Hertz.</xs:documentation>
+						Hertz.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="VPerV">
 				<xs:annotation>
 					<xs:documentation>Voltage, Ratio of voltages Note: Users
-						may need to supply a prefix such as ‘m’ to show rates such as ‘mV/V’.
+						may need to
+						supply a prefix such as ‘m’ to show rates such as ‘mV/V’.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="VPerVA">
 				<xs:annotation>
 					<xs:documentation>Power factor, PF, the ratio of the active
-						power to the apparent power. Note: The sign convention used for power
+						power to
+						the apparent power. Note: The sign convention used for power
 						factor will differ between IEC
-						meters and EEI (ANSI) meters. It is assumed that the data consumers
+						meters and EEI (ANSI) meters. It is
+						assumed that the data consumers
 						understand the type of meter
-						being used and agree on the sign convention in use at any given
-						utility.</xs:documentation>
+						being
+						used and agree on the sign convention in use at any given
+						utility.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="VPerVAr">
 				<xs:annotation>
 					<xs:documentation>Power factor, PF, the ratio of the active
-						power to the apparent power. Note: The sign convention used for power
+						power to
+						the apparent power. Note: The sign convention used for power
 						factor will differ between IEC
-						meters and EEI (ANSI) meters. It is assumed that the data consumers
+						meters and EEI (ANSI) meters. It is
+						assumed that the data consumers
 						understand the type of meter
-						being used and agree on the sign convention in use at any given
-						utility.</xs:documentation>
+						being
+						used and agree on the sign convention in use at any given
+						utility.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="VPerm">
 				<xs:annotation>
 					<xs:documentation>electric field strength, Volt per
-						metre.</xs:documentation>
+						metre.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="Vh">
 				<xs:annotation>
 					<xs:documentation>Volt-hour, Volt
-						hours.</xs:documentation>
+						hours.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="Vs">
@@ -1838,160 +2087,197 @@ UnitSymbol">
 			<xs:enumeration value="W">
 				<xs:annotation>
 					<xs:documentation>Real power in Watt (J/s). Electrical power
-						may have real and reactive components. The real portion of electrical
+						may
+						have real and reactive components. The real portion of electrical
 						power (I²R or VIcos(phi)), is
-						expressed in Watts. (See also apparent power and reactive power.)
+						expressed in Watts. (See also
+						apparent power and reactive power.)
 					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="WPerA">
 				<xs:annotation>
 					<xs:documentation>Active power per current flow, watt per
-						Ampere.</xs:documentation>
+						Ampere.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="WPerW">
 				<xs:annotation>
 					<xs:documentation>Signal Strength, Ratio of power Note:
-						Users may need to supply a prefix such as ‘m’ to show rates such as
-						‘mW/W’.</xs:documentation>
+						Users may
+						need to supply a prefix such as ‘m’ to show rates such as
+						‘mW/W’.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="WPerm2">
 				<xs:annotation>
 					<xs:documentation>Heat flux density, irradiance, Watt per
-						square metre.</xs:documentation>
+						square
+						metre.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="WPerm2sr">
 				<xs:annotation>
 					<xs:documentation>radiance, Watt per square metre
-						steradian.</xs:documentation>
+						steradian.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="WPermK">
 				<xs:annotation>
 					<xs:documentation>Thermal conductivity in Watt/metre
-						Kelvin.</xs:documentation>
+						Kelvin.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="WPers">
 				<xs:annotation>
 					<xs:documentation>Ramp rate in Watt per
-						second.</xs:documentation>
+						second.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="WPersr">
 				<xs:annotation>
 					<xs:documentation>Radiant intensity, Watt per
-						steradian.</xs:documentation>
+						steradian.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="Wb">
 				<xs:annotation>
 					<xs:documentation>Magnetic flux in Weber
-						(V·s).</xs:documentation>
+						(V·s).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="Wh">
 				<xs:annotation>
 					<xs:documentation>Real energy in Watt
-						hours.</xs:documentation>
+						hours.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="anglemin">
 				<xs:annotation>
 					<xs:documentation>Plane angle,
-						minute.</xs:documentation>
+						minute.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="anglesec">
 				<xs:annotation>
 					<xs:documentation>Plane angle,
-						second.</xs:documentation>
+						second.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="bar">
 				<xs:annotation>
 					<xs:documentation>Pressure, bar (1 bar = 100
-						kPa).</xs:documentation>
+						kPa).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="cd">
 				<xs:annotation>
 					<xs:documentation>Luminous intensity in
-						candela.</xs:documentation>
+						candela.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="charPers">
 				<xs:annotation>
 					<xs:documentation>Data rate (baud) in characters per
-						second.</xs:documentation>
+						second.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="character">
 				<xs:annotation>
 					<xs:documentation>Number of
-						characters.</xs:documentation>
+						characters.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="cosPhi">
 				<xs:annotation>
 					<xs:documentation>Power factor,
-						dimensionless.</xs:documentation>
+						dimensionless.
+					</xs:documentation>
 					<xs:documentation>Note 1: This definition of power factor
-						only holds for balanced systems. See the alternative definition under
-						code 153.</xs:documentation>
+						only holds
+						for balanced systems. See the alternative definition under
+						code
+						153.
+					</xs:documentation>
 					<xs:documentation>Note 2: Beware of differing sign
-						conventions in use between the IEC and EEI. It is assumed that the data
-						consumer understands the
-						type of meter in use and the sign convention in use by the utility.
+						conventions in
+						use between the IEC and EEI. It is assumed that the data
+						consumer
+						understands the
+						type of meter in use and the sign convention in use
+						by the utility.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="count">
 				<xs:annotation>
 					<xs:documentation>Amount of substance, Counter
-						value.</xs:documentation>
+						value.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="d">
 				<xs:annotation>
 					<xs:documentation>Time, day = 24 h = 86400
-						s.</xs:documentation>
+						s.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="dB">
 				<xs:annotation>
 					<xs:documentation>Sound pressure level in decibel. Note:
-						multiplier “d” is included in this unit symbol for compatibility with IEC
-						61850-7-3.</xs:documentation>
+						multiplier
+						“d” is included in this unit symbol for compatibility with IEC
+						61850-7-3.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="dBm">
 				<xs:annotation>
 					<xs:documentation>Power level (logrithmic ratio of signal
-						strength , Bel-mW), normalized to 1mW. Note: multiplier “d” is included in
+						strength ,
+						Bel-mW), normalized to 1mW. Note: multiplier “d” is included in
 						this unit symbol for
-						compatibility with IEC 61850-7-3.</xs:documentation>
+						compatibility with IEC 61850-7-3.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="deg">
 				<xs:annotation>
 					<xs:documentation>Plane angle in
-						degrees.</xs:documentation>
+						degrees.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="degC">
 				<xs:annotation>
 					<xs:documentation>Relative temperature in degrees
-						Celsius.</xs:documentation>
+						Celsius.
+					</xs:documentation>
 					<xs:documentation>In the SI unit system the symbol is ºC.
-						Electric charge is measured in coulomb that has the unit symbol C. To
+						Electric
+						charge is measured in coulomb that has the unit symbol C. To
 						distinguish degree Celsius form
-						coulomb the symbol used in the UML is degC. Reason for not using ºC is
+						coulomb the symbol used in the UML
+						is degC. Reason for not using ºC is
 						the special character º is
-						difficult to manage in software.</xs:documentation>
+						difficult to manage in software.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="ft3">
@@ -2002,21 +2288,26 @@ UnitSymbol">
 			<xs:enumeration value="gPerg">
 				<xs:annotation>
 					<xs:documentation>Concentration, The ratio of the mass of a
-						solute divided by the mass of the solution. Note: Users may need use a
+						solute
+						divided by the mass of the solution. Note: Users may need use a
 						prefix such a ‘μ’ to express a
-						quantity such as ‘μg/g’.</xs:documentation>
+						quantity such as ‘μg/g’.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="gal">
 				<xs:annotation>
 					<xs:documentation>Volume, US gallon (1 gal = 231 in3 = 128
-						fl ounce).</xs:documentation>
+						fl
+						ounce).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="h">
 				<xs:annotation>
 					<xs:documentation>Time, hour = 60 min = 3600
-						s.</xs:documentation>
+						s.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="ha">
@@ -2027,13 +2318,16 @@ UnitSymbol">
 			<xs:enumeration value="kat">
 				<xs:annotation>
 					<xs:documentation>Catalytic activity, katal = mol /
-						s.</xs:documentation>
+						s.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="katPerm3">
 				<xs:annotation>
 					<xs:documentation>catalytic activity concentration, katal per
-						cubic metre.</xs:documentation>
+						cubic
+						metre.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="kg">
@@ -2046,78 +2340,99 @@ UnitSymbol">
 			<xs:enumeration value="kgPerJ">
 				<xs:annotation>
 					<xs:documentation>Weigh per energy in kilogram/joule
-						(kg/J). Note: multiplier “k” is included in this unit symbol for
-						compatibility with IEC 61850-7-
-						3.</xs:documentation>
+						(kg/J). Note:
+						multiplier “k” is included in this unit symbol for
+						compatibility
+						with IEC 61850-7-
+						3.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="kgPerm3">
 				<xs:annotation>
 					<xs:documentation>Density in kilogram/cubic metre (kg/m³).
-						Note: multiplier “k” is included in this unit symbol for compatibility
+						Note:
+						multiplier “k” is included in this unit symbol for compatibility
 						with IEC 61850-7-
-						3.</xs:documentation>
+						3.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="kgm">
 				<xs:annotation>
 					<xs:documentation>Moment of mass in kilogram metre
-						(kg·m) (first moment of mass). Note: multiplier “k” is included in this
-						unit symbol for compatibility with
-						IEC 61850-7-3.</xs:documentation>
+						(kg·m) (first
+						moment of mass). Note: multiplier “k” is included in this
+						unit
+						symbol for compatibility with
+						IEC 61850-7-3.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="kgm2">
 				<xs:annotation>
 					<xs:documentation>Moment of mass in kilogram square
-						metre (kg·m²) (Second moment of mass, commonly called the moment of
-						inertia). Note: multiplier “k”
-						is included in this unit symbol for compatibility with IEC
-						61850-7-3.</xs:documentation>
+						metre (kg·m²)
+						(Second moment of mass, commonly called the moment of
+						inertia).
+						Note: multiplier “k”
+						is included in this unit symbol for
+						compatibility with IEC
+						61850-7-3.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="kn">
 				<xs:annotation>
 					<xs:documentation>Speed, knot (1 kn = 1852/3600)
-						m/s.</xs:documentation>
+						m/s.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="l">
 				<xs:annotation>
 					<xs:documentation>Volume, litre = dm3 =
-						m3/1000.</xs:documentation>
+						m3/1000.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="lPerh">
 				<xs:annotation>
 					<xs:documentation>Volumetric flow rate, litre per
-						hour.</xs:documentation>
+						hour.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="lPerl">
 				<xs:annotation>
 					<xs:documentation>Concentration, The ratio of the volume of
-						a solute divided by the volume of the solution. Note: Users may
-						need use a prefix such a ‘μ’ to
-						express a quantity such as ‘μL/L’.</xs:documentation>
+						a solute
+						divided by the volume of the solution. Note: Users may
+						need use a
+						prefix such a ‘μ’ to
+						express a quantity such as ‘μL/L’.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="lPers">
 				<xs:annotation>
 					<xs:documentation>Volumetric flow rate in litre per
-						second.</xs:documentation>
+						second.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="lm">
 				<xs:annotation>
 					<xs:documentation>Luminous flux in lumen
-						(cd·sr).</xs:documentation>
+						(cd·sr).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="lx">
 				<xs:annotation>
 					<xs:documentation>Illuminance in lux
-						(lm/m²).</xs:documentation>
+						(lm/m²).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="m">
@@ -2128,91 +2443,110 @@ UnitSymbol">
 			<xs:enumeration value="m2">
 				<xs:annotation>
 					<xs:documentation>Area in square metre
-						(m²).</xs:documentation>
+						(m²).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="m2Pers">
 				<xs:annotation>
 					<xs:documentation>Viscosity in metre square / second
-						(m²/s).</xs:documentation>
+						(m²/s).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="m3">
 				<xs:annotation>
 					<xs:documentation>Volume in cubic metre
-						(m³).</xs:documentation>
+						(m³).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="m3Compensated">
 				<xs:annotation>
 					<xs:documentation>Volume, cubic metre, with the value
-						compensated for weather effects.</xs:documentation>
+						compensated
+						for weather effects.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="m3Perh">
 				<xs:annotation>
 					<xs:documentation>Volumetric flow rate, cubic metre per
-						hour.</xs:documentation>
+						hour.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="m3Perkg">
 				<xs:annotation>
 					<xs:documentation>Specific volume, cubic metre per
-						kilogram, v.</xs:documentation>
+						kilogram, v.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="m3Pers">
 				<xs:annotation>
 					<xs:documentation>Volumetric flow rate in cubic metres per
-						second (m³/s).</xs:documentation>
+						second
+						(m³/s).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="m3Uncompensated">
 				<xs:annotation>
 					<xs:documentation>Volume, cubic metre, with the value
-						uncompensated for weather effects.</xs:documentation>
+						uncompensated
+						for weather effects.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="mPerm3">
 				<xs:annotation>
 					<xs:documentation>Fuel efficiency in metre per cubic metre
-						(m/m³).</xs:documentation>
+						(m/m³).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="mPers">
 				<xs:annotation>
 					<xs:documentation>Velocity in metre per second
-						(m/s).</xs:documentation>
+						(m/s).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="mPers2">
 				<xs:annotation>
 					<xs:documentation>Acceleration in metre per second
-						squared (m/s²).</xs:documentation>
+						squared (m/s²).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="min">
 				<xs:annotation>
 					<xs:documentation>Time, minute = 60
-						s.</xs:documentation>
+						s.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="mmHg">
 				<xs:annotation>
 					<xs:documentation>Pressure, millimeter of mercury (1 mmHg
-						is approximately 133.3 Pa).</xs:documentation>
+						is
+						approximately 133.3 Pa).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="mol">
 				<xs:annotation>
 					<xs:documentation>Amount of substance in
-						mole.</xs:documentation>
+						mole.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="molPerkg">
 				<xs:annotation>
 					<xs:documentation>Concentration, Molality, the amount of
-						solute in moles and the amount of solvent in kilograms.
+						solute in
+						moles and the amount of solvent in kilograms.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
@@ -2221,86 +2555,104 @@ UnitSymbol">
 					<xs:documentation>Concentration, The amount of substance
 						concentration, (c), the amount of solvent in moles divided by the
 						volume of solution in
-						m³.</xs:documentation>
+						m³.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="molPermol">
 				<xs:annotation>
 					<xs:documentation>Concentration, Molar fraction (?), the
-						ratio of the molar amount of a solute divided by the molar amount of
-						the solution.</xs:documentation>
+						ratio of
+						the molar amount of a solute divided by the molar amount of
+						the
+						solution.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="none">
 				<xs:annotation>
 					<xs:documentation>Dimension less quantity, e.g. count, per
-						unit, etc.</xs:documentation>
+						unit,
+						etc.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="ohm">
 				<xs:annotation>
 					<xs:documentation>Electric resistance in ohm
-						(V/A).</xs:documentation>
+						(V/A).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="ohmPerm">
 				<xs:annotation>
 					<xs:documentation>Electric resistance per length in ohm per
-						metre ((V/A)/m).</xs:documentation>
+						metre
+						((V/A)/m).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="ohmm">
 				<xs:annotation>
 					<xs:documentation>resistivity, Ohm metre,
-						(rho).</xs:documentation>
+						(rho).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="onePerHz">
 				<xs:annotation>
 					<xs:documentation>Reciprocal of frequency
-						(1/Hz).</xs:documentation>
+						(1/Hz).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="onePerm">
 				<xs:annotation>
 					<xs:documentation>Wavenumber, reciprocal metre,
-						(1/m).</xs:documentation>
+						(1/m).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="ppm">
 				<xs:annotation>
 					<xs:documentation>Concentration in parts per
-						million.</xs:documentation>
+						million.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="rad">
 				<xs:annotation>
 					<xs:documentation>Plane angle in radian
-						(m/m).</xs:documentation>
+						(m/m).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="radPers">
 				<xs:annotation>
 					<xs:documentation>Angular velocity in radians per second
-						(rad/s).</xs:documentation>
+						(rad/s).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="radPers2">
 				<xs:annotation>
 					<xs:documentation>Angular acceleration, radian per second
-						squared.</xs:documentation>
+						squared.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="rev">
 				<xs:annotation>
 					<xs:documentation>Amount of rotation,
-						Revolutions.</xs:documentation>
+						Revolutions.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="rotPers">
 				<xs:annotation>
 					<xs:documentation>Rotations per second (1/s). See also Hz
-						(1/s).</xs:documentation>
+						(1/s).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="s">
@@ -2311,14 +2663,16 @@ UnitSymbol">
 			<xs:enumeration value="sPers">
 				<xs:annotation>
 					<xs:documentation>Time, Ratio of time Note: Users may
-						need to supply a prefix such as ‘μ’ to show rates such as ‘μs/s’
+						need to supply
+						a prefix such as ‘μ’ to show rates such as ‘μs/s’
 					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="sr">
 				<xs:annotation>
 					<xs:documentation>Solid angle in steradian
-						(m2/m2).</xs:documentation>
+						(m2/m2).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="therm">
@@ -2329,7 +2683,8 @@ UnitSymbol">
 			<xs:enumeration value="tonne">
 				<xs:annotation>
 					<xs:documentation>mass, “tonne” or “metric ton” (1000 kg =
-						1 Mg).</xs:documentation>
+						1 Mg).
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 		</xs:restriction>
@@ -2361,7 +2716,8 @@ Work">
 		<xs:annotation>
 			<xs:documentation>Document used to request, initiate, track and
 				record
-				work.</xs:documentation>
+				work.
+			</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="mRID" type="m:mRID" minOccurs="0"
@@ -2370,11 +2726,16 @@ Work">
 					<xs:documentation>Master resource identifier issued by a model
 						authority. The mRID is unique within an exchange context. Global
 						uniqueness is easily
-						achieved by using a UUID, as specified in RFC 4122, for the mRID. The use
-						of UUID is strongly recommended. For CIMXML data files in RDF
-						syntax conforming to IEC 61970-552 Edition 1, the mRID is mapped
-						to rdf:ID or rdf:about attributes that identify CIM object
-						elements.</xs:documentation>
+						achieved by using a UUID, as specified in RFC
+						4122, for the mRID. The use
+						of UUID is strongly recommended. For
+						CIMXML data files in RDF
+						syntax conforming to IEC 61970-552 Edition
+						1, the mRID is mapped
+						to rdf:ID or rdf:about attributes that
+						identify CIM object
+						elements.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="kind" type="m:WorkKind" minOccurs="0"
@@ -2389,8 +2750,10 @@ Work">
 Document.lastModifiedDateTime">
 				<xs:annotation>
 					<xs:documentation>Date and time this document was last
-						modified. Documents may potentially be modified many times during their
-						lifetime.</xs:documentation>
+						modified.
+						Documents may potentially be modified many times during their
+						lifetime.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="requestDateTime" type="xs:dateTime"
@@ -2398,7 +2761,8 @@ Document.lastModifiedDateTime">
 				sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#Work.requestDateTime">
 				<xs:annotation>
 					<xs:documentation>Date and time work was
-						requested.</xs:documentation>
+						requested.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="statusKind" type="m:WorkStatusKind"
@@ -2429,7 +2793,8 @@ Document.lastModifiedDateTime">
 Priority.justification">
 							<xs:annotation>
 								<xs:documentation>Justification for
-									'rank'.</xs:documentation>
+									'rank'.
+								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 						<xs:element name="rank" type="xs:integer" minOccurs="1"
@@ -2437,8 +2802,10 @@ Priority.justification">
 Priority.rank">
 							<xs:annotation>
 								<xs:documentation>Priority level;
-									usually, lower number means high priority, but the details are provided
-									in 'type'.</xs:documentation>
+									usually, lower number means
+									high priority, but the details are provided
+									in 'type'.
+								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 						<xs:element name="type" type="xs:string" minOccurs="0"
@@ -2446,7 +2813,9 @@ Priority.rank">
 Priority.type">
 							<xs:annotation>
 								<xs:documentation>Type describing
-									'rank'; e.g., high, emergency, etc.</xs:documentation>
+									'rank'; e.g., high, emergency,
+									etc.
+								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 					</xs:sequence>
@@ -2458,7 +2827,8 @@ Priority.type">
 BaseWork.TimeSchedules">
 				<xs:annotation>
 					<xs:documentation>All time schedules for this work or work
-						task.</xs:documentation>
+						task.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="WorkLocation" type="m:WorkLocation"
@@ -2466,7 +2836,8 @@ BaseWork.TimeSchedules">
 				sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#BaseWork.WorkLocation">
 				<xs:annotation>
 					<xs:documentation>Location for this
-						work/task.</xs:documentation>
+						work/task.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="WorkTasks" type="m:WorkTask" minOccurs="0"
@@ -2474,11 +2845,20 @@ BaseWork.TimeSchedules">
 Work.WorkTasks">
 				<xs:annotation>
 					<xs:documentation>All tasks in this
-						work.</xs:documentation>
+						work.
+					</xs:documentation>
 				</xs:annotation>
+			</xs:element>
+			<xs:element name="Attachments" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Attachment" type="xs:string" minOccurs="1" maxOccurs="unbounded"></xs:element>
+					</xs:sequence>
+				</xs:complexType>
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
+
 	<xs:complexType name="WorkAsset"
 		sawsdl:modelReference="http://iec.ch/TC57/CIMgeneric#
 WorkAsset">
@@ -2494,7 +2874,9 @@ WorkAsset">
 Tool.lastCalibrationDate">
 						<xs:annotation>
 							<xs:documentation>(if applicable) Date the
-								tool was last calibrated.</xs:documentation>
+								tool was last
+								calibrated.
+							</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 					<xs:element name="odometerReadDateTime" type="xs:dateTime"
@@ -2503,7 +2885,9 @@ Tool.lastCalibrationDate">
 Vehicle.odometerReadDateTime">
 						<xs:annotation>
 							<xs:documentation>Date and time the last
-								odometer reading was recorded.</xs:documentation>
+								odometer reading was
+								recorded.
+							</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 					<xs:element name="odometerReading" type="m:Length"
@@ -2512,9 +2896,12 @@ Vehicle.odometerReadDateTime">
 Vehicle.odometerReading">
 						<xs:annotation>
 							<xs:documentation>Odometer reading of this
-								vehicle as of the 'odometerReadingDateTime'. Refer to associated
-								ActivityRecords for earlier
-								readings.</xs:documentation>
+								vehicle as of the
+								'odometerReadingDateTime'. Refer to associated
+								ActivityRecords
+								for earlier
+								readings.
+							</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 					<xs:element name="usageKind" type="m:VehicleUsageKind"
@@ -2523,7 +2910,8 @@ Vehicle.odometerReading">
 Vehicle.usageKind">
 						<xs:annotation>
 							<xs:documentation>Kind of usage of the
-								vehicle.</xs:documentation>
+								vehicle.
+							</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
@@ -2570,7 +2958,8 @@ WorkKind">
 			<xs:enumeration value="reconnect">
 				<xs:annotation>
 					<xs:documentation>(use 'connect' instead) Reconnect
-						work.</xs:documentation>
+						work.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="repair">
@@ -2596,7 +2985,8 @@ WorkLocation">
 		<xs:annotation>
 			<xs:documentation>Information about a particular location for various
 				forms
-				of work.</xs:documentation>
+				of work.
+			</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="mRID" type="m:mRID" minOccurs="0"
@@ -2605,11 +2995,16 @@ WorkLocation">
 					<xs:documentation>Master resource identifier issued by a model
 						authority. The mRID is unique within an exchange context. Global
 						uniqueness is easily
-						achieved by using a UUID, as specified in RFC 4122, for the mRID. The use
-						of UUID is strongly recommended. For CIMXML data files in RDF
-						syntax conforming to IEC 61970-552 Edition 1, the mRID is mapped
-						to rdf:ID or rdf:about attributes that identify CIM object
-						elements.</xs:documentation>
+						achieved by using a UUID, as specified in RFC
+						4122, for the mRID. The use
+						of UUID is strongly recommended. For
+						CIMXML data files in RDF
+						syntax conforming to IEC 61970-552 Edition
+						1, the mRID is mapped
+						to rdf:ID or rdf:about attributes that
+						identify CIM object
+						elements.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="direction" type="xs:string" minOccurs="0"
@@ -2628,7 +3023,8 @@ WorkLocation">
 				maxOccurs="1" sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#Location.CoordinateSystem">
 				<xs:annotation>
 					<xs:documentation>Coordinate system used to describe position
-						points of this location.</xs:documentation>
+						points of this location.
+					</xs:documentation>
 				</xs:annotation>
 				<xs:complexType sawsdl:modelReference="http://iec.ch/TC57/CIMgeneric#CoordinateSystem">
 					<xs:sequence>
@@ -2682,7 +3078,8 @@ Location.Hazards">
 										sawsdl:modelReference="http://iec.ch/TC57/CIM-generic#Status.dateTime">
 										<xs:annotation>
 											<xs:documentation>Date and time for which status 'value'
-												applies.</xs:documentation>
+												applies.
+											</xs:documentation>
 										</xs:annotation>
 									</xs:element>
 									<xs:element name="reason" type="xs:string"
@@ -2699,7 +3096,8 @@ Location.Hazards">
 										sawsdl:modelReference="http://iec.ch/TC57/CIMgeneric#Status.remark">
 										<xs:annotation>
 											<xs:documentation>Pertinent information regarding the current
-												'value', as free form text.</xs:documentation>
+												'value', as free form text.
+											</xs:documentation>
 										</xs:annotation>
 									</xs:element>
 									<xs:element name="value" type="xs:string" minOccurs="1"
@@ -2739,7 +3137,8 @@ Location.Hazards">
 												physical location of the place of interest does not have a
 												direct point of entry from the street, but may be located
 												inside a larger structure such as a building, complex,
-												office block, apartment, etc.</xs:documentation>
+												office block, apartment, etc.
+											</xs:documentation>
 										</xs:annotation>
 									</xs:element>
 									<xs:element name="code" type="xs:string" minOccurs="0"
@@ -2749,7 +3148,8 @@ Location.Hazards">
 												external reference systems, such as those of the
 												town-planner's department or surveyor general's mapping
 												system, that allocate global
-												reference codes to streets.</xs:documentation>
+												reference codes to streets.
+											</xs:documentation>
 										</xs:annotation>
 									</xs:element>
 									<xs:element name="name" type="xs:string" minOccurs="0"
@@ -2763,7 +3163,8 @@ Location.Hazards">
 										sawsdl:modelReference="http://iec.ch/TC57/CIMgeneric#StreetDetail.number">
 										<xs:annotation>
 											<xs:documentation>Designator of the specific location on the
-												street.</xs:documentation>
+												street.
+											</xs:documentation>
 										</xs:annotation>
 									</xs:element>
 									<xs:element name="prefix" type="xs:string"
@@ -2771,7 +3172,8 @@ Location.Hazards">
 										sawsdl:modelReference="http://iec.ch/TC57/CIMgeneric#StreetDetail.prefix">
 										<xs:annotation>
 											<xs:documentation>Prefix to the street name. For example:
-												North, South, East, West.</xs:documentation>
+												North, South, East, West.
+											</xs:documentation>
 										</xs:annotation>
 									</xs:element>
 									<xs:element name="suffix" type="xs:string"
@@ -2779,7 +3181,8 @@ Location.Hazards">
 										sawsdl:modelReference="http://iec.ch/TC57/CIMgeneric#StreetDetail.suffix">
 										<xs:annotation>
 											<xs:documentation>Suffix to the street name. For example:
-												North, South, East,West.</xs:documentation>
+												North, South, East,West.
+											</xs:documentation>
 										</xs:annotation>
 									</xs:element>
 									<xs:element name="suiteNumber" type="xs:string"
@@ -2841,7 +3244,8 @@ Location.Hazards">
 										sawsdl:modelReference="http://iec.ch/TC57/CIMgeneric#TownDetail.section">
 										<xs:annotation>
 											<xs:documentation>Town section. For example, it is common for
-												there to be 36 sections per township.</xs:documentation>
+												there to be 36 sections per township.
+											</xs:documentation>
 										</xs:annotation>
 									</xs:element>
 									<xs:element name="stateOrProvince" type="xs:string"
@@ -2863,7 +3267,8 @@ Location.Hazards">
 				<xs:annotation>
 					<xs:documentation>Sequence of position points describing this
 						location, expressed in coordinate system
-						'Location.CoordinateSystem'.</xs:documentation>
+						'Location.CoordinateSystem'.
+					</xs:documentation>
 				</xs:annotation>
 				<xs:complexType sawsdl:modelReference="http://www.w3.org/2002/07/owl#Thing">
 					<xs:sequence>
@@ -2872,7 +3277,8 @@ Location.Hazards">
 							sawsdl:modelReference="http://iec.ch/TC57/CIMgeneric#PositionPoint.sequenceNumber">
 							<xs:annotation>
 								<xs:documentation>Zero-relative sequence number of this point
-									within a series of points.</xs:documentation>
+									within a series of points.
+								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 						<xs:element name="xPosition" type="xs:string"
@@ -2992,7 +3398,8 @@ WorkTask">
 						4122, for the mRID. The use of UUID is strongly recommended. For
 						CIMXML data files in RDF syntax conforming to IEC 61970-552
 						Edition 1, the mRID is mapped to rdf:ID or rdf:about attributes
-						that identify CIM object elements.</xs:documentation>
+						that identify CIM object elements.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="crewETA" type="xs:dateTime" minOccurs="0"
@@ -3034,7 +3441,8 @@ WorkTask">
 				maxOccurs="unbounded" sawsdl:modelReference="http://iec.ch/TC57/CIMgeneric#WorkTask.Assets">
 				<xs:annotation>
 					<xs:documentation>All assets on which this non-replacement work
-						task is performed.</xs:documentation>
+						task is performed.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Crews" type="m:Crew" minOccurs="0"
@@ -3246,7 +3654,8 @@ WorkTask">
 				the pattern used to restrict the xs:string should support any of the
 				RFC 4122 UUID variants, including the Microsoft Globally Unique
 				Identifier (GUID) variant of the UUID, without being restricted to
-				supporting ONLY the Microsoft GUID definition.</xs:documentation>
+				supporting ONLY the Microsoft GUID definition.
+			</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:pattern
@@ -3256,7 +3665,8 @@ WorkTask">
 	<xs:complexType name="InternalLocation">
 		<xs:annotation>
 			<xs:documentation>For assets that are located inside a building, e.g.
-				generation unit</xs:documentation>
+				generation unit
+			</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="BuildingName" type="xs:string"

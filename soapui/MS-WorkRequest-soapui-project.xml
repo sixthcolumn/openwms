@@ -31315,7 +31315,7 @@ Disclaimer: Modifications of this document have been made, and will be made, on 
       <s:element name="workUnassignment" type="msp:workUnassignment" minOccurs="0" maxOccurs="unbounded"/>
     </s:sequence>
   </s:complexType>
-</s:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://www.msp5.0.example.org</con:endpoint><con:endpoint>http://benjamins-Mac-mini.local:8088/mockWO_ServerSoap</con:endpoint><con:endpoint>http://localhost:8080/epriConnect/WO_Service</con:endpoint></con:endpoints><con:operation isOneWay="false" action="http://www.multispeak.org/Version_5.0_Release/DeleteClearanceInstance" name="DeleteClearanceInstance" bindingOperationName="DeleteClearanceInstance" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.msp5.0.example.org</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://www.multispeak.org/V5.0/ws/request" xmlns:com="http://www.multispeak.org/V5.0/commonTypes" xmlns:wo="http://www.multispeak.org/V5.0/wsdl/WO_Server" xmlns:com1="http://www.multispeak.org/V5.0/commonArrays" xmlns:v5="http://www.multispeak.org/V5.0" xmlns:cpsm="http://www.multispeak.org/V5.0/cpsm">
+</s:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://www.msp5.0.example.org</con:endpoint><con:endpoint>http://benjamins-Mac-mini.local:8088/mockWO_ServerSoap</con:endpoint><con:endpoint>http://localhost:8080/epriConnect/WO_Service</con:endpoint><con:endpoint>http://54.175.5.217:8080/epriConnect/WO_Service</con:endpoint></con:endpoints><con:operation isOneWay="false" action="http://www.multispeak.org/Version_5.0_Release/DeleteClearanceInstance" name="DeleteClearanceInstance" bindingOperationName="DeleteClearanceInstance" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.msp5.0.example.org</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://www.multispeak.org/V5.0/ws/request" xmlns:com="http://www.multispeak.org/V5.0/commonTypes" xmlns:wo="http://www.multispeak.org/V5.0/wsdl/WO_Server" xmlns:com1="http://www.multispeak.org/V5.0/commonArrays" xmlns:v5="http://www.multispeak.org/V5.0" xmlns:cpsm="http://www.multispeak.org/V5.0/cpsm">
    <soapenv:Header>
       <req:MultiSpeakRequestMsgHeader DefaultRegisteredName="?" DefaultSystemName="?" DefaultUtility="?" DefaultCurrencyCode="?" RegistrationID="?" MessageID="?" TimeStamp="?" MessageCreatedTimeStamp="?" Context="?">
          <req:MultiSpeakVersion>
@@ -41541,7 +41541,7 @@ Disclaimer: Modifications of this document have been made, and will be made, on 
          <wo:expirationTime units="?">?</wo:expirationTime>
       </wo:InitiateWorkRequest>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="Requesting Person"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>WO_ServerSoap</con:interface><con:operation>InitiateWorkRequest</con:operation><con:request name="Requesting Person"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/epriConnect/WO_Service</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://www.multispeak.org/V5.0/ws/request" xmlns:com="http://www.multispeak.org/V5.0/commonTypes" xmlns:wo="http://www.multispeak.org/V5.0/wsdl/WO_Server" xmlns:com1="http://www.multispeak.org/V5.0/commonArrays" xmlns:v5="http://www.multispeak.org/V5.0" xmlns:cpsm="http://www.multispeak.org/V5.0/cpsm" xmlns:gml="http://www.multispeak.org/V5.0/gml">
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="Requesting Person"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>WO_ServerSoap</con:interface><con:operation>InitiateWorkRequest</con:operation><con:request name="Requesting Person"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://54.175.5.217:8080/epriConnect/WO_Service</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://www.multispeak.org/V5.0/ws/request" xmlns:com="http://www.multispeak.org/V5.0/commonTypes" xmlns:wo="http://www.multispeak.org/V5.0/wsdl/WO_Server" xmlns:com1="http://www.multispeak.org/V5.0/commonArrays" xmlns:v5="http://www.multispeak.org/V5.0" xmlns:cpsm="http://www.multispeak.org/V5.0/cpsm" xmlns:gml="http://www.multispeak.org/V5.0/gml">
     <soapenv:Header>
         <req:MultiSpeakRequestMsgHeader DefaultRegisteredName="?" DefaultSystemName="?" DefaultUtility="?" DefaultCurrencyCode="?" RegistrationID="?" MessageID="?" TimeStamp="?" MessageCreatedTimeStamp="?" Context="?">
             <req:MultiSpeakVersion>
@@ -41551,7 +41551,6 @@ Disclaimer: Modifications of this document have been made, and will be made, on 
             </req:MultiSpeakVersion>
             <req:Caller>
                 <com:AppName>foo</com:AppName>
-                
                 <com:AppVersion>1.2</com:AppVersion>
                 <com:Company>sixc</com:Company>
                 <com:Password>secret</com:Password>
@@ -41571,20 +41570,16 @@ Disclaimer: Modifications of this document have been made, and will be made, on 
     </soapenv:Header>
     <soapenv:Body>
         <wo:InitiateWorkRequest>
-            
             <wo:ArrayOfWorkRequest>
                 <!--Zero or more repetitions:-->
                 <com1:workRequest objectGUID="sixc1" utility="sixc">
-                    
                     <v5:extensions>
                         <sixc:images xmlns:sixc="http://www.sixc.com/sic">
                             <url>http://sixc.com/image1.jpg</url>
                             <url>http://sixc.com/image2.jpg</url>
                         </sixc:images>
                     </v5:extensions>
-                    
                     <v5:comments>ytest</v5:comments>
-                    
                     <v5:extensionsList>
                         <!--1 or more repetitions:-->
                         <com:extensionsItem>
@@ -41598,188 +41593,100 @@ Disclaimer: Modifications of this document have been made, and will be made, on 
                     </v5:extensionsList>
                     <v5:primaryIdentifier identifierName="id1" identifierLabel="id1">1</v5:primaryIdentifier>
                     <v5:workTypeRef objectGUID="sixc1" workTypeName="sixcwork" workSubTypeName="subsixc" />
-                    
                     <v5:createdDate>2011-03-03T12:07:56.590-05:00</v5:createdDate>
                     <v5:requestingPerson objectGUID="?" utility="?">
                         <v5:comments>rp comment</v5:comments>
                         <v5:primaryIdentifier identifierName="rp1.0" identifierLabel="rp label 1">rp primary id</v5:primaryIdentifier>
-                        
                         <v5:secondaryIdentifier identifierName="rp2.0" identifierLabel="rp label 2">rp secondary id</v5:secondaryIdentifier>
-                        
-                    <!--    
-                    	<v5:IdentifiedObject>
-                            <cpsm:mRID>7766</cpsm:mRID>
-                            <cpsm:description>rp io description</cpsm:description>
-                            <cpsm:Names>
-                                <cpsm:Name>
-                                    <cpsm:nameString>rp io name 1</cpsm:nameString>
-                                    <cpsm:description>rp io name 1 desc</cpsm:description>
-                                    <cpsm:NameType>
-                                        <cpsm:nameString>rp io name 1 nt ns</cpsm:nameString>
-                                        <cpsm:description>rp io name 1 nt ns</cpsm:description>
-                                        <cpsm:NameTypeAuthority>
-                                            <cpsm:nameString>rp io name 1 nt nta ns</cpsm:nameString>
-                                            <cpsm:description>rp io name 1 nt nta desc</cpsm:description>
-                                        </cpsm:NameTypeAuthority>
-                                    </cpsm:NameType>
-                                </cpsm:Name>
-                            </cpsm:Names>
-                        </v5:IdentifiedObject>
-                    -->
-                        
                         <v5:lastName>Goodwin</v5:lastName>
-                        
                         <v5:firstName>Ronald</v5:firstName>
-                        
                         <v5:middleName>Mary</v5:middleName>
-                        
                         <v5:prefix>Mr.</v5:prefix>
-                        
                         <v5:suffix>3rd</v5:suffix>
-                        
                         <v5:governmentID>12709-a</v5:governmentID>
-                        
                         <v5:contactInfo>
                             <com:phoneNumbers>
                                 <!--1 or more repetitions:-->
                                 <com:phoneNumber>
-                                    
                                     <com:phone>
-                                        
                                         <com:areaCode>101</com:areaCode>
-                                        
                                         <com:cityCode>CY</com:cityCode>
-                                        
                                         <com:countryCode>US</com:countryCode>
-                                        
                                         <com:localNumber>9199338877</com:localNumber>
-                                        
                                         <com:extension>x473</com:extension>
                                     </com:phone>
-                                    
                                     <com:phoneType otherKind="NA">Business</com:phoneType>
-                                    
-                                    <com:priorityOrder>1</com:priorityOrder>
+                                    <com:priorityOrder>2</com:priorityOrder>
                                 </com:phoneNumber>
                             </com:phoneNumbers>
-                            
                             <com:addressItems>
                                 <!--1 or more repetitions:-->
                                 <com:addressItem>
-                                    
                                     <com:address>
-                                        
                                         <com:address1>100 North St</com:address1>
-                                        
                                         <com:address2>Apt 101</com:address2>
-                                        
                                         <com:detailedAddressFields>
-                                            
                                             <com:streetPrefix>N</com:streetPrefix>
-                                            
                                             <com:streetNumber>100</com:streetNumber>
-                                            
                                             <com:streetSuffix>East</com:streetSuffix>
-                                            
                                             <com:streetType>NA</com:streetType>
-                                            
                                             <com:buildingNumber>100</com:buildingNumber>
-                                            
                                             <com:suiteNumber>101</com:suiteNumber>
-                                            
                                             <com:addressGeneral>NA</com:addressGeneral>
-                                            
                                             <com:postOfficeBox>27513</com:postOfficeBox>
-                                            
                                             <com:region>?</com:region>
                                         </com:detailedAddressFields>
-                                        
                                         <com:townCode>UNK</com:townCode>
-                                        
                                         <com:city>Cary</com:city>
-                                        
                                         <com:state>NC</com:state>
-                                        
                                         <com:postalCode>27513-2222</com:postalCode>
-                                        
                                         <com:country>US</com:country>
                                     </com:address>
-                                    
                                     <com:addressType otherKind="NA">Mailing</com:addressType>
-                                    
                                     <com:priorityOrder>12</com:priorityOrder>
                                 </com:addressItem>
                             </com:addressItems>
-                            
                             <com:eMailAddresses>
                                 <!--1 or more repetitions:-->
                                 <com:eMailAddress>
-                                    
                                     <com:eMail>test@sixc.com</com:eMail>
-                                    
                                     <com:eMailType otherKind="NA">Personal</com:eMailType>
-                                    
                                     <com:priorityOrder>3</com:priorityOrder>
                                 </com:eMailAddress>
                             </com:eMailAddresses>
-                            
                             <com:otherContactInformation>
                                 <!--1 or more repetitions:-->
                                 <com:otherContactItem>
-                                    
-                                    <com:details>Carrioer Pigeon</com:details>
-                                    
+                                    <com:details>Carrier Pigeon</com:details>
                                     <com:infoType>text</com:infoType>
                                 </com:otherContactItem>
                             </com:otherContactInformation>
                         </v5:contactInfo>
-                        
                         <v5:affiliation>US Goft</v5:affiliation>
                     </v5:requestingPerson>
-                    
                     <v5:requestingSystem>sixcbeta</v5:requestingSystem>
-                    <v5:requestedWorkPriority>1</v5:requestedWorkPriority>
-                    
                     <v5:description>testing</v5:description>
-                    
                     <v5:title>testing wms</v5:title>
+                    <v5:requestedWorkPriority>1</v5:requestedWorkPriority>
                     <v5:workLocation>
-                        
                         <v5:address>
-                            
                             <com:address1>123 Main Street</com:address1>
-                            
                             <com:address2>221B</com:address2>
-                            
                             <com:detailedAddressFields>
-                                
                                 <com:streetPrefix>West</com:streetPrefix>
-                                
                                 <com:streetNumber>123</com:streetNumber>
-                                
                                 <com:streetSuffix>B</com:streetSuffix>
-                                
                                 <com:streetType>Residential</com:streetType>
-                                
                                 <com:buildingNumber>401</com:buildingNumber>
-                                
                                 <com:suiteNumber>221B</com:suiteNumber>
-                                
                                 <com:addressGeneral>123 West North Street London U.S.A.</com:addressGeneral>
-                                
                                 <com:postOfficeBox>27513</com:postOfficeBox>
-                                
                                 <com:region>County</com:region>
                             </com:detailedAddressFields>
-                            
                             <com:townCode>Wake</com:townCode>
-                            
                             <com:city>London</com:city>
-                            
                             <com:state>NC</com:state>
-                            
                             <com:postalCode>27513</com:postalCode>
-                            
                             <com:country>US</com:country>
                         </v5:address>
                         <v5:GPSLocation GPSValidity="1">
@@ -41799,369 +41706,235 @@ Disclaimer: Modifications of this document have been made, and will be made, on 
                                 <com:numSat>14</com:numSat>
                             </com:GPSMetadata>
                         </v5:GPSLocation>
-                        
                         <v5:geometry>
-                         
+                        <!-- not persisted -->
                             <v5:GMLPolygons>
                                 <com:GMLPolygon gid="abc" srsName="test">
                                     <gml:outerBoundaryIs gid="rty" srsName="test">
                                         <gml:coord>
                                             <gml:X>1072</gml:X>
-                                            
                                             <gml:Y>23</gml:Y>
-                                            
                                             <gml:Z>55</gml:Z>
-                                            
                                             <gml:Bulge>0.7</gml:Bulge>
                                         </gml:coord>
                                         <gml:coord>
                                             <gml:X>1088</gml:X>
-                                            
                                             <gml:Y>34</gml:Y>
-                                            
                                             <gml:Z>11</gml:Z>
-                                            
                                             <gml:Bulge>0.7</gml:Bulge>
                                         </gml:coord>
                                         <gml:coord>
                                             <gml:X>342</gml:X>
-                                            
                                             <gml:Y>16</gml:Y>
-                                            
                                             <gml:Z>33</gml:Z>
-                                            
                                             <gml:Bulge>0.7</gml:Bulge>
                                         </gml:coord>
                                         <gml:coord>
                                             <gml:X>55</gml:X>
-                                            
                                             <gml:Y>938</gml:Y>
-                                            
                                             <gml:Z>2983</gml:Z>
-                                            
                                             <gml:Bulge>0.8</gml:Bulge>
                                         </gml:coord>
                                         <gml:coordinates decimal="." cs="," ts=" ">72.223</gml:coordinates>
                                     </gml:outerBoundaryIs>
-
                                     <gml:innerBoundaryIs gid="def" srsName="sat1">
-
                                         <gml:coord>
                                             <gml:X>555.44</gml:X>
-                                            
                                             <gml:Y>555</gml:Y>
-                                            
                                             <gml:Z>33</gml:Z>
-                                            
                                             <gml:Bulge>0.7</gml:Bulge>
                                         </gml:coord>
                                         <gml:coord>
                                             <gml:X>234</gml:X>
-                                            
                                             <gml:Y>565</gml:Y>
-                                            
                                             <gml:Z>33</gml:Z>
-                                            
                                             <gml:Bulge>0.7</gml:Bulge>
                                         </gml:coord>
                                         <gml:coord>
                                             <gml:X>234</gml:X>
-                                            
                                             <gml:Y>222</gml:Y>
-                                            
                                             <gml:Z>222</gml:Z>
-                                            
                                             <gml:Bulge>0.7</gml:Bulge>
                                         </gml:coord>
                                         <gml:coord>
                                             <gml:X>1</gml:X>
-                                            
                                             <gml:Y>2</gml:Y>
-                                            
                                             <gml:Z>3</gml:Z>
-                                            
                                             <gml:Bulge>0.7</gml:Bulge>
                                         </gml:coord>
                                         <gml:coordinates decimal="." cs="," ts=" ">73.22</gml:coordinates>
                                     </gml:innerBoundaryIs>
                                 </com:GMLPolygon>
                             </v5:GMLPolygons>
-            
-                         
+                            <!-- not persisted -->
                             <v5:GMLLines>
                                 <com:GMLLine gid="newburn" srsName="sat33">
                                     <gml:coord>
                                         <gml:X>55</gml:X>
-                                        
                                         <gml:Y>33</gml:Y>
-                                        
                                         <gml:Z>22</gml:Z>
-                                        
                                         <gml:Bulge>1.77</gml:Bulge>
                                     </gml:coord>
                                     <gml:coord>
                                         <gml:X>76</gml:X>
-                                        
                                         <gml:Y>33</gml:Y>
-                                        
                                         <gml:Z>22</gml:Z>
-                                        
                                         <gml:Bulge>2.77</gml:Bulge>
                                     </gml:coord>
                                     <gml:coordinates decimal="." cs="," ts="2011-03-03T12:07:56.590-05:00">37.222</gml:coordinates>
                                 </com:GMLLine>
                             </v5:GMLLines>
-                
-                         
                             <v5:GMLLocations>
                                 <v5:GMLLocation gid="als" srsName="?">
                                     <gml:coord>
                                         <gml:X>23</gml:X>
-                                        
                                         <gml:Y>32</gml:Y>
-                                        
                                         <gml:Z>44</gml:Z>
-                                        
                                         <gml:Bulge>0.7</gml:Bulge>
                                     </gml:coord>
                                     <gml:coordinates decimal="." cs="," ts=" ">85.777</gml:coordinates>
                                 </v5:GMLLocation>
                             </v5:GMLLocations>
-             
                         </v5:geometry>
-                        
+                        <!-- not persisted -->
                         <v5:gridLocation>44</v5:gridLocation>
-                        
                         <v5:locationComment>testing location</v5:locationComment>
-                        
-                        <v5:supplementalNotes>
+                        <v5:supplementalNotes>                       
                             <!--1 or more repetitions:-->
                             <v5:supplementalNote>
                                 <v5:noteType>test</v5:noteType>
-                                
                                 <v5:noteSubtype>test</v5:noteSubtype>
                                 <v5:noteValue>test note</v5:noteValue>
                             </v5:supplementalNote>
                         </v5:supplementalNotes>
- 
+                        <!-- not persisted -->
                         <v5:locationInformation>
-                            
                             <v5:city>Cary</v5:city>
-                            
                             <v5:county>Wake</v5:county>
-                            
                             <v5:townshipName>Cary</v5:townshipName>
-                            
                             <v5:subdivision>North Woods</v5:subdivision>
-                            
                             <v5:block>4</v5:block>
-                            
                             <v5:lot>12</v5:lot>
-                            
                             <v5:state>NC</v5:state>
-                            
                             <v5:TRSQ>
-                                
                                 <v5:township>Cary</v5:township>
-                                
                                 <v5:range>83</v5:range>
-                                
                                 <v5:section>12</v5:section>
-                                
                                 <v5:quarterSection>1</v5:quarterSection>
                             </v5:TRSQ>
-                            
                             <v5:districts>
                                 <v5:district>
                                     <v5:districtType otherKind="NA">Board</v5:districtType>
                                     <v5:districtName>NorthWoods</v5:districtName>
                                     <v5:districtCode>123</v5:districtCode>
-                                    
                                     <v5:description>test dist</v5:description>
                                 </v5:district>
                             </v5:districts>
-                            
                             <v5:timeZone DSTEnabled="true" UTCOffset="5" name="EST" comment="test">EST</v5:timeZone>
                         </v5:locationInformation>
-     
+                        <!-- Not persisted -->
                         <v5:locationReferences>
                             <!--1 or more repetitions:-->
                             <v5:locationReference primaryIdentifierName="NW" secondaryIdentifierName="None2" noun="Location" objectGUID="1234" utility="Duke" registeredName="?" systemName="?">?</v5:locationReference>
                         </v5:locationReferences>
-                        
                         <v5:locationContact objectGUID="838" utility="Duke">
-                            
                             <v5:errorObjects>
                                 <!--1 or more repetitions:-->
                                 <com:errorObject referenceID="123" nounType="Location">
-                                    
                                     <com:errorCode>
                                         <com:replyCodeCategory otherKind="None3">Cat1</com:replyCodeCategory>
                                         <com:index>123</com:index>
                                     </com:errorCode>
                                     <com:eventTime>2011-03-03T12:07:56.590-05:00</com:eventTime>
-                                    
                                     <com:displayString>error 47</com:displayString>
-                                    
                                     <com:detailedString>error 47a</com:detailedString>
                                 </com:errorObject>
                             </v5:errorObjects>
                             <v5:primaryIdentifier identifierName="namea" identifierLabel="labela">1234</v5:primaryIdentifier>
-                            
                             <v5:secondaryIdentifier identifierName="nameb" identifierLabel="labelb">5678</v5:secondaryIdentifier>
-                            
-            <!--    <v5:IdentifiedObject>
-                        <cpsm:mRID>?</cpsm:mRID>
-                        <cpsm:description>?</cpsm:description>
-                        <cpsm:Names>
-                           <cpsm:Name>
-                              <cpsm:nameString>?</cpsm:nameString>
-                              <cpsm:description>?</cpsm:description>
-                              <cpsm:NameType>
-                                 <cpsm:nameString>?</cpsm:nameString>
-                                 <cpsm:description>?</cpsm:description>
-                                 <cpsm:NameTypeAuthority>
-                                    <cpsm:nameString>?</cpsm:nameString>
-                                    <cpsm:description>?</cpsm:description>
-                                 </cpsm:NameTypeAuthority>
-                              </cpsm:NameType>
-                           </cpsm:Name>
-                        </cpsm:Names>
-                     </v5:IdentifiedObject> -->
-                            
                             <v5:lastName>Goodmark</v5:lastName>
-                            
                             <v5:firstName>Sam</v5:firstName>
-                            
                             <v5:middleName>J</v5:middleName>
-                            
                             <v5:prefix>Mr.</v5:prefix>
-                            
                             <v5:suffix>3rd</v5:suffix>
-                            
                             <v5:governmentID>12344</v5:governmentID>
-                            
                             <v5:contactInfo>
-                                
                                 <com:phoneNumbers>
                                     <!--1 or more repetitions:-->
                                     <com:phoneNumber>
                                         <com:phone>
-                                            
                                             <com:areaCode>313</com:areaCode>
-                                            
                                             <com:cityCode>222</com:cityCode>
-                                            
                                             <com:countryCode>011</com:countryCode>
-                                            
                                             <com:localNumber>7329933</com:localNumber>
-                                            
                                             <com:extension>3489</com:extension>
                                         </com:phone>
-                                        
                                         <com:phoneType otherKind="NA">Mobile</com:phoneType>
-                                        
                                         <com:priorityOrder>1</com:priorityOrder>
                                     </com:phoneNumber>
                                     <com:phoneNumber>
                                         <com:phone>
-                                            
                                             <com:areaCode>313</com:areaCode>
-                                            
                                             <com:cityCode>666</com:cityCode>
-                                            
                                             <com:countryCode>011</com:countryCode>
-                                            
                                             <com:localNumber>9832222</com:localNumber>
-                                            
                                             <com:extension>123</com:extension>
                                         </com:phone>
-                                        
                                         <com:phoneType otherKind="NA">Mobile</com:phoneType>
-                                        
                                         <com:priorityOrder>2</com:priorityOrder>
                                     </com:phoneNumber>
                                 </com:phoneNumbers>
-                                
                                 <com:addressItems>
                                     <!--1 or more repetitions:-->
                                     <com:addressItem>
                                         <com:address>
-                                            
                                             <com:address1>123 West St</com:address1>
-                                            
                                             <com:address2>Suite 102</com:address2>
-                                            
                                             <com:detailedAddressFields>
-                                                
                                                 <com:streetPrefix>JI</com:streetPrefix>
-                                                
                                                 <com:streetNumber>102</com:streetNumber>
-                                                
                                                 <com:streetSuffix>Bob</com:streetSuffix>
-                                                
                                                 <com:streetType>Rd</com:streetType>
-                                                
                                                 <com:buildingNumber>102</com:buildingNumber>
-                                                
                                                 <com:suiteNumber>332</com:suiteNumber>
-                                                
                                                 <com:addressGeneral>123 West Suite 102</com:addressGeneral>
-                                                
                                                 <com:postOfficeBox>27333</com:postOfficeBox>
-                                                
                                                 <com:region>?</com:region>
                                             </com:detailedAddressFields>
-                                            
                                             <com:townCode>STL</com:townCode>
-                                            
                                             <com:city>St Paul</com:city>
-                                            
                                             <com:state>MS</com:state>
-                                            
                                             <com:postalCode>28333</com:postalCode>
-                                            
                                             <com:country>US</com:country>
                                         </com:address>
-                                        
                                         <com:addressType otherKind="Businessc">Billing</com:addressType>
-                                        
                                         <com:priorityOrder>1</com:priorityOrder>
                                     </com:addressItem>
                                 </com:addressItems>
-                                
                                 <com:eMailAddresses>
                                     <!--1 or more repetitions:-->
                                     <com:eMailAddress>
                                         <com:eMail>bob@foo.com</com:eMail>
-                                        
                                         <com:eMailType otherKind="NA">Personal</com:eMailType>
-                                        
                                         <com:priorityOrder>1</com:priorityOrder>
                                     </com:eMailAddress>
                                     <com:eMailAddress>
                                         <com:eMail>bob@foonational.com</com:eMail>
-                                        
                                         <com:eMailType otherKind="NA">Personal</com:eMailType>
-                                        
                                         <com:priorityOrder>2</com:priorityOrder>
                                     </com:eMailAddress>
                                 </com:eMailAddresses>
-                                
                                 <com:otherContactInformation>
                                     <!--1 or more repetitions:-->
                                     <com:otherContactItem>
                                         <com:details>Coffee shop</com:details>
-                                        
                                         <com:infoType>Work</com:infoType>
                                     </com:otherContactItem>
                                 </com:otherContactInformation>
                             </v5:contactInfo>
                         </v5:locationContact>
                     </v5:workLocation>
-                    
-                    <v5:attachments>
-                        <!--1 or more repetitions:-->
+                   <v5:attachments>                       
                         <v5:attachment objectGUID="1234" utility="sixc">
                             <v5:primaryIdentifier identifierName="1" identifierLabel="ab">1</v5:primaryIdentifier>
                             <v5:contentReference URI="http://127.0.0.1/myface.jpg" name="tiger" category="jpg"></v5:contentReference>
@@ -42170,14 +41943,11 @@ Disclaimer: Modifications of this document have been made, and will be made, on 
                             <v5:primaryIdentifier identifierName="1" identifierLabel="ab">1</v5:primaryIdentifier>
                             <v5:contentReference URI="http://127.0.0.1/myface3.jpg" name="tiger" category="jpg"></v5:contentReference>
                         </v5:attachment>
-                    </v5:attachments>
+                    </v5:attachments>                   
                 </com1:workRequest>
             </wo:ArrayOfWorkRequest>
-            
             <wo:responseURL>http://sixc.com</wo:responseURL>
-            
             <wo:transactionID>1234</wo:transactionID>
-            
             <wo:expirationTime units="Minutes">60</wo:expirationTime>
         </wo:InitiateWorkRequest>
     </soapenv:Body>
