@@ -243,9 +243,9 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 			woAddress.setSdSuiteNumber(streetDetail.getSuiteNumber());
 			woAddress.setSdBuildingName(streetDetail.getBuildingName());
 
-			streetDetail.getAddressGeneral(); // TODO : not in hbm address
-			streetDetail.getName(); // TODO : not in hbm address
-			streetDetail.isWithinTownLimits(); // TODO : not in hbm address
+			streetDetail.getAddressGeneral(); // TODO : not in hbm address bb: map to sd_address1
+			streetDetail.getName(); // TODO : not in hbm address bb:  map to sd_address2
+			streetDetail.isWithinTownLimits(); // TODO : not in hbm address bb:  ignore, not mapped
 			woAddress.setSdType(streetDetail.getType());
 
 		}
@@ -287,8 +287,8 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 			woAddress.setSdSuiteNumber(streetDetail.getSuiteNumber());
 			woAddress.setSdBuildingName(streetDetail.getBuildingName());
 
-			streetDetail.getAddressGeneral(); // TODO : no field in hbm address
-			streetDetail.getName(); // TODO : no field in hbm address
+			streetDetail.getAddressGeneral(); // TODO : no field in hbm address bb: map to sd_address1
+			streetDetail.getName(); // TODO : no field in hbm address bb: map to sd_address2
 			woAddress.setSdType(streetDetail.getType());
 		}
 
@@ -349,14 +349,14 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 		com.sixthc.hbm.Asset workAsset = new com.sixthc.hbm.Asset();
 		workAsset.setMrid(reqAsset.getMRID());
 		WorkLocation reqAssetLoc = reqAsset.getLocation();
-		reqAsset.isCritical(); // TODO : Add to hbm asset
+		reqAsset.isCritical(); // TODO : Add to hbm asset bb:  map to critical_flag
 		workAsset.setUtcNumber(reqAsset.getUtcNumber());
 		if (reqAssetLoc != null) {
 			MainAddress reqMainAddress = reqAssetLoc.getMainAddress();
 
 			Address workAssetAddress = new Address();
 			workAsset.setAddress(workAssetAddress);
-			reqAssetLoc.getMRID(); // TODO : ?
+			reqAssetLoc.getMRID(); // TODO : ? bb:  ignore
 
 			InternalLocation reqInternalLoc = reqAssetLoc.getInternalLocation();
 			if (reqInternalLoc != null) {
@@ -368,10 +368,10 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 				workAsset.setInternalRoomNumber(reqInternalLoc.getRoomNumber());
 			}
 
-			// TODO : What value is it that we're supposed to return, a uuid for the work order
+			// TODO : What value is it that we're supposed to return, a uuid for the work order bb:  not sure what you're asking
 			if (reqMainAddress != null) {
 				parseStreetDetail(workAssetAddress, reqMainAddress);
-				reqMainAddress.getStatus(); // TODO : ??
+				reqMainAddress.getStatus(); // TODO : ?? bb: ignore
 				workAsset.setAddress(workAssetAddress);
 			}
 
@@ -390,18 +390,18 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 				addrHazards.setAddress(workAssetAddress);
 				addrHazards.setHazards(workhaz);
 
-				workhaz.setHazardName(reqHaz.getType()); // TODO : Wrong?
+				workhaz.setHazardName(reqHaz.getType()); // TODO : Wrong? bb:  hazards have a name, not a type - it's not the name/type structure that a lot of other "names" have
 			}
 
 			InternalLocation reqIloc = reqAssetLoc.getInternalLocation();
 			if (reqIloc != null) {
-				reqIloc.getBuildingName(); // TODO : ?
-				reqIloc.getBuildingNumber(); // TODO : ?
-				reqIloc.getFloor(); // TODO : ?
-				reqIloc.getRoomNumber(); // TODO : ?
+				reqIloc.getBuildingName(); // TODO : ? bb: work_order.internal_...
+				reqIloc.getBuildingNumber(); // TODO : bb: work_order.internal_...
+				reqIloc.getFloor(); // TODO : bb: work_order.internal_...
+				reqIloc.getRoomNumber(); // TODO : bb: work_order.internal_...
 			}
 
-			reqAssetLoc.getMRID(); // TODO : ?
+			reqAssetLoc.getMRID(); // TODO :  bb: ignore
 
 			Set<AddressDistricts> districts = workAssetAddress
 					.getAddressDistrictses();
@@ -544,8 +544,8 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 				}
 
 				workOrder.setMrid(reqWork.getMRID());
-				workOrder.setCreatedBy("WMS"); // TODO : ?
-				// TODO : Following could be either work_order statusKind or Kind. which?
+				workOrder.setCreatedBy("WMS"); // TODO : bb: leave as is
+				// TODO : Following could be either work_order statusKind or Kind. which bb: kind
 				workOrder.setKind(reqWork.getKind() != null ? reqWork.getKind()
 						.value() : "Not Set");
 
@@ -555,8 +555,8 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 					workOrder.setUpdatedAt(workUpdatedDateTime);
 
 				reqWork.getLastModifiedDateTime();
-				workOrder.setWorkOrderName("NOT SET"); // TODO : ?
-				workOrder.setStatus("TBD"); // TODO : ?
+				workOrder.setWorkOrderName("NOT SET"); // TODO : bb: leave null
+				workOrder.setStatus("TBD"); // TODO : bb: hardcode to ACTIVE
 
 				WorkTimeSchedule reqWorkSchedules = reqWork.getTimeSchedules();
 				if (reqWorkSchedules != null) {
@@ -576,8 +576,8 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 					if (end != null)
 						ts.setEndTstamp(end);
 					workOrderSchedule.setTimeSchedule(ts);
-					reqWorkSchedules.getKind(); // TODO : ?
-					ts.setType("NA"); // TODO : not nillable, and not in request
+					reqWorkSchedules.getKind(); // TODO : bb: use type column
+					ts.setType("NA"); // TODO : not nillable, and not in request bb: see above
 				}
 
 				for (Name reqName : reqWork.getNames()) {
@@ -614,8 +614,8 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 
 				WorkLocation reqLoc = reqWork.getWorkLocation();
 				if (reqLoc != null) {
-					reqLoc.getDirection(); // TODO : Need loc_Direction in work_order
-					reqLoc.getMRID(); // TODO : Need loc_MRID in work_order
+					reqLoc.getDirection(); // TODO : Need loc_Direction in work_order bb: use address.directions
+					reqLoc.getMRID(); // TODO : Need loc_MRID in work_order bb: ignore
 
 					for (AssetLocationHazard reqHazard : reqLoc.getHazards()) {
 						Hazards hazards = new Hazards();
@@ -653,8 +653,9 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 
 						Status mstatus = reqMaddr.getStatus();
 						if (mstatus != null) {
-							mstatus.getDateTime(); // TODO : not in hbm address
-							mstatus.getDateTime(); // TODO : not in hbm address
+							// bb: ignore this entire structure
+							mstatus.getDateTime(); // TODO : not in hbm address bb: ignore
+							mstatus.getDateTime(); // TODO : not in hbm address bb: ignore, duplicate
 							mstatus.getReason(); // TODO : not in hbm address
 							mstatus.getRemark(); // TODO : not in hbm address
 							mstatus.getValue(); // TODO : not in hbm address
@@ -698,7 +699,7 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 						workTaskAssets.setWorkTask(workTask);
 						workAsset.setMrid(reqAsset.getMRID());
 						workTaskAssets.setCreatedAt(new Date(System
-								.currentTimeMillis())); // TODO : Not passed?
+								.currentTimeMillis())); // TODO : Not passed bb: use current time
 
 					}
 
@@ -812,8 +813,8 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 					workTaskOldAssets.setCreatedAt(new Date(System
 							.currentTimeMillis())); // TODO : Not passed?
 
-					reqTask.getStatusKind(); // TODO : need to add to hbm.work_task
-					reqTask.getTaskKind(); // TODO : need to add to hbm.work_task
+					reqTask.getStatusKind(); // TODO : need to add to hbm.work_task bb: ignore
+					reqTask.getTaskKind(); // TODO : need to add to hbm.work_task bb: use task_type
 
 					workTask.setSubject(reqTask.getSubject());
 
@@ -838,8 +839,8 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 						if (end != null)
 							ts.setEndTstamp(end);
 						workTaskSchedule.setTimeSchedule(ts);
-						reqTaskSchedules.getKind(); // TODO : ?
-						ts.setType("NA"); // TODO : Where to get this
+						reqTaskSchedules.getKind(); // TODO :  bb: use task_schedule.type
+						ts.setType("NA"); // TODO : Where to get this bb: see above
 											// non-nillable value from
 					}
 
