@@ -65,6 +65,8 @@ public class WorkOrder implements java.io.Serializable {
 	private String internalBuildingNum;
 	private String internalFloor;
 	private String internalRoomNum;
+	private String primaryId;
+	private String secondaryId;
 	private Set<WorkOrderWorkTasks> workOrderWorkTaskses = new HashSet<WorkOrderWorkTasks>(
 			0);
 	private Set<WorkOrderNames> workOrderNameses = new HashSet<WorkOrderNames>(
@@ -200,13 +202,13 @@ public class WorkOrder implements java.io.Serializable {
 		this.contactpersonByRequestContactId = contactpersonByRequestContactId;
 	}
 
-	@Column(name = "work_order_name", nullable = false, length = 40)
+	@Column(name = "work_order_name", nullable = true, length = 512)
 	public String getWorkOrderName() {
 		return this.workOrderName;
 	}
 
 	public void setWorkOrderName(String workOrderName) {
-		con.check( "setWorkOrderName", workOrderName, false, 40);
+		con.check( "setWorkOrderName", workOrderName, true, 40);
 		this.workOrderName = workOrderName;
 	}
 
@@ -456,6 +458,25 @@ public class WorkOrder implements java.io.Serializable {
 	public void setInternalRoomNum(String internalRoomNum) {
 		con.check( "setInternalRoomNum", internalRoomNum, true, 5);
 		this.internalRoomNum = internalRoomNum;
+	}
+	
+	
+	@Column(name = "primary_id")
+	public String getPrimaryId() {
+		return primaryId;
+	}
+
+	public void setPrimaryId(String primaryId) {
+		this.primaryId = primaryId;
+	}
+
+	@Column(name = "secondary_id")
+	public String getSecondaryId() {
+		return secondaryId;
+	}
+
+	public void setSecondaryId(String secondaryId) {
+		this.secondaryId = secondaryId;
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "workOrder")

@@ -47,6 +47,7 @@ public class Contactperson implements java.io.Serializable {
 	private String affiliation;
 	private String primaryId;
 	private String secondaryId;
+	private String comments;
 	private Set<WorkOrder> workOrdersForLocationContactId = new HashSet<WorkOrder>(
 			0);
 	private Set<ContactpersonPhones> contactpersonPhoneses = new HashSet<ContactpersonPhones>(
@@ -202,6 +203,15 @@ public class Contactperson implements java.io.Serializable {
 	public void setSecondaryId(String secondaryId) {
 		con.check( "secondaryId", secondaryId, true, 20);
 		this.secondaryId = secondaryId;
+	}
+	
+	@Column(name = "comments", length=512)
+	public String getComments() {
+		return comments;
+	}
+
+	public void setComments(String comments) {
+		this.comments = comments;
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "contactpersonByLocationContactId")

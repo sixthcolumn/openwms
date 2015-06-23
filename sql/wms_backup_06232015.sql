@@ -51,7 +51,7 @@ CREATE TABLE `address` (
   `time_zone` varchar(512) DEFAULT NULL COMMENT 'msp.worklocation.locationinformation.time_zone',
   `coord_system` varchar(512) DEFAULT NULL COMMENT 'cim.work.worklocation.coordinatesystem',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=237 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=257 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -107,7 +107,7 @@ CREATE TABLE `address_hazards` (
   KEY `fk_address_hazards_hazard_id` (`hazard_id`),
   CONSTRAINT `fk_address_hazards_address_id` FOREIGN KEY (`address_id`) REFERENCES `address` (`id`),
   CONSTRAINT `fk_address_hazards_hazard_id` FOREIGN KEY (`hazard_id`) REFERENCES `hazards` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8 COMMENT='cim.asset.hazards';
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8 COMMENT='cim.asset.hazards';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -136,7 +136,7 @@ CREATE TABLE `address_position_points` (
   PRIMARY KEY (`id`),
   KEY `fk_address_position_points_address_id` (`address_id`),
   CONSTRAINT `fk_address_position_points_address_id` FOREIGN KEY (`address_id`) REFERENCES `address` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8 COMMENT='cim.asset  position points';
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8 COMMENT='cim.asset  position points';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -168,7 +168,7 @@ CREATE TABLE `asset` (
   PRIMARY KEY (`id`),
   KEY `address_id` (`address_id`),
   CONSTRAINT `asset_ibfk_1` FOREIGN KEY (`address_id`) REFERENCES `address` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8 COMMENT='cim.asset';
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8 COMMENT='cim.asset';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -197,7 +197,7 @@ CREATE TABLE `asset_names` (
   KEY `fk_asset_names_objectid` (`asset_id`),
   CONSTRAINT `fk_asset_names_nametype_id` FOREIGN KEY (`name_type_id`) REFERENCES `nametype` (`id`),
   CONSTRAINT `fk_asset_names_objectid` FOREIGN KEY (`asset_id`) REFERENCES `asset` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -225,7 +225,7 @@ CREATE TABLE `asset_procedures` (
   KEY `fk_asset_procedures_procedure_id` (`procedure_id`),
   CONSTRAINT `fk_asset_procedures_asset_id` FOREIGN KEY (`asset_id`) REFERENCES `asset` (`id`),
   CONSTRAINT `fk_asset_procedures_procedure_id` FOREIGN KEY (`procedure_id`) REFERENCES `procedure` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -249,7 +249,7 @@ CREATE TABLE `attachment` (
   `type` varchar(512) NOT NULL COMMENT 'picture/video',
   `filename` varchar(512) NOT NULL COMMENT 'path to file on server',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -444,7 +444,7 @@ CREATE TABLE `crew` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `mRid` varchar(512) NOT NULL COMMENT 'cim.crew',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -472,7 +472,7 @@ CREATE TABLE `crew_assets` (
   KEY `fk_crew_assets_asset_id` (`asset_id`),
   CONSTRAINT `fk_crew_assets_asset_id` FOREIGN KEY (`asset_id`) REFERENCES `asset` (`id`),
   CONSTRAINT `fk_crew_assets_crew_id` FOREIGN KEY (`crew_id`) REFERENCES `crew` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -501,7 +501,7 @@ CREATE TABLE `crew_names` (
   KEY `fk_crew_names_name_type_id` (`name_type_id`),
   CONSTRAINT `fk_crew_names_crew_id` FOREIGN KEY (`crew_id`) REFERENCES `crew` (`id`),
   CONSTRAINT `fk_crew_names_name_type_id` FOREIGN KEY (`name_type_id`) REFERENCES `nametype` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -592,7 +592,7 @@ CREATE TABLE `eprilog` (
   PRIMARY KEY (`id`),
   KEY `INTERFACE_ID` (`INTERFACE_ID`),
   CONSTRAINT `EpriLog_ibfk_1` FOREIGN KEY (`INTERFACE_ID`) REFERENCES `interface` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1101 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1117 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -615,7 +615,7 @@ CREATE TABLE `hazards` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `hazard_name` varchar(512) NOT NULL COMMENT 'cim.asset.location.hazards',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=207 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=222 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -815,7 +815,7 @@ CREATE TABLE `material_item` (
   `quantity` float DEFAULT NULL,
   `multiplier` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='cim.work.worktask.materialitem';
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='cim.work.worktask.materialitem';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -870,7 +870,7 @@ CREATE TABLE `measurement` (
   `unit_multiplier` float DEFAULT NULL,
   `unit_symbol` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -894,7 +894,7 @@ CREATE TABLE `name_type_authority` (
   `name` varchar(512) DEFAULT NULL,
   `description` varchar(512) DEFAULT NULL COMMENT 'cim.nametypeauthority, msp.nametypeauthority',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=330 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=354 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -921,7 +921,7 @@ CREATE TABLE `nametype` (
   PRIMARY KEY (`id`),
   KEY `fk_name_type_authority_id` (`name_type_authority_id`),
   CONSTRAINT `fk_name_type_authority_id` FOREIGN KEY (`name_type_authority_id`) REFERENCES `name_type_authority` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=344 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=368 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -979,7 +979,7 @@ CREATE TABLE `organization` (
   KEY `fk_organization_address_id` (`address_id`),
   CONSTRAINT `fk_organization_address_id` FOREIGN KEY (`address_id`) REFERENCES `address` (`id`),
   CONSTRAINT `fk_organization_phone_id` FOREIGN KEY (`phone_id`) REFERENCES `phone` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=246 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=252 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1008,7 +1008,7 @@ CREATE TABLE `organization_names` (
   KEY `fk_organization_names_name_type_id` (`name_type_id`),
   CONSTRAINT `fk_organization_names_name_type_id` FOREIGN KEY (`name_type_id`) REFERENCES `nametype` (`id`),
   CONSTRAINT `fk_organization_names_organization_id` FOREIGN KEY (`organization_id`) REFERENCES `organization` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1109,7 +1109,7 @@ CREATE TABLE `phone` (
   `phonetype` varchar(512) DEFAULT NULL COMMENT 'msp.phone',
   `priorityorder` int(3) DEFAULT NULL COMMENT 'msp.phone',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=108 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1134,7 +1134,7 @@ CREATE TABLE `procedure` (
   `kind` varchar(512) DEFAULT NULL,
   `sequence` int(3) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COMMENT='cim.asset';
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8 COMMENT='cim.asset';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1143,7 +1143,7 @@ CREATE TABLE `procedure` (
 
 LOCK TABLES `procedure` WRITE;
 /*!40000 ALTER TABLE `procedure` DISABLE KEYS */;
-INSERT INTO `procedure` VALUES (1,'duck!','diagnosis',1),(2,'look up','diagnosis',12),(3,'duck!','diagnosis',1),(4,'duck!','diagnosis',1),(5,'look up','diagnosis',12),(6,'duck!','diagnosis',1),(7,'look up','diagnosis',12),(8,'duck!','diagnosis',1),(9,'look up','diagnosis',12),(10,'duck!','diagnosis',1),(11,'look up','diagnosis',12),(12,'look up','diagnosis',3),(13,'duck!','diagnosis',1),(14,'look up','diagnosis',12),(15,'look up','diagnosis',3),(16,'duck!','diagnosis',1),(17,'look up','diagnosis',12),(18,'look up','diagnosis',3),(19,'duck!','diagnosis',1),(20,'look up','diagnosis',12),(21,'look up','diagnosis',3),(22,'duck!','diagnosis',1),(23,'look up','diagnosis',12),(24,'look up','diagnosis',3),(25,'duck!','diagnosis',1),(26,'look up','diagnosis',12),(27,'look up','diagnosis',3),(28,'look up','diagnosis',12),(29,'look up','diagnosis',3),(30,'duck!','diagnosis',1),(31,'look up','diagnosis',12),(32,'look up','diagnosis',3),(33,'duck!','diagnosis',1),(34,'look up','diagnosis',12),(35,'look up','diagnosis',3),(36,'duck!','diagnosis',1);
+INSERT INTO `procedure` VALUES (1,'duck!','diagnosis',1),(2,'look up','diagnosis',12),(3,'duck!','diagnosis',1),(4,'duck!','diagnosis',1),(5,'look up','diagnosis',12),(6,'duck!','diagnosis',1),(7,'look up','diagnosis',12),(8,'duck!','diagnosis',1),(9,'look up','diagnosis',12),(10,'duck!','diagnosis',1),(11,'look up','diagnosis',12),(12,'look up','diagnosis',3),(13,'duck!','diagnosis',1),(14,'look up','diagnosis',12),(15,'look up','diagnosis',3),(16,'duck!','diagnosis',1),(17,'look up','diagnosis',12),(18,'look up','diagnosis',3),(19,'duck!','diagnosis',1),(20,'look up','diagnosis',12),(21,'look up','diagnosis',3),(22,'duck!','diagnosis',1),(23,'look up','diagnosis',12),(24,'look up','diagnosis',3),(25,'duck!','diagnosis',1),(26,'look up','diagnosis',12),(27,'look up','diagnosis',3),(28,'look up','diagnosis',12),(29,'look up','diagnosis',3),(30,'duck!','diagnosis',1),(31,'look up','diagnosis',12),(32,'look up','diagnosis',3),(33,'duck!','diagnosis',1),(34,'look up','diagnosis',12),(35,'look up','diagnosis',3),(36,'duck!','diagnosis',1),(37,'look up','diagnosis',12),(38,'look up','diagnosis',3),(39,'duck!','diagnosis',1),(40,'look up','diagnosis',12),(41,'look up','diagnosis',3),(42,'duck!','diagnosis',1),(43,'look up','diagnosis',12),(44,'look up','diagnosis',3),(45,'duck!','diagnosis',1);
 /*!40000 ALTER TABLE `procedure` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1163,7 +1163,7 @@ CREATE TABLE `procedure_measurements` (
   KEY `fk_procedure_measurements_measurement_id` (`measurement_id`),
   CONSTRAINT `fk_procedure_measurements_measurement_id` FOREIGN KEY (`measurement_id`) REFERENCES `measurement` (`id`),
   CONSTRAINT `fk_procedure_measurements_procedure_id` FOREIGN KEY (`procedure_id`) REFERENCES `procedure` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1288,7 +1288,7 @@ CREATE TABLE `time_schedule` (
   `start_tstamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'cim.timeschedule',
   `end_tstamp` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT 'cim.timeschedule',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1360,7 +1360,7 @@ DROP TABLE IF EXISTS `work_order`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `work_order` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `work_order_name` varchar(512) NOT NULL,
+  `work_order_name` varchar(512) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `created_by` varchar(512) NOT NULL,
   `mRid` varchar(512) NOT NULL COMMENT 'master resource id',
@@ -1398,7 +1398,7 @@ CREATE TABLE `work_order` (
   CONSTRAINT `fk_work_order_location_contact_id` FOREIGN KEY (`location_contact_id`) REFERENCES `contactperson` (`id`),
   CONSTRAINT `fk_work_order_primary_object_id` FOREIGN KEY (`primary_object_ref_id`) REFERENCES `objectref` (`id`),
   CONSTRAINT `fk_work_order_request_contact_id` FOREIGN KEY (`request_contact_id`) REFERENCES `contactperson` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=utf8 COMMENT='msp, cim  \r\nworkrequest';
+) ENGINE=InnoDB AUTO_INCREMENT=108 DEFAULT CHARSET=utf8 COMMENT='msp, cim  \r\nworkrequest';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1426,7 +1426,7 @@ CREATE TABLE `work_order_attachments` (
   KEY `fk_work_order_attachments_work_order_id` (`work_order_id`),
   CONSTRAINT `fk_work_order_attachments_attachment_id` FOREIGN KEY (`attachment_id`) REFERENCES `attachment` (`id`),
   CONSTRAINT `fk_work_order_attachments_work_order_id` FOREIGN KEY (`work_order_id`) REFERENCES `work_order` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1482,7 +1482,7 @@ CREATE TABLE `work_order_hazards` (
   KEY `fk_work_order_hazards_hazard_id` (`hazard_id`),
   CONSTRAINT `fk_work_order_hazards_hazard_id` FOREIGN KEY (`hazard_id`) REFERENCES `hazards` (`id`),
   CONSTRAINT `fk_work_order_hazards_work_id` FOREIGN KEY (`work_order_id`) REFERENCES `work_order` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=139 DEFAULT CHARSET=utf8 COMMENT='cim.worklocation.hazards';
+) ENGINE=InnoDB AUTO_INCREMENT=145 DEFAULT CHARSET=utf8 COMMENT='cim.worklocation.hazards';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1539,7 +1539,7 @@ CREATE TABLE `work_order_names` (
   KEY `fk_work_order_names_name_type_id` (`name_type_id`),
   CONSTRAINT `fk_work_order_names_name_type_id` FOREIGN KEY (`name_type_id`) REFERENCES `nametype` (`id`),
   CONSTRAINT `fk_work_order_names_work_order_id` FOREIGN KEY (`work_order_id`) REFERENCES `work_order` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=87 DEFAULT CHARSET=utf8 COMMENT='cim.workrequest.names';
+) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=utf8 COMMENT='cim.workrequest.names';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1567,7 +1567,7 @@ CREATE TABLE `work_order_organizations` (
   KEY `fk_work_order_organizations_work_order_id` (`work_order_id`),
   CONSTRAINT `fk_work_order_organizations_organization_id` FOREIGN KEY (`organization_id`) REFERENCES `organization` (`id`),
   CONSTRAINT `fk_work_order_organizations_work_order_id` FOREIGN KEY (`work_order_id`) REFERENCES `work_order` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1595,7 +1595,7 @@ CREATE TABLE `work_order_schedule` (
   KEY `fk_work_order_schedule_time_schedule_id` (`time_schedule_id`),
   CONSTRAINT `fk_work_order_schedule_time_schedule_id` FOREIGN KEY (`time_schedule_id`) REFERENCES `time_schedule` (`id`),
   CONSTRAINT `fk_work_order_schedule_work_order_id` FOREIGN KEY (`work_order_id`) REFERENCES `work_order` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8 COMMENT='cim.work.timeschedules\r\n';
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8 COMMENT='cim.work.timeschedules\r\n';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1623,7 +1623,7 @@ CREATE TABLE `work_order_work_tasks` (
   KEY `fk_work_order_work_tasks_task_id` (`work_task_id`),
   CONSTRAINT `fk_work_order_work_tasks_order_id` FOREIGN KEY (`work_order_id`) REFERENCES `work_order` (`id`),
   CONSTRAINT `fk_work_order_work_tasks_task_id` FOREIGN KEY (`work_task_id`) REFERENCES `work_task` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1652,7 +1652,7 @@ CREATE TABLE `work_position_points` (
   PRIMARY KEY (`id`),
   KEY `fk_work_position_points_work_id` (`work_order_id`),
   CONSTRAINT `fk_work_position_points_work_id` FOREIGN KEY (`work_order_id`) REFERENCES `work_order` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8 COMMENT='cim.work.worklocation.pospoints\r\n';
+) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8 COMMENT='cim.work.worklocation.pospoints\r\n';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1682,7 +1682,7 @@ CREATE TABLE `work_task` (
   PRIMARY KEY (`id`),
   KEY `fk_work_task_old_asset_id` (`old_asset_id`),
   CONSTRAINT `fk_work_task_old_asset_id` FOREIGN KEY (`old_asset_id`) REFERENCES `asset` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8 COMMENT='cim.work.worktasks';
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8 COMMENT='cim.work.worktasks';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1712,7 +1712,7 @@ CREATE TABLE `work_task_assets` (
   KEY `fk_work_task_assets_work_id` (`work_task_id`),
   CONSTRAINT `fk_work_task_asset_id` FOREIGN KEY (`asset_id`) REFERENCES `asset` (`id`),
   CONSTRAINT `fk_work_task_assets_work_id` FOREIGN KEY (`work_task_id`) REFERENCES `work_task` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COMMENT='cim.work.worktask.assets';
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COMMENT='cim.work.worktask.assets';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1740,7 +1740,7 @@ CREATE TABLE `work_task_crews` (
   KEY `fk_work_task_crews_crew_id` (`crew_id`),
   CONSTRAINT `fk_work_task_crews_crew_id` FOREIGN KEY (`crew_id`) REFERENCES `crew` (`id`),
   CONSTRAINT `fk_work_task_crews_work_id` FOREIGN KEY (`work_task_id`) REFERENCES `work_task` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COMMENT='cim.work.worktasks.crews';
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COMMENT='cim.work.worktasks.crews';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1798,7 +1798,7 @@ CREATE TABLE `work_task_material_items` (
   KEY `fk_work_task_material_items_work_id` (`work_task_id`),
   CONSTRAINT `fk_work_task_material_items_mat_id` FOREIGN KEY (`material_item_id`) REFERENCES `material_item` (`id`),
   CONSTRAINT `fk_work_task_material_items_work_id` FOREIGN KEY (`work_task_id`) REFERENCES `work_task` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1827,7 +1827,7 @@ CREATE TABLE `work_task_names` (
   KEY `fk_work_task_names_name_type_id` (`name_type_id`),
   CONSTRAINT `fk_work_task_names_name_type_id` FOREIGN KEY (`name_type_id`) REFERENCES `nametype` (`id`),
   CONSTRAINT `fk_work_task_names_work_id` FOREIGN KEY (`work_task_id`) REFERENCES `work_task` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='cim.work.worktask.names';
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='cim.work.worktask.names';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1857,7 +1857,7 @@ CREATE TABLE `work_task_old_assets` (
   KEY `fk_work_task_old_assets_work_id` (`work_task_id`),
   CONSTRAINT `fk_work_task_old_asset_id2` FOREIGN KEY (`asset_id`) REFERENCES `asset` (`id`),
   CONSTRAINT `fk_work_task_old_assets_work_id2` FOREIGN KEY (`work_task_id`) REFERENCES `work_task` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1885,7 +1885,7 @@ CREATE TABLE `work_task_time_schedules` (
   KEY `fk_work_task_time_schedules_time_id` (`time_schedule_id`),
   CONSTRAINT `fk_work_task_time_schedule_work_id` FOREIGN KEY (`work_task_id`) REFERENCES `work_task` (`id`),
   CONSTRAINT `fk_work_task_time_schedules_time_id` FOREIGN KEY (`time_schedule_id`) REFERENCES `time_schedule` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1933,4 +1933,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-06-23 14:50:24
+-- Dump completed on 2015-06-23 15:16:10

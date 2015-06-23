@@ -31,7 +31,6 @@ public class WorkPositionPoints implements java.io.Serializable {
 	private Integer xposition;
 	private Integer yposition;
 	private Integer zposition;
-	private Float bulge;
 
 	public WorkPositionPoints() {
 	}
@@ -41,13 +40,12 @@ public class WorkPositionPoints implements java.io.Serializable {
 	}
 
 	public WorkPositionPoints(WorkOrder workOrder, Integer sequenceNum,
-			Integer xposition, Integer yposition, Integer zposition, Float bulge) {
+			Integer xposition, Integer yposition, Integer zposition) {
 		this.workOrder = workOrder;
 		this.sequenceNum = sequenceNum;
 		this.xposition = xposition;
 		this.yposition = yposition;
 		this.zposition = zposition;
-		this.bulge = bulge;
 	}
 
 	@Id
@@ -110,16 +108,4 @@ public class WorkPositionPoints implements java.io.Serializable {
 		log.debug("setZposition : " + zposition);
 		this.zposition = zposition;
 	}
-
-	@Column(name = "bulge")
-	public Float getBulge() {
-		return bulge;
-	}
-
-	public void setBulge(Float bulge) {
-		this.bulge = bulge;
-	}
-	
-	
-
 }

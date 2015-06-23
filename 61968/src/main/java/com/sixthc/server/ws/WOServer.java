@@ -288,14 +288,13 @@ public class WOServer implements WOServerSoap {
 
 	}
 
-//	// TODO : This appears more than once in wsdl, what to do bb:  I only see one occurence in MSP wsdl
+	// TODO : Identified Object is not persisted
 	private void parseIdentiedObject(IdentifiedObject from,
 			com.sixthc.hbm.IdentifiedObject to) {
 		if (from != null && to != null) {
 			to.setMrid(from.getMRID());
 			to.setDescription(from.getDescription());
-			Names names = from.getNames(); // TODO : ?
-			// bb: identified_object_names table
+			Names names = from.getNames(); 
 			if (names != null) {
 				for (Name n : names.getName()) {
 					n.getNameString();
@@ -327,7 +326,7 @@ public class WOServer implements WOServerSoap {
 			PhoneType ptype = pn.getPhoneType();
 			if (ptype != null && ptype.getValue() != null)
 				p2.setPhonetype(ptype.getValue().value());
-			ptype.getOtherKind(); // TODO : probably not necessary, but maybe... bb: ignore
+			// ptype.getOtherKind(); // ignore
 			BigInteger priority = pn.getPriorityOrder();
 			if (priority != null)
 				p2.setPriorityorder(priority.intValue());
@@ -348,19 +347,16 @@ public class WOServer implements WOServerSoap {
 			addr2.setSdNumber(dafs.getStreetNumber());
 			addr2.setSdSuffix(dafs.getStreetSuffix());
 			addr2.setSdType(dafs.getStreetType());
-			addr2.setSdBuildingName(dafs.getBuildingNumber()); // TODO : Verify
-																// bb: correct -
-																// msp.buildingNumber
-																// =
-																// cim.buildingName
+			addr2.setSdBuildingName(dafs.getBuildingNumber());
+
 			addr2.setSdSuiteNumber(dafs.getSuiteNumber());
-			dafs.getAddressGeneral(); // TODO : ? //bb: maps to address11
+			addr2.setSdAddress1(dafs.getAddressGeneral());
 			addr2.setTdPobox(dafs.getPostOfficeBox());
 			addr2.setTdRegion(dafs.getRegion());
 		}
-		
-		/* TODO : Please verify that <locationInformation> is not to be
-		 * persisted.
+
+		/*
+		 * <locationInformation> is not to be persisted.
 		 */
 		addr2.setTownshipName(addr.getTownCode());
 		addr2.setTownshipName(addr.getCity());
@@ -395,7 +391,7 @@ public class WOServer implements WOServerSoap {
 		if (from.getEMailType() != null
 				&& from.getEMailType().getValue() != null) {
 			to.setEmailType(from.getEMailType().getValue().value());
-			eat.getOtherKind(); // TODO : ? bb: use value as type, or just
+			// eat.getOtherKind();
 		}
 
 		BigInteger po = from.getPriorityOrder();
@@ -416,30 +412,27 @@ public class WOServer implements WOServerSoap {
 	// position points
 	private void parsePolygon(GMLPolygon gp) {
 		Iterator<LinearRingType> iti = gp.getInnerBoundaryIs().iterator();
-		// TODO : Need a type in the workpositionpoints for inner, outer bb: ignore
-		// TODO : note below, two level, multiple rings contain coords bb: ignore
-		while (iti.hasNext()) {
-			LinearRingType lrt = iti.next();
-			List<CoordType> coords = lrt.getCoord();
-			for (CoordType c : coords) {
-				// TODO : missing bulge? bb: ignore
-				c.getBulge();
-				c.getX();
-				c.getY();
-				c.getZ();
-			}
-		}
+//		// ignore
+//		while (iti.hasNext()) {
+//			LinearRingType lrt = iti.next();
+//			List<CoordType> coords = lrt.getCoord();
+//			for (CoordType c : coords) {
+//				c.getBulge();
+//				c.getX();
+//				c.getY();
+//				c.getZ();
+//			}
+//		}
 
-		// TODO : There is ONE outer ring bb: ignore
-		LinearRingType lrt = gp.getOuterBoundaryIs();
-		List<CoordType> coords = lrt.getCoord();
-		for (CoordType c : coords) {
-			// TODO : missing bulge? bb: ignore
-			c.getBulge();
-			c.getX();
-			c.getY();
-			c.getZ();
-		}
+//		// ignoreignore
+//		LinearRingType lrt = gp.getOuterBoundaryIs();
+//		List<CoordType> coords = lrt.getCoord();
+//		for (CoordType c : coords) {
+//			c.getBulge();
+//			c.getX();
+//			c.getY();
+//			c.getZ();
+//		}
 	}
 
 	private Timestamp parseDate(XMLGregorianCalendar from) {
@@ -460,7 +453,7 @@ public class WOServer implements WOServerSoap {
 			to.setPrimaryId(from.getPrimaryIdentifier().getIdentifierName());
 		}
 
-		from.getComments(); // TODO : contactperson.comments bb: add a comments field
+		to.setComments(from.getComments());
 		// cp.setSecondaryId(from.getSecondaryIdentifier().getIdentifierName()); 
 		// parseIdentiedObject(from.getIdentifiedObject(),to.getIdentifiedObject());
 
@@ -513,7 +506,7 @@ public class WOServer implements WOServerSoap {
 			ExpirationTime expirationTime) {
 		log.debug("initiateWorkRequest called");
 		List<WorkRequest> a = arrayOfWorkRequest.getWorkRequest();
-		
+
 		// expirationTime; // Not persisted bb: ignore
 		// transactionID; // Not persisted bb: ignore
 		boolean imageFileProcessingError = false;
@@ -521,8 +514,11 @@ public class WOServer implements WOServerSoap {
 			WorkOrder workOrder = new WorkOrder();
 			workOrder.setComments(request.getComments());
 
-			request.getPrimaryIdentifier(); // TODO : add to schema bb: add to schema
-			request.getSecondaryIdentifier(); // TODO : add schema bb: add to schema
+			if (request.getPrimaryIdentifier() != null)
+				workOrder.setPrimaryId(request.getPrimaryIdentifier()
+						.getValue());
+			if( request.getSecondaryIdentifier() != null ) 
+				workOrder.setSecondaryId(request.getSecondaryIdentifier().getValue());
 			if (request.getWorkTypeRef() != null)
 				workOrder
 						.setKind(request.getWorkTypeRef().getWorkSubTypeName());
@@ -530,7 +526,7 @@ public class WOServer implements WOServerSoap {
 			workOrder.setWorkOrderName(request.getTitle());
 			UUID uuid = UUID.randomUUID();
 			workOrder.setMrid(uuid.toString());
-			workOrder.setStatus("ACTIVE"); // no MS equivilent bb: use "ACTIVE"
+			workOrder.setStatus("ACTIVE");
 			workOrder.setCreatedAt(parseDate(request.getCreatedDate()));
 			workOrder.setTitle(request.getTitle());
 			workOrder.setDescription(request.getDescription());
@@ -548,7 +544,7 @@ public class WOServer implements WOServerSoap {
 				workOrder.setCreatedBy(createdBy);
 			}
 
-			request.getRequestingSystem(); // TODO : not mapped in DB bb: ignore
+			request.getRequestingSystem(); // not mapped in DB bb: ignore
 
 			String workPriority = request.getRequestedWorkPriority();
 			log.debug("work priority : " + workPriority);
@@ -563,21 +559,20 @@ public class WOServer implements WOServerSoap {
 			WorkLocation workLocation = request.getWorkLocation();
 			if (workLocation != null) {
 
-				com.sixthc.hbm.Address workAddress = parseAddress(workLocation.getAddress());
-				if( workAddress != null ) {
+				com.sixthc.hbm.Address workAddress = parseAddress(workLocation
+						.getAddress());
+				if (workAddress != null) {
 					workAddress.getAddressWorkorders().add(workOrder);
 					workOrder.setAddress(workAddress);
 				}
-				
-				
-				//
+
 				// GPS Location
 				GPSLocation gps = workLocation.getGPSLocation();
 				if (gps != null) {
 					workOrder.setGpsLatitude((float) gps.getLatitude());
 					workOrder.setGpsLongitude((float) gps.getLongitude());
 					workOrder.setGpsAltitude((float) gps.getAltitude()
-							.floatValue()); // TODO 
+							.floatValue());
 
 					// Below items not supported in schema
 					// GPSMetadata gmd = gps.getGPSMetadata();
@@ -593,28 +588,32 @@ public class WOServer implements WOServerSoap {
 					// gmd.getNumSat();
 
 				}
-				
-				
-				if( workLocation.getGeometry() != null && workLocation.getGeometry().getGMLLocations() != null ) {
+
+				if (workLocation.getGeometry() != null
+						&& workLocation.getGeometry().getGMLLocations() != null) {
 					int i = 1;
-					  for( GMLLocation reqGML : workLocation.getGeometry().getGMLLocations().getGMLLocation()) {
-						  WorkPositionPoints workPoints = new WorkPositionPoints();
-						  workPoints.setXposition(reqGML.getCoord().getX().intValue());
-						  workPoints.setYposition(reqGML.getCoord().getY().intValue());
-						  workPoints.setZposition(reqGML.getCoord().getZ().intValue());
-						  workPoints.setBulge(reqGML.getCoord().getBulge());
-						  workPoints.setSequenceNum(i++);
-						  workPoints.setWorkOrder(workOrder);
-						  workOrder.getWorkPositionPointses().add(workPoints);
-						  
-						  reqGML.getCoordinates().getValue(); // TODO : Not sure what this is for. See soap message
-					  }					 
+					for (GMLLocation reqGML : workLocation.getGeometry()
+							.getGMLLocations().getGMLLocation()) {
+						WorkPositionPoints workPoints = new WorkPositionPoints();
+						workPoints.setXposition(reqGML.getCoord().getX()
+								.intValue());
+						workPoints.setYposition(reqGML.getCoord().getY()
+								.intValue());
+						workPoints.setZposition(reqGML.getCoord().getZ()
+								.intValue());
+						workPoints.setBulge(reqGML.getCoord().getBulge());
+						workPoints.setSequenceNum(i++);
+						workPoints.setWorkOrder(workOrder);
+						workOrder.getWorkPositionPointses().add(workPoints);
+
+						// reqGML.getCoordinates().getValue(); // not persisted
+					}
 				}
-				
-				workLocation.getGridLocation(); // TODO : Where to persist? bb: work_order.grid_location
+
+				workOrder.setGridLocation(workLocation.getGridLocation());
 				workOrder.setLocationComment(workLocation.getLocationComment());
 
-				// TODO : Where to persist?
+				// These items are not persisted
 				Geometry geo = workLocation.getGeometry();
 				if (geo != null) {
 					for (GMLPolygon gp : geo.getGMLPolygons().getGMLPolygon()) {
@@ -622,19 +621,21 @@ public class WOServer implements WOServerSoap {
 					}
 
 				}
-				
-				if( workLocation.getSupplementalNotes() != null  ) {
-					for( SupplementalNote reqNotes : workLocation.getSupplementalNotes().getSupplementalNote()) {
+
+				if (workLocation.getSupplementalNotes() != null) {
+					for (SupplementalNote reqNotes : workLocation
+							.getSupplementalNotes().getSupplementalNote()) {
 						WorkOrderComments workComments = new WorkOrderComments();
 						Comment workComment = new Comment();
 						workComments.setWorkOrder(workOrder);
 						workOrder.getWorkOrderCommentses().add(workComments);
 						workComment.getWorkOrderCommentses().add(workComments);
 						workComments.setComment(workComment);
-						
+
 						workComment.setComment(reqNotes.getNoteValue());
 						workComment.setCommentType(reqNotes.getNoteType());
-						workComment.setCommentSubtype(reqNotes.getNoteSubtype());
+						workComment
+								.setCommentSubtype(reqNotes.getNoteSubtype());
 					}
 				}
 
@@ -670,8 +671,6 @@ public class WOServer implements WOServerSoap {
 				}
 
 			}
-			
-
 
 			workOrderDao.save(workOrder);
 			break;
