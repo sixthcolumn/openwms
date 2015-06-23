@@ -1,5 +1,5 @@
 /*
-SQLyog Ultimate v10.00 Beta1
+SQLyog Ultimate v10.00 Beta1 testing
 MySQL - 5.6.21-log : Database - wms
 *********************************************************************
 */
