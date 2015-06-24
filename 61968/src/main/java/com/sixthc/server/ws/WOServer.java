@@ -601,7 +601,6 @@ public class WOServer implements WOServerSoap {
 								.intValue());
 						workPoints.setZposition(reqGML.getCoord().getZ()
 								.intValue());
-						workPoints.setBulge(reqGML.getCoord().getBulge());
 						workPoints.setSequenceNum(i++);
 						workPoints.setWorkOrder(workOrder);
 						workOrder.getWorkPositionPointses().add(workPoints);

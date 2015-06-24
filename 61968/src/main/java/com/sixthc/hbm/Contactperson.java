@@ -60,6 +60,7 @@ public class Contactperson implements java.io.Serializable {
 			0);
 	private Set<WorkOrder> workOrdersForRequestContactId = new HashSet<WorkOrder>(
 			0);
+	private Set<CrewContactpersons> crewContactPersons = new HashSet<CrewContactpersons>(0);
 
 	public Contactperson() {
 	}
@@ -243,6 +244,16 @@ public class Contactperson implements java.io.Serializable {
 			Set<ContactpersonOtherContactinfos> contactpersonOtherContactinfoses) {
 		this.contactpersonOtherContactinfoses = contactpersonOtherContactinfoses;
 	}
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "contactperson")
+	public Set<CrewContactpersons> getCrewContactpersons() {
+		return this.crewContactPersons;
+	}
+
+	public void setCrewContactpersons(
+			Set<CrewContactpersons> crewContactPersons) {
+		this.crewContactPersons = crewContactPersons;
+	}
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "contactperson")
 	public Set<ContactpersonAddresses> getContactpersonAddresseses() {
@@ -273,5 +284,6 @@ public class Contactperson implements java.io.Serializable {
 			Set<WorkOrder> workOrdersForRequestContactId) {
 		this.workOrdersForRequestContactId = workOrdersForRequestContactId;
 	}
-
+	
+	
 }

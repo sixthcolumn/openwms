@@ -2,6 +2,8 @@ package com.sixthc.hbm;
 
 // Generated Jun 3, 2015 2:34:41 PM by Hibernate Tools 3.2.2.GA
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,9 +12,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-
-import static javax.persistence.GenerationType.IDENTITY;
-
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -33,6 +32,7 @@ public class Crew implements java.io.Serializable {
 	private Set<WorkTaskCrews> workTaskCrewses = new HashSet<WorkTaskCrews>(0);
 	private Set<CrewAssets> crewAssets = new HashSet<CrewAssets>(0);
 	private Set<CrewNames> crewNameses = new HashSet<CrewNames>(0);
+	private Set<CrewContactpersons> contactPersons = new HashSet<CrewContactpersons>(0);
 
 	public Crew() {
 	}
@@ -95,6 +95,15 @@ public class Crew implements java.io.Serializable {
 
 	public void setCrewAssets(Set<CrewAssets> crewAssets) {
 		this.crewAssets = crewAssets;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "crew")
+	public Set<CrewContactpersons> getContactPersons() {
+		return contactPersons;
+	}
+
+	public void setContactPersons(Set<CrewContactpersons> contactPersons) {
+		this.contactPersons = contactPersons;
 	}
 	
 	

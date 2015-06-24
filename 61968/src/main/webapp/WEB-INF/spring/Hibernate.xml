@@ -42,6 +42,7 @@
 				<value>com.sixthc.hbm.AssetProcedures</value>
 				<value>com.sixthc.hbm.Comment</value>
 				<value>com.sixthc.hbm.Crew</value>
+				<value>com.sixthc.hbm.CrewContactpersons</value>
 				<value>com.sixthc.hbm.CrewAssets</value>
 				<value>com.sixthc.hbm.CrewNames</value>
 				<value>com.sixthc.hbm.District</value>

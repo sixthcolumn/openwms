@@ -392,7 +392,8 @@ public class Address implements java.io.Serializable {
 		con.check( "setCoordSystem", coordSystem, true, 512);
 		this.coordSystem = coordSystem;
 	}	
-
+	
+	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "address")
 	public Set<AddressDistricts> getAddressDistrictses() {
 		return this.addressDistrictses;

@@ -46,7 +46,6 @@ import ch.iec.tc57._2014.maintenanceorders.WorkAsset;
 import ch.iec.tc57._2014.maintenanceorders.WorkLocation;
 import ch.iec.tc57._2014.maintenanceorders.WorkLocation.CoordinateSystem;
 import ch.iec.tc57._2014.maintenanceorders.WorkLocation.MainAddress;
-import ch.iec.tc57._2014.maintenanceorders.WorkLocation.MainAddress.Status;
 import ch.iec.tc57._2014.maintenanceorders.WorkLocation.PositionPoints;
 import ch.iec.tc57._2014.maintenanceorders.WorkTask;
 import ch.iec.tc57._2014.maintenanceorders.WorkTask.MaterialItems;
@@ -64,7 +63,9 @@ import com.sixthc.hbm.AssetNames;
 import com.sixthc.hbm.AssetProcedures;
 import com.sixthc.hbm.Attachment;
 import com.sixthc.hbm.ConstraintException;
+import com.sixthc.hbm.Contactperson;
 import com.sixthc.hbm.CrewAssets;
+import com.sixthc.hbm.CrewContactpersons;
 import com.sixthc.hbm.CrewNames;
 import com.sixthc.hbm.Hazards;
 import com.sixthc.hbm.MaterialItem;
@@ -388,42 +389,18 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 				workAssetAddress.getAddressHazardses().add(addrHazards);
 				addrHazards.setAddress(workAssetAddress);
 				addrHazards.setHazards(workhaz);
-				workhaz.setHazardName(reqHaz.getType()); // TODO : Wrong? bb:  hazards have a name, not a type - it's not the name/type structure that a lot of other "names" have
-				/*
-				 * TODO :
-				 * <main1:Hazards>
-				 * <!--Optional:-->
-				 * <main1:type>?</main1:type>
-				 * </main1:Hazards>
-				 * This appears multiple times in the doc...
-				 */
+				workhaz.setHazardName(reqHaz.getType());
 			}
 
 			InternalLocation reqIloc = reqAssetLoc.getInternalLocation();
 			if (reqIloc != null) {
-				/*
-				 * TODO : these fields can/are found in each address. this
-				 * particular one is for asset.
-				 * It can't be persisted in work_order. Perhaps all internal's
-				 * should be in the address
-				 * not in work_order?
-				 */
-				reqIloc.getBuildingName(); // TODO : ? bb: work_order.internal_...
-				reqIloc.getBuildingNumber(); // TODO : bb: work_order.internal_...
-				reqIloc.getFloor(); // TODO : bb: work_order.internal_...
-				reqIloc.getRoomNumber(); // TODO : bb: work_order.internal_...
+				workAsset.setInternalBuildingName(reqIloc.getBuildingName());
+				workAsset.setInternalBuildingNumber(reqIloc.getBuildingNumber());
+				workAsset.setInternalFloor(reqIloc.getFloor());
+				workAsset.setInternalRoomNumber(reqIloc.getRoomNumber());
 			}
 
-			reqAssetLoc.getMRID(); // TODO :  bb: ignore
-
-			Set<AddressDistricts> districts = workAssetAddress
-					.getAddressDistrictses();
-
-			if (districts != null) {
-				for (AddressDistricts addr : districts) {
-					AddressDistricts d = new AddressDistricts();
-				}
-			}
+			reqAssetLoc.getMRID(); // ignore
 
 			List<PositionPoints> reqPoints = reqAssetLoc.getPositionPoints();
 			for (PositionPoints p : reqPoints) {
@@ -556,11 +533,10 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 					workOrgs.setWorkOrder(workOrder);
 				}
 
-				// TODO : Just fyi, I'm ignoring MRID, if passed and storing uuid for work order
 				UUID uuid = UUID.randomUUID();
 				workOrder.setMrid(uuid.toString());
-				reqWork.setMRID(uuid.toString()); // TODO : even if they give me mrid, I overwrite
-				workOrder.setCreatedBy("WMS"); // leave as is
+				reqWork.setMRID(uuid.toString()); // overwrite MRID
+				workOrder.setCreatedBy("WMS");
 				workOrder.setKind(reqWork.getKind() != null ? reqWork.getKind()
 						.value() : "Not Set");
 
@@ -745,11 +721,17 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 						for (CrewMember reqCrewMember : reqCrew
 								.getCrewMembers()) {
 							Person reqPerson = reqCrewMember.getPerson();
-							reqPerson.getFirstName(); // TODO : No table/field
-														// for crew member
-														// first/last?
-							reqPerson.getLastName(); // TODO : see above
 
+							CrewContactpersons persons = new CrewContactpersons();
+							persons.setCrew(workCrew);
+							workCrew.getContactPersons().add(persons);
+							
+							Contactperson person = new Contactperson();
+							person.setFirstname(reqPerson.getFirstName()); 
+							person.setLastname(reqPerson.getLastName());
+							
+							persons.setContactperson(person);
+							person.getCrewContactpersons().add(persons);
 						}
 					}
 
@@ -819,7 +801,7 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 					workTask.getWorkTaskOldAssetses().add(workTaskOldAssets);
 
 					workTaskOldAssets.setCreatedAt(new Date(System
-							.currentTimeMillis())); // TODO : Not passed?
+							.currentTimeMillis()));
 
 					// reqTask.getStatusKind(); // ignore
 					if (reqTask.getTaskKind() != null)
