@@ -34,6 +34,8 @@ public class Workorderimage implements java.io.Serializable {
 	private String url;
 	private String error;
 	private String filename;
+	private String comment;
+	private String description;
 
 	public Workorderimage() {
 	}
@@ -112,5 +114,25 @@ public class Workorderimage implements java.io.Serializable {
 		con.check( "setFilename", filename, true, 1025);
 		this.filename = filename;
 	}
+
+	@Column(name="comment", length=512)
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	@Column(name="description", length=512)
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	
 
 }

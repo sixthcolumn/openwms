@@ -32,6 +32,8 @@ public class Attachment implements java.io.Serializable {
 	private Integer id;
 	private String type;
 	private String filename;
+	private String description;
+	private String comment;
 	private Set<WorkOrderAttachments> workOrderAttachmentses = new HashSet<WorkOrderAttachments>(
 			0);
 
@@ -80,6 +82,25 @@ public class Attachment implements java.io.Serializable {
 	public void setFilename(String filename) {
 		con.check( "setFilename", filename, false, 256);
 		this.filename = filename;
+	}
+	
+	
+	@Column(name="description", length=512)
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	@Column(name="comment", length=512)
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "attachment")

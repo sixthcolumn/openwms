@@ -836,17 +836,20 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 					}
 
 					if (reqWork.getAttachments() != null) {
-						for (String reqAtt : reqWork.getAttachments()
-								.getAttachment()) {
+						
+						for( ch.iec.tc57._2014.maintenanceorders.Attachment reqAtt : reqWork.getAttachments().getAttachment()) {
 							try {
 								String file = UUID.randomUUID().toString();
-								String uri = reqAtt;
+								String uri = reqAtt.getUrl();
+								
+								Attachment attachment = new Attachment();
+								attachment.setComment(reqAtt.getComment());
+								attachment.setDescription(reqAtt.getDescription());
+								attachment.setFilename(file);
+								attachment.setType("jpg"); // TODO : Get file suffix
 
 								ImageLoader.getImage(uri, file);
 
-								Attachment attachment = new Attachment();
-								attachment.setFilename(file);
-								attachment.setType("jpg"); // TODO : Get file suffix
 								WorkOrderAttachments woa = new WorkOrderAttachments();
 								woa.setAttachment(attachment);
 								attachment.setWorkOrderAttachmentses(workOrder

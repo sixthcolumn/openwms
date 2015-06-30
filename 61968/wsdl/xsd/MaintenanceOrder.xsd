@@ -2852,13 +2852,24 @@ Work.WorkTasks">
 			<xs:element name="Attachments" minOccurs="0" maxOccurs="1">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="Attachment" type="xs:string" minOccurs="1" maxOccurs="unbounded"></xs:element>
+						<xs:element name="Attachment" type="m:Attachment"
+							minOccurs="1" maxOccurs="unbounded">
+						</xs:element>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
-
+	<xs:complexType name="Attachment">
+		<xs:sequence>
+			<xs:element name="Comment" type="xs:string" minOccurs="0"
+				maxOccurs="1"></xs:element>
+			<xs:element name="Description" type="xs:string" minOccurs="0"
+				maxOccurs="1"></xs:element>
+			<xs:element name="Url" type="xs:string" minOccurs="1"
+				maxOccurs="1"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
 	<xs:complexType name="WorkAsset"
 		sawsdl:modelReference="http://iec.ch/TC57/CIMgeneric#
 WorkAsset">
