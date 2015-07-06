@@ -63,7 +63,7 @@ public class Measurement implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "type", length = 12)
+	@Column(name = "measurement_type", length = 12)
 	public String getType() {
 		return this.type;
 	}

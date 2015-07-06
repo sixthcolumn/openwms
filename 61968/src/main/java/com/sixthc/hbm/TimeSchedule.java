@@ -73,7 +73,7 @@ public class TimeSchedule implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "type", nullable = false, length = 12)
+	@Column(name = "schedule_type", nullable = false, length = 12)
 	public String getType() {
 		return this.type;
 	}
