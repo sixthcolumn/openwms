@@ -884,7 +884,8 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 	public void closeMaintenanceOrder(Holder<HeaderType> header,
 			RequestType request, Holder<MaintenanceOrderPayloadType> payload,
 			Holder<ReplyType> reply) throws FaultMessage {
-		// TODO Auto-generated method stub
+		reply.value = new ReplyType();
+		reply.value.setResult("OK");
 
 	}
 
@@ -892,7 +893,8 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 	public void cancelMaintenanceOrder(Holder<HeaderType> header,
 			RequestType request, Holder<MaintenanceOrderPayloadType> payload,
 			Holder<ReplyType> reply) throws FaultMessage {
-		// TODO Auto-generated method stub
+		reply.value = new ReplyType();
+		reply.value.setResult("OK");
 
 	}
 
@@ -900,7 +902,8 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 	public void changeMaintenanceOrder(Holder<HeaderType> header,
 			RequestType request, Holder<MaintenanceOrderPayloadType> payload,
 			Holder<ReplyType> reply) throws FaultMessage {
-		// TODO Auto-generated method stub
+		reply.value = new ReplyType();
+		reply.value.setResult("OK");
 
 	}
 
@@ -908,7 +911,8 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 	public void deleteMaintenanceOrder(Holder<HeaderType> header,
 			RequestType request, Holder<MaintenanceOrderPayloadType> payload,
 			Holder<ReplyType> reply) throws FaultMessage {
-		// TODO Auto-generated method stub
+		reply.value = new ReplyType();
+		reply.value.setResult("OK");
 
 	}
 
