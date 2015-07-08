@@ -62,7 +62,8 @@
 	<import resource="spring/wms2.xml" />
 -->
 	<import resource="spring/wo_server.xml" />
-	<import resource="spring/wo_server2.xml" />
+	<import resource="spring/wms_cim_create.xml" />
+	<import resource="spring/wms_cim_delete.xml" />
 
 	<!-- <import resource="spring/rest-event.xml" /> -->
 	<!-- <import resource="spring/request-cxf.xml" /> Do not uncomment this! -->

@@ -13,44 +13,44 @@
 
 	<bean id="wms_cimMOBean" class="com.sixthc.server.ws.MaintenanceOrderImpl" />
 
-	<!-- Epri role CIS, Vendor role MDM, Service ReplyMeterReadings -->
+	<!-- Epri role WMS-CIM, Vendor role WMS, Service MaintOrderWMS MaintenanceOrder Create -->
 	<!-- MDMS 6 -->
 	<!-- OD_MDM-CIS_Reply(6MeterReading)" -->
 
-	<jaxws:endpoint id="SendMaintOrder" implementor="#wms_cimMOBean"
+	<jaxws:endpoint id="SendMaintOrder" implementor="#wms_cimCreateMBean"
 		address="/MaintOrderService">
 		<jaxws:inInterceptors>
 			<bean class="com.sixthc.interceptor.LoggingInInterceptor">
-				<property name="vendorRoleType" value="MDMS" />
-				<property name="packageName" value="Meter OnDemand" />
-				<property name="interfaceName" value="OD_MDM-CIS_Reply(6MeterReading)" />
+				<property name="vendorRoleType" value="WMS-CIM" />
+				<property name="packageName" value="WMS CIM MaintenanceOrder" />
+				<property name="interfaceName" value="WMS MaintenanceOrder Create" />
 				<property name="resultCode" value="success" />
 				<property name="stage" value="serviceIn" />
 			</bean>
 		</jaxws:inInterceptors>
 		<jaxws:outInterceptors>
 			<bean class="com.sixthc.interceptor.LoggingOutInterceptor">
-				<property name="vendorRoleType" value="MDMS" />
-				<property name="packageName" value="Meter OnDemand" />
-				<property name="interfaceName" value="OD_MDM-CIS_Reply(6MeterReading)" />
+				<property name="vendorRoleType" value="WMS-CIM" />
+				<property name="packageName" value="WMS CIM MaintenanceOrder" />
+				<property name="interfaceName" value="WMS MaintenanceOrder Create" />
 				<property name="resultCode" value="success" />
 				<property name="stage" value="serviceOut" />
 			</bean>
 		</jaxws:outInterceptors>
 		<jaxws:outFaultInterceptors>
 			<bean class="com.sixthc.interceptor.LoggingOutInterceptor">
-				<property name="vendorRoleType" value="MDMS" />
-				<property name="packageName" value="Meter OnDemand" />
-				<property name="interfaceName" value="OD_MDM-CIS_Reply(6MeterReading)" />
+				<property name="vendorRoleType" value="WMS-CIM" />
+				<property name="packageName" value="WMS CIM MaintenanceOrder" />
+				<property name="interfaceName" value="WMS MaintenanceOrder Create" />
 				<property name="resultCode" value="fail" />
 				<property name="stage" value="serviceOutFault" />
 			</bean>
 		</jaxws:outFaultInterceptors>
 		<jaxws:inFaultInterceptors>
 			<bean class="com.sixthc.interceptor.LoggingInInterceptor">
-				<property name="vendorRoleType" value="MDMS" />
-				<property name="packageName" value="Meter OnDemand" />
-				<property name="interfaceName" value="OD_MDM-CIS_Reply(6MeterReading)" />
+				<property name="vendorRoleType" value="WMS-CIM" />
+				<property name="packageName" value="WMS CIM MaintenanceOrder" />
+				<property name="interfaceName" value="WMS MaintenanceOrder Create" />
 				<property name="resultCode" value="fail" />
 				<property name="stage" value="serviceInFault" />
 			</bean>

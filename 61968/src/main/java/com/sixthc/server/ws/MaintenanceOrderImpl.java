@@ -911,6 +911,9 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 	public void deleteMaintenanceOrder(Holder<HeaderType> header,
 			RequestType request, Holder<MaintenanceOrderPayloadType> payload,
 			Holder<ReplyType> reply) throws FaultMessage {
+
+		System.out.println("deleteMaintenanceOrder called");
+
 		reply.value = new ReplyType();
 		reply.value.setResult("OK");
 
