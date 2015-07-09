@@ -11,4 +11,5 @@ public interface WorkOrderDao {
 	public void delete(WorkOrder log);
 	//public WorkOrder findById(int id);
 	//public long getMessageIdSequence();
+	public WorkOrder find(String mrid);
 }

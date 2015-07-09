@@ -395,7 +395,8 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 			InternalLocation reqIloc = reqAssetLoc.getInternalLocation();
 			if (reqIloc != null) {
 				workAsset.setInternalBuildingName(reqIloc.getBuildingName());
-				workAsset.setInternalBuildingNumber(reqIloc.getBuildingNumber());
+				workAsset
+						.setInternalBuildingNumber(reqIloc.getBuildingNumber());
 				workAsset.setInternalFloor(reqIloc.getFloor());
 				workAsset.setInternalRoomNumber(reqIloc.getRoomNumber());
 			}
@@ -725,11 +726,11 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 							CrewContactpersons persons = new CrewContactpersons();
 							persons.setCrew(workCrew);
 							workCrew.getContactPersons().add(persons);
-							
+
 							Contactperson person = new Contactperson();
-							person.setFirstname(reqPerson.getFirstName()); 
+							person.setFirstname(reqPerson.getFirstName());
 							person.setLastname(reqPerson.getLastName());
-							
+
 							persons.setContactperson(person);
 							person.getCrewContactpersons().add(persons);
 						}
@@ -836,15 +837,17 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 					}
 
 					if (reqWork.getAttachments() != null) {
-						
-						for( ch.iec.tc57._2014.maintenanceorders.Attachment reqAtt : reqWork.getAttachments().getAttachment()) {
+
+						for (ch.iec.tc57._2014.maintenanceorders.Attachment reqAtt : reqWork
+								.getAttachments().getAttachment()) {
 							try {
 								String file = UUID.randomUUID().toString();
 								String uri = reqAtt.getUrl();
-								
+
 								Attachment attachment = new Attachment();
 								attachment.setComment(reqAtt.getComment());
-								attachment.setDescription(reqAtt.getDescription());
+								attachment.setDescription(reqAtt
+										.getDescription());
 								attachment.setFilename(file);
 								attachment.setType("jpg"); // TODO : Get file suffix
 
@@ -912,11 +915,44 @@ public class MaintenanceOrderImpl implements MaintenanceOrderPort {
 			RequestType request, Holder<MaintenanceOrderPayloadType> payload,
 			Holder<ReplyType> reply) throws FaultMessage {
 
-		System.out.println("deleteMaintenanceOrder called");
+		log.info("deleteMaintenanceOrder called");
+		Boolean error = false;
 
 		reply.value = new ReplyType();
-		reply.value.setResult("OK");
+
+		for (MaintenanceOrder reqOrder : payload.value.getMaintenanceOrders()
+				.getMaintenanceOrder()) {
+			for (Work reqWork : reqOrder.getWork()) {
+				String mrid = reqWork.getMRID();
+				try {
+					log.info("deleting mrid = " + mrid);
+					WorkOrder workOrder = workOrderDao.find(mrid);
+					if (workOrder == null) {
+						ErrorType et = new ErrorType();
+						et.setLevel("WARNING");
+						et.setCode("NA");
+						et.setReason("work order not found");
+						et.setDetails("MRID value : " + mrid);
+						reply.value.getError().add(et);
+						error = true;
+					} else {
+						workOrder.setStatus("DELETED");
+						workOrderDao.update(workOrder);
+					}
+				} catch (Exception e) {
+					error = true;
+					ErrorType et = new ErrorType();
+					et.setLevel("FATAL");
+					et.setCode("NA");
+					et.setReason("Hibernate Exception");
+					et.setDetails("MRID : " + reqOrder.getMRID());
+					et.setStackTrace(e.getStackTrace().toString());
+					reply.value.getError().add(et);
+				}
+			}
+		}
+
+		reply.value.setResult((error == true) ? "ERROR" : "OK");
 
 	}
-
 }
