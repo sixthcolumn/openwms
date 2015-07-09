@@ -17,7 +17,7 @@
 	<!-- MDMS 6 -->
 	<!-- OD_MDM-CIS_Reply(6MeterReading)" -->
 
-	<jaxws:endpoint id="SendMaintOrder" implementor="#wms_cimDelBean"
+	<jaxws:endpoint id="DeleteMaintOrder" implementor="#wms_cimDelBean"
 		address="/MaintOrderServiceDel">
 		<jaxws:inInterceptors>
 			<bean class="com.sixthc.interceptor.LoggingInInterceptor">

@@ -17,8 +17,8 @@
 	<!-- MDMS 6 -->
 	<!-- OD_MDM-CIS_Reply(6MeterReading)" -->
 
-	<jaxws:endpoint id="SendMaintOrder" implementor="#wms_cimCreateBean"
-		address="/MaintOrderService">
+	<jaxws:endpoint id="CreateMaintOrder" implementor="#wms_cimCreateBean"
+		address="/MaintOrderServiceCreate">
 		<jaxws:inInterceptors>
 			<bean class="com.sixthc.interceptor.LoggingInInterceptor">
 				<property name="vendorRoleType" value="WMS-CIM" />
