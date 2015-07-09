@@ -11,13 +11,13 @@
 	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
 	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
 
-	<bean id="wms_cimMOBean" class="com.sixthc.server.ws.MaintenanceOrderImpl" />
+	<bean id="wms_cimCreateBean" class="com.sixthc.server.ws.MaintenanceOrderImpl" />
 
 	<!-- Epri role WMS-CIM, Vendor role WMS, Service MaintOrderWMS MaintenanceOrder Create -->
 	<!-- MDMS 6 -->
 	<!-- OD_MDM-CIS_Reply(6MeterReading)" -->
 
-	<jaxws:endpoint id="SendMaintOrder" implementor="#wms_cimCreateMBean"
+	<jaxws:endpoint id="SendMaintOrder" implementor="#wms_cimCreateBean"
 		address="/MaintOrderService">
 		<jaxws:inInterceptors>
 			<bean class="com.sixthc.interceptor.LoggingInInterceptor">
