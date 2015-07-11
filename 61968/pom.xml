@@ -130,9 +130,20 @@
 									</extraargs>
 								</wsdlOption>
 								<wsdlOption>
-									<wsdl>${basedir}/wsdl/SendMaintenanceOrder.wsdl</wsdl>
+									<wsdl>${basedir}/wsdl/CimCreate/ExecuteMaintenanceOrders.wsdl</wsdl>
 									<extraargs>
 										<extraarg>-client</extraarg>
+										<extraarg>-p</extraarg>
+										<extraarg>com.sixthc.cim.create.cxf</extraarg>
+										<extraarg>-autoNameResolution</extraarg>
+									</extraargs>
+								</wsdlOption>
+								<wsdlOption>
+									<wsdl>${basedir}/wsdl/CimDelete/ExecuteMaintenanceOrders.wsdl</wsdl>
+									<extraargs>
+										<extraarg>-client</extraarg>
+										<extraarg>-p</extraarg>
+										<extraarg>com.sixthc.cim.delete.cxf</extraarg>
 										<extraarg>-autoNameResolution</extraarg>
 									</extraargs>
 								</wsdlOption>

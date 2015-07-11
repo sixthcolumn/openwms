@@ -11,11 +11,7 @@
 	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
 	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
 
-	<bean id="wms_cimDelBean" class="com.sixthc.server.ws.MaintenanceOrderImpl" />
-
-	<!-- Epri role WMS-CIM, Vendor role WMS, Service MaintOrderWMS MaintenanceOrder Create -->
-	<!-- MDMS 6 -->
-	<!-- OD_MDM-CIS_Reply(6MeterReading)" -->
+	<bean id="wms_cimDelBean" class="com.sixthc.server.ws.ExecuteMaintOrderChangeDelete" />
 
 	<jaxws:endpoint id="DeleteMaintOrder" implementor="#wms_cimDelBean"
 		address="/MaintOrderServiceDel">

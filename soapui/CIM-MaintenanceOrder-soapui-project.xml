@@ -4796,7 +4796,7 @@
     </xs:annotation>
     <xs:restriction base="xs:float"/>
   </xs:simpleType>
-</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://iec.ch/TC57/2011/SendMaintenanceOrder</con:endpoint><con:endpoint>http://benjamins-Mac-mini.local:8088/mockMaintenanceOrder_Binding</con:endpoint><con:endpoint>http://localhost:8080/epriConnect/MaintOrderService</con:endpoint><con:endpoint>http://54.175.5.217:8080/epriConnect/MaintOrderService</con:endpoint></con:endpoints><con:operation isOneWay="false" action="http://iec.ch/TC57/2011/MaintenanceOrder/CancelMaintenanceOrder" name="CancelMaintenanceOrder" bindingOperationName="CancelMaintenanceOrder" type="Request-Response" outputName="CancelMaintenanceOrderResponse" inputName="CancelMaintenanceOrderRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://iec.ch/TC57/2011/SendMaintenanceOrder</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:main="http://iec.ch/TC57/2011/MaintenanceOrderMessage" xmlns:mes="http://www.iec.ch/TC57/2011/schema/message" xmlns:main1="http://iec.ch/TC57/2014/MaintenanceOrders#">
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://iec.ch/TC57/2011/SendMaintenanceOrder</con:endpoint><con:endpoint>http://benjamins-Mac-mini.local:8088/mockMaintenanceOrder_Binding</con:endpoint><con:endpoint>http://localhost:8080/epriConnect/MaintOrderService</con:endpoint><con:endpoint>http://54.175.5.217:8080/epriConnect/MaintOrderService</con:endpoint><con:endpoint>http://localhost:8080/epriConnect/MaintOrderServiceDel</con:endpoint></con:endpoints><con:operation isOneWay="false" action="http://iec.ch/TC57/2011/MaintenanceOrder/CancelMaintenanceOrder" name="CancelMaintenanceOrder" bindingOperationName="CancelMaintenanceOrder" type="Request-Response" outputName="CancelMaintenanceOrderResponse" inputName="CancelMaintenanceOrderRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://iec.ch/TC57/2011/SendMaintenanceOrder</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:main="http://iec.ch/TC57/2011/MaintenanceOrderMessage" xmlns:mes="http://www.iec.ch/TC57/2011/schema/message" xmlns:main1="http://iec.ch/TC57/2014/MaintenanceOrders#">
    <soapenv:Header/>
    <soapenv:Body>
       <main:CancelMaintenanceOrder>
@@ -19364,7 +19364,7 @@
          </main:Payload>
       </main:CreateMaintenanceOrder>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="DeleteMaintenanceOrder TestCase" searchProperties="true"><con:settings/><con:testStep type="request" name="DeleteMaintenanceOrder"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MaintenanceOrder_Binding</con:interface><con:operation>DeleteMaintenanceOrder</con:operation><con:request name="DeleteMaintenanceOrder"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/epriConnect/MaintOrderService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:main="http://iec.ch/TC57/2011/MaintenanceOrderMessage" xmlns:mes="http://www.iec.ch/TC57/2011/schema/message" xmlns:main1="http://iec.ch/TC57/2014/MaintenanceOrders#">
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="DeleteMaintenanceOrder TestCase" searchProperties="true"><con:settings/><con:testStep type="request" name="DeleteMaintenanceOrder"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MaintenanceOrder_Binding</con:interface><con:operation>DeleteMaintenanceOrder</con:operation><con:request name="DeleteMaintenanceOrder"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/epriConnect/MaintOrderServiceDel</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:main="http://iec.ch/TC57/2011/MaintenanceOrderMessage" xmlns:mes="http://www.iec.ch/TC57/2011/schema/message" xmlns:main1="http://iec.ch/TC57/2014/MaintenanceOrders#">
    <soapenv:Header/>
    <soapenv:Body>
       <main:DeleteMaintenanceOrder>
@@ -19417,7 +19417,7 @@
                         <!--1 or more repetitions:-->
                         <main1:Organisation>
                             <!--Optional:-->
-                            <main1:mRID>5056fc70-120c-11e5-9493-1697f925ec7b</main1:mRID>
+                            <main1:mRID>8b6a9829-78fd-4a56-a2d5-4c9e1f1e5471</main1:mRID>
                             <!--Zero or more repetitions:-->
                             <main1:Names>
                                 <main1:name>epri</main1:name>
@@ -19437,7 +19437,7 @@
                         </main1:Organisation>
                         <main1:Organisation>
                             <!--Optional:-->
-                            <main1:mRID>50570440-120c-11e5-9493-1697f925ec7b</main1:mRID>
+                            <main1:mRID>8b6a9829-78fd-4a56-a2d5-4c9e1f1e5471</main1:mRID>
                             <!--Zero or more repetitions:-->
                             <main1:Names>
                                 <main1:name>UEL</main1:name>
@@ -19506,7 +19506,7 @@
                         <!--1 or more repetitions:-->
                         <main1:Work>
                             <!--Optional:-->
-                            <main1:mRID>5056fc70-120c-11e5-9493-1697f925ec7b</main1:mRID>
+                            <main1:mRID>xx8b6a9829-78fd-4a56-a2d5-4c9e1f1e5471</main1:mRID>
                             <!--Optional:-->
                             <main1:kind>construction</main1:kind>
                             <!--Optional:-->
