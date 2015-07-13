@@ -96,14 +96,14 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 	private WorkOrderDao workOrderDao;
 
 	private List<com.sixthc.hbm.OrganizationNames> parseNames(
-			List<Name2> reqNames) {
+			List<Name> reqNames) {
 		Vector<com.sixthc.hbm.OrganizationNames> namesList = new Vector<com.sixthc.hbm.OrganizationNames>();
-		for (Name2 reqName : reqNames) {
+		for (Name reqName : reqNames) {
 			com.sixthc.hbm.OrganizationNames names = new com.sixthc.hbm.OrganizationNames();
 			namesList.add(names);
 			names.setName(reqName.getName());
 
-			NameType2 reqNameType = reqName.getNameType();
+			NameType reqNameType = reqName.getNameType();
 			if (reqNameType != null) {
 				com.sixthc.hbm.Nametype nameType = new com.sixthc.hbm.Nametype();
 				nameType.setName(reqNameType.getName());
@@ -111,7 +111,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 				names.setNametype(nameType);
 				nameType.getOrganizationNameses().add(names);
 
-				NameTypeAuthority2 reqNameTypeAuthority = reqNameType
+				NameTypeAuthority reqNameTypeAuthority = reqNameType
 						.getNameTypeAuthority();
 				if (reqNameTypeAuthority != null) {
 					com.sixthc.hbm.NameTypeAuthority nameTypeAuthority = new com.sixthc.hbm.NameTypeAuthority();
@@ -126,14 +126,14 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 	}
 
 	private List<com.sixthc.hbm.WorkTaskNames> parseWorkTaskNames(
-			List<Name2> reqNames) {
+			List<Name> reqNames) {
 		Vector<com.sixthc.hbm.WorkTaskNames> namesList = new Vector<com.sixthc.hbm.WorkTaskNames>();
-		for (Name2 reqName : reqNames) {
+		for (Name reqName : reqNames) {
 			com.sixthc.hbm.WorkTaskNames names = new com.sixthc.hbm.WorkTaskNames();
 			namesList.add(names);
 			names.setName(reqName.getName());
 
-			NameType2 reqNameType = reqName.getNameType();
+			NameType reqNameType = reqName.getNameType();
 			if (reqNameType != null) {
 				com.sixthc.hbm.Nametype nameType = new com.sixthc.hbm.Nametype();
 				nameType.setName(reqNameType.getName());
@@ -141,7 +141,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 				names.setNametype(nameType);
 				nameType.getWorkTaskNameses().add(names);
 
-				NameTypeAuthority2 reqNameTypeAuthority = reqNameType
+				NameTypeAuthority reqNameTypeAuthority = reqNameType
 						.getNameTypeAuthority();
 				if (reqNameTypeAuthority != null) {
 					com.sixthc.hbm.NameTypeAuthority nameTypeAuthority = new com.sixthc.hbm.NameTypeAuthority();
@@ -155,14 +155,14 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 		return namesList;
 	}
 
-	private List<com.sixthc.hbm.AssetNames> parseAssetNames(List<Name2> reqNames) {
+	private List<com.sixthc.hbm.AssetNames> parseAssetNames(List<Name> reqNames) {
 		Vector<com.sixthc.hbm.AssetNames> namesList = new Vector<com.sixthc.hbm.AssetNames>();
-		for (Name2 reqName : reqNames) {
+		for (Name reqName : reqNames) {
 			com.sixthc.hbm.AssetNames names = new com.sixthc.hbm.AssetNames();
 			namesList.add(names);
 			names.setName(reqName.getName());
 
-			NameType2 reqNameType = reqName.getNameType();
+			NameType reqNameType = reqName.getNameType();
 			if (reqNameType != null) {
 				com.sixthc.hbm.Nametype nameType = new com.sixthc.hbm.Nametype();
 				nameType.setName(reqNameType.getName());
@@ -170,7 +170,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 				names.setNametype(nameType);
 				nameType.getAssetNameses().add(names);
 
-				NameTypeAuthority2 reqNameTypeAuthority = reqNameType
+				NameTypeAuthority reqNameTypeAuthority = reqNameType
 						.getNameTypeAuthority();
 				if (reqNameTypeAuthority != null) {
 					com.sixthc.hbm.NameTypeAuthority nameTypeAuthority = new com.sixthc.hbm.NameTypeAuthority();
@@ -184,14 +184,14 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 		return namesList;
 	}
 
-	private List<com.sixthc.hbm.CrewNames> parseCrewNames(List<Name2> reqNames) {
+	private List<com.sixthc.hbm.CrewNames> parseCrewNames(List<Name> reqNames) {
 		Vector<com.sixthc.hbm.CrewNames> namesList = new Vector<com.sixthc.hbm.CrewNames>();
-		for (Name2 reqName : reqNames) {
+		for (Name reqName : reqNames) {
 			com.sixthc.hbm.CrewNames names = new com.sixthc.hbm.CrewNames();
 			namesList.add(names);
 			names.setName(reqName.getName());
 
-			NameType2 reqNameType = reqName.getNameType();
+			NameType reqNameType = reqName.getNameType();
 			if (reqNameType != null) {
 				com.sixthc.hbm.Nametype nameType = new com.sixthc.hbm.Nametype();
 				nameType.setName(reqNameType.getName());
@@ -199,7 +199,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 				names.setNametype(nameType);
 				nameType.getCrewNameses().add(names);
 
-				NameTypeAuthority2 reqNameTypeAuthority = reqNameType
+				NameTypeAuthority reqNameTypeAuthority = reqNameType
 						.getNameTypeAuthority();
 				if (reqNameTypeAuthority != null) {
 					com.sixthc.hbm.NameTypeAuthority nameTypeAuthority = new com.sixthc.hbm.NameTypeAuthority();
@@ -688,7 +688,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 						ts.setType(reqWorkSchedules.getKind().value());
 				}
 
-				for (Name2 reqName : reqWork.getNames()) {
+				for (Name reqName : reqWork.getNames()) {
 					WorkOrderNames workOrderNames = new WorkOrderNames();
 					workOrderNames.setName(reqName.getName());
 					workOrder.getWorkOrderNameses().add(workOrderNames);
@@ -881,7 +881,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 
 						}
 
-						for (Name2 reqMatName : reqMat.getNames()) {
+						for (Name reqMatName : reqMat.getNames()) {
 							MaterialItemNames workMatItemName = new MaterialItemNames();
 							workMatItem.getMaterialItemNameses().add(
 									workMatItemName);
