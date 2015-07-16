@@ -14,7 +14,7 @@
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
 	<!-- the default is for compile phase -->
-	<profiles>
+<!-- 	<profiles>
 		<profile>
 			<id>default</id>
 			<activation>
@@ -27,14 +27,14 @@
 					<version>1.2.5</version>
 				</dependency>
 			</dependencies>
-		</profile>
+		</profile> -->
 		<!-- in order to do generate sources, due to a library conflict, you must 
 			execute command : mvn generate-sources -Pwsdl. This excludes the axiom library, 
 			which will cause wsdl2java to fail if included -->
-		<profile>
+	<!-- 	<profile>
 			<id>wsdl</id>
 		</profile>
-	</profiles>
+	</profiles> -->
 	<name>61968</name>
 	<url>http://maven.apache.org</url>
 	<properties>
@@ -362,6 +362,11 @@
 
 	<dependencies>
 		<!-- Common DAO and logging classes -->
+		<dependency>
+			<groupId>xerces</groupId>
+			<artifactId>xercesImpl</artifactId>
+			<version>2.11.0</version>
+		</dependency>
 		<dependency>
 			<groupId>com.sixthc</groupId>
 			<artifactId>common</artifactId>

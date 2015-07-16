@@ -717,7 +717,8 @@ public class ExecuteMaintOrderChangeDelete implements MaintenanceOrdersPort {
 				if (reqDateTime != null)
 					workOrder.setRequestDatetime(reqDateTime);
 
-				workOrder.setStatusKind(reqWork.getStatusKind().value());
+				if (reqWork.getStatusKind() != null)
+					workOrder.setStatusKind(reqWork.getStatusKind().value());
 				workOrder.setStatus(workOrder.getStatus());
 
 				WorkLocation reqLoc = reqWork.getWorkLocation();
