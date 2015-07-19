@@ -2,6 +2,8 @@ package com.sixthc.hbm;
 
 // Generated Jun 3, 2015 2:34:41 PM by Hibernate Tools 3.2.2.GA
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,9 +12,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-
-import static javax.persistence.GenerationType.IDENTITY;
-
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -45,6 +44,8 @@ public class Nametype implements java.io.Serializable {
 	private Set<IdentifiedObjectNames> identifiedObjectNameses = new HashSet<IdentifiedObjectNames>(
 			0);
 	private Set<OrganizationNames> organizationNameses = new HashSet<OrganizationNames>(
+			0);
+	private Set<MaintorderNames> maintOrderNameses = new HashSet<MaintorderNames>(
 			0);
 
 	public Nametype() {
@@ -181,5 +182,15 @@ public class Nametype implements java.io.Serializable {
 			Set<OrganizationNames> organizationNameses) {
 		this.organizationNameses = organizationNameses;
 	}
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "nametype")
+	public Set<MaintorderNames> getMaintOrderNameses() {
+		return this.maintOrderNameses;
+	}
+
+	public void setMaintOrderNameses(
+			Set<MaintorderNames> MaintOrderNameses) {
+		this.maintOrderNameses = MaintOrderNameses;
+	}	
 
 }

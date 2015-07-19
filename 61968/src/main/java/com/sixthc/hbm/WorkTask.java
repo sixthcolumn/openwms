@@ -41,6 +41,7 @@ public class WorkTask implements java.io.Serializable {
 	private String subject;
 	private Date crewEta;
 	private String taskType;
+	private String statusKind;
 	private Set<WorkTaskAssets> workTaskAssetses = new HashSet<WorkTaskAssets>(
 			0);
 	private Set<WorkTaskOldAssets> workTaskOldAssetses = new HashSet<WorkTaskOldAssets>(
@@ -159,6 +160,15 @@ public class WorkTask implements java.io.Serializable {
 	public void setTaskType(String taskType) {
 		con.check( "setTaskType", taskType, true, 12);
 		this.taskType = taskType;
+	}
+	
+	@Column(name = "status_kind", length = 512)
+	public String getStatusKind() {
+		return statusKind;
+	}
+
+	public void setStatusKind(String statusKind) {
+		this.statusKind = statusKind;
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "workTask")

@@ -67,3 +67,5 @@ delete from workorderimage          ;
 delete from work_order_organizations;
 delete from eprilog;
 delete from crew_contactpersons;
+delete from maintorder;
+delete from maintorder_names;

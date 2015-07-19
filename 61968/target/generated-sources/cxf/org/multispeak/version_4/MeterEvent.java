@@ -51,7 +51,7 @@ public class MeterEvent {
     protected String type;
     @XmlAttribute(name = "index")
     protected String index;
-    @XmlAttribute(name = "value_fix")
+    @XmlAttribute(name = "value")
     protected String valueFix;
     @XmlAttribute(name = "codeString")
     protected String codeString;

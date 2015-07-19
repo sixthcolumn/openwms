@@ -45,11 +45,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MeterReadSchedulePayloadType }
+     * Create an instance of {@link MeterReadScheduleFaultMessageType }
      * 
      */
-    public MeterReadSchedulePayloadType createMeterReadSchedulePayloadType() {
-        return new MeterReadSchedulePayloadType();
+    public MeterReadScheduleFaultMessageType createMeterReadScheduleFaultMessageType() {
+        return new MeterReadScheduleFaultMessageType();
     }
 
     /**
@@ -61,19 +61,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MeterReadScheduleRequestMessageType }
+     * Create an instance of {@link MeterReadSchedulePayloadType }
      * 
      */
-    public MeterReadScheduleRequestMessageType createMeterReadScheduleRequestMessageType() {
-        return new MeterReadScheduleRequestMessageType();
-    }
-
-    /**
-     * Create an instance of {@link MeterReadScheduleFaultMessageType }
-     * 
-     */
-    public MeterReadScheduleFaultMessageType createMeterReadScheduleFaultMessageType() {
-        return new MeterReadScheduleFaultMessageType();
+    public MeterReadSchedulePayloadType createMeterReadSchedulePayloadType() {
+        return new MeterReadSchedulePayloadType();
     }
 
     /**
@@ -82,6 +74,14 @@ public class ObjectFactory {
      */
     public MeterReadScheduleResponseMessageType createMeterReadScheduleResponseMessageType() {
         return new MeterReadScheduleResponseMessageType();
+    }
+
+    /**
+     * Create an instance of {@link MeterReadScheduleRequestMessageType }
+     * 
+     */
+    public MeterReadScheduleRequestMessageType createMeterReadScheduleRequestMessageType() {
+        return new MeterReadScheduleRequestMessageType();
     }
 
     /**

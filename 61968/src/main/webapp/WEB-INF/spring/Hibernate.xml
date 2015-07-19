@@ -53,6 +53,8 @@
 				<value>com.sixthc.hbm.IdentifiedObjectNames</value>
 				<value>com.sixthc.hbm.IdentifiedObjectPositionPoints</value>
 				<value>com.sixthc.hbm.IdentifiedObjectProcedures</value>
+				<value>com.sixthc.hbm.Maintorder</value>
+				<value>com.sixthc.hbm.MaintorderNames</value>
 				<value>com.sixthc.hbm.MaterialItem</value>
 				<value>com.sixthc.hbm.MaterialItemNames</value>
 				<value>com.sixthc.hbm.Measurement</value>
@@ -135,6 +137,21 @@
 			<list>
 				<value>hibernateInterceptor</value>
 				<value>workOrderDaoTarget</value>
+			</list>
+		</property>
+	</bean>
+	
+		<bean id="maintOrderDaoTarget" class="com.sixthc.dao.impl.MaintOrderDaoImpl"
+		autowire="byName" />
+	<bean id="maintOrderDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		autowire="byName">
+		<property name="proxyInterfaces">
+			<value>com.sixthc.dao.MaintOrderDao</value>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>hibernateInterceptor</value>
+				<value>maintOrderDaoTarget</value>
 			</list>
 		</property>
 	</bean>

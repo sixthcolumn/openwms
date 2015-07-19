@@ -66,6 +66,7 @@
 	<import resource="spring/wms_cim_delete.xml" />
 	<import resource="spring/wms_cim_create_request.xml" />
 	<import resource="spring/wms_cim_change_request.xml" />
+	<import resource="spring/wms_cim_get.xml" />
 
 	<!-- <import resource="spring/rest-event.xml" /> -->
 	<!-- <import resource="spring/request-cxf.xml" /> Do not uncomment this! -->

@@ -30,27 +30,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GeometryAssociationType }
+     * Create an instance of {@link BoxType }
      * 
      */
-    public GeometryAssociationType createGeometryAssociationType() {
-        return new GeometryAssociationType();
-    }
-
-    /**
-     * Create an instance of {@link GeometryCollectionType }
-     * 
-     */
-    public GeometryCollectionType createGeometryCollectionType() {
-        return new GeometryCollectionType();
-    }
-
-    /**
-     * Create an instance of {@link MultiLineStringType }
-     * 
-     */
-    public MultiLineStringType createMultiLineStringType() {
-        return new MultiLineStringType();
+    public BoxType createBoxType() {
+        return new BoxType();
     }
 
     /**
@@ -62,27 +46,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LinearRingType }
+     * Create an instance of {@link CoordType }
      * 
      */
-    public LinearRingType createLinearRingType() {
-        return new LinearRingType();
+    public CoordType createCoordType() {
+        return new CoordType();
     }
 
     /**
-     * Create an instance of {@link LinearRingMemberType }
+     * Create an instance of {@link PointType }
      * 
      */
-    public LinearRingMemberType createLinearRingMemberType() {
-        return new LinearRingMemberType();
-    }
-
-    /**
-     * Create an instance of {@link PointMemberType }
-     * 
-     */
-    public PointMemberType createPointMemberType() {
-        return new PointMemberType();
+    public PointType createPointType() {
+        return new PointType();
     }
 
     /**
@@ -94,22 +70,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PolygonType }
-     * 
-     */
-    public PolygonType createPolygonType() {
-        return new PolygonType();
-    }
-
-    /**
-     * Create an instance of {@link BoxType }
-     * 
-     */
-    public BoxType createBoxType() {
-        return new BoxType();
-    }
-
-    /**
      * Create an instance of {@link LineStringMemberType }
      * 
      */
@@ -118,27 +78,43 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CoordType }
+     * Create an instance of {@link PointMemberType }
      * 
      */
-    public CoordType createCoordType() {
-        return new CoordType();
+    public PointMemberType createPointMemberType() {
+        return new PointMemberType();
     }
 
     /**
-     * Create an instance of {@link CoordinatesType }
+     * Create an instance of {@link MultiLineStringType }
      * 
      */
-    public CoordinatesType createCoordinatesType() {
-        return new CoordinatesType();
+    public MultiLineStringType createMultiLineStringType() {
+        return new MultiLineStringType();
     }
 
     /**
-     * Create an instance of {@link LineStringType }
+     * Create an instance of {@link LinearRingType }
      * 
      */
-    public LineStringType createLineStringType() {
-        return new LineStringType();
+    public LinearRingType createLinearRingType() {
+        return new LinearRingType();
+    }
+
+    /**
+     * Create an instance of {@link GeometryCollectionType }
+     * 
+     */
+    public GeometryCollectionType createGeometryCollectionType() {
+        return new GeometryCollectionType();
+    }
+
+    /**
+     * Create an instance of {@link PolygonType }
+     * 
+     */
+    public PolygonType createPolygonType() {
+        return new PolygonType();
     }
 
     /**
@@ -150,11 +126,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PointType }
+     * Create an instance of {@link LinearRingMemberType }
      * 
      */
-    public PointType createPointType() {
-        return new PointType();
+    public LinearRingMemberType createLinearRingMemberType() {
+        return new LinearRingMemberType();
+    }
+
+    /**
+     * Create an instance of {@link LineStringType }
+     * 
+     */
+    public LineStringType createLineStringType() {
+        return new LineStringType();
+    }
+
+    /**
+     * Create an instance of {@link GeometryAssociationType }
+     * 
+     */
+    public GeometryAssociationType createGeometryAssociationType() {
+        return new GeometryAssociationType();
+    }
+
+    /**
+     * Create an instance of {@link CoordinatesType }
+     * 
+     */
+    public CoordinatesType createCoordinatesType() {
+        return new CoordinatesType();
     }
 
 }

@@ -39,19 +39,67 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link HeaderType }
+     * Create an instance of {@link ReplyType }
      * 
      */
-    public HeaderType createHeaderType() {
-        return new HeaderType();
+    public ReplyType createReplyType() {
+        return new ReplyType();
     }
 
     /**
-     * Create an instance of {@link MessageType }
+     * Create an instance of {@link NameTypeAuthority }
      * 
      */
-    public MessageType createMessageType() {
-        return new MessageType();
+    public NameTypeAuthority createNameTypeAuthority() {
+        return new NameTypeAuthority();
+    }
+
+    /**
+     * Create an instance of {@link MessageProperty }
+     * 
+     */
+    public MessageProperty createMessageProperty() {
+        return new MessageProperty();
+    }
+
+    /**
+     * Create an instance of {@link OperationSet.Operation }
+     * 
+     */
+    public OperationSet.Operation createOperationSetOperation() {
+        return new OperationSet.Operation();
+    }
+
+    /**
+     * Create an instance of {@link OperationSet }
+     * 
+     */
+    public OperationSet createOperationSet() {
+        return new OperationSet();
+    }
+
+    /**
+     * Create an instance of {@link IdentifiedObject }
+     * 
+     */
+    public IdentifiedObject createIdentifiedObject() {
+        return new IdentifiedObject();
+    }
+
+    /**
+     * Create an instance of {@link UserType }
+     * 
+     */
+    public UserType createUserType() {
+        return new UserType();
+    }
+
+    /**
+     * Create an instance of {@link RequestMessageType }
+     * 
+     */
+    public RequestMessageType createRequestMessageType() {
+        return new RequestMessageType();
     }
 
     /**
@@ -63,11 +111,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link NameType }
+     * Create an instance of {@link ErrorType }
      * 
      */
-    public NameType createNameType() {
-        return new NameType();
+    public ErrorType createErrorType() {
+        return new ErrorType();
+    }
+
+    /**
+     * Create an instance of {@link PayloadType }
+     * 
+     */
+    public PayloadType createPayloadType() {
+        return new PayloadType();
     }
 
     /**
@@ -87,27 +143,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PayloadType }
+     * Create an instance of {@link RequestType }
      * 
      */
-    public PayloadType createPayloadType() {
-        return new PayloadType();
+    public RequestType createRequestType() {
+        return new RequestType();
     }
 
     /**
-     * Create an instance of {@link RequestMessageType }
+     * Create an instance of {@link MessageType }
      * 
      */
-    public RequestMessageType createRequestMessageType() {
-        return new RequestMessageType();
+    public MessageType createMessageType() {
+        return new MessageType();
     }
 
     /**
-     * Create an instance of {@link OperationSet.Operation }
+     * Create an instance of {@link NameType }
      * 
      */
-    public OperationSet.Operation createOperationSetOperation() {
-        return new OperationSet.Operation();
+    public NameType createNameType() {
+        return new NameType();
     }
 
     /**
@@ -119,67 +175,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ReplyType }
+     * Create an instance of {@link HeaderType }
      * 
      */
-    public ReplyType createReplyType() {
-        return new ReplyType();
-    }
-
-    /**
-     * Create an instance of {@link OperationSet }
-     * 
-     */
-    public OperationSet createOperationSet() {
-        return new OperationSet();
-    }
-
-    /**
-     * Create an instance of {@link NameTypeAuthority }
-     * 
-     */
-    public NameTypeAuthority createNameTypeAuthority() {
-        return new NameTypeAuthority();
-    }
-
-    /**
-     * Create an instance of {@link OptionType }
-     * 
-     */
-    public OptionType createOptionType() {
-        return new OptionType();
-    }
-
-    /**
-     * Create an instance of {@link UserType }
-     * 
-     */
-    public UserType createUserType() {
-        return new UserType();
-    }
-
-    /**
-     * Create an instance of {@link MessageProperty }
-     * 
-     */
-    public MessageProperty createMessageProperty() {
-        return new MessageProperty();
-    }
-
-    /**
-     * Create an instance of {@link IdentifiedObject }
-     * 
-     */
-    public IdentifiedObject createIdentifiedObject() {
-        return new IdentifiedObject();
-    }
-
-    /**
-     * Create an instance of {@link EventMessageType }
-     * 
-     */
-    public EventMessageType createEventMessageType() {
-        return new EventMessageType();
+    public HeaderType createHeaderType() {
+        return new HeaderType();
     }
 
     /**
@@ -191,19 +191,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link RequestType }
+     * Create an instance of {@link OptionType }
      * 
      */
-    public RequestType createRequestType() {
-        return new RequestType();
+    public OptionType createOptionType() {
+        return new OptionType();
     }
 
     /**
-     * Create an instance of {@link ErrorType }
+     * Create an instance of {@link EventMessageType }
      * 
      */
-    public ErrorType createErrorType() {
-        return new ErrorType();
+    public EventMessageType createEventMessageType() {
+        return new EventMessageType();
     }
 
     /**

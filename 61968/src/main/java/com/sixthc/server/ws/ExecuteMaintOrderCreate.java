@@ -47,6 +47,7 @@ import com.sixthc.cim.create.cxf.WorkTask.MaterialItems;
 import com.sixthc.cim.create.cxf.WorkTask.MaterialItems.Quantity;
 import com.sixthc.cim.create.cxf.WorkTimeSchedule;
 import com.sixthc.cim.create.cxf.WorkTimeSchedule.ScheduleInterval;
+import com.sixthc.dao.MaintOrderDao;
 import com.sixthc.dao.WorkOrderDao;
 import com.sixthc.hbm.Address;
 import com.sixthc.hbm.AddressHazards;
@@ -60,6 +61,8 @@ import com.sixthc.hbm.CrewAssets;
 import com.sixthc.hbm.CrewContactpersons;
 import com.sixthc.hbm.CrewNames;
 import com.sixthc.hbm.Hazards;
+import com.sixthc.hbm.Maintorder;
+import com.sixthc.hbm.MaintorderNames;
 import com.sixthc.hbm.MaterialItem;
 import com.sixthc.hbm.MaterialItemNames;
 import com.sixthc.hbm.Measurement;
@@ -90,6 +93,9 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 
 	@Autowired
 	private WorkOrderDao workOrderDao;
+	
+	@Autowired
+	private MaintOrderDao maintOrderDao;
 
 	private List<com.sixthc.hbm.OrganizationNames> parseNames(
 			List<Name> reqNames) {
@@ -106,6 +112,37 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 				nameType.setDescription(reqNameType.getDescription());
 				names.setNametype(nameType);
 				nameType.getOrganizationNameses().add(names);
+
+				NameTypeAuthority reqNameTypeAuthority = reqNameType
+						.getNameTypeAuthority();
+				if (reqNameTypeAuthority != null) {
+					com.sixthc.hbm.NameTypeAuthority nameTypeAuthority = new com.sixthc.hbm.NameTypeAuthority();
+					nameTypeAuthority.setName(reqNameTypeAuthority.getName());
+					nameTypeAuthority.setDescription(reqNameTypeAuthority
+							.getDescription());
+					nameType.setNameTypeAuthority(nameTypeAuthority);
+				}
+			}
+		}
+		return namesList;
+	}
+
+	private List<com.sixthc.hbm.MaintorderNames> parseMaintorderNames(
+			List<Name> reqNames) {
+		Vector<com.sixthc.hbm.MaintorderNames> namesList = new Vector<com.sixthc.hbm.MaintorderNames>();
+		for (Name reqName : reqNames) {
+			com.sixthc.hbm.MaintorderNames names = new com.sixthc.hbm.MaintorderNames();
+			namesList.add(names);
+			names.setName(reqName.getName());
+
+			NameType reqNameType = reqName.getNameType();
+			if (reqNameType != null) {
+				com.sixthc.hbm.Nametype nameType = new com.sixthc.hbm.Nametype();
+				nameType.setName(reqNameType.getName());
+				nameType.setDescription(reqNameType.getDescription());
+				names.setNametype(nameType);
+
+				nameType.getMaintOrderNameses().add(names);
 
 				NameTypeAuthority reqNameTypeAuthority = reqNameType
 						.getNameTypeAuthority();
@@ -225,7 +262,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 
 			woAddress.setSdAddress1(streetDetail.getAddressGeneral());
 			woAddress.setSdAddress2(streetDetail.getName());
-			streetDetail.isWithinTownLimits(); // not in hbm address bb:  ignore, not mapped
+			woAddress.setSdWithinTownLimitsFlag(streetDetail.isWithinTownLimits() == true ? 1 : 0);
 			woAddress.setSdType(streetDetail.getType());
 
 		}
@@ -239,8 +276,6 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 			woAddress.setTdStateProvince(townDetail.getStateOrProvince());
 		}
 	}
-
-
 
 	private void parseStreetDetail(com.sixthc.hbm.Address woAddress,
 			Organisation.StreetAddress addr) {
@@ -569,6 +604,20 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 
 		MaintenanceOrders orders = payload.value.getMaintenanceOrders();
 		for (MaintenanceOrder req : orders.getMaintenanceOrder()) {
+			Maintorder mo = new Maintorder();
+			mo.setMrid(req.getMRID());
+			mo.setCreatedBy("wms");
+			mo.setCreatedAt(new Date(System.currentTimeMillis()));
+			
+			UUID uuid = UUID.randomUUID();
+			mo.setMrid(uuid.toString());
+			
+			List<MaintorderNames> nlist = parseMaintorderNames(req.getNames());
+			for (MaintorderNames names : nlist) {
+				names.setMaintorder(mo);
+				mo.getMaintorderNameses().add(names);
+			}
+
 			List<com.sixthc.hbm.Organization> orgList = new Vector<com.sixthc.hbm.Organization>();
 			Organisation reqOrg = req.getOrganisation();
 			if (reqOrg != null) {
@@ -607,6 +656,9 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 
 			for (Work reqWork : req.getWork()) {
 				WorkOrder workOrder = new WorkOrder();
+				mo.getWorkOrders().add(workOrder);
+				workOrder.setMaintorder(mo);
+
 
 				// add orgs to all work orders
 				for (Organization workOrg : orgList) {
@@ -617,8 +669,8 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 					workOrgs.setWorkOrder(workOrder);
 				}
 
-				UUID uuid = UUID.randomUUID();
-				workOrder.setMrid(uuid.toString());
+				UUID workOrderUUID = UUID.randomUUID();
+				workOrder.setMrid(workOrderUUID.toString());
 				reqWork.setMRID(uuid.toString()); // overwrite MRID
 				workOrder.setCreatedBy("WMS");
 				workOrder.setKind(reqWork.getKind() != null ? reqWork.getKind()
@@ -644,10 +696,12 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 					ScheduleInterval reqTimeInterval = reqWorkSchedules
 							.getScheduleInterval();
 
-					Timestamp start = DateUtil.parseDate(reqTimeInterval.getStart());
+					Timestamp start = DateUtil.parseDate(reqTimeInterval
+							.getStart());
 					if (start != null)
 						ts.setStartTstamp(start);
-					Timestamp end = DateUtil.parseDate(reqTimeInterval.getEnd());
+					Timestamp end = DateUtil
+							.parseDate(reqTimeInterval.getEnd());
 					if (end != null)
 						ts.setEndTstamp(end);
 					workOrderSchedule.setTimeSchedule(ts);
@@ -680,7 +734,8 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 					workOrder.setPriorityType(priority.getType());
 				}
 
-				Timestamp reqDateTime = DateUtil.parseDate(reqWork.getRequestDateTime());
+				Timestamp reqDateTime = DateUtil.parseDate(reqWork
+						.getRequestDateTime());
 				if (reqDateTime != null)
 					workOrder.setRequestDatetime(reqDateTime);
 
@@ -771,7 +826,8 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 
 					}
 
-					Timestamp reqCrewEta = DateUtil.parseDate(reqTask.getCrewETA());
+					Timestamp reqCrewEta = DateUtil.parseDate(reqTask
+							.getCrewETA());
 					if (reqCrewEta != null)
 						if (reqDateTime != null)
 							workTask.setCrewEta(reqCrewEta);
@@ -914,10 +970,12 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 						ScheduleInterval reqTimeInterval = reqTaskSchedule
 								.getScheduleInterval();
 
-						Timestamp start = DateUtil.parseDate(reqTimeInterval.getStart());
+						Timestamp start = DateUtil.parseDate(reqTimeInterval
+								.getStart());
 						if (start != null)
 							ts.setStartTstamp(start);
-						Timestamp end = DateUtil.parseDate(reqTimeInterval.getEnd());
+						Timestamp end = DateUtil.parseDate(reqTimeInterval
+								.getEnd());
 						if (end != null)
 							ts.setEndTstamp(end);
 						workTaskSchedule.setTimeSchedule(ts);

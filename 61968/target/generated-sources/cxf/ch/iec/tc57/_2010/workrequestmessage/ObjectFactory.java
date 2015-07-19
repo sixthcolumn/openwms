@@ -45,11 +45,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link WorkRequestFaultMessageType }
+     * Create an instance of {@link WorkRequestEventMessageType }
      * 
      */
-    public WorkRequestFaultMessageType createWorkRequestFaultMessageType() {
-        return new WorkRequestFaultMessageType();
+    public WorkRequestEventMessageType createWorkRequestEventMessageType() {
+        return new WorkRequestEventMessageType();
     }
 
     /**
@@ -61,11 +61,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link WorkRequestRequestMessageType }
+     * Create an instance of {@link WorkRequestFaultMessageType }
      * 
      */
-    public WorkRequestRequestMessageType createWorkRequestRequestMessageType() {
-        return new WorkRequestRequestMessageType();
+    public WorkRequestFaultMessageType createWorkRequestFaultMessageType() {
+        return new WorkRequestFaultMessageType();
     }
 
     /**
@@ -77,11 +77,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link WorkRequestEventMessageType }
+     * Create an instance of {@link WorkRequestRequestMessageType }
      * 
      */
-    public WorkRequestEventMessageType createWorkRequestEventMessageType() {
-        return new WorkRequestEventMessageType();
+    public WorkRequestRequestMessageType createWorkRequestRequestMessageType() {
+        return new WorkRequestRequestMessageType();
     }
 
     /**

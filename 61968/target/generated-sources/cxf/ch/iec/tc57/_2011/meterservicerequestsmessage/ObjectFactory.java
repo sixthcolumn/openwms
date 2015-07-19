@@ -46,19 +46,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MeterServiceRequestsEventMessageType }
+     * Create an instance of {@link MeterServiceRequestsFaultMessageType }
      * 
      */
-    public MeterServiceRequestsEventMessageType createMeterServiceRequestsEventMessageType() {
-        return new MeterServiceRequestsEventMessageType();
-    }
-
-    /**
-     * Create an instance of {@link MeterServiceRequestsResponseMessageType }
-     * 
-     */
-    public MeterServiceRequestsResponseMessageType createMeterServiceRequestsResponseMessageType() {
-        return new MeterServiceRequestsResponseMessageType();
+    public MeterServiceRequestsFaultMessageType createMeterServiceRequestsFaultMessageType() {
+        return new MeterServiceRequestsFaultMessageType();
     }
 
     /**
@@ -70,11 +62,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MeterServiceRequestsFaultMessageType }
+     * Create an instance of {@link MeterServiceRequestsResponseMessageType }
      * 
      */
-    public MeterServiceRequestsFaultMessageType createMeterServiceRequestsFaultMessageType() {
-        return new MeterServiceRequestsFaultMessageType();
+    public MeterServiceRequestsResponseMessageType createMeterServiceRequestsResponseMessageType() {
+        return new MeterServiceRequestsResponseMessageType();
     }
 
     /**
@@ -83,6 +75,14 @@ public class ObjectFactory {
      */
     public MeterServiceRequestsPayloadType createMeterServiceRequestsPayloadType() {
         return new MeterServiceRequestsPayloadType();
+    }
+
+    /**
+     * Create an instance of {@link MeterServiceRequestsEventMessageType }
+     * 
+     */
+    public MeterServiceRequestsEventMessageType createMeterServiceRequestsEventMessageType() {
+        return new MeterServiceRequestsEventMessageType();
     }
 
     /**

@@ -44,9 +44,9 @@ import javax.xml.bind.annotation.XmlType;
 public class Registers {
 
     @XmlElements({
-        @XmlElement(name = "cumDemand", type = CumDemand.class),
-        @XmlElement(name = "coincidentalValue", type = CoincidentalValue.class),
         @XmlElement(name = "summation", type = Summation.class),
+        @XmlElement(name = "coincidentalValue", type = CoincidentalValue.class),
+        @XmlElement(name = "cumDemand", type = CumDemand.class),
         @XmlElement(name = "demand", type = FlowDemand.class)
     })
     protected List<Object> cumDemandOrCoincidentalValueOrDemand;
@@ -72,9 +72,9 @@ public class Registers {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link CumDemand }
-     * {@link CoincidentalValue }
      * {@link Summation }
+     * {@link CoincidentalValue }
+     * {@link CumDemand }
      * {@link FlowDemand }
      * 
      * 

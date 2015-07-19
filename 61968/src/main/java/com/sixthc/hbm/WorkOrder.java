@@ -85,6 +85,7 @@ public class WorkOrder implements java.io.Serializable {
 			0);
 	private Set<WorkOrderOrganizations> workOrderOrganizations = new HashSet<WorkOrderOrganizations>(
 			0);
+	private Maintorder maintorder;
 
 	public WorkOrder() {
 	}
@@ -119,7 +120,8 @@ public class WorkOrder implements java.io.Serializable {
 			Set<WorkOrderSchedule> workOrderSchedules,
 			Set<WorkOrderComments> workOrderCommentses,
 			Set<WorkPositionPoints> workPositionPointses,
-			Set<WorkOrderHazards> workOrderHazardses) {
+			Set<WorkOrderHazards> workOrderHazardses,
+			Maintorder maintorder) {
 		this.objectref = objectref;
 		this.contactpersonByLocationContactId = contactpersonByLocationContactId;
 		this.contactpersonByRequestContactId = contactpersonByRequestContactId;
@@ -157,6 +159,7 @@ public class WorkOrder implements java.io.Serializable {
 		this.workOrderCommentses = workOrderCommentses;
 		this.workPositionPointses = workPositionPointses;
 		this.workOrderHazardses = workOrderHazardses;
+		this.maintorder = maintorder;
 	}
 
 	@Id
@@ -564,6 +567,16 @@ public class WorkOrder implements java.io.Serializable {
 	public void setWorkOrderOrganizations(
 			Set<WorkOrderOrganizations> WorkOrderOrganization) {
 		this.workOrderOrganizations = WorkOrderOrganization;
+	}
+	
+	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@JoinColumn(name = "maintorder_id")
+	public Maintorder getMaintorder() {
+		return this.maintorder;
+	}
+
+	public void setMaintorder(Maintorder maintorder) {
+		this.maintorder = maintorder;
 	}
 
 }

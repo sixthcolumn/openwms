@@ -71,10 +71,10 @@ public class GeometryCollectionType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link PointMemberType }{@code >}
-     * {@link JAXBElement }{@code <}{@link LineStringMemberType }{@code >}
      * {@link JAXBElement }{@code <}{@link GeometryAssociationType }{@code >}
+     * {@link JAXBElement }{@code <}{@link LineStringMemberType }{@code >}
      * {@link JAXBElement }{@code <}{@link PolygonMemberType }{@code >}
+     * {@link JAXBElement }{@code <}{@link PointMemberType }{@code >}
      * 
      * 
      */

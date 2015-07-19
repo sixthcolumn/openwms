@@ -55,10 +55,10 @@ public abstract class MspConnectivityLine
     protected String gridLocation;
     protected List<GenericAnnotationFeature> annotationList;
     @XmlElementRefs({
+        @XmlElementRef(name = "fromNodeID", namespace = "http://www.multispeak.org/Version_3.0", type = JAXBElement.class),
         @XmlElementRef(name = "toNodeID", namespace = "http://www.multispeak.org/Version_3.0", type = JAXBElement.class),
-        @XmlElementRef(name = "parentSectionID", namespace = "http://www.multispeak.org/Version_3.0", type = JAXBElement.class),
         @XmlElementRef(name = "sectionID", namespace = "http://www.multispeak.org/Version_3.0", type = JAXBElement.class),
-        @XmlElementRef(name = "fromNodeID", namespace = "http://www.multispeak.org/Version_3.0", type = JAXBElement.class)
+        @XmlElementRef(name = "parentSectionID", namespace = "http://www.multispeak.org/Version_3.0", type = JAXBElement.class)
     })
     protected List<JAXBElement<?>> toNodeIDOrParentSectionIDOrFromNodeID;
 
@@ -133,10 +133,10 @@ public abstract class MspConnectivityLine
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link NodeIdentifier }{@code >}
+     * {@link JAXBElement }{@code <}{@link String }{@code >}
      * {@link JAXBElement }{@code <}{@link ObjectRef }{@code >}
      * {@link JAXBElement }{@code <}{@link NodeIdentifier }{@code >}
-     * {@link JAXBElement }{@code <}{@link String }{@code >}
+     * {@link JAXBElement }{@code <}{@link NodeIdentifier }{@code >}
      * 
      * 
      */

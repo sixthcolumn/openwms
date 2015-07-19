@@ -4,6 +4,8 @@ import java.sql.Timestamp;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.hibernate.Transaction;
+import org.hibernate.classic.Session;
 import org.springframework.stereotype.Repository;
 
 import com.sixthc.dao.WorkOrderDao;
