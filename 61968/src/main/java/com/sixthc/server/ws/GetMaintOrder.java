@@ -2,6 +2,8 @@ package com.sixthc.server.ws;
 
 import java.math.BigInteger;
 import java.util.Date;
+import java.util.List;
+import java.util.Vector;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +22,12 @@ import com.sixthc.cim.get.cxf.MaintenanceOrder;
 import com.sixthc.cim.get.cxf.MaintenanceOrder2;
 import com.sixthc.cim.get.cxf.MaintenanceOrders;
 import com.sixthc.cim.get.cxf.MaintenanceOrdersPayloadType;
-import com.sixthc.cim.get.cxf.Name3;
-import com.sixthc.cim.get.cxf.Name3;
-import com.sixthc.cim.get.cxf.NameType3;
-import com.sixthc.cim.get.cxf.NameTypeAuthority3;
+import com.sixthc.cim.get.cxf.Name;
+import com.sixthc.cim.get.cxf.Name2;
+import com.sixthc.cim.get.cxf.NameType;
+import com.sixthc.cim.get.cxf.NameType2;
+import com.sixthc.cim.get.cxf.NameTypeAuthority;
+import com.sixthc.cim.get.cxf.NameTypeAuthority2;
 import com.sixthc.cim.get.cxf.Organisation2;
 import com.sixthc.cim.get.cxf.Organisation2.Phone1;
 import com.sixthc.cim.get.cxf.Organisation2.StreetAddress;
@@ -138,12 +142,12 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 
 	}
 
-	private void setMaintOrderNames(MaintorderNames from, Name3 to) {
+	private void setMaintOrderNames(MaintorderNames from, Name2 to) {
 		to.setName(from.getName());
 
 		if (from.getNametype() != null) {
 			Nametype moNameType = from.getNametype();
-			NameType3 respNameType = new NameType3();
+			NameType2 respNameType = new NameType2();
 			respNameType.setDescription(moNameType.getDescription());
 			respNameType.setName(moNameType.getName());
 			to.setNameType(respNameType);
@@ -151,7 +155,7 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 
 				com.sixthc.hbm.NameTypeAuthority moNameTypeAuthority = moNameType
 						.getNameTypeAuthority();
-				NameTypeAuthority3 respNTA = new NameTypeAuthority3();
+				NameTypeAuthority2 respNTA = new NameTypeAuthority2();
 				respNameType.setNameTypeAuthority(respNTA);
 				respNTA.setDescription(moNameTypeAuthority.getDescription());
 				respNTA.setName(moNameTypeAuthority.getName());
@@ -159,19 +163,19 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 		}
 	}
 
-	private void setMaintOrderOrgNames(OrganizationNames moNames, Name3 respName) {
-		respName.setName(moNames.getName());
+	private void setMaintOrderOrgNames(OrganizationNames moNames, Name2 to) {
+		to.setName(moNames.getName());
 
 		if (moNames.getNametype() != null) {
 			Nametype moNameType = moNames.getNametype();
-			NameType3 respNameType = new NameType3();
+			NameType2 respNameType = new NameType2();
 			respNameType.setDescription(moNameType.getDescription());
 			respNameType.setName(moNameType.getName());
-			respName.setNameType(respNameType);
+			to.setNameType(respNameType);
 			if (moNameType.getNameTypeAuthority() != null) {
 				com.sixthc.hbm.NameTypeAuthority moNameTypeAuthority = moNameType
 						.getNameTypeAuthority();
-				NameTypeAuthority3 respNTA = new NameTypeAuthority3();
+				NameTypeAuthority2 respNTA = new NameTypeAuthority2();
 				respNameType.setNameTypeAuthority(respNTA);
 				respNTA.setDescription(moNameTypeAuthority.getDescription());
 				respNTA.setName(moNameTypeAuthority.getName());
@@ -179,19 +183,19 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 		}
 	}
 
-	private void setWorkOrderNames(WorkOrderNames moWorkOrderNames, Name3 respName) {
-		respName.setName(moWorkOrderNames.getName());
+	private void setWorkOrderNames(WorkOrderNames moWorkOrderNames, Name2 to) {
+		to.setName(moWorkOrderNames.getName());
 
 		if (moWorkOrderNames.getNametype() != null) {
 			Nametype moNameType = moWorkOrderNames.getNametype();
-			NameType3 respNameType = new NameType3();
+			NameType2 respNameType = new NameType2();
 			respNameType.setDescription(moNameType.getDescription());
 			respNameType.setName(moNameType.getName());
-			respName.setNameType(respNameType);
+			to.setNameType(respNameType);
 			if (moNameType.getNameTypeAuthority() != null) {
 				com.sixthc.hbm.NameTypeAuthority moNameTypeAuthority = moNameType
 						.getNameTypeAuthority();
-				NameTypeAuthority3 respNTA = new NameTypeAuthority3();
+				NameTypeAuthority2 respNTA = new NameTypeAuthority2();
 				respNameType.setNameTypeAuthority(respNTA);
 				respNTA.setDescription(moNameTypeAuthority.getDescription());
 				respNTA.setName(moNameTypeAuthority.getName());
@@ -199,19 +203,19 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 		}
 	}
 
-	private void setAssetNames(AssetNames assetNames, Name3 to) {
+	private void setAssetNames(AssetNames assetNames, Name2 to) {
 		to.setName(assetNames.getName());
 
 		if (assetNames.getNametype() != null) {
 			Nametype moNameType = assetNames.getNametype();
-			NameType3 respNameType = new NameType3();
+			NameType2 respNameType = new NameType2();
 			respNameType.setDescription(moNameType.getDescription());
 			respNameType.setName(moNameType.getName());
 			to.setNameType(respNameType);
 			if (moNameType.getNameTypeAuthority() != null) {
 				com.sixthc.hbm.NameTypeAuthority moNameTypeAuthority = moNameType
 						.getNameTypeAuthority();
-				NameTypeAuthority3 respNTA = new NameTypeAuthority3();
+				NameTypeAuthority2 respNTA = new NameTypeAuthority2();
 				respNameType.setNameTypeAuthority(respNTA);
 				respNTA.setDescription(moNameTypeAuthority.getDescription());
 				respNTA.setName(moNameTypeAuthority.getName());
@@ -219,19 +223,19 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 		}
 	}
 
-	private void setCrewNames(CrewNames assetNames, Name3 name) {
-		name.setName(assetNames.getName());
+	private void setCrewNames(CrewNames assetNames, Name2 to) {
+		to.setName(assetNames.getName());
 
 		if (assetNames.getNametype() != null) {
 			Nametype moNameType = assetNames.getNametype();
-			NameType3 respNameType = new NameType3();
+			NameType2 respNameType = new NameType2();
 			respNameType.setDescription(moNameType.getDescription());
 			respNameType.setName(moNameType.getName());
-			name.setNameType(respNameType);
+			to.setNameType(respNameType);
 			if (moNameType.getNameTypeAuthority() != null) {
 				com.sixthc.hbm.NameTypeAuthority moNameTypeAuthority = moNameType
 						.getNameTypeAuthority();
-				NameTypeAuthority3 respNTA = new NameTypeAuthority3();
+				NameTypeAuthority2 respNTA = new NameTypeAuthority2();
 				respNameType.setNameTypeAuthority(respNTA);
 				respNTA.setDescription(moNameTypeAuthority.getDescription());
 				respNTA.setName(moNameTypeAuthority.getName());
@@ -257,7 +261,7 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 		}
 
 		for (AssetNames assetNames : from.getAssetNameses()) {
-			Name3 toAsset = new Name3();
+			Name2 toAsset = new Name2();
 			setAssetNames(assetNames, toAsset);
 			toWorkloc.getNames().add(toAsset);
 		}
@@ -329,7 +333,7 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 		}
 
 		for (AssetNames assetNames : from.getAssetNameses()) {
-			Name3 toAsset = new Name3();
+			Name2 toAsset = new Name2();
 			setAssetNames(assetNames, toAsset);
 			toWorkloc.getNames().add(toAsset);
 		}
@@ -414,7 +418,7 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 			System.out
 					.println("mo coutn : " + mo.getMaintorderNameses().size());
 			for (MaintorderNames moName : mo.getMaintorderNameses()) {
-				Name3 respName = new Name3();
+				Name2 respName = new Name2();
 				respMo.getNames().add(respName);
 				setMaintOrderNames(moName, respName);
 			}
@@ -442,7 +446,7 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 					// set maint order org names
 					for (OrganizationNames moNames : moOrg2
 							.getOrganizationNameses()) {
-						Name3 respName = new Name3();
+						Name2 respName = new Name2();
 						respOrg.getNames().add(respName);
 						setMaintOrderOrgNames(moNames, respName);
 					}
@@ -460,9 +464,9 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 				// work order names
 				for (WorkOrderNames moWorkOrderNames : moWorkOrder
 						.getWorkOrderNameses()) {
-					Name3 respName = new Name3();
-					respWorkOrder.getNames().add(respName);
-					setWorkOrderNames(moWorkOrderNames, respName);
+					Name2 respName2 = new Name2();
+					respWorkOrder.getNames().add(respName2);
+					setWorkOrderNames(moWorkOrderNames, respName2);
 				}
 				respWorkOrder
 						.setKind(WorkKind2.fromValue(moWorkOrder.getKind()));
@@ -576,7 +580,7 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 
 						respCrew.setMRID(moCrew.getMrid());
 						for (CrewNames moCrewNames : moCrew.getCrewNameses()) {
-							Name3 name = new Name3();
+							Name2 name = new Name2();
 							respCrew.getNames().add(name);
 							setCrewNames(moCrewNames, name);
 						}
