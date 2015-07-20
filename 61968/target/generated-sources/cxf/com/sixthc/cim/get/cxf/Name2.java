@@ -8,10 +8,7 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * The Name class provides the means to define any
- * number of human readable names for an object. A name is <b>not</b> to be used for
- * defining inter-object relationships. For inter-object relationships instead use the object identification
- * 'mRID'.
+ * From CIM
  * 
  * <p>Java class for Name complex type.
  * 
@@ -23,7 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="NameType" type="{http://iec.ch/TC57/2015/MaintenanceOrders#}NameType" minOccurs="0"/>
+ *         &lt;element name="NameType" type="{http://iec.ch/TC57/2011/schema/message}NameType" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,7 +30,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Name", namespace = "http://iec.ch/TC57/2015/MaintenanceOrders#", propOrder = {
+@XmlType(name = "Name", propOrder = {
     "name",
     "nameType"
 })

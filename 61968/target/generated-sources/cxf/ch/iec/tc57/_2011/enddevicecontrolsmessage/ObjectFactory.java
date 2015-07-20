@@ -32,8 +32,8 @@ public class ObjectFactory {
     private final static QName _CancelEndDeviceControls_QNAME = new QName("http://www.iec.ch/TC57/2011/EndDeviceControlsMessage", "CancelEndDeviceControls");
     private final static QName _DeleteEndDeviceControls_QNAME = new QName("http://www.iec.ch/TC57/2011/EndDeviceControlsMessage", "DeleteEndDeviceControls");
     private final static QName _ClosedEndDeviceControls_QNAME = new QName("http://www.iec.ch/TC57/2011/EndDeviceControlsMessage", "ClosedEndDeviceControls");
-    private final static QName _CanceledEndDeviceControls_QNAME = new QName("http://www.iec.ch/TC57/2011/EndDeviceControlsMessage", "CanceledEndDeviceControls");
     private final static QName _ChangeEndDeviceControls_QNAME = new QName("http://www.iec.ch/TC57/2011/EndDeviceControlsMessage", "ChangeEndDeviceControls");
+    private final static QName _CanceledEndDeviceControls_QNAME = new QName("http://www.iec.ch/TC57/2011/EndDeviceControlsMessage", "CanceledEndDeviceControls");
     private final static QName _EndDeviceControlsRequestMessage_QNAME = new QName("http://www.iec.ch/TC57/2011/EndDeviceControlsMessage", "EndDeviceControlsRequestMessage");
     private final static QName _CreateEndDeviceControls_QNAME = new QName("http://www.iec.ch/TC57/2011/EndDeviceControlsMessage", "CreateEndDeviceControls");
     private final static QName _CloseEndDeviceControls_QNAME = new QName("http://www.iec.ch/TC57/2011/EndDeviceControlsMessage", "CloseEndDeviceControls");
@@ -46,19 +46,19 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link EndDeviceControlsPayloadType }
+     * 
+     */
+    public EndDeviceControlsPayloadType createEndDeviceControlsPayloadType() {
+        return new EndDeviceControlsPayloadType();
+    }
+
+    /**
      * Create an instance of {@link EndDeviceControlsEventMessageType }
      * 
      */
     public EndDeviceControlsEventMessageType createEndDeviceControlsEventMessageType() {
         return new EndDeviceControlsEventMessageType();
-    }
-
-    /**
-     * Create an instance of {@link EndDeviceControlsFaultMessageType }
-     * 
-     */
-    public EndDeviceControlsFaultMessageType createEndDeviceControlsFaultMessageType() {
-        return new EndDeviceControlsFaultMessageType();
     }
 
     /**
@@ -70,11 +70,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link EndDeviceControlsPayloadType }
+     * Create an instance of {@link EndDeviceControlsFaultMessageType }
      * 
      */
-    public EndDeviceControlsPayloadType createEndDeviceControlsPayloadType() {
-        return new EndDeviceControlsPayloadType();
+    public EndDeviceControlsFaultMessageType createEndDeviceControlsFaultMessageType() {
+        return new EndDeviceControlsFaultMessageType();
     }
 
     /**
@@ -158,21 +158,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link EndDeviceControlsEventMessageType }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://www.iec.ch/TC57/2011/EndDeviceControlsMessage", name = "CanceledEndDeviceControls")
-    public JAXBElement<EndDeviceControlsEventMessageType> createCanceledEndDeviceControls(EndDeviceControlsEventMessageType value) {
-        return new JAXBElement<EndDeviceControlsEventMessageType>(_CanceledEndDeviceControls_QNAME, EndDeviceControlsEventMessageType.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link EndDeviceControlsRequestMessageType }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.iec.ch/TC57/2011/EndDeviceControlsMessage", name = "ChangeEndDeviceControls")
     public JAXBElement<EndDeviceControlsRequestMessageType> createChangeEndDeviceControls(EndDeviceControlsRequestMessageType value) {
         return new JAXBElement<EndDeviceControlsRequestMessageType>(_ChangeEndDeviceControls_QNAME, EndDeviceControlsRequestMessageType.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link EndDeviceControlsEventMessageType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.iec.ch/TC57/2011/EndDeviceControlsMessage", name = "CanceledEndDeviceControls")
+    public JAXBElement<EndDeviceControlsEventMessageType> createCanceledEndDeviceControls(EndDeviceControlsEventMessageType value) {
+        return new JAXBElement<EndDeviceControlsEventMessageType>(_CanceledEndDeviceControls_QNAME, EndDeviceControlsEventMessageType.class, null, value);
     }
 
     /**

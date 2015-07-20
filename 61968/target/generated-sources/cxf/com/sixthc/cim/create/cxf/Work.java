@@ -99,7 +99,7 @@ public class Work {
     @XmlElement(name = "ActivityRecords")
     protected List<ActivityRecord> activityRecords;
     @XmlElement(name = "Names")
-    protected List<Name> names;
+    protected List<Name2> names;
     protected Work.Priority priority;
     @XmlElement(name = "TimeSchedules")
     protected List<WorkTimeSchedule> timeSchedules;
@@ -277,13 +277,13 @@ public class Work {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Name }
+     * {@link Name2 }
      * 
      * 
      */
-    public List<Name> getNames() {
+    public List<Name2> getNames() {
         if (names == null) {
-            names = new ArrayList<Name>();
+            names = new ArrayList<Name2>();
         }
         return this.names;
     }

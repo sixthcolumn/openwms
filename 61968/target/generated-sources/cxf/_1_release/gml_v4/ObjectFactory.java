@@ -30,19 +30,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link BoxType }
+     * Create an instance of {@link LinearRingType }
      * 
      */
-    public BoxType createBoxType() {
-        return new BoxType();
+    public LinearRingType createLinearRingType() {
+        return new LinearRingType();
     }
 
     /**
-     * Create an instance of {@link PolygonMemberType }
+     * Create an instance of {@link GeometryCollectionType }
      * 
      */
-    public PolygonMemberType createPolygonMemberType() {
-        return new PolygonMemberType();
+    public GeometryCollectionType createGeometryCollectionType() {
+        return new GeometryCollectionType();
     }
 
     /**
@@ -62,30 +62,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MultiPointType }
-     * 
-     */
-    public MultiPointType createMultiPointType() {
-        return new MultiPointType();
-    }
-
-    /**
-     * Create an instance of {@link LineStringMemberType }
-     * 
-     */
-    public LineStringMemberType createLineStringMemberType() {
-        return new LineStringMemberType();
-    }
-
-    /**
-     * Create an instance of {@link PointMemberType }
-     * 
-     */
-    public PointMemberType createPointMemberType() {
-        return new PointMemberType();
-    }
-
-    /**
      * Create an instance of {@link MultiLineStringType }
      * 
      */
@@ -94,35 +70,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LinearRingType }
+     * Create an instance of {@link MultiPointType }
      * 
      */
-    public LinearRingType createLinearRingType() {
-        return new LinearRingType();
-    }
-
-    /**
-     * Create an instance of {@link GeometryCollectionType }
-     * 
-     */
-    public GeometryCollectionType createGeometryCollectionType() {
-        return new GeometryCollectionType();
-    }
-
-    /**
-     * Create an instance of {@link PolygonType }
-     * 
-     */
-    public PolygonType createPolygonType() {
-        return new PolygonType();
-    }
-
-    /**
-     * Create an instance of {@link MultiPolygonType }
-     * 
-     */
-    public MultiPolygonType createMultiPolygonType() {
-        return new MultiPolygonType();
+    public MultiPointType createMultiPointType() {
+        return new MultiPointType();
     }
 
     /**
@@ -134,14 +86,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LineStringType }
-     * 
-     */
-    public LineStringType createLineStringType() {
-        return new LineStringType();
-    }
-
-    /**
      * Create an instance of {@link GeometryAssociationType }
      * 
      */
@@ -150,11 +94,67 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link PointMemberType }
+     * 
+     */
+    public PointMemberType createPointMemberType() {
+        return new PointMemberType();
+    }
+
+    /**
      * Create an instance of {@link CoordinatesType }
      * 
      */
     public CoordinatesType createCoordinatesType() {
         return new CoordinatesType();
+    }
+
+    /**
+     * Create an instance of {@link PolygonMemberType }
+     * 
+     */
+    public PolygonMemberType createPolygonMemberType() {
+        return new PolygonMemberType();
+    }
+
+    /**
+     * Create an instance of {@link LineStringType }
+     * 
+     */
+    public LineStringType createLineStringType() {
+        return new LineStringType();
+    }
+
+    /**
+     * Create an instance of {@link MultiPolygonType }
+     * 
+     */
+    public MultiPolygonType createMultiPolygonType() {
+        return new MultiPolygonType();
+    }
+
+    /**
+     * Create an instance of {@link LineStringMemberType }
+     * 
+     */
+    public LineStringMemberType createLineStringMemberType() {
+        return new LineStringMemberType();
+    }
+
+    /**
+     * Create an instance of {@link BoxType }
+     * 
+     */
+    public BoxType createBoxType() {
+        return new BoxType();
+    }
+
+    /**
+     * Create an instance of {@link PolygonType }
+     * 
+     */
+    public PolygonType createPolygonType() {
+        return new PolygonType();
     }
 
 }

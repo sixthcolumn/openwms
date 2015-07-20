@@ -53,6 +53,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link WorkRequestPayloadType }
+     * 
+     */
+    public WorkRequestPayloadType createWorkRequestPayloadType() {
+        return new WorkRequestPayloadType();
+    }
+
+    /**
      * Create an instance of {@link WorkRequestResponseMessageType }
      * 
      */
@@ -66,14 +74,6 @@ public class ObjectFactory {
      */
     public WorkRequestFaultMessageType createWorkRequestFaultMessageType() {
         return new WorkRequestFaultMessageType();
-    }
-
-    /**
-     * Create an instance of {@link WorkRequestPayloadType }
-     * 
-     */
-    public WorkRequestPayloadType createWorkRequestPayloadType() {
-        return new WorkRequestPayloadType();
     }
 
     /**

@@ -106,7 +106,7 @@ public class Organisation {
     @XmlElement(name = "mRID")
     protected String mrid;
     @XmlElement(name = "Names")
-    protected List<Name> names;
+    protected List<Name2> names;
     protected Organisation.Phone1 phone1;
     protected Organisation.StreetAddress streetAddress;
 
@@ -152,13 +152,13 @@ public class Organisation {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Name }
+     * {@link Name2 }
      * 
      * 
      */
-    public List<Name> getNames() {
+    public List<Name2> getNames() {
         if (names == null) {
-            names = new ArrayList<Name>();
+            names = new ArrayList<Name2>();
         }
         return this.names;
     }

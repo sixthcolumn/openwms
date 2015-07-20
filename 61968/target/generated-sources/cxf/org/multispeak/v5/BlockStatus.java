@@ -51,18 +51,18 @@ import javax.xml.bind.annotation.XmlType;
 public class BlockStatus {
 
     @XmlElementRefs({
-        @XmlElementRef(name = "testData", namespace = "http://www.multispeak.org/V5.0", type = JAXBElement.class),
-        @XmlElementRef(name = "partialInterval", namespace = "http://www.multispeak.org/V5.0", type = JAXBElement.class),
-        @XmlElementRef(name = "longInterval", namespace = "http://www.multispeak.org/V5.0", type = JAXBElement.class),
         @XmlElementRef(name = "manuallyEntered", namespace = "http://www.multispeak.org/V5.0", type = JAXBElement.class),
-        @XmlElementRef(name = "DSTinEffect", namespace = "http://www.multispeak.org/V5.0", type = JAXBElement.class),
-        @XmlElementRef(name = "recorderStopped", namespace = "http://www.multispeak.org/V5.0", type = JAXBElement.class),
+        @XmlElementRef(name = "partialInterval", namespace = "http://www.multispeak.org/V5.0", type = JAXBElement.class),
         @XmlElementRef(name = "manuallyModified", namespace = "http://www.multispeak.org/V5.0", type = JAXBElement.class),
-        @XmlElementRef(name = "clockBackward", namespace = "http://www.multispeak.org/V5.0", type = JAXBElement.class),
         @XmlElementRef(name = "clockForward", namespace = "http://www.multispeak.org/V5.0", type = JAXBElement.class),
-        @XmlElementRef(name = "invalid", namespace = "http://www.multispeak.org/V5.0", type = JAXBElement.class),
+        @XmlElementRef(name = "recorderStopped", namespace = "http://www.multispeak.org/V5.0", type = JAXBElement.class),
+        @XmlElementRef(name = "testData", namespace = "http://www.multispeak.org/V5.0", type = JAXBElement.class),
         @XmlElementRef(name = "configChanged", namespace = "http://www.multispeak.org/V5.0", type = JAXBElement.class),
-        @XmlElementRef(name = "overflow", namespace = "http://www.multispeak.org/V5.0", type = JAXBElement.class)
+        @XmlElementRef(name = "clockBackward", namespace = "http://www.multispeak.org/V5.0", type = JAXBElement.class),
+        @XmlElementRef(name = "overflow", namespace = "http://www.multispeak.org/V5.0", type = JAXBElement.class),
+        @XmlElementRef(name = "DSTinEffect", namespace = "http://www.multispeak.org/V5.0", type = JAXBElement.class),
+        @XmlElementRef(name = "longInterval", namespace = "http://www.multispeak.org/V5.0", type = JAXBElement.class),
+        @XmlElementRef(name = "invalid", namespace = "http://www.multispeak.org/V5.0", type = JAXBElement.class)
     })
     protected List<JAXBElement<Boolean>> dsTinEffectOrClockForwardOrClockBackward;
     @XmlAttribute(name = "intervalIndex", required = true)

@@ -49,7 +49,7 @@ public class Crew {
     @XmlElement(name = "CrewMembers")
     protected List<CrewMember> crewMembers;
     @XmlElement(name = "Names")
-    protected List<Name> names;
+    protected List<Name2> names;
     @XmlElement(name = "WorkAssets")
     protected List<WorkAsset> workAssets;
 
@@ -124,13 +124,13 @@ public class Crew {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Name }
+     * {@link Name2 }
      * 
      * 
      */
-    public List<Name> getNames() {
+    public List<Name2> getNames() {
         if (names == null) {
-            names = new ArrayList<Name>();
+            names = new ArrayList<Name2>();
         }
         return this.names;
     }

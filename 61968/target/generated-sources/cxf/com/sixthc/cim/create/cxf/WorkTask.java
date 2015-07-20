@@ -101,7 +101,7 @@ public class WorkTask {
     @XmlElement(name = "MaterialItems")
     protected List<WorkTask.MaterialItems> materialItems;
     @XmlElement(name = "Names")
-    protected List<Name> names;
+    protected List<Name2> names;
     @XmlElement(name = "OldAsset")
     protected Asset oldAsset;
     @XmlElement(name = "TimeSchedules")
@@ -356,13 +356,13 @@ public class WorkTask {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Name }
+     * {@link Name2 }
      * 
      * 
      */
-    public List<Name> getNames() {
+    public List<Name2> getNames() {
         if (names == null) {
-            names = new ArrayList<Name>();
+            names = new ArrayList<Name2>();
         }
         return this.names;
     }
@@ -465,7 +465,7 @@ public class WorkTask {
         @XmlElement(name = "mRID", namespace = "http://iec.ch/TC57/2015/MaintenanceOrders#")
         protected String mrid;
         @XmlElement(name = "Names", namespace = "http://iec.ch/TC57/2015/MaintenanceOrders#")
-        protected List<Name> names;
+        protected List<Name2> names;
         @XmlElement(namespace = "http://iec.ch/TC57/2015/MaintenanceOrders#")
         protected WorkTask.MaterialItems.Quantity quantity;
 
@@ -511,13 +511,13 @@ public class WorkTask {
          * 
          * <p>
          * Objects of the following type(s) are allowed in the list
-         * {@link Name }
+         * {@link Name2 }
          * 
          * 
          */
-        public List<Name> getNames() {
+        public List<Name2> getNames() {
             if (names == null) {
-                names = new ArrayList<Name>();
+                names = new ArrayList<Name2>();
             }
             return this.names;
         }

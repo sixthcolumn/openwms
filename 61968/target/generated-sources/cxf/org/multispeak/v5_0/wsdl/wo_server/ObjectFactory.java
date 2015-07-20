@@ -38,115 +38,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetDomainMembersResponse }
+     * Create an instance of {@link GetActiveWorkItemSummaries }
      * 
      */
-    public GetDomainMembersResponse createGetDomainMembersResponse() {
-        return new GetDomainMembersResponse();
-    }
-
-    /**
-     * Create an instance of {@link InitiateWorkAssignmentChanges }
-     * 
-     */
-    public InitiateWorkAssignmentChanges createInitiateWorkAssignmentChanges() {
-        return new InitiateWorkAssignmentChanges();
-    }
-
-    /**
-     * Create an instance of {@link GetDomainMembers }
-     * 
-     */
-    public GetDomainMembers createGetDomainMembers() {
-        return new GetDomainMembers();
-    }
-
-    /**
-     * Create an instance of {@link GetDomainNamesResponse }
-     * 
-     */
-    public GetDomainNamesResponse createGetDomainNamesResponse() {
-        return new GetDomainNamesResponse();
-    }
-
-    /**
-     * Create an instance of {@link DeleteClearanceInstance }
-     * 
-     */
-    public DeleteClearanceInstance createDeleteClearanceInstance() {
-        return new DeleteClearanceInstance();
-    }
-
-    /**
-     * Create an instance of {@link GetWorkItemRefsByScheduleDateAndWorkStatusCategory }
-     * 
-     */
-    public GetWorkItemRefsByScheduleDateAndWorkStatusCategory createGetWorkItemRefsByScheduleDateAndWorkStatusCategory() {
-        return new GetWorkItemRefsByScheduleDateAndWorkStatusCategory();
-    }
-
-    /**
-     * Create an instance of {@link GetWorkItemRefsByWorkStatusCodes }
-     * 
-     */
-    public GetWorkItemRefsByWorkStatusCodes createGetWorkItemRefsByWorkStatusCodes() {
-        return new GetWorkItemRefsByWorkStatusCodes();
-    }
-
-    /**
-     * Create an instance of {@link GetClearanceTagsByTaggedDeviceIDsResponse }
-     * 
-     */
-    public GetClearanceTagsByTaggedDeviceIDsResponse createGetClearanceTagsByTaggedDeviceIDsResponse() {
-        return new GetClearanceTagsByTaggedDeviceIDsResponse();
-    }
-
-    /**
-     * Create an instance of {@link PingURLResponse }
-     * 
-     */
-    public PingURLResponse createPingURLResponse() {
-        return new PingURLResponse();
-    }
-
-    /**
-     * Create an instance of {@link InitiateWorkItemsDeletionResponse }
-     * 
-     */
-    public InitiateWorkItemsDeletionResponse createInitiateWorkItemsDeletionResponse() {
-        return new InitiateWorkItemsDeletionResponse();
-    }
-
-    /**
-     * Create an instance of {@link InitiateWorkUnassignmentResponse }
-     * 
-     */
-    public InitiateWorkUnassignmentResponse createInitiateWorkUnassignmentResponse() {
-        return new InitiateWorkUnassignmentResponse();
-    }
-
-    /**
-     * Create an instance of {@link InitiateClearanceTagRequestByTaggedDeviceIDsResponse }
-     * 
-     */
-    public InitiateClearanceTagRequestByTaggedDeviceIDsResponse createInitiateClearanceTagRequestByTaggedDeviceIDsResponse() {
-        return new InitiateClearanceTagRequestByTaggedDeviceIDsResponse();
-    }
-
-    /**
-     * Create an instance of {@link PingURL }
-     * 
-     */
-    public PingURL createPingURL() {
-        return new PingURL();
-    }
-
-    /**
-     * Create an instance of {@link GetWorkItemSummaries }
-     * 
-     */
-    public GetWorkItemSummaries createGetWorkItemSummaries() {
-        return new GetWorkItemSummaries();
+    public GetActiveWorkItemSummaries createGetActiveWorkItemSummaries() {
+        return new GetActiveWorkItemSummaries();
     }
 
     /**
@@ -158,179 +54,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetWorkItemRefsByWorkStatusCodesResponse }
+     * Create an instance of {@link InitiateWorkUnassignmentResponse }
      * 
      */
-    public GetWorkItemRefsByWorkStatusCodesResponse createGetWorkItemRefsByWorkStatusCodesResponse() {
-        return new GetWorkItemRefsByWorkStatusCodesResponse();
-    }
-
-    /**
-     * Create an instance of {@link UnlinkAttachmentsFromObjectsResponse }
-     * 
-     */
-    public UnlinkAttachmentsFromObjectsResponse createUnlinkAttachmentsFromObjectsResponse() {
-        return new UnlinkAttachmentsFromObjectsResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetWorkItemRefsByWorkTypesAndWorkStatusCategory }
-     * 
-     */
-    public GetWorkItemRefsByWorkTypesAndWorkStatusCategory createGetWorkItemRefsByWorkTypesAndWorkStatusCategory() {
-        return new GetWorkItemRefsByWorkTypesAndWorkStatusCategory();
-    }
-
-    /**
-     * Create an instance of {@link GetSupportedWorkTypesResponse }
-     * 
-     */
-    public GetSupportedWorkTypesResponse createGetSupportedWorkTypesResponse() {
-        return new GetSupportedWorkTypesResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetWorkItemSummariesResponse }
-     * 
-     */
-    public GetWorkItemSummariesResponse createGetWorkItemSummariesResponse() {
-        return new GetWorkItemSummariesResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetWorkItemsByWorkItemRefsResponse }
-     * 
-     */
-    public GetWorkItemsByWorkItemRefsResponse createGetWorkItemsByWorkItemRefsResponse() {
-        return new GetWorkItemsByWorkItemRefsResponse();
-    }
-
-    /**
-     * Create an instance of {@link InitiateWorkRequestResponse }
-     * 
-     */
-    public InitiateWorkRequestResponse createInitiateWorkRequestResponse() {
-        return new InitiateWorkRequestResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetWorkItemRefsByBoundsAndWorkStatusCategoryResponse }
-     * 
-     */
-    public GetWorkItemRefsByBoundsAndWorkStatusCategoryResponse createGetWorkItemRefsByBoundsAndWorkStatusCategoryResponse() {
-        return new GetWorkItemRefsByBoundsAndWorkStatusCategoryResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetMethodsResponse }
-     * 
-     */
-    public GetMethodsResponse createGetMethodsResponse() {
-        return new GetMethodsResponse();
-    }
-
-    /**
-     * Create an instance of {@link InitiateWorkItemsDeletion }
-     * 
-     */
-    public InitiateWorkItemsDeletion createInitiateWorkItemsDeletion() {
-        return new InitiateWorkItemsDeletion();
-    }
-
-    /**
-     * Create an instance of {@link GetWorkItemSummariesByWorkItemRefs }
-     * 
-     */
-    public GetWorkItemSummariesByWorkItemRefs createGetWorkItemSummariesByWorkItemRefs() {
-        return new GetWorkItemSummariesByWorkItemRefs();
-    }
-
-    /**
-     * Create an instance of {@link GetAttachmentsByObjectRefs }
-     * 
-     */
-    public GetAttachmentsByObjectRefs createGetAttachmentsByObjectRefs() {
-        return new GetAttachmentsByObjectRefs();
-    }
-
-    /**
-     * Create an instance of {@link GetWorkItemSummariesByWorkItemRefsResponse }
-     * 
-     */
-    public GetWorkItemSummariesByWorkItemRefsResponse createGetWorkItemSummariesByWorkItemRefsResponse() {
-        return new GetWorkItemSummariesByWorkItemRefsResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetWorkRequestStatusesResponse }
-     * 
-     */
-    public GetWorkRequestStatusesResponse createGetWorkRequestStatusesResponse() {
-        return new GetWorkRequestStatusesResponse();
-    }
-
-    /**
-     * Create an instance of {@link InitiateWorkScheduleDeletion }
-     * 
-     */
-    public InitiateWorkScheduleDeletion createInitiateWorkScheduleDeletion() {
-        return new InitiateWorkScheduleDeletion();
-    }
-
-    /**
-     * Create an instance of {@link GetActiveWorkItemSummariesResponse }
-     * 
-     */
-    public GetActiveWorkItemSummariesResponse createGetActiveWorkItemSummariesResponse() {
-        return new GetActiveWorkItemSummariesResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetClearanceTagsByTaggedDeviceIDs }
-     * 
-     */
-    public GetClearanceTagsByTaggedDeviceIDs createGetClearanceTagsByTaggedDeviceIDs() {
-        return new GetClearanceTagsByTaggedDeviceIDs();
-    }
-
-    /**
-     * Create an instance of {@link GetActiveWorkItemSummaries }
-     * 
-     */
-    public GetActiveWorkItemSummaries createGetActiveWorkItemSummaries() {
-        return new GetActiveWorkItemSummaries();
-    }
-
-    /**
-     * Create an instance of {@link InitiateClearanceInstanceRequestResponse }
-     * 
-     */
-    public InitiateClearanceInstanceRequestResponse createInitiateClearanceInstanceRequestResponse() {
-        return new InitiateClearanceInstanceRequestResponse();
-    }
-
-    /**
-     * Create an instance of {@link DeleteClearanceInstanceResponse }
-     * 
-     */
-    public DeleteClearanceInstanceResponse createDeleteClearanceInstanceResponse() {
-        return new DeleteClearanceInstanceResponse();
-    }
-
-    /**
-     * Create an instance of {@link InitiateWorkScheduleChangesResponse }
-     * 
-     */
-    public InitiateWorkScheduleChangesResponse createInitiateWorkScheduleChangesResponse() {
-        return new InitiateWorkScheduleChangesResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetWorkHistoriesByWorkItemRefsResponse }
-     * 
-     */
-    public GetWorkHistoriesByWorkItemRefsResponse createGetWorkHistoriesByWorkItemRefsResponse() {
-        return new GetWorkHistoriesByWorkItemRefsResponse();
+    public InitiateWorkUnassignmentResponse createInitiateWorkUnassignmentResponse() {
+        return new InitiateWorkUnassignmentResponse();
     }
 
     /**
@@ -342,11 +70,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link InitiateWorkUnassignment }
+     * Create an instance of {@link GetWorkItemsByWorkItemRefs }
      * 
      */
-    public InitiateWorkUnassignment createInitiateWorkUnassignment() {
-        return new InitiateWorkUnassignment();
+    public GetWorkItemsByWorkItemRefs createGetWorkItemsByWorkItemRefs() {
+        return new GetWorkItemsByWorkItemRefs();
     }
 
     /**
@@ -358,35 +86,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link InitiateWorkAssignmentChangesResponse }
+     * Create an instance of {@link InitiateWorkUnassignment }
      * 
      */
-    public InitiateWorkAssignmentChangesResponse createInitiateWorkAssignmentChangesResponse() {
-        return new InitiateWorkAssignmentChangesResponse();
-    }
-
-    /**
-     * Create an instance of {@link InitiateWorkRequest }
-     * 
-     */
-    public InitiateWorkRequest createInitiateWorkRequest() {
-        return new InitiateWorkRequest();
-    }
-
-    /**
-     * Create an instance of {@link GetWorkItemRefsByResourceIDsAndWorkStatusCategory }
-     * 
-     */
-    public GetWorkItemRefsByResourceIDsAndWorkStatusCategory createGetWorkItemRefsByResourceIDsAndWorkStatusCategory() {
-        return new GetWorkItemRefsByResourceIDsAndWorkStatusCategory();
-    }
-
-    /**
-     * Create an instance of {@link GetWorkItemRefsByWorkTypesAndWorkStatusCategoryResponse }
-     * 
-     */
-    public GetWorkItemRefsByWorkTypesAndWorkStatusCategoryResponse createGetWorkItemRefsByWorkTypesAndWorkStatusCategoryResponse() {
-        return new GetWorkItemRefsByWorkTypesAndWorkStatusCategoryResponse();
+    public InitiateWorkUnassignment createInitiateWorkUnassignment() {
+        return new InitiateWorkUnassignment();
     }
 
     /**
@@ -398,27 +102,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetDomainNames }
+     * Create an instance of {@link InitiateWorkAssignmentChangesResponse }
      * 
      */
-    public GetDomainNames createGetDomainNames() {
-        return new GetDomainNames();
-    }
-
-    /**
-     * Create an instance of {@link GetWorkItemRefsByResourceIDsAndWorkStatusCategoryResponse }
-     * 
-     */
-    public GetWorkItemRefsByResourceIDsAndWorkStatusCategoryResponse createGetWorkItemRefsByResourceIDsAndWorkStatusCategoryResponse() {
-        return new GetWorkItemRefsByResourceIDsAndWorkStatusCategoryResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetWorkRequestStatuses }
-     * 
-     */
-    public GetWorkRequestStatuses createGetWorkRequestStatuses() {
-        return new GetWorkRequestStatuses();
+    public InitiateWorkAssignmentChangesResponse createInitiateWorkAssignmentChangesResponse() {
+        return new InitiateWorkAssignmentChangesResponse();
     }
 
     /**
@@ -430,51 +118,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link InitiateWorkScheduleChanges }
+     * Create an instance of {@link InitiateWorkItemsDeletion }
      * 
      */
-    public InitiateWorkScheduleChanges createInitiateWorkScheduleChanges() {
-        return new InitiateWorkScheduleChanges();
-    }
-
-    /**
-     * Create an instance of {@link GetAttachmentsByObjectRefsResponse }
-     * 
-     */
-    public GetAttachmentsByObjectRefsResponse createGetAttachmentsByObjectRefsResponse() {
-        return new GetAttachmentsByObjectRefsResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetWorkItemRefsByBoundsAndWorkStatusCategory }
-     * 
-     */
-    public GetWorkItemRefsByBoundsAndWorkStatusCategory createGetWorkItemRefsByBoundsAndWorkStatusCategory() {
-        return new GetWorkItemRefsByBoundsAndWorkStatusCategory();
-    }
-
-    /**
-     * Create an instance of {@link GetWorkItemsByWorkItemRefs }
-     * 
-     */
-    public GetWorkItemsByWorkItemRefs createGetWorkItemsByWorkItemRefs() {
-        return new GetWorkItemsByWorkItemRefs();
-    }
-
-    /**
-     * Create an instance of {@link InitiateClearanceTagRequestByTaggedDeviceIDs }
-     * 
-     */
-    public InitiateClearanceTagRequestByTaggedDeviceIDs createInitiateClearanceTagRequestByTaggedDeviceIDs() {
-        return new InitiateClearanceTagRequestByTaggedDeviceIDs();
-    }
-
-    /**
-     * Create an instance of {@link GetWorkHistoriesByWorkItemRefs }
-     * 
-     */
-    public GetWorkHistoriesByWorkItemRefs createGetWorkHistoriesByWorkItemRefs() {
-        return new GetWorkHistoriesByWorkItemRefs();
+    public InitiateWorkItemsDeletion createInitiateWorkItemsDeletion() {
+        return new InitiateWorkItemsDeletion();
     }
 
     /**
@@ -486,11 +134,363 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetDomainNames }
+     * 
+     */
+    public GetDomainNames createGetDomainNames() {
+        return new GetDomainNames();
+    }
+
+    /**
+     * Create an instance of {@link GetActiveWorkItemSummariesResponse }
+     * 
+     */
+    public GetActiveWorkItemSummariesResponse createGetActiveWorkItemSummariesResponse() {
+        return new GetActiveWorkItemSummariesResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetWorkItemRefsByResourceIDsAndWorkStatusCategoryResponse }
+     * 
+     */
+    public GetWorkItemRefsByResourceIDsAndWorkStatusCategoryResponse createGetWorkItemRefsByResourceIDsAndWorkStatusCategoryResponse() {
+        return new GetWorkItemRefsByResourceIDsAndWorkStatusCategoryResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetWorkItemRefsByWorkStatusCodesResponse }
+     * 
+     */
+    public GetWorkItemRefsByWorkStatusCodesResponse createGetWorkItemRefsByWorkStatusCodesResponse() {
+        return new GetWorkItemRefsByWorkStatusCodesResponse();
+    }
+
+    /**
+     * Create an instance of {@link InitiateWorkAssignmentChanges }
+     * 
+     */
+    public InitiateWorkAssignmentChanges createInitiateWorkAssignmentChanges() {
+        return new InitiateWorkAssignmentChanges();
+    }
+
+    /**
+     * Create an instance of {@link GetAttachmentsByObjectRefs }
+     * 
+     */
+    public GetAttachmentsByObjectRefs createGetAttachmentsByObjectRefs() {
+        return new GetAttachmentsByObjectRefs();
+    }
+
+    /**
+     * Create an instance of {@link GetDomainNamesResponse }
+     * 
+     */
+    public GetDomainNamesResponse createGetDomainNamesResponse() {
+        return new GetDomainNamesResponse();
+    }
+
+    /**
+     * Create an instance of {@link InitiateClearanceTagRequestByTaggedDeviceIDsResponse }
+     * 
+     */
+    public InitiateClearanceTagRequestByTaggedDeviceIDsResponse createInitiateClearanceTagRequestByTaggedDeviceIDsResponse() {
+        return new InitiateClearanceTagRequestByTaggedDeviceIDsResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetDomainMembersResponse }
+     * 
+     */
+    public GetDomainMembersResponse createGetDomainMembersResponse() {
+        return new GetDomainMembersResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetWorkItemRefsByBoundsAndWorkStatusCategory }
+     * 
+     */
+    public GetWorkItemRefsByBoundsAndWorkStatusCategory createGetWorkItemRefsByBoundsAndWorkStatusCategory() {
+        return new GetWorkItemRefsByBoundsAndWorkStatusCategory();
+    }
+
+    /**
+     * Create an instance of {@link InitiateWorkScheduleChanges }
+     * 
+     */
+    public InitiateWorkScheduleChanges createInitiateWorkScheduleChanges() {
+        return new InitiateWorkScheduleChanges();
+    }
+
+    /**
+     * Create an instance of {@link InitiateClearanceTagRequestByTaggedDeviceIDs }
+     * 
+     */
+    public InitiateClearanceTagRequestByTaggedDeviceIDs createInitiateClearanceTagRequestByTaggedDeviceIDs() {
+        return new InitiateClearanceTagRequestByTaggedDeviceIDs();
+    }
+
+    /**
+     * Create an instance of {@link DeleteClearanceInstanceResponse }
+     * 
+     */
+    public DeleteClearanceInstanceResponse createDeleteClearanceInstanceResponse() {
+        return new DeleteClearanceInstanceResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetClearanceTagsByTaggedDeviceIDs }
+     * 
+     */
+    public GetClearanceTagsByTaggedDeviceIDs createGetClearanceTagsByTaggedDeviceIDs() {
+        return new GetClearanceTagsByTaggedDeviceIDs();
+    }
+
+    /**
+     * Create an instance of {@link GetAttachmentsByObjectRefsResponse }
+     * 
+     */
+    public GetAttachmentsByObjectRefsResponse createGetAttachmentsByObjectRefsResponse() {
+        return new GetAttachmentsByObjectRefsResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetWorkItemRefsByScheduleDateAndWorkStatusCategory }
+     * 
+     */
+    public GetWorkItemRefsByScheduleDateAndWorkStatusCategory createGetWorkItemRefsByScheduleDateAndWorkStatusCategory() {
+        return new GetWorkItemRefsByScheduleDateAndWorkStatusCategory();
+    }
+
+    /**
+     * Create an instance of {@link GetWorkItemSummariesByWorkItemRefs }
+     * 
+     */
+    public GetWorkItemSummariesByWorkItemRefs createGetWorkItemSummariesByWorkItemRefs() {
+        return new GetWorkItemSummariesByWorkItemRefs();
+    }
+
+    /**
+     * Create an instance of {@link GetWorkItemRefsByWorkTypesAndWorkStatusCategory }
+     * 
+     */
+    public GetWorkItemRefsByWorkTypesAndWorkStatusCategory createGetWorkItemRefsByWorkTypesAndWorkStatusCategory() {
+        return new GetWorkItemRefsByWorkTypesAndWorkStatusCategory();
+    }
+
+    /**
+     * Create an instance of {@link GetWorkItemRefsByWorkTypesAndWorkStatusCategoryResponse }
+     * 
+     */
+    public GetWorkItemRefsByWorkTypesAndWorkStatusCategoryResponse createGetWorkItemRefsByWorkTypesAndWorkStatusCategoryResponse() {
+        return new GetWorkItemRefsByWorkTypesAndWorkStatusCategoryResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetMethodsResponse }
+     * 
+     */
+    public GetMethodsResponse createGetMethodsResponse() {
+        return new GetMethodsResponse();
+    }
+
+    /**
+     * Create an instance of {@link InitiateWorkRequest }
+     * 
+     */
+    public InitiateWorkRequest createInitiateWorkRequest() {
+        return new InitiateWorkRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetWorkHistoriesByWorkItemRefs }
+     * 
+     */
+    public GetWorkHistoriesByWorkItemRefs createGetWorkHistoriesByWorkItemRefs() {
+        return new GetWorkHistoriesByWorkItemRefs();
+    }
+
+    /**
+     * Create an instance of {@link InitiateWorkRequestResponse }
+     * 
+     */
+    public InitiateWorkRequestResponse createInitiateWorkRequestResponse() {
+        return new InitiateWorkRequestResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetSupportedWorkTypesResponse }
+     * 
+     */
+    public GetSupportedWorkTypesResponse createGetSupportedWorkTypesResponse() {
+        return new GetSupportedWorkTypesResponse();
+    }
+
+    /**
+     * Create an instance of {@link InitiateWorkItemsDeletionResponse }
+     * 
+     */
+    public InitiateWorkItemsDeletionResponse createInitiateWorkItemsDeletionResponse() {
+        return new InitiateWorkItemsDeletionResponse();
+    }
+
+    /**
+     * Create an instance of {@link PingURLResponse }
+     * 
+     */
+    public PingURLResponse createPingURLResponse() {
+        return new PingURLResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetWorkHistoriesByWorkItemRefsResponse }
+     * 
+     */
+    public GetWorkHistoriesByWorkItemRefsResponse createGetWorkHistoriesByWorkItemRefsResponse() {
+        return new GetWorkHistoriesByWorkItemRefsResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetWorkItemsByWorkItemRefsResponse }
+     * 
+     */
+    public GetWorkItemsByWorkItemRefsResponse createGetWorkItemsByWorkItemRefsResponse() {
+        return new GetWorkItemsByWorkItemRefsResponse();
+    }
+
+    /**
+     * Create an instance of {@link UnlinkAttachmentsFromObjectsResponse }
+     * 
+     */
+    public UnlinkAttachmentsFromObjectsResponse createUnlinkAttachmentsFromObjectsResponse() {
+        return new UnlinkAttachmentsFromObjectsResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetWorkItemRefsByWorkStatusCodes }
+     * 
+     */
+    public GetWorkItemRefsByWorkStatusCodes createGetWorkItemRefsByWorkStatusCodes() {
+        return new GetWorkItemRefsByWorkStatusCodes();
+    }
+
+    /**
+     * Create an instance of {@link PingURL }
+     * 
+     */
+    public PingURL createPingURL() {
+        return new PingURL();
+    }
+
+    /**
+     * Create an instance of {@link GetWorkRequestStatuses }
+     * 
+     */
+    public GetWorkRequestStatuses createGetWorkRequestStatuses() {
+        return new GetWorkRequestStatuses();
+    }
+
+    /**
+     * Create an instance of {@link InitiateClearanceInstanceRequestResponse }
+     * 
+     */
+    public InitiateClearanceInstanceRequestResponse createInitiateClearanceInstanceRequestResponse() {
+        return new InitiateClearanceInstanceRequestResponse();
+    }
+
+    /**
+     * Create an instance of {@link InitiateWorkScheduleDeletion }
+     * 
+     */
+    public InitiateWorkScheduleDeletion createInitiateWorkScheduleDeletion() {
+        return new InitiateWorkScheduleDeletion();
+    }
+
+    /**
+     * Create an instance of {@link GetDomainMembers }
+     * 
+     */
+    public GetDomainMembers createGetDomainMembers() {
+        return new GetDomainMembers();
+    }
+
+    /**
      * Create an instance of {@link UnlinkAttachmentsFromObjects }
      * 
      */
     public UnlinkAttachmentsFromObjects createUnlinkAttachmentsFromObjects() {
         return new UnlinkAttachmentsFromObjects();
+    }
+
+    /**
+     * Create an instance of {@link GetWorkItemRefsByResourceIDsAndWorkStatusCategory }
+     * 
+     */
+    public GetWorkItemRefsByResourceIDsAndWorkStatusCategory createGetWorkItemRefsByResourceIDsAndWorkStatusCategory() {
+        return new GetWorkItemRefsByResourceIDsAndWorkStatusCategory();
+    }
+
+    /**
+     * Create an instance of {@link GetWorkItemSummaries }
+     * 
+     */
+    public GetWorkItemSummaries createGetWorkItemSummaries() {
+        return new GetWorkItemSummaries();
+    }
+
+    /**
+     * Create an instance of {@link DeleteClearanceInstance }
+     * 
+     */
+    public DeleteClearanceInstance createDeleteClearanceInstance() {
+        return new DeleteClearanceInstance();
+    }
+
+    /**
+     * Create an instance of {@link GetWorkItemSummariesResponse }
+     * 
+     */
+    public GetWorkItemSummariesResponse createGetWorkItemSummariesResponse() {
+        return new GetWorkItemSummariesResponse();
+    }
+
+    /**
+     * Create an instance of {@link InitiateWorkScheduleChangesResponse }
+     * 
+     */
+    public InitiateWorkScheduleChangesResponse createInitiateWorkScheduleChangesResponse() {
+        return new InitiateWorkScheduleChangesResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetClearanceTagsByTaggedDeviceIDsResponse }
+     * 
+     */
+    public GetClearanceTagsByTaggedDeviceIDsResponse createGetClearanceTagsByTaggedDeviceIDsResponse() {
+        return new GetClearanceTagsByTaggedDeviceIDsResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetWorkItemSummariesByWorkItemRefsResponse }
+     * 
+     */
+    public GetWorkItemSummariesByWorkItemRefsResponse createGetWorkItemSummariesByWorkItemRefsResponse() {
+        return new GetWorkItemSummariesByWorkItemRefsResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetWorkItemRefsByBoundsAndWorkStatusCategoryResponse }
+     * 
+     */
+    public GetWorkItemRefsByBoundsAndWorkStatusCategoryResponse createGetWorkItemRefsByBoundsAndWorkStatusCategoryResponse() {
+        return new GetWorkItemRefsByBoundsAndWorkStatusCategoryResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetWorkRequestStatusesResponse }
+     * 
+     */
+    public GetWorkRequestStatusesResponse createGetWorkRequestStatusesResponse() {
+        return new GetWorkRequestStatusesResponse();
     }
 
 }

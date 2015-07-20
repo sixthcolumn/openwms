@@ -28,8 +28,8 @@ public class ObjectFactory {
     private final static QName _CloseMeterServiceRequests_QNAME = new QName("http://www.iec.ch/TC57/2011/MeterServiceRequestsMessage", "CloseMeterServiceRequests");
     private final static QName _CreateMeterServiceRequests_QNAME = new QName("http://www.iec.ch/TC57/2011/MeterServiceRequestsMessage", "CreateMeterServiceRequests");
     private final static QName _MeterServiceRequestsResponseMessage_QNAME = new QName("http://www.iec.ch/TC57/2011/MeterServiceRequestsMessage", "MeterServiceRequestsResponseMessage");
-    private final static QName _CanceledMeterServiceRequests_QNAME = new QName("http://www.iec.ch/TC57/2011/MeterServiceRequestsMessage", "CanceledMeterServiceRequests");
     private final static QName _CreatedMeterServiceRequests_QNAME = new QName("http://www.iec.ch/TC57/2011/MeterServiceRequestsMessage", "CreatedMeterServiceRequests");
+    private final static QName _CanceledMeterServiceRequests_QNAME = new QName("http://www.iec.ch/TC57/2011/MeterServiceRequestsMessage", "CanceledMeterServiceRequests");
     private final static QName _MeterServiceRequestsRequestMessage_QNAME = new QName("http://www.iec.ch/TC57/2011/MeterServiceRequestsMessage", "MeterServiceRequestsRequestMessage");
     private final static QName _MeterServiceRequestsFaultMessage_QNAME = new QName("http://www.iec.ch/TC57/2011/MeterServiceRequestsMessage", "MeterServiceRequestsFaultMessage");
     private final static QName _CancelMeterServiceRequests_QNAME = new QName("http://www.iec.ch/TC57/2011/MeterServiceRequestsMessage", "CancelMeterServiceRequests");
@@ -46,27 +46,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MeterServiceRequestsFaultMessageType }
-     * 
-     */
-    public MeterServiceRequestsFaultMessageType createMeterServiceRequestsFaultMessageType() {
-        return new MeterServiceRequestsFaultMessageType();
-    }
-
-    /**
      * Create an instance of {@link MeterServiceRequestsRequestMessageType }
      * 
      */
     public MeterServiceRequestsRequestMessageType createMeterServiceRequestsRequestMessageType() {
         return new MeterServiceRequestsRequestMessageType();
-    }
-
-    /**
-     * Create an instance of {@link MeterServiceRequestsResponseMessageType }
-     * 
-     */
-    public MeterServiceRequestsResponseMessageType createMeterServiceRequestsResponseMessageType() {
-        return new MeterServiceRequestsResponseMessageType();
     }
 
     /**
@@ -78,11 +62,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link MeterServiceRequestsFaultMessageType }
+     * 
+     */
+    public MeterServiceRequestsFaultMessageType createMeterServiceRequestsFaultMessageType() {
+        return new MeterServiceRequestsFaultMessageType();
+    }
+
+    /**
      * Create an instance of {@link MeterServiceRequestsEventMessageType }
      * 
      */
     public MeterServiceRequestsEventMessageType createMeterServiceRequestsEventMessageType() {
         return new MeterServiceRequestsEventMessageType();
+    }
+
+    /**
+     * Create an instance of {@link MeterServiceRequestsResponseMessageType }
+     * 
+     */
+    public MeterServiceRequestsResponseMessageType createMeterServiceRequestsResponseMessageType() {
+        return new MeterServiceRequestsResponseMessageType();
     }
 
     /**
@@ -125,18 +125,18 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link MeterServiceRequestsEventMessageType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.iec.ch/TC57/2011/MeterServiceRequestsMessage", name = "CanceledMeterServiceRequests")
-    public JAXBElement<MeterServiceRequestsEventMessageType> createCanceledMeterServiceRequests(MeterServiceRequestsEventMessageType value) {
-        return new JAXBElement<MeterServiceRequestsEventMessageType>(_CanceledMeterServiceRequests_QNAME, MeterServiceRequestsEventMessageType.class, null, value);
+    @XmlElementDecl(namespace = "http://www.iec.ch/TC57/2011/MeterServiceRequestsMessage", name = "CreatedMeterServiceRequests")
+    public JAXBElement<MeterServiceRequestsEventMessageType> createCreatedMeterServiceRequests(MeterServiceRequestsEventMessageType value) {
+        return new JAXBElement<MeterServiceRequestsEventMessageType>(_CreatedMeterServiceRequests_QNAME, MeterServiceRequestsEventMessageType.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link MeterServiceRequestsEventMessageType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.iec.ch/TC57/2011/MeterServiceRequestsMessage", name = "CreatedMeterServiceRequests")
-    public JAXBElement<MeterServiceRequestsEventMessageType> createCreatedMeterServiceRequests(MeterServiceRequestsEventMessageType value) {
-        return new JAXBElement<MeterServiceRequestsEventMessageType>(_CreatedMeterServiceRequests_QNAME, MeterServiceRequestsEventMessageType.class, null, value);
+    @XmlElementDecl(namespace = "http://www.iec.ch/TC57/2011/MeterServiceRequestsMessage", name = "CanceledMeterServiceRequests")
+    public JAXBElement<MeterServiceRequestsEventMessageType> createCanceledMeterServiceRequests(MeterServiceRequestsEventMessageType value) {
+        return new JAXBElement<MeterServiceRequestsEventMessageType>(_CanceledMeterServiceRequests_QNAME, MeterServiceRequestsEventMessageType.class, null, value);
     }
 
     /**

@@ -29,8 +29,8 @@ public class ObjectFactory {
     private final static QName _GetMaintenanceOrdersFaultMessage_QNAME = new QName("http://iec.ch/TC57/2015/GetMaintenanceOrdersMessage", "GetMaintenanceOrdersFaultMessage");
     private final static QName _Message_QNAME = new QName("http://iec.ch/TC57/2011/schema/message", "Message");
     private final static QName _GetMaintenanceOrders_QNAME = new QName("http://iec.ch/TC57/2015/GetMaintenanceOrders#", "GetMaintenanceOrders");
-    private final static QName _GetMaintenanceOrdersResponseMessage_QNAME = new QName("http://iec.ch/TC57/2015/GetMaintenanceOrdersMessage", "GetMaintenanceOrdersResponseMessage");
     private final static QName _MaintenanceOrders_QNAME = new QName("http://iec.ch/TC57/2015/MaintenanceOrders#", "MaintenanceOrders");
+    private final static QName _GetMaintenanceOrdersResponseMessage_QNAME = new QName("http://iec.ch/TC57/2015/GetMaintenanceOrdersMessage", "GetMaintenanceOrdersResponseMessage");
     private final static QName _ResponseMessage_QNAME = new QName("http://iec.ch/TC57/2011/schema/message", "ResponseMessage");
     private final static QName _FaultMessage_QNAME = new QName("http://iec.ch/TC57/2011/schema/message", "FaultMessage");
     private final static QName _RequestMessage_QNAME = new QName("http://iec.ch/TC57/2011/schema/message", "RequestMessage");
@@ -43,286 +43,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Organisation2 .Phone1 }
-     * 
-     */
-    public Organisation2 .Phone1 createOrganisation2Phone1() {
-        return new Organisation2 .Phone1();
-    }
-
-    /**
-     * Create an instance of {@link NameType3 }
-     * 
-     */
-    public NameType3 createNameType3() {
-        return new NameType3();
-    }
-
-    /**
-     * Create an instance of {@link Asset2 }
-     * 
-     */
-    public Asset2 createAsset2() {
-        return new Asset2();
-    }
-
-    /**
-     * Create an instance of {@link Organisation2 }
-     * 
-     */
-    public Organisation2 createOrganisation2() {
-        return new Organisation2();
-    }
-
-    /**
-     * Create an instance of {@link WorkTimeSchedule.ScheduleInterval }
-     * 
-     */
-    public WorkTimeSchedule.ScheduleInterval createWorkTimeScheduleScheduleInterval() {
-        return new WorkTimeSchedule.ScheduleInterval();
-    }
-
-    /**
-     * Create an instance of {@link Work.Priority }
-     * 
-     */
-    public Work.Priority createWorkPriority() {
-        return new Work.Priority();
-    }
-
-    /**
-     * Create an instance of {@link NameTypeAuthority3 }
-     * 
-     */
-    public NameTypeAuthority3 createNameTypeAuthority3() {
-        return new NameTypeAuthority3();
-    }
-
-    /**
-     * Create an instance of {@link NameTypeAuthority2 }
-     * 
-     */
-    public NameTypeAuthority2 createNameTypeAuthority2() {
-        return new NameTypeAuthority2();
-    }
-
-    /**
-     * Create an instance of {@link RequestType.ID }
-     * 
-     */
-    public RequestType.ID createRequestTypeID() {
-        return new RequestType.ID();
-    }
-
-    /**
-     * Create an instance of {@link Work2 }
-     * 
-     */
-    public Work2 createWork2() {
-        return new Work2();
-    }
-
-    /**
-     * Create an instance of {@link TelephoneNumber }
-     * 
-     */
-    public TelephoneNumber createTelephoneNumber() {
-        return new TelephoneNumber();
-    }
-
-    /**
-     * Create an instance of {@link GetMaintenanceOrders }
-     * 
-     */
-    public GetMaintenanceOrders createGetMaintenanceOrders() {
-        return new GetMaintenanceOrders();
-    }
-
-    /**
-     * Create an instance of {@link WorkLocation2 .PositionPoints }
-     * 
-     */
-    public WorkLocation2 .PositionPoints createWorkLocation2PositionPoints() {
-        return new WorkLocation2 .PositionPoints();
-    }
-
-    /**
-     * Create an instance of {@link Organisation2 .StreetAddress.TownDetail }
-     * 
-     */
-    public Organisation2 .StreetAddress.TownDetail createOrganisation2StreetAddressTownDetail() {
-        return new Organisation2 .StreetAddress.TownDetail();
-    }
-
-    /**
-     * Create an instance of {@link RequestMessageType }
-     * 
-     */
-    public RequestMessageType createRequestMessageType() {
-        return new RequestMessageType();
-    }
-
-    /**
-     * Create an instance of {@link MaintenanceOrder2 }
-     * 
-     */
-    public MaintenanceOrder2 createMaintenanceOrder2() {
-        return new MaintenanceOrder2();
-    }
-
-    /**
-     * Create an instance of {@link Organisation2 .StreetAddress }
-     * 
-     */
-    public Organisation2 .StreetAddress createOrganisation2StreetAddress() {
-        return new Organisation2 .StreetAddress();
-    }
-
-    /**
-     * Create an instance of {@link Asset2 .Procedures.Measurements }
-     * 
-     */
-    public Asset2 .Procedures.Measurements createAsset2ProceduresMeasurements() {
-        return new Asset2 .Procedures.Measurements();
-    }
-
-    /**
-     * Create an instance of {@link WorkAsset.Procedures.Measurements }
-     * 
-     */
-    public WorkAsset.Procedures.Measurements createWorkAssetProceduresMeasurements() {
-        return new WorkAsset.Procedures.Measurements();
-    }
-
-    /**
-     * Create an instance of {@link WorkTimeSchedule }
-     * 
-     */
-    public WorkTimeSchedule createWorkTimeSchedule() {
-        return new WorkTimeSchedule();
-    }
-
-    /**
-     * Create an instance of {@link MessageType }
-     * 
-     */
-    public MessageType createMessageType() {
-        return new MessageType();
-    }
-
-    /**
-     * Create an instance of {@link InternalLocation }
-     * 
-     */
-    public InternalLocation createInternalLocation() {
-        return new InternalLocation();
-    }
-
-    /**
-     * Create an instance of {@link PayloadType }
-     * 
-     */
-    public PayloadType createPayloadType() {
-        return new PayloadType();
-    }
-
-    /**
-     * Create an instance of {@link WorkLocation.MainAddress.TownDetail }
-     * 
-     */
-    public WorkLocation.MainAddress.TownDetail createWorkLocationMainAddressTownDetail() {
-        return new WorkLocation.MainAddress.TownDetail();
-    }
-
-    /**
-     * Create an instance of {@link HeaderType }
-     * 
-     */
-    public HeaderType createHeaderType() {
-        return new HeaderType();
-    }
-
-    /**
-     * Create an instance of {@link WorkLocation2 .MainAddress.StreetDetail }
-     * 
-     */
-    public WorkLocation2 .MainAddress.StreetDetail createWorkLocation2MainAddressStreetDetail() {
-        return new WorkLocation2 .MainAddress.StreetDetail();
-    }
-
-    /**
-     * Create an instance of {@link Organisation }
-     * 
-     */
-    public Organisation createOrganisation() {
-        return new Organisation();
-    }
-
-    /**
-     * Create an instance of {@link WorkLocation2 }
-     * 
-     */
-    public WorkLocation2 createWorkLocation2() {
-        return new WorkLocation2();
-    }
-
-    /**
-     * Create an instance of {@link ActivityRecord2 }
-     * 
-     */
-    public ActivityRecord2 createActivityRecord2() {
-        return new ActivityRecord2();
-    }
-
-    /**
-     * Create an instance of {@link Work }
-     * 
-     */
-    public Work createWork() {
-        return new Work();
-    }
-
-    /**
-     * Create an instance of {@link OptionType }
-     * 
-     */
-    public OptionType createOptionType() {
-        return new OptionType();
-    }
-
-    /**
-     * Create an instance of {@link ErrorType.RelatedID }
-     * 
-     */
-    public ErrorType.RelatedID createErrorTypeRelatedID() {
-        return new ErrorType.RelatedID();
-    }
-
-    /**
-     * Create an instance of {@link WorkTask.MaterialItems.Quantity }
-     * 
-     */
-    public WorkTask.MaterialItems.Quantity createWorkTaskMaterialItemsQuantity() {
-        return new WorkTask.MaterialItems.Quantity();
-    }
-
-    /**
-     * Create an instance of {@link WorkTask.MaterialItems }
-     * 
-     */
-    public WorkTask.MaterialItems createWorkTaskMaterialItems() {
-        return new WorkTask.MaterialItems();
-    }
-
-    /**
-     * Create an instance of {@link GetMaintenanceOrdersRequestMessageType }
-     * 
-     */
-    public GetMaintenanceOrdersRequestMessageType createGetMaintenanceOrdersRequestMessageType() {
-        return new GetMaintenanceOrdersRequestMessageType();
-    }
-
-    /**
      * Create an instance of {@link GetMaintenanceOrdersFaultMessageType }
      * 
      */
@@ -331,35 +51,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ObjectType }
+     * Create an instance of {@link OperationType }
      * 
      */
-    public ObjectType createObjectType() {
-        return new ObjectType();
-    }
-
-    /**
-     * Create an instance of {@link WorkTimeSchedule2 }
-     * 
-     */
-    public WorkTimeSchedule2 createWorkTimeSchedule2() {
-        return new WorkTimeSchedule2();
-    }
-
-    /**
-     * Create an instance of {@link GetMaintenanceOrdersResponseMessageType }
-     * 
-     */
-    public GetMaintenanceOrdersResponseMessageType createGetMaintenanceOrdersResponseMessageType() {
-        return new GetMaintenanceOrdersResponseMessageType();
-    }
-
-    /**
-     * Create an instance of {@link NameTypeAuthority }
-     * 
-     */
-    public NameTypeAuthority createNameTypeAuthority() {
-        return new NameTypeAuthority();
+    public OperationType createOperationType() {
+        return new OperationType();
     }
 
     /**
@@ -379,6 +75,246 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CrewMember }
+     * 
+     */
+    public CrewMember createCrewMember() {
+        return new CrewMember();
+    }
+
+    /**
+     * Create an instance of {@link Organisation2 .StreetAddress.StreetDetail }
+     * 
+     */
+    public Organisation2 .StreetAddress.StreetDetail createOrganisation2StreetAddressStreetDetail() {
+        return new Organisation2 .StreetAddress.StreetDetail();
+    }
+
+    /**
+     * Create an instance of {@link Organisation }
+     * 
+     */
+    public Organisation createOrganisation() {
+        return new Organisation();
+    }
+
+    /**
+     * Create an instance of {@link Work.Priority }
+     * 
+     */
+    public Work.Priority createWorkPriority() {
+        return new Work.Priority();
+    }
+
+    /**
+     * Create an instance of {@link WorkAsset }
+     * 
+     */
+    public WorkAsset createWorkAsset() {
+        return new WorkAsset();
+    }
+
+    /**
+     * Create an instance of {@link OperationSet }
+     * 
+     */
+    public OperationSet createOperationSet() {
+        return new OperationSet();
+    }
+
+    /**
+     * Create an instance of {@link NameTypeAuthority }
+     * 
+     */
+    public NameTypeAuthority createNameTypeAuthority() {
+        return new NameTypeAuthority();
+    }
+
+    /**
+     * Create an instance of {@link FaultMessageType }
+     * 
+     */
+    public FaultMessageType createFaultMessageType() {
+        return new FaultMessageType();
+    }
+
+    /**
+     * Create an instance of {@link Work }
+     * 
+     */
+    public Work createWork() {
+        return new Work();
+    }
+
+    /**
+     * Create an instance of {@link MaintenanceOrder }
+     * 
+     */
+    public MaintenanceOrder createMaintenanceOrder() {
+        return new MaintenanceOrder();
+    }
+
+    /**
+     * Create an instance of {@link GetMaintenanceOrdersResponseMessageType }
+     * 
+     */
+    public GetMaintenanceOrdersResponseMessageType createGetMaintenanceOrdersResponseMessageType() {
+        return new GetMaintenanceOrdersResponseMessageType();
+    }
+
+    /**
+     * Create an instance of {@link MessageType }
+     * 
+     */
+    public MessageType createMessageType() {
+        return new MessageType();
+    }
+
+    /**
+     * Create an instance of {@link InternalLocation2 }
+     * 
+     */
+    public InternalLocation2 createInternalLocation2() {
+        return new InternalLocation2();
+    }
+
+    /**
+     * Create an instance of {@link Asset2 }
+     * 
+     */
+    public Asset2 createAsset2() {
+        return new Asset2();
+    }
+
+    /**
+     * Create an instance of {@link UserType }
+     * 
+     */
+    public UserType createUserType() {
+        return new UserType();
+    }
+
+    /**
+     * Create an instance of {@link RequestType.ID }
+     * 
+     */
+    public RequestType.ID createRequestTypeID() {
+        return new RequestType.ID();
+    }
+
+    /**
+     * Create an instance of {@link Name2 }
+     * 
+     */
+    public Name2 createName2() {
+        return new Name2();
+    }
+
+    /**
+     * Create an instance of {@link MessageProperty }
+     * 
+     */
+    public MessageProperty createMessageProperty() {
+        return new MessageProperty();
+    }
+
+    /**
+     * Create an instance of {@link WorkTimeSchedule.ScheduleInterval }
+     * 
+     */
+    public WorkTimeSchedule.ScheduleInterval createWorkTimeScheduleScheduleInterval() {
+        return new WorkTimeSchedule.ScheduleInterval();
+    }
+
+    /**
+     * Create an instance of {@link Name3 }
+     * 
+     */
+    public Name3 createName3() {
+        return new Name3();
+    }
+
+    /**
+     * Create an instance of {@link OptionType }
+     * 
+     */
+    public OptionType createOptionType() {
+        return new OptionType();
+    }
+
+    /**
+     * Create an instance of {@link WorkLocation2 .MainAddress.StreetDetail }
+     * 
+     */
+    public WorkLocation2 .MainAddress.StreetDetail createWorkLocation2MainAddressStreetDetail() {
+        return new WorkLocation2 .MainAddress.StreetDetail();
+    }
+
+    /**
+     * Create an instance of {@link Organisation2 .Phone1 }
+     * 
+     */
+    public Organisation2 .Phone1 createOrganisation2Phone1() {
+        return new Organisation2 .Phone1();
+    }
+
+    /**
+     * Create an instance of {@link ReplayDetectionType }
+     * 
+     */
+    public ReplayDetectionType createReplayDetectionType() {
+        return new ReplayDetectionType();
+    }
+
+    /**
+     * Create an instance of {@link Organisation2 }
+     * 
+     */
+    public Organisation2 createOrganisation2() {
+        return new Organisation2();
+    }
+
+    /**
+     * Create an instance of {@link InternalLocation }
+     * 
+     */
+    public InternalLocation createInternalLocation() {
+        return new InternalLocation();
+    }
+
+    /**
+     * Create an instance of {@link WorkLocation.MainAddress }
+     * 
+     */
+    public WorkLocation.MainAddress createWorkLocationMainAddress() {
+        return new WorkLocation.MainAddress();
+    }
+
+    /**
+     * Create an instance of {@link RequestMessageType }
+     * 
+     */
+    public RequestMessageType createRequestMessageType() {
+        return new RequestMessageType();
+    }
+
+    /**
+     * Create an instance of {@link WorkTask }
+     * 
+     */
+    public WorkTask createWorkTask() {
+        return new WorkTask();
+    }
+
+    /**
+     * Create an instance of {@link WorkLocation }
+     * 
+     */
+    public WorkLocation createWorkLocation() {
+        return new WorkLocation();
+    }
+
+    /**
      * Create an instance of {@link ErrorType }
      * 
      */
@@ -395,43 +331,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link OperationType }
+     * Create an instance of {@link Asset }
      * 
      */
-    public OperationType createOperationType() {
-        return new OperationType();
-    }
-
-    /**
-     * Create an instance of {@link ActivityRecord }
-     * 
-     */
-    public ActivityRecord createActivityRecord() {
-        return new ActivityRecord();
-    }
-
-    /**
-     * Create an instance of {@link MessageProperty }
-     * 
-     */
-    public MessageProperty createMessageProperty() {
-        return new MessageProperty();
-    }
-
-    /**
-     * Create an instance of {@link EventMessageType }
-     * 
-     */
-    public EventMessageType createEventMessageType() {
-        return new EventMessageType();
-    }
-
-    /**
-     * Create an instance of {@link PayloadType.ID }
-     * 
-     */
-    public PayloadType.ID createPayloadTypeID() {
-        return new PayloadType.ID();
+    public Asset createAsset() {
+        return new Asset();
     }
 
     /**
@@ -443,115 +347,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link WorkTimeSchedule2 .ScheduleInterval }
+     * Create an instance of {@link NameTypeAuthority3 }
      * 
      */
-    public WorkTimeSchedule2 .ScheduleInterval createWorkTimeSchedule2ScheduleInterval() {
-        return new WorkTimeSchedule2 .ScheduleInterval();
+    public NameTypeAuthority3 createNameTypeAuthority3() {
+        return new NameTypeAuthority3();
     }
 
     /**
-     * Create an instance of {@link OperationSet }
+     * Create an instance of {@link GetMaintenanceOrders }
      * 
      */
-    public OperationSet createOperationSet() {
-        return new OperationSet();
+    public GetMaintenanceOrders createGetMaintenanceOrders() {
+        return new GetMaintenanceOrders();
     }
 
     /**
-     * Create an instance of {@link AssetLocationHazard }
+     * Create an instance of {@link EventMessageType }
      * 
      */
-    public AssetLocationHazard createAssetLocationHazard() {
-        return new AssetLocationHazard();
+    public EventMessageType createEventMessageType() {
+        return new EventMessageType();
     }
 
     /**
-     * Create an instance of {@link WorkLocation2 .CoordinateSystem }
+     * Create an instance of {@link ObjectType }
      * 
      */
-    public WorkLocation2 .CoordinateSystem createWorkLocation2CoordinateSystem() {
-        return new WorkLocation2 .CoordinateSystem();
-    }
-
-    /**
-     * Create an instance of {@link WorkTask }
-     * 
-     */
-    public WorkTask createWorkTask() {
-        return new WorkTask();
-    }
-
-    /**
-     * Create an instance of {@link Name2 }
-     * 
-     */
-    public Name2 createName2() {
-        return new Name2();
-    }
-
-    /**
-     * Create an instance of {@link WorkAsset }
-     * 
-     */
-    public WorkAsset createWorkAsset() {
-        return new WorkAsset();
-    }
-
-    /**
-     * Create an instance of {@link ErrorType.ID }
-     * 
-     */
-    public ErrorType.ID createErrorTypeID() {
-        return new ErrorType.ID();
-    }
-
-    /**
-     * Create an instance of {@link AssetLocationHazard2 }
-     * 
-     */
-    public AssetLocationHazard2 createAssetLocationHazard2() {
-        return new AssetLocationHazard2();
-    }
-
-    /**
-     * Create an instance of {@link WorkLocation2 .MainAddress.TownDetail }
-     * 
-     */
-    public WorkLocation2 .MainAddress.TownDetail createWorkLocation2MainAddressTownDetail() {
-        return new WorkLocation2 .MainAddress.TownDetail();
-    }
-
-    /**
-     * Create an instance of {@link MaintenanceOrders }
-     * 
-     */
-    public MaintenanceOrders createMaintenanceOrders() {
-        return new MaintenanceOrders();
-    }
-
-    /**
-     * Create an instance of {@link GetMaintenanceOrdersResponseType }
-     * 
-     */
-    public GetMaintenanceOrdersResponseType createGetMaintenanceOrdersResponseType() {
-        return new GetMaintenanceOrdersResponseType();
-    }
-
-    /**
-     * Create an instance of {@link Crew2 }
-     * 
-     */
-    public Crew2 createCrew2() {
-        return new Crew2();
-    }
-
-    /**
-     * Create an instance of {@link WorkLocation.MainAddress.StreetDetail }
-     * 
-     */
-    public WorkLocation.MainAddress.StreetDetail createWorkLocationMainAddressStreetDetail() {
-        return new WorkLocation.MainAddress.StreetDetail();
+    public ObjectType createObjectType() {
+        return new ObjectType();
     }
 
     /**
@@ -563,51 +387,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Organisation2 .StreetAddress.StreetDetail }
+     * Create an instance of {@link MaintenanceOrdersPayloadType }
      * 
      */
-    public Organisation2 .StreetAddress.StreetDetail createOrganisation2StreetAddressStreetDetail() {
-        return new Organisation2 .StreetAddress.StreetDetail();
-    }
-
-    /**
-     * Create an instance of {@link CrewMember }
-     * 
-     */
-    public CrewMember createCrewMember() {
-        return new CrewMember();
-    }
-
-    /**
-     * Create an instance of {@link WorkLocation }
-     * 
-     */
-    public WorkLocation createWorkLocation() {
-        return new WorkLocation();
-    }
-
-    /**
-     * Create an instance of {@link FaultMessageType }
-     * 
-     */
-    public FaultMessageType createFaultMessageType() {
-        return new FaultMessageType();
-    }
-
-    /**
-     * Create an instance of {@link Name3 }
-     * 
-     */
-    public Name3 createName3() {
-        return new Name3();
-    }
-
-    /**
-     * Create an instance of {@link ReplyType }
-     * 
-     */
-    public ReplyType createReplyType() {
-        return new ReplyType();
+    public MaintenanceOrdersPayloadType createMaintenanceOrdersPayloadType() {
+        return new MaintenanceOrdersPayloadType();
     }
 
     /**
@@ -619,43 +403,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Crew }
+     * Create an instance of {@link Organisation2 .StreetAddress }
      * 
      */
-    public Crew createCrew() {
-        return new Crew();
-    }
-
-    /**
-     * Create an instance of {@link Name }
-     * 
-     */
-    public Name createName() {
-        return new Name();
-    }
-
-    /**
-     * Create an instance of {@link WorkAsset.Procedures }
-     * 
-     */
-    public WorkAsset.Procedures createWorkAssetProcedures() {
-        return new WorkAsset.Procedures();
-    }
-
-    /**
-     * Create an instance of {@link ReplyType.ID }
-     * 
-     */
-    public ReplyType.ID createReplyTypeID() {
-        return new ReplyType.ID();
-    }
-
-    /**
-     * Create an instance of {@link InternalLocation2 }
-     * 
-     */
-    public InternalLocation2 createInternalLocation2() {
-        return new InternalLocation2();
+    public Organisation2 .StreetAddress createOrganisation2StreetAddress() {
+        return new Organisation2 .StreetAddress();
     }
 
     /**
@@ -667,27 +419,75 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link WorkLocation.MainAddress }
+     * Create an instance of {@link GetMaintenanceOrdersRequestMessageType }
      * 
      */
-    public WorkLocation.MainAddress createWorkLocationMainAddress() {
-        return new WorkLocation.MainAddress();
+    public GetMaintenanceOrdersRequestMessageType createGetMaintenanceOrdersRequestMessageType() {
+        return new GetMaintenanceOrdersRequestMessageType();
     }
 
     /**
-     * Create an instance of {@link ResponseMessageType }
+     * Create an instance of {@link WorkLocation2 .MainAddress.TownDetail }
      * 
      */
-    public ResponseMessageType createResponseMessageType() {
-        return new ResponseMessageType();
+    public WorkLocation2 .MainAddress.TownDetail createWorkLocation2MainAddressTownDetail() {
+        return new WorkLocation2 .MainAddress.TownDetail();
     }
 
     /**
-     * Create an instance of {@link UserType }
+     * Create an instance of {@link WorkTimeSchedule }
      * 
      */
-    public UserType createUserType() {
-        return new UserType();
+    public WorkTimeSchedule createWorkTimeSchedule() {
+        return new WorkTimeSchedule();
+    }
+
+    /**
+     * Create an instance of {@link ErrorType.ID }
+     * 
+     */
+    public ErrorType.ID createErrorTypeID() {
+        return new ErrorType.ID();
+    }
+
+    /**
+     * Create an instance of {@link WorkTask.MaterialItems }
+     * 
+     */
+    public WorkTask.MaterialItems createWorkTaskMaterialItems() {
+        return new WorkTask.MaterialItems();
+    }
+
+    /**
+     * Create an instance of {@link MaintenanceOrders }
+     * 
+     */
+    public MaintenanceOrders createMaintenanceOrders() {
+        return new MaintenanceOrders();
+    }
+
+    /**
+     * Create an instance of {@link ErrorType.RelatedID }
+     * 
+     */
+    public ErrorType.RelatedID createErrorTypeRelatedID() {
+        return new ErrorType.RelatedID();
+    }
+
+    /**
+     * Create an instance of {@link Crew2 }
+     * 
+     */
+    public Crew2 createCrew2() {
+        return new Crew2();
+    }
+
+    /**
+     * Create an instance of {@link HeaderType }
+     * 
+     */
+    public HeaderType createHeaderType() {
+        return new HeaderType();
     }
 
     /**
@@ -699,27 +499,235 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Asset }
+     * Create an instance of {@link WorkTimeSchedule2 .ScheduleInterval }
      * 
      */
-    public Asset createAsset() {
-        return new Asset();
+    public WorkTimeSchedule2 .ScheduleInterval createWorkTimeSchedule2ScheduleInterval() {
+        return new WorkTimeSchedule2 .ScheduleInterval();
     }
 
     /**
-     * Create an instance of {@link MaintenanceOrdersPayloadType }
+     * Create an instance of {@link NameType3 }
      * 
      */
-    public MaintenanceOrdersPayloadType createMaintenanceOrdersPayloadType() {
-        return new MaintenanceOrdersPayloadType();
+    public NameType3 createNameType3() {
+        return new NameType3();
     }
 
     /**
-     * Create an instance of {@link ReplayDetectionType }
+     * Create an instance of {@link NameTypeAuthority2 }
      * 
      */
-    public ReplayDetectionType createReplayDetectionType() {
-        return new ReplayDetectionType();
+    public NameTypeAuthority2 createNameTypeAuthority2() {
+        return new NameTypeAuthority2();
+    }
+
+    /**
+     * Create an instance of {@link Asset2 .Procedures.Measurements }
+     * 
+     */
+    public Asset2 .Procedures.Measurements createAsset2ProceduresMeasurements() {
+        return new Asset2 .Procedures.Measurements();
+    }
+
+    /**
+     * Create an instance of {@link Crew }
+     * 
+     */
+    public Crew createCrew() {
+        return new Crew();
+    }
+
+    /**
+     * Create an instance of {@link AssetLocationHazard2 }
+     * 
+     */
+    public AssetLocationHazard2 createAssetLocationHazard2() {
+        return new AssetLocationHazard2();
+    }
+
+    /**
+     * Create an instance of {@link WorkAsset.Procedures.Measurements }
+     * 
+     */
+    public WorkAsset.Procedures.Measurements createWorkAssetProceduresMeasurements() {
+        return new WorkAsset.Procedures.Measurements();
+    }
+
+    /**
+     * Create an instance of {@link PayloadType }
+     * 
+     */
+    public PayloadType createPayloadType() {
+        return new PayloadType();
+    }
+
+    /**
+     * Create an instance of {@link Organisation2 .StreetAddress.TownDetail }
+     * 
+     */
+    public Organisation2 .StreetAddress.TownDetail createOrganisation2StreetAddressTownDetail() {
+        return new Organisation2 .StreetAddress.TownDetail();
+    }
+
+    /**
+     * Create an instance of {@link MaintenanceOrder2 }
+     * 
+     */
+    public MaintenanceOrder2 createMaintenanceOrder2() {
+        return new MaintenanceOrder2();
+    }
+
+    /**
+     * Create an instance of {@link GetMaintenanceOrdersResponseType }
+     * 
+     */
+    public GetMaintenanceOrdersResponseType createGetMaintenanceOrdersResponseType() {
+        return new GetMaintenanceOrdersResponseType();
+    }
+
+    /**
+     * Create an instance of {@link ResponseMessageType }
+     * 
+     */
+    public ResponseMessageType createResponseMessageType() {
+        return new ResponseMessageType();
+    }
+
+    /**
+     * Create an instance of {@link WorkLocation2 .CoordinateSystem }
+     * 
+     */
+    public WorkLocation2 .CoordinateSystem createWorkLocation2CoordinateSystem() {
+        return new WorkLocation2 .CoordinateSystem();
+    }
+
+    /**
+     * Create an instance of {@link TelephoneNumber }
+     * 
+     */
+    public TelephoneNumber createTelephoneNumber() {
+        return new TelephoneNumber();
+    }
+
+    /**
+     * Create an instance of {@link ReplyType }
+     * 
+     */
+    public ReplyType createReplyType() {
+        return new ReplyType();
+    }
+
+    /**
+     * Create an instance of {@link WorkAsset.Procedures }
+     * 
+     */
+    public WorkAsset.Procedures createWorkAssetProcedures() {
+        return new WorkAsset.Procedures();
+    }
+
+    /**
+     * Create an instance of {@link Work2 }
+     * 
+     */
+    public Work2 createWork2() {
+        return new Work2();
+    }
+
+    /**
+     * Create an instance of {@link WorkTimeSchedule2 }
+     * 
+     */
+    public WorkTimeSchedule2 createWorkTimeSchedule2() {
+        return new WorkTimeSchedule2();
+    }
+
+    /**
+     * Create an instance of {@link ReplyType.ID }
+     * 
+     */
+    public ReplyType.ID createReplyTypeID() {
+        return new ReplyType.ID();
+    }
+
+    /**
+     * Create an instance of {@link ActivityRecord }
+     * 
+     */
+    public ActivityRecord createActivityRecord() {
+        return new ActivityRecord();
+    }
+
+    /**
+     * Create an instance of {@link ActivityRecord2 }
+     * 
+     */
+    public ActivityRecord2 createActivityRecord2() {
+        return new ActivityRecord2();
+    }
+
+    /**
+     * Create an instance of {@link Name }
+     * 
+     */
+    public Name createName() {
+        return new Name();
+    }
+
+    /**
+     * Create an instance of {@link AssetLocationHazard }
+     * 
+     */
+    public AssetLocationHazard createAssetLocationHazard() {
+        return new AssetLocationHazard();
+    }
+
+    /**
+     * Create an instance of {@link WorkLocation2 }
+     * 
+     */
+    public WorkLocation2 createWorkLocation2() {
+        return new WorkLocation2();
+    }
+
+    /**
+     * Create an instance of {@link WorkLocation.MainAddress.TownDetail }
+     * 
+     */
+    public WorkLocation.MainAddress.TownDetail createWorkLocationMainAddressTownDetail() {
+        return new WorkLocation.MainAddress.TownDetail();
+    }
+
+    /**
+     * Create an instance of {@link PayloadType.ID }
+     * 
+     */
+    public PayloadType.ID createPayloadTypeID() {
+        return new PayloadType.ID();
+    }
+
+    /**
+     * Create an instance of {@link WorkTask.MaterialItems.Quantity }
+     * 
+     */
+    public WorkTask.MaterialItems.Quantity createWorkTaskMaterialItemsQuantity() {
+        return new WorkTask.MaterialItems.Quantity();
+    }
+
+    /**
+     * Create an instance of {@link WorkLocation.MainAddress.StreetDetail }
+     * 
+     */
+    public WorkLocation.MainAddress.StreetDetail createWorkLocationMainAddressStreetDetail() {
+        return new WorkLocation.MainAddress.StreetDetail();
+    }
+
+    /**
+     * Create an instance of {@link WorkLocation2 .PositionPoints }
+     * 
+     */
+    public WorkLocation2 .PositionPoints createWorkLocation2PositionPoints() {
+        return new WorkLocation2 .PositionPoints();
     }
 
     /**
@@ -728,14 +736,6 @@ public class ObjectFactory {
      */
     public Asset2 .Procedures createAsset2Procedures() {
         return new Asset2 .Procedures();
-    }
-
-    /**
-     * Create an instance of {@link MaintenanceOrder }
-     * 
-     */
-    public MaintenanceOrder createMaintenanceOrder() {
-        return new MaintenanceOrder();
     }
 
     /**
@@ -784,21 +784,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetMaintenanceOrdersResponseMessageType }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://iec.ch/TC57/2015/GetMaintenanceOrdersMessage", name = "GetMaintenanceOrdersResponseMessage")
-    public JAXBElement<GetMaintenanceOrdersResponseMessageType> createGetMaintenanceOrdersResponseMessage(GetMaintenanceOrdersResponseMessageType value) {
-        return new JAXBElement<GetMaintenanceOrdersResponseMessageType>(_GetMaintenanceOrdersResponseMessage_QNAME, GetMaintenanceOrdersResponseMessageType.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link MaintenanceOrders }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://iec.ch/TC57/2015/MaintenanceOrders#", name = "MaintenanceOrders")
     public JAXBElement<MaintenanceOrders> createMaintenanceOrders(MaintenanceOrders value) {
         return new JAXBElement<MaintenanceOrders>(_MaintenanceOrders_QNAME, MaintenanceOrders.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetMaintenanceOrdersResponseMessageType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iec.ch/TC57/2015/GetMaintenanceOrdersMessage", name = "GetMaintenanceOrdersResponseMessage")
+    public JAXBElement<GetMaintenanceOrdersResponseMessageType> createGetMaintenanceOrdersResponseMessage(GetMaintenanceOrdersResponseMessageType value) {
+        return new JAXBElement<GetMaintenanceOrdersResponseMessageType>(_GetMaintenanceOrdersResponseMessage_QNAME, GetMaintenanceOrdersResponseMessageType.class, null, value);
     }
 
     /**

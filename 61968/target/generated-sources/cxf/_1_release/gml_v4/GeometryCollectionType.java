@@ -49,9 +49,9 @@ public class GeometryCollectionType
 {
 
     @XmlElements({
+        @XmlElement(name = "pointMember", type = PointMemberType.class),
         @XmlElement(name = "geometryMember"),
         @XmlElement(name = "polygonMember", type = PolygonMemberType.class),
-        @XmlElement(name = "pointMember", type = PointMemberType.class),
         @XmlElement(name = "lineStringMember", type = LineStringMemberType.class)
     })
     protected List<GeometryAssociationType> polygonMemberOrPointMemberOrGeometryMember;
@@ -74,9 +74,9 @@ public class GeometryCollectionType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
+     * {@link PointMemberType }
      * {@link GeometryAssociationType }
      * {@link PolygonMemberType }
-     * {@link PointMemberType }
      * {@link LineStringMemberType }
      * 
      * 

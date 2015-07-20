@@ -8,8 +8,7 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * Authority responsible for creation and management of
- * names of a given type; typically an organization or an enterprise system.
+ * From CIM
  * 
  * <p>Java class for NameTypeAuthority complex type.
  * 
@@ -20,8 +19,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,39 +30,15 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "NameTypeAuthority", namespace = "http://iec.ch/TC57/2015/MaintenanceOrders#", propOrder = {
-    "description",
-    "name"
+@XmlType(name = "NameTypeAuthority", propOrder = {
+    "name",
+    "description"
 })
 public class NameTypeAuthority2 {
 
-    protected String description;
     @XmlElement(required = true)
     protected String name;
-
-    /**
-     * Gets the value of the description property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDescription() {
-        return description;
-    }
-
-    /**
-     * Sets the value of the description property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDescription(String value) {
-        this.description = value;
-    }
+    protected String description;
 
     /**
      * Gets the value of the name property.
@@ -87,6 +62,30 @@ public class NameTypeAuthority2 {
      */
     public void setName(String value) {
         this.name = value;
+    }
+
+    /**
+     * Gets the value of the description property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * Sets the value of the description property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDescription(String value) {
+        this.description = value;
     }
 
 }

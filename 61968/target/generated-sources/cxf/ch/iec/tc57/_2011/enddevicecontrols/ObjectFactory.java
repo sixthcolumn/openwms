@@ -34,131 +34,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PanPricingDetail }
+     * Create an instance of {@link EndDeviceControl.UsagePointGroups }
      * 
      */
-    public PanPricingDetail createPanPricingDetail() {
-        return new PanPricingDetail();
-    }
-
-    /**
-     * Create an instance of {@link EndDeviceControl.UsagePointGroups.Names.NameType }
-     * 
-     */
-    public EndDeviceControl.UsagePointGroups.Names.NameType createEndDeviceControlUsagePointGroupsNamesNameType() {
-        return new EndDeviceControl.UsagePointGroups.Names.NameType();
-    }
-
-    /**
-     * Create an instance of {@link EndDeviceGroup }
-     * 
-     */
-    public EndDeviceGroup createEndDeviceGroup() {
-        return new EndDeviceGroup();
-    }
-
-    /**
-     * Create an instance of {@link PanDemandResponse }
-     * 
-     */
-    public PanDemandResponse createPanDemandResponse() {
-        return new PanDemandResponse();
-    }
-
-    /**
-     * Create an instance of {@link EndDeviceControl.EndDevices.Names }
-     * 
-     */
-    public EndDeviceControl.EndDevices.Names createEndDeviceControlEndDevicesNames() {
-        return new EndDeviceControl.EndDevices.Names();
-    }
-
-    /**
-     * Create an instance of {@link EndDeviceControl.EndDeviceControlType }
-     * 
-     */
-    public EndDeviceControl.EndDeviceControlType createEndDeviceControlEndDeviceControlType() {
-        return new EndDeviceControl.EndDeviceControlType();
-    }
-
-    /**
-     * Create an instance of {@link ControlledAppliance }
-     * 
-     */
-    public ControlledAppliance createControlledAppliance() {
-        return new ControlledAppliance();
-    }
-
-    /**
-     * Create an instance of {@link EndDeviceControl.UsagePointGroups.Names.NameType.NameTypeAuthority }
-     * 
-     */
-    public EndDeviceControl.UsagePointGroups.Names.NameType.NameTypeAuthority createEndDeviceControlUsagePointGroupsNamesNameTypeNameTypeAuthority() {
-        return new EndDeviceControl.UsagePointGroups.Names.NameType.NameTypeAuthority();
-    }
-
-    /**
-     * Create an instance of {@link EndDeviceControl.EndDevices }
-     * 
-     */
-    public EndDeviceControl.EndDevices createEndDeviceControlEndDevices() {
-        return new EndDeviceControl.EndDevices();
-    }
-
-    /**
-     * Create an instance of {@link EndDeviceControls }
-     * 
-     */
-    public EndDeviceControls createEndDeviceControls() {
-        return new EndDeviceControls();
-    }
-
-    /**
-     * Create an instance of {@link ch.iec.tc57._2011.enddevicecontrols.EndDeviceControlType }
-     * 
-     */
-    public ch.iec.tc57._2011.enddevicecontrols.EndDeviceControlType createEndDeviceControlType() {
-        return new ch.iec.tc57._2011.enddevicecontrols.EndDeviceControlType();
-    }
-
-    /**
-     * Create an instance of {@link DateTimeInterval }
-     * 
-     */
-    public DateTimeInterval createDateTimeInterval() {
-        return new DateTimeInterval();
-    }
-
-    /**
-     * Create an instance of {@link PanPricing }
-     * 
-     */
-    public PanPricing createPanPricing() {
-        return new PanPricing();
-    }
-
-    /**
-     * Create an instance of {@link EndDeviceControl.UsagePoints.Names.NameType.NameTypeAuthority }
-     * 
-     */
-    public EndDeviceControl.UsagePoints.Names.NameType.NameTypeAuthority createEndDeviceControlUsagePointsNamesNameTypeNameTypeAuthority() {
-        return new EndDeviceControl.UsagePoints.Names.NameType.NameTypeAuthority();
-    }
-
-    /**
-     * Create an instance of {@link EndDeviceControl.UsagePoints }
-     * 
-     */
-    public EndDeviceControl.UsagePoints createEndDeviceControlUsagePoints() {
-        return new EndDeviceControl.UsagePoints();
-    }
-
-    /**
-     * Create an instance of {@link EndDeviceControl }
-     * 
-     */
-    public EndDeviceControl createEndDeviceControl() {
-        return new EndDeviceControl();
+    public EndDeviceControl.UsagePointGroups createEndDeviceControlUsagePointGroups() {
+        return new EndDeviceControl.UsagePointGroups();
     }
 
     /**
@@ -170,19 +50,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link EndDeviceControl.UsagePointGroups }
+     * Create an instance of {@link EndDeviceControl.UsagePoints.Names.NameType.NameTypeAuthority }
      * 
      */
-    public EndDeviceControl.UsagePointGroups createEndDeviceControlUsagePointGroups() {
-        return new EndDeviceControl.UsagePointGroups();
+    public EndDeviceControl.UsagePoints.Names.NameType.NameTypeAuthority createEndDeviceControlUsagePointsNamesNameTypeNameTypeAuthority() {
+        return new EndDeviceControl.UsagePoints.Names.NameType.NameTypeAuthority();
     }
 
     /**
-     * Create an instance of {@link EndDeviceControl.EndDevices.Names.NameType }
+     * Create an instance of {@link EndDeviceControls }
      * 
      */
-    public EndDeviceControl.EndDevices.Names.NameType createEndDeviceControlEndDevicesNamesNameType() {
-        return new EndDeviceControl.EndDevices.Names.NameType();
+    public EndDeviceControls createEndDeviceControls() {
+        return new EndDeviceControls();
+    }
+
+    /**
+     * Create an instance of {@link EndDeviceControl.EndDevices }
+     * 
+     */
+    public EndDeviceControl.EndDevices createEndDeviceControlEndDevices() {
+        return new EndDeviceControl.EndDevices();
+    }
+
+    /**
+     * Create an instance of {@link PanDisplay }
+     * 
+     */
+    public PanDisplay createPanDisplay() {
+        return new PanDisplay();
     }
 
     /**
@@ -194,27 +90,83 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ch.iec.tc57._2011.enddevicecontrols.NameTypeAuthority }
+     * Create an instance of {@link EndDeviceControl.UsagePoints }
      * 
      */
-    public ch.iec.tc57._2011.enddevicecontrols.NameTypeAuthority createNameTypeAuthority() {
-        return new ch.iec.tc57._2011.enddevicecontrols.NameTypeAuthority();
+    public EndDeviceControl.UsagePoints createEndDeviceControlUsagePoints() {
+        return new EndDeviceControl.UsagePoints();
     }
 
     /**
-     * Create an instance of {@link Name }
+     * Create an instance of {@link EndDeviceControl.UsagePointGroups.Names.NameType }
      * 
      */
-    public Name createName() {
-        return new Name();
+    public EndDeviceControl.UsagePointGroups.Names.NameType createEndDeviceControlUsagePointGroupsNamesNameType() {
+        return new EndDeviceControl.UsagePointGroups.Names.NameType();
     }
 
     /**
-     * Create an instance of {@link EndDeviceControl.UsagePoints.Names.NameType }
+     * Create an instance of {@link PanDemandResponse }
      * 
      */
-    public EndDeviceControl.UsagePoints.Names.NameType createEndDeviceControlUsagePointsNamesNameType() {
-        return new EndDeviceControl.UsagePoints.Names.NameType();
+    public PanDemandResponse createPanDemandResponse() {
+        return new PanDemandResponse();
+    }
+
+    /**
+     * Create an instance of {@link EndDeviceControl }
+     * 
+     */
+    public EndDeviceControl createEndDeviceControl() {
+        return new EndDeviceControl();
+    }
+
+    /**
+     * Create an instance of {@link PanPricing }
+     * 
+     */
+    public PanPricing createPanPricing() {
+        return new PanPricing();
+    }
+
+    /**
+     * Create an instance of {@link EndDeviceGroup }
+     * 
+     */
+    public EndDeviceGroup createEndDeviceGroup() {
+        return new EndDeviceGroup();
+    }
+
+    /**
+     * Create an instance of {@link EndDeviceControl.EndDevices.Names.NameType }
+     * 
+     */
+    public EndDeviceControl.EndDevices.Names.NameType createEndDeviceControlEndDevicesNamesNameType() {
+        return new EndDeviceControl.EndDevices.Names.NameType();
+    }
+
+    /**
+     * Create an instance of {@link PanPricingDetail }
+     * 
+     */
+    public PanPricingDetail createPanPricingDetail() {
+        return new PanPricingDetail();
+    }
+
+    /**
+     * Create an instance of {@link EndDeviceTiming }
+     * 
+     */
+    public EndDeviceTiming createEndDeviceTiming() {
+        return new EndDeviceTiming();
+    }
+
+    /**
+     * Create an instance of {@link EndDeviceAction }
+     * 
+     */
+    public EndDeviceAction createEndDeviceAction() {
+        return new EndDeviceAction();
     }
 
     /**
@@ -234,22 +186,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link EndDeviceTiming }
-     * 
-     */
-    public EndDeviceTiming createEndDeviceTiming() {
-        return new EndDeviceTiming();
-    }
-
-    /**
-     * Create an instance of {@link PanDisplay }
-     * 
-     */
-    public PanDisplay createPanDisplay() {
-        return new PanDisplay();
-    }
-
-    /**
      * Create an instance of {@link EndDeviceControl.UsagePointGroups.Names }
      * 
      */
@@ -258,11 +194,75 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link EndDeviceAction }
+     * Create an instance of {@link ControlledAppliance }
      * 
      */
-    public EndDeviceAction createEndDeviceAction() {
-        return new EndDeviceAction();
+    public ControlledAppliance createControlledAppliance() {
+        return new ControlledAppliance();
+    }
+
+    /**
+     * Create an instance of {@link EndDeviceControl.EndDeviceControlType }
+     * 
+     */
+    public EndDeviceControl.EndDeviceControlType createEndDeviceControlEndDeviceControlType() {
+        return new EndDeviceControl.EndDeviceControlType();
+    }
+
+    /**
+     * Create an instance of {@link ch.iec.tc57._2011.enddevicecontrols.NameTypeAuthority }
+     * 
+     */
+    public ch.iec.tc57._2011.enddevicecontrols.NameTypeAuthority createNameTypeAuthority() {
+        return new ch.iec.tc57._2011.enddevicecontrols.NameTypeAuthority();
+    }
+
+    /**
+     * Create an instance of {@link ch.iec.tc57._2011.enddevicecontrols.EndDeviceControlType }
+     * 
+     */
+    public ch.iec.tc57._2011.enddevicecontrols.EndDeviceControlType createEndDeviceControlType() {
+        return new ch.iec.tc57._2011.enddevicecontrols.EndDeviceControlType();
+    }
+
+    /**
+     * Create an instance of {@link EndDeviceControl.UsagePointGroups.Names.NameType.NameTypeAuthority }
+     * 
+     */
+    public EndDeviceControl.UsagePointGroups.Names.NameType.NameTypeAuthority createEndDeviceControlUsagePointGroupsNamesNameTypeNameTypeAuthority() {
+        return new EndDeviceControl.UsagePointGroups.Names.NameType.NameTypeAuthority();
+    }
+
+    /**
+     * Create an instance of {@link Name }
+     * 
+     */
+    public Name createName() {
+        return new Name();
+    }
+
+    /**
+     * Create an instance of {@link DateTimeInterval }
+     * 
+     */
+    public DateTimeInterval createDateTimeInterval() {
+        return new DateTimeInterval();
+    }
+
+    /**
+     * Create an instance of {@link EndDeviceControl.EndDevices.Names }
+     * 
+     */
+    public EndDeviceControl.EndDevices.Names createEndDeviceControlEndDevicesNames() {
+        return new EndDeviceControl.EndDevices.Names();
+    }
+
+    /**
+     * Create an instance of {@link EndDeviceControl.UsagePoints.Names.NameType }
+     * 
+     */
+    public EndDeviceControl.UsagePoints.Names.NameType createEndDeviceControlUsagePointsNamesNameType() {
+        return new EndDeviceControl.UsagePoints.Names.NameType();
     }
 
     /**

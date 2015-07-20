@@ -46,9 +46,9 @@ import org.multispeak.v5.WorkItemRef;
     "value"
 })
 @XmlSeeAlso({
+    NetworkModelRef.class,
     ConduitContentsRef.class,
-    WorkItemRef.class,
-    NetworkModelRef.class
+    WorkItemRef.class
 })
 public class ObjectRef {
 

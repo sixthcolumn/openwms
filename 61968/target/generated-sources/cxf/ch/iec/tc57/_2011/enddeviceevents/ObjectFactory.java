@@ -34,11 +34,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ch.iec.tc57._2011.enddeviceevents.UsagePoint }
+     * Create an instance of {@link EndDeviceEvent.EndDeviceEventDetails }
      * 
      */
-    public ch.iec.tc57._2011.enddeviceevents.UsagePoint createUsagePoint() {
-        return new ch.iec.tc57._2011.enddeviceevents.UsagePoint();
+    public EndDeviceEvent.EndDeviceEventDetails createEndDeviceEventEndDeviceEventDetails() {
+        return new EndDeviceEvent.EndDeviceEventDetails();
     }
 
     /**
@@ -50,35 +50,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link EndDeviceEvent.UsagePoint.Names }
+     * Create an instance of {@link EndDeviceEvent }
      * 
      */
-    public EndDeviceEvent.UsagePoint.Names createEndDeviceEventUsagePointNames() {
-        return new EndDeviceEvent.UsagePoint.Names();
-    }
-
-    /**
-     * Create an instance of {@link ch.iec.tc57._2011.enddeviceevents.NameTypeAuthority }
-     * 
-     */
-    public ch.iec.tc57._2011.enddeviceevents.NameTypeAuthority createNameTypeAuthority() {
-        return new ch.iec.tc57._2011.enddeviceevents.NameTypeAuthority();
-    }
-
-    /**
-     * Create an instance of {@link EndDeviceEvent.UsagePoint.Names.NameType }
-     * 
-     */
-    public EndDeviceEvent.UsagePoint.Names.NameType createEndDeviceEventUsagePointNamesNameType() {
-        return new EndDeviceEvent.UsagePoint.Names.NameType();
-    }
-
-    /**
-     * Create an instance of {@link Name }
-     * 
-     */
-    public Name createName() {
-        return new Name();
+    public EndDeviceEvent createEndDeviceEvent() {
+        return new EndDeviceEvent();
     }
 
     /**
@@ -90,43 +66,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link EndDeviceEvent.UsagePoint.Names.NameType.NameTypeAuthority }
+     * Create an instance of {@link EndDeviceEvent.UsagePoint.Names.NameType }
      * 
      */
-    public EndDeviceEvent.UsagePoint.Names.NameType.NameTypeAuthority createEndDeviceEventUsagePointNamesNameTypeNameTypeAuthority() {
-        return new EndDeviceEvent.UsagePoint.Names.NameType.NameTypeAuthority();
-    }
-
-    /**
-     * Create an instance of {@link EndDeviceEvent.Status }
-     * 
-     */
-    public EndDeviceEvent.Status createEndDeviceEventStatus() {
-        return new EndDeviceEvent.Status();
-    }
-
-    /**
-     * Create an instance of {@link EndDeviceEvent.UsagePoint }
-     * 
-     */
-    public EndDeviceEvent.UsagePoint createEndDeviceEventUsagePoint() {
-        return new EndDeviceEvent.UsagePoint();
-    }
-
-    /**
-     * Create an instance of {@link EndDeviceEvent.EndDeviceEventDetails }
-     * 
-     */
-    public EndDeviceEvent.EndDeviceEventDetails createEndDeviceEventEndDeviceEventDetails() {
-        return new EndDeviceEvent.EndDeviceEventDetails();
-    }
-
-    /**
-     * Create an instance of {@link ch.iec.tc57._2011.enddeviceevents.EndDeviceEventType }
-     * 
-     */
-    public ch.iec.tc57._2011.enddeviceevents.EndDeviceEventType createEndDeviceEventType() {
-        return new ch.iec.tc57._2011.enddeviceevents.EndDeviceEventType();
+    public EndDeviceEvent.UsagePoint.Names.NameType createEndDeviceEventUsagePointNamesNameType() {
+        return new EndDeviceEvent.UsagePoint.Names.NameType();
     }
 
     /**
@@ -138,11 +82,67 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link EndDeviceEvent }
+     * Create an instance of {@link ch.iec.tc57._2011.enddeviceevents.EndDeviceEventType }
      * 
      */
-    public EndDeviceEvent createEndDeviceEvent() {
-        return new EndDeviceEvent();
+    public ch.iec.tc57._2011.enddeviceevents.EndDeviceEventType createEndDeviceEventType() {
+        return new ch.iec.tc57._2011.enddeviceevents.EndDeviceEventType();
+    }
+
+    /**
+     * Create an instance of {@link EndDeviceEvent.UsagePoint.Names.NameType.NameTypeAuthority }
+     * 
+     */
+    public EndDeviceEvent.UsagePoint.Names.NameType.NameTypeAuthority createEndDeviceEventUsagePointNamesNameTypeNameTypeAuthority() {
+        return new EndDeviceEvent.UsagePoint.Names.NameType.NameTypeAuthority();
+    }
+
+    /**
+     * Create an instance of {@link Name }
+     * 
+     */
+    public Name createName() {
+        return new Name();
+    }
+
+    /**
+     * Create an instance of {@link ch.iec.tc57._2011.enddeviceevents.NameTypeAuthority }
+     * 
+     */
+    public ch.iec.tc57._2011.enddeviceevents.NameTypeAuthority createNameTypeAuthority() {
+        return new ch.iec.tc57._2011.enddeviceevents.NameTypeAuthority();
+    }
+
+    /**
+     * Create an instance of {@link ch.iec.tc57._2011.enddeviceevents.UsagePoint }
+     * 
+     */
+    public ch.iec.tc57._2011.enddeviceevents.UsagePoint createUsagePoint() {
+        return new ch.iec.tc57._2011.enddeviceevents.UsagePoint();
+    }
+
+    /**
+     * Create an instance of {@link EndDeviceEvent.UsagePoint }
+     * 
+     */
+    public EndDeviceEvent.UsagePoint createEndDeviceEventUsagePoint() {
+        return new EndDeviceEvent.UsagePoint();
+    }
+
+    /**
+     * Create an instance of {@link EndDeviceEvent.Status }
+     * 
+     */
+    public EndDeviceEvent.Status createEndDeviceEventStatus() {
+        return new EndDeviceEvent.Status();
+    }
+
+    /**
+     * Create an instance of {@link EndDeviceEvent.UsagePoint.Names }
+     * 
+     */
+    public EndDeviceEvent.UsagePoint.Names createEndDeviceEventUsagePointNames() {
+        return new EndDeviceEvent.UsagePoint.Names();
     }
 
     /**

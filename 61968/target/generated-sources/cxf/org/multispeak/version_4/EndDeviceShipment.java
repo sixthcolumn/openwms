@@ -56,22 +56,22 @@ public class EndDeviceShipment
 {
 
     @XmlElementRefs({
-        @XmlElementRef(name = "transponderIDRange", namespace = "http://www.multispeak.org/Version_4.1_Release", type = JAXBElement.class),
-        @XmlElementRef(name = "receivedCDDevices", namespace = "http://www.multispeak.org/Version_4.1_Release", type = JAXBElement.class),
-        @XmlElementRef(name = "recipient", namespace = "http://www.multispeak.org/Version_4.1_Release", type = JAXBElement.class),
-        @XmlElementRef(name = "shippedDate", namespace = "http://www.multispeak.org/Version_4.1_Release", type = JAXBElement.class),
-        @XmlElementRef(name = "receivedPropaneMeters", namespace = "http://www.multispeak.org/Version_4.1_Release", type = JAXBElement.class),
-        @XmlElementRef(name = "manufacturer", namespace = "http://www.multispeak.org/Version_4.1_Release", type = JAXBElement.class),
         @XmlElementRef(name = "receivedWaterMeters", namespace = "http://www.multispeak.org/Version_4.1_Release", type = JAXBElement.class),
-        @XmlElementRef(name = "receivedModules", namespace = "http://www.multispeak.org/Version_4.1_Release", type = JAXBElement.class),
-        @XmlElementRef(name = "receivedDate", namespace = "http://www.multispeak.org/Version_4.1_Release", type = JAXBElement.class),
-        @XmlElementRef(name = "poReferenceNumber", namespace = "http://www.multispeak.org/Version_4.1_Release", type = JAXBElement.class),
-        @XmlElementRef(name = "receivedLoadManagementDevices", namespace = "http://www.multispeak.org/Version_4.1_Release", type = JAXBElement.class),
-        @XmlElementRef(name = "shippedToAddress", namespace = "http://www.multispeak.org/Version_4.1_Release", type = JAXBElement.class),
-        @XmlElementRef(name = "utility", namespace = "http://www.multispeak.org/Version_4.1_Release", type = JAXBElement.class),
         @XmlElementRef(name = "shippingTicketNumber", namespace = "http://www.multispeak.org/Version_4.1_Release", type = JAXBElement.class),
+        @XmlElementRef(name = "shippedToAddress", namespace = "http://www.multispeak.org/Version_4.1_Release", type = JAXBElement.class),
+        @XmlElementRef(name = "manufacturer", namespace = "http://www.multispeak.org/Version_4.1_Release", type = JAXBElement.class),
+        @XmlElementRef(name = "transponderIDRange", namespace = "http://www.multispeak.org/Version_4.1_Release", type = JAXBElement.class),
         @XmlElementRef(name = "receivedElectricMeters", namespace = "http://www.multispeak.org/Version_4.1_Release", type = JAXBElement.class),
-        @XmlElementRef(name = "receivedGasMeters", namespace = "http://www.multispeak.org/Version_4.1_Release", type = JAXBElement.class)
+        @XmlElementRef(name = "receivedDate", namespace = "http://www.multispeak.org/Version_4.1_Release", type = JAXBElement.class),
+        @XmlElementRef(name = "receivedPropaneMeters", namespace = "http://www.multispeak.org/Version_4.1_Release", type = JAXBElement.class),
+        @XmlElementRef(name = "receivedCDDevices", namespace = "http://www.multispeak.org/Version_4.1_Release", type = JAXBElement.class),
+        @XmlElementRef(name = "receivedLoadManagementDevices", namespace = "http://www.multispeak.org/Version_4.1_Release", type = JAXBElement.class),
+        @XmlElementRef(name = "receivedModules", namespace = "http://www.multispeak.org/Version_4.1_Release", type = JAXBElement.class),
+        @XmlElementRef(name = "shippedDate", namespace = "http://www.multispeak.org/Version_4.1_Release", type = JAXBElement.class),
+        @XmlElementRef(name = "recipient", namespace = "http://www.multispeak.org/Version_4.1_Release", type = JAXBElement.class),
+        @XmlElementRef(name = "receivedGasMeters", namespace = "http://www.multispeak.org/Version_4.1_Release", type = JAXBElement.class),
+        @XmlElementRef(name = "utility", namespace = "http://www.multispeak.org/Version_4.1_Release", type = JAXBElement.class),
+        @XmlElementRef(name = "poReferenceNumber", namespace = "http://www.multispeak.org/Version_4.1_Release", type = JAXBElement.class)
     })
     protected List<JAXBElement<?>> rest;
 
@@ -81,8 +81,8 @@ public class EndDeviceShipment
      * <p>
      * You are getting this "catch-all" property because of the following reason: 
      * The field name "Utility" is used by two different parts of a schema. See: 
-     * line 7766 of file:/Users/BenGoodwin/git/opentemp/openwms/61968/wsdl/cb_server_special.wsdl
-     * line 65 of file:/Users/BenGoodwin/git/opentemp/openwms/61968/wsdl/cb_server_special.wsdl
+     * line 7766 of file:/Users/BenGoodwin/git/opentemp2/openwms/61968/wsdl/cb_server_special.wsdl
+     * line 65 of file:/Users/BenGoodwin/git/opentemp2/openwms/61968/wsdl/cb_server_special.wsdl
      * <p>
      * To get rid of this property, apply a property customization to one 
      * of both of the following declarations to change their names: 
@@ -103,22 +103,22 @@ public class EndDeviceShipment
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link TransponderIDRange }{@code >}
-     * {@link JAXBElement }{@code <}{@link ArrayOfCDDevice }{@code >}
+     * {@link JAXBElement }{@code <}{@link ArrayOfReceivedWaterMeter }{@code >}
      * {@link JAXBElement }{@code <}{@link String }{@code >}
+     * {@link JAXBElement }{@code <}{@link Address }{@code >}
+     * {@link JAXBElement }{@code <}{@link String }{@code >}
+     * {@link JAXBElement }{@code <}{@link TransponderIDRange }{@code >}
+     * {@link JAXBElement }{@code <}{@link ArrayOfReceivedElectricMeter }{@code >}
      * {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}
      * {@link JAXBElement }{@code <}{@link ArrayOfReceivedPropaneMeter }{@code >}
-     * {@link JAXBElement }{@code <}{@link String }{@code >}
-     * {@link JAXBElement }{@code <}{@link ArrayOfReceivedWaterMeter }{@code >}
+     * {@link JAXBElement }{@code <}{@link ArrayOfCDDevice }{@code >}
+     * {@link JAXBElement }{@code <}{@link ArrayOfLoadManagementDevice }{@code >}
      * {@link JAXBElement }{@code <}{@link ArrayOfModule }{@code >}
      * {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}
      * {@link JAXBElement }{@code <}{@link String }{@code >}
-     * {@link JAXBElement }{@code <}{@link ArrayOfLoadManagementDevice }{@code >}
-     * {@link JAXBElement }{@code <}{@link Address }{@code >}
-     * {@link JAXBElement }{@code <}{@link ArrayOfReceivedElectricMeter }{@code >}
-     * {@link JAXBElement }{@code <}{@link String }{@code >}
-     * {@link JAXBElement }{@code <}{@link String }{@code >}
      * {@link JAXBElement }{@code <}{@link ArrayOfReceivedGasMeter }{@code >}
+     * {@link JAXBElement }{@code <}{@link String }{@code >}
+     * {@link JAXBElement }{@code <}{@link String }{@code >}
      * 
      * 
      */

@@ -43,7 +43,7 @@ public class ObjectType {
     @XmlElement(name = "mRID")
     protected String mrid;
     @XmlElement(name = "Name")
-    protected List<Name2> name;
+    protected List<Name> name;
     protected String objectType;
 
     /**
@@ -88,13 +88,13 @@ public class ObjectType {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Name2 }
+     * {@link Name }
      * 
      * 
      */
-    public List<Name2> getName() {
+    public List<Name> getName() {
         if (name == null) {
-            name = new ArrayList<Name2>();
+            name = new ArrayList<Name>();
         }
         return this.name;
     }

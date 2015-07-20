@@ -42,11 +42,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MeterReadingsPayload }
+     * Create an instance of {@link MeterReadSchedulePayload }
      * 
      */
-    public MeterReadingsPayload createMeterReadingsPayload() {
-        return new MeterReadingsPayload();
+    public MeterReadSchedulePayload createMeterReadSchedulePayload() {
+        return new MeterReadSchedulePayload();
+    }
+
+    /**
+     * Create an instance of {@link EndDeviceEventsPayload }
+     * 
+     */
+    public EndDeviceEventsPayload createEndDeviceEventsPayload() {
+        return new EndDeviceEventsPayload();
     }
 
     /**
@@ -66,19 +74,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MeterReadSchedulePayload }
+     * Create an instance of {@link MeterReadingsPayload }
      * 
      */
-    public MeterReadSchedulePayload createMeterReadSchedulePayload() {
-        return new MeterReadSchedulePayload();
-    }
-
-    /**
-     * Create an instance of {@link EndDeviceEventsPayload }
-     * 
-     */
-    public EndDeviceEventsPayload createEndDeviceEventsPayload() {
-        return new EndDeviceEventsPayload();
+    public MeterReadingsPayload createMeterReadingsPayload() {
+        return new MeterReadingsPayload();
     }
 
     /**

@@ -96,7 +96,7 @@ public class WorkAsset {
     @XmlElement(name = "Location")
     protected WorkLocation location;
     @XmlElement(name = "Names")
-    protected List<Name> names;
+    protected List<Name2> names;
     @XmlElement(name = "Procedures")
     protected List<WorkAsset.Procedures> procedures;
 
@@ -302,13 +302,13 @@ public class WorkAsset {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Name }
+     * {@link Name2 }
      * 
      * 
      */
-    public List<Name> getNames() {
+    public List<Name2> getNames() {
         if (names == null) {
-            names = new ArrayList<Name>();
+            names = new ArrayList<Name2>();
         }
         return this.names;
     }

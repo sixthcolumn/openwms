@@ -30,19 +30,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MultiSpeakResponseMsgHeader }
-     * 
-     */
-    public MultiSpeakResponseMsgHeader createMultiSpeakResponseMsgHeader() {
-        return new MultiSpeakResponseMsgHeader();
-    }
-
-    /**
      * Create an instance of {@link MultiSpeakResponseMsgHeader2 }
      * 
      */
     public MultiSpeakResponseMsgHeader2 createMultiSpeakResponseMsgHeader2() {
         return new MultiSpeakResponseMsgHeader2();
+    }
+
+    /**
+     * Create an instance of {@link MultiSpeakResponseMsgHeader }
+     * 
+     */
+    public MultiSpeakResponseMsgHeader createMultiSpeakResponseMsgHeader() {
+        return new MultiSpeakResponseMsgHeader();
     }
 
 }

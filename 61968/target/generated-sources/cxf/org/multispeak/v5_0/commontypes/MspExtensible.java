@@ -205,6 +205,19 @@ import org.multispeak.v5.WorkUnassignment;
     "extensionsList"
 })
 @XmlSeeAlso({
+    PhoneNumber.class,
+    GPSMetadata.class,
+    TelephoneNumber.class,
+    GraphicSymbol.class,
+    ContactInfo.class,
+    OtherContactItem.class,
+    EMailAddress.class,
+    UtilityInfo.class,
+    AddressItem.class,
+    DetailedAddressFields.class,
+    GPSLocation.class,
+    Address.class,
+    AllocatedLoad.class,
     CreditCardData.class,
     ServicePointStatus.class,
     PANDeviceRef.class,
@@ -374,20 +387,7 @@ import org.multispeak.v5.WorkUnassignment;
     RetryBehavior.class,
     Strategy.class,
     MspReferable.class,
-    WorkScheduleDetail.class,
-    PhoneNumber.class,
-    GPSMetadata.class,
-    TelephoneNumber.class,
-    GraphicSymbol.class,
-    ContactInfo.class,
-    OtherContactItem.class,
-    EMailAddress.class,
-    UtilityInfo.class,
-    AddressItem.class,
-    DetailedAddressFields.class,
-    GPSLocation.class,
-    Address.class,
-    AllocatedLoad.class
+    WorkScheduleDetail.class
 })
 public abstract class MspExtensible {
 

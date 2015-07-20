@@ -45,11 +45,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link EndDeviceEventsFaultMessageType }
+     * Create an instance of {@link EndDeviceEventsRequestMessageType }
      * 
      */
-    public EndDeviceEventsFaultMessageType createEndDeviceEventsFaultMessageType() {
-        return new EndDeviceEventsFaultMessageType();
+    public EndDeviceEventsRequestMessageType createEndDeviceEventsRequestMessageType() {
+        return new EndDeviceEventsRequestMessageType();
     }
 
     /**
@@ -61,11 +61,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link EndDeviceEventsRequestMessageType }
+     * Create an instance of {@link EndDeviceEventsEventMessageType }
      * 
      */
-    public EndDeviceEventsRequestMessageType createEndDeviceEventsRequestMessageType() {
-        return new EndDeviceEventsRequestMessageType();
+    public EndDeviceEventsEventMessageType createEndDeviceEventsEventMessageType() {
+        return new EndDeviceEventsEventMessageType();
     }
 
     /**
@@ -77,11 +77,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link EndDeviceEventsEventMessageType }
+     * Create an instance of {@link EndDeviceEventsFaultMessageType }
      * 
      */
-    public EndDeviceEventsEventMessageType createEndDeviceEventsEventMessageType() {
-        return new EndDeviceEventsEventMessageType();
+    public EndDeviceEventsFaultMessageType createEndDeviceEventsFaultMessageType() {
+        return new EndDeviceEventsFaultMessageType();
     }
 
     /**

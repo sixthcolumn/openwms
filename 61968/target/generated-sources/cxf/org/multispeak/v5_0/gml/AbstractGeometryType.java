@@ -39,12 +39,12 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AbstractGeometryType")
 @XmlSeeAlso({
-    LineStringType.class,
     LinearRingType.class,
     BoxType.class,
+    AbstractGeometryCollectionBaseType.class,
     PolygonType.class,
-    PointType.class,
-    AbstractGeometryCollectionBaseType.class
+    LineStringType.class,
+    PointType.class
 })
 public abstract class AbstractGeometryType {
 

@@ -44,13 +44,13 @@ import javax.xml.bind.annotation.XmlType;
 public class ResultingOutages {
 
     @XmlElements({
-        @XmlElement(name = "gasOutage", type = GasOutage.class),
-        @XmlElement(name = "electricOutage", type = ElectricOutage.class),
-        @XmlElement(name = "internetOutage", type = InternetOutage.class),
+        @XmlElement(name = "cableOutage", type = CableOutage.class),
         @XmlElement(name = "waterOutage", type = WaterOutage.class),
         @XmlElement(name = "otherOutage", type = OtherOutage.class),
+        @XmlElement(name = "internetOutage", type = InternetOutage.class),
         @XmlElement(name = "telecomOutage", type = TelecomOutage.class),
-        @XmlElement(name = "cableOutage", type = CableOutage.class)
+        @XmlElement(name = "gasOutage", type = GasOutage.class),
+        @XmlElement(name = "electricOutage", type = ElectricOutage.class)
     })
     protected List<MspOutage> electricOutageOrGasOutageOrWaterOutage;
 
@@ -72,13 +72,13 @@ public class ResultingOutages {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link GasOutage }
-     * {@link ElectricOutage }
-     * {@link InternetOutage }
+     * {@link CableOutage }
      * {@link WaterOutage }
      * {@link OtherOutage }
+     * {@link InternetOutage }
      * {@link TelecomOutage }
-     * {@link CableOutage }
+     * {@link GasOutage }
+     * {@link ElectricOutage }
      * 
      * 
      */

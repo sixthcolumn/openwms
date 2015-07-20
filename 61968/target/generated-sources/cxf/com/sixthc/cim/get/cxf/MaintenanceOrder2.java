@@ -45,7 +45,7 @@ public class MaintenanceOrder2 {
     @XmlElement(name = "mRID")
     protected String mrid;
     @XmlElement(name = "Names")
-    protected List<Name2> names;
+    protected List<Name3> names;
     @XmlElement(name = "Organisation")
     protected Organisation2 organisation;
     @XmlElement(name = "Work", required = true)
@@ -93,13 +93,13 @@ public class MaintenanceOrder2 {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Name2 }
+     * {@link Name3 }
      * 
      * 
      */
-    public List<Name2> getNames() {
+    public List<Name3> getNames() {
         if (names == null) {
-            names = new ArrayList<Name2>();
+            names = new ArrayList<Name3>();
         }
         return this.names;
     }

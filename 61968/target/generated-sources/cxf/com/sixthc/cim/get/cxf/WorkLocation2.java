@@ -134,7 +134,7 @@ public class WorkLocation2 {
     protected InternalLocation2 internalLocation;
     protected WorkLocation2 .MainAddress mainAddress;
     @XmlElement(name = "Names")
-    protected List<Name2> names;
+    protected List<Name3> names;
     protected TelephoneNumber phone1;
     @XmlElement(name = "PositionPoints")
     protected List<WorkLocation2 .PositionPoints> positionPoints;
@@ -306,13 +306,13 @@ public class WorkLocation2 {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Name2 }
+     * {@link Name3 }
      * 
      * 
      */
-    public List<Name2> getNames() {
+    public List<Name3> getNames() {
         if (names == null) {
-            names = new ArrayList<Name2>();
+            names = new ArrayList<Name3>();
         }
         return this.names;
     }

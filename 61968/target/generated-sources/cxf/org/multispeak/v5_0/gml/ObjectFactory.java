@@ -52,35 +52,19 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link BoxType }
+     * 
+     */
+    public BoxType createBoxType() {
+        return new BoxType();
+    }
+
+    /**
      * Create an instance of {@link LinearRingType }
      * 
      */
     public LinearRingType createLinearRingType() {
         return new LinearRingType();
-    }
-
-    /**
-     * Create an instance of {@link LineStringMemberType }
-     * 
-     */
-    public LineStringMemberType createLineStringMemberType() {
-        return new LineStringMemberType();
-    }
-
-    /**
-     * Create an instance of {@link LinearRingMemberType }
-     * 
-     */
-    public LinearRingMemberType createLinearRingMemberType() {
-        return new LinearRingMemberType();
-    }
-
-    /**
-     * Create an instance of {@link PointMemberType }
-     * 
-     */
-    public PointMemberType createPointMemberType() {
-        return new PointMemberType();
     }
 
     /**
@@ -92,14 +76,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LineStringType }
-     * 
-     */
-    public LineStringType createLineStringType() {
-        return new LineStringType();
-    }
-
-    /**
      * Create an instance of {@link MultiLineStringType }
      * 
      */
@@ -108,59 +84,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MultiPointType }
+     * Create an instance of {@link LinearRingMemberType }
      * 
      */
-    public MultiPointType createMultiPointType() {
-        return new MultiPointType();
-    }
-
-    /**
-     * Create an instance of {@link CoordinatesType }
-     * 
-     */
-    public CoordinatesType createCoordinatesType() {
-        return new CoordinatesType();
-    }
-
-    /**
-     * Create an instance of {@link PolygonType }
-     * 
-     */
-    public PolygonType createPolygonType() {
-        return new PolygonType();
-    }
-
-    /**
-     * Create an instance of {@link PolygonMemberType }
-     * 
-     */
-    public PolygonMemberType createPolygonMemberType() {
-        return new PolygonMemberType();
-    }
-
-    /**
-     * Create an instance of {@link MultiPolygonType }
-     * 
-     */
-    public MultiPolygonType createMultiPolygonType() {
-        return new MultiPolygonType();
-    }
-
-    /**
-     * Create an instance of {@link BoxType }
-     * 
-     */
-    public BoxType createBoxType() {
-        return new BoxType();
-    }
-
-    /**
-     * Create an instance of {@link GeometryAssociationType }
-     * 
-     */
-    public GeometryAssociationType createGeometryAssociationType() {
-        return new GeometryAssociationType();
+    public LinearRingMemberType createLinearRingMemberType() {
+        return new LinearRingMemberType();
     }
 
     /**
@@ -172,11 +100,83 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link PolygonMemberType }
+     * 
+     */
+    public PolygonMemberType createPolygonMemberType() {
+        return new PolygonMemberType();
+    }
+
+    /**
+     * Create an instance of {@link GeometryAssociationType }
+     * 
+     */
+    public GeometryAssociationType createGeometryAssociationType() {
+        return new GeometryAssociationType();
+    }
+
+    /**
+     * Create an instance of {@link MultiPolygonType }
+     * 
+     */
+    public MultiPolygonType createMultiPolygonType() {
+        return new MultiPolygonType();
+    }
+
+    /**
+     * Create an instance of {@link LineStringType }
+     * 
+     */
+    public LineStringType createLineStringType() {
+        return new LineStringType();
+    }
+
+    /**
+     * Create an instance of {@link PolygonType }
+     * 
+     */
+    public PolygonType createPolygonType() {
+        return new PolygonType();
+    }
+
+    /**
+     * Create an instance of {@link CoordinatesType }
+     * 
+     */
+    public CoordinatesType createCoordinatesType() {
+        return new CoordinatesType();
+    }
+
+    /**
+     * Create an instance of {@link LineStringMemberType }
+     * 
+     */
+    public LineStringMemberType createLineStringMemberType() {
+        return new LineStringMemberType();
+    }
+
+    /**
      * Create an instance of {@link PointType }
      * 
      */
     public PointType createPointType() {
         return new PointType();
+    }
+
+    /**
+     * Create an instance of {@link PointMemberType }
+     * 
+     */
+    public PointMemberType createPointMemberType() {
+        return new PointMemberType();
+    }
+
+    /**
+     * Create an instance of {@link MultiPointType }
+     * 
+     */
+    public MultiPointType createMultiPointType() {
+        return new MultiPointType();
     }
 
     /**
