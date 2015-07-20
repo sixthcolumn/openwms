@@ -931,6 +931,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 					}
 
 					workTask.setMrid(reqTask.getMRID());
+					workTask.setStatusKind(reqTask.getStatusKind().value());
 
 					for (WorkTaskNames workTaskNames : parseWorkTaskNames(reqTask
 							.getNames())) {

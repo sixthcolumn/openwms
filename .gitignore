@@ -1,6 +1,3 @@
 61968-9/target/classes
-61968-9/target/cxf-codegen-plugin-markers
 61968/target/classes
-61968/target/**
-61968/target/!generated-sources
 61968/target/surefire-reports/**
