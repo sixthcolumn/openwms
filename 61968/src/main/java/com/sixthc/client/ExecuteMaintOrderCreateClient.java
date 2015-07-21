@@ -13,11 +13,11 @@ import org.springframework.stereotype.Component;
 
 import com.sixthc.cim.create.cxf.ExecuteMaintenanceOrders;
 import com.sixthc.cim.create.cxf.FaultMessage;
-import com.sixthc.cim.create.cxf.HeaderType;
 import com.sixthc.cim.create.cxf.MaintenanceOrdersPayloadType;
 import com.sixthc.cim.create.cxf.MaintenanceOrdersPort;
-import com.sixthc.cim.create.cxf.ReplyType;
-import com.sixthc.cim.create.cxf.RequestType;
+import com.sixthc.cim.create2.HeaderType;
+import com.sixthc.cim.create2.ReplyType;
+import com.sixthc.cim.create2.RequestType;
 
 @Component
 public class ExecuteMaintOrderCreateClient extends RequestClient {

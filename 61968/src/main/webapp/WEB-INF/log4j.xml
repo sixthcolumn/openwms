@@ -35,5 +35,9 @@
 		<priority value="debug" />
 		<appender-ref ref="console" />
 	</category>
+	<category name="org.springframework.transaction" additivity="false">
+		<priority value="debug" />
+		<appender-ref ref="file" />
+	</category>
 
 </log4j:configuration>

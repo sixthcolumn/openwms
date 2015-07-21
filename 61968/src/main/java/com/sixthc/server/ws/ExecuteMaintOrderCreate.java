@@ -12,41 +12,42 @@ import javax.xml.ws.Holder;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.sixthc.cim.create.cxf.Asset;
-import com.sixthc.cim.create.cxf.Asset.Procedures;
-import com.sixthc.cim.create.cxf.AssetLocationHazard;
-import com.sixthc.cim.create.cxf.Crew;
-import com.sixthc.cim.create.cxf.CrewMember;
-import com.sixthc.cim.create.cxf.CrewMember.Person;
-import com.sixthc.cim.create.cxf.ErrorType;
 import com.sixthc.cim.create.cxf.FaultMessage;
-import com.sixthc.cim.create.cxf.HeaderType;
-import com.sixthc.cim.create.cxf.InternalLocation;
-import com.sixthc.cim.create.cxf.MaintenanceOrder;
-import com.sixthc.cim.create.cxf.MaintenanceOrders;
 import com.sixthc.cim.create.cxf.MaintenanceOrdersPayloadType;
 import com.sixthc.cim.create.cxf.MaintenanceOrdersPort;
-import com.sixthc.cim.create.cxf.Name;
-import com.sixthc.cim.create.cxf.NameType;
-import com.sixthc.cim.create.cxf.NameTypeAuthority;
-import com.sixthc.cim.create.cxf.Organisation;
-import com.sixthc.cim.create.cxf.Organisation.Phone1;
-import com.sixthc.cim.create.cxf.Organisation.StreetAddress;
-import com.sixthc.cim.create.cxf.ReplyType;
-import com.sixthc.cim.create.cxf.RequestType;
-import com.sixthc.cim.create.cxf.Work;
-import com.sixthc.cim.create.cxf.Work.Priority;
-import com.sixthc.cim.create.cxf.WorkAsset;
-import com.sixthc.cim.create.cxf.WorkLocation;
-import com.sixthc.cim.create.cxf.WorkLocation.CoordinateSystem;
-import com.sixthc.cim.create.cxf.WorkLocation.MainAddress;
-import com.sixthc.cim.create.cxf.WorkLocation.MainAddress.TownDetail;
-import com.sixthc.cim.create.cxf.WorkLocation.PositionPoints;
-import com.sixthc.cim.create.cxf.WorkTask;
-import com.sixthc.cim.create.cxf.WorkTask.MaterialItems;
-import com.sixthc.cim.create.cxf.WorkTask.MaterialItems.Quantity;
-import com.sixthc.cim.create.cxf.WorkTimeSchedule;
-import com.sixthc.cim.create.cxf.WorkTimeSchedule.ScheduleInterval;
+import com.sixthc.cim.create2.Asset2;
+import com.sixthc.cim.create2.Asset2.Procedures;
+import com.sixthc.cim.create2.AssetLocationHazard2;
+import com.sixthc.cim.create2.Crew2;
+import com.sixthc.cim.create2.CrewMember;
+import com.sixthc.cim.create2.CrewMember.Person;
+import com.sixthc.cim.create2.ErrorType;
+import com.sixthc.cim.create2.HeaderType;
+import com.sixthc.cim.create2.InternalLocation2;
+import com.sixthc.cim.create2.MaintenanceOrder2;
+import com.sixthc.cim.create2.MaintenanceOrders2;
+import com.sixthc.cim.create2.Name2;
+import com.sixthc.cim.create2.NameType2;
+import com.sixthc.cim.create2.NameTypeAuthority2;
+import com.sixthc.cim.create2.Organisation2;
+import com.sixthc.cim.create2.Organisation2.Phone1;
+import com.sixthc.cim.create2.Organisation2.StreetAddress;
+import com.sixthc.cim.create2.ReplyType;
+import com.sixthc.cim.create2.RequestType;
+import com.sixthc.cim.create2.Work2;
+import com.sixthc.cim.create2.Work2.Priority;
+import com.sixthc.cim.create2.WorkAsset;
+import com.sixthc.cim.create2.WorkLocation2;
+import com.sixthc.cim.create2.WorkLocation2.CoordinateSystem;
+import com.sixthc.cim.create2.WorkLocation2.MainAddress;
+import com.sixthc.cim.create2.WorkLocation2.MainAddress.StreetDetail;
+import com.sixthc.cim.create2.WorkLocation2.MainAddress.TownDetail;
+import com.sixthc.cim.create2.WorkLocation2.PositionPoints;
+import com.sixthc.cim.create2.WorkTask;
+import com.sixthc.cim.create2.WorkTask.MaterialItems;
+import com.sixthc.cim.create2.WorkTask.MaterialItems.Quantity;
+import com.sixthc.cim.create2.WorkTimeSchedule2;
+import com.sixthc.cim.create2.WorkTimeSchedule2.ScheduleInterval;
 import com.sixthc.dao.MaintOrderDao;
 import com.sixthc.dao.WorkOrderDao;
 import com.sixthc.hbm.Address;
@@ -98,14 +99,14 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 	private MaintOrderDao maintOrderDao;
 
 	private List<com.sixthc.hbm.OrganizationNames> parseNames(
-			List<Name> reqNames) {
+			List<Name2> reqNames) {
 		Vector<com.sixthc.hbm.OrganizationNames> namesList = new Vector<com.sixthc.hbm.OrganizationNames>();
-		for (Name reqName : reqNames) {
+		for (Name2 reqName : reqNames) {
 			com.sixthc.hbm.OrganizationNames names = new com.sixthc.hbm.OrganizationNames();
 			namesList.add(names);
 			names.setName(reqName.getName());
 
-			NameType reqNameType = reqName.getNameType();
+			NameType2 reqNameType = reqName.getNameType();
 			if (reqNameType != null) {
 				com.sixthc.hbm.Nametype nameType = new com.sixthc.hbm.Nametype();
 				nameType.setName(reqNameType.getName());
@@ -113,7 +114,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 				names.setNametype(nameType);
 				nameType.getOrganizationNameses().add(names);
 
-				NameTypeAuthority reqNameTypeAuthority = reqNameType
+				NameTypeAuthority2 reqNameTypeAuthority = reqNameType
 						.getNameTypeAuthority();
 				if (reqNameTypeAuthority != null) {
 					com.sixthc.hbm.NameTypeAuthority nameTypeAuthority = new com.sixthc.hbm.NameTypeAuthority();
@@ -128,14 +129,14 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 	}
 
 	private List<com.sixthc.hbm.MaintorderNames> parseMaintorderNames(
-			List<Name> reqNames) {
+			List<Name2> list) {
 		Vector<com.sixthc.hbm.MaintorderNames> namesList = new Vector<com.sixthc.hbm.MaintorderNames>();
-		for (Name reqName : reqNames) {
+		for (Name2 reqName : list) {
 			com.sixthc.hbm.MaintorderNames names = new com.sixthc.hbm.MaintorderNames();
 			namesList.add(names);
 			names.setName(reqName.getName());
 
-			NameType reqNameType = reqName.getNameType();
+			NameType2 reqNameType = reqName.getNameType();
 			if (reqNameType != null) {
 				com.sixthc.hbm.Nametype nameType = new com.sixthc.hbm.Nametype();
 				nameType.setName(reqNameType.getName());
@@ -144,7 +145,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 
 				nameType.getMaintOrderNameses().add(names);
 
-				NameTypeAuthority reqNameTypeAuthority = reqNameType
+				NameTypeAuthority2 reqNameTypeAuthority = reqNameType
 						.getNameTypeAuthority();
 				if (reqNameTypeAuthority != null) {
 					com.sixthc.hbm.NameTypeAuthority nameTypeAuthority = new com.sixthc.hbm.NameTypeAuthority();
@@ -159,14 +160,14 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 	}
 
 	private List<com.sixthc.hbm.WorkTaskNames> parseWorkTaskNames(
-			List<Name> reqNames) {
+			List<Name2> reqNames) {
 		Vector<com.sixthc.hbm.WorkTaskNames> namesList = new Vector<com.sixthc.hbm.WorkTaskNames>();
-		for (Name reqName : reqNames) {
+		for (Name2 reqName : reqNames) {
 			com.sixthc.hbm.WorkTaskNames names = new com.sixthc.hbm.WorkTaskNames();
 			namesList.add(names);
 			names.setName(reqName.getName());
 
-			NameType reqNameType = reqName.getNameType();
+			NameType2 reqNameType = reqName.getNameType();
 			if (reqNameType != null) {
 				com.sixthc.hbm.Nametype nameType = new com.sixthc.hbm.Nametype();
 				nameType.setName(reqNameType.getName());
@@ -174,7 +175,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 				names.setNametype(nameType);
 				nameType.getWorkTaskNameses().add(names);
 
-				NameTypeAuthority reqNameTypeAuthority = reqNameType
+				NameTypeAuthority2 reqNameTypeAuthority = reqNameType
 						.getNameTypeAuthority();
 				if (reqNameTypeAuthority != null) {
 					com.sixthc.hbm.NameTypeAuthority nameTypeAuthority = new com.sixthc.hbm.NameTypeAuthority();
@@ -188,14 +189,14 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 		return namesList;
 	}
 
-	private List<com.sixthc.hbm.AssetNames> parseAssetNames(List<Name> reqNames) {
+	private List<com.sixthc.hbm.AssetNames> parseAssetNames(List<Name2> reqNames) {
 		Vector<com.sixthc.hbm.AssetNames> namesList = new Vector<com.sixthc.hbm.AssetNames>();
-		for (Name reqName : reqNames) {
+		for (Name2 reqName : reqNames) {
 			com.sixthc.hbm.AssetNames names = new com.sixthc.hbm.AssetNames();
 			namesList.add(names);
 			names.setName(reqName.getName());
 
-			NameType reqNameType = reqName.getNameType();
+			NameType2 reqNameType = reqName.getNameType();
 			if (reqNameType != null) {
 				com.sixthc.hbm.Nametype nameType = new com.sixthc.hbm.Nametype();
 				nameType.setName(reqNameType.getName());
@@ -203,7 +204,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 				names.setNametype(nameType);
 				nameType.getAssetNameses().add(names);
 
-				NameTypeAuthority reqNameTypeAuthority = reqNameType
+				NameTypeAuthority2 reqNameTypeAuthority = reqNameType
 						.getNameTypeAuthority();
 				if (reqNameTypeAuthority != null) {
 					com.sixthc.hbm.NameTypeAuthority nameTypeAuthority = new com.sixthc.hbm.NameTypeAuthority();
@@ -217,14 +218,14 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 		return namesList;
 	}
 
-	private List<com.sixthc.hbm.CrewNames> parseCrewNames(List<Name> reqNames) {
+	private List<com.sixthc.hbm.CrewNames> parseCrewNames(List<Name2> reqNames) {
 		Vector<com.sixthc.hbm.CrewNames> namesList = new Vector<com.sixthc.hbm.CrewNames>();
-		for (Name reqName : reqNames) {
+		for (Name2 reqName : reqNames) {
 			com.sixthc.hbm.CrewNames names = new com.sixthc.hbm.CrewNames();
 			namesList.add(names);
 			names.setName(reqName.getName());
 
-			NameType reqNameType = reqName.getNameType();
+			NameType2 reqNameType = reqName.getNameType();
 			if (reqNameType != null) {
 				com.sixthc.hbm.Nametype nameType = new com.sixthc.hbm.Nametype();
 				nameType.setName(reqNameType.getName());
@@ -232,7 +233,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 				names.setNametype(nameType);
 				nameType.getCrewNameses().add(names);
 
-				NameTypeAuthority reqNameTypeAuthority = reqNameType
+				NameTypeAuthority2 reqNameTypeAuthority = reqNameType
 						.getNameTypeAuthority();
 				if (reqNameTypeAuthority != null) {
 					com.sixthc.hbm.NameTypeAuthority nameTypeAuthority = new com.sixthc.hbm.NameTypeAuthority();
@@ -247,8 +248,8 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 	}
 
 	private void parseStreetDetail(com.sixthc.hbm.Address woAddress,
-			WorkLocation.MainAddress addr) {
-		WorkLocation.MainAddress.StreetDetail streetDetail = addr
+			StreetAddress addr) {
+		com.sixthc.cim.create2.Organisation2.StreetAddress.StreetDetail streetDetail = addr
 				.getStreetDetail();
 
 		if (streetDetail != null) {
@@ -267,7 +268,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 
 		}
 
-		TownDetail townDetail = addr.getTownDetail();
+		com.sixthc.cim.create2.Organisation2.StreetAddress.TownDetail townDetail = addr.getTownDetail();
 		if (townDetail != null) {
 			woAddress.setTdCode(townDetail.getCode());
 			woAddress.setTdCountry(townDetail.getCountry());
@@ -277,46 +278,15 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 		}
 	}
 
-	private void parseStreetDetail(com.sixthc.hbm.Address woAddress,
-			Organisation.StreetAddress addr) {
+	
 
-		Organisation.StreetAddress.StreetDetail streetDetail = addr
-				.getStreetDetail();
-
-		if (streetDetail != null) {
-			woAddress.setSdBuildingName(streetDetail.getBuildingName());
-			woAddress.setSdCode(streetDetail.getCode());
-			woAddress.setSdNumber(streetDetail.getNumber());
-			woAddress.setSdSuffix(streetDetail.getSuffix());
-			woAddress.setSdPrefix(streetDetail.getPrefix());
-			woAddress.setSdSuiteNumber(streetDetail.getSuiteNumber());
-			woAddress.setSdBuildingName(streetDetail.getBuildingName());
-
-			woAddress.setSdAddress1(streetDetail.getAddressGeneral());
-			woAddress.setSdAddress2(streetDetail.getName());
-			woAddress.setSdType(streetDetail.getType());
-		}
-
-		com.sixthc.cim.create.cxf.Organisation.StreetAddress.TownDetail townDetail = addr
-				.getTownDetail();
-
-		if (townDetail != null) {
-			woAddress.setTdCode(townDetail.getCode());
-			woAddress.setTdCountry(townDetail.getCountry());
-			woAddress.setTdName(townDetail.getName());
-			woAddress.setTdSection(townDetail.getSection());
-			woAddress.setTdStateProvince(townDetail.getStateOrProvince());
-		}
-
-	}
-
-	private com.sixthc.hbm.Nametype parseNameType(NameType from) {
+	private com.sixthc.hbm.Nametype parseNameType(NameType2 from) {
 		if (from != null) {
 			com.sixthc.hbm.Nametype nameType = new com.sixthc.hbm.Nametype();
 			nameType.setName(from.getName());
 			nameType.setDescription(from.getDescription());
 
-			NameTypeAuthority reqNameTypeAuthority = from
+			NameTypeAuthority2 reqNameTypeAuthority = from
 					.getNameTypeAuthority();
 			if (reqNameTypeAuthority != null) {
 				com.sixthc.hbm.NameTypeAuthority nameTypeAuthority = new com.sixthc.hbm.NameTypeAuthority();
@@ -330,20 +300,20 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 		return null;
 	}
 
-	private com.sixthc.hbm.Asset parseAsset(WorkAsset reqAsset) {
+	private com.sixthc.hbm.Asset parseAsset(WorkAsset reqCrewAsset) {
 		com.sixthc.hbm.Asset workAsset = new com.sixthc.hbm.Asset();
-		workAsset.setMrid(reqAsset.getMRID());
-		WorkLocation reqAssetLoc = reqAsset.getLocation();
-		workAsset.setCriticalFlag(reqAsset.isCritical() == true ? 1 : 0);
-		workAsset.setUtcNumber(reqAsset.getUtcNumber());
+		workAsset.setMrid(reqCrewAsset.getMRID());
+		WorkLocation2 reqAssetLoc = reqCrewAsset.getLocation();
+		workAsset.setCriticalFlag(reqCrewAsset.isCritical() == true ? 1 : 0);
+		workAsset.setUtcNumber(reqCrewAsset.getUtcNumber());
 		if (reqAssetLoc != null) {
-			MainAddress reqMainAddress = reqAssetLoc.getMainAddress();
+			WorkLocation2.MainAddress reqMainAddress = reqAssetLoc.getMainAddress();
 
 			Address workAssetAddress = new Address();
 			workAsset.setAddress(workAssetAddress);
 			reqAssetLoc.getMRID(); // ignore
 
-			InternalLocation reqInternalLoc = reqAssetLoc.getInternalLocation();
+			InternalLocation2 reqInternalLoc = reqAssetLoc.getInternalLocation();
 			if (reqInternalLoc != null) {
 				workAsset.setInternalBuildingName(reqInternalLoc
 						.getBuildingName());
@@ -354,7 +324,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 			}
 
 			if (reqMainAddress != null) {
-				parseStreetDetail(workAssetAddress, reqMainAddress);
+				parseStreetDetail2(workAssetAddress, reqMainAddress);
 				workAsset.setAddress(workAssetAddress);
 			}
 
@@ -365,7 +335,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 				workAssetAddress.setDirections(reqAssetLoc.getDirection());
 			}
 
-			for (AssetLocationHazard reqHaz : reqAssetLoc.getHazards()) {
+			for (AssetLocationHazard2 reqHaz : reqAssetLoc.getHazards()) {
 
 				Hazards workhaz = new Hazards();
 				AddressHazards addrHazards = new AddressHazards();
@@ -375,7 +345,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 				workhaz.setHazardName(reqHaz.getType());
 			}
 
-			InternalLocation reqIloc = reqAssetLoc.getInternalLocation();
+			InternalLocation2 reqIloc = reqAssetLoc.getInternalLocation();
 			if (reqIloc != null) {
 				workAsset.setInternalBuildingName(reqIloc.getBuildingName());
 				workAsset
@@ -406,7 +376,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 
 		}
 
-		for (com.sixthc.cim.create.cxf.WorkAsset.Procedures reqProc : reqAsset
+		for (com.sixthc.cim.create2.WorkAsset.Procedures reqProc : reqCrewAsset
 				.getProcedures()) {
 			AssetProcedures workProcs = new AssetProcedures();
 			Procedure workProc = new Procedure();
@@ -428,7 +398,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 						"asset sequence : non integer value passed");
 			}
 
-			for (com.sixthc.cim.create.cxf.WorkAsset.Procedures.Measurements reqMeasure : reqProc
+			for (com.sixthc.cim.create2.WorkAsset.Procedures.Measurements reqMeasure : reqProc
 					.getMeasurements()) {
 				ProcedureMeasurements workMeasures = new ProcedureMeasurements();
 				workMeasures.setProcedure(workProc);
@@ -453,7 +423,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 			}
 		}
 
-		List<com.sixthc.hbm.AssetNames> namesList = parseAssetNames(reqAsset
+		List<com.sixthc.hbm.AssetNames> namesList = parseAssetNames(reqCrewAsset
 				.getNames());
 		for (AssetNames assetNames : namesList) {
 			workAsset.getAssetNameses().add(assetNames);
@@ -463,10 +433,42 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 		return workAsset;
 	}
 
-	private com.sixthc.hbm.Asset parseAsset(Asset reqAsset) {
+	private void parseStreetDetail2(Address woAddress,
+			MainAddress addr) {
+		StreetDetail streetDetail = addr
+				.getStreetDetail();
+
+		if (streetDetail != null) {
+			woAddress.setSdBuildingName(streetDetail.getBuildingName());
+			woAddress.setSdCode(streetDetail.getCode());
+			woAddress.setSdNumber(streetDetail.getNumber());
+			woAddress.setSdSuffix(streetDetail.getSuffix());
+			woAddress.setSdPrefix(streetDetail.getPrefix());
+			woAddress.setSdSuiteNumber(streetDetail.getSuiteNumber());
+			woAddress.setSdBuildingName(streetDetail.getBuildingName());
+
+			woAddress.setSdAddress1(streetDetail.getAddressGeneral());
+			woAddress.setSdAddress2(streetDetail.getName());
+			woAddress.setSdWithinTownLimitsFlag(streetDetail.isWithinTownLimits() == true ? 1 : 0);
+			woAddress.setSdType(streetDetail.getType());
+
+		}
+
+		TownDetail townDetail = addr.getTownDetail();
+		if (townDetail != null) {
+			woAddress.setTdCode(townDetail.getCode());
+			woAddress.setTdCountry(townDetail.getCountry());
+			woAddress.setTdName(townDetail.getName());
+			woAddress.setTdSection(townDetail.getSection());
+			woAddress.setTdStateProvince(townDetail.getStateOrProvince());
+		}
+		
+	}
+
+	private com.sixthc.hbm.Asset parseAsset(Asset2 reqAsset) {
 		com.sixthc.hbm.Asset workAsset = new com.sixthc.hbm.Asset();
 		workAsset.setMrid(reqAsset.getMRID());
-		WorkLocation reqAssetLoc = reqAsset.getLocation();
+		WorkLocation2 reqAssetLoc = reqAsset.getLocation();
 		workAsset.setCriticalFlag(reqAsset.isCritical() == true ? 1 : 0);
 		workAsset.setUtcNumber(reqAsset.getUtcNumber());
 		if (reqAssetLoc != null) {
@@ -476,7 +478,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 			workAsset.setAddress(workAssetAddress);
 			reqAssetLoc.getMRID(); // ignore
 
-			InternalLocation reqInternalLoc = reqAssetLoc.getInternalLocation();
+			InternalLocation2 reqInternalLoc = reqAssetLoc.getInternalLocation();
 			if (reqInternalLoc != null) {
 				workAsset.setInternalBuildingName(reqInternalLoc
 						.getBuildingName());
@@ -487,7 +489,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 			}
 
 			if (reqMainAddress != null) {
-				parseStreetDetail(workAssetAddress, reqMainAddress);
+				parseStreetDetail2(workAssetAddress, reqMainAddress);
 				workAsset.setAddress(workAssetAddress);
 			}
 
@@ -498,7 +500,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 				workAssetAddress.setDirections(reqAssetLoc.getDirection());
 			}
 
-			for (AssetLocationHazard reqHaz : reqAssetLoc.getHazards()) {
+			for (AssetLocationHazard2 reqHaz : reqAssetLoc.getHazards()) {
 
 				Hazards workhaz = new Hazards();
 				AddressHazards addrHazards = new AddressHazards();
@@ -508,7 +510,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 				workhaz.setHazardName(reqHaz.getType());
 			}
 
-			InternalLocation reqIloc = reqAssetLoc.getInternalLocation();
+			InternalLocation2 reqIloc = reqAssetLoc.getInternalLocation();
 			if (reqIloc != null) {
 				workAsset.setInternalBuildingName(reqIloc.getBuildingName());
 				workAsset
@@ -602,8 +604,8 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 		boolean imageFileProcessingError = false;
 		reply.value = new ReplyType();
 
-		MaintenanceOrders orders = payload.value.getMaintenanceOrders();
-		for (MaintenanceOrder req : orders.getMaintenanceOrder()) {
+		MaintenanceOrders2 orders = payload.value.getMaintenanceOrders();
+		for (MaintenanceOrder2 req : orders.getMaintenanceOrder()) {
 			Maintorder mo = new Maintorder();
 			mo.setMrid(req.getMRID());
 			mo.setCreatedBy("wms");
@@ -619,7 +621,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 			}
 
 			List<com.sixthc.hbm.Organization> orgList = new Vector<com.sixthc.hbm.Organization>();
-			Organisation reqOrg = req.getOrganisation();
+			Organisation2 reqOrg = req.getOrganisation();
 			if (reqOrg != null) {
 				com.sixthc.hbm.Organization workOrg = new com.sixthc.hbm.Organization();
 				workOrg.setMrid(reqOrg.getMRID());
@@ -654,7 +656,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 				orgList.add(workOrg);
 			}
 
-			for (Work reqWork : req.getWork()) {
+			for (Work2 reqWork : req.getWork()) {
 				WorkOrder workOrder = new WorkOrder();
 				mo.getWorkOrders().add(workOrder);
 				workOrder.setMaintorder(mo);
@@ -685,7 +687,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 				//workOrder.setWorkOrderName("NOT SET"); // leave null
 				workOrder.setStatus("ACTIVE");
 
-				for (WorkTimeSchedule reqWorkSchedules : reqWork
+				for (WorkTimeSchedule2 reqWorkSchedules : reqWork
 						.getTimeSchedules()) {
 					WorkOrderSchedule workOrderSchedule = new WorkOrderSchedule();
 					workOrder.getWorkOrderSchedules().add(workOrderSchedule);
@@ -709,7 +711,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 						ts.setType(reqWorkSchedules.getKind().value());
 				}
 
-				for (Name reqName : reqWork.getNames()) {
+				for (Name2 reqName : reqWork.getNames()) {
 					WorkOrderNames workOrderNames = new WorkOrderNames();
 					workOrderNames.setName(reqName.getName());
 					workOrder.getWorkOrderNameses().add(workOrderNames);
@@ -742,11 +744,11 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 				workOrder.setStatusKind(reqWork.getStatusKind().value());
 				workOrder.setStatus(workOrder.getStatus());
 
-				WorkLocation reqLoc = reqWork.getWorkLocation();
+				WorkLocation2 reqLoc = reqWork.getWorkLocation();
 				if (reqLoc != null) {
 					// reqLoc.getMRID(); //  bb: ignore
 
-					for (AssetLocationHazard reqHazard : reqLoc.getHazards()) {
+					for (AssetLocationHazard2 reqHazard : reqLoc.getHazards()) {
 						Hazards hazards = new Hazards();
 						hazards.setHazardName(reqHazard.getType());
 						WorkOrderHazards workOrderHazards = new WorkOrderHazards();
@@ -756,7 +758,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 						workOrder.getWorkOrderHazardses().add(workOrderHazards);
 					}
 
-					InternalLocation iloc = reqLoc.getInternalLocation();
+					InternalLocation2 iloc = reqLoc.getInternalLocation();
 					if (iloc != null) {
 						workOrder.setInternalBuildingName(iloc
 								.getBuildingName());
@@ -766,7 +768,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 						workOrder.setInternalRoomNum(iloc.getRoomNumber());
 					}
 
-					MainAddress reqMaddr = reqLoc.getMainAddress();
+					com.sixthc.cim.create2.WorkLocation2.MainAddress reqMaddr = reqLoc.getMainAddress();
 					if (reqMaddr != null) {
 						Address address = new Address();
 
@@ -779,7 +781,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 						if (coordSystem != null) {
 							address.setCoordSystem(coordSystem.getCrsUrn());
 						}
-						parseStreetDetail(address, reqMaddr);
+						parseStreetDetail2(address, reqMaddr);
 
 						// Status mstatus = reqMaddr.getStatus(); // ignore
 
@@ -814,7 +816,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 					workTask.getWorkOrderWorkTaskses().add(workOrderWorkTasks);
 					workOrder.getWorkOrderWorkTaskses().add(workOrderWorkTasks);
 
-					for (Asset reqAsset : reqTask.getAssets()) {
+					for (Asset2 reqAsset : reqTask.getAssets()) {
 						WorkTaskAssets workTaskAssets = new WorkTaskAssets();
 						com.sixthc.hbm.Asset workAsset = parseAsset(reqAsset);
 						workTaskAssets.setAsset(workAsset);
@@ -832,7 +834,8 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 						if (reqDateTime != null)
 							workTask.setCrewEta(reqCrewEta);
 
-					for (Crew reqCrew : reqTask.getCrews()) {
+
+					for ( Crew2 reqCrew : reqTask.getCrews()) {
 						WorkTaskCrews workCrews = new WorkTaskCrews();
 						workTask.getWorkTaskCrewses().add(workCrews);
 						workCrews.setWorkTask(workTask);
@@ -904,7 +907,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 
 						}
 
-						for (Name reqMatName : reqMat.getNames()) {
+						for (Name2 reqMatName : reqMat.getNames()) {
 							MaterialItemNames workMatItemName = new MaterialItemNames();
 							workMatItem.getMaterialItemNameses().add(
 									workMatItemName);
@@ -928,6 +931,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 					}
 
 					workTask.setMrid(reqTask.getMRID());
+					workTask.setStatusKind(reqTask.getStatusKind().value());
 
 					for (WorkTaskNames workTaskNames : parseWorkTaskNames(reqTask
 							.getNames())) {
@@ -935,7 +939,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 						workTask.getWorkTaskNameses().add(workTaskNames);
 					}
 
-					if (reqTask.getOldAsset() != null) {
+					if (reqTask.getOldAsset()!= null) {
 						com.sixthc.hbm.Asset oldAsset = parseAsset(reqTask
 								.getOldAsset());
 						com.sixthc.hbm.WorkTaskOldAssets workTaskOldAssets = new WorkTaskOldAssets();
@@ -958,7 +962,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 
 					workTask.setSubject(reqTask.getSubject());
 
-					for (WorkTimeSchedule reqTaskSchedule : reqTask
+					for (WorkTimeSchedule2 reqTaskSchedule : reqTask
 							.getTimeSchedules()) {
 						WorkTaskTimeSchedules workTaskSchedule = new WorkTaskTimeSchedules();
 						workTask.getWorkTaskTimeScheduleses().add(
@@ -984,7 +988,8 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 
 					}
 
-					for (com.sixthc.cim.create.cxf.Attachment reqAtt : reqWork
+
+					for ( com.sixthc.cim.create2.Attachment reqAtt : reqWork
 							.getAttachments().getAttachment()) {
 
 						try {

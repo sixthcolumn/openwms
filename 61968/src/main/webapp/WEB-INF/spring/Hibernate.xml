@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 	http://www.springframework.org/schema/context
-    http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+    http://www.springframework.org/schema/context/spring-context-2.5.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 	<!-- Hibernate session factory -->
 	<bean id="sessionFactory"
@@ -13,6 +18,8 @@
 		<property name="dataSource">
 			<ref bean="dataSource" />
 		</property>
+
+
 
 		<property name="hibernateProperties">
 			<props>
@@ -109,6 +116,8 @@
 		autowire="byName" />
 
 
+
+
 	<!-- epriLog DAO beans -->
 	<bean id="epriLogDaoTarget" class="com.sixthc.dao.impl.EpriLogDaoImpl"
 		autowire="byName" />
@@ -140,8 +149,15 @@
 			</list>
 		</property>
 	</bean>
-	
-		<bean id="maintOrderDaoTarget" class="com.sixthc.dao.impl.MaintOrderDaoImpl"
+
+	<tx:annotation-driven transaction-manager="txManager" />
+	<bean id="txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+
+	<bean id="maintOrderDaoTarget" class="com.sixthc.dao.impl.MaintOrderDaoImpl"
 		autowire="byName" />
 	<bean id="maintOrderDao" class="org.springframework.aop.framework.ProxyFactoryBean"
 		autowire="byName">

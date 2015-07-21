@@ -4,18 +4,14 @@ import java.sql.Timestamp;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.hibernate.Query;
 import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.sixthc.dao.WorkOrderDao;
-import com.sixthc.hbm.Contactperson;
-import com.sixthc.hbm.ContactpersonAddresses;
-import com.sixthc.hbm.ContactpersonEmails;
-import com.sixthc.hbm.ContactpersonOtherContactinfos;
-import com.sixthc.hbm.ContactpersonPhones;
 import com.sixthc.hbm.WorkOrder;
-import com.sixthc.model.EpriLog;
 //import com.sixthc.model.WorkOrder;
 import com.sixthc.util.CustomHibernateDaoSupport;
 
@@ -52,6 +48,16 @@ public class WorkOrderDaoImpl extends CustomHibernateDaoSupport implements
 	@Override
 	public void delete(WorkOrder log) {
 		getHibernateTemplate().delete(log);
+	}
+	
+	public void deleteWorkOrder(String mrid) {
+		String stmt = "Update WorkOrder set status = 'DELETE' where mrid = :mrid";
+		Session session = getHibernateTemplate().getSessionFactory().openSession();
+		Transaction tx = session.beginTransaction();
+		Query query = session.createQuery(stmt);
+		query.setParameter("mrid", mrid);
+		int result = query.executeUpdate();
+		tx.commit();
 	}
 
 	public void saveOrUpdate(WorkOrder log) {

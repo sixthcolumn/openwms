@@ -5,11 +5,11 @@ import javax.xml.ws.Holder;
 import org.apache.log4j.Logger;
 
 import com.sixthc.cim.create.cxf.FaultMessage;
-import com.sixthc.cim.create.cxf.HeaderType;
 import com.sixthc.cim.create.cxf.MaintenanceOrdersPayloadType;
 import com.sixthc.cim.create.cxf.MaintenanceOrdersPort;
-import com.sixthc.cim.create.cxf.ReplyType;
-import com.sixthc.cim.create.cxf.RequestType;
+import com.sixthc.cim.create2.HeaderType;
+import com.sixthc.cim.create2.ReplyType;
+import com.sixthc.cim.create2.RequestType;
 import com.sixthc.client.ExecuteMaintOrderCreateClient;
 
 public class RequestExecuteMaintOrderCreateImpl implements MaintenanceOrdersPort{

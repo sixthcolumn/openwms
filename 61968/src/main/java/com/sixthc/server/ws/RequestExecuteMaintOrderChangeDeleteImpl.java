@@ -1,18 +1,20 @@
 package com.sixthc.server.ws;
 
-import javax.xml.ws.Holder;
-
 import org.apache.log4j.Logger;
 
 import com.sixthc.cim.delete.cxf.FaultMessage;
-import com.sixthc.cim.delete.cxf.HeaderType;
 import com.sixthc.cim.delete.cxf.MaintenanceOrdersPayloadType;
 import com.sixthc.cim.delete.cxf.MaintenanceOrdersPort;
-import com.sixthc.cim.delete.cxf.ReplyType;
-import com.sixthc.cim.delete.cxf.RequestType;
+import com.sixthc.cim.delete2.HeaderType;
+import com.sixthc.cim.delete2.ReplyType;
+import com.sixthc.cim.delete2.RequestType;
 import com.sixthc.client.ExecuteMaintOrderChangeDeleteClient;
 
-public class RequestExecuteMaintOrderChangeDeleteImpl implements MaintenanceOrdersPort{
+
+
+
+
+public class RequestExecuteMaintOrderChangeDeleteImpl implements MaintenanceOrdersPort {
 	private static org.apache.log4j.Logger log = Logger
 	.getLogger(RequestExecuteMaintOrderChangeDeleteImpl.class);
 	
@@ -27,10 +29,10 @@ public class RequestExecuteMaintOrderChangeDeleteImpl implements MaintenanceOrde
 	}
 
 	@Override
-	public void changeMaintenanceOrders(Holder<HeaderType> header,
-			RequestType request, Holder<MaintenanceOrdersPayloadType> payload,
-			Holder<ReplyType> reply) throws FaultMessage {
-
+	public void changeMaintenanceOrders(javax.xml.ws.Holder<HeaderType> header,
+			RequestType request,
+			javax.xml.ws.Holder<MaintenanceOrdersPayloadType> payload,
+			javax.xml.ws.Holder<ReplyType> reply) throws FaultMessage {
 		log.debug("changeMaintenanceOrders called");
 		
 		client.setHeader(header.value);
@@ -42,12 +44,14 @@ public class RequestExecuteMaintOrderChangeDeleteImpl implements MaintenanceOrde
 		
 		reply.value = new ReplyType();
 		reply.value.setResult("OK");
+		
 	}
 
 	@Override
-	public void deleteMaintenanceOrders(Holder<HeaderType> header,
-			RequestType request, Holder<MaintenanceOrdersPayloadType> payload,
-			Holder<ReplyType> reply) throws FaultMessage {
+	public void deleteMaintenanceOrders(javax.xml.ws.Holder<HeaderType> header,
+			RequestType request,
+			javax.xml.ws.Holder<MaintenanceOrdersPayloadType> payload,
+			javax.xml.ws.Holder<ReplyType> reply) throws FaultMessage {
 		log.debug("deleteMaintenanceOrders called");
 		
 		client.setHeader(header.value);
@@ -61,5 +65,7 @@ public class RequestExecuteMaintOrderChangeDeleteImpl implements MaintenanceOrde
 		reply.value.setResult("OK");
 		
 	}
+
+
 
 }

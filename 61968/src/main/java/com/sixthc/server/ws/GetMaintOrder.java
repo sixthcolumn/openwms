@@ -2,53 +2,53 @@ package com.sixthc.server.ws;
 
 import java.math.BigInteger;
 import java.util.Date;
-import java.util.List;
-import java.util.Vector;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.sixthc.cim.get.cxf.Asset2;
-import com.sixthc.cim.get.cxf.AssetLocationHazard2;
-import com.sixthc.cim.get.cxf.Crew2;
-import com.sixthc.cim.get.cxf.CrewMember;
-import com.sixthc.cim.get.cxf.CrewMember.Person;
 import com.sixthc.cim.get.cxf.GetMaintenanceOrdersFaultMessage;
 import com.sixthc.cim.get.cxf.GetMaintenanceOrdersPort;
 import com.sixthc.cim.get.cxf.GetMaintenanceOrdersRequestMessageType;
 import com.sixthc.cim.get.cxf.GetMaintenanceOrdersResponseMessageType;
-import com.sixthc.cim.get.cxf.InternalLocation2;
 import com.sixthc.cim.get.cxf.MaintenanceOrder;
-import com.sixthc.cim.get.cxf.MaintenanceOrder2;
-import com.sixthc.cim.get.cxf.MaintenanceOrders;
 import com.sixthc.cim.get.cxf.MaintenanceOrdersPayloadType;
-import com.sixthc.cim.get.cxf.Name;
-import com.sixthc.cim.get.cxf.Name2;
-import com.sixthc.cim.get.cxf.NameType;
-import com.sixthc.cim.get.cxf.NameType2;
-import com.sixthc.cim.get.cxf.NameTypeAuthority;
-import com.sixthc.cim.get.cxf.NameTypeAuthority2;
-import com.sixthc.cim.get.cxf.Organisation2;
-import com.sixthc.cim.get.cxf.Organisation2.Phone1;
-import com.sixthc.cim.get.cxf.Organisation2.StreetAddress;
-import com.sixthc.cim.get.cxf.Organisation2.StreetAddress.TownDetail;
-import com.sixthc.cim.get.cxf.PhaseCode;
-import com.sixthc.cim.get.cxf.ProcedureKind;
-import com.sixthc.cim.get.cxf.Work2;
-import com.sixthc.cim.get.cxf.WorkKind2;
-import com.sixthc.cim.get.cxf.WorkLocation2;
-import com.sixthc.cim.get.cxf.WorkLocation2.MainAddress;
-import com.sixthc.cim.get.cxf.WorkLocation2.MainAddress.StreetDetail;
-import com.sixthc.cim.get.cxf.WorkLocation2.PositionPoints;
-import com.sixthc.cim.get.cxf.WorkStatusKind2;
-import com.sixthc.cim.get.cxf.WorkTask;
-import com.sixthc.cim.get.cxf.WorkTaskKind;
-import com.sixthc.cim.get.cxf.WorkTimeSchedule2;
-import com.sixthc.cim.get.cxf.WorkTimeScheduleKind2;
+import com.sixthc.cim.get2.Asset2;
+import com.sixthc.cim.get2.Asset2.Procedures;
+import com.sixthc.cim.get2.Asset2.Procedures.Measurements;
+import com.sixthc.cim.get2.AssetLocationHazard2;
+import com.sixthc.cim.get2.Crew2;
+import com.sixthc.cim.get2.CrewMember;
+import com.sixthc.cim.get2.CrewMember.Person;
+import com.sixthc.cim.get2.InternalLocation2;
+import com.sixthc.cim.get2.MaintenanceOrder2;
+import com.sixthc.cim.get2.MaintenanceOrders2;
+import com.sixthc.cim.get2.Name2;
+import com.sixthc.cim.get2.NameType2;
+import com.sixthc.cim.get2.NameTypeAuthority2;
+import com.sixthc.cim.get2.Organisation2;
+import com.sixthc.cim.get2.Organisation2.Phone1;
+import com.sixthc.cim.get2.Organisation2.StreetAddress;
+import com.sixthc.cim.get2.Organisation2.StreetAddress.StreetDetail;
+import com.sixthc.cim.get2.Organisation2.StreetAddress.TownDetail;
+import com.sixthc.cim.get2.PhaseCode;
+import com.sixthc.cim.get2.ProcedureKind;
+import com.sixthc.cim.get2.ReplyType;
+import com.sixthc.cim.get2.Work2;
+import com.sixthc.cim.get2.Work2.Priority;
+import com.sixthc.cim.get2.WorkAsset;
+import com.sixthc.cim.get2.WorkKind1;
+import com.sixthc.cim.get2.WorkLocation2;
+import com.sixthc.cim.get2.WorkLocation2.MainAddress;
+import com.sixthc.cim.get2.WorkLocation2.PositionPoints;
+import com.sixthc.cim.get2.WorkStatusKind2;
+import com.sixthc.cim.get2.WorkTask;
+import com.sixthc.cim.get2.WorkTaskKind;
+import com.sixthc.cim.get2.WorkTimeSchedule2;
+import com.sixthc.cim.get2.WorkTimeSchedule2.ScheduleInterval;
+import com.sixthc.cim.get2.WorkTimeScheduleKind2;
 import com.sixthc.dao.MaintOrderDao;
 import com.sixthc.hbm.Address;
 import com.sixthc.hbm.AddressPositionPoints;
-import com.sixthc.hbm.Asset;
 import com.sixthc.hbm.AssetNames;
 import com.sixthc.hbm.AssetProcedures;
 import com.sixthc.hbm.Contactperson;
@@ -77,6 +77,8 @@ import com.sixthc.hbm.WorkTaskAssets;
 import com.sixthc.hbm.WorkTaskCrews;
 import com.sixthc.hbm.WorkTaskTimeSchedules;
 import com.sixthc.util.DateUtil;
+
+
 
 public class GetMaintOrder implements GetMaintenanceOrdersPort {
 	static Logger log = Logger.getLogger(GetMaintOrder.class);
@@ -117,7 +119,7 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 	}
 
 	private void setMainAddress(Address from, MainAddress to) {
-		StreetDetail sd = new StreetDetail();
+		com.sixthc.cim.get2.WorkLocation2.MainAddress.StreetDetail sd = new com.sixthc.cim.get2.WorkLocation2.MainAddress.StreetDetail();
 		to.setStreetDetail(sd);
 		sd.setAddressGeneral(from.getSdAddress1());
 		sd.setBuildingName(from.getSdBuildingName());
@@ -131,7 +133,7 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 		sd.setWithinTownLimits(from.getSdWithinTownLimitsFlag() == 1 ? true
 				: false);
 
-		com.sixthc.cim.get.cxf.WorkLocation2.MainAddress.TownDetail td = new com.sixthc.cim.get.cxf.WorkLocation2.MainAddress.TownDetail();
+		com.sixthc.cim.get2.WorkLocation2.MainAddress.TownDetail td = new com.sixthc.cim.get2.WorkLocation2.MainAddress.TownDetail();
 		to.setTownDetail(td);
 		to.setTownDetail(td);
 		td.setCode(from.getTdCode());
@@ -292,7 +294,7 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 		}
 
 		for (AssetProcedures fromProcs : from.getAssetProcedureses()) {
-			com.sixthc.cim.get.cxf.Asset2.Procedures toProc = new com.sixthc.cim.get.cxf.Asset2.Procedures();
+			Procedures toProc = new Procedures();
 			to.getProcedures().add(toProc);
 			Procedure fromProc = fromProcs.getProcedure();
 			toProc.setInstruction(fromProc.getInstruction());
@@ -301,7 +303,7 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 
 			for (ProcedureMeasurements fromProcMeasure : fromProc
 					.getProcedureMeasurementses()) {
-				com.sixthc.cim.get.cxf.Asset2.Procedures.Measurements toMeas = new com.sixthc.cim.get.cxf.Asset2.Procedures.Measurements();
+				Measurements toMeas = new Measurements();
 				toProc.getMeasurements().add(toMeas);
 				if (fromProcMeasure.getMeasurement() != null) {
 					Measurement fromMeas = fromProcMeasure.getMeasurement();
@@ -315,7 +317,7 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 		}
 	}
 	
-	private void setWorkAsset(com.sixthc.hbm.Asset from, com.sixthc.cim.get.cxf.WorkAsset to) {
+	private void setWorkAsset(com.sixthc.hbm.Asset from, WorkAsset to) {
 		to.setMRID(from.getMrid());
 		to.setCritical(from.getCriticalFlag() == 1 ? true : false);
 		to.setUtcNumber(from.getUtcNumber());
@@ -364,7 +366,7 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 		}
 
 		for (AssetProcedures fromProcs : from.getAssetProcedureses()) {
-			com.sixthc.cim.get.cxf.WorkAsset.Procedures toProc = new com.sixthc.cim.get.cxf.WorkAsset.Procedures();
+			com.sixthc.cim.get2.WorkAsset.Procedures toProc = new com.sixthc.cim.get2.WorkAsset.Procedures();
 			to.getProcedures().add(toProc);
 			Procedure fromProc = fromProcs.getProcedure();
 			toProc.setInstruction(fromProc.getInstruction());
@@ -373,7 +375,7 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 
 			for (ProcedureMeasurements fromProcMeasure : fromProc
 					.getProcedureMeasurementses()) {
-				com.sixthc.cim.get.cxf.WorkAsset.Procedures.Measurements toMeas = new com.sixthc.cim.get.cxf.WorkAsset.Procedures.Measurements();
+				com.sixthc.cim.get2.WorkAsset.Procedures.Measurements toMeas = new com.sixthc.cim.get2.WorkAsset.Procedures.Measurements();
 				toProc.getMeasurements().add(toMeas);
 				if (fromProcMeasure.getMeasurement() != null) {
 					Measurement fromMeas = fromProcMeasure.getMeasurement();
@@ -395,10 +397,10 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 		GetMaintenanceOrdersResponseMessageType resp = new GetMaintenanceOrdersResponseMessageType();
 		MaintenanceOrdersPayloadType payload = new MaintenanceOrdersPayloadType();
 		resp.setPayload(payload);
-		MaintenanceOrders respMaintOrders = new MaintenanceOrders();
+		MaintenanceOrders2 respMaintOrders = new MaintenanceOrders2();
 		payload.setMaintenanceOrders(respMaintOrders);
 		resp.setHeader(getMaintenanceOrdersRequestMessage.getHeader());
-		com.sixthc.cim.get.cxf.ReplyType reply = new com.sixthc.cim.get.cxf.ReplyType();
+		ReplyType reply = new ReplyType();
 		resp.setReply(reply);
 
 		for (MaintenanceOrder reqMaint : getMaintenanceOrdersRequestMessage
@@ -469,11 +471,11 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 					setWorkOrderNames(moWorkOrderNames, respName2);
 				}
 				respWorkOrder
-						.setKind(WorkKind2.fromValue(moWorkOrder.getKind()));
+						.setKind(WorkKind1.fromValue(moWorkOrder.getKind()));
 				respWorkOrder.setLastModifiedDateTime(DateUtil
 						.getXMLDate(moWorkOrder.getUpdatedAt()));
 
-				com.sixthc.cim.get.cxf.Work2.Priority respPriority = new com.sixthc.cim.get.cxf.Work2.Priority();
+				Priority respPriority = new Priority();
 				respPriority.setJustification(moWorkOrder
 						.getPriorityJustification());
 				respPriority.setRank(BigInteger.valueOf(moWorkOrder
@@ -507,7 +509,7 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 					respWorkOrder.getTimeSchedules().add(respSched);
 					respSched.setKind(WorkTimeScheduleKind2.fromValue(moSched
 							.getTimeSchedule().getType()));
-					com.sixthc.cim.get.cxf.WorkTimeSchedule2.ScheduleInterval respSI = new com.sixthc.cim.get.cxf.WorkTimeSchedule2.ScheduleInterval();
+					ScheduleInterval respSI = new ScheduleInterval();
 					respSched.setScheduleInterval(respSI);
 					TimeSchedule moS = moSched.getTimeSchedule();
 					respSI.setStart(DateUtil.getXMLDate(moS.getStartTstamp()));
@@ -586,8 +588,8 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 						}
 
 						for (CrewAssets moCrewAssets : moCrew.getCrewAssets()) {
-							 Asset moCrewAsset = moCrewAssets.getAsset();
-							com.sixthc.cim.get.cxf.WorkAsset respAsset = new com.sixthc.cim.get.cxf.WorkAsset();
+							 com.sixthc.hbm.Asset moCrewAsset = moCrewAssets.getAsset();
+							WorkAsset respAsset = new WorkAsset();
 							respCrew.getWorkAssets().add(respAsset);
 							setWorkAsset(moCrewAsset, respAsset);
 						}
@@ -615,7 +617,7 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 						respSched.setKind(WorkTimeScheduleKind2
 								.fromValue(moSchedule.getTimeSchedule()
 										.getType()));
-						com.sixthc.cim.get.cxf.WorkTimeSchedule2.ScheduleInterval respSI = new com.sixthc.cim.get.cxf.WorkTimeSchedule2.ScheduleInterval();
+						ScheduleInterval respSI = new ScheduleInterval();
 						respSched.setScheduleInterval(respSI);
 						TimeSchedule moS = moSchedule.getTimeSchedule();
 						respSI.setStart(DateUtil.getXMLDate(moS

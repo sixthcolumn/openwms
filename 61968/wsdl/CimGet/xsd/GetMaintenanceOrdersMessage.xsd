@@ -6,7 +6,7 @@
 	<!-- CIM Information Object Definition -->
 	<xs:import namespace="http://iec.ch/TC57/2015/MaintenanceOrders#" schemaLocation="MaintenanceOrders.xsd"/>
 	<!-- Remove this Import if there is no "Get" Profile associated with this Object. -->
-	<xs:import namespace="http://iec.ch/TC57/2015/GetMaintenanceOrders#" schemaLocation="GetMaintenanceOrders.xsd"/>
+	<xs:import namespace="http://iec.ch/TC57/2015/GetMaintenanceOrders#" schemaLocation="GetMaintenanceOrders.xsd"/> 
 	<!-- RequestType Definition -->
 	<xs:element name="GetMaintenanceOrdersRequestMessage" type="tns:GetMaintenanceOrdersRequestMessageType"/>
 	<xs:element name="GetMaintenanceOrdersResponseMessage" type="tns:GetMaintenanceOrdersResponseMessageType"/>
