@@ -39,7 +39,7 @@ public class ImageLoader {
 			// create an object of FileOutputStream
 			FileOutputStream fos;
 
-			fos = new FileOutputStream(new File("/tmp/" + filename));
+			fos = new FileOutputStream(new File("/data/openwms/files/" + filename));
 			// create an object of BufferedOutputStream
 			bos = new BufferedOutputStream(fos);
 			bos.write(bytes);
@@ -47,6 +47,7 @@ public class ImageLoader {
 			log.debug("url : " + url + ", filename : " + filename
 					+ ", images bytes read : " + bytes.length);
 		} catch (ImageLoadFileException fe) {
+			log.error(fe);
 			throw fe;
 		}
 		catch (Exception e) {

@@ -596,12 +596,47 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 		return workAsset;
 	}
 
+		public String DetermineFileExtension(String url) {
+		String last3;
+		if (url == null || url.length() < 3) {
+    			return "unk";
+		}
+
+		last3 = url.substring(url.length() - 3).toUpperCase();
+    		return last3;
+	}
+
+	public String DetermineAttachmentType(String url) {
+		String last3;
+		if (url == null || url.length() < 3) {
+    			return "image";
+		}
+
+		last3 = url.substring(url.length() - 3).toUpperCase();
+
+		if (last3.equals("JPG") ||
+		    last3.equals("PNG") ||
+		    last3.equals("GIF") ||
+		    last3.equals("JPEG")) {
+			return "image";
+		}
+		else if ( last3.equals("MP4") ||
+		    last3.equals("MPG")) {
+			return "video";
+		}
+
+		return "image";
+	}
+
+
 	@Override
 	public void createMaintenanceOrders(Holder<HeaderType> header,
 			RequestType request, Holder<MaintenanceOrdersPayloadType> payload,
 			Holder<ReplyType> reply) throws FaultMessage {
 		// TODO Auto-generated method stub
 		boolean imageFileProcessingError = false;
+		int numErrors = 0;
+		int numOrders = 0;
 		reply.value = new ReplyType();
 
 		MaintenanceOrders2 orders = payload.value.getMaintenanceOrders();
@@ -657,6 +692,18 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 			}
 
 			for (Work2 reqWork : req.getWork()) {
+				numOrders++;
+				System.out.println("numOrders: " + numOrders + " mRID: " + reqWork.getMRID());
+				if (reqWork.getMRID() != null) {
+					numErrors++;
+					System.out.println("Error - createOrder, but Work.MRID specified: " + reqWork.getMRID());
+					ErrorType et = new ErrorType();
+					et.setCode("Error");
+					et.setDetails("MRID cannot be specified when creating work order");
+					reply.value.getError().add(et);
+					continue; // stop processing THIS order
+				}
+
 				WorkOrder workOrder = new WorkOrder();
 				mo.getWorkOrders().add(workOrder);
 				workOrder.setMaintorder(mo);
@@ -999,10 +1046,11 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 							Attachment attachment = new Attachment();
 							attachment.setComment(reqAtt.getComment());
 							attachment.setDescription(reqAtt.getDescription());
-							attachment.setFilename(file);
-							attachment.setType("jpg"); // TODO : Get file suffix
+							String fileExt = DetermineFileExtension(uri);
+							attachment.setFilename(file + "." + fileExt);
+							attachment.setType(DetermineAttachmentType(uri));
 
-							ImageLoader.getImage(uri, file);
+							ImageLoader.getImage(uri, attachment.getFilename());
 
 							WorkOrderAttachments woa = new WorkOrderAttachments();
 							woa.setAttachment(attachment);
@@ -1026,11 +1074,19 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 			}
 		}
 
-		if (imageFileProcessingError == true) {
-			reply.value.setResult("Partial");
+		if (numErrors > 0) {
+			if (numErrors == numOrders) {
+				reply.value.setResult("Failed");
+			} else {
+				reply.value.setResult("Partial");
+			}
 
-		} else
+		} else if (imageFileProcessingError == true) {
+			reply.value.setResult("Partial");
+		} else {
 			reply.value.setResult("OK");
+		}
+
 	}
 
 }
