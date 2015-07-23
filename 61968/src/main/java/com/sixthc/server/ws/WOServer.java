@@ -500,6 +500,38 @@ public class WOServer implements WOServerSoap {
 
 	}
 
+	public String DetermineFileExtension(String url) {
+		String last3;
+		if (url == null || url.length() < 3) {
+    			return "unk";
+		}
+
+		last3 = url.substring(url.length() - 3).toUpperCase();
+    		return last3;
+	}
+
+	public String DetermineAttachmentType(String url) {
+		String last3;
+		if (url == null || url.length() < 3) {
+    			return "image";
+		}
+
+		last3 = url.substring(url.length() - 3).toUpperCase();
+
+		if (last3.equals("JPG") ||
+		    last3.equals("PNG") ||
+		    last3.equals("GIF") ||
+		    last3.equals("JPEG")) {
+			return "image";
+		}
+		else if ( last3.equals("MP4") ||
+		    last3.equals("MPG")) {
+			return "video";
+		}
+
+		return "image";
+	}
+
 	@Override
 	public void initiateWorkRequest(ArrayOfWorkRequest arrayOfWorkRequest,
 			String responseURL, String transactionID,
@@ -542,6 +574,8 @@ public class WOServer implements WOServerSoap {
 
 				String createdBy = rp.getLastName() + ", " + rp.getFirstName();
 				workOrder.setCreatedBy(createdBy);
+			} else {
+				workOrder.setCreatedBy("unknown");
 			}
 
 			request.getRequestingSystem(); // not mapped in DB bb: ignore
@@ -653,11 +687,14 @@ public class WOServer implements WOServerSoap {
 					String file = UUID.randomUUID().toString();
 					String uri = att.getContentReference().getURI();
 
-					ImageLoader.getImage(uri, file);
 
 					Attachment attachment = new Attachment();
-					attachment.setFilename(file);
-					attachment.setType("jpg"); // TODO : Get file suffix
+
+					String fileExt = DetermineFileExtension(uri);
+					attachment.setFilename(file + "." + fileExt);
+					attachment.setType(DetermineAttachmentType(uri));
+					ImageLoader.getImage(uri, attachment.getFilename());
+
 					WorkOrderAttachments woa = new WorkOrderAttachments();
 					woa.setAttachment(attachment);
 					attachment.setWorkOrderAttachmentses(workOrder
