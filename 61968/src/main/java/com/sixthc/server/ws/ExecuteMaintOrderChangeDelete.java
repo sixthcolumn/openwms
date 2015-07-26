@@ -1032,8 +1032,10 @@ public class ExecuteMaintOrderChangeDelete implements MaintenanceOrdersPort {
 				.getMaintenanceOrder()) {
 			for (Work2 reqWork : reqOrder.getWork()) {
 				String mrid = reqWork.getMRID();
+				String maintrid = reqOrder.getMRID();
 				try {
 					log.info("deleting mrid = " + mrid);
+					log.info("deleting maintorderid = " + maintrid);
 					workOrderDao.deleteWorkOrder(mrid);
 				} catch (Exception e) {
 					error = true;

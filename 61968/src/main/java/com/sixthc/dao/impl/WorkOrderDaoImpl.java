@@ -51,7 +51,7 @@ public class WorkOrderDaoImpl extends CustomHibernateDaoSupport implements
 	}
 	
 	public void deleteWorkOrder(String mrid) {
-		String stmt = "Update WorkOrder set status = 'DELETE' where mrid = :mrid";
+		String stmt = "Update WorkOrder set status = 'DELETED' where mrid = :mrid";
 		Session session = getHibernateTemplate().getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction();
 		Query query = session.createQuery(stmt);
