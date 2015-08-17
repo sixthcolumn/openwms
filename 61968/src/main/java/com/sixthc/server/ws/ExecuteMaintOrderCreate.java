@@ -22,7 +22,9 @@ import com.sixthc.cim.create2.Crew2;
 import com.sixthc.cim.create2.CrewMember;
 import com.sixthc.cim.create2.CrewMember.Person;
 import com.sixthc.cim.create2.ErrorType;
+import com.sixthc.cim.create2.ErrorType.ID;
 import com.sixthc.cim.create2.HeaderType;
+import com.sixthc.cim.create2.IDKindType;
 import com.sixthc.cim.create2.InternalLocation2;
 import com.sixthc.cim.create2.MaintenanceOrder2;
 import com.sixthc.cim.create2.MaintenanceOrders2;
@@ -94,7 +96,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 
 	@Autowired
 	private WorkOrderDao workOrderDao;
-	
+
 	@Autowired
 	private MaintOrderDao maintOrderDao;
 
@@ -263,12 +265,14 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 
 			woAddress.setSdAddress1(streetDetail.getAddressGeneral());
 			woAddress.setSdAddress2(streetDetail.getName());
-			woAddress.setSdWithinTownLimitsFlag(streetDetail.isWithinTownLimits() == true ? 1 : 0);
+			woAddress.setSdWithinTownLimitsFlag(streetDetail
+					.isWithinTownLimits() == true ? 1 : 0);
 			woAddress.setSdType(streetDetail.getType());
 
 		}
 
-		com.sixthc.cim.create2.Organisation2.StreetAddress.TownDetail townDetail = addr.getTownDetail();
+		com.sixthc.cim.create2.Organisation2.StreetAddress.TownDetail townDetail = addr
+				.getTownDetail();
 		if (townDetail != null) {
 			woAddress.setTdCode(townDetail.getCode());
 			woAddress.setTdCountry(townDetail.getCountry());
@@ -277,8 +281,6 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 			woAddress.setTdStateProvince(townDetail.getStateOrProvince());
 		}
 	}
-
-	
 
 	private com.sixthc.hbm.Nametype parseNameType(NameType2 from) {
 		if (from != null) {
@@ -307,13 +309,15 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 		workAsset.setCriticalFlag(reqCrewAsset.isCritical() == true ? 1 : 0);
 		workAsset.setUtcNumber(reqCrewAsset.getUtcNumber());
 		if (reqAssetLoc != null) {
-			WorkLocation2.MainAddress reqMainAddress = reqAssetLoc.getMainAddress();
+			WorkLocation2.MainAddress reqMainAddress = reqAssetLoc
+					.getMainAddress();
 
 			Address workAssetAddress = new Address();
 			workAsset.setAddress(workAssetAddress);
 			reqAssetLoc.getMRID(); // ignore
 
-			InternalLocation2 reqInternalLoc = reqAssetLoc.getInternalLocation();
+			InternalLocation2 reqInternalLoc = reqAssetLoc
+					.getInternalLocation();
 			if (reqInternalLoc != null) {
 				workAsset.setInternalBuildingName(reqInternalLoc
 						.getBuildingName());
@@ -433,10 +437,8 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 		return workAsset;
 	}
 
-	private void parseStreetDetail2(Address woAddress,
-			MainAddress addr) {
-		StreetDetail streetDetail = addr
-				.getStreetDetail();
+	private void parseStreetDetail2(Address woAddress, MainAddress addr) {
+		StreetDetail streetDetail = addr.getStreetDetail();
 
 		if (streetDetail != null) {
 			woAddress.setSdBuildingName(streetDetail.getBuildingName());
@@ -449,7 +451,8 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 
 			woAddress.setSdAddress1(streetDetail.getAddressGeneral());
 			woAddress.setSdAddress2(streetDetail.getName());
-			woAddress.setSdWithinTownLimitsFlag(streetDetail.isWithinTownLimits() == true ? 1 : 0);
+			woAddress.setSdWithinTownLimitsFlag(streetDetail
+					.isWithinTownLimits() == true ? 1 : 0);
 			woAddress.setSdType(streetDetail.getType());
 
 		}
@@ -462,7 +465,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 			woAddress.setTdSection(townDetail.getSection());
 			woAddress.setTdStateProvince(townDetail.getStateOrProvince());
 		}
-		
+
 	}
 
 	private com.sixthc.hbm.Asset parseAsset(Asset2 reqAsset) {
@@ -478,7 +481,8 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 			workAsset.setAddress(workAssetAddress);
 			reqAssetLoc.getMRID(); // ignore
 
-			InternalLocation2 reqInternalLoc = reqAssetLoc.getInternalLocation();
+			InternalLocation2 reqInternalLoc = reqAssetLoc
+					.getInternalLocation();
 			if (reqInternalLoc != null) {
 				workAsset.setInternalBuildingName(reqInternalLoc
 						.getBuildingName());
@@ -596,38 +600,33 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 		return workAsset;
 	}
 
-		public String DetermineFileExtension(String url) {
+	public String DetermineFileExtension(String url) {
 		String last3;
 		if (url == null || url.length() < 3) {
-    			return "unk";
+			return "unk";
 		}
 
 		last3 = url.substring(url.length() - 3).toUpperCase();
-    		return last3;
+		return last3;
 	}
 
 	public String DetermineAttachmentType(String url) {
 		String last3;
 		if (url == null || url.length() < 3) {
-    			return "image";
+			return "image";
 		}
 
 		last3 = url.substring(url.length() - 3).toUpperCase();
 
-		if (last3.equals("JPG") ||
-		    last3.equals("PNG") ||
-		    last3.equals("GIF") ||
-		    last3.equals("JPEG")) {
+		if (last3.equals("JPG") || last3.equals("PNG") || last3.equals("GIF")
+				|| last3.equals("JPEG")) {
 			return "image";
-		}
-		else if ( last3.equals("MP4") ||
-		    last3.equals("MPG")) {
+		} else if (last3.equals("MP4") || last3.equals("MPG")) {
 			return "video";
 		}
 
 		return "image";
 	}
-
 
 	@Override
 	public void createMaintenanceOrders(Holder<HeaderType> header,
@@ -638,21 +637,62 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 		int numErrors = 0;
 		int numOrders = 0;
 		reply.value = new ReplyType();
+		boolean workOrderError = false;
+
+		HeaderType returnHeader = new HeaderType();
+		returnHeader.setVerb("reply");
+		returnHeader.setNoun("MaintenanceOrders");
+		returnHeader.setTimestamp(DateUtil.getXMLDate(new Date(System
+				.currentTimeMillis())));
+		returnHeader.setCorrelationID(header.value.getCorrelationID());
+		returnHeader.setMessageID(UUID.randomUUID().toString());
+		header.value = returnHeader;
 
 		MaintenanceOrders2 orders = payload.value.getMaintenanceOrders();
+		payload.value = null;
 		for (MaintenanceOrder2 req : orders.getMaintenanceOrder()) {
 			Maintorder mo = new Maintorder();
+
+			
 			mo.setMrid(req.getMRID());
 			mo.setCreatedBy("wms");
 			mo.setCreatedAt(new Date(System.currentTimeMillis()));
-			
+
 			UUID uuid = UUID.randomUUID();
 			mo.setMrid(uuid.toString());
-			
+
 			List<MaintorderNames> nlist = parseMaintorderNames(req.getNames());
 			for (MaintorderNames names : nlist) {
 				names.setMaintorder(mo);
 				mo.getMaintorderNameses().add(names);
+			}
+			
+			System.out.println("Maint Order mRID: " + mo.getMrid());
+			if (req.getMRID() != null) {
+				numErrors++;
+				System.out
+						.println("Error - createOrder, but Work.MRID specified: "
+								+req.getMRID());
+				ErrorType et = new ErrorType();
+				et.setCode("6.1");
+				et.setLevel("FATAL");
+				et.setDetails("Request cancelled per business rule. MRID cannot be specified when creating maint order");
+				ID id = new ID();
+				id.setIdType("Maintenance Order Number");
+				id.setIdAuthority("Utility XYZ");
+				id.setKind(IDKindType.NAME);
+				id.setObjectType("MaintenanceOrder");
+				et.setID(id);
+				if (mo.getMaintorderNameses().size() > 0) {
+					for (MaintorderNames n : mo.getMaintorderNameses()) {
+						id.setValue(n.getName());
+						break;
+					}
+				} else {
+					id.setValue("NOT SET");
+				}
+				reply.value.getError().add(et);
+				continue; // stop processing THIS order
 			}
 
 			List<com.sixthc.hbm.Organization> orgList = new Vector<com.sixthc.hbm.Organization>();
@@ -693,21 +733,37 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 
 			for (Work2 reqWork : req.getWork()) {
 				numOrders++;
-				System.out.println("numOrders: " + numOrders + " mRID: " + reqWork.getMRID());
-				if (reqWork.getMRID() != null) {
-					numErrors++;
-					System.out.println("Error - createOrder, but Work.MRID specified: " + reqWork.getMRID());
-					ErrorType et = new ErrorType();
-					et.setCode("Error");
-					et.setDetails("MRID cannot be specified when creating work order");
-					reply.value.getError().add(et);
-					continue; // stop processing THIS order
-				}
+				System.out.println("numOrders: " + numOrders + " mRID: "
+						+ reqWork.getMRID());
+//				if (reqWork.getMRID() != null) {
+//					numErrors++;
+//					System.out
+//							.println("Error - createOrder, but Work.MRID specified: "
+//									+ reqWork.getMRID());
+//					ErrorType et = new ErrorType();
+//					et.setCode("Error");
+//					et.setDetails("MRID cannot be specified when creating work order");
+//					ID id = et.getID();
+//					id.setIdType("Maintenance Order Number");
+//					id.setIdAuthority("Utility XYZ");
+//					id.setKind(IDKindType.NAME);
+//					id.setObjectType("WorkOrder");
+//					if (mo.getMaintorderNameses().size() > 0) {
+//						for (MaintorderNames n : mo.getMaintorderNameses()) {
+//							id.setValue(n.getName());
+//							break;
+//						}
+//					} else {
+//						id.setValue("NOT SET");
+//					}
+//					reply.value.getError().add(et);
+//					workOrderError = true;
+//					continue; // stop processing THIS order
+//				}
 
 				WorkOrder workOrder = new WorkOrder();
 				mo.getWorkOrders().add(workOrder);
 				workOrder.setMaintorder(mo);
-
 
 				// add orgs to all work orders
 				for (Organization workOrg : orgList) {
@@ -815,7 +871,8 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 						workOrder.setInternalRoomNum(iloc.getRoomNumber());
 					}
 
-					com.sixthc.cim.create2.WorkLocation2.MainAddress reqMaddr = reqLoc.getMainAddress();
+					com.sixthc.cim.create2.WorkLocation2.MainAddress reqMaddr = reqLoc
+							.getMainAddress();
 					if (reqMaddr != null) {
 						Address address = new Address();
 
@@ -881,8 +938,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 						if (reqDateTime != null)
 							workTask.setCrewEta(reqCrewEta);
 
-
-					for ( Crew2 reqCrew : reqTask.getCrews()) {
+					for (Crew2 reqCrew : reqTask.getCrews()) {
 						WorkTaskCrews workCrews = new WorkTaskCrews();
 						workTask.getWorkTaskCrewses().add(workCrews);
 						workCrews.setWorkTask(workTask);
@@ -986,7 +1042,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 						workTask.getWorkTaskNameses().add(workTaskNames);
 					}
 
-					if (reqTask.getOldAsset()!= null) {
+					if (reqTask.getOldAsset() != null) {
 						com.sixthc.hbm.Asset oldAsset = parseAsset(reqTask
 								.getOldAsset());
 						com.sixthc.hbm.WorkTaskOldAssets workTaskOldAssets = new WorkTaskOldAssets();
@@ -1035,39 +1091,43 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 
 					}
 
+					if (reqWork.getAttachments() != null) {
+						for (com.sixthc.cim.create2.Attachment reqAtt : reqWork
+								.getAttachments().getAttachment()) {
 
-					for ( com.sixthc.cim.create2.Attachment reqAtt : reqWork
-							.getAttachments().getAttachment()) {
+							try {
+								String file = UUID.randomUUID().toString();
+								String uri = reqAtt.getUrl();
 
-						try {
-							String file = UUID.randomUUID().toString();
-							String uri = reqAtt.getUrl();
+								Attachment attachment = new Attachment();
+								attachment.setComment(reqAtt.getComment());
+								attachment.setDescription(reqAtt
+										.getDescription());
+								String fileExt = DetermineFileExtension(uri);
+								attachment.setFilename(file + "." + fileExt);
+								attachment
+										.setType(DetermineAttachmentType(uri));
 
-							Attachment attachment = new Attachment();
-							attachment.setComment(reqAtt.getComment());
-							attachment.setDescription(reqAtt.getDescription());
-							String fileExt = DetermineFileExtension(uri);
-							attachment.setFilename(file + "." + fileExt);
-							attachment.setType(DetermineAttachmentType(uri));
+								ImageLoader.getImage(uri,
+										attachment.getFilename());
 
-							ImageLoader.getImage(uri, attachment.getFilename());
+								WorkOrderAttachments woa = new WorkOrderAttachments();
+								woa.setAttachment(attachment);
+								attachment.setWorkOrderAttachmentses(workOrder
+										.getWorkOrderAttachmentses());
+								woa.setWorkOrder(workOrder);
+								workOrder.getWorkOrderAttachmentses().add(woa);
+							} catch (ImageLoadFileException e) {
+								log.error(e);
+								imageFileProcessingError = true;
+								ErrorType et = new ErrorType();
+								et.setCode("WARNING");
+								et.setDetails("failed to load image from url : "
+										+ reqAtt);
+								reply.value.getError().add(et);
+							}
 
-							WorkOrderAttachments woa = new WorkOrderAttachments();
-							woa.setAttachment(attachment);
-							attachment.setWorkOrderAttachmentses(workOrder
-									.getWorkOrderAttachmentses());
-							woa.setWorkOrder(workOrder);
-							workOrder.getWorkOrderAttachmentses().add(woa);
-						} catch (ImageLoadFileException e) {
-							log.error(e);
-							imageFileProcessingError = true;
-							ErrorType et = new ErrorType();
-							et.setCode("WARNING");
-							et.setDetails("failed to load image from url : "
-									+ reqAtt);
-							reply.value.getError().add(et);
 						}
-
 					}
 				}
 				workOrderDao.save(workOrder);

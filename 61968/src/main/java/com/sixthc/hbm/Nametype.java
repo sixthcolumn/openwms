@@ -88,7 +88,7 @@ public class Nametype implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "name_type_authority_id", nullable = false)
+	@JoinColumn(name = "name_type_authority_id")
 	public NameTypeAuthority getNameTypeAuthority() {
 		return this.nameTypeAuthority;
 	}
