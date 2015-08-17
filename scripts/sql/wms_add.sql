@@ -1,6 +1,13 @@
-insert into package (id, name) values (7, 'WMS CIM MaintenanceOrder');
-insert into package (id, name) values (13, 'WMS MSP WorkRequest');
 insert into vendor_role_type (id, name) values (6, "WMS-CIM");
 insert into vendor_role_type (id, name) values (7, "WMS-MSP");
+insert into vendor_role_type (id, name) values (9, "WMS-CIM Client");
+insert into package (id, name) values (7, 'WMS CIM MaintenanceOrder');
+insert into package (id, name) values (13, 'WMS MSP WorkRequest');
+insert into package (id, name) values (14, 'WMS CIM Client MaintOrder');
+insert into interface (id, name, package_id, proxy_flag, required_flag, vendor_role_type_id) values (50, 'WMS MaintOrder Change-Delete', 14, 0, 0, 9);
+insert into interface (id, name, package_id, proxy_flag, required_flag, vendor_role_type_id) values (51, 'WMS MaintOrder Create', 14, 0, 0, 9);
 insert into interface (id, name, package_id, proxy_flag, required_flag, vendor_role_type_id) values (40, 'WMS MaintenanceOrder Create', 7, 0, 0, 6);
 insert into interface (id, name, package_id, proxy_flag, required_flag, vendor_role_type_id) values (41, 'WMS WorkRequest Create', 13, 0, 0, 7);
+insert into packages_vendor_role_types(package_id,vendor_role_type_id) values (7,6);
+insert into packages_vendor_role_types(package_id,vendor_role_type_id) values (13,7);
+insert into packages_vendor_role_types(package_id,vendor_role_type_id) values (14,9);
