@@ -1119,11 +1119,26 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 								workOrder.getWorkOrderAttachmentses().add(woa);
 							} catch (ImageLoadFileException e) {
 								log.error(e);
-								imageFileProcessingError = true;
+								
 								ErrorType et = new ErrorType();
+								et.setCode("8.1");
 								et.setCode("WARNING");
 								et.setDetails("failed to load image from url : "
 										+ reqAtt);
+								ID id = new ID();
+								id.setIdType("Work Attachment Image");
+								id.setIdAuthority("Utility XYZ");
+								id.setKind(IDKindType.NAME);
+								id.setObjectType("Work");
+								et.setID(id);
+								if (mo.getMaintorderNameses().size() > 0) {
+									for (MaintorderNames n : mo.getMaintorderNameses()) {
+										id.setValue(n.getName());
+										break;
+									}
+								} else {
+									id.setValue("NOT SET");
+								}
 								reply.value.getError().add(et);
 							}
 
