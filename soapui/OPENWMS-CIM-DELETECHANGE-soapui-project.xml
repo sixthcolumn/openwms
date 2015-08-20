@@ -6322,7 +6322,7 @@
       <main:DeleteMaintenanceOrders>
             <main:Header>
                 <mes:Verb>delete</mes:Verb>
-                <mes:Noun>WorkRequests</mes:Noun>
+                <mes:Noun>MaintenanceOrders</mes:Noun>
                 <mes:Timestamp>2001-12-17T09:30:47Z</mes:Timestamp>
                 <mes:ReplyAddress>http://localhost:8080/epriConnect/MaintOrderServiceDel</mes:ReplyAddress>
                 <mes:MessageID>407903a3-4725-465f-a56b-45cf1cde5ede</mes:MessageID>
@@ -6346,7 +6346,7 @@
       <main:DeleteMaintenanceOrders>
             <main:Header>
                 <mes:Verb>delete</mes:Verb>
-                <mes:Noun>WorkRequests</mes:Noun>
+                <mes:Noun>MaintenanceOrders</mes:Noun>
                 <mes:Timestamp>2001-12-17T09:30:47Z</mes:Timestamp>
                 <mes:ReplyAddress>http://localhost:8080/epriConnect/badaddr</mes:ReplyAddress>
                 <mes:MessageID>407903a3-4725-465f-a56b-45cf1cde5ede</mes:MessageID>

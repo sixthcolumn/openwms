@@ -4210,7 +4210,7 @@
         <main:CreateMaintenanceOrders>
             <main:Header>
                 <mes:Verb>create</mes:Verb>
-                <mes:Noun>WorkRequests</mes:Noun>
+                <mes:Noun>MaintenanceOrders</mes:Noun>
                 <mes:Timestamp>2001-12-17T09:30:47Z</mes:Timestamp>
                 <mes:MessageID>407903a3-4725-465f-a56b-45cf1cde5ede</mes:MessageID>
                 <mes:CorrelationID>291ab243-49ba-463b-9fca-d61901bf7319</mes:CorrelationID>
@@ -4374,7 +4374,7 @@
         <main:CreateMaintenanceOrders>
             <main:Header>
                 <mes:Verb>create</mes:Verb>
-                <mes:Noun>WorkRequests</mes:Noun>
+                <mes:Noun>MaintenanceOrders</mes:Noun>
                 <mes:Timestamp>2001-12-17T09:30:47Z</mes:Timestamp>
                 <mes:MessageID>407903a3-4725-465f-a56b-45cf1cde5ede</mes:MessageID>
                 <mes:CorrelationID>291ab243-49ba-463b-9fca-d61901bf7319</mes:CorrelationID>
@@ -4538,7 +4538,7 @@
         <main:CreateMaintenanceOrders>
             <main:Header>
                 <mes:Verb>create</mes:Verb>
-                <mes:Noun>WorkRequests</mes:Noun>
+                <mes:Noun>MaintenanceOrders</mes:Noun>
                 <mes:Timestamp>2001-12-17T09:30:47Z</mes:Timestamp>
                 <mes:MessageID>407903a3-4725-465f-a56b-45cf1cde5ede</mes:MessageID>
                 <mes:CorrelationID>291ab243-49ba-463b-9fca-d61901bf7319</mes:CorrelationID>
@@ -4850,7 +4850,7 @@
         <main:CreateMaintenanceOrders>
             <main:Header>
                 <mes:Verb>create</mes:Verb>
-                <mes:Noun>WorkRequests</mes:Noun>
+                <mes:Noun>MaintenanceOrders</mes:Noun>
                 <mes:Timestamp>2001-12-17T09:30:47Z</mes:Timestamp>
                 <mes:MessageID>407903a3-4725-465f-a56b-45cf1cde5ede</mes:MessageID>
                 <mes:CorrelationID>291ab243-49ba-463b-9fca-d61901bf7319</mes:CorrelationID>
@@ -5163,7 +5163,7 @@
         <main:CreateMaintenanceOrders>
             <main:Header>
                 <mes:Verb>create</mes:Verb>
-                <mes:Noun>WorkRequests</mes:Noun>
+                <mes:Noun>MaintenanceOrders</mes:Noun>
                 <mes:Timestamp>2001-12-17T09:30:47Z</mes:Timestamp>
                 <mes:ReplyAddress>http://localhost:8080/epriConnect/badaddr</mes:ReplyAddress>
                 <mes:MessageID>407903a3-4725-465f-a56b-45cf1cde5ede</mes:MessageID>
