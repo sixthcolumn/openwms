@@ -3772,7 +3772,7 @@ work.</xs:documentation>
   <xs:element name="DeletedMaintenanceOrders" type="tns:MaintenanceOrdersEventMessageType"/>
   <xs:element name="MaintenanceOrdersResponseMessage" type="tns:MaintenanceOrdersResponseMessageType"/>
   <xs:element name="MaintenanceOrdersFaultMessage" type="tns:MaintenanceOrdersFaultMessageType"/>
-</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://192.168.65.199:8080/epriConnect/MaintOrderServiceGet</con:endpoint><con:endpoint>http://iec.ch/TC57/2015/GetMaintenanceOrders</con:endpoint><con:endpoint>http://localhost:8080/epriConnect/MaintOrderServiceGet</con:endpoint></con:endpoints><con:operation isOneWay="false" action="http://iec.ch/TC57/2015/GetMaintenanceOrders/GetMaintenanceOrders" name="GetMaintenanceOrders" bindingOperationName="GetMaintenanceOrders" type="Request-Response" outputName="GetMaintenanceOrdersResponse" inputName="GetMaintenanceOrdersRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://iec.ch/TC57/2015/GetMaintenanceOrders</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:get="http://iec.ch/TC57/2015/GetMaintenanceOrdersMessage" xmlns:mes="http://iec.ch/TC57/2011/schema/message" xmlns:get1="http://iec.ch/TC57/2015/GetMaintenanceOrders#">
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://192.168.65.199:8080/epriConnect/MaintOrderServiceGet</con:endpoint><con:endpoint>http://52.4.219.117:8080/epriConnect/MaintOrderServiceGet</con:endpoint><con:endpoint>http://iec.ch/TC57/2015/GetMaintenanceOrders</con:endpoint><con:endpoint>http://localhost:8080/epriConnect/MaintOrderServiceGet</con:endpoint></con:endpoints><con:operation isOneWay="false" action="http://iec.ch/TC57/2015/GetMaintenanceOrders/GetMaintenanceOrders" name="GetMaintenanceOrders" bindingOperationName="GetMaintenanceOrders" type="Request-Response" outputName="GetMaintenanceOrdersResponse" inputName="GetMaintenanceOrdersRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://iec.ch/TC57/2015/GetMaintenanceOrders</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:get="http://iec.ch/TC57/2015/GetMaintenanceOrdersMessage" xmlns:mes="http://iec.ch/TC57/2011/schema/message" xmlns:get1="http://iec.ch/TC57/2015/GetMaintenanceOrders#">
    <soapenv:Header/>
    <soapenv:Body>
       <get:GetMaintenanceOrdersRequestMessage>
@@ -4046,13 +4046,13 @@ work.</xs:documentation>
          </get:Request>
       </get:GetMaintenanceOrdersRequestMessage>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://iec.ch/TC57/2015/GetMaintenanceOrders/GetMaintenanceOrders"/></con:call></con:operation></con:interface><con:testSuite name="GetMaintenanceOrders_Binding TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetMaintenanceOrders TestCase" searchProperties="true"><con:settings/><con:testStep type="request" name="GetWorkOrder"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GetMaintenanceOrders_Binding</con:interface><con:operation>GetMaintenanceOrders</con:operation><con:request name="GetWorkOrder"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://192.168.65.199:8080/epriConnect/MaintOrderServiceGet</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:get="http://iec.ch/TC57/2015/GetMaintenanceOrdersMessage" xmlns:mes="http://iec.ch/TC57/2011/schema/message" xmlns:get1="http://iec.ch/TC57/2015/GetMaintenanceOrders#">
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://iec.ch/TC57/2015/GetMaintenanceOrders/GetMaintenanceOrders"/></con:call></con:operation></con:interface><con:testSuite name="GetMaintenanceOrders_Binding TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetMaintenanceOrders TestCase" searchProperties="true"><con:settings/><con:testStep type="request" name="GetMaintenanceOrder"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GetMaintenanceOrders_Binding</con:interface><con:operation>GetMaintenanceOrders</con:operation><con:request name="GetMaintenanceOrder"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://52.4.219.117:8080/epriConnect/MaintOrderServiceGet</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:get="http://iec.ch/TC57/2015/GetMaintenanceOrdersMessage" xmlns:mes="http://iec.ch/TC57/2011/schema/message" xmlns:get1="http://iec.ch/TC57/2015/GetMaintenanceOrders#">
    <soapenv:Header/>
    <soapenv:Body>
       <get:GetMaintenanceOrdersRequestMessage>
          <get:Header>
-          <mes:Verb>change</mes:Verb>
-                <mes:Noun>WorkRequests</mes:Noun>
+          <mes:Verb>get</mes:Verb>
+                <mes:Noun>MaintenanceOrders</mes:Noun>
                 <mes:Timestamp>2001-12-17T09:30:47Z</mes:Timestamp>
                 <mes:MessageID>407903a3-4725-465f-a56b-45cf1cde5ede</mes:MessageID>
                 <mes:CorrelationID>9f31c6d4-dc31-4cdb-b689-d91aa5d4aef2</mes:CorrelationID>
@@ -4060,7 +4060,7 @@ work.</xs:documentation>
          <get:Request>
             <get1:GetMaintenanceOrders>
                <get1:MaintenanceOrder>
-                  <get1:mRID>79b78d49-b54f-43a8-a78e-b9d56a104ae3</get1:mRID> 
+                  <get1:mRID>3cae1d0a-6284-4afb-982b-be45478d9c27</get1:mRID> 
                </get1:MaintenanceOrder>
             </get1:GetMaintenanceOrders>            
          </get:Request>
