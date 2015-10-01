@@ -1,6 +1,7 @@
 package com.sixthc.server.ws;
 
 import java.util.List;
+import java.util.Vector;
 
 import org.apache.log4j.Logger;
 import org.multispeak.v5.Attachment;
@@ -24,10 +25,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
-import ch.iec.tc57._2011.schema.message.ReplyType;
-
 import com.sixthc.client.DERGroupsClient;
-import com.sixthc.wsdl.der_request.ArrayOfDERGroupID2Payload;
 import com.sixthc.wsdl.der_request.DERRequestPort;
 
 public class DERRequestImpl implements DERRequestPort, ApplicationContextAware {
@@ -87,7 +85,10 @@ public class DERRequestImpl implements DERRequestPort, ApplicationContextAware {
 	public List<String> getMethods(String address,
 			MultiSpeakRequestMsgHeader multiSpeakMsgHeader) {
 		log.debug("REQUEST : getMethods");
-		return client.getMethods(address, multiSpeakMsgHeader).getTheString();
+		Vector<String> list = new Vector<String>();
+		list.add("method1");
+		list.add("method2");
+		return list;
 	}
 
 	@Override
@@ -199,5 +200,6 @@ public class DERRequestImpl implements DERRequestPort, ApplicationContextAware {
 		
 	}
 
+	
 
 }
