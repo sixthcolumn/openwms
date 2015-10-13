@@ -67,6 +67,9 @@ public class WorkOrder implements java.io.Serializable {
 	private String internalRoomNum;
 	private String primaryId;
 	private String secondaryId;
+	private String reason;
+	private String severity;
+	private String orderType;
 	private Set<WorkOrderWorkTasks> workOrderWorkTaskses = new HashSet<WorkOrderWorkTasks>(
 			0);
 	private Set<WorkOrderNames> workOrderNameses = new HashSet<WorkOrderNames>(
@@ -481,6 +484,33 @@ public class WorkOrder implements java.io.Serializable {
 	public void setSecondaryId(String secondaryId) {
 		this.secondaryId = secondaryId;
 	}
+	
+	@Column(name = "reason")
+	public String getReason() {
+		return reason;
+	}
+
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+	
+	@Column(name = "severity")
+	public String getSeverity() {
+		return severity;
+	}
+
+	public void setSeverity(String severity) {
+		this.severity = severity;
+	}
+	
+	@Column(name = "order_type")
+	public String getOrderType() {
+		return orderType;
+	}
+
+	public void setOrderType(String orderType) {
+		this.orderType = orderType;
+	}
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "workOrder")
 	public Set<WorkOrderWorkTasks> getWorkOrderWorkTaskses() {
@@ -578,5 +608,9 @@ public class WorkOrder implements java.io.Serializable {
 	public void setMaintorder(Maintorder maintorder) {
 		this.maintorder = maintorder;
 	}
+
+
+	
+	
 
 }

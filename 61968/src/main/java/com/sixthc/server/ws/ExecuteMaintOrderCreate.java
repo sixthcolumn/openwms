@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.sixthc.cim.create.cxf.FaultMessage;
 import com.sixthc.cim.create.cxf.MaintenanceOrdersPayloadType;
 import com.sixthc.cim.create.cxf.MaintenanceOrdersPort;
+import com.sixthc.cim.create2.ActivityRecord2;
 import com.sixthc.cim.create2.Asset2;
 import com.sixthc.cim.create2.Asset2.Procedures;
 import com.sixthc.cim.create2.AssetLocationHazard2;
@@ -649,11 +650,10 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 		header.value = returnHeader;
 
 		MaintenanceOrders2 orders = payload.value.getMaintenanceOrders();
-		payload.value = null;
+		//payload.value = null;
 		for (MaintenanceOrder2 req : orders.getMaintenanceOrder()) {
 			Maintorder mo = new Maintorder();
 
-			
 			mo.setMrid(req.getMRID());
 			mo.setCreatedBy("wms");
 			mo.setCreatedAt(new Date(System.currentTimeMillis()));
@@ -666,13 +666,13 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 				names.setMaintorder(mo);
 				mo.getMaintorderNameses().add(names);
 			}
-			
+
 			System.out.println("Maint Order mRID: " + mo.getMrid());
 			if (req.getMRID() != null) {
 				numErrors++;
 				System.out
 						.println("Error - createOrder, but Work.MRID specified: "
-								+req.getMRID());
+								+ req.getMRID());
 				ErrorType et = new ErrorType();
 				et.setCode("6.1");
 				et.setLevel("FATAL");
@@ -695,16 +695,22 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 				continue; // stop processing THIS order
 			}
 
+			// will return the mrid in the payload back to caller
+			req.setMRID(uuid.toString());
+
 			List<com.sixthc.hbm.Organization> orgList = new Vector<com.sixthc.hbm.Organization>();
 			Organisation2 reqOrg = req.getOrganisation();
+
 			if (reqOrg != null) {
 				com.sixthc.hbm.Organization workOrg = new com.sixthc.hbm.Organization();
+
 				workOrg.setMrid(reqOrg.getMRID());
 				List<com.sixthc.hbm.OrganizationNames> namesList = parseNames(reqOrg
 						.getNames());
 				for (com.sixthc.hbm.OrganizationNames names : namesList) {
 					names.setOrganization(workOrg);
 					workOrg.getOrganizationNameses().add(names);
+
 				}
 
 				Phone1 ph1 = reqOrg.getPhone1();
@@ -732,38 +738,24 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 			}
 
 			for (Work2 reqWork : req.getWork()) {
+
 				numOrders++;
 				System.out.println("numOrders: " + numOrders + " mRID: "
 						+ reqWork.getMRID());
-//				if (reqWork.getMRID() != null) {
-//					numErrors++;
-//					System.out
-//							.println("Error - createOrder, but Work.MRID specified: "
-//									+ reqWork.getMRID());
-//					ErrorType et = new ErrorType();
-//					et.setCode("Error");
-//					et.setDetails("MRID cannot be specified when creating work order");
-//					ID id = et.getID();
-//					id.setIdType("Maintenance Order Number");
-//					id.setIdAuthority("Utility XYZ");
-//					id.setKind(IDKindType.NAME);
-//					id.setObjectType("WorkOrder");
-//					if (mo.getMaintorderNameses().size() > 0) {
-//						for (MaintorderNames n : mo.getMaintorderNameses()) {
-//							id.setValue(n.getName());
-//							break;
-//						}
-//					} else {
-//						id.setValue("NOT SET");
-//					}
-//					reply.value.getError().add(et);
-//					workOrderError = true;
-//					continue; // stop processing THIS order
-//				}
 
 				WorkOrder workOrder = new WorkOrder();
 				mo.getWorkOrders().add(workOrder);
 				workOrder.setMaintorder(mo);
+
+				if (reqWork.getActivityRecords() != null) {
+					ActivityRecord2 rec = reqWork.getActivityRecords().get(0);
+					if (rec.getReason() != null)
+						workOrder.setReason(rec.getReason());
+					if (rec.getSeverity() != null)
+						workOrder.setSeverity(rec.getSeverity());
+					if (rec.getType() != null)
+						workOrder.setOrderType(rec.getType());
+				}
 
 				// add orgs to all work orders
 				for (Organization workOrg : orgList) {
@@ -772,6 +764,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 					workOrg.getWorkOrderOrganizations().add(workOrgs);
 					workOrder.getWorkOrderOrganizations().add(workOrgs);
 					workOrgs.setWorkOrder(workOrder);
+
 				}
 
 				UUID workOrderUUID = UUID.randomUUID();
@@ -1090,61 +1083,63 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 							ts.setType(reqTaskSchedule.getKind().value());
 
 					}
+				}
 
-					if (reqWork.getAttachments() != null) {
-						for (com.sixthc.cim.create2.Attachment reqAtt : reqWork
-								.getAttachments().getAttachment()) {
+				if (reqWork.getAttachments() != null) {
+					for (com.sixthc.cim.create2.Attachment reqAtt : reqWork
+							.getAttachments().getAttachment()) {
 
-							try {
-								String file = UUID.randomUUID().toString();
-								String uri = reqAtt.getUrl();
+						try {
+							log.debug("attachment : "
+									+ reqAtt.getUrl().toString());
+							String file = UUID.randomUUID().toString();
+							String uri = reqAtt.getUrl();
 
-								Attachment attachment = new Attachment();
-								attachment.setComment(reqAtt.getComment());
-								attachment.setDescription(reqAtt
-										.getDescription());
-								String fileExt = DetermineFileExtension(uri);
-								attachment.setFilename(file + "." + fileExt);
-								attachment
-										.setType(DetermineAttachmentType(uri));
+							Attachment attachment = new Attachment();
+							attachment.setComment(reqAtt.getComment());
+							attachment.setDescription(reqAtt.getDescription());
+							String fileExt = DetermineFileExtension(uri);
+							attachment.setFilename(file + "." + fileExt);
+							attachment.setType(DetermineAttachmentType(uri));
 
-								ImageLoader.getImage(uri,
-										attachment.getFilename());
+							ImageLoader.getImage(uri, attachment.getFilename());
 
-								WorkOrderAttachments woa = new WorkOrderAttachments();
-								woa.setAttachment(attachment);
-								attachment.setWorkOrderAttachmentses(workOrder
-										.getWorkOrderAttachmentses());
-								woa.setWorkOrder(workOrder);
-								workOrder.getWorkOrderAttachmentses().add(woa);
-							} catch (ImageLoadFileException e) {
-								log.error(e);
-								
-								ErrorType et = new ErrorType();
-								et.setCode("8.1");
-								et.setCode("WARNING");
-								et.setDetails("failed to load image from url : "
-										+ reqAtt);
-								ID id = new ID();
-								id.setIdType("Work Attachment Image");
-								id.setIdAuthority("Utility XYZ");
-								id.setKind(IDKindType.NAME);
-								id.setObjectType("Work");
-								et.setID(id);
-								if (mo.getMaintorderNameses().size() > 0) {
-									for (MaintorderNames n : mo.getMaintorderNameses()) {
-										id.setValue(n.getName());
-										break;
-									}
-								} else {
-									id.setValue("NOT SET");
+							WorkOrderAttachments woa = new WorkOrderAttachments();
+							woa.setAttachment(attachment);
+							attachment.setWorkOrderAttachmentses(workOrder
+									.getWorkOrderAttachmentses());
+							woa.setWorkOrder(workOrder);
+							workOrder.getWorkOrderAttachmentses().add(woa);
+						} catch (ImageLoadFileException e) {
+							log.debug("attachment : failed to download image");
+							log.error(e);
+
+							ErrorType et = new ErrorType();
+							et.setCode("8.1");
+							et.setCode("WARNING");
+							et.setDetails("failed to load image from url : "
+									+ reqAtt);
+							ID id = new ID();
+							id.setIdType("Work Attachment Image");
+							id.setIdAuthority("Utility XYZ");
+							id.setKind(IDKindType.NAME);
+							id.setObjectType("Work");
+							et.setID(id);
+							if (mo.getMaintorderNameses().size() > 0) {
+								for (MaintorderNames n : mo
+										.getMaintorderNameses()) {
+									id.setValue(n.getName());
+									break;
 								}
-								reply.value.getError().add(et);
+							} else {
+								id.setValue("NOT SET");
 							}
-
+							reply.value.getError().add(et);
 						}
+
 					}
 				}
+
 				workOrderDao.save(workOrder);
 			}
 		}

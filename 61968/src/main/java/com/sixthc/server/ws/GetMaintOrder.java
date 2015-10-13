@@ -12,6 +12,7 @@ import com.sixthc.cim.get.cxf.GetMaintenanceOrdersRequestMessageType;
 import com.sixthc.cim.get.cxf.GetMaintenanceOrdersResponseMessageType;
 import com.sixthc.cim.get.cxf.MaintenanceOrder;
 import com.sixthc.cim.get.cxf.MaintenanceOrdersPayloadType;
+import com.sixthc.cim.get2.ActivityRecord2;
 import com.sixthc.cim.get2.Asset2;
 import com.sixthc.cim.get2.Asset2.Procedures;
 import com.sixthc.cim.get2.Asset2.Procedures.Measurements;
@@ -28,7 +29,6 @@ import com.sixthc.cim.get2.NameTypeAuthority2;
 import com.sixthc.cim.get2.Organisation2;
 import com.sixthc.cim.get2.Organisation2.Phone1;
 import com.sixthc.cim.get2.Organisation2.StreetAddress;
-import com.sixthc.cim.get2.Organisation2.StreetAddress.StreetDetail;
 import com.sixthc.cim.get2.Organisation2.StreetAddress.TownDetail;
 import com.sixthc.cim.get2.PhaseCode;
 import com.sixthc.cim.get2.ProcedureKind;
@@ -78,8 +78,6 @@ import com.sixthc.hbm.WorkTaskCrews;
 import com.sixthc.hbm.WorkTaskTimeSchedules;
 import com.sixthc.util.DateUtil;
 
-
-
 public class GetMaintOrder implements GetMaintenanceOrdersPort {
 	static Logger log = Logger.getLogger(GetMaintOrder.class);
 
@@ -87,6 +85,8 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 	private MaintOrderDao maintOrderDao;
 
 	public void setPhone1(Phone from, Organisation2.Phone1 to) {
+		if (from == null)
+			return;
 		to.setAreaCode(from.getAreacode());
 		to.setCityCode(from.getCitycode());
 		to.setCountryCode(from.getCountrycode());
@@ -95,6 +95,8 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 	}
 
 	private void setAddress1(Address from, StreetAddress to) {
+		if (from == null)
+			return;
 		Organisation2.StreetAddress.StreetDetail sd = new Organisation2.StreetAddress.StreetDetail();
 		to.setStreetDetail(sd);
 		sd.setAddressGeneral(from.getSdAddress1());
@@ -316,7 +318,11 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 			}
 		}
 	}
-	
+
+	private boolean isSet(String s) {
+		return (s != null && s.length() > 0);
+	}
+
 	private void setWorkAsset(com.sixthc.hbm.Asset from, WorkAsset to) {
 		to.setMRID(from.getMrid());
 		to.setCritical(from.getCriticalFlag() == 1 ? true : false);
@@ -436,21 +442,31 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 						new WorkOrder[1])[0];
 				for (WorkOrderOrganizations moOrg : moOrgWorkOrder
 						.getWorkOrderOrganizations()) {
-					Organisation2 respOrg = new Organisation2();
-					respOrg.setStreetAddress(new StreetAddress());
-					respMo.setOrganisation(respOrg);
 					Organization moOrg2 = moOrg.getOrganization();
-					setAddress1(moOrg2.getAddress(), respOrg.getStreetAddress());
-					Phone1 phone = new Phone1();
-					respOrg.setPhone1(phone);
-					setPhone1(moOrg2.getPhone(), phone);
-					respOrg.setMRID(moOrg2.getMrid());
-					// set maint order org names
-					for (OrganizationNames moNames : moOrg2
-							.getOrganizationNameses()) {
-						Name2 respName = new Name2();
-						respOrg.getNames().add(respName);
-						setMaintOrderOrgNames(moNames, respName);
+					Organisation2 respOrg = new Organisation2();
+					if (moOrg2.getAddress() != null
+							|| moOrg2.getPhone() != null) {
+						respMo.setOrganisation(respOrg);
+
+						if (moOrg2.getAddress() != null) {
+							respOrg.setStreetAddress(new StreetAddress());
+							setAddress1(moOrg2.getAddress(),
+									respOrg.getStreetAddress());
+						}
+
+						if (moOrg2.getPhone() != null) {
+							Phone1 phone = new Phone1();
+							respOrg.setPhone1(phone);
+							setPhone1(moOrg2.getPhone(), phone);
+						}
+						respOrg.setMRID(moOrg2.getMrid());
+						// set maint order org names
+						for (OrganizationNames moNames : moOrg2
+								.getOrganizationNameses()) {
+							Name2 respName = new Name2();
+							respOrg.getNames().add(respName);
+							setMaintOrderOrgNames(moNames, respName);
+						}
 					}
 				}
 			}
@@ -478,10 +494,12 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 				Priority respPriority = new Priority();
 				respPriority.setJustification(moWorkOrder
 						.getPriorityJustification());
-				respPriority.setRank(BigInteger.valueOf(moWorkOrder
-						.getPriorityRank()));
-				respPriority.setType(moWorkOrder.getPriorityType());
-				respWorkOrder.setPriority(respPriority);
+				if (moWorkOrder.getPriorityRank() != null) {
+					respPriority.setRank(BigInteger.valueOf(moWorkOrder
+							.getPriorityRank()));
+					respPriority.setType(moWorkOrder.getPriorityType());
+					respWorkOrder.setPriority(respPriority);
+				}
 
 				respWorkOrder.setRequestDateTime(DateUtil.getXMLDate(new Date(
 						System.currentTimeMillis())));
@@ -490,6 +508,22 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 
 				WorkLocation2 respLoc = new WorkLocation2();
 				respWorkOrder.setWorkLocation(respLoc);
+
+				if (moWorkOrder.getCreatedAt() != null
+						&& isSet(moWorkOrder.getReason())
+						|| isSet(moWorkOrder.getSeverity())
+						|| isSet(moWorkOrder.getOrderType())) {
+					ActivityRecord2 ar = new ActivityRecord2();
+					respWorkOrder.getActivityRecords().add(ar);
+					if (isSet(moWorkOrder.getReason()))
+						ar.setReason(moWorkOrder.getReason());
+					if (isSet(moWorkOrder.getSeverity()))
+						ar.setSeverity(moWorkOrder.getSeverity());
+					if (isSet(moWorkOrder.getOrderType()))
+						ar.setType(moWorkOrder.getOrderType());
+					ar.setCreatedDateTime(DateUtil.getXMLDate(moWorkOrder
+							.getCreatedAt()));
+				}
 
 				//respWorkOrder.setWorkLocation(respLoc);
 				for (WorkOrderHazards moHaz : moWorkOrder
@@ -529,10 +563,10 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 					respIloc.setRoomNumber(moWorkOrder.getInternalRoomNum());
 				}
 
-				MainAddress respMainAddr = new MainAddress();
-				respLoc.setMainAddress(respMainAddr);
 				Address moWorkOrderAddress = moWorkOrder.getAddress();
 				if (moWorkOrderAddress != null) {
+					MainAddress respMainAddr = new MainAddress();
+					respLoc.setMainAddress(respMainAddr);
 					respLoc.setDirection(moWorkOrderAddress.getDirections());
 					//					CoordinateSystem cs = new CoordinateSystem();
 					//					cs.setCrsUrn(moWorkOrderAddress.getCoordSystem());
@@ -588,20 +622,25 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 						}
 
 						for (CrewAssets moCrewAssets : moCrew.getCrewAssets()) {
-							 com.sixthc.hbm.Asset moCrewAsset = moCrewAssets.getAsset();
+							com.sixthc.hbm.Asset moCrewAsset = moCrewAssets
+									.getAsset();
 							WorkAsset respAsset = new WorkAsset();
 							respCrew.getWorkAssets().add(respAsset);
 							setWorkAsset(moCrewAsset, respAsset);
 						}
 
-						for( CrewContactpersons moContact : moCrew.getContactPersons() ) {
-							Contactperson moContactPerson = moContact.getContactperson();
-							 CrewMember respMember = new CrewMember();
+						for (CrewContactpersons moContact : moCrew
+								.getContactPersons()) {
+							Contactperson moContactPerson = moContact
+									.getContactperson();
+							CrewMember respMember = new CrewMember();
 							respCrew.getCrewMembers().add(respMember);
 							Person respPerson = new Person();
 							respMember.setPerson(respPerson);
-							respPerson.setFirstName(moContactPerson.getFirstname());
-							respPerson.setLastName(moContactPerson.getLastname());							
+							respPerson.setFirstName(moContactPerson
+									.getFirstname());
+							respPerson.setLastName(moContactPerson
+									.getLastname());
 						}
 
 					}
