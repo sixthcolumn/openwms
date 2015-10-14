@@ -54,14 +54,14 @@ class App(object):
 
 
     # create a Text widget with a Scrollbar attached
-        self.txt = ScrolledText(self.root, undo=True, width=20,height=8)
+        self.txt = ScrolledText(self.root, undo=True, width=1,height=1)
         self.txt['font'] = ('courrier', '8')
         #self.txt['font'] = ('consolas', '12')
-	self.txt.pack(fill="both")
+	self.txt.pack(fill="both",expand=1)
 
     # get and exit buttons
 	bbar = tki.Frame(self.root)
-	bbar.pack(fill="x",expand=1)
+	bbar.pack(fill="x")
 
 	b1 = tki.Button(bbar,text=u"Get Order",command=self.getOrder)
 	b1.pack(side="left",fill="x",expand=1)
