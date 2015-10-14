@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=GetMaintOrder
+Comment=python app
+Icon=/usr/local/epri/getWorkOrder.jpg
+Exec=/usr/local/epri/get.sh
+Terminal=false
+Categories=None;

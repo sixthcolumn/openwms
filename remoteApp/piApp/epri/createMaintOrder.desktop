@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=CreateMaintOrder
+Comment=python app
+Icon=/usr/local/epri/outage.png
+Exec=/usr/local/epri/create.sh
+Terminal=false
+Categories=None;
