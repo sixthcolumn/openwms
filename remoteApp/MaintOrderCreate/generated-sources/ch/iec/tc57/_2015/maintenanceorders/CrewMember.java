@@ -1,0 +1,155 @@
+
+package ch.iec.tc57._2015.maintenanceorders;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+
+
+/**
+ * <p>Java class for CrewMember complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
+ * <pre>
+ * &lt;complexType name="CrewMember">
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="Person" form="qualified">
+ *           &lt;complexType>
+ *             &lt;complexContent>
+ *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                 &lt;sequence>
+ *                   &lt;element name="firstName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0" form="qualified"/>
+ *                   &lt;element name="lastName" type="{http://www.w3.org/2001/XMLSchema}string" form="qualified"/>
+ *                 &lt;/sequence>
+ *               &lt;/restriction>
+ *             &lt;/complexContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "CrewMember", propOrder = {
+    "person"
+})
+public class CrewMember {
+
+    @XmlElement(name = "Person", required = true)
+    protected CrewMember.Person person;
+
+    /**
+     * Gets the value of the person property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link CrewMember.Person }
+     *     
+     */
+    public CrewMember.Person getPerson() {
+        return person;
+    }
+
+    /**
+     * Sets the value of the person property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link CrewMember.Person }
+     *     
+     */
+    public void setPerson(CrewMember.Person value) {
+        this.person = value;
+    }
+
+
+    /**
+     * <p>Java class for anonymous complex type.
+     * 
+     * <p>The following schema fragment specifies the expected content contained within this class.
+     * 
+     * <pre>
+     * &lt;complexType>
+     *   &lt;complexContent>
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *       &lt;sequence>
+     *         &lt;element name="firstName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0" form="qualified"/>
+     *         &lt;element name="lastName" type="{http://www.w3.org/2001/XMLSchema}string" form="qualified"/>
+     *       &lt;/sequence>
+     *     &lt;/restriction>
+     *   &lt;/complexContent>
+     * &lt;/complexType>
+     * </pre>
+     * 
+     * 
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+        "firstName",
+        "lastName"
+    })
+    public static class Person {
+
+        protected String firstName;
+        @XmlElement(required = true)
+        protected String lastName;
+
+        /**
+         * Gets the value of the firstName property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getFirstName() {
+            return firstName;
+        }
+
+        /**
+         * Sets the value of the firstName property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setFirstName(String value) {
+            this.firstName = value;
+        }
+
+        /**
+         * Gets the value of the lastName property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getLastName() {
+            return lastName;
+        }
+
+        /**
+         * Sets the value of the lastName property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setLastName(String value) {
+            this.lastName = value;
+        }
+
+    }
+
+}
