@@ -1,4 +1,5 @@
 import Tkinter as tk
+import sys
 from Tkinter import *
 import picamera
 import uuid
@@ -15,8 +16,20 @@ from os import O_NONBLOCK, read
 class Example(tk.Frame):
     def __init__(self, root):
 
+	try:
+	    with open ("config.xml","r") as myfile:
+                data=myfile.read()
+	        print "data :" + data
+                rxml = etree.fromstring(data)
+                self.url = rxml.xpath("//root/urlBase")[0].text
+                self.defaultImage = rxml.xpath("//root/defaultImageFile")[0].text
+        except:
+	    print "unable to load config. Exiting..."
+	    sys.exit(1)
+
         tk.Frame.__init__(self, root)
 	root.geometry("300x200")
+
 
         self.canvas = tk.Canvas(root, borderwidth=0, background="#ffffff")
         self.frame = tk.Frame(self.canvas, background="blue")
@@ -284,9 +297,6 @@ class Example(tk.Frame):
         w = img.width()
         h = img.height()
 
-	print w
-	print h
-
         # position coordinates of root 'upper left corner'
         x = 0
         y = 0
@@ -296,7 +306,8 @@ class Example(tk.Frame):
 
     def OnSavePicButtonClick(self):
 	jpgName = os.path.basename(self.imageFile)
-        self.imageVariable.set(jpgName)
+	## todo : this is temp because we don't upload actual images, default image
+        self.imageVariable.set(self.defaultImage)
         self.image.focus_set()
         self.image.selection_range(0, tk.END)
 	self.top.destroy()	
@@ -366,7 +377,12 @@ class Example(tk.Frame):
 
 	# We're gonna call the java program and then
 	# do a non-blocking read on it
-	self.send = subprocess.Popen(["java","-jar","createMaintOrder.jar","http://10.3.253.100:8080/epriConnect/MaintOrderServiceCreate",etree.tostring(my_doc)],stdout=subprocess.PIPE)
+	self.send = subprocess.Popen(["java",
+		"-jar",
+		"createMaintOrder.jar",
+		self.url + "MaintOrderServiceCreate",
+		etree.tostring(my_doc)],
+		stdout=subprocess.PIPE)
 	flags = fcntl(self.send.stdout, F_GETFL)
 	fcntl(self.send.stdout, F_SETFL, flags | O_NONBLOCK)
 	def callback():
@@ -430,6 +446,7 @@ class Example(tk.Frame):
 	sys.exit(0)
 
 if __name__ == "__main__":
+
     root=tk.Tk()
     Example(root).pack(side="top", fill="both", expand=True)
     root.mainloop()

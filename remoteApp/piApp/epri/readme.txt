@@ -25,3 +25,11 @@ startx   # should see items on you desktop. Double-click them
 
 I found that I had to double-click sometimes more than once with my finger on touch screen
 to get app to come up. In spite of twirling 'wait' icon
+
+NEW
+
+there is now a config.xml file : 
+
+It loads default url for service, 
+It does the default image for demo
+It has a default MRID it will insert. Note, you can comment out/remove this item

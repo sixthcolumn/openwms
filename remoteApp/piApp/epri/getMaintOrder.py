@@ -1,5 +1,5 @@
-# Python 2.7
 import Tkinter as tki
+import sys
 from ScrolledText import ScrolledText
 import subprocess
 from fcntl import fcntl, F_GETFL, F_SETFL
@@ -14,6 +14,29 @@ class App(object):
         self.root = tki.Tk()
 	self.root.geometry("300x200")
 
+    # does xpath var exist?
+        def isValidXml(xml, xpathString):
+	    r = xml.xpath(xpathString)
+	    if( len(r) > 0):
+	        return True
+	    return False
+
+        try:
+            with open ("config.xml","r") as myfile:
+                data=myfile.read()
+                rxml = etree.fromstring(data)
+	        # url base required!
+	        isValidXml(rxml, "//root/urlBase")
+	        if( isValidXml(rxml, "//root/urlBase") == False):
+	            print "url not set in config file. Exiting..."
+	            sys.exit(2)
+                self.url = rxml.xpath("//root/urlBase")[0].text
+    
+        except:
+            print "unable to load config. Exiting..."
+            sys.exit(1)
+
+
     # id search bar
 	bbar = tki.Frame(self.root)
 	bbar.pack(fill=tki.X)
@@ -24,17 +47,17 @@ class App(object):
 	self.mrid = tki.Entry(bbar,textvariable=self.mridVar)
 	self.mrid.pack(side="left",expand=1,fill=tki.BOTH)
 
+	# load default mrid if set in file
+	if( isValidXml(rxml, "//root/defaultMrid") ):
+	    mridDefault = rxml.xpath("//root/defaultMrid")[0].text
+	    self.mridVar.set(mridDefault)
+
 
     # create a Text widget with a Scrollbar attached
         self.txt = ScrolledText(self.root, undo=True, width=20,height=8)
         self.txt['font'] = ('courrier', '8')
         #self.txt['font'] = ('consolas', '12')
 	self.txt.pack(fill="both")
-
-	#self.txt.insert(tki.END,'hello everybody\nreally please no\n')
-	#self.txt.tag_add('demo', '1.1', '1.5')
-	#self.txt.tag_add('demo', '2.0', '2.3')
-	#self.txt.tag_config('demo', font=('times', 14, 'bold'))
 
     # get and exit buttons
 	bbar = tki.Frame(self.root)
@@ -50,13 +73,14 @@ class App(object):
     def exitButtonClicked(self):
 	exit(0)
 
+
     # get maint order
     def getOrder(self):
 	self.txt.insert(tki.INSERT,"Sending...")
 	self.send = subprocess.Popen(["java","-jar",
 		"getMaintOrder.jar",
-		"http://10.3.253.100:8080/epriConnect/MaintOrderServiceGet",
-		'xxx65452368-507d-4565-b2d7-d6550404bea1'],
+		self.url + "MaintOrderServiceGet",
+		self.mridVar.get()],
 		stdout=subprocess.PIPE)
 
 	flags = fcntl(self.send.stdout, F_GETFL)
