@@ -284,22 +284,24 @@ class Example(tk.Frame):
 	except:
 	    self.imageFile = 'testimage.jpg'
 	self.top = tk.Toplevel()
-	self.top.grid()
 	# todo : temp below for testing
 	#self.imageFile = "/home/pi/wms/004ce28b-d087-4ed1-b6e0-91fc0b2db8e3.jpg"
         unsizedImage = Image.open(self.imageFile)
-	resized = unsizedImage.resize((300,200-27), Image.ANTIALIAS)
+	resized = unsizedImage.resize((200,140), Image.ANTIALIAS)
 	img = ImageTk.PhotoImage(resized)
 
 	
         imglabel = tk.Label(self.top,image=img)
 	imglabel.image = img
-	imglabel.grid(column=1,row=0,columnspan=2,sticky='EW')
+	imglabel.pack(fill="both") #, expand=1)
 
-        b1 = tk.Button(self.top,text=u"OK", command=self.OnSavePicButtonClick)
-        b1.grid(column=1,row=1,sticky='EW')
-        b1 = tk.Button(self.top,text=u"Cancel", command=self.OnCancelPicButtonClick)
-        b1.grid(column=2,row=1,sticky='EW')
+        bbar = tk.Frame(self.top)
+        bbar.pack(fill="both",expand=1)
+
+        b1 = tk.Button(bbar,text=u"OK", command=self.OnSavePicButtonClick)
+	b1.pack(side="left",fill="x",expand=1)
+        b1 = tk.Button(bbar,text=u"Cancel", command=self.OnCancelPicButtonClick)
+	b1.pack(side="left",fill="x",expand=1)
 
         # get the image size
         w = img.width()
@@ -310,7 +312,7 @@ class Example(tk.Frame):
         y = 0
 
         # make the root window the size of the image
-        self.top.geometry("300x200")
+        self.top.geometry("300x240")
 
     def OnSavePicButtonClick(self):
 	jpgName = os.path.basename(self.imageFile)
