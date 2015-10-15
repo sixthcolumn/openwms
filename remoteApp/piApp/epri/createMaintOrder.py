@@ -12,6 +12,9 @@ from lxml.builder import ElementMaker
 import subprocess
 from fcntl import fcntl, F_GETFL, F_SETFL
 from os import O_NONBLOCK, read
+import requests
+import logging
+
 
 class Example(tk.Frame):
     def __init__(self, root):
@@ -23,6 +26,8 @@ class Example(tk.Frame):
                 rxml = etree.fromstring(data)
                 self.url = rxml.xpath("//root/urlBase")[0].text
                 self.defaultImage = rxml.xpath("//root/defaultImageFile")[0].text
+		self.imageServer = rxml.xpath("//root/imageServer")[0].text
+		self.upload = rxml.xpath("//root/imageUploadServer")[0].text
         except:
 	    print "unable to load config. Exiting..."
 	    sys.exit(1)
@@ -273,8 +278,11 @@ class Example(tk.Frame):
 
     def OnCameraClick(self):
         self.imageFile = str(uuid.uuid4()) + ".jpg"
-        camera = picamera.PiCamera()
-        camera.capture(self.imageFile)
+	try:
+            camera = picamera.PiCamera()
+            camera.capture(self.imageFile)
+	except:
+	    self.imageFile = 'testimage.jpg'
 	self.top = tk.Toplevel()
 	self.top.grid()
 	# todo : temp below for testing
@@ -306,8 +314,12 @@ class Example(tk.Frame):
 
     def OnSavePicButtonClick(self):
 	jpgName = os.path.basename(self.imageFile)
+	try:
+	    r = requests.post(self.upload, files={self.imageFile: open(self.imageFile, 'rb')})
+	except:
+	    logging.warning('post failed. Server may be down. using default image')
 	## todo : this is temp because we don't upload actual images, default image
-        self.imageVariable.set(self.defaultImage)
+        self.imageVariable.set(self.imageServer + '/' + jpgName)
         self.image.focus_set()
         self.image.selection_range(0, tk.END)
 	self.top.destroy()	

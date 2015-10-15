@@ -2,4 +2,6 @@
 	<urlBase>http://10.3.253.100:8080/epriConnect/</urlBase>
 	<defaultImageFile>http://54.174.134.152:8080/files/dog.jpg</defaultImageFile>
 	<defaultMrid>65452368-507d-4565-b2d7-d6550404bea1</defaultMrid> 
+	<imageServer>http://10.3.253.100:8080/static</imageServer>
+	<imageUploadServer>http://10.3.253.100:8004</imageUploadServer>
 </root>

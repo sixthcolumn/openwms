@@ -15,9 +15,12 @@ Run the following to set up the two apps :
 sh> sudo mkdir /usr/local/epri
 sh> chmod gou+r -R /usr/local/epri
 sh> cp *.desktop /home/pi/Desktop (directory)
-sh> vi /usr/local/epri/createMaintOrder.py // change the url
-sh> vi /usr/local/epri/getMaintOrder.py // change the url
 
+Installing the Rest Request code
+
+sh> cd /usr/local/epri (where ever you installed this code)
+sh> sudo python get-pip.py 
+sh> sudo pip install requests
 
 If you don't have X running on your touch screen...
 
@@ -28,7 +31,7 @@ to get app to come up. In spite of twirling 'wait' icon
 
 NEW
 
-there is now a config.xml file : 
+there is now a config.xml file : edit it and set your vars
 
 It loads default url for service, 
 It does the default image for demo
