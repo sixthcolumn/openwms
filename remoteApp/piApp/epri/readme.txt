@@ -31,8 +31,31 @@ to get app to come up. In spite of twirling 'wait' icon
 
 NEW
 
-there is now a config.xml file : edit it and set your vars
+there is now a config.xml file :
 
-It loads default url for service, 
-It does the default image for demo
-It has a default MRID it will insert. Note, you can comment out/remove this item
+It contains instructions on setting variables for use by create and get. Read it and
+edit it!
+
+Notes:
+
+This demo code consists of parts. They are
+1. the epri soap server that implements create and get
+2. a simple python web server to which the local create app posts photos
+3. a tomcat static file storage site, where the images uploaded by (2) are served
+4. your camera
+
+These are all points of failure. I've tried to minimize the possibility of failure,
+and have provided error messages where possible and appropriate. Things that may
+occur:
+
+1. You have no camera, camera is broke
+	 result - default picture of puppy!
+2. remote jpg file upload server down, unreachable
+	result - I have stored puppy image in the tomcat static site as testimage.jpg.
+	the url given for the create corresponds to the url of that image
+3. remote epri server down
+	result - I return error message/code
+4. you have your own url for the image
+	result - the app will upload the url you provide. Serving it is NMP.
+
+
