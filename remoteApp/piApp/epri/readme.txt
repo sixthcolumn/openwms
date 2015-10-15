@@ -2,6 +2,7 @@
 
 This guide assume your touch screen is working already.
 
+-------- installing python libraries
 Run the following apt-get scripts on your machine :
 
 sudo apt-get install python-imaging
@@ -10,33 +11,59 @@ sudo apt-get install python-lxml
 sudo apt-get install python-picamera
 Sudo raspi-config // option 5, if you want working camera. Not required though
 
+-------- install request python lib
+
+sh> cd /usr/local/epri (where ever you installed this code)
+sh> sudo python get-pip.py 
+sh> sudo pip install requests
+
+-------- creating the app directory
 Run the following to set up the two apps :
 
 sh> sudo mkdir /usr/local/epri
 sh> chmod gou+r -R /usr/local/epri
 sh> cp *.desktop /home/pi/Desktop (directory)
 
-Installing the Rest Request code
-
-sh> cd /usr/local/epri (where ever you installed this code)
-sh> sudo python get-pip.py 
-sh> sudo pip install requests
+-------- Starting X
 
 If you don't have X running on your touch screen...
 
 startx   # should see items on you desktop. Double-click them
 
-I found that I had to double-click sometimes more than once with my finger on touch screen
-to get app to come up. In spite of twirling 'wait' icon
+-------- python web image upload server
 
-NEW
+csh> sudo mkdir /usr/local/tomcat7/static
+csh> sudo chmod gou+w /usr/local/tomcat7/static
+csh> cp epri/webServer.py /usr/local/tomcat7/static
+csh> python webServer.py 8004 # port is your choice, must correspond with config.xml
+
+
+-------- tomcat serves static image files
+csh> vi /usr/local/tomcat7/conf/server.xml
+
+Add the <Context...> line within the <Host...> tag
+
+  <Host appBase="webapps"
+           autoDeploy="false" name="localhost" unpackWARs="true"
+           xmlNamespaceAware="false" xmlValidation="false">
+    ...
+    <Context docBase="/usr/local/tomcat7/static" path="/static" />
+
+  </Host>
+
+csh> restart tomcat
+csh> cp epri/testimage.jpg /usr/local/tomcat7/static
+
+surf to http://yourhost:8080/static/testimage.jpg # image should appear
+
+-------- config.xml 
 
 there is now a config.xml file :
 
 It contains instructions on setting variables for use by create and get. Read it and
 edit it!
 
-Notes:
+-------- Notes
 
 This demo code consists of parts. They are
 1. the epri soap server that implements create and get
