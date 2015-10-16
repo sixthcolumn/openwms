@@ -28,6 +28,12 @@ class Example(tk.Frame):
                 self.defaultImage = rxml.xpath("//root/defaultImageFile")[0].text
 		self.imageServer = rxml.xpath("//root/imageServer")[0].text
 		self.upload = rxml.xpath("//root/imageUploadServer")[0].text
+
+		# default on photo upload is off unless set
+		self.uploadStatus = 'off'
+		r = rxml.xpath("//root/imageUploadServer/@status")[0]
+		if len(r) > 0:
+		    self.uploadStatus = rxml.xpath("//root/imageUploadServer/@status")[0]
         except:
 	    print "unable to load config. Exiting..."
 	    sys.exit(1)
@@ -316,10 +322,13 @@ class Example(tk.Frame):
 
     def OnSavePicButtonClick(self):
 	jpgName = os.path.basename(self.imageFile)
-	try:
-	    r = requests.post(self.upload, files={self.imageFile: open(self.imageFile, 'rb')})
-	except:
-	    logging.warning('post failed. Server may be down. using default image')
+	if self.uploadStatus == 'on':
+	    try:
+	        print 'uploading image...'
+	        r = requests.post(self.upload, files={self.imageFile: open(self.imageFile, 'rb')})
+	        print 'image upload complete.'
+	    except:
+	        logging.warning('post failed. Server may be down. using default image')
 	## todo : this is temp because we don't upload actual images, default image
         self.imageVariable.set(self.imageServer + '/' + jpgName)
         self.image.focus_set()
@@ -391,6 +400,8 @@ class Example(tk.Frame):
 
 	# We're gonna call the java program and then
 	# do a non-blocking read on it
+	print "calling : " + self.url + "MaintOrderServiceCreate"
+	print "sending : " + etree.tostring(my_doc)
 	self.send = subprocess.Popen(["java",
 		"-jar",
 		"createMaintOrder.jar",

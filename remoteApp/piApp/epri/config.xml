@@ -3,7 +3,7 @@
 		The epri server. This is where the createMaintOrder and
 		getMaintOrder soap services live
 	-->
-	<urlBase>http://10.3.253.100:8080/epriConnect/</urlBase>
+	<urlBase>http://54.174.134.152:8080/epriConnect/</urlBase>
 
 	<!--
 		When all else fails, this is the url of a picture of
@@ -17,20 +17,20 @@
 		in the MRID entry box, to save time for when you're demoing
 		and you don't want to type in a 40 character search string
 	-->
-	<defaultMrid>65452368-507d-4565-b2d7-d6550404bea1</defaultMrid> 
+	<defaultMrid>42836fc6-a42d-41ce-bdca-f7a279e20ac7</defaultMrid> 
 
 	<!--
 		If implemented on the epri server, this is where images
 		uploaded from create order are saved and can be accessed
 		live from the web app
 	-->
-	<imageServer>http://10.3.253.100:8080/static</imageServer>
+	<imageServer>http://54.174.134.152:8080/static</imageServer>
 
 	<!--
 		A simple python web server should be running on the epri
 		server. If it is running, this is the address the create
 		maint order will post images to, saving. They can be accessed
-		via imageServer var above.
+		via imageServer var above. turn off/on in status attribute
 	-->
-	<imageUploadServer>http://10.3.253.100:8004</imageUploadServer>
+	<imageUploadServer status="off">http://54.174.134.152:8004</imageUploadServer>
 </root>
