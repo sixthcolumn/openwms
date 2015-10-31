@@ -452,7 +452,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 
 			woAddress.setSdAddress1(streetDetail.getAddressGeneral());
 			woAddress.setSdAddress2(streetDetail.getName());
-			woAddress.setSdWithinTownLimitsFlag(streetDetail
+			woAddress.setSdWithinTownLimitsFlag(streetDetail.isWithinTownLimits() != null && streetDetail
 					.isWithinTownLimits() == true ? 1 : 0);
 			woAddress.setSdType(streetDetail.getType());
 
@@ -747,7 +747,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 				mo.getWorkOrders().add(workOrder);
 				workOrder.setMaintorder(mo);
 
-				if (reqWork.getActivityRecords() != null) {
+				if (reqWork.getActivityRecords() != null && reqWork.getActivityRecords().size() > 0) {
 					ActivityRecord2 rec = reqWork.getActivityRecords().get(0);
 					if (rec.getReason() != null)
 						workOrder.setReason(rec.getReason());

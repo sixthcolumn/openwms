@@ -111,13 +111,13 @@ public class WorkTask implements java.io.Serializable {
 		this.asset = asset;
 	}
 
-	@Column(name = "mRID", nullable = false, length = 20)
+	@Column(name = "mRID", length = 20)
 	public String getMrid() {
 		return this.mrid;
 	}
 
 	public void setMrid(String mrid) {
-		con.check( "setMrid", mrid, false, 20);
+		con.check( "setMrid", mrid, true, 20);
 		this.mrid = mrid;
 	}
 
@@ -131,13 +131,13 @@ public class WorkTask implements java.io.Serializable {
 		this.instructions = instructions;
 	}
 
-	@Column(name = "subject", nullable = false, length = 20)
+	@Column(name = "subject", length = 20)
 	public String getSubject() {
 		return this.subject;
 	}
 
 	public void setSubject(String subject) {
-		con.check( "setSubject", subject, false, 20);
+		con.check( "setSubject", subject, true, 20);
 		this.subject = subject;
 	}
 
