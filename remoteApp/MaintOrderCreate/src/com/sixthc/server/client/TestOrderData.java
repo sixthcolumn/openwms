@@ -8,6 +8,7 @@ import javax.xml.bind.JAXBException;
 
 import com.sixthc.server.client.OrderData.Address;
 import com.sixthc.server.client.OrderData.Header;
+import com.sixthc.server.client.OrderData.Iloc;
 
 public class TestOrderData {
 
@@ -15,8 +16,10 @@ public class TestOrderData {
 		OrderData od = new OrderData();
 		Address a = new Address();
 		Header h = new Header();
+		Iloc i = new Iloc();
 		od.setAddress(a);
 		od.setHeader(h);
+		od.setIloc(i);;
 		
 		a.setBuildingName("building1");
 		a.setCode("cd");
@@ -27,6 +30,13 @@ public class TestOrderData {
 		a.setSuffix("North");
 		a.setSuite("101");
 		a.setType("Residential");
+		a.setState("North Carolina");
+		a.setCity("Cary");
+		
+		i.setBuildingName("building name");
+		i.setBuildingName("120");
+		i.setFloor("1st");
+		i.setRoomNumber("101");
 		
 		h.setComment("Epri Testing App");
 		h.setContext("ctx1");

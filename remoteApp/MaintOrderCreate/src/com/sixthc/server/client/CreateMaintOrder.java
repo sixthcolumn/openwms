@@ -2,7 +2,6 @@ package com.sixthc.server.client;
 
 import java.io.StringWriter;
 import java.math.BigInteger;
-import java.net.ConnectException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.Timestamp;
@@ -26,18 +25,21 @@ import ch.iec.tc57._2011.schema.message.ReplyType;
 import ch.iec.tc57._2011.schema.message.RequestType;
 import ch.iec.tc57._2011.schema.message.UserType;
 import ch.iec.tc57._2015.maintenanceorders.ActivityRecord;
+import ch.iec.tc57._2015.maintenanceorders.Asset;
 import ch.iec.tc57._2015.maintenanceorders.Attachment;
 import ch.iec.tc57._2015.maintenanceorders.InternalLocation;
 import ch.iec.tc57._2015.maintenanceorders.MaintenanceOrder;
 import ch.iec.tc57._2015.maintenanceorders.MaintenanceOrders;
 import ch.iec.tc57._2015.maintenanceorders.Organisation;
 import ch.iec.tc57._2015.maintenanceorders.Work;
+import ch.iec.tc57._2015.maintenanceorders.WorkTaskKind;
 import ch.iec.tc57._2015.maintenanceorders.Work.Attachments;
 import ch.iec.tc57._2015.maintenanceorders.Work.Priority;
 import ch.iec.tc57._2015.maintenanceorders.WorkKind;
 import ch.iec.tc57._2015.maintenanceorders.WorkLocation;
 import ch.iec.tc57._2015.maintenanceorders.WorkLocation.MainAddress;
 import ch.iec.tc57._2015.maintenanceorders.WorkStatusKind;
+import ch.iec.tc57._2015.maintenanceorders.WorkTask;
 import ch.iec.tc57._2015.maintenanceordersmessage.MaintenanceOrdersPayloadType;
 
 import com.sixthc.server.ws.ExecuteMaintOrderCreateService;
@@ -140,6 +142,27 @@ public class CreateMaintOrder {
 		work.getPriority().setType(od.getType());
 		work.getPriority().setRank(BigInteger.valueOf(1));
 		mo.getWork().add(work);
+		
+
+		if( OrderData.isSet(od.getTaskKind()) == true
+				&& OrderData.isSet(od.getTaskStatus()) == true
+				&& OrderData.isSet(od.getTaskSubject())) {
+			WorkTask wt = new WorkTask();
+			wt.setTaskKind(WorkTaskKind.fromValue(od.getTaskKind()));
+			wt.setStatusKind(WorkStatusKind.fromValue(od.getTaskStatus()));
+			wt.setSubject(od.getTaskSubject());
+			work.getWorkTasks().add(wt);
+			
+			if( OrderData.isSet(od.getAssetID()) == true &&
+					OrderData.isSet(od.getAssetUTC()) == true ) {
+				Asset as = new Asset();
+				as.setMRID(od.getAssetID());
+				as.setUtcNumber(od.getAssetUTC());
+				wt.getAssets().add(as);
+			}
+		}
+		
+
 
 		if (od.isAddressvalid() == true || od.isIlocValid()) {
 			WorkLocation loc = new WorkLocation();
@@ -214,13 +237,14 @@ public class CreateMaintOrder {
 		public orders(String result) {
 			this.result = result;
 		}
-		
+
 		public orders(String result, String reason) {
 			this.result = result;
 			this.reason = reason;
 		}
-		
-		public orders() { }
+
+		public orders() {
+		}
 
 		public orders(String result, MaintenanceOrdersPayloadType payload) {
 			if (payload != null && payload.getMaintenanceOrders() != null) {
@@ -248,17 +272,16 @@ public class CreateMaintOrder {
 
 			return writer.toString();
 		}
-		
+
 		public String getResult() {
 			return result;
-		}		
-		
-		
+		}
+
 		@XmlElement(name = "Result")
 		public void setResult(String result) {
 			this.result = result;
 		}
-		
+
 		public String getReason() {
 			return reason;
 		}
@@ -267,7 +290,6 @@ public class CreateMaintOrder {
 		public void setReason(String reason) {
 			this.reason = reason;
 		}
-
 
 		@XmlElement(name = "ID")
 		public void setIDs(String[] ids) {
@@ -280,7 +302,6 @@ public class CreateMaintOrder {
 			String rlist[] = new String[ids.size()];
 			return ids.toArray(rlist);
 		}
-
 
 	}
 }

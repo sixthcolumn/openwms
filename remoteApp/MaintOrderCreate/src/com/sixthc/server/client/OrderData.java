@@ -17,6 +17,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import ch.iec.tc57._2015.maintenanceorders.InternalLocation;
 import ch.iec.tc57._2015.maintenanceorders.WorkLocation.MainAddress;
 import ch.iec.tc57._2015.maintenanceorders.WorkLocation.MainAddress.StreetDetail;
+import ch.iec.tc57._2015.maintenanceorders.WorkLocation.MainAddress.TownDetail;
 
 @XmlRootElement(name = "orderData")
 public class OrderData {
@@ -27,6 +28,11 @@ public class OrderData {
 	private String severity;
 	private String type;
 	private String imageFile;
+	private String taskKind;
+	private String taskStatus;
+	private String taskSubject;
+	private String assetID;
+	private String assetUTC;
 
 	public static boolean isSet(String v) {
 		return (v != null && v.length() > 0);
@@ -140,6 +146,49 @@ public class OrderData {
 	public void setImageFile(String imageFile) {
 		this.imageFile = imageFile;
 	}
+	
+
+	public String getTaskKind() {
+		return taskKind;
+	}
+
+	public void setTaskKind(String task) {
+		this.taskKind = task;
+	}
+
+	public String getTaskStatus() {
+		return taskStatus;
+	}
+
+	public void setTaskStatus(String taskStatus) {
+		this.taskStatus = taskStatus;
+	}
+
+	public String getTaskSubject() {
+		return taskSubject;
+	}
+
+	public void setTaskSubject(String taskSubject) {
+		this.taskSubject = taskSubject;
+	}
+
+	public String getAssetID() {
+		return assetID;
+	}
+
+	public void setAssetID(String assetID) {
+		this.assetID = assetID;
+	}
+
+	public String getAssetUTC() {
+		return assetUTC;
+	}
+
+	public void setAssetUTC(String assetUTC) {
+		this.assetUTC = assetUTC;
+	}
+
+
 
 	public static class Header {
 		private String verb;
@@ -271,6 +320,9 @@ public class OrderData {
 		String suffix;
 		String suite;
 		String type;
+		String addr1;
+		String city;
+		String state;
 		
 		public boolean isAddressValid() {
 			return ( OrderData.isSet(general) );
@@ -280,7 +332,9 @@ public class OrderData {
 			if (isAddressValid()) {
 				MainAddress addr = new MainAddress();
 				StreetDetail sd = new StreetDetail();
+				TownDetail td = new TownDetail();
 				addr.setStreetDetail(sd);
+				addr.setTownDetail(td);
 				if (OrderData.isSet(general))
 					sd.setAddressGeneral(general);
 				if (OrderData.isSet(buildingName))
@@ -299,6 +353,11 @@ public class OrderData {
 					sd.setSuiteNumber(suite);
 				if (OrderData.isSet(type))
 					sd.setType(type);
+				if(OrderData.isSet(state))
+					td.setStateOrProvince(state);
+				if(OrderData.isSet(city))
+					td.setName(city);
+					
 				return addr;
 			}
 			return null;
@@ -374,6 +433,30 @@ public class OrderData {
 
 		public void setType(String type) {
 			this.type = type;
+		}
+
+		public String getAddr1() {
+			return addr1;
+		}
+
+		public void setAddr1(String addr1) {
+			this.addr1 = addr1;
+		}
+
+		public String getCity() {
+			return city;
+		}
+
+		public void setCity(String city) {
+			this.city = city;
+		}
+
+		public String getState() {
+			return state;
+		}
+
+		public void setState(String state) {
+			this.state = state;
 		}
 	}
 
