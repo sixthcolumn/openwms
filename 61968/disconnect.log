@@ -1,0 +1,409 @@
+2604 [localhost-startStop-1] DEBUG com.sixthc.hbm.Crew  - setId : null
+3072 [localhost-startStop-1] DEBUG org.springframework.transaction.annotation.AnnotationTransactionAttributeSource  - Adding transactional method 'find' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT; ''
+8128 [localhost-startStop-1] DEBUG org.springframework.transaction.annotation.AnnotationTransactionAttributeSource  - Adding transactional method 'findWorkOrder' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly; ''
+14757 [http-bio-8080-exec-1] ERROR com.sixthc.dao.impl.EpriLogDaoImpl  - find for WMS MaintenanceOrder Get, with pkg WMS CIM MaintenanceOrder, WMS-CIM failed
+14773 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+14796 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+14839 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 2754
+15130 [http-bio-8080-exec-2] ERROR com.sixthc.dao.impl.EpriLogDaoImpl  - find for WMS MaintenanceOrder Get, with pkg WMS CIM MaintenanceOrder, WMS-CIM failed
+15138 [http-bio-8080-exec-2] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+15140 [http-bio-8080-exec-2] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+15151 [http-bio-8080-exec-2] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 2755
+20383 [http-bio-8080-exec-3] ERROR com.sixthc.dao.impl.EpriLogDaoImpl  - find for WMS MaintenanceOrder Get, with pkg WMS CIM MaintenanceOrder, WMS-CIM failed
+20390 [http-bio-8080-exec-3] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+20391 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+20406 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 2756
+20588 [http-bio-8080-exec-3] DEBUG org.springframework.transaction.annotation.AnnotationTransactionAttributeSource  - Adding transactional method 'find' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT; ''
+20741 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+20753 [http-bio-8080-exec-3] ERROR com.sixthc.dao.impl.EpriLogDaoImpl  - find for WMS MaintenanceOrder Get, with pkg WMS CIM MaintenanceOrder, WMS-CIM failed
+3399 [localhost-startStop-1] DEBUG com.sixthc.hbm.Crew  - setId : null
+3874 [localhost-startStop-1] DEBUG org.springframework.transaction.annotation.AnnotationTransactionAttributeSource  - Adding transactional method 'find' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT; ''
+8782 [localhost-startStop-1] DEBUG org.springframework.transaction.annotation.AnnotationTransactionAttributeSource  - Adding transactional method 'findWorkOrder' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly; ''
+13023 [http-bio-8080-exec-1] ERROR com.sixthc.dao.impl.EpriLogDaoImpl  - find for WMS MaintenanceOrder Get, with pkg WMS CIM MaintenanceOrder, WMS-CIM failed
+13041 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+13060 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+13093 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 2758
+13382 [http-bio-8080-exec-2] ERROR com.sixthc.dao.impl.EpriLogDaoImpl  - find for WMS MaintenanceOrder Get, with pkg WMS CIM MaintenanceOrder, WMS-CIM failed
+13390 [http-bio-8080-exec-2] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+13392 [http-bio-8080-exec-2] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+13403 [http-bio-8080-exec-2] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 2759
+18654 [http-bio-8080-exec-3] ERROR com.sixthc.dao.impl.EpriLogDaoImpl  - find for WMS MaintenanceOrder Get, with pkg WMS CIM MaintenanceOrder, WMS-CIM failed
+18662 [http-bio-8080-exec-3] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+18663 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+18673 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 2760
+18866 [http-bio-8080-exec-3] DEBUG org.springframework.transaction.annotation.AnnotationTransactionAttributeSource  - Adding transactional method 'find' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT; ''
+18950 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+18963 [http-bio-8080-exec-3] ERROR com.sixthc.dao.impl.EpriLogDaoImpl  - find for WMS MaintenanceOrder Get, with pkg WMS CIM MaintenanceOrder, WMS-CIM failed
+152766 [http-bio-8080-exec-5] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+152768 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+152776 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 2762
+152970 [http-bio-8080-exec-6] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+152971 [http-bio-8080-exec-6] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+152981 [http-bio-8080-exec-6] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 2763
+158064 [http-bio-8080-exec-7] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+158065 [http-bio-8080-exec-7] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+158075 [http-bio-8080-exec-7] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 2764
+158121 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Organization.setMrid : 1234
+158121 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setMrid : f537feaf-05ac-4050-9702-7f71700fd499
+158121 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setCreatedBy : WMS
+158121 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setKind : maintenance
+158125 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.WorkOrder  - setUpdatedAt : 2015-11-09 13:56:50.377
+158125 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setStatus : ACTIVE
+158125 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.WorkOrder  - setPriorityRank : 1
+158125 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setPriorityJustification : null
+158125 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setPriorityType : crit
+158126 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.WorkOrder  - setRequestDatetime : 2015-11-09 13:56:50.378
+158126 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setStatusKind : approved
+158126 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setStatus : ACTIVE
+158126 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setDirections : null
+158126 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdBuildingName : null
+158126 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdCode : 27513
+158126 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdNumber : null
+158126 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdSuffix : null
+158126 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdPrefix : null
+158126 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdSuiteNumber : null
+158126 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdBuildingName : null
+158126 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdAddress1 : 100 North Street
+158126 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdAddress2 : null
+158126 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.Attachment  - setSdWithinTownLimitsFlag : 0
+158127 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdType : null
+158127 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdCode : null
+158127 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdCountry : null
+158127 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdName : Cary
+158127 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdSection : null
+158127 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdStateProvince : NC
+158127 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Asset.setMrid : 1234
+158127 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.Asset  - setCriticalFlag : 0
+158127 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Asset.setUTCNumber : 12229
+158127 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Asset.setMrid : 1234
+158127 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.WorkTaskAssets  - setCreatedAt : Mon Nov 09 13:56:50 EST 2015
+158127 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkTask.setInstructions : null
+158127 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkTask.setMrid : null
+158127 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkTask.setTaskType : exchange
+158128 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkTask.setSubject : new task
+158128 [http-bio-8080-exec-7] DEBUG com.sixthc.server.ws.ExecuteMaintOrderCreate  - attachment : http://10.3.253.100:8080/static/20151109185617.jpg
+158128 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Attachment.setFilename : 8c2340c6-ab4b-4e3c-a577-dbab9f80cebc.JPG
+158128 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Attachment.setType : image
+158356 [http-bio-8080-exec-7] DEBUG com.sixthc.server.ws.ExecuteMaintOrderCreate  - attachment : failed to download image
+158356 [http-bio-8080-exec-7] ERROR com.sixthc.server.ws.ExecuteMaintOrderCreate  - com.sixthc.util.ImageLoadFileException: load for url http://10.3.253.100:8080/static/20151109185617.jpg failed.
+158366 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setBlock : null
+158366 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setCoordSystem : null
+158366 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setCounty : null
+158366 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setDirections : null
+158366 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setLot : null
+158366 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdAddress1 : 100 North Street
+158367 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdAddress2 : null
+158367 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdBuildingName : null
+158367 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdCode : 27513
+158367 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdNumber : null
+158367 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdPrefix : null
+158367 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdSuffix : null
+158367 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdSuiteNumber : null
+158367 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdType : null
+158367 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.Attachment  - setSdWithinTownLimitsFlag : 0
+158367 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSubdivision : null
+158367 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdCode : null
+158367 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdCountry : null
+158368 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdName : Cary
+158368 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdPobox : null
+158368 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdPostalCode : null
+158368 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdRegion : null
+158368 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdSection : null
+158368 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdStateProvince : NC
+158368 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTimeZone : null
+158368 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTownshipName : null
+158384 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setComments : null
+158384 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setCreatedBy : WMS
+158384 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setDescription : null
+158384 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setInternalBuildingName : null
+158385 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setInternalBuildingNum : null
+158385 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setInternalFloor : null
+158385 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setInternalRoomNum : null
+158385 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setKind : maintenance
+158385 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setLocationComment : null
+158385 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setMrid : f537feaf-05ac-4050-9702-7f71700fd499
+158385 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setPriorityJustification : null
+158385 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.WorkOrder  - setPriorityRank : 1
+158385 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setPriorityType : crit
+158385 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.WorkOrder  - setRequestDatetime : 2015-11-09 13:56:50.378
+158385 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setStatus : ACTIVE
+158385 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setStatusKind : approved
+158385 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setTitle : null
+158385 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.WorkOrder  - setUpdatedAt : 2015-11-09 13:56:50.377
+158385 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setUpdatedBy : null
+158386 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setWorkOrderName : null
+158397 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Organization.setMrid : 1234
+158400 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.Organization  - setID : 431
+158406 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.WorkOrderOrganizations  - setId
+158407 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.WorkTask  - setCrewEta : null
+158407 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkTask.setInstructions : null
+158407 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkTask.setMrid : null
+158407 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkTask.setSubject : new task
+158407 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkTask.setTaskType : exchange
+158415 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.WorkTask  - setId : 155
+158415 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.Asset  - setCriticalFlag : 0
+158415 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Asset.setMrid : 1234
+158415 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Asset.setUTCNumber : 12229
+158424 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.WorkTaskAssets  - setId : 141
+158425 [http-bio-8080-exec-7] DEBUG com.sixthc.hbm.WorkOrderWorkTasks  - setId
+158440 [http-bio-8080-exec-7] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+203631 [http-bio-8080-exec-1] ERROR com.sixthc.dao.impl.EpriLogDaoImpl  - find for WMS MaintenanceOrder Get, with pkg WMS CIM MaintenanceOrder, WMS-CIM failed
+203637 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+203638 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+203646 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 2766
+203832 [http-bio-8080-exec-1] ERROR com.sixthc.dao.impl.EpriLogDaoImpl  - find for WMS MaintenanceOrder Get, with pkg WMS CIM MaintenanceOrder, WMS-CIM failed
+203837 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+203838 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+203846 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 2767
+208954 [http-bio-8080-exec-1] ERROR com.sixthc.dao.impl.EpriLogDaoImpl  - find for WMS MaintenanceOrder Get, with pkg WMS CIM MaintenanceOrder, WMS-CIM failed
+208959 [http-bio-8080-exec-1] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+208960 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+208968 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 2768
+208988 [http-bio-8080-exec-1] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+208996 [http-bio-8080-exec-1] ERROR com.sixthc.dao.impl.EpriLogDaoImpl  - find for WMS MaintenanceOrder Get, with pkg WMS CIM MaintenanceOrder, WMS-CIM failed
+2548202 [http-bio-8080-exec-5] ERROR com.sixthc.dao.impl.EpriLogDaoImpl  - find for WMS MaintenanceOrder Get, with pkg WMS CIM MaintenanceOrder, WMS-CIM failed
+2548207 [http-bio-8080-exec-5] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+2548208 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+2548215 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 2770
+2548253 [http-bio-8080-exec-5] ERROR com.sixthc.dao.impl.EpriLogDaoImpl  - find for WMS MaintenanceOrder Get, with pkg WMS CIM MaintenanceOrder, WMS-CIM failed
+2548259 [http-bio-8080-exec-5] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+2548260 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+2548268 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 2771
+2552975 [http-bio-8080-exec-5] ERROR com.sixthc.dao.impl.EpriLogDaoImpl  - find for WMS MaintenanceOrder Get, with pkg WMS CIM MaintenanceOrder, WMS-CIM failed
+2552980 [http-bio-8080-exec-5] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+2552981 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+2552987 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 2772
+2553004 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+2553012 [http-bio-8080-exec-5] ERROR com.sixthc.dao.impl.EpriLogDaoImpl  - find for WMS MaintenanceOrder Get, with pkg WMS CIM MaintenanceOrder, WMS-CIM failed
+2627740 [http-bio-8080-exec-10] ERROR com.sixthc.dao.impl.EpriLogDaoImpl  - find for WMS MaintenanceOrder Get, with pkg WMS CIM MaintenanceOrder, WMS-CIM failed
+2627747 [http-bio-8080-exec-10] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+2627748 [http-bio-8080-exec-10] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+2627754 [http-bio-8080-exec-10] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 2774
+2627942 [http-bio-8080-exec-10] ERROR com.sixthc.dao.impl.EpriLogDaoImpl  - find for WMS MaintenanceOrder Get, with pkg WMS CIM MaintenanceOrder, WMS-CIM failed
+2627947 [http-bio-8080-exec-10] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+2627948 [http-bio-8080-exec-10] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+2627955 [http-bio-8080-exec-10] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 2775
+2633023 [http-bio-8080-exec-10] ERROR com.sixthc.dao.impl.EpriLogDaoImpl  - find for WMS MaintenanceOrder Get, with pkg WMS CIM MaintenanceOrder, WMS-CIM failed
+2633027 [http-bio-8080-exec-10] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+2633028 [http-bio-8080-exec-10] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+2633038 [http-bio-8080-exec-10] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 2776
+2633055 [http-bio-8080-exec-10] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+2633062 [http-bio-8080-exec-10] ERROR com.sixthc.dao.impl.EpriLogDaoImpl  - find for WMS MaintenanceOrder Get, with pkg WMS CIM MaintenanceOrder, WMS-CIM failed
+3044678 [http-bio-8080-exec-4] ERROR com.sixthc.dao.impl.EpriLogDaoImpl  - find for WMS MaintenanceOrder Get, with pkg WMS CIM MaintenanceOrder, WMS-CIM failed
+3044684 [http-bio-8080-exec-4] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+3044685 [http-bio-8080-exec-4] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+3044690 [http-bio-8080-exec-4] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 2778
+3044886 [http-bio-8080-exec-4] ERROR com.sixthc.dao.impl.EpriLogDaoImpl  - find for WMS MaintenanceOrder Get, with pkg WMS CIM MaintenanceOrder, WMS-CIM failed
+3044890 [http-bio-8080-exec-4] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+3044891 [http-bio-8080-exec-4] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+3044898 [http-bio-8080-exec-4] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 2779
+3049970 [http-bio-8080-exec-4] ERROR com.sixthc.dao.impl.EpriLogDaoImpl  - find for WMS MaintenanceOrder Get, with pkg WMS CIM MaintenanceOrder, WMS-CIM failed
+3049974 [http-bio-8080-exec-4] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+3049975 [http-bio-8080-exec-4] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+3049983 [http-bio-8080-exec-4] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 2780
+3050000 [http-bio-8080-exec-4] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+3050006 [http-bio-8080-exec-4] ERROR com.sixthc.dao.impl.EpriLogDaoImpl  - find for WMS MaintenanceOrder Get, with pkg WMS CIM MaintenanceOrder, WMS-CIM failed
+3061780 [http-bio-8080-exec-7] ERROR com.sixthc.dao.impl.EpriLogDaoImpl  - find for WMS MaintenanceOrder Get, with pkg WMS CIM MaintenanceOrder, WMS-CIM failed
+3061784 [http-bio-8080-exec-7] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+3061785 [http-bio-8080-exec-7] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+3061792 [http-bio-8080-exec-7] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 2782
+3061974 [http-bio-8080-exec-7] ERROR com.sixthc.dao.impl.EpriLogDaoImpl  - find for WMS MaintenanceOrder Get, with pkg WMS CIM MaintenanceOrder, WMS-CIM failed
+3061978 [http-bio-8080-exec-7] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+3061979 [http-bio-8080-exec-7] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+3061985 [http-bio-8080-exec-7] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 2783
+3067082 [http-bio-8080-exec-7] ERROR com.sixthc.dao.impl.EpriLogDaoImpl  - find for WMS MaintenanceOrder Get, with pkg WMS CIM MaintenanceOrder, WMS-CIM failed
+3067087 [http-bio-8080-exec-7] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+3067088 [http-bio-8080-exec-7] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+3067095 [http-bio-8080-exec-7] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 2784
+3067111 [http-bio-8080-exec-7] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+3067118 [http-bio-8080-exec-7] ERROR com.sixthc.dao.impl.EpriLogDaoImpl  - find for WMS MaintenanceOrder Get, with pkg WMS CIM MaintenanceOrder, WMS-CIM failed
+3132458 [http-bio-8080-exec-3] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+3132461 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+3132466 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 2786
+3132669 [http-bio-8080-exec-3] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+3132670 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+3132676 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 2787
+3137683 [http-bio-8080-exec-3] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+3137684 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+3137692 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 2788
+3137699 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Organization.setMrid : 1234
+3137699 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setMrid : 9d5a0b1f-25af-419f-8621-582adf645d2c
+3137699 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setCreatedBy : WMS
+3137699 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setKind : maintenance
+3137699 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.WorkOrder  - setUpdatedAt : 2015-11-09 14:46:30.011
+3137699 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setStatus : ACTIVE
+3137699 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.WorkOrder  - setPriorityRank : 1
+3137699 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setPriorityJustification : null
+3137699 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setPriorityType : quiet
+3137700 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.WorkOrder  - setRequestDatetime : 2015-11-09 14:46:30.012
+3137700 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setStatusKind : approved
+3137700 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setStatus : ACTIVE
+3137700 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setDirections : null
+3137700 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdBuildingName : null
+3137700 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdCode : 27513
+3137700 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdNumber : null
+3137700 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdSuffix : null
+3137700 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdPrefix : null
+3137700 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdSuiteNumber : null
+3137700 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdBuildingName : null
+3137700 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdAddress1 : 100 North Street
+3137700 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdAddress2 : null
+3137700 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.Attachment  - setSdWithinTownLimitsFlag : 0
+3137700 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdType : null
+3137700 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdCode : null
+3137701 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdCountry : null
+3137701 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdName : CXary
+3137701 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdSection : null
+3137701 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdStateProvince : NC
+3137701 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Asset.setMrid : 1234
+3137701 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.Asset  - setCriticalFlag : 0
+3137701 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Asset.setUTCNumber : 11293
+3137701 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Asset.setMrid : 1234
+3137701 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.WorkTaskAssets  - setCreatedAt : Mon Nov 09 14:46:30 EST 2015
+3137701 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkTask.setInstructions : null
+3137701 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkTask.setMrid : null
+3137701 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkTask.setTaskType : exchange
+3137701 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkTask.setSubject : new task
+3137701 [http-bio-8080-exec-3] DEBUG com.sixthc.server.ws.ExecuteMaintOrderCreate  - attachment : http://10.3.253.100:8080/static/20151109194558.jpg
+3137701 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Attachment.setFilename : c720dedc-0f2a-42b5-bc1a-ae1197705eb3.JPG
+3137701 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Attachment.setType : image
+3137816 [http-bio-8080-exec-3] DEBUG com.sixthc.server.ws.ExecuteMaintOrderCreate  - attachment : failed to download image
+3137816 [http-bio-8080-exec-3] ERROR com.sixthc.server.ws.ExecuteMaintOrderCreate  - com.sixthc.util.ImageLoadFileException: load for url http://10.3.253.100:8080/static/20151109194558.jpg failed.
+3137817 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setBlock : null
+3137817 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setCoordSystem : null
+3137817 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setCounty : null
+3137817 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setDirections : null
+3137817 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setLot : null
+3137817 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdAddress1 : 100 North Street
+3137817 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdAddress2 : null
+3137817 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdBuildingName : null
+3137817 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdCode : 27513
+3137817 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdNumber : null
+3137817 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdPrefix : null
+3137817 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdSuffix : null
+3137817 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdSuiteNumber : null
+3137817 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdType : null
+3137817 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.Attachment  - setSdWithinTownLimitsFlag : 0
+3137817 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSubdivision : null
+3137817 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdCode : null
+3137817 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdCountry : null
+3137818 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdName : CXary
+3137818 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdPobox : null
+3137818 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdPostalCode : null
+3137818 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdRegion : null
+3137818 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdSection : null
+3137818 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdStateProvince : NC
+3137818 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTimeZone : null
+3137818 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTownshipName : null
+3137824 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setComments : null
+3137825 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setCreatedBy : WMS
+3137825 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setDescription : null
+3137825 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setInternalBuildingName : null
+3137825 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setInternalBuildingNum : null
+3137825 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setInternalFloor : null
+3137825 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setInternalRoomNum : null
+3137825 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setKind : maintenance
+3137825 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setLocationComment : null
+3137825 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setMrid : 9d5a0b1f-25af-419f-8621-582adf645d2c
+3137825 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setPriorityJustification : null
+3137825 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.WorkOrder  - setPriorityRank : 1
+3137825 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setPriorityType : quiet
+3137825 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.WorkOrder  - setRequestDatetime : 2015-11-09 14:46:30.012
+3137825 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setStatus : ACTIVE
+3137825 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setStatusKind : approved
+3137825 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setTitle : null
+3137825 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.WorkOrder  - setUpdatedAt : 2015-11-09 14:46:30.011
+3137826 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setUpdatedBy : null
+3137826 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setWorkOrderName : null
+3137827 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Organization.setMrid : 1234
+3137828 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.Organization  - setID : 432
+3137829 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.WorkOrderOrganizations  - setId
+3137829 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.WorkTask  - setCrewEta : null
+3137829 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkTask.setInstructions : null
+3137829 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkTask.setMrid : null
+3137829 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkTask.setSubject : new task
+3137830 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkTask.setTaskType : exchange
+3137830 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.WorkTask  - setId : 156
+3137831 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.Asset  - setCriticalFlag : 0
+3137831 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Asset.setMrid : 1234
+3137831 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Asset.setUTCNumber : 11293
+3137835 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.WorkTaskAssets  - setId : 142
+3137836 [http-bio-8080-exec-3] DEBUG com.sixthc.hbm.WorkOrderWorkTasks  - setId
+3137843 [http-bio-8080-exec-3] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+3167733 [http-bio-8080-exec-5] ERROR com.sixthc.dao.impl.EpriLogDaoImpl  - find for WMS MaintenanceOrder Get, with pkg WMS CIM MaintenanceOrder, WMS-CIM failed
+3167739 [http-bio-8080-exec-5] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+3167740 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+3167744 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 2790
+3167926 [http-bio-8080-exec-5] ERROR com.sixthc.dao.impl.EpriLogDaoImpl  - find for WMS MaintenanceOrder Get, with pkg WMS CIM MaintenanceOrder, WMS-CIM failed
+3167930 [http-bio-8080-exec-5] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+3167931 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+3167938 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 2791
+3173001 [http-bio-8080-exec-5] ERROR com.sixthc.dao.impl.EpriLogDaoImpl  - find for WMS MaintenanceOrder Get, with pkg WMS CIM MaintenanceOrder, WMS-CIM failed
+3173005 [http-bio-8080-exec-5] DEBUG com.sixthc.dao.Sequence  - calling get message id sequence
+3173006 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - retrieved sequence message_id => 0
+3173012 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.LoggingInInterceptor  - DBLog id log = 2792
+3173047 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setComments : null
+3173047 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setCreatedBy : WMS
+3173047 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setDescription : null
+3173047 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setInternalBuildingName : null
+3173047 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setInternalBuildingNum : null
+3173047 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setInternalFloor : null
+3173047 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setInternalRoomNum : null
+3173047 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setKind : maintenance
+3173047 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setLocationComment : null
+3173047 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setMrid : 9d5a0b1f-25af-419f-8621-582adf645d2c
+3173047 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setPriorityJustification : null
+3173048 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.WorkOrder  - setPriorityRank : 1
+3173048 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setPriorityType : quiet
+3173048 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.WorkOrder  - setRequestDatetime : 2015-11-09 14:46:30.0
+3173048 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setStatus : ACTIVE
+3173048 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setStatusKind : approved
+3173048 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setTitle : null
+3173048 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.WorkOrder  - setUpdatedAt : 2015-11-09 14:46:30.0
+3173048 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setUpdatedBy : null
+3173048 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkOrder.setWorkOrderName : null
+3173049 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.WorkOrderOrganizations  - setId
+3173050 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.Organization  - setID : 432
+3173051 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Organization.setMrid : 1234
+3173055 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setBlock : null
+3173055 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setCoordSystem : null
+3173055 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setCounty : null
+3173055 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setDirections : null
+3173055 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setLot : null
+3173055 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdAddress1 : 100 North Street
+3173055 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdAddress2 : null
+3173056 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdBuildingName : null
+3173056 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdCode : 27513
+3173056 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdNumber : null
+3173056 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdPrefix : null
+3173056 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdSuffix : null
+3173056 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdSuiteNumber : null
+3173056 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSdType : null
+3173056 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.Attachment  - setSdWithinTownLimitsFlag : 0
+3173056 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setSubdivision : null
+3173056 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdCode : null
+3173056 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdCountry : null
+3173056 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdName : CXary
+3173056 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdPobox : null
+3173056 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdPostalCode : null
+3173056 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdRegion : null
+3173056 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdSection : null
+3173056 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTdStateProvince : NC
+3173056 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTimeZone : null
+3173056 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Address.setTownshipName : null
+3173060 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.WorkOrderWorkTasks  - setId
+3173062 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.WorkTask  - setId : 156
+3173062 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.WorkTask  - setCrewEta : null
+3173062 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkTask.setInstructions : null
+3173062 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkTask.setMrid : null
+3173062 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkTask.setSubject : new task
+3173062 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkTask.setTaskType : exchange
+3173064 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.WorkTaskAssets  - setId : 142
+3173065 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.WorkTaskAssets  - setCreatedAt : 2015-11-09 14:46:30.0
+3173065 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.WorkTaskAssets.setCreatedBy : null
+3173066 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.Asset  - setCriticalFlag : 0
+3173067 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Asset.setMrid : 1234
+3173067 [http-bio-8080-exec-5] DEBUG com.sixthc.hbm.MaterialItemNames  - com.sixthc.hbm.Asset.setUTCNumber : 11293
+3173068 [http-bio-8080-exec-5] DEBUG com.sixthc.server.ws.GetMaintOrder  - no orders found, returning empty payload
+3173072 [http-bio-8080-exec-5] DEBUG com.sixthc.interceptor.LoggingOutInterceptor  - onClose
+3173078 [http-bio-8080-exec-5] ERROR com.sixthc.dao.impl.EpriLogDaoImpl  - find for WMS MaintenanceOrder Get, with pkg WMS CIM MaintenanceOrder, WMS-CIM failed

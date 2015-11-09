@@ -109,28 +109,36 @@ class App(object):
             if len(r) > 0:
                 self.txt.insert(tki.END,label + r[0].text + "\n")
 
+        def xmlExists(string, xml):
+            searchString = '//*[local-name() = \'' + string + '\']';
+            r = xml.xpath(searchString)
+            if len(r) > 0 :
+                return True;
+            return False;
 
         # print results to text
         def outputResult(xmlString):
             try:
                 print xmlString
                 rxml = etree.fromstring(xmlString)
-
-                print xmlString
-                outputValue("MRID: ", "mRID", rxml)
-                outputValue("Kind: ", "kind", rxml)
-                outputValue("Last Mod: ", "lastModifiedDateTime", rxml)
-                outputValue("requested: ", "requestedDateTime", rxml)
-                outputValue("Status: ", "statusKind", rxml)
-                outputValue("Created: ", "createdDateTime", rxml)
-                outputValue("Reason: ", "reason", rxml)
-                outputValue("Severity: ", "severity", rxml)
-                outputValue("Type: ", "type", rxml)
-                self.txt.insert(tki.END,"\nInternal Loc:\n")
-                outputValue("   Name: ", "BuildingName", rxml)
-                outputValue("   Number: ", "BuildingNumber", rxml)
-                outputValue("   Floor: ", "Floor", rxml)
-                outputValue("   Room: ", "RoomNumber", rxml)
+                if( xmlExists("mRID", rxml) == False):
+                    self.txt.insert(tki.END, "No values returned.");
+                else:
+                    print xmlString
+                    outputValue("MRID: ", "mRID", rxml)
+                    outputValue("Kind: ", "kind", rxml)
+                    outputValue("Last Mod: ", "lastModifiedDateTime", rxml)
+                    outputValue("requested: ", "requestedDateTime", rxml)
+                    outputValue("Status: ", "statusKind", rxml)
+                    outputValue("Created: ", "createdDateTime", rxml)
+                    outputValue("Reason: ", "reason", rxml)
+                    outputValue("Severity: ", "severity", rxml)
+                    outputValue("Type: ", "type", rxml)
+                    self.txt.insert(tki.END,"\nInternal Loc:\n")
+                    outputValue("   Name: ", "BuildingName", rxml)
+                    outputValue("   Number: ", "BuildingNumber", rxml)
+                    outputValue("   Floor: ", "Floor", rxml)
+                    outputValue("   Room: ", "RoomNumber", rxml)
             except:
                 self.txt.insert(tki.END,"Operation Failed:\n\n" + xmlString)
             

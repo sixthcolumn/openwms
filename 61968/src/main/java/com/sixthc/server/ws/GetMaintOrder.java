@@ -404,7 +404,7 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 		MaintenanceOrdersPayloadType payload = new MaintenanceOrdersPayloadType();
 		resp.setPayload(payload);
 		MaintenanceOrders2 respMaintOrders = new MaintenanceOrders2();
-		payload.setMaintenanceOrders(respMaintOrders);
+		//payload.setMaintenanceOrders(respMaintOrders);
 		resp.setHeader(getMaintenanceOrdersRequestMessage.getHeader());
 		ReplyType reply = new ReplyType();
 		resp.setReply(reply);
@@ -675,6 +675,11 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 				}
 			}
 
+		}
+		// if nothing found, then return an empty payload
+		if( respMaintOrders.getMaintenanceOrder().size() > 0 ) {
+			log.debug("no orders found, returning empty payload");
+			payload.setMaintenanceOrders(respMaintOrders);
 		}
 
 		reply.setResult("OK");
