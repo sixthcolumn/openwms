@@ -217,13 +217,15 @@ class Example(tk.Frame):
         self.gps.selection_range(0, tk.END)
 
     def OnCameraClick(self):
+        # taking pic
         self.imageFile = strftime("%Y%m%d%H%M%S") + ".jpg"
         print self.imageFile
         #self.imageFile = str(uuid.uuid4()) + ".jpg"
         try:
             camera = picamera.PiCamera()
             camera.capture(self.imageFile)
-        except:
+        except Exception, e:
+            print "taking pic error : " + str(e)
             self.imageFile = 'testimage.jpg'
         self.top = tk.Toplevel()
         # todo : temp below for testing
