@@ -45,6 +45,17 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="TimeSchedules" type="{http://iec.ch/TC57/2015/MaintenanceOrders#}WorkTimeSchedule" maxOccurs="unbounded" minOccurs="0" form="qualified"/>
  *         &lt;element name="WorkLocation" type="{http://iec.ch/TC57/2015/MaintenanceOrders#}WorkLocation" minOccurs="0" form="qualified"/>
  *         &lt;element name="WorkTasks" type="{http://iec.ch/TC57/2015/MaintenanceOrders#}WorkTask" maxOccurs="unbounded" minOccurs="0" form="qualified"/>
+ *         &lt;element name="Attachments" minOccurs="0" form="qualified">
+ *           &lt;complexType>
+ *             &lt;complexContent>
+ *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                 &lt;sequence>
+ *                   &lt;element name="Attachment" type="{http://iec.ch/TC57/2015/MaintenanceOrders#}Attachment" maxOccurs="unbounded" form="qualified"/>
+ *                 &lt;/sequence>
+ *               &lt;/restriction>
+ *             &lt;/complexContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -65,7 +76,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "priority",
     "timeSchedules",
     "workLocation",
-    "workTasks"
+    "workTasks",
+    "attachments"
 })
 public class Work {
 
@@ -90,6 +102,8 @@ public class Work {
     protected WorkLocation workLocation;
     @XmlElement(name = "WorkTasks")
     protected List<WorkTask> workTasks;
+    @XmlElement(name = "Attachments")
+    protected Work.Attachments attachments;
 
     /**
      * Gets the value of the mrid property.
@@ -373,6 +387,90 @@ public class Work {
             workTasks = new ArrayList<WorkTask>();
         }
         return this.workTasks;
+    }
+
+    /**
+     * Gets the value of the attachments property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Work.Attachments }
+     *     
+     */
+    public Work.Attachments getAttachments() {
+        return attachments;
+    }
+
+    /**
+     * Sets the value of the attachments property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Work.Attachments }
+     *     
+     */
+    public void setAttachments(Work.Attachments value) {
+        this.attachments = value;
+    }
+
+
+    /**
+     * <p>Java class for anonymous complex type.
+     * 
+     * <p>The following schema fragment specifies the expected content contained within this class.
+     * 
+     * <pre>
+     * &lt;complexType>
+     *   &lt;complexContent>
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *       &lt;sequence>
+     *         &lt;element name="Attachment" type="{http://iec.ch/TC57/2015/MaintenanceOrders#}Attachment" maxOccurs="unbounded" form="qualified"/>
+     *       &lt;/sequence>
+     *     &lt;/restriction>
+     *   &lt;/complexContent>
+     * &lt;/complexType>
+     * </pre>
+     * 
+     * 
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+        "attachment"
+    })
+    public static class Attachments {
+
+        @XmlElement(name = "Attachment", required = true)
+        protected List<Attachment> attachment;
+
+        /**
+         * Gets the value of the attachment property.
+         * 
+         * <p>
+         * This accessor method returns a reference to the live list,
+         * not a snapshot. Therefore any modification you make to the
+         * returned list will be present inside the JAXB object.
+         * This is why there is not a <CODE>set</CODE> method for the attachment property.
+         * 
+         * <p>
+         * For example, to add a new item, do as follows:
+         * <pre>
+         *    getAttachment().add(newItem);
+         * </pre>
+         * 
+         * 
+         * <p>
+         * Objects of the following type(s) are allowed in the list
+         * {@link Attachment }
+         * 
+         * 
+         */
+        public List<Attachment> getAttachment() {
+            if (attachment == null) {
+                attachment = new ArrayList<Attachment>();
+            }
+            return this.attachment;
+        }
+
     }
 
 

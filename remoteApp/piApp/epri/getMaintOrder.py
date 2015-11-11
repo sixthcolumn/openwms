@@ -92,8 +92,8 @@ class App(object):
                 self.txt.delete('1.0',tki.END)
                 while True:
                     if data == '':
-                        outputResult(dataOut)
                         print dataOut
+                        outputResult(dataOut)
                         break
                     data = read(self.send.stdout.fileno(), 1024)
                     dataOut += data
@@ -104,44 +104,66 @@ class App(object):
         self.root.after(1000,callback)
 
         def outputValue(label, string, xml):
-            searchString = '//*[local-name() = \'' + string + '\']';
+            searchString = './/*[local-name() = \'' + string + '\']';
             r = xml.xpath(searchString)
             if len(r) > 0:
                 self.txt.insert(tki.END,label + r[0].text + "\n")
 
         def xmlExists(string, xml):
-            searchString = '//*[local-name() = \'' + string + '\']';
+            searchString = './/*[local-name() = \'' + string + '\']';
             r = xml.xpath(searchString)
             if len(r) > 0 :
                 return True;
             return False;
 
+        # output address info
+        def outputAddress(doc):
+            addresses = doc.xpath('.//*[local-name() = \'mainAddress\']')
+            for addr in addresses:
+                self.txt.insert(tki.END,"\nAddress:\n")
+                outputValue("   General:", "addressGeneral", addr)
+                outputValue("   Zipcode:", "code", addr)
+                outputValue("   Town:", "name", addr)
+                outputValue("   State:", "stateOrProvince", addr)
+
+        # output the attachments
+        def outputAttachments(doc):
+            attachments = doc.xpath('.//*[local-name() = \'Attachments\']')
+            for attachment in attachments:
+                self.txt.insert(tki.END,"\nAttachment:\n")
+                outputValue("URL: ", "Url", attachment)
+                outputValue("Description: ", "Description", attachment)
+                outputValue("Comment: ", "Comment", attachment)
+
         # print results to text
         def outputResult(xmlString):
             try:
                 print xmlString
-                rxml = etree.fromstring(xmlString)
-                if( xmlExists("mRID", rxml) == False):
-                    self.txt.insert(tki.END, "Your search did not match any DER Groups.");
-                else:
-                    print xmlString
-                    outputValue("MRID: ", "mRID", rxml)
-                    outputValue("Kind: ", "kind", rxml)
-                    outputValue("Last Mod: ", "lastModifiedDateTime", rxml)
-                    outputValue("requested: ", "requestedDateTime", rxml)
-                    outputValue("Status: ", "statusKind", rxml)
-                    outputValue("Created: ", "createdDateTime", rxml)
-                    outputValue("Reason: ", "reason", rxml)
-                    outputValue("Severity: ", "severity", rxml)
-                    outputValue("Type: ", "type", rxml)
+                doc = etree.fromstring(xmlString)
+                orders = doc.xpath('//*[local-name() = \'MaintenanceOrder\']')
+                for order in orders:
+                    outputValue("MRID: ", "mRID", order)
+                    outputValue("Kind: ", "kind", order)
+                    outputValue("Last Mod: ", "lastModifiedDateTime", order)
+                    outputValue("requested: ", "requestedDateTime", order)
+                    outputValue("Status: ", "statusKind", order)
+                    outputValue("Created: ", "createdDateTime", order)
+                    outputValue("Reason: ", "reason", order)
+                    outputValue("Severity: ", "severity", order)
+                    outputValue("Type: ", "type", order)
                     self.txt.insert(tki.END,"\nInternal Loc:\n")
-                    outputValue("   Name: ", "BuildingName", rxml)
-                    outputValue("   Number: ", "BuildingNumber", rxml)
-                    outputValue("   Floor: ", "Floor", rxml)
-                    outputValue("   Room: ", "RoomNumber", rxml)
-            except:
+                    outputValue("   Name: ", "BuildingName", order)
+                    outputValue("   Number: ", "BuildingNumber", order)
+                    outputValue("   Floor: ", "Floor", order)
+                    outputValue("   Room: ", "RoomNumber", order)
+                    outputAddress(order)
+                    outputAttachments(order)
+                    self.txt.insert(tki.END,"\n\n")
+
+            except Exception, e:
+                print "output error: " + str(e)
                 self.txt.insert(tki.END,"Operation Failed:\n\n" + xmlString)
-            
+
 
 if __name__ == '__main__':
         app = App()

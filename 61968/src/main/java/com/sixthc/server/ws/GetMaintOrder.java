@@ -504,23 +504,7 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 							respWorkOrder.getAttachments().getAttachment().add(a);
 						}
 					}
-					if (respWorkOrder.getActivityRecords() != null) {
-						List<Attachment> respAttachment = respWorkOrder
-								.getAttachments().getAttachment();
-						for (WorkOrderAttachments workOrderAttachment : moWorkOrder
-								.getWorkOrderAttachmentses()) {
-							if (workOrderAttachment.getAttachment() != null) {
-								Attachment a = new Attachment();
-								a.setComment(workOrderAttachment
-										.getAttachment().getComment());
-								a.setDescription(workOrderAttachment
-										.getAttachment().getDescription());
-								a.setUrl(workOrderAttachment.getAttachment()
-										.getFilename());
-								respAttachment.add(a);
-							}
-						}
-					}
+
 
 					respWorkOrder.setMRID(moWorkOrder.getMrid());
 

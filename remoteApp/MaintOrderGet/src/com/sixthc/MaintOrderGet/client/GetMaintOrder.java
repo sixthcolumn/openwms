@@ -5,7 +5,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.ws.BindingProvider;
 
@@ -18,7 +17,6 @@ import ch.iec.tc57._2015.getmaintenanceordersmessage.GetMaintenanceOrdersRespons
 import ch.iec.tc57._2015.getmaintenanceordersmessage.MaintenanceOrdersPayloadType;
 
 import com.sixthc.server.ws.GetMaintOrderService;
-import com.sixthc.server.ws.GetMaintenanceOrdersFaultMessage;
 import com.sixthc.server.ws.GetMaintenanceOrdersPort;
 
 public class GetMaintOrder {
@@ -75,6 +73,7 @@ public class GetMaintOrder {
 			GetMaintenanceOrdersResponseMessageType reply = port.getMaintenanceOrders(msg);
 			reply.getReply().getResult();
 			MaintenanceOrdersPayloadType payload = reply.getPayload();
+
 			
 			// for now we just print out the xml
 			StringWriter writer = new StringWriter();

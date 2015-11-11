@@ -146,6 +146,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Attachment }
+     * 
+     */
+    public Attachment createAttachment() {
+        return new Attachment();
+    }
+
+    /**
      * Create an instance of {@link TelephoneNumber }
      * 
      */
@@ -319,6 +327,14 @@ public class ObjectFactory {
      */
     public Work.Priority createWorkPriority() {
         return new Work.Priority();
+    }
+
+    /**
+     * Create an instance of {@link Work.Attachments }
+     * 
+     */
+    public Work.Attachments createWorkAttachments() {
+        return new Work.Attachments();
     }
 
     /**

@@ -32,8 +32,8 @@ public class ObjectFactory {
     private final static QName _CancelMaintenanceOrders_QNAME = new QName("http://iec.ch/TC57/2015/MaintenanceOrdersMessage", "CancelMaintenanceOrders");
     private final static QName _ChangeMaintenanceOrders_QNAME = new QName("http://iec.ch/TC57/2015/MaintenanceOrdersMessage", "ChangeMaintenanceOrders");
     private final static QName _MaintenanceOrdersFaultMessage_QNAME = new QName("http://iec.ch/TC57/2015/MaintenanceOrdersMessage", "MaintenanceOrdersFaultMessage");
-    private final static QName _DeleteMaintenanceOrders_QNAME = new QName("http://iec.ch/TC57/2015/MaintenanceOrdersMessage", "DeleteMaintenanceOrders");
     private final static QName _CreateMaintenanceOrders_QNAME = new QName("http://iec.ch/TC57/2015/MaintenanceOrdersMessage", "CreateMaintenanceOrders");
+    private final static QName _DeleteMaintenanceOrders_QNAME = new QName("http://iec.ch/TC57/2015/MaintenanceOrdersMessage", "DeleteMaintenanceOrders");
     private final static QName _ChangedMaintenanceOrders_QNAME = new QName("http://iec.ch/TC57/2015/MaintenanceOrdersMessage", "ChangedMaintenanceOrders");
     private final static QName _ClosedMaintenanceOrders_QNAME = new QName("http://iec.ch/TC57/2015/MaintenanceOrdersMessage", "ClosedMaintenanceOrders");
 
@@ -160,18 +160,18 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link MaintenanceOrdersRequestMessageType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://iec.ch/TC57/2015/MaintenanceOrdersMessage", name = "DeleteMaintenanceOrders")
-    public JAXBElement<MaintenanceOrdersRequestMessageType> createDeleteMaintenanceOrders(MaintenanceOrdersRequestMessageType value) {
-        return new JAXBElement<MaintenanceOrdersRequestMessageType>(_DeleteMaintenanceOrders_QNAME, MaintenanceOrdersRequestMessageType.class, null, value);
+    @XmlElementDecl(namespace = "http://iec.ch/TC57/2015/MaintenanceOrdersMessage", name = "CreateMaintenanceOrders")
+    public JAXBElement<MaintenanceOrdersRequestMessageType> createCreateMaintenanceOrders(MaintenanceOrdersRequestMessageType value) {
+        return new JAXBElement<MaintenanceOrdersRequestMessageType>(_CreateMaintenanceOrders_QNAME, MaintenanceOrdersRequestMessageType.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link MaintenanceOrdersRequestMessageType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://iec.ch/TC57/2015/MaintenanceOrdersMessage", name = "CreateMaintenanceOrders")
-    public JAXBElement<MaintenanceOrdersRequestMessageType> createCreateMaintenanceOrders(MaintenanceOrdersRequestMessageType value) {
-        return new JAXBElement<MaintenanceOrdersRequestMessageType>(_CreateMaintenanceOrders_QNAME, MaintenanceOrdersRequestMessageType.class, null, value);
+    @XmlElementDecl(namespace = "http://iec.ch/TC57/2015/MaintenanceOrdersMessage", name = "DeleteMaintenanceOrders")
+    public JAXBElement<MaintenanceOrdersRequestMessageType> createDeleteMaintenanceOrders(MaintenanceOrdersRequestMessageType value) {
+        return new JAXBElement<MaintenanceOrdersRequestMessageType>(_DeleteMaintenanceOrders_QNAME, MaintenanceOrdersRequestMessageType.class, null, value);
     }
 
     /**
