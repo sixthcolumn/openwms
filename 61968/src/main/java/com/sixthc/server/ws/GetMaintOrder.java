@@ -2,6 +2,8 @@ package com.sixthc.server.ws;
 
 import java.math.BigInteger;
 import java.util.Date;
+import java.util.List;
+import java.util.Vector;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,7 @@ import com.sixthc.cim.get2.Asset2;
 import com.sixthc.cim.get2.Asset2.Procedures;
 import com.sixthc.cim.get2.Asset2.Procedures.Measurements;
 import com.sixthc.cim.get2.AssetLocationHazard2;
+import com.sixthc.cim.get2.Attachment;
 import com.sixthc.cim.get2.Crew2;
 import com.sixthc.cim.get2.CrewMember;
 import com.sixthc.cim.get2.CrewMember.Person;
@@ -34,6 +37,7 @@ import com.sixthc.cim.get2.PhaseCode;
 import com.sixthc.cim.get2.ProcedureKind;
 import com.sixthc.cim.get2.ReplyType;
 import com.sixthc.cim.get2.Work2;
+import com.sixthc.cim.get2.Work2.Attachments;
 import com.sixthc.cim.get2.Work2.Priority;
 import com.sixthc.cim.get2.WorkAsset;
 import com.sixthc.cim.get2.WorkKind1;
@@ -67,6 +71,7 @@ import com.sixthc.hbm.Procedure;
 import com.sixthc.hbm.ProcedureMeasurements;
 import com.sixthc.hbm.TimeSchedule;
 import com.sixthc.hbm.WorkOrder;
+import com.sixthc.hbm.WorkOrderAttachments;
 import com.sixthc.hbm.WorkOrderHazards;
 import com.sixthc.hbm.WorkOrderNames;
 import com.sixthc.hbm.WorkOrderOrganizations;
@@ -411,276 +416,329 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 
 		for (MaintenanceOrder reqMaint : getMaintenanceOrdersRequestMessage
 				.getRequest().getGetMaintenanceOrders().getMaintenanceOrder()) {
+
 			String lookupString = reqMaint.getMRID();
-			Maintorder mo = maintOrderDao.find(lookupString);
-
-			if (mo == null) {
-				// error;
-				continue;
-			}
-
-			// set maint order names
-			MaintenanceOrder2 respMo = new MaintenanceOrder2();
-			respMaintOrders.getMaintenanceOrder().add(respMo);
-			respMo.setMRID(reqMaint.getMRID());
-			System.out
-					.println("mo coutn : " + mo.getMaintorderNameses().size());
-			for (MaintorderNames moName : mo.getMaintorderNameses()) {
-				Name2 respName = new Name2();
-				respMo.getNames().add(respName);
-				setMaintOrderNames(moName, respName);
+			List<Maintorder> maintOrders;
+			if (lookupString == null || lookupString.length() == 0)
+				maintOrders = maintOrderDao.findAll();
+			else {
+				maintOrders = new Vector<Maintorder>();
+				maintOrders.add(maintOrderDao.find(lookupString));
 			}
 
 			/*
-			 * currently we store the single ORG with each work order, design
-			 * flaw. So we
-			 * are going to get it from the first work order and place in
-			 * maintOrder.org
+			 * because we can get an empty search string, we might return
+			 * multiple maint orders
 			 */
-			if (!mo.getWorkOrders().isEmpty()) {
-				WorkOrder moOrgWorkOrder = mo.getWorkOrders().toArray(
-						new WorkOrder[1])[0];
-				for (WorkOrderOrganizations moOrg : moOrgWorkOrder
-						.getWorkOrderOrganizations()) {
-					Organization moOrg2 = moOrg.getOrganization();
-					Organisation2 respOrg = new Organisation2();
-					if (moOrg2.getAddress() != null
-							|| moOrg2.getPhone() != null) {
-						respMo.setOrganisation(respOrg);
+			for (Maintorder mo : maintOrders) {
 
-						if (moOrg2.getAddress() != null) {
-							respOrg.setStreetAddress(new StreetAddress());
-							setAddress1(moOrg2.getAddress(),
-									respOrg.getStreetAddress());
-						}
+				if (mo == null) {
+					// error;
+					continue;
+				}
 
-						if (moOrg2.getPhone() != null) {
-							Phone1 phone = new Phone1();
-							respOrg.setPhone1(phone);
-							setPhone1(moOrg2.getPhone(), phone);
-						}
-						respOrg.setMRID(moOrg2.getMrid());
-						// set maint order org names
-						for (OrganizationNames moNames : moOrg2
-								.getOrganizationNameses()) {
-							Name2 respName = new Name2();
-							respOrg.getNames().add(respName);
-							setMaintOrderOrgNames(moNames, respName);
+				// set maint order names
+				MaintenanceOrder2 respMo = new MaintenanceOrder2();
+				respMaintOrders.getMaintenanceOrder().add(respMo);
+				respMo.setMRID(mo.getMrid());
+				System.out.println("mo count : "
+						+ mo.getMaintorderNameses().size());
+				for (MaintorderNames moName : mo.getMaintorderNameses()) {
+					Name2 respName = new Name2();
+					respMo.getNames().add(respName);
+					setMaintOrderNames(moName, respName);
+				}
+
+				/*
+				 * currently we store the single ORG with each work order,
+				 * design
+				 * flaw. So we
+				 * are going to get it from the first work order and place in
+				 * maintOrder.org
+				 */
+				if (!mo.getWorkOrders().isEmpty()) {
+					WorkOrder moOrgWorkOrder = mo.getWorkOrders().toArray(
+							new WorkOrder[1])[0];
+					for (WorkOrderOrganizations moOrg : moOrgWorkOrder
+							.getWorkOrderOrganizations()) {
+						Organization moOrg2 = moOrg.getOrganization();
+						Organisation2 respOrg = new Organisation2();
+						if (moOrg2.getAddress() != null
+								|| moOrg2.getPhone() != null) {
+							respMo.setOrganisation(respOrg);
+
+							if (moOrg2.getAddress() != null) {
+								respOrg.setStreetAddress(new StreetAddress());
+								setAddress1(moOrg2.getAddress(),
+										respOrg.getStreetAddress());
+							}
+
+							if (moOrg2.getPhone() != null) {
+								Phone1 phone = new Phone1();
+								respOrg.setPhone1(phone);
+								setPhone1(moOrg2.getPhone(), phone);
+							}
+							respOrg.setMRID(moOrg2.getMrid());
+							// set maint order org names
+							for (OrganizationNames moNames : moOrg2
+									.getOrganizationNameses()) {
+								Name2 respName = new Name2();
+								respOrg.getNames().add(respName);
+								setMaintOrderOrgNames(moNames, respName);
+							}
 						}
 					}
 				}
-			}
 
-			for (WorkOrder moWorkOrder : mo.getWorkOrders()) {
-				Work2 respWorkOrder = new Work2();
-				respMo.getWork().add(respWorkOrder);
+				for (WorkOrder moWorkOrder : mo.getWorkOrders()) {
+					Work2 respWorkOrder = new Work2();
+					respMo.getWork().add(respWorkOrder);
 
-				respWorkOrder.setMRID(moWorkOrder.getMrid());
-
-				// TODO : Missing activityRecords
-
-				// work order names
-				for (WorkOrderNames moWorkOrderNames : moWorkOrder
-						.getWorkOrderNameses()) {
-					Name2 respName2 = new Name2();
-					respWorkOrder.getNames().add(respName2);
-					setWorkOrderNames(moWorkOrderNames, respName2);
-				}
-				respWorkOrder
-						.setKind(WorkKind1.fromValue(moWorkOrder.getKind()));
-				respWorkOrder.setLastModifiedDateTime(DateUtil
-						.getXMLDate(moWorkOrder.getUpdatedAt()));
-
-				Priority respPriority = new Priority();
-				respPriority.setJustification(moWorkOrder
-						.getPriorityJustification());
-				if (moWorkOrder.getPriorityRank() != null) {
-					respPriority.setRank(BigInteger.valueOf(moWorkOrder
-							.getPriorityRank()));
-					respPriority.setType(moWorkOrder.getPriorityType());
-					respWorkOrder.setPriority(respPriority);
-				}
-
-				respWorkOrder.setRequestDateTime(DateUtil.getXMLDate(new Date(
-						System.currentTimeMillis())));
-				respWorkOrder.setStatusKind(WorkStatusKind2
-						.fromValue(moWorkOrder.getStatusKind()));
-
-				WorkLocation2 respLoc = new WorkLocation2();
-				respWorkOrder.setWorkLocation(respLoc);
-
-				if (moWorkOrder.getCreatedAt() != null
-						&& isSet(moWorkOrder.getReason())
-						|| isSet(moWorkOrder.getSeverity())
-						|| isSet(moWorkOrder.getOrderType())) {
-					ActivityRecord2 ar = new ActivityRecord2();
-					respWorkOrder.getActivityRecords().add(ar);
-					if (isSet(moWorkOrder.getReason()))
-						ar.setReason(moWorkOrder.getReason());
-					if (isSet(moWorkOrder.getSeverity()))
-						ar.setSeverity(moWorkOrder.getSeverity());
-					if (isSet(moWorkOrder.getOrderType()))
-						ar.setType(moWorkOrder.getOrderType());
-					ar.setCreatedDateTime(DateUtil.getXMLDate(moWorkOrder
-							.getCreatedAt()));
-				}
-
-				//respWorkOrder.setWorkLocation(respLoc);
-				for (WorkOrderHazards moHaz : moWorkOrder
-						.getWorkOrderHazardses()) {
-					AssetLocationHazard2 respHaz = new AssetLocationHazard2();
-					Hazards moHaz2 = moHaz.getHazards();
-					moHaz2.getHazardName();
-					respHaz.setType(moHaz2.getHazardName());
-
-					respLoc.getHazards().add(respHaz);
-
-				}
-
-				for (WorkOrderSchedule moSched : moWorkOrder
-						.getWorkOrderSchedules()) {
-					WorkTimeSchedule2 respSched = new WorkTimeSchedule2();
-					respWorkOrder.getTimeSchedules().add(respSched);
-					respSched.setKind(WorkTimeScheduleKind2.fromValue(moSched
-							.getTimeSchedule().getType()));
-					ScheduleInterval respSI = new ScheduleInterval();
-					respSched.setScheduleInterval(respSI);
-					TimeSchedule moS = moSched.getTimeSchedule();
-					respSI.setStart(DateUtil.getXMLDate(moS.getStartTstamp()));
-					respSI.setEnd(DateUtil.getXMLDate(moS.getEndTstamp()));
-				}
-
-				if (moWorkOrder.getInternalBuildingNum() != null
-						&& moWorkOrder.getInternalFloor() != null
-						&& moWorkOrder.getInternalRoomNum() != null) {
-					InternalLocation2 respIloc = new InternalLocation2();
-					respLoc.setInternalLocation(respIloc);
-					respIloc.setBuildingName(moWorkOrder
-							.getInternalBuildingName());
-					respIloc.setBuildingNumber(moWorkOrder
-							.getInternalBuildingNum());
-					respIloc.setFloor(moWorkOrder.getInternalFloor());
-					respIloc.setRoomNumber(moWorkOrder.getInternalRoomNum());
-				}
-
-				Address moWorkOrderAddress = moWorkOrder.getAddress();
-				if (moWorkOrderAddress != null) {
-					MainAddress respMainAddr = new MainAddress();
-					respLoc.setMainAddress(respMainAddr);
-					respLoc.setDirection(moWorkOrderAddress.getDirections());
-					//					CoordinateSystem cs = new CoordinateSystem();
-					//					cs.setCrsUrn(moWorkOrderAddress.getCoordSystem());
-					//					respLoc.setCoordinateSystem(cs);
-					MainAddress ma = new MainAddress();
-					setMainAddress(moWorkOrderAddress, ma);
-					respLoc.setDirection(moWorkOrderAddress.getDirections());
-					//respLoc.setMRID(null); // TODO : No mrid for work location
-					respLoc.setMainAddress(ma);
-				}
-
-				for (WorkPositionPoints moPoints : moWorkOrder
-						.getWorkPositionPointses()) {
-					PositionPoints reqPos = new PositionPoints();
-					reqPos.setSequenceNumber(BigInteger.valueOf(moPoints
-							.getSequenceNum()));
-					reqPos.setXPosition(moPoints.getXposition().toString());
-					reqPos.setYPosition(moPoints.getYposition().toString());
-					reqPos.setZPosition(moPoints.getZposition().toString());
-					respLoc.getPositionPoints().add(reqPos);
-				}
-
-				for (WorkOrderWorkTasks moTasks : moWorkOrder
-						.getWorkOrderWorkTaskses()) {
-					WorkTask respWorkTask = new WorkTask();
-					respWorkOrder.getWorkTasks().add(respWorkTask);
-					com.sixthc.hbm.WorkTask moWorkTask = moTasks.getWorkTask();
-
-					if (moWorkTask.getCrewEta() != null)
-						respWorkTask.setCrewETA(DateUtil.getXMLDate(moWorkTask
-								.getCrewEta()));
-					respWorkTask.setInstruction(moWorkTask.getInstructions());
-					respWorkTask.setMRID(moWorkTask.getMrid());
-					respWorkTask.setStatusKind(WorkStatusKind2
-							.fromValue(moWorkTask.getStatusKind()));
-					respWorkTask.setSubject(moWorkTask.getSubject());
-					if (moWorkTask.getTaskType() != null) {
-						respWorkTask.setTaskKind(WorkTaskKind
-								.fromValue(moWorkTask.getTaskType()));
+					if( moWorkOrder.getWorkOrderAttachmentses().size() > 0 ) {
+						respWorkOrder.setAttachments(new Attachments());
+						for( WorkOrderAttachments att : moWorkOrder.getWorkOrderAttachmentses()) {
+							Attachment a = new Attachment();
+							a.setComment(att.getAttachment().getComment());
+							a.setDescription(att.getAttachment().getDescription());
+							a.setUrl(att.getAttachment().getFilename());
+							respWorkOrder.getAttachments().getAttachment().add(a);
+						}
+					}
+					if (respWorkOrder.getActivityRecords() != null) {
+						List<Attachment> respAttachment = respWorkOrder
+								.getAttachments().getAttachment();
+						for (WorkOrderAttachments workOrderAttachment : moWorkOrder
+								.getWorkOrderAttachmentses()) {
+							if (workOrderAttachment.getAttachment() != null) {
+								Attachment a = new Attachment();
+								a.setComment(workOrderAttachment
+										.getAttachment().getComment());
+								a.setDescription(workOrderAttachment
+										.getAttachment().getDescription());
+								a.setUrl(workOrderAttachment.getAttachment()
+										.getFilename());
+								respAttachment.add(a);
+							}
+						}
 					}
 
-					for (WorkTaskCrews moCrews : moWorkTask
-							.getWorkTaskCrewses()) {
-						com.sixthc.hbm.Crew moCrew = moCrews.getCrew();
-						Crew2 respCrew = new Crew2();
-						respWorkTask.getCrews().add(respCrew);
+					respWorkOrder.setMRID(moWorkOrder.getMrid());
 
-						respCrew.setMRID(moCrew.getMrid());
-						for (CrewNames moCrewNames : moCrew.getCrewNameses()) {
-							Name2 name = new Name2();
-							respCrew.getNames().add(name);
-							setCrewNames(moCrewNames, name);
-						}
+					// TODO : Missing activityRecords
 
-						for (CrewAssets moCrewAssets : moCrew.getCrewAssets()) {
-							com.sixthc.hbm.Asset moCrewAsset = moCrewAssets
-									.getAsset();
-							WorkAsset respAsset = new WorkAsset();
-							respCrew.getWorkAssets().add(respAsset);
-							setWorkAsset(moCrewAsset, respAsset);
-						}
+					// work order names
+					for (WorkOrderNames moWorkOrderNames : moWorkOrder
+							.getWorkOrderNameses()) {
+						Name2 respName2 = new Name2();
+						respWorkOrder.getNames().add(respName2);
+						setWorkOrderNames(moWorkOrderNames, respName2);
+					}
+					respWorkOrder.setKind(WorkKind1.fromValue(moWorkOrder
+							.getKind()));
+					respWorkOrder.setLastModifiedDateTime(DateUtil
+							.getXMLDate(moWorkOrder.getUpdatedAt()));
 
-						for (CrewContactpersons moContact : moCrew
-								.getContactPersons()) {
-							Contactperson moContactPerson = moContact
-									.getContactperson();
-							CrewMember respMember = new CrewMember();
-							respCrew.getCrewMembers().add(respMember);
-							Person respPerson = new Person();
-							respMember.setPerson(respPerson);
-							respPerson.setFirstName(moContactPerson
-									.getFirstname());
-							respPerson.setLastName(moContactPerson
-									.getLastname());
-						}
+					Priority respPriority = new Priority();
+					respPriority.setJustification(moWorkOrder
+							.getPriorityJustification());
+					if (moWorkOrder.getPriorityRank() != null) {
+						respPriority.setRank(BigInteger.valueOf(moWorkOrder
+								.getPriorityRank()));
+						respPriority.setType(moWorkOrder.getPriorityType());
+						respWorkOrder.setPriority(respPriority);
+					}
+
+					respWorkOrder.setRequestDateTime(DateUtil
+							.getXMLDate(new Date(System.currentTimeMillis())));
+					respWorkOrder.setStatusKind(WorkStatusKind2
+							.fromValue(moWorkOrder.getStatusKind()));
+
+					WorkLocation2 respLoc = new WorkLocation2();
+					respWorkOrder.setWorkLocation(respLoc);
+
+					if (moWorkOrder.getCreatedAt() != null
+							&& isSet(moWorkOrder.getReason())
+							|| isSet(moWorkOrder.getSeverity())
+							|| isSet(moWorkOrder.getOrderType())) {
+						ActivityRecord2 ar = new ActivityRecord2();
+						respWorkOrder.getActivityRecords().add(ar);
+						if (isSet(moWorkOrder.getReason()))
+							ar.setReason(moWorkOrder.getReason());
+						if (isSet(moWorkOrder.getSeverity()))
+							ar.setSeverity(moWorkOrder.getSeverity());
+						if (isSet(moWorkOrder.getOrderType()))
+							ar.setType(moWorkOrder.getOrderType());
+						ar.setCreatedDateTime(DateUtil.getXMLDate(moWorkOrder
+								.getCreatedAt()));
+					}
+
+					//respWorkOrder.setWorkLocation(respLoc);
+					for (WorkOrderHazards moHaz : moWorkOrder
+							.getWorkOrderHazardses()) {
+						AssetLocationHazard2 respHaz = new AssetLocationHazard2();
+						Hazards moHaz2 = moHaz.getHazards();
+						moHaz2.getHazardName();
+						respHaz.setType(moHaz2.getHazardName());
+
+						respLoc.getHazards().add(respHaz);
 
 					}
 
-					moWorkTask.getWorkTaskNameses();
-					moWorkTask.getWorkTaskIdentifiedObjectses();
-					moWorkTask.getWorkTaskOldAssetses();
-
-					for (WorkTaskTimeSchedules moSchedule : moWorkTask
-							.getWorkTaskTimeScheduleses()) {
+					for (WorkOrderSchedule moSched : moWorkOrder
+							.getWorkOrderSchedules()) {
 						WorkTimeSchedule2 respSched = new WorkTimeSchedule2();
-						respWorkTask.getTimeSchedules().add(respSched);
-						respSched.setKind(WorkTimeScheduleKind2
-								.fromValue(moSchedule.getTimeSchedule()
-										.getType()));
+						respWorkOrder.getTimeSchedules().add(respSched);
+						respSched
+								.setKind(WorkTimeScheduleKind2
+										.fromValue(moSched.getTimeSchedule()
+												.getType()));
 						ScheduleInterval respSI = new ScheduleInterval();
 						respSched.setScheduleInterval(respSI);
-						TimeSchedule moS = moSchedule.getTimeSchedule();
+						TimeSchedule moS = moSched.getTimeSchedule();
 						respSI.setStart(DateUtil.getXMLDate(moS
 								.getStartTstamp()));
 						respSI.setEnd(DateUtil.getXMLDate(moS.getEndTstamp()));
 					}
 
-					for (WorkTaskAssets moAsset : moWorkTask
-							.getWorkTaskAssetses()) {
+					if (moWorkOrder.getInternalBuildingNum() != null
+							&& moWorkOrder.getInternalFloor() != null
+							&& moWorkOrder.getInternalRoomNum() != null) {
+						InternalLocation2 respIloc = new InternalLocation2();
+						respLoc.setInternalLocation(respIloc);
+						respIloc.setBuildingName(moWorkOrder
+								.getInternalBuildingName());
+						respIloc.setBuildingNumber(moWorkOrder
+								.getInternalBuildingNum());
+						respIloc.setFloor(moWorkOrder.getInternalFloor());
+						respIloc.setRoomNumber(moWorkOrder.getInternalRoomNum());
+					}
 
-						Asset2 respAsset = new Asset2();
-						respWorkTask.getAssets().add(respAsset);
-						com.sixthc.hbm.Asset a2 = moAsset.getAsset();
-						setAsset(a2, respAsset);
+					Address moWorkOrderAddress = moWorkOrder.getAddress();
+					if (moWorkOrderAddress != null) {
+						MainAddress respMainAddr = new MainAddress();
+						respLoc.setMainAddress(respMainAddr);
+						respLoc.setDirection(moWorkOrderAddress.getDirections());
+						//					CoordinateSystem cs = new CoordinateSystem();
+						//					cs.setCrsUrn(moWorkOrderAddress.getCoordSystem());
+						//					respLoc.setCoordinateSystem(cs);
+						MainAddress ma = new MainAddress();
+						setMainAddress(moWorkOrderAddress, ma);
+						respLoc.setDirection(moWorkOrderAddress.getDirections());
+						//respLoc.setMRID(null); // TODO : No mrid for work location
+						respLoc.setMainAddress(ma);
+					}
+
+					for (WorkPositionPoints moPoints : moWorkOrder
+							.getWorkPositionPointses()) {
+						PositionPoints reqPos = new PositionPoints();
+						reqPos.setSequenceNumber(BigInteger.valueOf(moPoints
+								.getSequenceNum()));
+						reqPos.setXPosition(moPoints.getXposition().toString());
+						reqPos.setYPosition(moPoints.getYposition().toString());
+						reqPos.setZPosition(moPoints.getZposition().toString());
+						respLoc.getPositionPoints().add(reqPos);
+					}
+
+					for (WorkOrderWorkTasks moTasks : moWorkOrder
+							.getWorkOrderWorkTaskses()) {
+						WorkTask respWorkTask = new WorkTask();
+						respWorkOrder.getWorkTasks().add(respWorkTask);
+						com.sixthc.hbm.WorkTask moWorkTask = moTasks
+								.getWorkTask();
+
+						if (moWorkTask.getCrewEta() != null)
+							respWorkTask.setCrewETA(DateUtil
+									.getXMLDate(moWorkTask.getCrewEta()));
+						respWorkTask.setInstruction(moWorkTask
+								.getInstructions());
+						respWorkTask.setMRID(moWorkTask.getMrid());
+						respWorkTask.setStatusKind(WorkStatusKind2
+								.fromValue(moWorkTask.getStatusKind()));
+						respWorkTask.setSubject(moWorkTask.getSubject());
+						if (moWorkTask.getTaskType() != null) {
+							respWorkTask.setTaskKind(WorkTaskKind
+									.fromValue(moWorkTask.getTaskType()));
+						}
+
+						for (WorkTaskCrews moCrews : moWorkTask
+								.getWorkTaskCrewses()) {
+							com.sixthc.hbm.Crew moCrew = moCrews.getCrew();
+							Crew2 respCrew = new Crew2();
+							respWorkTask.getCrews().add(respCrew);
+
+							respCrew.setMRID(moCrew.getMrid());
+							for (CrewNames moCrewNames : moCrew
+									.getCrewNameses()) {
+								Name2 name = new Name2();
+								respCrew.getNames().add(name);
+								setCrewNames(moCrewNames, name);
+							}
+
+							for (CrewAssets moCrewAssets : moCrew
+									.getCrewAssets()) {
+								com.sixthc.hbm.Asset moCrewAsset = moCrewAssets
+										.getAsset();
+								WorkAsset respAsset = new WorkAsset();
+								respCrew.getWorkAssets().add(respAsset);
+								setWorkAsset(moCrewAsset, respAsset);
+							}
+
+							for (CrewContactpersons moContact : moCrew
+									.getContactPersons()) {
+								Contactperson moContactPerson = moContact
+										.getContactperson();
+								CrewMember respMember = new CrewMember();
+								respCrew.getCrewMembers().add(respMember);
+								Person respPerson = new Person();
+								respMember.setPerson(respPerson);
+								respPerson.setFirstName(moContactPerson
+										.getFirstname());
+								respPerson.setLastName(moContactPerson
+										.getLastname());
+							}
+
+						}
+
+						moWorkTask.getWorkTaskNameses();
+						moWorkTask.getWorkTaskIdentifiedObjectses();
+						moWorkTask.getWorkTaskOldAssetses();
+
+						for (WorkTaskTimeSchedules moSchedule : moWorkTask
+								.getWorkTaskTimeScheduleses()) {
+							WorkTimeSchedule2 respSched = new WorkTimeSchedule2();
+							respWorkTask.getTimeSchedules().add(respSched);
+							respSched.setKind(WorkTimeScheduleKind2
+									.fromValue(moSchedule.getTimeSchedule()
+											.getType()));
+							ScheduleInterval respSI = new ScheduleInterval();
+							respSched.setScheduleInterval(respSI);
+							TimeSchedule moS = moSchedule.getTimeSchedule();
+							respSI.setStart(DateUtil.getXMLDate(moS
+									.getStartTstamp()));
+							respSI.setEnd(DateUtil.getXMLDate(moS
+									.getEndTstamp()));
+						}
+
+						for (WorkTaskAssets moAsset : moWorkTask
+								.getWorkTaskAssetses()) {
+
+							Asset2 respAsset = new Asset2();
+							respWorkTask.getAssets().add(respAsset);
+							com.sixthc.hbm.Asset a2 = moAsset.getAsset();
+							setAsset(a2, respAsset);
+						}
 					}
 				}
 			}
 
 		}
 		// if nothing found, then return an empty payload
-		if( respMaintOrders.getMaintenanceOrder().size() > 0 ) {
-			log.debug("no orders found, returning empty payload");
+		if (respMaintOrders.getMaintenanceOrder().size() > 0) {
+			log.debug(respMaintOrders.getMaintenanceOrder().size()
+					+ " maint orders are being returned");
 			payload.setMaintenanceOrders(respMaintOrders);
-		}
+		} else
+			log.debug("no maint orders found, returning empty payload");
 
 		reply.setResult("OK");
 		return resp;

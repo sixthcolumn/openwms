@@ -56,6 +56,10 @@ csh> cp epri/testimage.jpg /usr/local/tomcat7/static
 
 surf to http://yourhost:8080/static/testimage.jpg # image should appear
 
+insure that the directory /data/openwms/files exists. The epriConnect server
+drops files here when you upload files. If this directory doesn't exist,
+the epriConnect service will return a warning that it could not upload image.
+
 -------- config.xml 
 
 there is now a config.xml file :

@@ -1,5 +1,7 @@
 package com.sixthc.dao;
 
+import java.util.List;
+
 import com.sixthc.hbm.Maintorder;
 
 
@@ -12,4 +14,5 @@ public interface MaintOrderDao {
 	//public Maintorder findById(int id);
 	//public long getMessageIdSequence();
 	public Maintorder find(String mrid);
+	public List<Maintorder> findAll();
 }

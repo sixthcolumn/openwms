@@ -48,4 +48,10 @@ public class MaintOrderDaoImpl extends CustomHibernateDaoSupport implements
 			return (Maintorder) list.get(0);
 		return null;
 	}
+	
+	public List<Maintorder> findAll() {
+		List<Maintorder> list = getHibernateTemplate().find(
+				"from Maintorder");
+		return list;
+	}
 }

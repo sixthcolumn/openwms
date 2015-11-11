@@ -263,6 +263,7 @@ class Example(tk.Frame):
         if self.uploadStatus == 'on':
             try:
                 print 'uploading image...'
+                print 'url : ' + self.upload + ', imagefile : ' + self.imageFile
                 r = requests.post(self.upload, files={self.imageFile: open(self.imageFile, 'rb')})
                 if( r.status_code == 200 ):
                     tkMessageBox.showinfo("Image Upload", "Image has been uploaded to server")
@@ -272,7 +273,7 @@ class Example(tk.Frame):
                 print 'image upload complete.'
             except Exception, e:
                 logging.warning('post failed. Server may be down. using default image')
-                tkMessageBox.showError("Image Upload failed", str(e))
+                tkMessageBox.showerror("Image Upload failed", str(e))
         ## todo : this is temp because we don't upload actual images, default image
         self.imageVariable.set(self.imageServer + '/' + jpgName)
         self.image.focus_set()

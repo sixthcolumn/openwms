@@ -122,7 +122,7 @@ class App(object):
                 print xmlString
                 rxml = etree.fromstring(xmlString)
                 if( xmlExists("mRID", rxml) == False):
-                    self.txt.insert(tki.END, "No values returned.");
+                    self.txt.insert(tki.END, "Your search did not match any DER Groups.");
                 else:
                     print xmlString
                     outputValue("MRID: ", "mRID", rxml)

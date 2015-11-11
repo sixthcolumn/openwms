@@ -4060,7 +4060,7 @@ work.</xs:documentation>
          <get:Request>
             <get1:GetMaintenanceOrders>
                <get1:MaintenanceOrder>
-                  <get1:mRID></get1:mRID> 
+                  <get1:mRID>c893822b-dcb1-44ba-93f6-6bb9938af97b</get1:mRID> 
                </get1:MaintenanceOrder>
             </get1:GetMaintenanceOrders>            
          </get:Request>
