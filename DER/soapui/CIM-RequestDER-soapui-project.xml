@@ -2380,7 +2380,7 @@
   <xs:element name="GetDERGroupForecast" type="tns:GetDERGroupForecastRequestMessageType"/>
   <xs:element name="DERGroupForecastResponseMessage" type="tns:DERGroupForecastResponseMessageType"/>
   <xs:element name="DERGroupForecastFaultMessage" type="tns:DERGroupForecastFaultMessageType"/>
-</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://iec.ch/61968/</con:endpoint><con:endpoint>http://benjamins-Mac-mini.local:8088/mockcimDERGroupRequest_ServerSoap</con:endpoint></con:endpoints><con:operation isOneWay="false" action="http://iec.ch/61968/changedDERGroups" name="changeDERGroup" bindingOperationName="changeDERGroup" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://iec.ch/61968/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://sixthc.com/CIM/Request" xmlns:der="http://iec.ch/TC57/2011/DERGroupMessage" xmlns:mes="http://iec.ch/TC57/2011/schema/message" xmlns:der1="http://www.epri.com/2013/DERGroup#">
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://iec.ch/61968/</con:endpoint><con:endpoint>http://benjamins-Mac-mini.local:8088/mockcimDERGroupRequest_ServerSoap</con:endpoint><con:endpoint>http://localhost:8080/DERConnect/cim/request</con:endpoint></con:endpoints><con:operation isOneWay="false" action="http://iec.ch/61968/changedDERGroups" name="changeDERGroup" bindingOperationName="changeDERGroup" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://iec.ch/61968/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://sixthc.com/CIM/Request" xmlns:der="http://iec.ch/TC57/2011/DERGroupMessage" xmlns:mes="http://iec.ch/TC57/2011/schema/message" xmlns:der1="http://www.epri.com/2013/DERGroup#">
    <soapenv:Header/>
    <soapenv:Body>
       <req:RequestChangeDERGroupPayload>
@@ -4133,7 +4133,7 @@
          </payload>
       </req:RequestCreateDERGroupDispatchPayload>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:wsaConfig action="http://iec.ch/61968/createDERGroupDispatch"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="createDERGroupForecasts TestCase" searchProperties="true"><con:settings/><con:testStep type="request" name="createDERGroupForecasts"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>cimDERGroupRequest_ServerSoap</con:interface><con:operation>createDERGroupForecasts</con:operation><con:request name="createDERGroupForecasts"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://iec.ch/61968/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://sixthc.com/CIM/Request" xmlns:der="http://iec.ch/TC57/2011/DERGroupForecastMessage" xmlns:mes="http://iec.ch/TC57/2011/schema/message" xmlns:der1="http://www.epri.com/2013/DERGroupForecast#">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://iec.ch/61968/createDERGroupDispatch" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="createDERGroupForecasts TestCase" searchProperties="true"><con:settings/><con:testStep type="request" name="createDERGroupForecasts"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>cimDERGroupRequest_ServerSoap</con:interface><con:operation>createDERGroupForecasts</con:operation><con:request name="createDERGroupForecasts"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://iec.ch/61968/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://sixthc.com/CIM/Request" xmlns:der="http://iec.ch/TC57/2011/DERGroupForecastMessage" xmlns:mes="http://iec.ch/TC57/2011/schema/message" xmlns:der1="http://www.epri.com/2013/DERGroupForecast#">
    <soapenv:Header/>
    <soapenv:Body>
       <req:ChangeDERGroupForecastPayload>
@@ -4454,7 +4454,7 @@
          </payload>
       </req:RequestDeleteDERGroupPayload>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:wsaConfig action="http://iec.ch/61968/deleteDERGroups"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getDERGroup TestCase" searchProperties="true"><con:settings/><con:testStep type="request" name="getDERGroup"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>cimDERGroupRequest_ServerSoap</con:interface><con:operation>getDERGroup</con:operation><con:request name="getDERGroup"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://iec.ch/61968/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://sixthc.com/CIM/Request" xmlns:get="http://iec.ch/TC57/2011/GetDERGroupMessage" xmlns:mes="http://iec.ch/TC57/2011/schema/message" xmlns:der="http://www.epri.com/2013/DERGroup#">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://iec.ch/61968/deleteDERGroups" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getDERGroup TestCase" searchProperties="true"><con:settings/><con:testStep type="request" name="getDERGroup"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>cimDERGroupRequest_ServerSoap</con:interface><con:operation>getDERGroup</con:operation><con:request name="getDERGroup"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://iec.ch/61968/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://sixthc.com/CIM/Request" xmlns:get="http://iec.ch/TC57/2011/GetDERGroupMessage" xmlns:mes="http://iec.ch/TC57/2011/schema/message" xmlns:der="http://www.epri.com/2013/DERGroup#">
    <soapenv:Header/>
    <soapenv:Body>
       <req:GetDERGroupsPayload>
@@ -4612,7 +4612,7 @@
          </payload>
       </req:GetDERGroupsPayload>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:wsaConfig action="http://iec.ch/61968/getDERGroup"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getDERGroupCapabilities TestCase" searchProperties="true"><con:settings/><con:testStep type="request" name="getDERGroupCapabilities"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>cimDERGroupRequest_ServerSoap</con:interface><con:operation>getDERGroupCapabilities</con:operation><con:request name="getDERGroupCapabilities"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://iec.ch/61968/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://sixthc.com/CIM/Request" xmlns:get="http://iec.ch/TC57/2011/GetDERGroupCapabilityMessage" xmlns:mes="http://iec.ch/TC57/2011/schema/message" xmlns:der="http://www.epri.com/2013/DERStatus#">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://iec.ch/61968/getDERGroup" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getDERGroupCapabilities TestCase" searchProperties="true"><con:settings/><con:testStep type="request" name="getDERGroupCapabilities"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>cimDERGroupRequest_ServerSoap</con:interface><con:operation>getDERGroupCapabilities</con:operation><con:request name="getDERGroupCapabilities"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://iec.ch/61968/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://sixthc.com/CIM/Request" xmlns:get="http://iec.ch/TC57/2011/GetDERGroupCapabilityMessage" xmlns:mes="http://iec.ch/TC57/2011/schema/message" xmlns:der="http://www.epri.com/2013/DERStatus#">
    <soapenv:Header/>
    <soapenv:Body>
       <req:GetDERGroupCapabilityPayload>
@@ -4771,166 +4771,44 @@
          </payload>
       </req:GetDERGroupCapabilityPayload>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:wsaConfig action="http://iec.ch/61968/getDERGroupCapabilities"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getDERGroupStatuses TestCase" searchProperties="true"><con:settings/><con:testStep type="request" name="getDERGroupStatuses"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>cimDERGroupRequest_ServerSoap</con:interface><con:operation>getDERGroupStatuses</con:operation><con:request name="getDERGroupStatuses"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://iec.ch/61968/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://sixthc.com/CIM/Request" xmlns:get="http://iec.ch/TC57/2011/GetDERGroupStatusMessage" xmlns:mes="http://iec.ch/TC57/2011/schema/message" xmlns:der="http://www.epri.com/2013/DERStatus#">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:wsaConfig action="http://iec.ch/61968/getDERGroupCapabilities"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getDERGroupStatuses TestCase" searchProperties="true"><con:settings/><con:testStep type="request" name="getDERGroupStatuses"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>cimDERGroupRequest_ServerSoap</con:interface><con:operation>getDERGroupStatuses</con:operation><con:request name="getDERGroupStatuses"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/DERConnect/cim/request</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://sixthc.com/CIM/Request" xmlns:get="http://iec.ch/TC57/2011/GetDERGroupStatusMessage" xmlns:mes="http://iec.ch/TC57/2011/schema/message" xmlns:der="http://www.epri.com/2013/DERStatus#">
    <soapenv:Header/>
    <soapenv:Body>
-      <req:GetDERGroupStatusPayload>
-         <requestURL>?</requestURL>
+      <req:GetDERGroupStatusesPayload>
+         <requestURL>http://localhost:8080/DERConnect/cim/getDERGroupStatus</requestURL>
          <payload>
             <get:Header>
-               <mes:Verb>?</mes:Verb>
-               <mes:Noun>?</mes:Noun>
-               <!--Optional:-->
-               <mes:Revision>?</mes:Revision>
-               <!--Optional:-->
-               <mes:ReplayDetection>
-                  <mes:Nonce>?</mes:Nonce>
-                  <mes:Created>?</mes:Created>
-               </mes:ReplayDetection>
-               <!--Optional:-->
-               <mes:Context>?</mes:Context>
-               <!--Optional:-->
-               <mes:Timestamp>?</mes:Timestamp>
-               <!--Optional:-->
-               <mes:Source>?</mes:Source>
-               <!--Optional:-->
-               <mes:AsyncReplyFlag>?</mes:AsyncReplyFlag>
-               <!--Optional:-->
-               <mes:ReplyAddress>?</mes:ReplyAddress>
-               <!--Optional:-->
-               <mes:AckRequired>?</mes:AckRequired>
-               <!--Optional:-->
+               <mes:Verb>get</mes:Verb>
+               <mes:Noun>statuses</mes:Noun>
+               <mes:Revision>1.0</mes:Revision>
+               <mes:Source>sixthc</mes:Source>
                <mes:User>
-                  <mes:UserID>?</mes:UserID>
-                  <!--Optional:-->
-                  <mes:Organization>?</mes:Organization>
+                  <mes:UserID>sixthc</mes:UserID>
+                  <mes:Organization>sixthc</mes:Organization>
                </mes:User>
-               <!--Optional:-->
-               <mes:MessageID>?</mes:MessageID>
-               <!--Optional:-->
-               <mes:CorrelationID>?</mes:CorrelationID>
-               <!--Optional:-->
-               <mes:Comment>?</mes:Comment>
-               <!--Zero or more repetitions:-->
-               <mes:Property>
-                  <mes:Name>?</mes:Name>
-                  <!--Optional:-->
-                  <mes:Value>?</mes:Value>
-               </mes:Property>
-               <!--You may enter ANY elements at this point-->
-            </get:Header>
+               <mes:Comment>testing dispatch request</mes:Comment>
+            </der:Header>
             <get:Request>
-               <!--Optional:-->
-               <get:StartTime>?</get:StartTime>
-               <!--Optional:-->
-               <get:EndTime>?</get:EndTime>
-               <!--Zero or more repetitions:-->
-               <get:Option>
-                  <mes:name>?</mes:name>
-                  <!--Optional:-->
-                  <mes:value>?</mes:value>
-               </get:Option>
-               <!--Zero or more repetitions:-->
-               <get:ID>?</get:ID>
-               <!--You may enter ANY elements at this point-->
+               <get:StartTime>2015-06-12T12:00:00.00-05:00</get:StartTime>
             </get:Request>
-            <!--Optional:-->
             <get:Payload>
-               <!--Optional:-->
                <der:DERGroupStatuses>
-                  <!--1 or more repetitions:-->
                   <der:DERGroupStatuses>
-                     <!--Optional:-->
-                     <der:mRID>?</der:mRID>
-                     <!--Optional:-->
-                     <der:name>?</der:name>
-                     <!--Zero or more repetitions:-->
-                     <der:Names>
-                        <der:name>?</der:name>
-                        <!--Optional:-->
-                        <der:NameType>
-                           <!--Optional:-->
-                           <der:description>?</der:description>
-                           <der:name>?</der:name>
-                           <!--Optional:-->
-                           <der:NameTypeAuthority>
-                              <!--Optional:-->
-                              <der:description>?</der:description>
-                              <der:name>?</der:name>
-                           </der:NameTypeAuthority>
-                        </der:NameType>
-                     </der:Names>
-                     <der:RequestedCapability>?</der:RequestedCapability>
-                     <!--Optional:-->
-                     <der:extensionsList>
-                        <!--1 or more repetitions:-->
-                        <der:extensionsItem>
-                           <der:extName>?</der:extName>
-                           <der:extValue>?</der:extValue>
-                           <!--Optional:-->
-                           <der:extType>?</der:extType>
-                        </der:extensionsItem>
-                     </der:extensionsList>
-                     <!--Optional:-->
-                     <der:otherCapabilities>
-                        <der:capabilityType>?</der:capabilityType>
-                        <!--Optional:-->
-                        <der:capabilitySubType>?</der:capabilitySubType>
-                        <!--Optional:-->
-                        <der:capabilityValue>?</der:capabilityValue>
-                        <!--Optional:-->
-                        <der:capabilityUnits>?</der:capabilityUnits>
-                     </der:otherCapabilities>
+                     <der:mRID>1122</der:mRID>
+                     <der:name>dg99</der:name>
+                     <der:RequestedCapability>RealPower</der:RequestedCapability>
                      <der:DERGroup>
-                        <der:name>?</der:name>
-                        <!--Optional:-->
-                        <der:mRID>?</der:mRID>
-                        <!--Zero or more repetitions:-->
-                        <der:Names>
-                           <der:name>?</der:name>
-                           <!--Optional:-->
-                           <der:NameType>
-                              <!--Optional:-->
-                              <der:description>?</der:description>
-                              <der:name>?</der:name>
-                              <!--Optional:-->
-                              <der:NameTypeAuthority>
-                                 <!--Optional:-->
-                                 <der:description>?</der:description>
-                                 <der:name>?</der:name>
-                              </der:NameTypeAuthority>
-                           </der:NameType>
-                        </der:Names>
+                        <der:name>dg28</der:name>
+                        <der:mRID>9944</der:mRID>
                      </der:DERGroup>
                   </der:DERGroupStatuses>
                </der:DERGroupStatuses>
-               <!--Optional:-->
-               <get:OperationSet>
-                  <!--Optional:-->
-                  <mes:enforceMsgSequence>?</mes:enforceMsgSequence>
-                  <!--Optional:-->
-                  <mes:enforceTransactionalIntegrity>?</mes:enforceTransactionalIntegrity>
-                  <!--Zero or more repetitions:-->
-                  <mes:Operation>
-                     <mes:operationId>?</mes:operationId>
-                     <!--Optional:-->
-                     <mes:noun>?</mes:noun>
-                     <!--Optional:-->
-                     <mes:verb>?</mes:verb>
-                     <!--Optional:-->
-                     <mes:elementOperation>false</mes:elementOperation>
-                     <!--You may enter ANY elements at this point-->
-                  </mes:Operation>
-               </get:OperationSet>
-               <!--Optional:-->
-               <get:Compressed>?</get:Compressed>
-               <!--Optional:-->
-               <get:Format>?</get:Format>
+              
             </get:Payload>
          </payload>
-      </req:GetDERGroupStatusPayload>
+      </req:GetDERGroupStatusesPayload>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:wsaConfig action="http://iec.ch/61968/getDERGroupStatuses"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:mockService port="8088" path="/mockcimDERGroupRequest_ServerSoap" host="benjamins-Mac-mini.local" name="cimDERGroupRequest_ServerSoap MockService"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:mockOperation name="changeDERGroup" interface="cimDERGroupRequest_ServerSoap" operation="changeDERGroup"><con:settings/><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:defaultResponse>Response 1</con:defaultResponse><con:response name="Response 1" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://sixthc.com/CIM/Request" xmlns:der="http://iec.ch/TC57/2011/DERGroupMessage" xmlns:mes="http://iec.ch/TC57/2011/schema/message" xmlns:der1="http://www.epri.com/2013/DERGroup#">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://iec.ch/61968/getDERGroupStatuses" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:mockService port="8088" path="/mockcimDERGroupRequest_ServerSoap" host="benjamins-Mac-mini.local" name="cimDERGroupRequest_ServerSoap MockService"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:mockOperation name="changeDERGroup" interface="cimDERGroupRequest_ServerSoap" operation="changeDERGroup"><con:settings/><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:defaultResponse>Response 1</con:defaultResponse><con:response name="Response 1" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://sixthc.com/CIM/Request" xmlns:der="http://iec.ch/TC57/2011/DERGroupMessage" xmlns:mes="http://iec.ch/TC57/2011/schema/message" xmlns:der1="http://www.epri.com/2013/DERGroup#">
    <soapenv:Header/>
    <soapenv:Body>
       <req:RequestChangeDERGroupResponse>
@@ -6536,4 +6414,4 @@
          </get:Payload>
       </req:GetDERGroupStatusResponse>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://iec.ch/61968/getDERGroupStatuses"/></con:response><con:dispatchConfig/></con:mockOperation><con:properties/></con:mockService><con:properties/><con:wssContainer/></con:soapui-project>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://iec.ch/61968/getDERGroupStatuses"/></con:response><con:dispatchConfig/></con:mockOperation><con:properties/></con:mockService><con:properties/><con:wssContainer/><con:sensitiveInformation/></con:soapui-project>

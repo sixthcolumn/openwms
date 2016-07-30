@@ -31,6 +31,11 @@
 
 		<property name="annotatedClasses">
 			<list>
+				<value>com.sixthc.model.MessageLog</value>
+				<value>com.sixthc.model.Message</value>
+				<value>com.sixthc.model.Pkg</value>
+				<value>com.sixthc.model.PkgGroup</value>
+				<value>com.sixthc.model.Vendor</value>
 
 				<value>com.sixthc.hbm.ContactpersonAddresses</value>
 				<value>com.sixthc.hbm.ContactpersonEmails</value>
@@ -95,12 +100,6 @@
 				<value>com.sixthc.hbm.WorkTaskNames</value>
 				<value>com.sixthc.hbm.WorkTaskTimeSchedules</value>
 				<value>com.sixthc.hbm.Workorderimage</value>
-				<value>com.sixthc.model.EpriLog</value>
-				<value>com.sixthc.model.Iface</value>
-				<value>com.sixthc.model.Pkg</value>
-				<value>com.sixthc.model.Request</value>
-				<value>com.sixthc.model.VendorRole</value>
-				<value>com.sixthc.model.VendorRoleType</value>
 				<value>com.sixthc.model.WorkOrderImage</value>
 			</list>
 		</property>
@@ -115,26 +114,6 @@
 	<bean id="hibernateInterceptor" class="org.springframework.orm.hibernate3.HibernateInterceptor"
 		autowire="byName" />
 
-
-
-
-	<!-- epriLog DAO beans -->
-	<bean id="epriLogDaoTarget" class="com.sixthc.dao.impl.EpriLogDaoImpl"
-		autowire="byName" />
-	<bean id="epriLogDao" class="org.springframework.aop.framework.ProxyFactoryBean"
-		autowire="byName">
-		<property name="proxyInterfaces">
-			<value>com.sixthc.dao.EpriLogDao</value>
-		</property>
-		<property name="interceptorNames">
-			<list>
-				<value>hibernateInterceptor</value>
-				<value>epriLogDaoTarget</value>
-			</list>
-		</property>
-	</bean>
-
-	<!-- epriLog DAO beans -->
 	<bean id="workOrderDaoTarget" class="com.sixthc.dao.impl.WorkOrderDaoImpl"
 		autowire="byName" />
 	<bean id="workOrderDao" class="org.springframework.aop.framework.ProxyFactoryBean"
@@ -148,12 +127,6 @@
 				<value>workOrderDaoTarget</value>
 			</list>
 		</property>
-	</bean>
-
-	<tx:annotation-driven transaction-manager="txManager" />
-	<bean id="txManager"
-		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource" />
 	</bean>
 
 
@@ -171,7 +144,7 @@
 			</list>
 		</property>
 	</bean>
-
+ 
 	<bean id="organizationDaoTarget" class="com.sixthc.dao.impl.OrganizationDaoImpl"
 		autowire="byName" />
 	<bean id="organizationDao" class="org.springframework.aop.framework.ProxyFactoryBean"
@@ -187,17 +160,44 @@
 		</property>
 	</bean>
 
-	<bean id="ifaceDaoTarget" class="com.sixthc.dao.impl.IfaceDaoImpl"
+
+	<!-- messageLog DAO beans -->
+	<bean id="messageLogDaoTarget" class="com.sixthc.dao.impl.MessageLogDaoImpl"
 		autowire="byName" />
-	<bean id="ifaceDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+	<bean id="messageLogDao" class="org.springframework.aop.framework.ProxyFactoryBean"
 		autowire="byName">
 		<property name="proxyInterfaces">
-			<value>com.sixthc.dao.IfaceDao</value>
+			<value>com.sixthc.dao.MessageLogDao</value>
 		</property>
 		<property name="interceptorNames">
 			<list>
 				<value>hibernateInterceptor</value>
-				<value>ifaceDaoTarget</value>
+				<value>messageLogDaoTarget</value>
+			</list>
+		</property>
+	</bean>
+
+
+	<tx:annotation-driven transaction-manager="txManager" />
+	<bean id="txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+
+
+
+	<bean id="messageDaoTarget" class="com.sixthc.dao.impl.MessageDaoImpl"
+		autowire="byName" />
+	<bean id="messageDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		autowire="byName">
+		<property name="proxyInterfaces">
+			<value>com.sixthc.dao.MessageDao</value>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>hibernateInterceptor</value>
+				<value>messageDaoTarget</value>
 			</list>
 		</property>
 	</bean>
@@ -217,32 +217,32 @@
 		</property>
 	</bean>
 
-	<bean id="vendorRoleDaoTarget" class="com.sixthc.dao.impl.VendorRoleDaoImpl"
+	<bean id="pkgGroupDaoTarget" class="com.sixthc.dao.impl.PkgGroupDaoImpl"
 		autowire="byName" />
-	<bean id="vendorRoleDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+	<bean id="pkgGroupDao" class="org.springframework.aop.framework.ProxyFactoryBean"
 		autowire="byName">
 		<property name="proxyInterfaces">
-			<value>com.sixthc.dao.VendorRoleDao</value>
+			<value>com.sixthc.dao.PkgGroupDao</value>
 		</property>
 		<property name="interceptorNames">
 			<list>
 				<value>hibernateInterceptor</value>
-				<value>vendorRoleDaoTarget</value>
+				<value>pkgGroupDaoTarget</value>
 			</list>
 		</property>
 	</bean>
 
-	<bean id="vendorRoleTypeDaoTarget" class="com.sixthc.dao.impl.VendorRoleTypeDaoImpl"
+	<bean id="vendorDaoTarget" class="com.sixthc.dao.impl.VendorDaoImpl"
 		autowire="byName" />
-	<bean id="vendorRoleTypeDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+	<bean id="vendorDao" class="org.springframework.aop.framework.ProxyFactoryBean"
 		autowire="byName">
 		<property name="proxyInterfaces">
-			<value>com.sixthc.dao.VendorRoleTypeDao</value>
+			<value>com.sixthc.dao.VendorDao</value>
 		</property>
 		<property name="interceptorNames">
 			<list>
 				<value>hibernateInterceptor</value>
-				<value>vendorRoleTypeDaoTarget</value>
+				<value>vendorDaoTarget</value>
 			</list>
 		</property>
 	</bean>
