@@ -8,48 +8,48 @@ import java.util.Vector;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.sixthc.cim.get.cxf.GetMaintenanceOrdersFaultMessage;
-import com.sixthc.cim.get.cxf.GetMaintenanceOrdersPort;
-import com.sixthc.cim.get.cxf.GetMaintenanceOrdersRequestMessageType;
-import com.sixthc.cim.get.cxf.GetMaintenanceOrdersResponseMessageType;
-import com.sixthc.cim.get.cxf.MaintenanceOrder;
-import com.sixthc.cim.get.cxf.MaintenanceOrdersPayloadType;
-import com.sixthc.cim.get2.ActivityRecord2;
-import com.sixthc.cim.get2.Asset2;
-import com.sixthc.cim.get2.Asset2.Procedures;
-import com.sixthc.cim.get2.Asset2.Procedures.Measurements;
-import com.sixthc.cim.get2.AssetLocationHazard2;
-import com.sixthc.cim.get2.Attachment;
-import com.sixthc.cim.get2.Crew2;
-import com.sixthc.cim.get2.CrewMember;
-import com.sixthc.cim.get2.CrewMember.Person;
-import com.sixthc.cim.get2.InternalLocation2;
-import com.sixthc.cim.get2.MaintenanceOrder2;
-import com.sixthc.cim.get2.MaintenanceOrders2;
-import com.sixthc.cim.get2.Name2;
-import com.sixthc.cim.get2.NameType2;
-import com.sixthc.cim.get2.NameTypeAuthority2;
-import com.sixthc.cim.get2.Organisation2;
-import com.sixthc.cim.get2.Organisation2.Phone1;
-import com.sixthc.cim.get2.Organisation2.StreetAddress;
-import com.sixthc.cim.get2.Organisation2.StreetAddress.TownDetail;
-import com.sixthc.cim.get2.PhaseCode;
-import com.sixthc.cim.get2.ProcedureKind;
-import com.sixthc.cim.get2.ReplyType;
-import com.sixthc.cim.get2.Work2;
-import com.sixthc.cim.get2.Work2.Attachments;
-import com.sixthc.cim.get2.Work2.Priority;
-import com.sixthc.cim.get2.WorkAsset;
-import com.sixthc.cim.get2.WorkKind1;
-import com.sixthc.cim.get2.WorkLocation2;
-import com.sixthc.cim.get2.WorkLocation2.MainAddress;
-import com.sixthc.cim.get2.WorkLocation2.PositionPoints;
-import com.sixthc.cim.get2.WorkStatusKind2;
-import com.sixthc.cim.get2.WorkTask;
-import com.sixthc.cim.get2.WorkTaskKind;
-import com.sixthc.cim.get2.WorkTimeSchedule2;
-import com.sixthc.cim.get2.WorkTimeSchedule2.ScheduleInterval;
-import com.sixthc.cim.get2.WorkTimeScheduleKind2;
+import com.sixthc.cim.getMaintenanceOrders.ActivityRecord2;
+import com.sixthc.cim.getMaintenanceOrders.Asset2;
+import com.sixthc.cim.getMaintenanceOrders.Asset2.Procedures;
+import com.sixthc.cim.getMaintenanceOrders.Asset2.Procedures.Measurements;
+import com.sixthc.cim.getMaintenanceOrders.AssetLocationHazard2;
+import com.sixthc.cim.getMaintenanceOrders.Attachment;
+import com.sixthc.cim.getMaintenanceOrders.Crew2;
+import com.sixthc.cim.getMaintenanceOrders.CrewMember;
+import com.sixthc.cim.getMaintenanceOrders.CrewMember.Person;
+import com.sixthc.cim.getMaintenanceOrders.InternalLocation2;
+import com.sixthc.cim.getMaintenanceOrders.MaintenanceOrder2;
+import com.sixthc.cim.getMaintenanceOrders.MaintenanceOrders2;
+import com.sixthc.cim.getMaintenanceOrders.Name2;
+import com.sixthc.cim.getMaintenanceOrders.NameType2;
+import com.sixthc.cim.getMaintenanceOrders.NameTypeAuthority2;
+import com.sixthc.cim.getMaintenanceOrders.Organisation2;
+import com.sixthc.cim.getMaintenanceOrders.Organisation2.Phone1;
+import com.sixthc.cim.getMaintenanceOrders.Organisation2.StreetAddress;
+import com.sixthc.cim.getMaintenanceOrders.Organisation2.StreetAddress.TownDetail;
+import com.sixthc.cim.getMaintenanceOrders.PhaseCode;
+import com.sixthc.cim.getMaintenanceOrders.ProcedureKind;
+import com.sixthc.cim.getMaintenanceOrders.ReplyType;
+import com.sixthc.cim.getMaintenanceOrders.Work2;
+import com.sixthc.cim.getMaintenanceOrders.Work2.Attachments;
+import com.sixthc.cim.getMaintenanceOrders.Work2.Priority;
+import com.sixthc.cim.getMaintenanceOrders.WorkAsset;
+import com.sixthc.cim.getMaintenanceOrders.WorkKind1;
+import com.sixthc.cim.getMaintenanceOrders.WorkLocation2;
+import com.sixthc.cim.getMaintenanceOrders.WorkLocation2.MainAddress;
+import com.sixthc.cim.getMaintenanceOrders.WorkLocation2.PositionPoints;
+import com.sixthc.cim.getMaintenanceOrders.WorkStatusKind2;
+import com.sixthc.cim.getMaintenanceOrders.WorkTask;
+import com.sixthc.cim.getMaintenanceOrders.WorkTaskKind;
+import com.sixthc.cim.getMaintenanceOrders.WorkTimeSchedule2;
+import com.sixthc.cim.getMaintenanceOrders.WorkTimeSchedule2.ScheduleInterval;
+import com.sixthc.cim.getMaintenanceOrders.WorkTimeScheduleKind2;
+import com.sixthc.cim.getMaintenanceOrders.cxf.GetMaintenanceOrdersFaultMessage;
+import com.sixthc.cim.getMaintenanceOrders.cxf.GetMaintenanceOrdersPort;
+import com.sixthc.cim.getMaintenanceOrders.cxf.GetMaintenanceOrdersRequestMessageType;
+import com.sixthc.cim.getMaintenanceOrders.cxf.GetMaintenanceOrdersResponseMessageType;
+import com.sixthc.cim.getMaintenanceOrders.cxf.MaintenanceOrder;
+import com.sixthc.cim.getMaintenanceOrders.cxf.MaintenanceOrdersPayloadType;
 import com.sixthc.dao.MaintOrderDao;
 import com.sixthc.hbm.Address;
 import com.sixthc.hbm.AddressPositionPoints;
@@ -126,7 +126,7 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 	}
 
 	private void setMainAddress(Address from, MainAddress to) {
-		com.sixthc.cim.get2.WorkLocation2.MainAddress.StreetDetail sd = new com.sixthc.cim.get2.WorkLocation2.MainAddress.StreetDetail();
+		com.sixthc.cim.getMaintenanceOrders.WorkLocation2.MainAddress.StreetDetail sd = new com.sixthc.cim.getMaintenanceOrders.WorkLocation2.MainAddress.StreetDetail();
 		to.setStreetDetail(sd);
 		sd.setAddressGeneral(from.getSdAddress1());
 		sd.setBuildingName(from.getSdBuildingName());
@@ -140,7 +140,7 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 		sd.setWithinTownLimits(from.getSdWithinTownLimitsFlag() == 1 ? true
 				: false);
 
-		com.sixthc.cim.get2.WorkLocation2.MainAddress.TownDetail td = new com.sixthc.cim.get2.WorkLocation2.MainAddress.TownDetail();
+		com.sixthc.cim.getMaintenanceOrders.WorkLocation2.MainAddress.TownDetail td = new com.sixthc.cim.getMaintenanceOrders.WorkLocation2.MainAddress.TownDetail();
 		to.setTownDetail(td);
 		to.setTownDetail(td);
 		td.setCode(from.getTdCode());
@@ -377,7 +377,7 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 		}
 
 		for (AssetProcedures fromProcs : from.getAssetProcedureses()) {
-			com.sixthc.cim.get2.WorkAsset.Procedures toProc = new com.sixthc.cim.get2.WorkAsset.Procedures();
+			com.sixthc.cim.getMaintenanceOrders.WorkAsset.Procedures toProc = new com.sixthc.cim.getMaintenanceOrders.WorkAsset.Procedures();
 			to.getProcedures().add(toProc);
 			Procedure fromProc = fromProcs.getProcedure();
 			toProc.setInstruction(fromProc.getInstruction());
@@ -386,7 +386,7 @@ public class GetMaintOrder implements GetMaintenanceOrdersPort {
 
 			for (ProcedureMeasurements fromProcMeasure : fromProc
 					.getProcedureMeasurementses()) {
-				com.sixthc.cim.get2.WorkAsset.Procedures.Measurements toMeas = new com.sixthc.cim.get2.WorkAsset.Procedures.Measurements();
+				com.sixthc.cim.getMaintenanceOrders.WorkAsset.Procedures.Measurements toMeas = new com.sixthc.cim.getMaintenanceOrders.WorkAsset.Procedures.Measurements();
 				toProc.getMeasurements().add(toMeas);
 				if (fromProcMeasure.getMeasurement() != null) {
 					Measurement fromMeas = fromProcMeasure.getMeasurement();

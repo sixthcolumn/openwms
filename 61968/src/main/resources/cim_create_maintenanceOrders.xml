@@ -3,7 +3,7 @@
 	<jaxb:bindings schemaLocation="../../../wsdl/CimCreate/xsd/MaintenanceOrders.xsd"
 		node="/xsd:schema">
 		<jaxb:schemaBindings>
-			<jaxb:package name="com.sixthc.cim.create2"></jaxb:package>
+			<jaxb:package name="com.sixthc.cim.createMaintenanceOrders"></jaxb:package>
 		</jaxb:schemaBindings>
 		<jaxb:bindings node="//xsd:simpleType[@name='WorkKind']">
 			<jaxb:typesafeEnumClass name="WorkKind1" />
@@ -60,7 +60,7 @@
 	<jaxb:bindings schemaLocation="../../../wsdl/CimCreate/xsd/Message.xsd"
 		node="/xsd:schema">
 		<jaxb:schemaBindings>
-			<jaxb:package name="com.sixthc.cim.create2"></jaxb:package>
+			<jaxb:package name="com.sixthc.cim.createMaintenanceOrders"></jaxb:package>
 		</jaxb:schemaBindings>
 		<jaxb:bindings node="//xsd:complexType[@name='NameType']">
 			<jaxb:class name="NameType3" />

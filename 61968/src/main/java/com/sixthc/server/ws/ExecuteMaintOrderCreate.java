@@ -12,45 +12,45 @@ import javax.xml.ws.Holder;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.sixthc.cim.create.cxf.FaultMessage;
-import com.sixthc.cim.create.cxf.MaintenanceOrdersPayloadType;
-import com.sixthc.cim.create.cxf.MaintenanceOrdersPort;
-import com.sixthc.cim.create2.ActivityRecord2;
-import com.sixthc.cim.create2.Asset2;
-import com.sixthc.cim.create2.Asset2.Procedures;
-import com.sixthc.cim.create2.AssetLocationHazard2;
-import com.sixthc.cim.create2.Crew2;
-import com.sixthc.cim.create2.CrewMember;
-import com.sixthc.cim.create2.CrewMember.Person;
-import com.sixthc.cim.create2.ErrorType;
-import com.sixthc.cim.create2.ErrorType.ID;
-import com.sixthc.cim.create2.HeaderType;
-import com.sixthc.cim.create2.IDKindType;
-import com.sixthc.cim.create2.InternalLocation2;
-import com.sixthc.cim.create2.MaintenanceOrder2;
-import com.sixthc.cim.create2.MaintenanceOrders2;
-import com.sixthc.cim.create2.Name2;
-import com.sixthc.cim.create2.NameType2;
-import com.sixthc.cim.create2.NameTypeAuthority2;
-import com.sixthc.cim.create2.Organisation2;
-import com.sixthc.cim.create2.Organisation2.Phone1;
-import com.sixthc.cim.create2.Organisation2.StreetAddress;
-import com.sixthc.cim.create2.ReplyType;
-import com.sixthc.cim.create2.RequestType;
-import com.sixthc.cim.create2.Work2;
-import com.sixthc.cim.create2.Work2.Priority;
-import com.sixthc.cim.create2.WorkAsset;
-import com.sixthc.cim.create2.WorkLocation2;
-import com.sixthc.cim.create2.WorkLocation2.CoordinateSystem;
-import com.sixthc.cim.create2.WorkLocation2.MainAddress;
-import com.sixthc.cim.create2.WorkLocation2.MainAddress.StreetDetail;
-import com.sixthc.cim.create2.WorkLocation2.MainAddress.TownDetail;
-import com.sixthc.cim.create2.WorkLocation2.PositionPoints;
-import com.sixthc.cim.create2.WorkTask;
-import com.sixthc.cim.create2.WorkTask.MaterialItems;
-import com.sixthc.cim.create2.WorkTask.MaterialItems.Quantity;
-import com.sixthc.cim.create2.WorkTimeSchedule2;
-import com.sixthc.cim.create2.WorkTimeSchedule2.ScheduleInterval;
+import com.sixthc.cim.createMaintenanceOrders.cxf.FaultMessage;
+import com.sixthc.cim.createMaintenanceOrders.cxf.MaintenanceOrdersPayloadType;
+import com.sixthc.cim.createMaintenanceOrders.cxf.MaintenanceOrdersPort;
+import com.sixthc.cim.createMaintenanceOrders.ActivityRecord2;
+import com.sixthc.cim.createMaintenanceOrders.Asset2;
+import com.sixthc.cim.createMaintenanceOrders.Asset2.Procedures;
+import com.sixthc.cim.createMaintenanceOrders.AssetLocationHazard2;
+import com.sixthc.cim.createMaintenanceOrders.Crew2;
+import com.sixthc.cim.createMaintenanceOrders.CrewMember;
+import com.sixthc.cim.createMaintenanceOrders.CrewMember.Person;
+import com.sixthc.cim.createMaintenanceOrders.ErrorType;
+import com.sixthc.cim.createMaintenanceOrders.ErrorType.ID;
+import com.sixthc.cim.createMaintenanceOrders.HeaderType;
+import com.sixthc.cim.createMaintenanceOrders.IDKindType;
+import com.sixthc.cim.createMaintenanceOrders.InternalLocation2;
+import com.sixthc.cim.createMaintenanceOrders.MaintenanceOrder2;
+import com.sixthc.cim.createMaintenanceOrders.MaintenanceOrders2;
+import com.sixthc.cim.createMaintenanceOrders.Name2;
+import com.sixthc.cim.createMaintenanceOrders.NameType2;
+import com.sixthc.cim.createMaintenanceOrders.NameTypeAuthority2;
+import com.sixthc.cim.createMaintenanceOrders.Organisation2;
+import com.sixthc.cim.createMaintenanceOrders.Organisation2.Phone1;
+import com.sixthc.cim.createMaintenanceOrders.Organisation2.StreetAddress;
+import com.sixthc.cim.createMaintenanceOrders.ReplyType;
+import com.sixthc.cim.createMaintenanceOrders.RequestType;
+import com.sixthc.cim.createMaintenanceOrders.Work2;
+import com.sixthc.cim.createMaintenanceOrders.Work2.Priority;
+import com.sixthc.cim.createMaintenanceOrders.WorkAsset;
+import com.sixthc.cim.createMaintenanceOrders.WorkLocation2;
+import com.sixthc.cim.createMaintenanceOrders.WorkLocation2.CoordinateSystem;
+import com.sixthc.cim.createMaintenanceOrders.WorkLocation2.MainAddress;
+import com.sixthc.cim.createMaintenanceOrders.WorkLocation2.MainAddress.StreetDetail;
+import com.sixthc.cim.createMaintenanceOrders.WorkLocation2.MainAddress.TownDetail;
+import com.sixthc.cim.createMaintenanceOrders.WorkLocation2.PositionPoints;
+import com.sixthc.cim.createMaintenanceOrders.WorkTask;
+import com.sixthc.cim.createMaintenanceOrders.WorkTask.MaterialItems;
+import com.sixthc.cim.createMaintenanceOrders.WorkTask.MaterialItems.Quantity;
+import com.sixthc.cim.createMaintenanceOrders.WorkTimeSchedule2;
+import com.sixthc.cim.createMaintenanceOrders.WorkTimeSchedule2.ScheduleInterval;
 import com.sixthc.dao.MaintOrderDao;
 import com.sixthc.dao.WorkOrderDao;
 import com.sixthc.hbm.Address;
@@ -252,7 +252,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 
 	private void parseStreetDetail(com.sixthc.hbm.Address woAddress,
 			StreetAddress addr) {
-		com.sixthc.cim.create2.Organisation2.StreetAddress.StreetDetail streetDetail = addr
+		com.sixthc.cim.createMaintenanceOrders.Organisation2.StreetAddress.StreetDetail streetDetail = addr
 				.getStreetDetail();
 
 		if (streetDetail != null) {
@@ -272,7 +272,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 
 		}
 
-		com.sixthc.cim.create2.Organisation2.StreetAddress.TownDetail townDetail = addr
+		com.sixthc.cim.createMaintenanceOrders.Organisation2.StreetAddress.TownDetail townDetail = addr
 				.getTownDetail();
 		if (townDetail != null) {
 			woAddress.setTdCode(townDetail.getCode());
@@ -381,7 +381,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 
 		}
 
-		for (com.sixthc.cim.create2.WorkAsset.Procedures reqProc : reqCrewAsset
+		for (com.sixthc.cim.createMaintenanceOrders.WorkAsset.Procedures reqProc : reqCrewAsset
 				.getProcedures()) {
 			AssetProcedures workProcs = new AssetProcedures();
 			Procedure workProc = new Procedure();
@@ -403,7 +403,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 						"asset sequence : non integer value passed");
 			}
 
-			for (com.sixthc.cim.create2.WorkAsset.Procedures.Measurements reqMeasure : reqProc
+			for (com.sixthc.cim.createMaintenanceOrders.WorkAsset.Procedures.Measurements reqMeasure : reqProc
 					.getMeasurements()) {
 				ProcedureMeasurements workMeasures = new ProcedureMeasurements();
 				workMeasures.setProcedure(workProc);
@@ -452,8 +452,9 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 
 			woAddress.setSdAddress1(streetDetail.getAddressGeneral());
 			woAddress.setSdAddress2(streetDetail.getName());
-			woAddress.setSdWithinTownLimitsFlag(streetDetail.isWithinTownLimits() != null && streetDetail
-					.isWithinTownLimits() == true ? 1 : 0);
+			woAddress.setSdWithinTownLimitsFlag(streetDetail
+					.isWithinTownLimits() != null
+					&& streetDetail.isWithinTownLimits() == true ? 1 : 0);
 			woAddress.setSdType(streetDetail.getType());
 
 		}
@@ -747,7 +748,8 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 				mo.getWorkOrders().add(workOrder);
 				workOrder.setMaintorder(mo);
 
-				if (reqWork.getActivityRecords() != null && reqWork.getActivityRecords().size() > 0) {
+				if (reqWork.getActivityRecords() != null
+						&& reqWork.getActivityRecords().size() > 0) {
 					ActivityRecord2 rec = reqWork.getActivityRecords().get(0);
 					if (rec.getReason() != null)
 						workOrder.setReason(rec.getReason());
@@ -864,7 +866,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 						workOrder.setInternalRoomNum(iloc.getRoomNumber());
 					}
 
-					com.sixthc.cim.create2.WorkLocation2.MainAddress reqMaddr = reqLoc
+					com.sixthc.cim.createMaintenanceOrders.WorkLocation2.MainAddress reqMaddr = reqLoc
 							.getMainAddress();
 					if (reqMaddr != null) {
 						Address address = new Address();
@@ -1086,7 +1088,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 				}
 
 				if (reqWork.getAttachments() != null) {
-					for (com.sixthc.cim.create2.Attachment reqAtt : reqWork
+					for (com.sixthc.cim.createMaintenanceOrders.Attachment reqAtt : reqWork
 							.getAttachments().getAttachment()) {
 
 						try {

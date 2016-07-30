@@ -11,13 +11,13 @@ import org.apache.cxf.frontend.ClientProxy;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
-import com.sixthc.cim.create.cxf.ExecuteMaintenanceOrders;
-import com.sixthc.cim.create.cxf.FaultMessage;
-import com.sixthc.cim.create.cxf.MaintenanceOrdersPayloadType;
-import com.sixthc.cim.create.cxf.MaintenanceOrdersPort;
-import com.sixthc.cim.create2.HeaderType;
-import com.sixthc.cim.create2.ReplyType;
-import com.sixthc.cim.create2.RequestType;
+import com.sixthc.cim.createMaintenanceOrders.cxf.ExecuteMaintenanceOrders;
+import com.sixthc.cim.createMaintenanceOrders.cxf.FaultMessage;
+import com.sixthc.cim.createMaintenanceOrders.cxf.MaintenanceOrdersPayloadType;
+import com.sixthc.cim.createMaintenanceOrders.cxf.MaintenanceOrdersPort;
+import com.sixthc.cim.createMaintenanceOrders.HeaderType;
+import com.sixthc.cim.createMaintenanceOrders.ReplyType;
+import com.sixthc.cim.createMaintenanceOrders.RequestType;
 
 @Component
 public class ExecuteMaintOrderCreateClient extends RequestClient {

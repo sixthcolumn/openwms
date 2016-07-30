@@ -2,12 +2,12 @@ package com.sixthc.server.ws;
 
 import org.apache.log4j.Logger;
 
-import com.sixthc.cim.delete.cxf.FaultMessage;
-import com.sixthc.cim.delete.cxf.MaintenanceOrdersPayloadType;
-import com.sixthc.cim.delete.cxf.MaintenanceOrdersPort;
-import com.sixthc.cim.delete2.HeaderType;
-import com.sixthc.cim.delete2.ReplyType;
-import com.sixthc.cim.delete2.RequestType;
+import com.sixthc.cim.deleteMaintenanceOrders.HeaderType;
+import com.sixthc.cim.deleteMaintenanceOrders.ReplyType;
+import com.sixthc.cim.deleteMaintenanceOrders.RequestType;
+import com.sixthc.cim.deleteMaintenanceOrders.cxf.FaultMessage;
+import com.sixthc.cim.deleteMaintenanceOrders.cxf.MaintenanceOrdersPayloadType;
+import com.sixthc.cim.deleteMaintenanceOrders.cxf.MaintenanceOrdersPort;
 import com.sixthc.client.ExecuteMaintOrderChangeDeleteClient;
 
 

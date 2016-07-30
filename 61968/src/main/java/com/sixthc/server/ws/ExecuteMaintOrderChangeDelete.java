@@ -15,44 +15,44 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.sixthc.cim.delete.cxf.FaultMessage;
-import com.sixthc.cim.delete.cxf.MaintenanceOrdersPayloadType;
-import com.sixthc.cim.delete.cxf.MaintenanceOrdersPort;
-import com.sixthc.cim.delete2.Asset2;
-import com.sixthc.cim.delete2.Asset2.Procedures;
-import com.sixthc.cim.delete2.AssetLocationHazard2;
-import com.sixthc.cim.delete2.Crew2;
-import com.sixthc.cim.delete2.CrewMember;
-import com.sixthc.cim.delete2.CrewMember.Person;
-import com.sixthc.cim.delete2.ErrorType;
-import com.sixthc.cim.delete2.HeaderType;
-import com.sixthc.cim.delete2.InternalLocation2;
-import com.sixthc.cim.delete2.MaintenanceOrder2;
-import com.sixthc.cim.delete2.MaintenanceOrders2;
-import com.sixthc.cim.delete2.Name2;
-import com.sixthc.cim.delete2.NameType2;
-import com.sixthc.cim.delete2.NameTypeAuthority2;
-import com.sixthc.cim.delete2.Organisation2;
-import com.sixthc.cim.delete2.Organisation2.Phone1;
-import com.sixthc.cim.delete2.Organisation2.StreetAddress;
-import com.sixthc.cim.delete2.ReplyType;
-import com.sixthc.cim.delete2.RequestType;
-import com.sixthc.cim.delete2.Work2;
-import com.sixthc.cim.delete2.Work2.Priority;
-import com.sixthc.cim.delete2.WorkAsset;
-import com.sixthc.cim.delete2.WorkAsset.Procedures.Measurements;
-import com.sixthc.cim.delete2.WorkLocation2;
-import com.sixthc.cim.delete2.WorkLocation2.CoordinateSystem;
-import com.sixthc.cim.delete2.WorkLocation2.MainAddress.StreetDetail;
-import com.sixthc.cim.delete2.WorkLocation2.MainAddress.TownDetail;
-import com.sixthc.cim.delete2.WorkLocation2.PositionPoints;
-import com.sixthc.cim.delete2.WorkTask;
-import com.sixthc.cim.delete2.WorkTask.MaterialItems;
-import com.sixthc.cim.delete2.WorkTask.MaterialItems.Quantity;
-import com.sixthc.cim.delete2.WorkTimeSchedule2;
-import com.sixthc.cim.delete2.WorkTimeSchedule2.ScheduleInterval;
-import com.sixthc.cim.get.cxf.NameType;
-import com.sixthc.cim.get.cxf.NameTypeAuthority;
+import com.sixthc.cim.deleteMaintenanceOrders.Asset2;
+import com.sixthc.cim.deleteMaintenanceOrders.Asset2.Procedures;
+import com.sixthc.cim.deleteMaintenanceOrders.AssetLocationHazard2;
+import com.sixthc.cim.deleteMaintenanceOrders.Crew2;
+import com.sixthc.cim.deleteMaintenanceOrders.CrewMember;
+import com.sixthc.cim.deleteMaintenanceOrders.CrewMember.Person;
+import com.sixthc.cim.deleteMaintenanceOrders.ErrorType;
+import com.sixthc.cim.deleteMaintenanceOrders.HeaderType;
+import com.sixthc.cim.deleteMaintenanceOrders.InternalLocation2;
+import com.sixthc.cim.deleteMaintenanceOrders.MaintenanceOrder2;
+import com.sixthc.cim.deleteMaintenanceOrders.MaintenanceOrders2;
+import com.sixthc.cim.deleteMaintenanceOrders.Name2;
+import com.sixthc.cim.deleteMaintenanceOrders.NameType2;
+import com.sixthc.cim.deleteMaintenanceOrders.NameType3;
+import com.sixthc.cim.deleteMaintenanceOrders.NameTypeAuthority2;
+import com.sixthc.cim.deleteMaintenanceOrders.NameTypeAuthority3;
+import com.sixthc.cim.deleteMaintenanceOrders.Organisation2;
+import com.sixthc.cim.deleteMaintenanceOrders.Organisation2.Phone1;
+import com.sixthc.cim.deleteMaintenanceOrders.Organisation2.StreetAddress;
+import com.sixthc.cim.deleteMaintenanceOrders.ReplyType;
+import com.sixthc.cim.deleteMaintenanceOrders.RequestType;
+import com.sixthc.cim.deleteMaintenanceOrders.Work2;
+import com.sixthc.cim.deleteMaintenanceOrders.Work2.Priority;
+import com.sixthc.cim.deleteMaintenanceOrders.WorkAsset;
+import com.sixthc.cim.deleteMaintenanceOrders.WorkAsset.Procedures.Measurements;
+import com.sixthc.cim.deleteMaintenanceOrders.WorkLocation2;
+import com.sixthc.cim.deleteMaintenanceOrders.WorkLocation2.CoordinateSystem;
+import com.sixthc.cim.deleteMaintenanceOrders.WorkLocation2.MainAddress.StreetDetail;
+import com.sixthc.cim.deleteMaintenanceOrders.WorkLocation2.MainAddress.TownDetail;
+import com.sixthc.cim.deleteMaintenanceOrders.WorkLocation2.PositionPoints;
+import com.sixthc.cim.deleteMaintenanceOrders.WorkTask;
+import com.sixthc.cim.deleteMaintenanceOrders.WorkTask.MaterialItems;
+import com.sixthc.cim.deleteMaintenanceOrders.WorkTask.MaterialItems.Quantity;
+import com.sixthc.cim.deleteMaintenanceOrders.WorkTimeSchedule2;
+import com.sixthc.cim.deleteMaintenanceOrders.WorkTimeSchedule2.ScheduleInterval;
+import com.sixthc.cim.deleteMaintenanceOrders.cxf.FaultMessage;
+import com.sixthc.cim.deleteMaintenanceOrders.cxf.MaintenanceOrdersPayloadType;
+import com.sixthc.cim.deleteMaintenanceOrders.cxf.MaintenanceOrdersPort;
 import com.sixthc.dao.WorkOrderDao;
 import com.sixthc.hbm.Address;
 import com.sixthc.hbm.AddressHazards;
@@ -96,8 +96,7 @@ public class ExecuteMaintOrderChangeDelete implements MaintenanceOrdersPort {
 	@Autowired
 	private WorkOrderDao workOrderDao;
 
-	private List<com.sixthc.hbm.OrganizationNames> parseNames(
-			List<Name2> list) {
+	private List<com.sixthc.hbm.OrganizationNames> parseNames(List<Name2> list) {
 		Vector<com.sixthc.hbm.OrganizationNames> namesList = new Vector<com.sixthc.hbm.OrganizationNames>();
 		for (Name2 reqName : list) {
 			com.sixthc.hbm.OrganizationNames names = new com.sixthc.hbm.OrganizationNames();
@@ -214,8 +213,6 @@ public class ExecuteMaintOrderChangeDelete implements MaintenanceOrdersPort {
 		return namesList;
 	}
 
-	
-
 	private Timestamp parseDate(XMLGregorianCalendar from) {
 		if (from != null) {
 			Timestamp timestamp = new Timestamp(from.toGregorianCalendar()
@@ -227,15 +224,13 @@ public class ExecuteMaintOrderChangeDelete implements MaintenanceOrdersPort {
 		return null;
 	}
 
-	
-
-	private com.sixthc.hbm.Nametype parseNameType(NameType from) {
+	private com.sixthc.hbm.Nametype parseNameType(NameType3 from) {
 		if (from != null) {
 			com.sixthc.hbm.Nametype nameType = new com.sixthc.hbm.Nametype();
 			nameType.setName(from.getName());
 			nameType.setDescription(from.getDescription());
 
-			NameTypeAuthority reqNameTypeAuthority = from
+			NameTypeAuthority3 reqNameTypeAuthority = from
 					.getNameTypeAuthority();
 			if (reqNameTypeAuthority != null) {
 				com.sixthc.hbm.NameTypeAuthority nameTypeAuthority = new com.sixthc.hbm.NameTypeAuthority();
@@ -276,13 +271,15 @@ public class ExecuteMaintOrderChangeDelete implements MaintenanceOrdersPort {
 		workAsset.setCriticalFlag(reqCrewAsset.isCritical() == true ? 1 : 0);
 		workAsset.setUtcNumber(reqCrewAsset.getUtcNumber());
 		if (reqAssetLoc != null) {
-			com.sixthc.cim.delete2.WorkLocation2.MainAddress reqMainAddress = reqAssetLoc.getMainAddress();
+			com.sixthc.cim.deleteMaintenanceOrders.WorkLocation2.MainAddress reqMainAddress = reqAssetLoc
+					.getMainAddress();
 
 			Address workAssetAddress = new Address();
 			workAsset.setAddress(workAssetAddress);
 			reqAssetLoc.getMRID(); // ignore
 
-			InternalLocation2 reqInternalLoc = reqAssetLoc.getInternalLocation();
+			InternalLocation2 reqInternalLoc = reqAssetLoc
+					.getInternalLocation();
 			if (reqInternalLoc != null) {
 				workAsset.setInternalBuildingName(reqInternalLoc
 						.getBuildingName());
@@ -345,7 +342,7 @@ public class ExecuteMaintOrderChangeDelete implements MaintenanceOrdersPort {
 
 		}
 
-		for (com.sixthc.cim.delete2.WorkAsset.Procedures reqProc : reqCrewAsset
+		for (com.sixthc.cim.deleteMaintenanceOrders.WorkAsset.Procedures reqProc : reqCrewAsset
 				.getProcedures()) {
 			AssetProcedures workProcs = new AssetProcedures();
 			Procedure workProc = new Procedure();
@@ -367,8 +364,7 @@ public class ExecuteMaintOrderChangeDelete implements MaintenanceOrdersPort {
 						"asset sequence : non integer value passed");
 			}
 
-			for (Measurements reqMeasure : reqProc
-					.getMeasurements()) {
+			for (Measurements reqMeasure : reqProc.getMeasurements()) {
 				ProcedureMeasurements workMeasures = new ProcedureMeasurements();
 				workMeasures.setProcedure(workProc);
 				workProc.getProcedureMeasurementses().add(workMeasures);
@@ -409,13 +405,15 @@ public class ExecuteMaintOrderChangeDelete implements MaintenanceOrdersPort {
 		workAsset.setCriticalFlag(reqAsset.isCritical() == true ? 1 : 0);
 		workAsset.setUtcNumber(reqAsset.getUtcNumber());
 		if (reqAssetLoc != null) {
-			com.sixthc.cim.delete2.WorkLocation2.MainAddress reqMainAddress = reqAssetLoc.getMainAddress();
+			com.sixthc.cim.deleteMaintenanceOrders.WorkLocation2.MainAddress reqMainAddress = reqAssetLoc
+					.getMainAddress();
 
 			Address workAssetAddress = new Address();
 			workAsset.setAddress(workAssetAddress);
 			reqAssetLoc.getMRID(); // ignore
 
-			InternalLocation2 reqInternalLoc = reqAssetLoc.getInternalLocation();
+			InternalLocation2 reqInternalLoc = reqAssetLoc
+					.getInternalLocation();
 			if (reqInternalLoc != null) {
 				workAsset.setInternalBuildingName(reqInternalLoc
 						.getBuildingName());
@@ -533,10 +531,10 @@ public class ExecuteMaintOrderChangeDelete implements MaintenanceOrdersPort {
 		return workAsset;
 	}
 
-	private void parseStreetDetail(Address woAddress,
-			com.sixthc.cim.delete2.WorkLocation2.MainAddress addr) {
-		StreetDetail streetDetail = addr
-				.getStreetDetail();
+	private void parseStreetDetail(
+			Address woAddress,
+			com.sixthc.cim.deleteMaintenanceOrders.WorkLocation2.MainAddress addr) {
+		StreetDetail streetDetail = addr.getStreetDetail();
 
 		if (streetDetail != null) {
 			woAddress.setSdBuildingName(streetDetail.getBuildingName());
@@ -552,8 +550,7 @@ public class ExecuteMaintOrderChangeDelete implements MaintenanceOrdersPort {
 			woAddress.setSdType(streetDetail.getType());
 		}
 
-		TownDetail townDetail = addr
-				.getTownDetail();
+		TownDetail townDetail = addr.getTownDetail();
 
 		if (townDetail != null) {
 			woAddress.setTdCode(townDetail.getCode());
@@ -717,7 +714,8 @@ public class ExecuteMaintOrderChangeDelete implements MaintenanceOrdersPort {
 						workOrder.setInternalRoomNum(iloc.getRoomNumber());
 					}
 
-					com.sixthc.cim.delete2.WorkLocation2.MainAddress reqMaddr = reqLoc.getMainAddress();
+					com.sixthc.cim.deleteMaintenanceOrders.WorkLocation2.MainAddress reqMaddr = reqLoc
+							.getMainAddress();
 					if (reqMaddr != null) {
 						Address address = new Address();
 
@@ -932,7 +930,7 @@ public class ExecuteMaintOrderChangeDelete implements MaintenanceOrdersPort {
 
 					}
 
-					for (com.sixthc.cim.delete2.Attachment reqAtt : reqWork
+					for (com.sixthc.cim.deleteMaintenanceOrders.Attachment reqAtt : reqWork
 							.getAttachments().getAttachment()) {
 
 						try {
@@ -977,7 +975,7 @@ public class ExecuteMaintOrderChangeDelete implements MaintenanceOrdersPort {
 	}
 
 	private void parseStreetDetail(Address woAddress, StreetAddress addr) {
-		com.sixthc.cim.delete2.Organisation2.StreetAddress.StreetDetail streetDetail = addr
+		com.sixthc.cim.deleteMaintenanceOrders.Organisation2.StreetAddress.StreetDetail streetDetail = addr
 				.getStreetDetail();
 
 		if (streetDetail != null) {
@@ -994,7 +992,7 @@ public class ExecuteMaintOrderChangeDelete implements MaintenanceOrdersPort {
 			woAddress.setSdType(streetDetail.getType());
 		}
 
-		com.sixthc.cim.delete2.Organisation2.StreetAddress.TownDetail townDetail = addr
+		com.sixthc.cim.deleteMaintenanceOrders.Organisation2.StreetAddress.TownDetail townDetail = addr
 				.getTownDetail();
 
 		if (townDetail != null) {
@@ -1005,14 +1003,14 @@ public class ExecuteMaintOrderChangeDelete implements MaintenanceOrdersPort {
 			woAddress.setTdStateProvince(townDetail.getStateOrProvince());
 		}
 	}
-	
+
 	@Transactional(readOnly = true)
 	public WorkOrder findWorkOrder(String mrid) {
 		WorkOrder wo = workOrderDao.find(mrid);
 		return wo;
 	}
-	
-	@Transactional(readOnly=false, propagation = Propagation.REQUIRES_NEW)
+
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
 	public void deleteWorkOrder(WorkOrder wo) {
 		wo.setStatus("DELETE");
 		workOrderDao.update(wo);
