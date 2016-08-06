@@ -11,10 +11,10 @@
 	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
 	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
 
-	<bean id="wms_cimGetBean" class="com.sixthc.server.ws.GetMaintOrder" />
+	<bean id="wms_cimGetBean" class="com.sixthc.server.ws.GetMaintOrders" />
 
 	<jaxws:endpoint id="GetMaintOrder" implementor="#wms_cimGetBean"
-		address="/MaintOrderServiceGet">
+		address="MaintOrdersGet">
 		<jaxws:inInterceptors>
 			<bean class="com.sixthc.interceptor.LoggingInInterceptor">
 				<property name="packageName" value="WMS-CIM" />

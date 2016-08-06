@@ -1,5 +1,5 @@
 package com.sixthc.hbm;
-// Generated Jul 17, 2015 4:51:40 PM by Hibernate Tools 3.2.2.GA
+// Generated Aug 6, 2016 3:05:23 PM by Hibernate Tools 3.2.2.GA
 
 
 import java.util.Date;
@@ -22,7 +22,6 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name="maintorder"
-    ,catalog="wms"
 )
 public class Maintorder  implements java.io.Serializable {
 
@@ -32,7 +31,10 @@ public class Maintorder  implements java.io.Serializable {
      private Date createdAt;
      private String createdBy;
      private String status;
+     private String orderType;
+     private Set<ReadingType> readingTypes = new HashSet<ReadingType>(0);
      private Set<WorkOrder> workOrders = new HashSet<WorkOrder>(0);
+     private Set<ReadingQualityType> readingQualityTypes = new HashSet<ReadingQualityType>(0);
      private Set<MaintorderNames> maintorderNameses = new HashSet<MaintorderNames>(0);
 
     public Maintorder() {
@@ -43,12 +45,15 @@ public class Maintorder  implements java.io.Serializable {
         this.createdAt = createdAt;
         this.createdBy = createdBy;
     }
-    public Maintorder(String mrid, Date createdAt, String createdBy, String status, Set<WorkOrder> workOrders, Set<MaintorderNames> maintorderNameses) {
+    public Maintorder(String mrid, Date createdAt, String createdBy, String status, String orderType, Set<ReadingType> readingTypes, Set<WorkOrder> workOrders, Set<ReadingQualityType> readingQualityTypes, Set<MaintorderNames> maintorderNameses) {
        this.mrid = mrid;
        this.createdAt = createdAt;
        this.createdBy = createdBy;
        this.status = status;
+       this.orderType = orderType;
+       this.readingTypes = readingTypes;
        this.workOrders = workOrders;
+       this.readingQualityTypes = readingQualityTypes;
        this.maintorderNameses = maintorderNameses;
     }
    
@@ -98,6 +103,23 @@ public class Maintorder  implements java.io.Serializable {
     public void setStatus(String status) {
         this.status = status;
     }
+    
+    @Column(name="order_type", length=20)
+    public String getOrderType() {
+        return this.orderType;
+    }
+    
+    public void setOrderType(String orderType) {
+        this.orderType = orderType;
+    }
+@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="maintorder")
+    public Set<ReadingType> getReadingTypes() {
+        return this.readingTypes;
+    }
+    
+    public void setReadingTypes(Set<ReadingType> readingTypes) {
+        this.readingTypes = readingTypes;
+    }
 @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="maintorder")
     public Set<WorkOrder> getWorkOrders() {
         return this.workOrders;
@@ -105,6 +127,14 @@ public class Maintorder  implements java.io.Serializable {
     
     public void setWorkOrders(Set<WorkOrder> workOrders) {
         this.workOrders = workOrders;
+    }
+@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="maintorder")
+    public Set<ReadingQualityType> getReadingQualityTypes() {
+        return this.readingQualityTypes;
+    }
+    
+    public void setReadingQualityTypes(Set<ReadingQualityType> readingQualityTypes) {
+        this.readingQualityTypes = readingQualityTypes;
     }
 @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="maintorder")
     public Set<MaintorderNames> getMaintorderNameses() {

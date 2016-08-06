@@ -11,15 +11,15 @@
 	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
 	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
 
-	<bean id="wms_cimCreateMaintOrderBean" class="com.sixthc.server.ws.ExecuteMaintOrderCreate" />
+	<bean id="wms_cimCreateServiceOrderBean" class="com.sixthc.server.ws.ExecuteServiceOrderCreate" />
 
-	<jaxws:endpoint id="CreateMaintOrder" implementor="#wms_cimCreateMaintOrderBean"
-		address="/MaintOrderCreate">
+	<jaxws:endpoint id="CreateServiceOrder" implementor="#wms_cimCreateServiceOrderBean"
+		address="/ServiceOrderCreate">
 		<jaxws:inInterceptors>
 			<bean class="com.sixthc.interceptor.LoggingInInterceptor">
 				<property name="packageName" value="WMS-CIM" />
-				<property name="packageGroupName" value="WMS CIM MaintenanceOrder" />
-				<property name="messageName" value="WMS MaintenanceOrder Create" />
+				<property name="packageGroupName" value="WMS CIM ServiceOrder" />
+				<property name="messageName" value="WMS ServiceOrder Create" />
 				<property name="resultCode" value="success" />
 				<property name="stage" value="serviceIn" />
 			</bean>
@@ -27,8 +27,8 @@
 		<jaxws:outInterceptors>
 			<bean class="com.sixthc.interceptor.LoggingOutInterceptor">
 				<property name="packageName" value="WMS-CIM" />
-				<property name="packageGroupName" value="WMS CIM MaintenanceOrder" />
-				<property name="messageName" value="WMS MaintenanceOrder Create" />
+				<property name="packageGroupName" value="WMS CIM ServiceOrder" />
+				<property name="messageName" value="WMS ServiceOrder Create" />
 				<property name="resultCode" value="success" />
 				<property name="stage" value="serviceOut" />
 			</bean>
@@ -36,8 +36,8 @@
 		<jaxws:outFaultInterceptors>
 			<bean class="com.sixthc.interceptor.LoggingOutInterceptor">
 				<property name="packageName" value="WMS-CIM" />
-				<property name="packageGroupName" value="WMS CIM MaintenanceOrder" />
-				<property name="messageName" value="WMS MaintenanceOrder Create" />
+				<property name="packageGroupName" value="WMS CIM ServiceOrder" />
+				<property name="messageName" value="WMS ServiceOrder Create" />
 				<property name="resultCode" value="fail" />
 				<property name="stage" value="serviceOutFault" />
 			</bean>
@@ -45,8 +45,8 @@
 		<jaxws:inFaultInterceptors>
 			<bean class="com.sixthc.interceptor.LoggingInInterceptor">
 				<property name="packageName" value="WMS-CIM" />
-				<property name="packageGroupName" value="WMS CIM MaintenanceOrder" />
-				<property name="messageName" value="WMS MaintenanceOrder Create" />
+				<property name="packageGroupName" value="WMS CIM ServiceOrder" />
+				<property name="messageName" value="WMS ServiceOrder Create" />
 				<property name="resultCode" value="fail" />
 				<property name="stage" value="serviceInFault" />
 			</bean>

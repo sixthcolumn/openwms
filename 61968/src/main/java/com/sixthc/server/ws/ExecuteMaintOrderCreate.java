@@ -658,6 +658,7 @@ public class ExecuteMaintOrderCreate implements MaintenanceOrdersPort {
 			mo.setMrid(req.getMRID());
 			mo.setCreatedBy("wms");
 			mo.setCreatedAt(new Date(System.currentTimeMillis()));
+			mo.setOrderType("Maintenance");
 
 			UUID uuid = UUID.randomUUID();
 			mo.setMrid(uuid.toString());

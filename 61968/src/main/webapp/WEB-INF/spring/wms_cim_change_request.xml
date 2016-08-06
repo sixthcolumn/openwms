@@ -87,7 +87,7 @@
 		<jaxws:inFaultInterceptors>
 			<bean class="com.sixthc.interceptor.LoggingInInterceptor">
 				<property name="packageName" value="WMS-CIM Client" />
-				<property name="packageName" value="WMS CIM Client MaintOrder" />
+				<property name="packageGroupName" value="WMS CIM Client MaintOrder" />
 				<property name="messageName" value="WMS MaintOrder Change-Delete" />
 				<property name="resultCode" value="fail" />
 				<property name="stage" value="serviceInFault" />

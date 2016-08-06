@@ -12,4 +12,11 @@ csh: mvn compile
 csh: mvn package // builds the epriConnect.war file
 
 
+generate new database html files :
+
+safe because it genereates to target/hibernate3
+
+csh : mvn hibernate3:hbm2java
+
+
 All other mvn commands are fine and do not require the profile wsdl.

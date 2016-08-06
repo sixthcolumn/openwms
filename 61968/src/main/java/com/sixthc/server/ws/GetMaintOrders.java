@@ -83,8 +83,8 @@ import com.sixthc.hbm.WorkTaskCrews;
 import com.sixthc.hbm.WorkTaskTimeSchedules;
 import com.sixthc.util.DateUtil;
 
-public class GetMaintOrder implements GetMaintenanceOrdersPort {
-	static Logger log = Logger.getLogger(GetMaintOrder.class);
+public class GetMaintOrders implements GetMaintenanceOrdersPort {
+	static Logger log = Logger.getLogger(GetMaintOrders.class);
 
 	@Autowired
 	private MaintOrderDao maintOrderDao;
