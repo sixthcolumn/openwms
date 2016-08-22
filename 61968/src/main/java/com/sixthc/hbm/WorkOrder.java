@@ -70,6 +70,11 @@ public class WorkOrder implements java.io.Serializable {
 	private String reason;
 	private String severity;
 	private String orderType;
+    private String phone1AreaCode;
+    private String phone1CityCode;
+    private String phone1CountryCode;
+    private String phone1Extension;
+    private String phone1LocalNumber;
 	private Set<WorkOrderWorkTasks> workOrderWorkTaskses = new HashSet<WorkOrderWorkTasks>(
 			0);
 	private Set<WorkOrderNames> workOrderNameses = new HashSet<WorkOrderNames>(
@@ -116,6 +121,9 @@ public class WorkOrder implements java.io.Serializable {
 			Float gpsAltitude, String internalBuildingName,
 			String internalBuildingNum, String internalFloor,
 			String internalRoomNum,
+			String phone1AreaCode, String phone1CityCode,
+			String phone1CountryCode, String phone1Extension,
+			String phone1LocalNumber,
 			Set<WorkOrderWorkTasks> workOrderWorkTaskses,
 			Set<WorkOrderNames> workOrderNameses,
 			Set<WorkOrderLocationObjectRefs> workOrderLocationObjectRefses,
@@ -154,6 +162,11 @@ public class WorkOrder implements java.io.Serializable {
 		this.internalBuildingNum = internalBuildingNum;
 		this.internalFloor = internalFloor;
 		this.internalRoomNum = internalRoomNum;
+	       this.phone1AreaCode = phone1AreaCode;
+	       this.phone1CityCode = phone1CityCode;
+	       this.phone1CountryCode = phone1CountryCode;
+	       this.phone1Extension = phone1Extension;
+	       this.phone1LocalNumber = phone1LocalNumber;
 		this.workOrderWorkTaskses = workOrderWorkTaskses;
 		this.workOrderNameses = workOrderNameses;
 		this.workOrderLocationObjectRefses = workOrderLocationObjectRefses;
@@ -511,6 +524,51 @@ public class WorkOrder implements java.io.Serializable {
 	public void setOrderType(String orderType) {
 		this.orderType = orderType;
 	}
+	
+    @Column(name="phone1_area_code", length=3)
+    public String getPhone1AreaCode() {
+        return this.phone1AreaCode;
+    }
+    
+    public void setPhone1AreaCode(String phone1AreaCode) {
+        this.phone1AreaCode = phone1AreaCode;
+    }
+    
+    @Column(name="phone1_city_code", length=50)
+    public String getPhone1CityCode() {
+        return this.phone1CityCode;
+    }
+    
+    public void setPhone1CityCode(String phone1CityCode) {
+        this.phone1CityCode = phone1CityCode;
+    }
+    
+    @Column(name="phone1_country_code", length=50)
+    public String getPhone1CountryCode() {
+        return this.phone1CountryCode;
+    }
+    
+    public void setPhone1CountryCode(String phone1CountryCode) {
+        this.phone1CountryCode = phone1CountryCode;
+    }
+    
+    @Column(name="phone1_extension", length=50)
+    public String getPhone1Extension() {
+        return this.phone1Extension;
+    }
+    
+    public void setPhone1Extension(String phone1Extension) {
+        this.phone1Extension = phone1Extension;
+    }
+    
+    @Column(name="phone1_local_number", length=50)
+    public String getPhone1LocalNumber() {
+        return this.phone1LocalNumber;
+    }
+    
+    public void setPhone1LocalNumber(String phone1LocalNumber) {
+        this.phone1LocalNumber = phone1LocalNumber;
+    }
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "workOrder")
 	public Set<WorkOrderWorkTasks> getWorkOrderWorkTaskses() {

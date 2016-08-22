@@ -40,7 +40,7 @@ import ch.iec.tc57._2015.maintenanceorders.MaintenanceOrders;
     "compressed",
     "format"
 })
-@XmlRootElement(name = "payload")
+@XmlRootElement
 public class MaintenanceOrdersPayloadType {
 
     @XmlElement(name = "MaintenanceOrders", namespace = "http://iec.ch/TC57/2015/MaintenanceOrders#")

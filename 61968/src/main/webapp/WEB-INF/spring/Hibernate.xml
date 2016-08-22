@@ -69,6 +69,11 @@
 				<value>com.sixthc.hbm.MaterialItem</value>
 				<value>com.sixthc.hbm.MaterialItemNames</value>
 				<value>com.sixthc.hbm.Measurement</value>
+				<value>com.sixthc.hbm.MeterMultiplier</value>
+				<value>com.sixthc.hbm.MeterMultiplierNames</value>
+				<value>com.sixthc.hbm.MeterReading</value>
+				<value>com.sixthc.hbm.MeterReadingQuality</value>
+				<value>com.sixthc.hbm.MeterReadingSeq</value>
 				<value>com.sixthc.hbm.NameTypeAuthority</value>
 				<value>com.sixthc.hbm.Nametype</value>
 				<value>com.sixthc.hbm.Objectref</value>

@@ -22,15 +22,20 @@ import com.sixthc.cim.createServiceOrders.ErrorType.ID;
 import com.sixthc.cim.createServiceOrders.HeaderType;
 import com.sixthc.cim.createServiceOrders.IDKindType;
 import com.sixthc.cim.createServiceOrders.InternalLocation2;
+import com.sixthc.cim.createServiceOrders.MeterReading;
+import com.sixthc.cim.createServiceOrders.MeterReading.Readings;
+import com.sixthc.cim.createServiceOrders.MeterReading.Readings.TimePeriod;
+import com.sixthc.cim.createServiceOrders.MeterReading.ValuesInterval;
 import com.sixthc.cim.createServiceOrders.Name2;
 import com.sixthc.cim.createServiceOrders.NameType2;
 import com.sixthc.cim.createServiceOrders.NameTypeAuthority2;
+import com.sixthc.cim.createServiceOrders.ReadingQuality;
 import com.sixthc.cim.createServiceOrders.ReadingQualityType;
-import com.sixthc.cim.createServiceOrders.ReadingType;
 import com.sixthc.cim.createServiceOrders.ReplyType;
 import com.sixthc.cim.createServiceOrders.RequestType;
 import com.sixthc.cim.createServiceOrders.ServiceOrder;
 import com.sixthc.cim.createServiceOrders.ServiceOrders;
+import com.sixthc.cim.createServiceOrders.TelephoneNumber;
 import com.sixthc.cim.createServiceOrders.Work2;
 import com.sixthc.cim.createServiceOrders.Work2.Priority;
 import com.sixthc.cim.createServiceOrders.WorkAsset;
@@ -57,6 +62,7 @@ import com.sixthc.hbm.CrewNames;
 import com.sixthc.hbm.Hazards;
 import com.sixthc.hbm.Maintorder;
 import com.sixthc.hbm.MaintorderNames;
+import com.sixthc.hbm.MeterReadingSeq;
 import com.sixthc.hbm.ReadingQualityTypeNames;
 import com.sixthc.hbm.WorkOrder;
 import com.sixthc.hbm.WorkOrderHazards;
@@ -79,7 +85,7 @@ public class ExecuteServiceOrderCreate implements ServiceOrdersPort {
 
 	@Autowired
 	private MaintOrderDao maintOrderDao;
-	
+
 	private List<com.sixthc.hbm.ReadingQualityTypeNames> parseReadingQualityTypeNames(
 			List<Name2> list) {
 		Vector<com.sixthc.hbm.ReadingQualityTypeNames> namesList = new Vector<com.sixthc.hbm.ReadingQualityTypeNames>();
@@ -89,25 +95,25 @@ public class ExecuteServiceOrderCreate implements ServiceOrdersPort {
 			names.setName(reqName.getName());
 
 			// TODO : need to fix this, gets a transient save error
-//			NameType2 reqNameType = reqName.getNameType();
-//			if (reqNameType != null) {
-//				com.sixthc.hbm.Nametype nameType = new com.sixthc.hbm.Nametype();
-//				nameType.setName(reqNameType.getName());
-//				nameType.setDescription(reqNameType.getDescription());
-//				names.setNametype(nameType);
-//
-//				nameType.getReadingQualityTypeNameses().add(names);
-//
-//				NameTypeAuthority2 reqNameTypeAuthority = reqNameType
-//						.getNameTypeAuthority();
-//				if (reqNameTypeAuthority != null) {
-//					com.sixthc.hbm.NameTypeAuthority nameTypeAuthority = new com.sixthc.hbm.NameTypeAuthority();
-//					nameTypeAuthority.setName(reqNameTypeAuthority.getName());
-//					nameTypeAuthority.setDescription(reqNameTypeAuthority
-//							.getDescription());
-//					nameType.setNameTypeAuthority(nameTypeAuthority);
-//				}
-//			}
+			//			NameType2 reqNameType = reqName.getNameType();
+			//			if (reqNameType != null) {
+			//				com.sixthc.hbm.Nametype nameType = new com.sixthc.hbm.Nametype();
+			//				nameType.setName(reqNameType.getName());
+			//				nameType.setDescription(reqNameType.getDescription());
+			//				names.setNametype(nameType);
+			//
+			//				nameType.getReadingQualityTypeNameses().add(names);
+			//
+			//				NameTypeAuthority2 reqNameTypeAuthority = reqNameType
+			//						.getNameTypeAuthority();
+			//				if (reqNameTypeAuthority != null) {
+			//					com.sixthc.hbm.NameTypeAuthority nameTypeAuthority = new com.sixthc.hbm.NameTypeAuthority();
+			//					nameTypeAuthority.setName(reqNameTypeAuthority.getName());
+			//					nameTypeAuthority.setDescription(reqNameTypeAuthority
+			//							.getDescription());
+			//					nameType.setNameTypeAuthority(nameTypeAuthority);
+			//				}
+			//			}
 		}
 		return namesList;
 	}
@@ -162,8 +168,7 @@ public class ExecuteServiceOrderCreate implements ServiceOrdersPort {
 		}
 		return null;
 	}
-	
-	
+
 	private List<com.sixthc.hbm.AssetNames> parseAssetNames(List<Name2> reqNames) {
 		Vector<com.sixthc.hbm.AssetNames> namesList = new Vector<com.sixthc.hbm.AssetNames>();
 		for (Name2 reqName : reqNames) {
@@ -214,12 +219,80 @@ public class ExecuteServiceOrderCreate implements ServiceOrdersPort {
 		workAsset.setMrid(reqAsset.getMRID());
 		workAsset.setCriticalFlag(reqAsset.isCritical() == true ? 1 : 0);
 		workAsset.setUtcNumber(reqAsset.getUtcNumber());
+		workAsset.setAmrSystem(reqAsset.getAmrSystem());
+		workAsset.setFormNumber(reqAsset.getFormNumber());
+		workAsset.setSerialNumber(reqAsset.getSerialNumber());
 
 		List<com.sixthc.hbm.AssetNames> namesList = parseAssetNames(reqAsset
 				.getNames());
 		for (AssetNames assetNames : namesList) {
 			workAsset.getAssetNameses().add(assetNames);
 			assetNames.setAsset(workAsset);
+		}
+
+		List<com.sixthc.cim.createServiceOrders.MeterMultiplier> meterMultipliers = reqAsset
+				.getMeterMultipliers();
+		for (com.sixthc.cim.createServiceOrders.MeterMultiplier m : meterMultipliers) {
+			com.sixthc.hbm.MeterMultiplier workMeter = new com.sixthc.hbm.MeterMultiplier();
+			workMeter.setKind(m.getKind().value());
+			workMeter.setMrid(m.getMRID());
+			workMeter.setValue((double) m.getValue());
+			workMeter.setAsset(workAsset);
+			workAsset.getMeterMultipliers().add(workMeter);
+		}
+
+		List<MeterReading> seqs = reqAsset.getMeterReadings();
+		for (MeterReading s : seqs) {
+			MeterReadingSeq workSeq = new MeterReadingSeq();
+			ValuesInterval valuesInterval = s.getValuesInterval();
+			if (valuesInterval != null) {
+				if (valuesInterval.getEnd() != null)
+					workSeq.setValueIntervalEnd(valuesInterval.getEnd()
+							.toGregorianCalendar().getTime());
+				if (valuesInterval.getStart() != null)
+					workSeq.setValueIntervalStart(valuesInterval.getStart()
+							.toGregorianCalendar().getTime());
+			}
+
+			for (Readings r : s.getReadings()) {
+				com.sixthc.hbm.MeterReading r2 = new com.sixthc.hbm.MeterReading();
+				r2.setReason(r.getReason());
+				if (r.getReportedDateTime() != null)
+					r2.setReportDate(r.getReportedDateTime()
+							.toGregorianCalendar().getTime());
+				r2.setSource(r.getSource());
+				if (r.getTimeStamp() != null)
+					r2.setTimestamp(r.getTimeStamp().toGregorianCalendar()
+							.getTime());
+				r2.setValue(r.getValue());
+				TimePeriod tp = r.getTimePeriod();
+				if (tp != null) {
+					if (tp.getEnd() != null)
+						r2.setTimePeriodEnd(tp.getEnd().toGregorianCalendar()
+								.getTime());
+					if (tp.getStart() != null)
+						r2.setTimePeriodStart(tp.getStart()
+								.toGregorianCalendar().getTime());
+				}
+
+				for (ReadingQuality reqRqt : r.getReadingQualities()) {
+					com.sixthc.hbm.MeterReadingQuality rqt2 = new com.sixthc.hbm.MeterReadingQuality();
+					rqt2.setComment(reqRqt.getComment());
+					if (reqRqt.getReadingQualityType() != null)
+						rqt2.setQualityType(reqRqt.getReadingQualityType()
+								.getRef());
+					rqt2.setSource(reqRqt.getSource());
+					rqt2.setTimestamp(reqRqt.getTimeStamp()
+							.toGregorianCalendar().getTime());
+					r2.getMeterReadingQualities().add(rqt2);
+				}
+
+				workSeq.getMeterReadings().add(r2);
+				r2.setMeterReadingSeq(workSeq);
+
+			}
+			workAsset.getMeterReadingSeqs().add(workSeq);
+			workSeq.setAsset(workAsset);
 		}
 
 		return workAsset;
@@ -337,12 +410,9 @@ public class ExecuteServiceOrderCreate implements ServiceOrdersPort {
 		header.value = returnHeader;
 
 		ServiceOrders orders = payload.value.getServiceOrders();
-		
 
-		
 		for (ServiceOrder req : orders.getServiceOrder()) {
 			Maintorder so = new Maintorder();
-			
 
 			so.setMrid(req.getMRID());
 			so.setCreatedBy("wms");
@@ -351,9 +421,9 @@ public class ExecuteServiceOrderCreate implements ServiceOrdersPort {
 
 			UUID uuid = UUID.randomUUID();
 			so.setMrid(uuid.toString());
-			
+
 			List<ReadingQualityType> rqtList = orders.getReadingQualityType();
-			for( ReadingQualityType reqRqt : rqtList){
+			for (ReadingQualityType reqRqt : rqtList) {
 				com.sixthc.hbm.ReadingQualityType rqt = new com.sixthc.hbm.ReadingQualityType();
 				rqt.setCategory(reqRqt.getCategory());
 				rqt.setMrid(reqRqt.getMRID());
@@ -361,29 +431,36 @@ public class ExecuteServiceOrderCreate implements ServiceOrdersPort {
 				rqt.setSubCategory(reqRqt.getSystemId());
 				rqt.setSystemId(reqRqt.getSystemId());
 				rqt.setMaintorder(so);
-				List<ReadingQualityTypeNames> rqtNames = parseReadingQualityTypeNames(reqRqt.getNames());
-				for( ReadingQualityTypeNames n : rqtNames) {
+				List<ReadingQualityTypeNames> rqtNames = parseReadingQualityTypeNames(reqRqt
+						.getNames());
+				for (ReadingQualityTypeNames n : rqtNames) {
 					n.setReadingQualityType(rqt);
 					rqt.getReadingQualityTypeNameses().add(n);
 				}
 				so.getReadingQualityTypes().add(rqt);
 			}
-			
-			List<com.sixthc.cim.createServiceOrders.ServiceOrders.ReadingType> readList = orders.getReadingType();
-			for( com.sixthc.cim.createServiceOrders.ServiceOrders.ReadingType reqRead : readList) {
+
+			List<com.sixthc.cim.createServiceOrders.ServiceOrders.ReadingType> readList = orders
+					.getReadingType();
+			for (com.sixthc.cim.createServiceOrders.ServiceOrders.ReadingType reqRead : readList) {
 				com.sixthc.hbm.ReadingType rt = new com.sixthc.hbm.ReadingType();
 				rt.setMrid(reqRead.getMRID());
 				rt.setAccumulation(reqRead.getAccumulation());
 				rt.setAggregate(reqRead.getAggregate());
-				rt.setArgumentDenom(reqRead.getArgument().getDenominator().doubleValue());
-				rt.setArgumentNumer(reqRead.getArgument().getNumerator().doubleValue());
+				rt.setArgumentDenom(reqRead.getArgument().getDenominator()
+						.doubleValue());
+				rt.setArgumentNumer(reqRead.getArgument().getNumerator()
+						.doubleValue());
 				rt.setCommodity(reqRead.getCommodity());
-				rt.setConsumptionTier(reqRead.getConsumptionTier().doubleValue());
+				rt.setConsumptionTier(reqRead.getConsumptionTier()
+						.doubleValue());
 				rt.setCpp(reqRead.getCpp().doubleValue());
 				rt.setCurrency(reqRead.getCurrency());
 				rt.setFlowDirection(reqRead.getFlowDirection());
-				rt.setInterHDenom(reqRead.getInterharmonic().getDenominator().doubleValue());
-				rt.setInterHNumer(reqRead.getInterharmonic().getNumerator().doubleValue());
+				rt.setInterHDenom(reqRead.getInterharmonic().getDenominator()
+						.doubleValue());
+				rt.setInterHNumer(reqRead.getInterharmonic().getNumerator()
+						.doubleValue());
 				rt.setMacroPeriod(reqRead.getMacroPeriod());
 				rt.setMeasurementKind(reqRead.getMeasurementKind());
 				rt.setMultiplier(reqRead.getMultiplier());
@@ -391,7 +468,7 @@ public class ExecuteServiceOrderCreate implements ServiceOrdersPort {
 				rt.setTou(reqRead.getTou().doubleValue());
 				rt.setUnit(reqRead.getUnit());
 				so.getReadingTypes().add(rt);
-				
+
 			}
 
 			List<MaintorderNames> nlist = parseMaintorderNames(req.getNames());
@@ -427,7 +504,6 @@ public class ExecuteServiceOrderCreate implements ServiceOrdersPort {
 				reply.value.getError().add(et);
 				continue; // stop processing THIS order
 			}
-			
 
 			// will return the mrid in the payload back to caller
 			req.setMRID(uuid.toString());
@@ -453,7 +529,6 @@ public class ExecuteServiceOrderCreate implements ServiceOrdersPort {
 					if (rec.getType() != null)
 						workOrder.setOrderType(rec.getType());
 				}
-				
 
 				UUID workOrderUUID = UUID.randomUUID();
 				workOrder.setMrid(workOrderUUID.toString());
@@ -531,6 +606,15 @@ public class ExecuteServiceOrderCreate implements ServiceOrdersPort {
 				WorkLocation2 reqLoc = reqWork.getWorkLocation();
 				if (reqLoc != null) {
 					// reqLoc.getMRID(); //  bb: ignore
+
+					TelephoneNumber phone1 = reqLoc.getPhone1();
+					if (phone1 != null) {
+						workOrder.setPhone1AreaCode(phone1.getAreaCode());
+						workOrder.setPhone1CityCode(phone1.getCityCode());
+						workOrder.setPhone1CountryCode(phone1.getCountryCode());
+						workOrder.setPhone1Extension(phone1.getExtension());
+						workOrder.setPhone1LocalNumber(phone1.getLocalNumber());
+					}
 
 					for (AssetLocationHazard2 reqHazard : reqLoc.getHazards()) {
 						Hazards hazards = new Hazards();

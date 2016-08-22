@@ -79,7 +79,7 @@ class App(object):
         self.txt.insert(tki.INSERT,"Sending...")
         self.send = subprocess.Popen(["java","-jar",
                 "getMaintOrder.jar",
-                self.url + "MaintOrderServiceGet",
+                self.url + "MaintOrdersGet",
                 self.mridVar.get()],
                 stdout=subprocess.PIPE)
 

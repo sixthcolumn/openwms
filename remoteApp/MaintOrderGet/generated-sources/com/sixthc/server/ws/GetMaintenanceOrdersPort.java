@@ -20,8 +20,8 @@ import ch.iec.tc57._2015.getmaintenanceordersmessage.GetMaintenanceOrdersRespons
 @WebService(name = "GetMaintenanceOrders_Port", targetNamespace = "http://iec.ch/TC57/2015/GetMaintenanceOrders")
 @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
 @XmlSeeAlso({
-    ch.iec.tc57._2011.schema.message.ObjectFactory.class,
     ch.iec.tc57._2015.getmaintenanceorders.ObjectFactory.class,
+    ch.iec.tc57._2011.schema.message.ObjectFactory.class,
     ch.iec.tc57._2015.maintenanceorders.ObjectFactory.class,
     ch.iec.tc57._2015.getmaintenanceordersmessage.ObjectFactory.class
 })

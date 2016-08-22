@@ -2,6 +2,8 @@ package com.sixthc.hbm;
 
 // Generated Jun 3, 2015 2:34:41 PM by Hibernate Tools 3.2.2.GA
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,12 +12,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
-import static javax.persistence.GenerationType.IDENTITY;
-
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -39,6 +38,9 @@ public class Asset implements java.io.Serializable {
 	private String internalBuildingNumber;
 	private String internalFloor;
 	private String internalRoomNumber;
+	private String amrSystem;
+	private String formNumber;
+	private String serialNumber;
 	private Set<WorkTask> workTasks = new HashSet<WorkTask>(0);
 	private Set<AssetProcedures> assetProcedureses = new HashSet<AssetProcedures>(
 			0);
@@ -48,6 +50,9 @@ public class Asset implements java.io.Serializable {
 	private Set<WorkTaskOldAssets> workTaskOldAssetses = new HashSet<WorkTaskOldAssets>(
 			0);
 	private Set<CrewAssets> workCrewAssets = new HashSet<CrewAssets>(0);
+	private Set<MeterMultiplier> meterMultipliers = new HashSet<MeterMultiplier>(
+			0);
+    private Set<MeterReadingSeq> meterReadingSeqs = new HashSet<MeterReadingSeq>(0);
 
 	public Asset() {
 	}
@@ -115,8 +120,7 @@ public class Asset implements java.io.Serializable {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	
-	
+
 	@Column(name = "internal_building_name", length = 512)
 	public String getInternalBuildingName() {
 		return internalBuildingName;
@@ -153,8 +157,35 @@ public class Asset implements java.io.Serializable {
 		this.internalRoomNumber = internalRoomNumber;
 	}
 
+	@Column(name = "amr_system", length = 512)
+	public String getAmrSystem() {
+		return this.amrSystem;
+	}
+
+	public void setAmrSystem(String amrSystem) {
+		this.amrSystem = amrSystem;
+	}
+
+	@Column(name = "form_number", length = 512)
+	public String getFormNumber() {
+		return this.formNumber;
+	}
+
+	public void setFormNumber(String formNumber) {
+		this.formNumber = formNumber;
+	}
+
+	@Column(name = "serial_number", length = 512)
+	public String getSerialNumber() {
+		return this.serialNumber;
+	}
+
+	public void setSerialNumber(String serialNumber) {
+		this.serialNumber = serialNumber;
+	}
+
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "address_id")	
+	@JoinColumn(name = "address_id")
 	public Address getAddress() {
 		return address;
 	}
@@ -194,13 +225,14 @@ public class Asset implements java.io.Serializable {
 	public void setWorkTaskAssetses(Set<WorkTaskAssets> workTaskAssetses) {
 		this.workTaskAssetses = workTaskAssetses;
 	}
-	
+
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "asset")
 	public Set<WorkTaskOldAssets> getWorkTaskOldAssetses() {
 		return this.workTaskOldAssetses;
 	}
 
-	public void setWorkTaskOldAssetses(Set<WorkTaskOldAssets> workTaskOldAssetses) {
+	public void setWorkTaskOldAssetses(
+			Set<WorkTaskOldAssets> workTaskOldAssetses) {
 		this.workTaskOldAssetses = workTaskOldAssetses;
 	}
 
@@ -212,7 +244,23 @@ public class Asset implements java.io.Serializable {
 	public void setWorkCrewAssets(Set<CrewAssets> workCrewAssets) {
 		this.workCrewAssets = workCrewAssets;
 	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "asset")
+	public Set<MeterMultiplier> getMeterMultipliers() {
+		return meterMultipliers;
+	}
+
+	public void setMeterMultipliers(Set<MeterMultiplier> meterMultipliers) {
+		this.meterMultipliers = meterMultipliers;
+	}
 	
-	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="asset")
+    public Set<MeterReadingSeq> getMeterReadingSeqs() {
+        return this.meterReadingSeqs;
+    }
+    
+    public void setMeterReadingSeqs(Set<MeterReadingSeq> meterReadingSeqs) {
+        this.meterReadingSeqs = meterReadingSeqs;
+    }
 
 }
