@@ -1,4 +1,4 @@
-package com.sixthc.server.client;
+package com.sixthc.client.test;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,34 +6,22 @@ import java.util.Date;
 
 import javax.xml.bind.JAXBException;
 
-import org.junit.Test;
+import com.sixthc.client.OrderData;
+import com.sixthc.client.OrderData.Address;
+import com.sixthc.client.OrderData.Header;
+import com.sixthc.client.OrderData.Iloc;
 
-import com.sixthc.server.client.OrderData.Address;
-import com.sixthc.server.client.OrderData.Header;
-import com.sixthc.server.client.OrderData.Iloc;
+public class TestOrderData {
 
-public class TestUnit {
-
-	@Test
-	public void test() {
+	public static void main(String[] args) {
 		OrderData od = new OrderData();
 		Address a = new Address();
 		Header h = new Header();
 		Iloc i = new Iloc();
 		od.setAddress(a);
 		od.setHeader(h);
-		od.setIloc(i);
+		od.setIloc(i);;
 		
-		i.setBuildingName("eagle next");
-		i.setBuildingNumber("102");
-		i.setFloor("23");
-		i.setRoomNumber("204a");
-		
-		od.setReason("outage");
-		od.setSeverity("critical");
-		od.setType("outage");
-		od.setImageFile("1234-5678.jpg");
-
 		a.setBuildingName("building1");
 		a.setCode("cd");
 		a.setGeneral("111 north street hanover mass");
@@ -43,7 +31,14 @@ public class TestUnit {
 		a.setSuffix("North");
 		a.setSuite("101");
 		a.setType("Residential");
-
+		a.setState("North Carolina");
+		a.setCity("Cary");
+		
+		i.setBuildingName("building name");
+		i.setBuildingName("120");
+		i.setFloor("1st");
+		i.setRoomNumber("101");
+		
 		h.setComment("Epri Testing App");
 		h.setContext("ctx1");
 		h.setCorrelationID("1234");
@@ -57,22 +52,10 @@ public class TestUnit {
 		h.setTimestamp(new Date(System.currentTimeMillis()));
 		h.setUserid("epri1");
 		h.setVerb("create");
-
+		
 		File f = new File("tempfile.xml");
 		try {
 			od.writeToFile(f);
-		} catch (JAXBException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	@Test
-	public void test2() {
-		File f = new File("tempfile.xml");
-		try {
-			OrderData od = OrderData.readFromFile(f);
-			System.out.println("foo");
 		} catch (JAXBException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

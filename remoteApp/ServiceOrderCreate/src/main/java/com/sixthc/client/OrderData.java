@@ -1,4 +1,4 @@
-package com.sixthc.server.client;
+package com.sixthc.client;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -33,6 +33,7 @@ public class OrderData {
 	private String taskSubject;
 	private String assetID;
 	private String assetUTC;
+	private String crewETA;
 
 	public static boolean isSet(String v) {
 		return (v != null && v.length() > 0);
@@ -187,8 +188,15 @@ public class OrderData {
 	public void setAssetUTC(String assetUTC) {
 		this.assetUTC = assetUTC;
 	}
+	
 
+	public String getCrewETA() {
+		return crewETA;
+	}
 
+	public void setCrewETA(String crewETA) {
+		this.crewETA = crewETA;
+	}
 
 	public static class Header {
 		private String verb;

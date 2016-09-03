@@ -1,4 +1,4 @@
-package com.sixthc.ServiceOrderGet.client;
+package com.sixthc.client;
 
 import java.io.StringWriter;
 import java.net.MalformedURLException;

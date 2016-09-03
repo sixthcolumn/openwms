@@ -1,4 +1,4 @@
-package com.sixthc.server.client;
+package com.sixthc.client.test;
 public class Test2 {
 
 	public static void main(String[] args) {

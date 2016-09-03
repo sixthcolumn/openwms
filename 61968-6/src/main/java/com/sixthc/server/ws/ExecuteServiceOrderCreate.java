@@ -221,7 +221,8 @@ public class ExecuteServiceOrderCreate implements ServiceOrdersPort {
 	private com.sixthc.hbm.Asset parseAsset(Asset2 reqAsset) {
 		com.sixthc.hbm.Asset workAsset = new com.sixthc.hbm.Asset();
 		workAsset.setMrid(reqAsset.getMRID());
-		workAsset.setCriticalFlag(reqAsset.isCritical() == true ? 1 : 0);
+		if (reqAsset.isCritical() != null)
+			workAsset.setCriticalFlag(reqAsset.isCritical() == true ? 1 : 0);
 		workAsset.setUtcNumber(reqAsset.getUtcNumber());
 		workAsset.setAmrSystem(reqAsset.getAmrSystem());
 		workAsset.setFormNumber(reqAsset.getFormNumber());
@@ -801,7 +802,7 @@ public class ExecuteServiceOrderCreate implements ServiceOrdersPort {
 
 					}
 				}
-				
+
 				if (reqWork.getAttachments() != null) {
 					for (com.sixthc.cim.createServiceOrders.Attachment reqAtt : reqWork
 							.getAttachments().getAttachment()) {
@@ -815,9 +816,11 @@ public class ExecuteServiceOrderCreate implements ServiceOrdersPort {
 							Attachment attachment = new Attachment();
 							attachment.setComment(reqAtt.getComment());
 							attachment.setDescription(reqAtt.getDescription());
-							String fileExt = ImageLoader.DetermineFileExtension(uri);
+							String fileExt = ImageLoader
+									.DetermineFileExtension(uri);
 							attachment.setFilename(file + "." + fileExt);
-							attachment.setType(ImageLoader.DetermineAttachmentType(uri));
+							attachment.setType(ImageLoader
+									.DetermineAttachmentType(uri));
 
 							ImageLoader.getImage(uri, attachment.getFilename());
 

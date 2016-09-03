@@ -9,7 +9,7 @@
 	<name>Maven Quick Start Archetype</name>
 	<url>http://maven.apache.org</url>
 	<build>
-		<finalName>getMaintOrder</finalName>
+		<finalName>getServiceOrder</finalName>
 		<!-- Feel free to change maven-compiler-plugin configuration -->
 		<plugins>
 			<plugin>
@@ -28,7 +28,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.sixthc.MaintOrderGet.client.GetMaintOrder</mainClass>
+							<mainClass>com.sixthc.client.GetServiceOrder</mainClass>
 							<addClasspath>true</addClasspath>
 						</manifest>
 					</archive>
