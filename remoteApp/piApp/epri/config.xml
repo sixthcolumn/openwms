@@ -33,7 +33,7 @@
 		maint order will post images to, saving. They can be accessed
 		via imageServer var above. turn off/on in status attribute
 	-->
-	<imageUploadServer status="on">http://10.3.253.100:8004</imageUploadServer>
+	<imageUploadServer status="on">http://192.168.1.214:8004</imageUploadServer>
 
 	<!--
 		A minimal set of header data to send.
