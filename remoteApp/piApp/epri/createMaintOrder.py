@@ -292,6 +292,7 @@ class Example(tk.Frame):
         orderData = E.orderData
         REASON = E.reason
         SEVERITY = E.severity
+        self.type = "NA" if not self.type
 
         my_doc = orderData(
             E.header(
