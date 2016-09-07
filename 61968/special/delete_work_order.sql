@@ -1,4 +1,9 @@
 delete from address;
+delete from meter_multiplier;
+delete from meter_reading;
+delete from meter_reading_seq;
+delete from reading_quality_type_names;
+delete from reading_quality_type;
 delete from address_districts;
 delete from address_hazards;
 delete from address_position_points;
