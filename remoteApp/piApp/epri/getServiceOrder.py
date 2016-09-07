@@ -93,7 +93,9 @@ class App(object):
                 while True:
                     if data == '':
                         print dataOut
+                        print "calling outputresult"
                         outputResult(dataOut)
+                        print "done output"
                         break
                     data = read(self.send.stdout.fileno(), 1024)
                     dataOut += data
@@ -139,9 +141,11 @@ class App(object):
         def outputResult(xmlString):
             try:
                 print xmlString
+                print "about to output ..."
                 doc = etree.fromstring(xmlString)
-                orders = doc.xpath('//*[local-name() = \'MaintenanceOrder\']')
+                orders = doc.xpath('//*[local-name() = \'ServiceOrder\']')
                 for order in orders:
+                    print "in order in orders"
                     outputValue("MRID: ", "mRID", order)
                     outputValue("Kind: ", "kind", order)
                     outputValue("Last Mod: ", "lastModifiedDateTime", order)
