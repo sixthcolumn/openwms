@@ -3,7 +3,7 @@ import Tkinter as tk
 import ttk as ttk;
 import sys
 #from Tkinter import *
-# BJG import picamera
+import picamera
 import uuid
 import os.path
 #import ImageTk, Image
@@ -14,7 +14,7 @@ from lxml.builder import ElementMaker
 import subprocess
 from fcntl import fcntl, F_GETFL, F_SETFL
 from os import O_NONBLOCK, read
-# BJG import requests
+import requests
 import logging
 from time import strftime
 import tkMessageBox
@@ -255,33 +255,27 @@ class Example(tk.Frame):
         # pop up an address selection list
         self.top = tk.Toplevel()
 
-        self.label = tk.Label(self.top, text="Coords: 35.8003472, -78.7810633", anchor='w')
-        self.label.pack(fill="both",expand=1)
-        self.label = tk.Label(self.top, text="Nearby Addresses", anchor='w')
-        self.label.pack(fill="both",expand=1)
+        self.label = tk.Label(self.top, text="Coords: 35.8003472, -78.7810633").grid(row=0,sticky="W")
+        self.label = tk.Label(self.top, text="Nearby Addresses").grid(row=1, stick="W")
 
-
-        self.addrList = tk.Listbox(self.top)
+        self.addrList = tk.Listbox(self.top, width=50,  height=6)
+        self.addrList.grid(row=3, column=0, rowspan=4, columnspan=2, sticky="EW")
         self.addrList.insert(1, "100 Easton Street")
         self.addrList.insert(2, "102 Easton Street")
         self.addrList.insert(3, "1475 Bauer Lane")
         self.addrList.insert(4, "1477 Bauer Lane")
         self.addrList.insert(6, "1466 Bauer Lane")
         self.addrList.insert(7, "12 Rock Ct")
-        self.addrList.insert(8, "14 Rock Ct")
-        self.addrList.insert(9, "16 Rock Ct")
-        self.addrList.insert(10, "18 Rock Ct")
 
-        self.addrList.pack(fill="both",expand=1)
+
         bbar = tk.Frame(self.top)
-        bbar.pack(fill="both",expand=1)
-
         b1 = tk.Button(bbar,text=u"OK", command=self.OnSaveGPSButtonClick)
-        b1.pack(side="left",fill="x",expand=1)
+        b1.pack(side="left",fill="both",expand=1)
         b1 = tk.Button(bbar,text=u"Cancel", command=self.OnCancelGPSButtonClick)
-        b1.pack(side="left",fill="x",expand=1)
+        b1.pack(side="left",fill="both",expand=1)
+        bbar.grid(row=8,sticky="EW")
 
-        self.top.geometry("300x240")
+        self.top.geometry("300x200")
 
     def OnCancelGPSButtonClick(self):
         self.top.destroy()
