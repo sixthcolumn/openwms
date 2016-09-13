@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=GetServiceOrder
+Comment=Get service order
+Icon=/home/pi/git/openwms/remoteApp/piApp/epri/getServiceOrder.png
+Exec=/home/pi/git/openwms/remoteApp/piApp/epri/getServiceOrder.sh
+Type=Application
+Encoding=UTF-8
+Terminal=false
+Categories=None;

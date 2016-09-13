@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=GetMaint
+Comment=Get Maint Order
+Icon=/home/pi/git/openwms/remoteApp/piApp/epri/getMaintOrder.png
+Exec=/home/pi/git/openwms/remoteApp/piApp/epri/getMaintOrder.sh
+Type=Application
+Encoding=UTF-8
+Terminal=false
+Categories=None;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=MaintOrder
+Comment=Create maint order
+Icon=/home/pi/git/openwms/remoteApp/piApp/epri/createMaintOrder.png
+Exec=/home/pi/git/openwms/remoteApp/piApp/epri/createMaintOrder.sh
+Type=Application
+Encoding=UTF-8
+Terminal=false
+Categories=None;

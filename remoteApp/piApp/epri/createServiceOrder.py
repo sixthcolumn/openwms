@@ -128,9 +128,42 @@ class Example(tk.Frame):
         crow2 = 0
         self.gps, self.gpsVariable, crow2 = self.buildEntry(gen, "GPS:", crow2)
         self.image, self.imageVariable, crow2 = self.buildEntry(gen, "Image:", crow2)
-        self.priority, self.priorityVariable, crow2 = self.buildEntry(gen, "Priority:", crow2)
-        self.reason, self.reasonVariable, crow2 = self.buildEntry(gen, "Reason:", crow2)
-        self.severity, self.severityVariable, crow2 = self.buildEntry(gen, "Severity:", crow2)
+
+        # priority select box
+        #self.priority, self.priorityVariable, crow2 = self.buildEntry(gen, "Priority:", crow2)
+        label = tk.Label(gen, text="Priority:", anchor='e')
+        label.grid(column=1,row=crow2,sticky='EW')
+        self.priorityVariable = tk.StringVar()
+        self.priority = ttk.Combobox(gen, textvariable=self.priorityVariable)
+        self.priority['values'] = ('Low', 'Normal', 'High', 'Emergency')
+        self.priority.current(0)
+        self.priority.grid(column=2,row=crow2,columnspan=3,sticky='EW')
+        crow2 +=1
+
+        # reason select box
+        # self.reason, self.reasonVariable, crow2 = self.buildEntry(gen, "Reason:", crow2)
+        label = tk.Label(gen, text="Reason:", anchor='e')
+        label.grid(column=1,row=crow2,sticky='EW')
+        self.reasonVariable = tk.StringVar()
+        self.reason = ttk.Combobox(gen, textvariable=self.reasonVariable)
+        self.reason['values'] = ('Calibration', 'Damage', 'Inspection', 'Move in', 'Move out')
+        self.reason.current(0)
+        self.reason.grid(column=2,row=crow2,columnspan=3,sticky='EW')
+        crow2 +=1
+
+        # severity select box
+        # self.severity, self.severityVariable, crow2 = self.buildEntry(gen, "Severity:", crow2)
+        label = tk.Label(gen, text="Severity:", anchor='e')
+        label.grid(column=1,row=crow2,sticky='EW')
+        self.severityVariable = tk.StringVar()
+        self.severity = ttk.Combobox(gen, textvariable=self.severityVariable)
+        self.severity['values'] = ('Minor', 'Normal', 'Severe')
+        self.severity.current(0)
+        self.severity.grid(column=2,row=crow2,columnspan=3,sticky='EW')
+        crow2 +=1
+
+
+
         self.type, self.typeVariable, crow2 = self.buildEntry(gen, "Type:", crow2)
 
         crow += 1
@@ -222,33 +255,27 @@ class Example(tk.Frame):
         # pop up an address selection list
         self.top = tk.Toplevel()
 
-        self.label = tk.Label(self.top, text="Coords: 35.8003472, -78.7810633", anchor='w')
-        self.label.pack(fill="both",expand=1)
-        self.label = tk.Label(self.top, text="Nearby Addresses", anchor='w')
-        self.label.pack(fill="both",expand=1)
+        self.label = tk.Label(self.top, text="Coords: 35.8003472, -78.7810633").grid(row=0,sticky="W")
+        self.label = tk.Label(self.top, text="Nearby Addresses").grid(row=1, stick="W")
 
-
-        self.addrList = tk.Listbox(self.top)
+        self.addrList = tk.Listbox(self.top, width=50,  height=6)
+        self.addrList.grid(row=3, column=0, rowspan=4, columnspan=2, sticky="EW")
         self.addrList.insert(1, "100 Easton Street")
         self.addrList.insert(2, "102 Easton Street")
         self.addrList.insert(3, "1475 Bauer Lane")
         self.addrList.insert(4, "1477 Bauer Lane")
         self.addrList.insert(6, "1466 Bauer Lane")
         self.addrList.insert(7, "12 Rock Ct")
-        self.addrList.insert(8, "14 Rock Ct")
-        self.addrList.insert(9, "16 Rock Ct")
-        self.addrList.insert(10, "18 Rock Ct")
 
-        self.addrList.pack(fill="both",expand=1)
+
         bbar = tk.Frame(self.top)
-        bbar.pack(fill="both",expand=1)
-
         b1 = tk.Button(bbar,text=u"OK", command=self.OnSaveGPSButtonClick)
-        b1.pack(side="left",fill="x",expand=1)
+        b1.pack(side="left",fill="both",expand=1)
         b1 = tk.Button(bbar,text=u"Cancel", command=self.OnCancelGPSButtonClick)
-        b1.pack(side="left",fill="x",expand=1)
+        b1.pack(side="left",fill="both",expand=1)
+        bbar.grid(row=8,sticky="EW")
 
-        self.top.geometry("300x240")
+        self.top.geometry("300x200")
 
     def OnCancelGPSButtonClick(self):
         self.top.destroy()
@@ -276,7 +303,7 @@ class Example(tk.Frame):
         except Exception, e:
             print "taking pic error : " + str(e)
             self.imageFile = 'testimage.jpg'
-        self.top = tk.Toplevel()
+        self.topCam = tk.Toplevel()
         # todo : temp below for testing
         #self.imageFile = "/home/pi/wms/004ce28b-d087-4ed1-b6e0-91fc0b2db8e3.jpg"
         unsizedImage = Image.open(self.imageFile)
@@ -284,11 +311,11 @@ class Example(tk.Frame):
         img = ImageTk.PhotoImage(resized)
 
         
-        imglabel = tk.Label(self.top,image=img)
+        imglabel = tk.Label(self.topCam,image=img)
         imglabel.image = img
         imglabel.pack(fill="both") #, expand=1)
 
-        bbar = tk.Frame(self.top)
+        bbar = tk.Frame(self.topCam)
         bbar.pack(fill="both",expand=1)
 
         b1 = tk.Button(bbar,text=u"OK", command=self.OnSavePicButtonClick)
@@ -305,33 +332,36 @@ class Example(tk.Frame):
         y = 0
 
         # make the root window the size of the image
-        self.top.geometry("300x240")
+        self.topCam.geometry("300x240")
+	print "cam created"
 
     def OnSavePicButtonClick(self):
+	print "save pressed"
         jpgName = os.path.basename(self.imageFile)
         if self.uploadStatus == 'on':
             try:
                 print 'uploading image...'
                 print 'url : ' + self.upload + ', imagefile : ' + self.imageFile
                 r = requests.post(self.upload, files={self.imageFile: open(self.imageFile, 'rb')})
+                self.topCam.destroy()      
                 if( r.status_code == 200 ):
                     tkMessageBox.showinfo("Image Upload", "Image has been uploaded to server")
                 else:
                     tkMessageBox.showerror("Image Upload", "Imager upload failed with code : " + r.status_code)
 
-                print 'image upload complete.'
             except Exception, e:
                 logging.warning('post failed. Server may be down. using default image')
                 tkMessageBox.showerror("Image Upload failed", str(e))
+                self.topCam.destroy()      
         ## todo : this is temp because we don't upload actual images, default image
         self.imageVariable.set(self.imageServer + '/' + jpgName)
         self.image.focus_set()
         self.image.selection_range(0, tk.END)
-        self.top.destroy()      
+        self.topCam.destroy()      
 
 
     def OnCancelPicButtonClick(self):
-        self.top.destroy()
+        self.topCam.destroy()
 
     def OnSendClick(self):
 
@@ -341,8 +371,8 @@ class Example(tk.Frame):
         orderData = E.orderData
         REASON = E.reason
         SEVERITY = E.severity
-        if not self.type:
-            self.type = "NOT SET"
+        if not self.type.get():
+            self.typeVariable.set("NOT SET")
 
         my_doc = orderData(
             E.header(
@@ -432,6 +462,7 @@ class Example(tk.Frame):
                 else:
                     text.insert(tk.END,"Result : " + rxml.xpath("//orders/Result")[0].text)
                     text.insert(tk.END,"\n\n" + rxml.xpath("//orders/ID")[0].text)
+                    print tk.END,"\n\n" + rxml.xpath("//orders/ID")[0].text
             except: # catch all
                 text.insert(tk.END,"Operation Failed:\n\n" + xmlString);
 

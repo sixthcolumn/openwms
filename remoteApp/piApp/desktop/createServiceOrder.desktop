@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=ServiceOrder
+Comment=Create service order
+Icon=/home/pi/git/openwms/remoteApp/piApp/epri/createServiceOrder.png
+Exec=/home/pi/git/openwms/remoteApp/piApp/epri/createServiceOrder.sh
+Type=Application
+Encoding=UTF-8
+Terminal=false
+Categories=None;

@@ -303,7 +303,7 @@ class Example(tk.Frame):
         except Exception, e:
             print "taking pic error : " + str(e)
             self.imageFile = 'testimage.jpg'
-        self.top = tk.Toplevel()
+        self.topCam = tk.Toplevel()
         # todo : temp below for testing
         #self.imageFile = "/home/pi/wms/004ce28b-d087-4ed1-b6e0-91fc0b2db8e3.jpg"
         unsizedImage = Image.open(self.imageFile)
@@ -311,11 +311,11 @@ class Example(tk.Frame):
         img = ImageTk.PhotoImage(resized)
 
         
-        imglabel = tk.Label(self.top,image=img)
+        imglabel = tk.Label(self.topCam,image=img)
         imglabel.image = img
         imglabel.pack(fill="both") #, expand=1)
 
-        bbar = tk.Frame(self.top)
+        bbar = tk.Frame(self.topCam)
         bbar.pack(fill="both",expand=1)
 
         b1 = tk.Button(bbar,text=u"OK", command=self.OnSavePicButtonClick)
@@ -332,33 +332,36 @@ class Example(tk.Frame):
         y = 0
 
         # make the root window the size of the image
-        self.top.geometry("300x240")
+        self.topCam.geometry("300x240")
+	print "cam created"
 
     def OnSavePicButtonClick(self):
+	print "save pressed"
         jpgName = os.path.basename(self.imageFile)
         if self.uploadStatus == 'on':
             try:
                 print 'uploading image...'
                 print 'url : ' + self.upload + ', imagefile : ' + self.imageFile
                 r = requests.post(self.upload, files={self.imageFile: open(self.imageFile, 'rb')})
+                self.topCam.destroy()      
                 if( r.status_code == 200 ):
                     tkMessageBox.showinfo("Image Upload", "Image has been uploaded to server")
                 else:
                     tkMessageBox.showerror("Image Upload", "Imager upload failed with code : " + r.status_code)
 
-                print 'image upload complete.'
             except Exception, e:
                 logging.warning('post failed. Server may be down. using default image')
                 tkMessageBox.showerror("Image Upload failed", str(e))
+                self.topCam.destroy()      
         ## todo : this is temp because we don't upload actual images, default image
         self.imageVariable.set(self.imageServer + '/' + jpgName)
         self.image.focus_set()
         self.image.selection_range(0, tk.END)
-        self.top.destroy()      
+        self.topCam.destroy()      
 
 
     def OnCancelPicButtonClick(self):
-        self.top.destroy()
+        self.topCam.destroy()
 
     def OnSendClick(self):
 
