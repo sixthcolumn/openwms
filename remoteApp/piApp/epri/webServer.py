@@ -53,7 +53,7 @@ class ServerHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         logging.warning("======= POST VALUES =======")
         for item in form.list:
 	    logging.warning("writing to file " + item.filename)
- 	    fname = '/usr/local/tomcat7/static/' + os.path.basename(item.filename)
+ 	    fname = '/usr/share/tomcat7/static/' + os.path.basename(item.filename)
 	    f = open(fname, 'w')
 	    f.write(item.value)
 	    f.close()
