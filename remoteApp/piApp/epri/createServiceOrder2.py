@@ -3,7 +3,7 @@ import Tkinter as tk
 import ttk as ttk;
 import sys
 #from Tkinter import *
-# BJG import picamera
+import picamera
 import uuid
 import os.path
 #import ImageTk, Image
@@ -14,7 +14,7 @@ from lxml.builder import ElementMaker
 import subprocess
 from fcntl import fcntl, F_GETFL, F_SETFL
 from os import O_NONBLOCK, read
-# BJG import requests
+import requests
 import logging
 from time import strftime
 import tkMessageBox
@@ -374,6 +374,8 @@ class Example(tk.Frame):
         orderData = E.orderData
         REASON = E.reason
         SEVERITY = E.severity
+        if not self.type.get():
+            self.typeVariable.set("NOT SET")
 
         my_doc = orderData(
             E.header(
@@ -463,6 +465,7 @@ class Example(tk.Frame):
                 else:
                     text.insert(tk.END,"Result : " + rxml.xpath("//orders/Result")[0].text)
                     text.insert(tk.END,"\n\n" + rxml.xpath("//orders/ID")[0].text)
+                    print tk.END,"\n\n" + rxml.xpath("//orders/ID")[0].text
             except: # catch all
                 text.insert(tk.END,"Operation Failed:\n\n" + xmlString);
 
