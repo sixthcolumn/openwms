@@ -1,0 +1,50 @@
+<root>
+	<!-- aws server http://54.174.134.152 -->
+	<!--
+		The epri server. This is where the createMaintOrder and
+		getMaintOrder soap services live
+	-->
+	<urlBase>http://192.168.1.214:8080/epri-61968-6/</urlBase>
+
+	<!--
+		When all else fails, this is the url of a picture of
+		a dog. It is uploaded as the 'image file' when you
+		do a create maint order, if all else fails. for testing
+	-->
+	<defaultImageFile>http://10.3.253.100:8080/static/xformer.jpg</defaultImageFile>
+
+	<!--
+		for getMaint order, if this is not commented out it is pre-placed
+		in the MRID entry box, to save time for when you're demoing
+		and you don't want to type in a 40 character search string
+	-->
+	<defaultMrid>aa95d5e6-fb3a-4f93-8087-4636c7b4cae8</defaultMrid> 
+
+	<!--
+		If implemented on the epri server, this is where images
+		uploaded from create order are saved and can be accessed
+		live from the web app
+	-->
+	<imageServer>http://10.3.253.100:8080/static</imageServer>
+
+	<!--
+		A simple python web server should be running on the epri
+		server. If it is running, this is the address the create
+		maint order will post images to, saving. They can be accessed
+		via imageServer var above. turn off/on in status attribute
+	-->
+	<imageUploadServer status="on">http://192.168.1.214:8004</imageUploadServer>
+
+	<!--
+		A minimal set of header data to send.
+	-->
+	<header>
+		<comment>Epri Test</comment>
+		<context>Ctx1</context>
+		<organization>Epri</organization>
+		<revision>1.0a</revision>
+		<source>epri</source>
+		<userid>epriuser</userid>
+		<verb>create</verb>
+	</header>
+</root>
