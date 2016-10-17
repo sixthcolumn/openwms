@@ -1,5 +1,0 @@
-# to login as root
-# mysql -u root
-
-create database epri;
-grant all on epri.* to epri@localhost identified by 'epri';
