@@ -1,0 +1,25 @@
+<%= form_for(@proced_measurement) do |f| %>
+  <% if @proced_measurement.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@proced_measurement.errors.count, "error") %> prohibited this proced_measurement from being saved:</h2>
+
+      <ul>
+      <% @proced_measurement.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :proced_id %><br>
+    <%= f.text_field :proced_id %>
+  </div>
+  <div class="field">
+    <%= f.label :measurement_id %><br>
+    <%= f.text_field :measurement_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

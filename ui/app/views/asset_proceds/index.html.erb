@@ -1,0 +1,27 @@
+<h1>Listing asset_proceds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Asset</th>
+      <th>Proced</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @asset_proceds.each do |asset_proced| %>
+      <tr>
+        <td><%= asset_proced.asset %></td>
+        <td><%= asset_proced.proced %></td>
+        <td><%= link_to 'Show', asset_proced %></td>
+        <td><%= link_to 'Edit', edit_asset_proced_path(asset_proced) %></td>
+        <td><%= link_to 'Destroy', asset_proced, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Asset proced', new_asset_proced_path %>

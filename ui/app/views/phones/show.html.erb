@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Areacode:</strong>
+  <%= @phone.areacode %>
+</p>
+
+<p>
+  <strong>Citycode:</strong>
+  <%= @phone.citycode %>
+</p>
+
+<p>
+  <strong>Countrycode:</strong>
+  <%= @phone.countrycode %>
+</p>
+
+<p>
+  <strong>Localnumber:</strong>
+  <%= @phone.localnumber %>
+</p>
+
+<p>
+  <strong>Extension:</strong>
+  <%= @phone.extension %>
+</p>
+
+<p>
+  <strong>Phonetype:</strong>
+  <%= @phone.phonetype %>
+</p>
+
+<p>
+  <strong>Priorityorder:</strong>
+  <%= @phone.priorityorder %>
+</p>
+
+<%= link_to 'Edit', edit_phone_path(@phone) %> |
+<%= link_to 'Back', phones_path %>

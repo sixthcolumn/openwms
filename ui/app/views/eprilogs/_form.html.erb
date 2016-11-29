@@ -1,0 +1,81 @@
+<%= form_for(@eprilog) do |f| %>
+  <% if @eprilog.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@eprilog.errors.count, "error") %> prohibited this eprilog from being saved:</h2>
+
+      <ul>
+      <% @eprilog.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_area :address %>
+  </div>
+  <div class="field">
+    <%= f.label :contentType %><br>
+    <%= f.text_field :contentType %>
+  </div>
+  <div class="field">
+    <%= f.label :create_date %><br>
+    <%= f.datetime_select :create_date %>
+  </div>
+  <div class="field">
+    <%= f.label :data %><br>
+    <%= f.text_field :data %>
+  </div>
+  <div class="field">
+    <%= f.label :encoding %><br>
+    <%= f.text_field :encoding %>
+  </div>
+  <div class="field">
+    <%= f.label :faultCode %><br>
+    <%= f.text_area :faultCode %>
+  </div>
+  <div class="field">
+    <%= f.label :header %><br>
+    <%= f.text_area :header %>
+  </div>
+  <div class="field">
+    <%= f.label :httpMethod %><br>
+    <%= f.text_area :httpMethod %>
+  </div>
+  <div class="field">
+    <%= f.label :message %><br>
+    <%= f.text_field :message %>
+  </div>
+  <div class="field">
+    <%= f.label :messageId %><br>
+    <%= f.text_field :messageId %>
+  </div>
+  <div class="field">
+    <%= f.label :operation %><br>
+    <%= f.text_field :operation %>
+  </div>
+  <div class="field">
+    <%= f.label :payload %><br>
+    <%= f.text_area :payload %>
+  </div>
+  <div class="field">
+    <%= f.label :responseCode %><br>
+    <%= f.text_area :responseCode %>
+  </div>
+  <div class="field">
+    <%= f.label :resultCode %><br>
+    <%= f.text_field :resultCode %>
+  </div>
+  <div class="field">
+    <%= f.label :INTERFACE_ID %><br>
+    <%= f.number_field :INTERFACE_ID %>
+  </div>
+  <div class="field">
+    <%= f.label :stage %><br>
+    <%= f.text_field :stage %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

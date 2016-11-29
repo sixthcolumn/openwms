@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Work Task Names</h1>
+
+<p><strong>Work Task:</strong>
+<%= link_to @work_task_names.first.work_task.mRID, { :controller => 'work_tasks', :action => 'show', :id => @work_task_names.first.work_task.id } %>
+
+
+
+<div id="table-wrapper">
+  <div id="table-scroll-wnames">
+    <table>
+        <thead>
+            <tr>
+                <th><span class="text">Name</span></th>
+                <th><span class="text">Type</span></th>
+                <th><span class="text">Authority</span></th>
+            </tr>
+        </thead>
+        <tbody>
+<% @work_task_names.each do |wname| %>
+           <tr>
+                 <td><%= wname.name %></td>
+                 <td><%= get_name_type(wname.work_task_name_type) %></td>
+                 <td><%= get_name_type_authority(wname.work_task_name_type) %></td>
+           </tr>
+<% end %>
+        </tbody>
+    </table>
+  </div>
+</div>
+

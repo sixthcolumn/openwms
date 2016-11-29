@@ -1,0 +1,27 @@
+<h1>Listing address_districts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Address</th>
+      <th>District</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @address_districts.each do |address_district| %>
+      <tr>
+        <td><%= address_district.address %></td>
+        <td><%= address_district.district %></td>
+        <td><%= link_to 'Show', address_district %></td>
+        <td><%= link_to 'Edit', edit_address_district_path(address_district) %></td>
+        <td><%= link_to 'Destroy', address_district, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Address district', new_address_district_path %>

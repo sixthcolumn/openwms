@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  start_tstamp: 2015-06-04 20:19:47
+  end_tstamp: 2015-06-04 20:19:47
+
+two:
+  type: 
+  start_tstamp: 2015-06-04 20:19:47
+  end_tstamp: 2015-06-04 20:19:47

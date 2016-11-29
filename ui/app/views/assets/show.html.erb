@@ -1,0 +1,91 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Asset</h1>
+<p>
+  <strong>Mrid:</strong>
+  <%= @asset.mRID %>
+</p>
+
+<p>
+  <strong>Critical flag:</strong>
+  <%= @asset.critical_flag %>
+</p>
+
+<p>
+  <strong>UTC number:</strong>
+  <%= @asset.utc_number %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+ <% if @asset.address %>
+    <%= link_to get_basic_address_info(@asset.address), { :controller => 'addresses', :action => 'show', :id => @asset.address.id }, title: 'navigate to detailed address info', rel: 'tooltip', relative: true %>
+ <% end %>
+</p>
+
+<table border=0 >
+
+<TR>
+<TD> <strong>Names</strong></TD>
+<TD> <strong>Procedures</strong></TD>
+</TR>
+
+<TR>
+<TD>
+<div id="table-wrapper">
+  <div id="table-scroll-anames">
+    <table>
+        <thead>
+            <tr>
+                <th><span class="text">Name</span></th>
+                <th><span class="text">Type</span></th>
+                <th><span class="text">Authority</span></th>
+            </tr>
+        </thead>
+        <tbody>
+<% @asset.asset_names.each do |aname| %>
+           <tr>
+              <td><%= aname.name %></td>
+              <td><%= get_name_type(aname.asset_name_type) %></td>
+              <td><%= get_name_type_authority(aname.asset_name_type) %></td>
+           </tr>
+<% end %>
+        </tbody>
+    </table>
+  </div>
+</div>
+</TD>
+<TD>
+<div id="table-wrapper">
+  <div id="table-scroll-aprocs">
+    <table>
+        <thead>
+            <tr>
+                <th><span class="text">Instruction</span></th>
+                <th><span class="text">Kind</span></th>
+                <th><span class="text">Sequence</span></th>
+                <th><span class="text">Measurements</span></th>
+            </tr>
+        </thead>
+        <tbody>
+<% @asset.proceds.each do |cprocs| %>
+           <tr>
+             <td>
+                <%= link_to cprocs.instruction, { :controller => 'proceds', :action => 'show', :id => cprocs.id }, title: 'navigate to procedure', rel: 'tooltip', relative: true %>
+             </td>
+             <td><%= cprocs.kind %></td>
+             <td><%= cprocs.sequence %></td>
+             <td><%= get_num_measurements(cprocs.measurements) %></td>
+
+           </tr>
+<% end %>
+        </tbody>
+    </table>
+  </div>
+</div>
+</TD>
+</TR>
+
+</table>
+
+

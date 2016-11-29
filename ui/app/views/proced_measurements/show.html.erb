@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Proced:</strong>
+  <%= @proced_measurement.proced %>
+</p>
+
+<p>
+  <strong>Measurement:</strong>
+  <%= @proced_measurement.measurement %>
+</p>
+
+<%= link_to 'Edit', edit_proced_measurement_path(@proced_measurement) %> |
+<%= link_to 'Back', proced_measurements_path %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Contactperson:</strong>
+  <%= @contactperson_address.contactperson %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @contactperson_address.address %>
+</p>
+
+<p>
+  <strong>Address type:</strong>
+  <%= @contactperson_address.address_type %>
+</p>
+
+<p>
+  <strong>Priority order:</strong>
+  <%= @contactperson_address.priority_order %>
+</p>
+
+<%= link_to 'Edit', edit_contactperson_address_path(@contactperson_address) %> |
+<%= link_to 'Back', contactperson_addresses_path %>

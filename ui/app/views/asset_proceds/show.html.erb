@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Asset:</strong>
+  <%= @asset_proced.asset %>
+</p>
+
+<p>
+  <strong>Proced:</strong>
+  <%= @asset_proced.proced %>
+</p>
+
+<%= link_to 'Edit', edit_asset_proced_path(@asset_proced) %> |
+<%= link_to 'Back', asset_proceds_path %>

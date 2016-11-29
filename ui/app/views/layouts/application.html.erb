@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!--
+       _____                  _    ____  ___ _____ 
+      |  _  |                | |  | |  \/  |/  ___|
+      | | | |_ __   ___ _ __ | |  | | .  . |\ `--. 
+      | | | | '_ \ / _ \ '_ \| |/\| | |\/| | `--. \
+      \ \_/ / |_) |  __/ | | \  /\  / |  | |/\__/ /
+       \___/| .__/ \___|_| |_|\/  \/\_|  |_/\____/ 
+            | |                                    
+            |_|   Copyright 2015 EPRI, Inc.
+
+      2015-Jul-20: Applied bootstrap3 theme to display applicaiton.
+
+  -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="EPRI">
+    <%= favicon_link_tag 'favicon.ico' %>
+
+    <title><%= yield(:title) %> OpenWMS - EPRI - Electric Power Research Institute</title>
+    <%= csrf_meta_tag %>
+
+    <!-- Bootstrap CSS  ================================================== -->
+    <%= stylesheet_link_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css' %>
+    <%= stylesheet_link_tag 'jumbotron' %>
+
+    <!-- Metrial Design Extensions  ================================================== -->
+    <%= stylesheet_link_tag 'roboto' %>
+    <%= stylesheet_link_tag 'material' %>
+    <%= stylesheet_link_tag 'ripples' %>
+
+    <!-- Video Player Extensions ===================================================== -->
+    <%= stylesheet_link_tag 'http://vjs.zencdn.net/4.12/video-js.css' %>
+
+    <!-- OpenWMS Specific Stylesheet -->
+    <%= stylesheet_link_tag 'openwms-theme' %>
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="<%= stylesheet_link_tag 'ie8-responsive-file-warning.js'%>"></script><![endif]-->
+    <!--<script src="<%= stylesheet_link_tag 'ie-emulation-modes-warning.js'%>"></script>-->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <%= javascript_include_tag 'https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js' %>
+      <%= javascript_include_tag 'https://oss.maxcdn.com/respond/1.4.2/respond.min.js' %>
+    <![endif]-->
+  </head>
+
+  <body>
+
+
+<!-- Static navbar -->
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">  <!--  -fluid -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+	    <%= link_to image_tag("EPRILogo.png"), {:controller => 'home', :action => 'splash'}, {:class => 'navbar-brand'} %>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><%= link_to "OpenWMS", {:controller => "home", :action => "index"} %></li>
+              <li class="active"><%= link_to "Work Orders", {:controller => "home", :action => "index" } %></li>
+              <li class="active"><%= link_to "Service Orders", {:controller => "service", :action => "index" } %></li>
+            </ul>
+
+
+            <ul class="nav navbar-nav navbar-right">
+
+	    <!-- New Material Search Bar -->
+
+	      <!-- EPRI Corporate Navigation -->
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">EPRI Corporate <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+
+		  <li><a title="Careers" href="http://my.epri.com/portal/server.pt?open=512&objID=327&mode=2">Careers</a></li>
+		  <li><a title="Contact EPRI" href="http://my.epri.com/portal/server.pt?open=512&objID=213&PageID=265&mode=2">Contact EPRI</a></li>
+                  <li role="separator" class="divider"></li>
+
+		  <li><a title="Copyright Policy" href="http://my.epri.com/portal/server.pt?open=512&objID=213&PageID=265&mode=2">Copyright Policy</a></li>
+		  <li><a title="Privacy Statement" href="http://mydocs.epri.com/Docs/Webmgmt/Privacy_Statement.htm">Privacy Statement</a></li>
+		  <li><a title="Terms of Use" href="http://mydocs.epri.com/Docs/Webmgmt/Terms_of_Use.htm">Terms of Use</a></li>
+                  <li role="separator" class="divider"></li>
+		  <li><a href="#">800.313.3774</a></li>
+		  <li><a href="#">650.855.2121</a></li>
+		  <li><a href="#">3420 Hillview Ave</a></li>
+		  <li><a href="#">Palo Alto, CA 94304</a></li>
+		  <li><a href="#">&copy 2001-2015</a></li>
+                </ul>
+              </li>
+	      <!-- EPRI Corporate Navigation -->
+
+            <li><a href="../navbar-static-top/">Bill Boswell</a></li>
+
+	    <form class="navbar-form navbar-left" style="margin-top: 13px;">
+           <input type="text" class="form-control col-lg-6" placeholder="Search WO-#">
+           </form>
+
+<!--
+	      <form class="navbar-form navbar-right">
+		<div class="form-group">
+		  <input type="text" autofocus="autofocus" placeholder="WO-#, Address, Name" class="form-control">
+		</div>
+		<button type="submit" class="btn btn-primary">Search</button>
+              </form>
+-->
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+      <!-- Page Body COntent Begins -->
+    <div class="wrapper_content">
+      <%= yield %>
+    </div>
+
+    <hr>
+    
+    <footer>
+      <div class="container">
+	<div class="col-md-12">
+	  <p>&copy; Electric Research Power Institute 2001-2015 - All Rights Reserved</p>    
+	</div>
+      </div>
+    </footer>
+    
+    <!-- Bootstrap core JavaScript  ================================================== -->
+    <%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js' %>
+    <%= javascript_include_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js' %>
+    <%= javascript_include_tag 'ripples' %>
+    <%= javascript_include_tag 'material' %>
+
+    <!-- Video Player Function ======================================================= -->
+    <%= javascript_include_tag 'http://vjs.zencdn.net/4.12/video.js' %>
+
+    <script>
+      $(document).ready(function() {
+      // This command is used to initialize some elements and make them work properly
+      $.material.init();
+      });
+    </script>
+    
+    <%= javascript_include_tag 'openwms' %>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <%= javascript_include_tag 'ie10-viewport-bug-workaround.js'%>
+
+  </body>
+</html>

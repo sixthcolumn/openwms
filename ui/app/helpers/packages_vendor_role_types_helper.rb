@@ -1,0 +1,2 @@
+module PackagesVendorRoleTypesHelper
+end

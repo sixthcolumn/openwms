@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Work order:</strong>
+  <%= @work_order_location_object_ref.work_order %>
+</p>
+
+<p>
+  <strong>Loc ref object:</strong>
+  <%= @work_order_location_object_ref.loc_ref_object %>
+</p>
+
+<%= link_to 'Edit', edit_work_order_location_object_ref_path(@work_order_location_object_ref) %> |
+<%= link_to 'Back', work_order_location_object_refs_path %>

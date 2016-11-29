@@ -1,0 +1,29 @@
+<h1>Listing proceds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Instruction</th>
+      <th>Kind</th>
+      <th>Sequence</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @proceds.each do |proced| %>
+      <tr>
+        <td><%= proced.instruction %></td>
+        <td><%= proced.kind %></td>
+        <td><%= proced.sequence %></td>
+        <td><%= link_to 'Show', proced %></td>
+        <td><%= link_to 'Edit', edit_proced_path(proced) %></td>
+        <td><%= link_to 'Destroy', proced, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Proced', new_proced_path %>

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Work task:</strong>
+  <%= @work_task_asset.work_task %>
+</p>
+
+<p>
+  <strong>Asset:</strong>
+  <%= @work_task_asset.asset %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @work_task_asset.created_by %>
+</p>
+
+<%= link_to 'Edit', edit_work_task_asset_path(@work_task_asset) %> |
+<%= link_to 'Back', work_task_assets_path %>

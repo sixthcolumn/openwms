@@ -1,0 +1,24 @@
+<% content_for :title, "Edit Work Order " + @work_order.id.to_s %>
+
+<div class="row">&nbsp;</div>
+
+<div class="container ">
+  <!-- Example row of columns -->
+  <% if notice %>
+  <div class="row col-lg-6 col-lg-offset-3">
+    <p id="notice"><%= notice %></p>    
+  </div>
+  <% end %>
+    
+  
+  <div class="row">
+
+<h1>Editing Work Order <%= @work_order.work_order_name%></h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @work_order %> |
+<%= link_to 'Back', work_orders_path %>
+
+</div>
+</div>

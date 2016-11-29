@@ -1,0 +1,77 @@
+<h1>Listing work_orders</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Work order name</th>
+      <th>Created by</th>
+      <th>Mrid</th>
+      <th>Kind</th>
+      <th>Request datetime</th>
+      <th>Updated by</th>
+      <th>Status</th>
+      <th>Status kind</th>
+      <th>Priority justification</th>
+      <th>Priority rank</th>
+      <th>Priority type</th>
+      <th>Comments</th>
+      <th>Description</th>
+      <th>Title</th>
+      <th>Request contact</th>
+      <th>Address</th>
+      <th>Primary object ref</th>
+      <th>Grid location</th>
+      <th>Location comment</th>
+      <th>Location contact</th>
+      <th>Gps latitude</th>
+      <th>Gps longitude</th>
+      <th>Gps altitude</th>
+      <th>Internal building name</th>
+      <th>Internal building num</th>
+      <th>Internal floor</th>
+      <th>Internal room num</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @work_orders.each do |work_order| %>
+      <tr>
+        <td><%= work_order.work_order_name %></td>
+        <td><%= work_order.created_by %></td>
+        <td><%= work_order.mRid %></td>
+        <td><%= work_order.kind %></td>
+        <td><%= work_order.request_datetime %></td>
+        <td><%= work_order.updated_by %></td>
+        <td><%= work_order.status %></td>
+        <td><%= work_order.status_kind %></td>
+        <td><%= work_order.priority_justification %></td>
+        <td><%= work_order.priority_rank %></td>
+        <td><%= work_order.priority_type %></td>
+        <td><%= work_order.comments %></td>
+        <td><%= work_order.description %></td>
+        <td><%= work_order.title %></td>
+        <td><%= work_order.request_contact %></td>
+        <td><%= work_order.address %></td>
+        <td><%= work_order.primary_object_ref %></td>
+        <td><%= work_order.grid_location %></td>
+        <td><%= work_order.location_comment %></td>
+        <td><%= work_order.location_contact %></td>
+        <td><%= work_order.gps_latitude %></td>
+        <td><%= work_order.gps_longitude %></td>
+        <td><%= work_order.gps_altitude %></td>
+        <td><%= work_order.internal_building_name %></td>
+        <td><%= work_order.internal_building_num %></td>
+        <td><%= work_order.internal_floor %></td>
+        <td><%= work_order.internal_room_num %></td>
+        <td><%= link_to 'Show', work_order %></td>
+        <td><%= link_to 'Edit', edit_work_order_path(work_order) %></td>
+        <td><%= link_to 'Destroy', work_order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Work order', new_work_order_path %>

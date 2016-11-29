@@ -1,0 +1,2 @@
+module AssetProcedsHelper
+end

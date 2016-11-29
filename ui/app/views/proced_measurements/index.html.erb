@@ -1,0 +1,27 @@
+<h1>Listing proced_measurements</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Proced</th>
+      <th>Measurement</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @proced_measurements.each do |proced_measurement| %>
+      <tr>
+        <td><%= proced_measurement.proced %></td>
+        <td><%= proced_measurement.measurement %></td>
+        <td><%= link_to 'Show', proced_measurement %></td>
+        <td><%= link_to 'Edit', edit_proced_measurement_path(proced_measurement) %></td>
+        <td><%= link_to 'Destroy', proced_measurement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Proced measurement', new_proced_measurement_path %>

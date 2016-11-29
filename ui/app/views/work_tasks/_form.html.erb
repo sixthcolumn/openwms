@@ -1,0 +1,41 @@
+<%= form_for(@work_task) do |f| %>
+  <% if @work_task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@work_task.errors.count, "error") %> prohibited this work_task from being saved:</h2>
+
+      <ul>
+      <% @work_task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mRID %><br>
+    <%= f.text_field :mRID %>
+  </div>
+  <div class="field">
+    <%= f.label :instructions %><br>
+    <%= f.text_field :instructions %>
+  </div>
+  <div class="field">
+    <%= f.label :subject %><br>
+    <%= f.text_field :subject %>
+  </div>
+  <div class="field">
+    <%= f.label :crew_eta %><br>
+    <%= f.datetime_select :crew_eta %>
+  </div>
+  <div class="field">
+    <%= f.label :task_type %><br>
+    <%= f.text_field :task_type %>
+  </div>
+  <div class="field">
+    <%= f.label :old_asset_id %><br>
+    <%= f.text_field :old_asset_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

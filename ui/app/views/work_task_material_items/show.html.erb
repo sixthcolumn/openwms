@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Work task:</strong>
+  <%= @work_task_material_item.work_task %>
+</p>
+
+<p>
+  <strong>Material item:</strong>
+  <%= @work_task_material_item.material_item %>
+</p>
+
+<%= link_to 'Edit', edit_work_task_material_item_path(@work_task_material_item) %> |
+<%= link_to 'Back', work_task_material_items_path %>

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @time_schedule.type %>
+</p>
+
+<p>
+  <strong>Start tstamp:</strong>
+  <%= @time_schedule.start_tstamp %>
+</p>
+
+<p>
+  <strong>End tstamp:</strong>
+  <%= @time_schedule.end_tstamp %>
+</p>
+
+<%= link_to 'Edit', edit_time_schedule_path(@time_schedule) %> |
+<%= link_to 'Back', time_schedules_path %>

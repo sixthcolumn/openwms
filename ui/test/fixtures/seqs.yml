@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  seq_name: MyString
+  start: 1
+  increment: 1
+  curval: 1
+  flag: MyString
+
+two:
+  seq_name: MyString
+  start: 1
+  increment: 1
+  curval: 1
+  flag: MyString

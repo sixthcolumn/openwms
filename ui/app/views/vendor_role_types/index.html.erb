@@ -1,0 +1,27 @@
+<h1>Listing vendor_role_types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Active flag</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vendor_role_types.each do |vendor_role_type| %>
+      <tr>
+        <td><%= vendor_role_type.name %></td>
+        <td><%= vendor_role_type.active_flag %></td>
+        <td><%= link_to 'Show', vendor_role_type %></td>
+        <td><%= link_to 'Edit', edit_vendor_role_type_path(vendor_role_type) %></td>
+        <td><%= link_to 'Destroy', vendor_role_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vendor role type', new_vendor_role_type_path %>

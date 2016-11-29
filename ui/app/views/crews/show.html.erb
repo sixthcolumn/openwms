@@ -1,0 +1,73 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Crew</h1>
+<p>
+  <strong>Mrid:</strong>
+  <%= @crew.mRid %>
+</p>
+
+<table border=0 style="border-collapse:collapse;">
+
+<TR>
+<TD> <strong>Names</strong></TD>
+<TD> <strong>Assets</strong></TD>
+</TR>
+
+<TR>
+<TD>
+<div id="table-wrapper">
+  <div id="table-scroll-cnames">
+    <table>
+        <thead>
+            <tr>
+                <th><span class="text">Name</span></th>
+                <th><span class="text">Type</span></th>
+                <th><span class="text">Authority</span></th>
+            </tr>
+        </thead>
+        <tbody>
+<% @crew.crew_names.each do |cname| %>
+           <tr>
+              <td><%= cname.name %></td>
+              <td><%= get_name_type(cname.crew_name_type) %></td>
+              <td><%= get_name_type_authority(cname.crew_name_type) %></td>
+           </tr>
+<% end %>
+        </tbody>
+    </table>
+  </div>
+</div>
+</TD>
+<TD>
+<div id="table-wrapper">
+  <div id="table-scroll-cassets">
+    <table>
+        <thead>
+            <tr>
+                <th><span class="text">mRID</span></th>
+                <th><span class="text">Critical</span></th>
+                <th><span class="text">UTC</span></th>
+                <th><span class="text">Address</span></th>
+            </tr>
+        </thead>
+        <tbody>
+<% @crew.assets.each do |casset| %>
+           <tr>
+             <td>
+                <%= link_to casset.mRID, { :controller => 'assets', :action => 'show', :id => casset.id }, title: 'navigate to asset', rel: 'tooltip', relative: true %>
+             </td>
+             <td><%= casset.critical_flag %></td>
+             <td><%= casset.utc_number %></td>
+             <td><%= get_basic_address_info(casset.address) %></td>
+
+           </tr>
+<% end %>
+        </tbody>
+    </table>
+  </div>
+</div>
+</TD>
+</TR>
+
+</table>
+

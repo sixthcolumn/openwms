@@ -1,0 +1,21 @@
+<%= form_for(@hazard) do |f| %>
+  <% if @hazard.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@hazard.errors.count, "error") %> prohibited this hazard from being saved:</h2>
+
+      <ul>
+      <% @hazard.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :hazard_name %><br>
+    <%= f.text_field :hazard_name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

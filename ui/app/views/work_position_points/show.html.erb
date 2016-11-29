@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Work order:</strong>
+  <%= @work_position_point.work_order %>
+</p>
+
+<p>
+  <strong>Sequence num:</strong>
+  <%= @work_position_point.sequence_num %>
+</p>
+
+<p>
+  <strong>Xposition:</strong>
+  <%= @work_position_point.xposition %>
+</p>
+
+<p>
+  <strong>Yposition:</strong>
+  <%= @work_position_point.yposition %>
+</p>
+
+<p>
+  <strong>Zposition:</strong>
+  <%= @work_position_point.zposition %>
+</p>
+
+<%= link_to 'Edit', edit_work_position_point_path(@work_position_point) %> |
+<%= link_to 'Back', work_position_points_path %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  phases: MyString
+  unit_multiplier: 1.5
+  unit_symbol: MyString
+
+two:
+  type: 
+  phases: MyString
+  unit_multiplier: 1.5
+  unit_symbol: MyString

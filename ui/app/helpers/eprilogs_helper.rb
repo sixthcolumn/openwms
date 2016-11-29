@@ -1,0 +1,2 @@
+module EprilogsHelper
+end

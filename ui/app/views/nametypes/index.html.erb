@@ -1,0 +1,27 @@
+<h1>Listing nametypes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Name type authority</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @nametypes.each do |nametype| %>
+      <tr>
+        <td><%= nametype.name %></td>
+        <td><%= nametype.name_type_authority %></td>
+        <td><%= link_to 'Show', nametype %></td>
+        <td><%= link_to 'Edit', edit_nametype_path(nametype) %></td>
+        <td><%= link_to 'Destroy', nametype, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Nametype', new_nametype_path %>

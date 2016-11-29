@@ -1,0 +1,182 @@
+<p id="notice"><%= notice %></p>
+
+<table border=0 style="border-collapse:collapse;">
+<TR>
+<TD>
+  <strong>Name:</strong>
+</TD>
+<TD>
+  <%= "#{@contactperson.prefix} #{@contactperson.lastname}, #{@contactperson.firstname} #{@contactperson.suffix}" %>
+</TD>
+<TD>
+<TD>
+  <strong>Government ID:</strong>
+</TD>
+<TD>
+  <%= @contactperson.governmentid %>
+</TD>
+
+<TD>
+  <strong>Affiliation:</strong>
+</TD>
+<TD>
+  <%= @contactperson.affiliation %>
+</TD>
+
+<TD>
+  <strong>Primary:</strong>
+</TD>
+<TD>
+  <%= @contactperson.primary_id %>
+</TD>
+<TD>
+  <strong>Secondary:</strong>
+</TD>
+<TD>
+  <%= @contactperson.secondary_id %>
+</TD>
+</TR>
+</table>
+
+<p>
+<strong>Contact Info</strong>
+</p>
+
+<table border=1 style="border-collapse:collapse;">
+
+<TR>
+<TD>Phones</TD>
+<TD></TD>
+<TD>Emails</TD>
+<TD></TD>
+<TD>Other</TD>
+</TR>
+
+<TR>
+<TD>
+<div id="table-wrapper">
+  <div id="table-scroll-phones">
+    <table>
+        <thead>
+            <tr>
+                <th><span class="text">Country</span></th>
+                <th><span class="text">Area</span></th>
+                <th><span class="text">Local</span></th>
+                <th><span class="text">Extension</span></th>
+                <th><span class="text">City</span></th>
+                <th><span class="text">Type</span></th>
+                <th><span class="text">PriorityOrder</span></th>
+
+            </tr>
+        </thead>
+        <tbody>
+<% @contactperson.phones.each do |cphone| %>
+           <tr>
+              <td><%= cphone.countrycode %></td>
+              <td><%= cphone.areacode %></td>
+              <td><%= cphone.localnumber %></td>
+              <td><%= cphone.extension %></td>
+              <td><%= cphone.citycode %></td>
+              <td><%= cphone.phonetype %></td>
+              <td><%= cphone.priorityorder %></td>
+           </tr>
+<% end %>
+        </tbody>
+    </table>
+  </div>
+</div>
+</TD>
+<TD></TD>
+<TD>
+<div id="table-wrapper">
+  <div id="table-scroll-cemails">
+    <table>
+        <thead>
+            <tr>
+                <th><span class="text">Email</span></th>
+                <th><span class="text">Type</span></th>
+                <th><span class="text">PriorityOrder</span></th>
+
+            </tr>
+        </thead>
+        <tbody>
+<% @contactperson.emails.each do |cemail| %>
+           <tr>
+              <td><%= cemail.email %></td>
+              <td><%= cemail.email_type %></td>
+              <td><%= cemail.priority_order %></td>
+           </tr>
+<% end %>
+        </tbody>
+    </table>
+  </div>
+</div>
+</TD>
+<TD></TD>
+<TD>
+<div id="table-wrapper">
+  <div id="table-scroll-cother">
+    <table>
+        <thead>
+            <tr>
+                <th><span class="text">Details</span></th>
+                <th><span class="text">Type</span></th>
+
+            </tr>
+        </thead>
+        <tbody>
+<% @contactperson.other_contactinfos.each do |cother| %>
+           <tr>
+              <td><%= cother.details %></td>
+              <td><%= cother.info_type %></td>
+           </tr>
+<% end %>
+        </tbody>
+    </table>
+  </div>
+</div>
+</TD>
+</TR>
+</table>
+
+<p>
+<strong>Address Info</strong>
+</p>
+
+<div id="table-wrapper">
+  <div id="table-scroll-caddress">
+    <table>
+        <thead>
+            <tr>
+                <th><span class="text">Address1</span></th>
+                <th><span class="text">Address2</span></th>
+                <th><span class="text">Building</span></th>
+                <th><span class="text">City</span></th>
+                <th><span class="text">State/Province</span></th>
+                <th><span class="text">Country</span></th>
+                <th><span class="text">Postal code</span></th>
+
+            </tr>
+        </thead>
+        <tbody>
+<% @contactperson.addresses.each do |caddress| %>
+           <tr>
+              <td>
+                <%= link_to caddress.sd_address_1, { :controller => 'addresses', :action => 'show', :id => caddress.id }, title: 'navigate to detailed address info', rel: 'tooltip', relative: true %>
+              </td>
+              <td><%= caddress.sd_address_2 %></td>
+              <td><%= caddress.sd_building_name %></td>
+              <td><%= caddress.td_name %></td>
+              <td><%= caddress.td_state_province %></td>
+              <td><%= caddress.td_country %></td>
+              <td><%= caddress.td_postal_code %></td>
+           </tr>
+<% end %>
+        </tbody>
+    </table>
+  </div>
+</div>
+
+
+<%= link_to 'Edit', edit_contactperson_path(@contactperson) %> |
+<%= link_to 'Back', contactpeople_path %>

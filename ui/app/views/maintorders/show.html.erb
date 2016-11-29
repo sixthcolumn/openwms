@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Maintenance Order</h1>
+
+<p>
+  <strong>Mrid:</strong>
+  <%= @maintorder.mRID %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @maintorder.status %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @maintorder.created_by %>
+</p>
+
+<div id="table-wrapper">
+  <div id="table-scroll-onames">
+    <table>
+        <thead>
+            <tr>
+                <th><span class="text">Name</span></th>
+                <th><span class="text">Type</span></th>
+                <th><span class="text">Authority</span></th>
+            </tr>
+        </thead>
+        <tbody>
+<% @maintorder.maintorder_names.each do |oname| %>
+           <tr>
+              <td><%= oname.name %></td>
+              <td><%= get_name_type(oname.maintorder_name_type) %></td>
+              <td><%= get_name_type_authority(oname.maintorder_name_type) %></td>
+           </tr>
+<% end %>
+        </tbody>
+    </table>
+  </div>
+</div>
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+
+        <!--- Information Flavor Text -->
+        <%= render template: "home/_workservice_order_help.html.erb" %>
+
+        <!-- Iteration for Work Order Tile -->
+        <% @maintorder.work_orders.each { |work| %>
+        <% if work then %>
+        <%= render template: "home/_work_order.html.erb", :locals => { :work => work } %>
+        <% end %>
+        <% } %>
+
+      </div>
+

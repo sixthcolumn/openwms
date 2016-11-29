@@ -1,0 +1,148 @@
+<% content_for :title, "Address " + @address.sd_address_1.to_s %>
+<div class="container">
+  <!-- Example row of columns -->
+  <% if notice %>
+  <div class="row col-lg-6 col-lg-offset-3">
+    <p id="notice"><%= notice %></p>    
+  </div>
+  <% end %>
+    
+  <div class="row">
+
+<h1>Address</h1>
+
+<p>
+  <strong>Sd address 1:</strong>
+  <%= @address.sd_address_1 %>
+</p>
+
+<p>
+  <strong>Sd address 2:</strong>
+  <%= @address.sd_address_2 %>
+</p>
+
+<p>
+  <strong>Sd building name:</strong>
+  <%= @address.sd_building_name %>
+</p>
+
+<p>
+  <strong>Sd code:</strong>
+  <%= @address.sd_code %>
+</p>
+
+<p>
+  <strong>Sd number:</strong>
+  <%= @address.sd_number %>
+</p>
+
+<p>
+  <strong>Sd prefix:</strong>
+  <%= @address.sd_prefix %>
+</p>
+
+<p>
+  <strong>Sd suffix:</strong>
+  <%= @address.sd_suffix %>
+</p>
+
+<p>
+  <strong>Sd suite number:</strong>
+  <%= @address.sd_suite_number %>
+</p>
+
+<p>
+  <strong>Sd type:</strong>
+  <%= @address.sd_type %>
+</p>
+
+<p>
+  <strong>Sd within town limits flag:</strong>
+  <%= @address.sd_within_town_limits_flag %>
+</p>
+
+<p>
+  <strong>Td code:</strong>
+  <%= @address.td_code %>
+</p>
+
+<p>
+  <strong>Td country:</strong>
+  <%= @address.td_country %>
+</p>
+
+<p>
+  <strong>Td name:</strong>
+  <%= @address.td_name %>
+</p>
+
+<p>
+  <strong>Td section:</strong>
+  <%= @address.td_section %>
+</p>
+
+<p>
+  <strong>Td state province:</strong>
+  <%= @address.td_state_province %>
+</p>
+
+<p>
+  <strong>Directions:</strong>
+  <%= @address.directions %>
+</p>
+
+<p>
+  <strong>Td pobox:</strong>
+  <%= @address.td_pobox %>
+</p>
+
+<p>
+  <strong>Td postal code:</strong>
+  <%= @address.td_postal_code %>
+</p>
+
+<p>
+  <strong>Td region:</strong>
+  <%= @address.td_region %>
+</p>
+
+<p>
+  <strong>County:</strong>
+  <%= @address.county %>
+</p>
+
+<p>
+  <strong>Township name:</strong>
+  <%= @address.township_name %>
+</p>
+
+<p>
+  <strong>Subdivision:</strong>
+  <%= @address.subdivision %>
+</p>
+
+<p>
+  <strong>Block:</strong>
+  <%= @address.block %>
+</p>
+
+<p>
+  <strong>Lot:</strong>
+  <%= @address.lot %>
+</p>
+
+<p>
+  <strong>Time zone:</strong>
+  <%= @address.time_zone %>
+</p>
+
+<p>
+  <strong>Coord system:</strong>
+  <%= @address.coord_system %>
+</p>
+
+<%= link_to 'Edit', edit_address_path(@address), { :class => 'btn btn-lg btn-primary' } %> 
+<%= link_to 'Back to Address List', addresses_path, { :class => 'btn btn-lg btn-passive' } %>
+
+</div>
+</div>

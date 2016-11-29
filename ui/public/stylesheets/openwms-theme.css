@@ -1,0 +1,88 @@
+/** EPRI Brand */
+
+/* BACKGROUND - Keep my white on blue back logo 22px tall */
+div.navbar-header a img { 
+    height: 22px;
+}
+/* Navigation Bar - */
+.navbar-inverse { 
+    background-color: #0B2A49 !important;
+}
+.navbar-inverse .navbar-nav>li>a {
+    color: #ccc;
+}
+
+/* Main Page Work Panel with hover gif. */
+.openwms-work-list-panel { 
+
+}
+
+/* White labels in panel hyperlinks */
+/*  - One Type : Success */
+.panel-success .panel-heading a h3  { 
+    color: #fff !important;
+}
+/*  - All Types */
+.panel-heading a h3  { 
+    color: #fff !important;
+}
+
+
+/* Form Buttons - */
+/** I like visible defalt buttons in gray */
+.btn-passive { 
+   background-color: #eee !important;
+}
+
+.panel-passive .panel-heading { 
+   background-color: #777 !important;
+}
+
+
+/** Detail Page */
+.openwms-detail-panel h2 {
+    margin-top: .1em;
+    margin-bottom: 1em;
+}
+
+.openwms-detail-panel h4 {
+    margin-bottom: .1em;
+}
+
+.openwms-detail-panel {
+    margin-bottom: 3em;
+}
+
+
+/** Smaller Jumbotron */
+.jumbotron {
+    padding: 0.5em 0.6em;
+    h1 {
+        font-size: 2em;
+    }
+    p {
+        font-size: 1.2em;
+        .btn {
+            padding: 0.5em;
+        }
+    }
+}
+
+.table-wrapper {
+  position:relative;
+  padding:10px;
+  tbody {
+     padding:10px 10px;
+  }
+  td {
+     padding:10px;
+  }
+}
+
+
+div#table-wrapper td,th {
+   border-spacing:5px;
+   border-collapse:separate;
+   padding:5px;
+}
+

@@ -1,0 +1,29 @@
+<h1>Listing work_task_names</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Work task</th>
+      <th>Name type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @work_task_names.each do |work_task_name| %>
+      <tr>
+        <td><%= work_task_name.name %></td>
+        <td><%= work_task_name.work_task %></td>
+        <td><%= work_task_name.name_type %></td>
+        <td><%= link_to 'Show', work_task_name %></td>
+        <td><%= link_to 'Edit', edit_work_task_name_path(work_task_name) %></td>
+        <td><%= link_to 'Destroy', work_task_name, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Work task name', new_work_task_name_path %>

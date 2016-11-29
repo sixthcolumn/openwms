@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mRID: MyString
+  status: MyString
+  created_by: MyString
+  maintorder_id: 
+  name_type_id: 
+
+two:
+  mRID: MyString
+  status: MyString
+  created_by: MyString
+  maintorder_id: 
+  name_type_id: 

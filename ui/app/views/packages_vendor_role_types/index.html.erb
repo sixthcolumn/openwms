@@ -1,0 +1,27 @@
+<h1>Listing packages_vendor_role_types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Package</th>
+      <th>Vendor role type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @packages_vendor_role_types.each do |packages_vendor_role_type| %>
+      <tr>
+        <td><%= packages_vendor_role_type.package %></td>
+        <td><%= packages_vendor_role_type.vendor_role_type %></td>
+        <td><%= link_to 'Show', packages_vendor_role_type %></td>
+        <td><%= link_to 'Edit', edit_packages_vendor_role_type_path(packages_vendor_role_type) %></td>
+        <td><%= link_to 'Destroy', packages_vendor_role_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Packages vendor role type', new_packages_vendor_role_type_path %>

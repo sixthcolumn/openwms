@@ -1,0 +1,27 @@
+<h1>Listing proxy_interfaces</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Interface</th>
+      <th>Proxy url</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @proxy_interfaces.each do |proxy_interface| %>
+      <tr>
+        <td><%= proxy_interface.interface %></td>
+        <td><%= proxy_interface.proxy_url %></td>
+        <td><%= link_to 'Show', proxy_interface %></td>
+        <td><%= link_to 'Edit', edit_proxy_interface_path(proxy_interface) %></td>
+        <td><%= link_to 'Destroy', proxy_interface, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Proxy interface', new_proxy_interface_path %>

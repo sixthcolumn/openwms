@@ -1,0 +1,25 @@
+<%= form_for(@work_order_attachment) do |f| %>
+  <% if @work_order_attachment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@work_order_attachment.errors.count, "error") %> prohibited this work_order_attachment from being saved:</h2>
+
+      <ul>
+      <% @work_order_attachment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :work_order_id %><br>
+    <%= f.text_field :work_order_id %>
+  </div>
+  <div class="field">
+    <%= f.label :attachment_id %><br>
+    <%= f.text_field :attachment_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

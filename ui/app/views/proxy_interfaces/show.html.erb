@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Interface:</strong>
+  <%= @proxy_interface.interface %>
+</p>
+
+<p>
+  <strong>Proxy url:</strong>
+  <%= @proxy_interface.proxy_url %>
+</p>
+
+<%= link_to 'Edit', edit_proxy_interface_path(@proxy_interface) %> |
+<%= link_to 'Back', proxy_interfaces_path %>
