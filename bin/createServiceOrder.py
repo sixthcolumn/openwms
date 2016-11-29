@@ -3,7 +3,7 @@ import Tkinter as tk
 import ttk as ttk;
 import sys
 #from Tkinter import *
-import picamera
+#import picamera
 import uuid
 import os.path
 #import ImageTk, Image
