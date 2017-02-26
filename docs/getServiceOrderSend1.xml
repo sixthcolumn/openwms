@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+   <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+      <S:Body>
+         <ns4:GetServiceOrdersRequestMessage xmlns="http://iec.ch/TC57/2015/ServiceOrders#" xmlns:ns2="http://iec.ch/TC57/2015/GetServiceOrders#" xmlns:ns3="http://iec.ch/TC57/2011/schema/message" xmlns:ns4="http://iec.ch/TC57/2015/GetServiceOrdersMessage">
+            <ns4:Header>
+               <ns3:Verb>get</ns3:Verb>
+               <ns3:Noun>noun</ns3:Noun>
+            </ns4:Header>
+            <ns4:Request>
+               <ns2:GetServiceOrders>
+                  <ns2:ServiceOrder>
+                     <ns2:mRID>cdde53a7-692e-4322-9841-3f5bb3db9b84</ns2:mRID>
+                  </ns2:ServiceOrder>
+               </ns2:GetServiceOrders>
+            </ns4:Request>
+         </ns4:GetServiceOrdersRequestMessage>
+      </S:Body>
+   </S:Envelope>

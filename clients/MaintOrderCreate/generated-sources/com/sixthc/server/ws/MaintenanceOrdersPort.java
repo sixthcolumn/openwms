@@ -22,8 +22,8 @@ import ch.iec.tc57._2015.maintenanceordersmessage.MaintenanceOrdersPayloadType;
  */
 @WebService(name = "MaintenanceOrders_Port", targetNamespace = "http://iec.ch/TC57/2015/ExecuteMaintenanceOrders")
 @XmlSeeAlso({
-    ch.iec.tc57._2015.maintenanceorders.ObjectFactory.class,
     ch.iec.tc57._2011.schema.message.ObjectFactory.class,
+    ch.iec.tc57._2015.maintenanceorders.ObjectFactory.class,
     ch.iec.tc57._2015.maintenanceordersmessage.ObjectFactory.class
 })
 public interface MaintenanceOrdersPort {

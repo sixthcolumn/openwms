@@ -26,8 +26,8 @@ public class ObjectFactory {
 
     private final static QName _EventMessage_QNAME = new QName("http://iec.ch/TC57/2011/schema/message", "EventMessage");
     private final static QName _Message_QNAME = new QName("http://iec.ch/TC57/2011/schema/message", "Message");
-    private final static QName _ResponseMessage_QNAME = new QName("http://iec.ch/TC57/2011/schema/message", "ResponseMessage");
     private final static QName _FaultMessage_QNAME = new QName("http://iec.ch/TC57/2011/schema/message", "FaultMessage");
+    private final static QName _ResponseMessage_QNAME = new QName("http://iec.ch/TC57/2011/schema/message", "ResponseMessage");
     private final static QName _RequestMessage_QNAME = new QName("http://iec.ch/TC57/2011/schema/message", "RequestMessage");
 
     /**
@@ -264,21 +264,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ResponseMessageType }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://iec.ch/TC57/2011/schema/message", name = "ResponseMessage")
-    public JAXBElement<ResponseMessageType> createResponseMessage(ResponseMessageType value) {
-        return new JAXBElement<ResponseMessageType>(_ResponseMessage_QNAME, ResponseMessageType.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link FaultMessageType }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://iec.ch/TC57/2011/schema/message", name = "FaultMessage")
     public JAXBElement<FaultMessageType> createFaultMessage(FaultMessageType value) {
         return new JAXBElement<FaultMessageType>(_FaultMessage_QNAME, FaultMessageType.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ResponseMessageType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iec.ch/TC57/2011/schema/message", name = "ResponseMessage")
+    public JAXBElement<ResponseMessageType> createResponseMessage(ResponseMessageType value) {
+        return new JAXBElement<ResponseMessageType>(_ResponseMessage_QNAME, ResponseMessageType.class, null, value);
     }
 
     /**

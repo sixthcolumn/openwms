@@ -1,0 +1,74 @@
+ <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+      <soap:Body>
+         <ns2:GetMaintenanceOrdersResponseMessage xmlns:ns4="http://iec.ch/TC57/2015/MaintenanceOrders#" xmlns:ns3="http://iec.ch/TC57/2015/GetMaintenanceOrders#" xmlns:ns2="http://iec.ch/TC57/2015/GetMaintenanceOrdersMessage" xmlns="http://iec.ch/TC57/2011/schema/message">
+            <ns2:Header>
+               <Verb>get</Verb>
+               <Noun>noun</Noun>
+            </ns2:Header>
+            <ns2:Reply>
+               <Result>OK</Result>
+            </ns2:Reply>
+            <ns2:Payload>
+               <ns4:MaintenanceOrders>
+                  <ns4:MaintenanceOrder>
+                     <ns4:mRID>2a9c21f4-1699-4028-b9db-a2b8c324698d</ns4:mRID>
+                     <ns4:Work>
+                        <ns4:mRID>d9a00704-15d4-46dd-9fff-2ce2a8e5f869</ns4:mRID>
+                        <ns4:kind>maintenance</ns4:kind>
+                        <ns4:lastModifiedDateTime>2017-02-26T14:04:12.000-05:00</ns4:lastModifiedDateTime>
+                        <ns4:requestDateTime>2017-02-26T14:05:44.770-05:00</ns4:requestDateTime>
+                        <ns4:statusKind>approved</ns4:statusKind>
+                        <ns4:ActivityRecords>
+                           <ns4:createdDateTime>2017-02-26T14:04:12.000-05:00</ns4:createdDateTime>
+                           <ns4:reason>Danger</ns4:reason>
+                           <ns4:severity>High</ns4:severity>
+                           <ns4:type>change</ns4:type>
+                        </ns4:ActivityRecords>
+                        <ns4:priority>
+                           <ns4:rank>1</ns4:rank>
+                           <ns4:type>change</ns4:type>
+                        </ns4:priority>
+                        <ns4:WorkLocation>
+                           <ns4:InternalLocation>
+                              <ns4:BuildingName>Tiger Hall</ns4:BuildingName>
+                              <ns4:BuildingNumber>14</ns4:BuildingNumber>
+                              <ns4:Floor>4</ns4:Floor>
+                              <ns4:RoomNumber>4a</ns4:RoomNumber>
+                           </ns4:InternalLocation>
+                           <ns4:mainAddress>
+                              <ns4:streetDetail>
+                                 <ns4:addressGeneral>14 North Street</ns4:addressGeneral>
+                                 <ns4:code>27513</ns4:code>
+                                 <ns4:withinTownLimits>false</ns4:withinTownLimits>
+                              </ns4:streetDetail>
+                              <ns4:townDetail>
+                                 <ns4:name>Cary</ns4:name>
+                                 <ns4:stateOrProvince>NC</ns4:stateOrProvince>
+                              </ns4:townDetail>
+                           </ns4:mainAddress>
+                        </ns4:WorkLocation>
+                        <ns4:WorkTasks>
+                           <ns4:statusKind>approved</ns4:statusKind>
+                           <ns4:subject>new task</ns4:subject>
+                           <ns4:taskKind>exchange</ns4:taskKind>
+                           <ns4:Assets>
+                              <ns4:mRID>1234-22-228</ns4:mRID>
+                              <ns4:critical>false</ns4:critical>
+                              <ns4:utcNumber>2938229</ns4:utcNumber>
+                              <ns4:Location/>
+                           </ns4:Assets>
+                        </ns4:WorkTasks>
+                        <ns4:Attachments>
+                           <ns4:Attachment>
+                              <ns4:Comment>testing pi</ns4:Comment>
+                              <ns4:Description>pi test</ns4:Description>
+                              <ns4:Url>d71e7b77-11ce-4556-95e3-c3b92225a6a1.JPG</ns4:Url>
+                           </ns4:Attachment>
+                        </ns4:Attachments>
+                     </ns4:Work>
+                  </ns4:MaintenanceOrder>
+               </ns4:MaintenanceOrders>
+            </ns2:Payload>
+         </ns2:GetMaintenanceOrdersResponseMessage>
+      </soap:Body>
+   </soap:Envelope>

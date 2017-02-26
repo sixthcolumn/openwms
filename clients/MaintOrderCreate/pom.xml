@@ -28,6 +28,7 @@
 				<configuration>
 					<archive>
 						<manifest>
+							<mainClass>com.sixthc.server.client.CreateMaintOrder</mainClass>
 							<addClasspath>true</addClasspath>
 						</manifest>
 					</archive>

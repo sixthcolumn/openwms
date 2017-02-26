@@ -344,12 +344,12 @@ class Example(tk.Frame):
 
         # We're gonna call the java program and then
         # do a non-blocking read on it
-        print "calling : " + self.url + "MaintOrderServiceCreate"
+        print "calling : " + self.url + "MaintOrderCreate"
         print "sending : " + etree.tostring(my_doc)
         self.send = subprocess.Popen(["java",
                 "-jar",
                 "createMaintOrder.jar",
-                self.url + "MaintOrderServiceCreate",
+                self.url + "MaintOrderCreate",
                 etree.tostring(my_doc)],
                 stdout=subprocess.PIPE)
         flags = fcntl(self.send.stdout, F_GETFL)

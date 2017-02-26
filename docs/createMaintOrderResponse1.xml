@@ -1,0 +1,77 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+      <soap:Body>
+         <ns2:MaintenanceOrdersResponseMessage xmlns:ns3="http://iec.ch/TC57/2015/MaintenanceOrders#" xmlns:ns2="http://iec.ch/TC57/2015/MaintenanceOrdersMessage" xmlns="http://iec.ch/TC57/2011/schema/message">
+            <ns2:Header>
+               <Verb>reply</Verb>
+               <Noun>MaintenanceOrders</Noun>
+               <Timestamp>2017-02-26T14:02:25.541-05:00</Timestamp>
+               <MessageID>479bb5b6-1794-4428-8ef5-5b4e5fb6eb7d</MessageID>
+            </ns2:Header>
+            <ns2:Reply>
+               <Result>OK</Result>
+            </ns2:Reply>
+            <ns2:Payload>
+               <ns3:MaintenanceOrders>
+                  <ns3:MaintenanceOrder>
+                     <ns3:mRID>bf9e9ba4-277e-46dc-b93d-7d5faa60b778</ns3:mRID>
+                     <ns3:Organisation>
+                        <ns3:mRID>1234</ns3:mRID>
+                     </ns3:Organisation>
+                     <ns3:Work>
+                        <ns3:mRID>bf9e9ba4-277e-46dc-b93d-7d5faa60b778</ns3:mRID>
+                        <ns3:kind>maintenance</ns3:kind>
+                        <ns3:lastModifiedDateTime>2017-02-26T14:02:25.226-05:00</ns3:lastModifiedDateTime>
+                        <ns3:requestDateTime>2017-02-26T14:02:25.226-05:00</ns3:requestDateTime>
+                        <ns3:statusKind>approved</ns3:statusKind>
+                        <ns3:ActivityRecords>
+                           <ns3:createdDateTime>2017-02-26T14:02:25.226-05:00</ns3:createdDateTime>
+                           <ns3:reason>Danger</ns3:reason>
+                           <ns3:severity>High</ns3:severity>
+                           <ns3:type>change</ns3:type>
+                        </ns3:ActivityRecords>
+                        <ns3:priority>
+                           <ns3:rank>1</ns3:rank>
+                           <ns3:type>change</ns3:type>
+                        </ns3:priority>
+                        <ns3:WorkLocation>
+                           <ns3:InternalLocation>
+                              <ns3:BuildingName>Tiger Hall</ns3:BuildingName>
+                              <ns3:BuildingNumber>14</ns3:BuildingNumber>
+                              <ns3:Floor>4</ns3:Floor>
+                              <ns3:RoomNumber>4a</ns3:RoomNumber>
+                           </ns3:InternalLocation>
+                           <ns3:mainAddress>
+                              <ns3:streetDetail>
+                                 <ns3:addressGeneral>14 North Street</ns3:addressGeneral>
+                                 <ns3:code>27513</ns3:code>
+                              </ns3:streetDetail>
+                              <ns3:townDetail>
+                                 <ns3:name>Cary</ns3:name>
+                                 <ns3:stateOrProvince>NC</ns3:stateOrProvince>
+                              </ns3:townDetail>
+                           </ns3:mainAddress>
+                        </ns3:WorkLocation>
+                        <ns3:WorkTasks>
+                           <ns3:statusKind>approved</ns3:statusKind>
+                           <ns3:subject>new task</ns3:subject>
+                           <ns3:taskKind>exchange</ns3:taskKind>
+                           <ns3:Assets>
+                              <ns3:mRID>1234-22-228</ns3:mRID>
+                              <ns3:critical>false</ns3:critical>
+                              <ns3:utcNumber>2938229</ns3:utcNumber>
+                           </ns3:Assets>
+                        </ns3:WorkTasks>
+                        <ns3:Attachments>
+                           <ns3:Attachment>
+                              <ns3:Comment>testing pi</ns3:Comment>
+                              <ns3:Description>pi test</ns3:Description>
+                              <ns3:Url>http://52.91.244.252:8080/static/testimage.jpg</ns3:Url>
+                           </ns3:Attachment>
+                        </ns3:Attachments>
+                     </ns3:Work>
+                  </ns3:MaintenanceOrder>
+               </ns3:MaintenanceOrders>
+            </ns2:Payload>
+         </ns2:MaintenanceOrdersResponseMessage>
+      </soap:Body>
+   </soap:Envelope>

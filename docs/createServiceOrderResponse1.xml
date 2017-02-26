@@ -1,0 +1,74 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+      <soap:Body>
+         <ns2:ServiceOrdersResponseMessage xmlns:ns3="http://iec.ch/TC57/2015/ServiceOrders#" xmlns:ns2="http://iec.ch/TC57/2015/ServiceOrdersMessage" xmlns="http://iec.ch/TC57/2011/schema/message">
+            <ns2:Header>
+               <Verb>reply</Verb>
+               <Noun>ServiceOrders</Noun>
+               <Timestamp>2017-02-23T19:43:52.074-05:00</Timestamp>
+               <MessageID>0d5149a0-94e1-4f5a-92dd-04ea9af3be15</MessageID>
+            </ns2:Header>
+            <ns2:Reply>
+               <Result>OK</Result>
+            </ns2:Reply>
+            <ns2:Payload>
+               <ns3:ServiceOrders>
+                  <ns3:ServiceOrder>
+                     <ns3:mRID>54bfd0c8-475a-4705-ab50-a794fcbfc7a3</ns3:mRID>
+                     <ns3:Work>
+                        <ns3:mRID>54bfd0c8-475a-4705-ab50-a794fcbfc7a3</ns3:mRID>
+                        <ns3:kind>service</ns3:kind>
+                        <ns3:lastModifiedDateTime>2017-02-23T19:43:52.036-05:00</ns3:lastModifiedDateTime>
+                        <ns3:requestDateTime>2017-02-23T19:43:52.036-05:00</ns3:requestDateTime>
+                        <ns3:statusKind>approved</ns3:statusKind>
+                        <ns3:ActivityRecords>
+                           <ns3:createdDateTime>2017-02-23T19:43:52.037-05:00</ns3:createdDateTime>
+                           <ns3:reason>Calibration</ns3:reason>
+                           <ns3:severity>Minor</ns3:severity>
+                           <ns3:type>NOT SET</ns3:type>
+                        </ns3:ActivityRecords>
+                        <ns3:priority>
+                           <ns3:rank>1</ns3:rank>
+                           <ns3:type>NOT SET</ns3:type>
+                        </ns3:priority>
+                        <ns3:WorkLocation>
+                           <ns3:InternalLocation>
+                              <ns3:BuildingName>Tiger Hall</ns3:BuildingName>
+                              <ns3:BuildingNumber>14</ns3:BuildingNumber>
+                              <ns3:Floor>4</ns3:Floor>
+                              <ns3:RoomNumber>4a</ns3:RoomNumber>
+                           </ns3:InternalLocation>
+                           <ns3:mainAddress>
+                              <ns3:streetDetail>
+                                 <ns3:addressGeneral>1477 Bauer Lane</ns3:addressGeneral>
+                                 <ns3:code>27513</ns3:code>
+                              </ns3:streetDetail>
+                              <ns3:townDetail>
+                                 <ns3:name>Cary</ns3:name>
+                                 <ns3:stateOrProvince>NC</ns3:stateOrProvince>
+                              </ns3:townDetail>
+                           </ns3:mainAddress>
+                        </ns3:WorkLocation>
+                        <ns3:WorkTasks>
+                           <ns3:crewETA>2017-02-23T19:43:52.036-05:00</ns3:crewETA>
+                           <ns3:statusKind>approved</ns3:statusKind>
+                           <ns3:subject>new task</ns3:subject>
+                           <ns3:taskKind>exchange</ns3:taskKind>
+                           <ns3:Assets>
+                              <ns3:mRID>12-74392-222</ns3:mRID>
+                              <ns3:utcNumber>12938364</ns3:utcNumber>
+                           </ns3:Assets>
+                        </ns3:WorkTasks>
+                        <ns3:Attachments>
+                           <ns3:Attachment>
+                              <ns3:Comment>testing pi</ns3:Comment>
+                              <ns3:Description>pi test</ns3:Description>
+                              <ns3:Url>http://52.91.244.252:8080/static/testimage.jpg</ns3:Url>
+                           </ns3:Attachment>
+                        </ns3:Attachments>
+                     </ns3:Work>
+                  </ns3:ServiceOrder>
+               </ns3:ServiceOrders>
+            </ns2:Payload>
+         </ns2:ServiceOrdersResponseMessage>
+      </soap:Body>
+   </soap:Envelope>

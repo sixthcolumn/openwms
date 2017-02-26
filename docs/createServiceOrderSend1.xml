@@ -1,0 +1,81 @@
+<?xml version="1.0" ?>
+   <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+      <S:Body>
+         <ns3:CreateServiceOrders xmlns="http://iec.ch/TC57/2015/ServiceOrders#" xmlns:ns2="http://iec.ch/TC57/2011/schema/message" xmlns:ns3="http://iec.ch/TC57/2015/ServiceOrdersMessage">
+            <ns3:Header>
+               <ns2:Verb>create</ns2:Verb>
+               <ns2:Noun>service order</ns2:Noun>
+               <ns2:Revision>1.0a</ns2:Revision>
+               <ns2:Context>Ctx1</ns2:Context>
+               <ns2:Timestamp>2017-02-23T19:43:52.027-05:00</ns2:Timestamp>
+               <ns2:Source>epri</ns2:Source>
+               <ns2:User>
+                  <ns2:UserID>epriuser</ns2:UserID>
+                  <ns2:Organization>Epri</ns2:Organization>
+               </ns2:User>
+               <ns2:Comment>Epri Test</ns2:Comment>
+            </ns3:Header>
+            <ns3:Request>
+               <ns2:StartTime>2017-02-23T19:43:52.036-05:00</ns2:StartTime>
+               <ns2:EndTime>2017-02-23T19:43:52.036-05:00</ns2:EndTime>
+            </ns3:Request>
+            <ns3:Payload>
+               <ServiceOrders>
+                  <ServiceOrder>
+                     <Work>
+                        <kind>service</kind>
+                        <lastModifiedDateTime>2017-02-23T19:43:52.036-05:00</lastModifiedDateTime>
+                        <requestDateTime>2017-02-23T19:43:52.036-05:00</requestDateTime>
+                        <statusKind>approved</statusKind>
+                        <ActivityRecords>
+                           <createdDateTime>2017-02-23T19:43:52.037-05:00</createdDateTime>
+                           <reason>Calibration</reason>
+                           <severity>Minor</severity>
+                           <type>NOT SET</type>
+                        </ActivityRecords>
+                        <priority>
+                           <rank>1</rank>
+                           <type>NOT SET</type>
+                        </priority>
+                        <WorkLocation>
+                           <InternalLocation>
+                              <BuildingName>Tiger Hall</BuildingName>
+                              <BuildingNumber>14</BuildingNumber>
+                              <Floor>4</Floor>
+                              <RoomNumber>4a</RoomNumber>
+                           </InternalLocation>
+                           <mainAddress>
+                              <streetDetail>
+                                 <addressGeneral>1477 Bauer Lane</addressGeneral>
+                                 <code>27513</code>
+                              </streetDetail>
+                              <townDetail>
+                                 <name>Cary</name>
+                                 <stateOrProvince>NC</stateOrProvince>
+                              </townDetail>
+                           </mainAddress>
+                        </WorkLocation>
+                        <WorkTasks>
+                           <crewETA>2017-02-23T19:43:52.036-05:00</crewETA>
+                           <statusKind>approved</statusKind>
+                           <subject>new task</subject>
+                           <taskKind>exchange</taskKind>
+                           <Assets>
+                              <mRID>12-74392-222</mRID>
+                              <utcNumber>12938364</utcNumber>
+                           </Assets>
+                        </WorkTasks>
+                        <Attachments>
+                           <Attachment>
+                              <Comment>testing pi</Comment>
+                              <Description>pi test</Description>
+                              <Url>http://52.91.244.252:8080/static/testimage.jpg</Url>
+                           </Attachment>
+                        </Attachments>
+                     </Work>
+                  </ServiceOrder>
+               </ServiceOrders>
+            </ns3:Payload>
+         </ns3:CreateServiceOrders>
+      </S:Body>
+   </S:Envelope>

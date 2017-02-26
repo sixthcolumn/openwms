@@ -1,0 +1,74 @@
+   <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+      <soap:Body>
+         <ns2:GetServiceOrdersResponseMessage xmlns:ns4="http://iec.ch/TC57/2015/ServiceOrders#" xmlns:ns3="http://iec.ch/TC57/2015/GetServiceOrders#" xmlns:ns2="http://iec.ch/TC57/2015/GetServiceOrdersMessage" xmlns="http://iec.ch/TC57/2011/schema/message">
+            <ns2:Header>
+               <Verb>get</Verb>
+               <Noun>noun</Noun>
+            </ns2:Header>
+            <ns2:Reply>
+               <Result>OK</Result>
+            </ns2:Reply>
+            <ns2:Payload>
+               <ns4:ServiceOrders>
+                  <ns4:ServiceOrder>
+                     <ns4:mRID>cdde53a7-692e-4322-9841-3f5bb3db9b84</ns4:mRID>
+                     <ns4:Work>
+                        <ns4:mRID>1be011d7-9f6b-4d36-a979-198d185ba1f7</ns4:mRID>
+                        <ns4:kind>service</ns4:kind>
+                        <ns4:lastModifiedDateTime>2017-02-23T19:16:52.000-05:00</ns4:lastModifiedDateTime>
+                        <ns4:requestDateTime>2017-02-23T19:47:33.423-05:00</ns4:requestDateTime>
+                        <ns4:statusKind>approved</ns4:statusKind>
+                        <ns4:ActivityRecords>
+                           <ns4:createdDateTime>2017-02-23T19:16:52.000-05:00</ns4:createdDateTime>
+                           <ns4:reason>Calibration</ns4:reason>
+                           <ns4:severity>Minor</ns4:severity>
+                           <ns4:type>NOT SET</ns4:type>
+                        </ns4:ActivityRecords>
+                        <ns4:priority>
+                           <ns4:rank>1</ns4:rank>
+                           <ns4:type>NOT SET</ns4:type>
+                        </ns4:priority>
+                        <ns4:WorkLocation>
+                           <ns4:InternalLocation>
+                              <ns4:BuildingName>Tiger Hall</ns4:BuildingName>
+                              <ns4:BuildingNumber>140</ns4:BuildingNumber>
+                              <ns4:Floor>4</ns4:Floor>
+                              <ns4:RoomNumber>4a</ns4:RoomNumber>
+                           </ns4:InternalLocation>
+                           <ns4:mainAddress>
+                              <ns4:streetDetail>
+                                 <ns4:addressGeneral>102 Easton Street</ns4:addressGeneral>
+                                 <ns4:code>27513</ns4:code>
+                                 <ns4:withinTownLimits>false</ns4:withinTownLimits>
+                              </ns4:streetDetail>
+                              <ns4:townDetail>
+                                 <ns4:name>Cary</ns4:name>
+                                 <ns4:stateOrProvince>NC</ns4:stateOrProvince>
+                              </ns4:townDetail>
+                           </ns4:mainAddress>
+                        </ns4:WorkLocation>
+                        <ns4:WorkTasks>
+                           <ns4:crewETA>2017-02-23T19:16:52.000-05:00</ns4:crewETA>
+                           <ns4:statusKind>approved</ns4:statusKind>
+                           <ns4:subject>new task</ns4:subject>
+                           <ns4:taskKind>exchange</ns4:taskKind>
+                           <ns4:Assets>
+                              <ns4:mRID>12279-444-33</ns4:mRID>
+                              <ns4:critical>false</ns4:critical>
+                              <ns4:utcNumber>1298367829</ns4:utcNumber>
+                           </ns4:Assets>
+                        </ns4:WorkTasks>
+                        <ns4:Attachments>
+                           <ns4:Attachment>
+                              <ns4:Comment>testing pi</ns4:Comment>
+                              <ns4:Description>pi test</ns4:Description>
+                              <ns4:Url>3da99f28-dee8-4377-96de-1995e0a41a94.JPG</ns4:Url>
+                           </ns4:Attachment>
+                        </ns4:Attachments>
+                     </ns4:Work>
+                  </ns4:ServiceOrder>
+               </ns4:ServiceOrders>
+            </ns2:Payload>
+         </ns2:GetServiceOrdersResponseMessage>
+      </soap:Body>
+   </soap:Envelope>
