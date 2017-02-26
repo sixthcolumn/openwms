@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  address: MyText
+  contentType: MyString
+  create_date: 2015-06-04 20:18:52
+  data: MyString
+  encoding: MyString
+  faultCode: MyText
+  header: MyText
+  httpMethod: MyText
+  message: MyString
+  messageId: MyString
+  operation: MyString
+  payload: MyText
+  responseCode: MyText
+  resultCode: MyString
+  INTERFACE_ID: 1
+  stage: MyString
+
+two:
+  address: MyText
+  contentType: MyString
+  create_date: 2015-06-04 20:18:52
+  data: MyString
+  encoding: MyString
+  faultCode: MyText
+  header: MyText
+  httpMethod: MyText
+  message: MyString
+  messageId: MyString
+  operation: MyString
+  payload: MyText
+  responseCode: MyText
+  resultCode: MyString
+  INTERFACE_ID: 1
+  stage: MyString

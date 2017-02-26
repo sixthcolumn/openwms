@@ -1,0 +1,29 @@
+<h1>Listing time_schedules</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Start tstamp</th>
+      <th>End tstamp</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @time_schedules.each do |time_schedule| %>
+      <tr>
+        <td><%= time_schedule.type %></td>
+        <td><%= time_schedule.start_tstamp %></td>
+        <td><%= time_schedule.end_tstamp %></td>
+        <td><%= link_to 'Show', time_schedule %></td>
+        <td><%= link_to 'Edit', edit_time_schedule_path(time_schedule) %></td>
+        <td><%= link_to 'Destroy', time_schedule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Time schedule', new_time_schedule_path %>

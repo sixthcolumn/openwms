@@ -1,0 +1,27 @@
+<h1>Listing work_order_comments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Work order</th>
+      <th>Comment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @work_order_comments.each do |work_order_comment| %>
+      <tr>
+        <td><%= work_order_comment.work_order %></td>
+        <td><%= work_order_comment.comment %></td>
+        <td><%= link_to 'Show', work_order_comment %></td>
+        <td><%= link_to 'Edit', edit_work_order_comment_path(work_order_comment) %></td>
+        <td><%= link_to 'Destroy', work_order_comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Work order comment', new_work_order_comment_path %>

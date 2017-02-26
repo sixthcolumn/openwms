@@ -1,0 +1,37 @@
+<%= form_for(@maintorder) do |f| %>
+  <% if @maintorder.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@maintorder.errors.count, "error") %> prohibited this maintorder from being saved:</h2>
+
+      <ul>
+      <% @maintorder.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mRID %><br>
+    <%= f.text_field :mRID %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :created_by %><br>
+    <%= f.text_field :created_by %>
+  </div>
+  <div class="field">
+    <%= f.label :maintorder_id %><br>
+    <%= f.text_field :maintorder_id %>
+  </div>
+  <div class="field">
+    <%= f.label :name_type_id %><br>
+    <%= f.text_field :name_type_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

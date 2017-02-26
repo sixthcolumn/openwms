@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  work_order_id: 
+  comment_id: 
+
+two:
+  work_order_id: 
+  comment_id: 

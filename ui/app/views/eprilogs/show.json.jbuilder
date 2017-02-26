@@ -1,0 +1,1 @@
+json.extract! @eprilog, :id, :address, :contentType, :create_date, :data, :encoding, :faultCode, :header, :httpMethod, :message, :messageId, :operation, :payload, :responseCode, :resultCode, :INTERFACE_ID, :stage, :created_at, :updated_at

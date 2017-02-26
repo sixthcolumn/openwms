@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @interface.name %>
+</p>
+
+<p>
+  <strong>Package:</strong>
+  <%= @interface.package %>
+</p>
+
+<p>
+  <strong>Proxy flag:</strong>
+  <%= @interface.proxy_flag %>
+</p>
+
+<p>
+  <strong>Required flag:</strong>
+  <%= @interface.required_flag %>
+</p>
+
+<p>
+  <strong>Vendor role type:</strong>
+  <%= @interface.vendor_role_type %>
+</p>
+
+<%= link_to 'Edit', edit_interface_path(@interface) %> |
+<%= link_to 'Back', interfaces_path %>

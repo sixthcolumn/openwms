@@ -1,0 +1,121 @@
+<%= form_for(@address) do |f| %>
+  <% if @address.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@address.errors.count, "error") %> prohibited this address from being saved:</h2>
+
+      <ul>
+      <% @address.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :sd_address_1 %><br>
+    <%= f.text_field :sd_address_1 %>
+  </div>
+  <div class="field">
+    <%= f.label :sd_address_2 %><br>
+    <%= f.text_field :sd_address_2 %>
+  </div>
+  <div class="field">
+    <%= f.label :sd_building_name %><br>
+    <%= f.text_field :sd_building_name %>
+  </div>
+  <div class="field">
+    <%= f.label :sd_code %><br>
+    <%= f.text_field :sd_code %>
+  </div>
+  <div class="field">
+    <%= f.label :sd_number %><br>
+    <%= f.text_field :sd_number %>
+  </div>
+  <div class="field">
+    <%= f.label :sd_prefix %><br>
+    <%= f.text_field :sd_prefix %>
+  </div>
+  <div class="field">
+    <%= f.label :sd_suffix %><br>
+    <%= f.text_field :sd_suffix %>
+  </div>
+  <div class="field">
+    <%= f.label :sd_suite_number %><br>
+    <%= f.text_field :sd_suite_number %>
+  </div>
+  <div class="field">
+    <%= f.label :sd_type %><br>
+    <%= f.text_field :sd_type %>
+  </div>
+  <div class="field">
+    <%= f.label :sd_within_town_limits_flag %><br>
+    <%= f.number_field :sd_within_town_limits_flag %>
+  </div>
+  <div class="field">
+    <%= f.label :td_code %><br>
+    <%= f.text_field :td_code %>
+  </div>
+  <div class="field">
+    <%= f.label :td_country %><br>
+    <%= f.text_field :td_country %>
+  </div>
+  <div class="field">
+    <%= f.label :td_name %><br>
+    <%= f.text_field :td_name %>
+  </div>
+  <div class="field">
+    <%= f.label :td_section %><br>
+    <%= f.text_field :td_section %>
+  </div>
+  <div class="field">
+    <%= f.label :td_state_province %><br>
+    <%= f.text_field :td_state_province %>
+  </div>
+  <div class="field">
+    <%= f.label :directions %><br>
+    <%= f.text_field :directions %>
+  </div>
+  <div class="field">
+    <%= f.label :td_pobox %><br>
+    <%= f.text_field :td_pobox %>
+  </div>
+  <div class="field">
+    <%= f.label :td_postal_code %><br>
+    <%= f.text_field :td_postal_code %>
+  </div>
+  <div class="field">
+    <%= f.label :td_region %><br>
+    <%= f.text_field :td_region %>
+  </div>
+  <div class="field">
+    <%= f.label :county %><br>
+    <%= f.text_field :county %>
+  </div>
+  <div class="field">
+    <%= f.label :township_name %><br>
+    <%= f.text_field :township_name %>
+  </div>
+  <div class="field">
+    <%= f.label :subdivision %><br>
+    <%= f.text_field :subdivision %>
+  </div>
+  <div class="field">
+    <%= f.label :block %><br>
+    <%= f.text_field :block %>
+  </div>
+  <div class="field">
+    <%= f.label :lot %><br>
+    <%= f.text_field :lot %>
+  </div>
+  <div class="field">
+    <%= f.label :time_zone %><br>
+    <%= f.text_field :time_zone %>
+  </div>
+  <div class="field">
+    <%= f.label :coord_system %><br>
+    <%= f.text_field :coord_system %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

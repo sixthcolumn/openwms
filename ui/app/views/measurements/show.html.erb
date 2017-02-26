@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @measurement.type %>
+</p>
+
+<p>
+  <strong>Phases:</strong>
+  <%= @measurement.phases %>
+</p>
+
+<p>
+  <strong>Unit multiplier:</strong>
+  <%= @measurement.unit_multiplier %>
+</p>
+
+<p>
+  <strong>Unit symbol:</strong>
+  <%= @measurement.unit_symbol %>
+</p>
+
+<%= link_to 'Edit', edit_measurement_path(@measurement) %> |
+<%= link_to 'Back', measurements_path %>

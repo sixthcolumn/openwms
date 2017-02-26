@@ -1,0 +1,2 @@
+module AddressPositionPointsHelper
+end

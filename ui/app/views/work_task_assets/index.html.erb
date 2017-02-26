@@ -1,0 +1,29 @@
+<h1>Listing work_task_assets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Work task</th>
+      <th>Asset</th>
+      <th>Created by</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @work_task_assets.each do |work_task_asset| %>
+      <tr>
+        <td><%= work_task_asset.work_task %></td>
+        <td><%= work_task_asset.asset %></td>
+        <td><%= work_task_asset.created_by %></td>
+        <td><%= link_to 'Show', work_task_asset %></td>
+        <td><%= link_to 'Edit', edit_work_task_asset_path(work_task_asset) %></td>
+        <td><%= link_to 'Destroy', work_task_asset, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Work task asset', new_work_task_asset_path %>

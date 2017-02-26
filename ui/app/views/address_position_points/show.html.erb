@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @address_position_point.address %>
+</p>
+
+<p>
+  <strong>Sequence:</strong>
+  <%= @address_position_point.sequence %>
+</p>
+
+<p>
+  <strong>Xposition:</strong>
+  <%= @address_position_point.xposition %>
+</p>
+
+<p>
+  <strong>Yposition:</strong>
+  <%= @address_position_point.yposition %>
+</p>
+
+<p>
+  <strong>Zposition:</strong>
+  <%= @address_position_point.zposition %>
+</p>
+
+<%= link_to 'Edit', edit_address_position_point_path(@address_position_point) %> |
+<%= link_to 'Back', address_position_points_path %>

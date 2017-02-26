@@ -1,0 +1,27 @@
+<h1>Listing other_contactinfos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Details</th>
+      <th>Info type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @other_contactinfos.each do |other_contactinfo| %>
+      <tr>
+        <td><%= other_contactinfo.details %></td>
+        <td><%= other_contactinfo.info_type %></td>
+        <td><%= link_to 'Show', other_contactinfo %></td>
+        <td><%= link_to 'Edit', edit_other_contactinfo_path(other_contactinfo) %></td>
+        <td><%= link_to 'Destroy', other_contactinfo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Other contactinfo', new_other_contactinfo_path %>

@@ -1,0 +1,2 @@
+module WorkOrderAttachmentsHelper
+end

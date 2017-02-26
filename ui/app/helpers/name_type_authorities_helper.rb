@@ -1,0 +1,2 @@
+module NameTypeAuthoritiesHelper
+end

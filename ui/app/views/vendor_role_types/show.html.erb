@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @vendor_role_type.name %>
+</p>
+
+<p>
+  <strong>Active flag:</strong>
+  <%= @vendor_role_type.active_flag %>
+</p>
+
+<%= link_to 'Edit', edit_vendor_role_type_path(@vendor_role_type) %> |
+<%= link_to 'Back', vendor_role_types_path %>

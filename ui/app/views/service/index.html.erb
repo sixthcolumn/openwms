@@ -1,0 +1,66 @@
+<% content_for :title, "Service Orders" %>
+
+    <div class="jumbotron">
+      <div class="container">
+	
+	<div class="row col-md-12">
+	  
+	  <div class="btn-group">
+            <a href="javascript:void(0)" class="btn btn-passive">Active Service Orders (<%= @orders.count %>)</a>
+            <div class="btn-group">
+              <a href="bootstrap-elements.html" data-target="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+		Changed Today (1)
+		<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+		<li><a href="javascript:void(0)">Today</a></li>
+		<li><a href="javascript:void(0)">Yesterday</a></li>
+                <li role="separator" class="divider"></li>
+		<li><a href="javascript:void(0)">This Week</a></li>
+		<li><a href="javascript:void(0)">Last Week</a></li>
+                <li role="separator" class="divider"></li>
+		<li><a href="javascript:void(0)">This Month</a></li>
+		<li><a href="javascript:void(0)">Last Month</a></li>
+              </ul>
+            </div>
+
+            <div class="btn-group">
+              <a href="bootstrap-elements.html" data-target="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+		Viewed Today (1)
+		<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+		<li><a href="javascript:void(0)">Today</a></li>
+		<li><a href="javascript:void(0)">Yesterday</a></li>
+                <li role="separator" class="divider"></li>
+		<li><a href="javascript:void(0)">This Week</a></li>
+		<li><a href="javascript:void(0)">Last Week</a></li>
+                <li role="separator" class="divider"></li>
+		<li><a href="javascript:void(0)">This Month</a></li>
+		<li><a href="javascript:void(0)">Last Month</a></li>
+              </ul>
+            </div>
+
+          </div>
+	  
+	</div>
+      </div>
+    </div>
+    
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+
+	<!--- Information Flavor Text -->
+	<%= render template: "home/_service_order_help.html.erb" %>
+
+	<!-- Iteration for Work Order Tile -->
+	<% @orders.each { |work| %>
+	<% if work then %>
+	<%= render template: "home/_work_order.html.erb", :locals => { :work => work } %>
+	<% end %>
+	<% } %>
+
+      </div>
+      

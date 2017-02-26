@@ -1,0 +1,55 @@
+<h1>Listing eprilogs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Address</th>
+      <th>Contenttype</th>
+      <th>Create date</th>
+      <th>Data</th>
+      <th>Encoding</th>
+      <th>Faultcode</th>
+      <th>Header</th>
+      <th>Httpmethod</th>
+      <th>Message</th>
+      <th>Messageid</th>
+      <th>Operation</th>
+      <th>Payload</th>
+      <th>Responsecode</th>
+      <th>Resultcode</th>
+      <th>Interface id</th>
+      <th>Stage</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @eprilogs.each do |eprilog| %>
+      <tr>
+        <td><%= eprilog.address %></td>
+        <td><%= eprilog.contentType %></td>
+        <td><%= eprilog.create_date %></td>
+        <td><%= eprilog.data %></td>
+        <td><%= eprilog.encoding %></td>
+        <td><%= eprilog.faultCode %></td>
+        <td><%= eprilog.header %></td>
+        <td><%= eprilog.httpMethod %></td>
+        <td><%= eprilog.message %></td>
+        <td><%= eprilog.messageId %></td>
+        <td><%= eprilog.operation %></td>
+        <td><%= eprilog.payload %></td>
+        <td><%= eprilog.responseCode %></td>
+        <td><%= eprilog.resultCode %></td>
+        <td><%= eprilog.INTERFACE_ID %></td>
+        <td><%= eprilog.stage %></td>
+        <td><%= link_to 'Show', eprilog %></td>
+        <td><%= link_to 'Edit', edit_eprilog_path(eprilog) %></td>
+        <td><%= link_to 'Destroy', eprilog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Eprilog', new_eprilog_path %>

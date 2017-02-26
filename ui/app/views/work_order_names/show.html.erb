@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Work Order Names</h1>
+
+<p><strong>Work Order:</strong>
+<%= link_to @workordernames.first.work_order.mRid, { :controller => 'work_orders', :action => 'show', :id => @workordernames.first.work_order.id } %>
+
+
+<div id="table-wrapper">
+  <div id="table-scroll-wnames">
+    <table>
+        <thead>
+            <tr>
+                <th><span class="text">Name</span></th>
+                <th><span class="text">Type</span></th>
+                <th><span class="text">Authority</span></th>
+            </tr>
+        </thead>
+        <tbody>
+<% @workordernames.each do |wname| %>
+           <tr>
+                 <td><%= wname.name %></td>
+                 <td><%= get_name_type(wname.work_order_name_type) %></td>
+                 <td><%= get_name_type_authority(wname.work_order_name_type) %></td>
+           </tr>
+<% end %>
+        </tbody>
+    </table>
+  </div>
+</div>
+

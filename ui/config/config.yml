@@ -1,0 +1,11 @@
+defaults: &defaults
+  image_file_uri: http://52.91.244.252:8080/static
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

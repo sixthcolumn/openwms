@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @address_hazard.address %>
+</p>
+
+<p>
+  <strong>Hazard:</strong>
+  <%= @address_hazard.hazard %>
+</p>
+
+<%= link_to 'Edit', edit_address_hazard_path(@address_hazard) %> |
+<%= link_to 'Back', address_hazards_path %>

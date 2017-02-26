@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Seq name:</strong>
+  <%= @seq.seq_name %>
+</p>
+
+<p>
+  <strong>Start:</strong>
+  <%= @seq.start %>
+</p>
+
+<p>
+  <strong>Increment:</strong>
+  <%= @seq.increment %>
+</p>
+
+<p>
+  <strong>Curval:</strong>
+  <%= @seq.curval %>
+</p>
+
+<p>
+  <strong>Flag:</strong>
+  <%= @seq.flag %>
+</p>
+
+<%= link_to 'Edit', edit_seq_path(@seq) %> |
+<%= link_to 'Back', seqs_path %>

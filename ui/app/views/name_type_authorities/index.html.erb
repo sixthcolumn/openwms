@@ -1,0 +1,27 @@
+<h1>Listing name_type_authorities</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @name_type_authorities.each do |name_type_authority| %>
+      <tr>
+        <td><%= name_type_authority.name %></td>
+        <td><%= name_type_authority.description %></td>
+        <td><%= link_to 'Show', name_type_authority %></td>
+        <td><%= link_to 'Edit', edit_name_type_authority_path(name_type_authority) %></td>
+        <td><%= link_to 'Destroy', name_type_authority, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Name type authority', new_name_type_authority_path %>

@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Instruction:</strong>
+  <%= @proced.instruction %>
+</p>
+
+<p>
+  <strong>Kind:</strong>
+  <%= @proced.kind %>
+</p>
+
+<p>
+  <strong>Sequence:</strong>
+  <%= @proced.sequence %>
+</p>
+
+<p><strong>Measurements:</strong></p>
+
+<div id="table-wrapper">
+  <div id="table-scroll-comments">
+    <table>
+        <thead>
+            <tr>
+                <th><span class="text">Type</span></th>
+                <th><span class="text">Phases</span></th>
+                <th><span class="text">Unit Multiplier</span></th>
+                <th><span class="text">Unit Symbol</span></th>
+            </tr>
+        </thead>
+        <tbody>
+<% @proced.measurements.each do |wmeasure| %>
+           <tr>
+               <td><%= wmeasure.measurement_type %></td>
+               <td><%= wmeasure.phases %></td>
+               <td><%= wmeasure.unit_multiplier %></td>
+               <td><%= wmeasure.unit_symbol %></td>
+           </tr>
+<% end %>
+        </tbody>
+    </table>
+  </div>
+</div>
+
+

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @address_district.address %>
+</p>
+
+<p>
+  <strong>District:</strong>
+  <%= @address_district.district %>
+</p>
+
+<%= link_to 'Edit', edit_address_district_path(@address_district) %> |
+<%= link_to 'Back', address_districts_path %>

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @nametype.name %>
+</p>
+
+<p>
+  <strong>Name type authority:</strong>
+  <%= @nametype.name_type_authority %>
+</p>
+
+<%= link_to 'Edit', edit_nametype_path(@nametype) %> |
+<%= link_to 'Back', nametypes_path %>

@@ -1,0 +1,33 @@
+<h1>Listing seqs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Seq name</th>
+      <th>Start</th>
+      <th>Increment</th>
+      <th>Curval</th>
+      <th>Flag</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @seqs.each do |seq| %>
+      <tr>
+        <td><%= seq.seq_name %></td>
+        <td><%= seq.start %></td>
+        <td><%= seq.increment %></td>
+        <td><%= seq.curval %></td>
+        <td><%= seq.flag %></td>
+        <td><%= link_to 'Show', seq %></td>
+        <td><%= link_to 'Edit', edit_seq_path(seq) %></td>
+        <td><%= link_to 'Destroy', seq, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Seq', new_seq_path %>

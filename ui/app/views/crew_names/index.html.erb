@@ -1,0 +1,29 @@
+<h1>Listing crew_names</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Crew</th>
+      <th>Name</th>
+      <th>Name type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @crew_names.each do |crew_name| %>
+      <tr>
+        <td><%= crew_name.crew %></td>
+        <td><%= crew_name.name %></td>
+        <td><%= crew_name.name_type %></td>
+        <td><%= link_to 'Show', crew_name %></td>
+        <td><%= link_to 'Edit', edit_crew_name_path(crew_name) %></td>
+        <td><%= link_to 'Destroy', crew_name, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Crew name', new_crew_name_path %>

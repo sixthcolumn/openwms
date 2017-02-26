@@ -1,0 +1,89 @@
+<% content_for :title, "Address List" %>
+<div class="container">
+  <!-- Example row of columns -->
+  <% if notice %>
+  <div class="row col-lg-6 col-lg-offset-3">
+    <p id="notice"><%= notice %></p>    
+  </div>
+  <% end %>
+    
+  <div class="row">
+
+<h1>Address Listing</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sd address 1</th>
+      <th>Sd address 2</th>
+      <th>Sd building name</th>
+      <th>Sd code</th>
+      <th>Sd number</th>
+      <th>Sd prefix</th>
+      <th>Sd suffix</th>
+      <th>Sd suite number</th>
+      <th>Sd type</th>
+      <th>Sd within town limits flag</th>
+      <th>Td code</th>
+      <th>Td country</th>
+      <th>Td name</th>
+      <th>Td section</th>
+      <th>Td state province</th>
+      <th>Directions</th>
+      <th>Td pobox</th>
+      <th>Td postal code</th>
+      <th>Td region</th>
+      <th>County</th>
+      <th>Township name</th>
+      <th>Subdivision</th>
+      <th>Block</th>
+      <th>Lot</th>
+      <th>Time zone</th>
+      <th>Coord system</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @addresses.each do |address| %>
+      <tr>
+        <td><%= address.sd_address_1 %></td>
+        <td><%= address.sd_address_2 %></td>
+        <td><%= address.sd_building_name %></td>
+        <td><%= address.sd_code %></td>
+        <td><%= address.sd_number %></td>
+        <td><%= address.sd_prefix %></td>
+        <td><%= address.sd_suffix %></td>
+        <td><%= address.sd_suite_number %></td>
+        <td><%= address.sd_type %></td>
+        <td><%= address.sd_within_town_limits_flag %></td>
+        <td><%= address.td_code %></td>
+        <td><%= address.td_country %></td>
+        <td><%= address.td_name %></td>
+        <td><%= address.td_section %></td>
+        <td><%= address.td_state_province %></td>
+        <td><%= address.directions %></td>
+        <td><%= address.td_pobox %></td>
+        <td><%= address.td_postal_code %></td>
+        <td><%= address.td_region %></td>
+        <td><%= address.county %></td>
+        <td><%= address.township_name %></td>
+        <td><%= address.subdivision %></td>
+        <td><%= address.block %></td>
+        <td><%= address.lot %></td>
+        <td><%= address.time_zone %></td>
+        <td><%= address.coord_system %></td>
+        <td><%= link_to 'Show', address %></td>
+        <td><%= link_to 'Edit', edit_address_path(address) %></td>
+        <td><%= link_to 'Destroy', address, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Address', new_address_path, { :class => 'btn btn-lg btn-primary' } %>
+
+</div>
+</div>

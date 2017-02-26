@@ -1,0 +1,33 @@
+<h1>Listing address_position_points</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Address</th>
+      <th>Sequence</th>
+      <th>Xposition</th>
+      <th>Yposition</th>
+      <th>Zposition</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @address_position_points.each do |address_position_point| %>
+      <tr>
+        <td><%= address_position_point.address %></td>
+        <td><%= address_position_point.sequence %></td>
+        <td><%= address_position_point.xposition %></td>
+        <td><%= address_position_point.yposition %></td>
+        <td><%= address_position_point.zposition %></td>
+        <td><%= link_to 'Show', address_position_point %></td>
+        <td><%= link_to 'Edit', edit_address_position_point_path(address_position_point) %></td>
+        <td><%= link_to 'Destroy', address_position_point, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Address position point', new_address_position_point_path %>

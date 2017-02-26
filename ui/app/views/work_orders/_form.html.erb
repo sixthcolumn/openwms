@@ -1,0 +1,125 @@
+<%= form_for(@work_order) do |f| %>
+  <% if @work_order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@work_order.errors.count, "error") %> prohibited this work_order from being saved:</h2>
+
+      <ul>
+      <% @work_order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :work_order_name %><br>
+    <%= f.text_field :work_order_name %>
+  </div>
+  <div class="field">
+    <%= f.label :created_by %><br>
+    <%= f.text_field :created_by %>
+  </div>
+  <div class="field">
+    <%= f.label :mRid %><br>
+    <%= f.text_field :mRid %>
+  </div>
+  <div class="field">
+    <%= f.label :kind %><br>
+    <%= f.text_field :kind %>
+  </div>
+  <div class="field">
+    <%= f.label :request_datetime %><br>
+    <%= f.datetime_select :request_datetime %>
+  </div>
+  <div class="field">
+    <%= f.label :updated_by %><br>
+    <%= f.text_field :updated_by %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :status_kind %><br>
+    <%= f.text_field :status_kind %>
+  </div>
+  <div class="field">
+    <%= f.label :priority_justification %><br>
+    <%= f.text_field :priority_justification %>
+  </div>
+  <div class="field">
+    <%= f.label :priority_rank %><br>
+    <%= f.number_field :priority_rank %>
+  </div>
+  <div class="field">
+    <%= f.label :priority_type %><br>
+    <%= f.text_field :priority_type %>
+  </div>
+  <div class="field">
+    <%= f.label :comments %><br>
+    <%= f.text_field :comments %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :request_contact_id %><br>
+    <%= f.text_field :request_contact_id %>
+  </div>
+  <div class="field">
+    <%= f.label :address_id %><br>
+    <%= f.text_field :address_id %>
+  </div>
+  <div class="field">
+    <%= f.label :primary_object_ref_id %><br>
+    <%= f.text_field :primary_object_ref_id %>
+  </div>
+  <div class="field">
+    <%= f.label :grid_location %><br>
+    <%= f.text_field :grid_location %>
+  </div>
+  <div class="field">
+    <%= f.label :location_comment %><br>
+    <%= f.text_field :location_comment %>
+  </div>
+  <div class="field">
+    <%= f.label :location_contact_id %><br>
+    <%= f.text_field :location_contact_id %>
+  </div>
+  <div class="field">
+    <%= f.label :gps_latitude %><br>
+    <%= f.text_field :gps_latitude %>
+  </div>
+  <div class="field">
+    <%= f.label :gps_longitude %><br>
+    <%= f.text_field :gps_longitude %>
+  </div>
+  <div class="field">
+    <%= f.label :gps_altitude %><br>
+    <%= f.text_field :gps_altitude %>
+  </div>
+  <div class="field">
+    <%= f.label :internal_building_name %><br>
+    <%= f.text_field :internal_building_name %>
+  </div>
+  <div class="field">
+    <%= f.label :internal_building_num %><br>
+    <%= f.text_field :internal_building_num %>
+  </div>
+  <div class="field">
+    <%= f.label :internal_floor %><br>
+    <%= f.text_field :internal_floor %>
+  </div>
+  <div class="field">
+    <%= f.label :internal_room_num %><br>
+    <%= f.text_field :internal_room_num %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

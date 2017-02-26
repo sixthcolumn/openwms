@@ -1,0 +1,27 @@
+<h1>Listing address_hazards</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Address</th>
+      <th>Hazard</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @address_hazards.each do |address_hazard| %>
+      <tr>
+        <td><%= address_hazard.address %></td>
+        <td><%= address_hazard.hazard %></td>
+        <td><%= link_to 'Show', address_hazard %></td>
+        <td><%= link_to 'Edit', edit_address_hazard_path(address_hazard) %></td>
+        <td><%= link_to 'Destroy', address_hazard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Address hazard', new_address_hazard_path %>

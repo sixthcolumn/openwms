@@ -1,0 +1,106 @@
+<% work %>
+<% work_url = url_for(:controller => 'work_orders', :action => 'show', :id => work.id) %>
+
+<!-- OpenWMS Work Order Object: -->
+<!-- <%= link_to work.mRid, { :controller => 'work_orders', :action => 'show', :id => work.id } %> -->
+<!-- <%= work.title %>  -->
+<!-- <%= work.work_order_name %> -->
+<!-- <%= work.created_at %> -->
+<!-- <%= work.status %> -->
+<!--
+     <% if work.gps_latitude.nil? %>
+       <%= 'No GPS' %>
+     <% else %>
+       <%= link_to image_tag('images/gmap.png', alt: ''), google_maps_url(work.gps_latitude,work.gps_longitude,18), title: 'google map reference', rel: 'tooltip', relative: true, :target => "_blank" %>
+     <% end %>
+-->
+
+<div class="col-md-4 openwms-work-list-panel">
+  <div class="bs-component">
+    <div class="panel <% if work.status =~ /scheduled/i %>panel-success<% elsif work.status =~ /Fault/i %>panel-warning<% else %>panel-passive<% end %>">
+      <div class="panel-heading">
+         <a href="<%= work_url %>">
+              <h3>
+              <%= "#{work.get_name.upcase} - #{work.status}" %>
+              </h3></a>
+
+	<p>Created <%= work.created_at_formatted %></p>
+
+	<% if work.maintorder_id then %>
+          
+            <%= link_to "MaintOrder:  #{work.maintorder.mRID}", {controller: "maintorders", action: "show", id: work.maintorder.id} %>
+        <% end %>
+      </div>
+      <div class="panel-body container-fluid">
+	
+	<% if work.title then %><p><%= work.title %></p><% end %>
+
+       <% uri_prefix = APP_CONFIG['image_file_uri'] %>
+       <% lastattach = work.get_attachment %>
+       <% if lastattach then %>
+             <% if lastattach.attach_type.eql? "video" then %>
+                 <%= video_tag("#{uri_prefix}/#{work.thumbnail_png}", :controls => true, :autobuffer => true) %>
+             <% elsif lastattach.attach_type.eql? "image" then %>
+                 <img class="playOnHover" src="<%= "#{uri_prefix}/#{work.thumbnail_png}" %>" style="width: 100%;">
+             <% end %>
+      <% end %>
+
+	<!-- Does Work Order have address? -->
+	<% if work.work_address && ( ! defined?(mode) || mode != :work_order_show ) then %>
+	<% wa = work.work_address %>
+	<!-- Work_Address : <%= raw(work.work_address.to_json) %>  -->
+	
+	
+	<!-- EXAMPLE: WorkAddress: 
+	     
+	     {
+	     "id": 279,
+	     "sd_address_1": "2713 Emmett Crest",
+	     "sd_address_2": null,
+	     "sd_building_name": null,
+	     "sd_code": "CLA001",
+	     "sd_number": "2713",
+	     "sd_prefix": "S",
+	     "sd_suffix": "Circle",
+	     "sd_suite_number": null,
+	     "sd_type": null,
+	     "sd_within_town_limits_flag": 1,
+	     "td_code": "CLA",
+	     "td_country": "USA",
+	     "td_name": "Clayton",
+	     "td_section": "SEC0402",
+	     "td_state_province": "NC",
+	     "directions": "Enter at PineHollow golf course, left on Thomas, right on Fairway, right on Dogwood Ridge, left on PineTrail, left on Emmett Crest",
+	     "td_pobox": null,
+	     "td_postal_code": "27520",
+	     "td_region": null,
+	     "county": "WAKE",
+	     "township_name": "Clayton",
+	     "subdivision": null,
+	     "block": "2700",
+	     "lot": null,
+	     "time_zone": "US/Eastern",
+	     "coord_system": null
+	     }
+	  -->
+	
+	<a target="_map" href="https://www.google.com/maps/place/<%= wa.sd_address_1 %>,<%= wa.township_name %>, <%= wa.td_state_province %>, <%= wa.td_postal_code %>" class="btn btn-default" href="#" role="button" style="padding: 0.5em;"><i class="mdi-maps-place" style="padding-right: 0.5em;"></i><span><%= wa.sd_address_1 %>, <%= wa.township_name %></span></a>
+	<% end %>
+	
+	
+	<% if work.mRid then %>
+	<a class="btn btn-default" href="<%= work_url %>" role="button" style="padding: 0.5em;"><i class="mdi-content-add-circle-outline" style="padding-right: 0.5em;"></i> mRID: <%= work.mRid %></a>
+	<!-- <%= link_to work.mRid, { :controller => 'work_orders', :action => 'show', :id => work.id } %> -->
+	<% end %>
+	
+	
+	<% if work.created_by then %>
+	<a class="btn btn-default" href="#" role="button" style="padding: 0.5em;"><i class="mdi-navigation-check" style="padding-right: 0.5em;"></i> Created By: <%= work.created_by %></a>
+	<% end %>
+	
+
+      </div>
+    </div>
+  </div>
+</div>
+

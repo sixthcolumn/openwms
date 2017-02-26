@@ -1,0 +1,45 @@
+<%= form_for(@objectref) do |f| %>
+  <% if @objectref.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@objectref.errors.count, "error") %> prohibited this objectref from being saved:</h2>
+
+      <ul>
+      <% @objectref.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :primary_name %><br>
+    <%= f.text_field :primary_name %>
+  </div>
+  <div class="field">
+    <%= f.label :secondary_name %><br>
+    <%= f.text_field :secondary_name %>
+  </div>
+  <div class="field">
+    <%= f.label :noun %><br>
+    <%= f.text_field :noun %>
+  </div>
+  <div class="field">
+    <%= f.label :object_guid %><br>
+    <%= f.text_field :object_guid %>
+  </div>
+  <div class="field">
+    <%= f.label :utility %><br>
+    <%= f.text_field :utility %>
+  </div>
+  <div class="field">
+    <%= f.label :registered_name %><br>
+    <%= f.text_field :registered_name %>
+  </div>
+  <div class="field">
+    <%= f.label :system_name %><br>
+    <%= f.text_field :system_name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,29 @@
+<h1>Listing organization_names</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Organization</th>
+      <th>Name</th>
+      <th>Name type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @organization_names.each do |organization_name| %>
+      <tr>
+        <td><%= organization_name.organization %></td>
+        <td><%= organization_name.name %></td>
+        <td><%= organization_name.name_type %></td>
+        <td><%= link_to 'Show', organization_name %></td>
+        <td><%= link_to 'Edit', edit_organization_name_path(organization_name) %></td>
+        <td><%= link_to 'Destroy', organization_name, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Organization name', new_organization_name_path %>

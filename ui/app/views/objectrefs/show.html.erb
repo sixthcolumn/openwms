@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Primary name:</strong>
+  <%= @objectref.primary_name %>
+</p>
+
+<p>
+  <strong>Secondary name:</strong>
+  <%= @objectref.secondary_name %>
+</p>
+
+<p>
+  <strong>Noun:</strong>
+  <%= @objectref.noun %>
+</p>
+
+<p>
+  <strong>Object guid:</strong>
+  <%= @objectref.object_guid %>
+</p>
+
+<p>
+  <strong>Utility:</strong>
+  <%= @objectref.utility %>
+</p>
+
+<p>
+  <strong>Registered name:</strong>
+  <%= @objectref.registered_name %>
+</p>
+
+<p>
+  <strong>System name:</strong>
+  <%= @objectref.system_name %>
+</p>
+
+<%= link_to 'Edit', edit_objectref_path(@objectref) %> |
+<%= link_to 'Back', objectrefs_path %>

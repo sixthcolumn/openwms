@@ -1,0 +1,244 @@
+<% work = @work_order %>
+<% content_for :title, work.get_type + work.id.to_s %>
+
+<div class="row">&nbsp;</div>
+
+<div class="container ">
+  <!-- Example row of columns -->
+  <% if notice %>
+  <div class="row col-lg-6 col-lg-offset-3">
+    <p id="notice"><%= notice %></p>    
+  </div>
+  <% end %>
+    
+  
+  <div class="row">
+    <!-- show the panel -->
+    <%= render template: "home/_work_order.html.erb", :locals => { :work => work, :mode => :work_order_show } %>
+
+    <div class="col-md-4 openwms-detail-panel">
+    
+      <% wtype = "Edit #{@work_order.get_type}" %>
+      <%= link_to wtype, edit_work_order_path(@work_order), { :class => "btn btn-lg btn-primary" } %>
+
+      <h4>Work Order Names</h4>
+      <% if @work_order.work_order_names.first.nil? 
+	    ttipn = "0"
+	    name = ""
+	 else 
+	    ttipn = "#{@work_order.work_order_names.length} names"
+	    name="#{@work_order.work_order_names.first.name}"
+	 end %>
+      <%= link_to name, { :controller => 'work_order_names', :action => 'show', :id => @work_order.id }, title: ttipn, rel: 'tooltip', relative: true  %>
+      <h2><%= work.work_order_name %></h2>
+
+      <h4>Title</h4>
+      <h2><%= work.title %></h2>
+
+      <% if work.description %>
+      <h4>Description</h4>
+      <h2><%= work.description %></h2>
+      <% end %>
+
+      <h4>mRID</h4>
+      <h2><%= work.mRid %></h2>
+      
+      <h4>Organizations</h4>
+      <% if @work_order.organizations.first %>
+         <% if @work_order.organizations.first.organization_names.first.nil?
+               orgtag = "#{@work_order.organizations.first.mRid}"
+            else
+               orgtag = "#{@work_order.organizations.first.organization_names.first.name}"
+            end %>
+
+         <%= link_to orgtag, { :controller => 'organizations', :action => 'show', :id => @work_order.organizations.first.id }, title: ttipn, rel: 'tooltip', relative: true  %>
+      <% else %>
+         <h2>None</h2>
+      <% end %>
+
+    </div>
+    <div class="col-md-4 openwms-detail-panel">
+
+      <h4>Work Type</h4>
+      <h2><%= work.kind %></h2>
+
+      <h4>Status</h4>
+      <h2><%= work.status %></h2>
+
+      <h4>Status Type</h4>
+      <h2><%= work.status_kind %></h2>
+
+      <h4>Created By</h4>
+      <h2><%= work.created_by %></h2>
+
+      <h4>Created At</h4>
+      <h2><%= work.created_at %></h2>
+
+      <% if work.primary_id %>
+      <h4>Primary ID</h4>
+      <h2><%= work.primary_id %></h2>
+      <% end %>
+      
+      <% if work.secondary_id %>
+      <h4>Secondary ID</h4>
+      <h2><%= work.secondary_id %></h2>
+      <% end %>
+
+    </div>
+    
+    
+  </div>
+
+  <!-- Priority Row -->
+  <div class="row">
+    <div class="col-md-4 openwms-detail-panel">
+      <div class="panel">
+	<div class="panel-body">
+	  <h1><i class="mdi-action-dns" style="padding-right: 0.5em;"></i> Priority <%=work.priority_rank%></h1>
+	  <h4><%= work.priority_type%></h4>
+	</div>
+      </div>
+    </div>
+
+    <div class="col-md-4 openwms-detail-panel">
+      <h4>Justification</h4>
+      <p><%= work.priority_justification %></p>
+      <br/>
+
+      <h4>Schedule</h4>
+      <% if @work_order.time_schedules.first.nil? 
+	 ttip = "0"
+	 sched = ""
+	 else 
+	 ttip = "#{@work_order.time_schedules.length} available schedules"
+	 sched="#{@work_order.time_schedules.first.start_tstamp} to #{@work_order.time_schedules.first.end_tstamp}"
+	 end %>
+      <%= link_to sched, { :controller => 'work_order_schedules', :action => 'show', :id => @work_order.id }, title: ttip, rel: 'tooltip', relative: true  %>
+
+      <br/><br/>
+      <h4>Tasks</h4>
+<% @work_order.work_tasks.each do |wtask| %>
+      <li>
+        <%= link_to wtask.task_type, { :controller => 'work_tasks', :action => 'show', :id => wtask.id }, title: wtask.instructions, rel: 'tooltip', relative: true  %> - 
+        <%= wtask.task_type %>, <%= wtask.subject %>
+      </li>
+<% end %>
+
+    </div>
+
+    <div class="col-md-4 openwms-detail-panel">
+
+      <h4>Hazards</h4>
+      <% @work_order.hazards.each do |whazard| %>
+      <li style="font-size: 150%;"><%= whazard.hazard_name %></li>
+      <% end %>
+    </div>
+
+  </div>
+
+
+  <!-- Requestor Row -->
+  <div class="row">
+
+  <% if @work_order.contactperson %>
+
+    <% fullname = "#{@work_order.contactperson.lastname}, #{@work_order.contactperson.firstname}" %>
+    <% if @work_order.contactperson.phones.nil? 
+       ttip = "#{@work_order.contactperson.firstname}"
+       else 
+       ttip = "#{@work_order.contactperson.firstname} - #{@work_order.contactperson.phones.first.areacode}-#{@work_order.contactperson.phones.first.localnumber}"
+       end %>
+    
+    <div class="col-md-4 openwms-detail-panel">
+      <div class="panel">
+	<div class="panel-body">
+	  <h1><i class="mdi-action-account-circle" style="padding-right: 0.5em;"></i> <%= link_to fullname, { :controller => 'contactpeople', :action => 'show', :id => @work_order.contactperson.id }, title: ttip, rel: 'tooltip', relative: true  %></h1>
+	  <h4>Requestor - <%= ttip %></h4>
+	</div>
+      </div>
+
+  <% end %>
+
+    </div>
+
+
+    <div class="col-md-8 openwms-detail-panel">
+      <h4>Comments</h4>
+<% @work_order.comments.each do |wcomment| %>
+         <li><%= wcomment.comment_type %> - <%= wcomment.comment %></li>
+<% end %>
+  <br/>
+
+      <% uri_prefix = APP_CONFIG['image_file_uri'] %>
+
+      <h4>Attachments</h4>
+<% @work_order.attachments.each do |wattach| %>
+      <!-- <%= wattach.to_json %> -->
+      <li>Media: <%= wattach.attach_type %> - <%= wattach.filename %></li>
+      <% if wattach.description then %>
+         <li><%= wattach.description %></l1>
+      <% end %>
+      <% if wattach.comment then %>
+         <li><%= wattach.comment %></l1>
+      <% end %>
+      <% if wattach.attach_type.eql? "video" then %>
+
+         <%= video_tag("#{uri_prefix}/#{wattach.filename}", :size => "750x420", :controls => true, :autobuffer => true) %>
+      <% else %>
+          <img class="playOnHover" src="<%= "#{uri_prefix}/#{wattach.filename}" %>" style="width: 100%;">
+
+
+<!--
+	   <video id="attachment_<%= wattach.id %>" class="video-js vjs-default-skin"
+		  controls preload="auto" width="750" height="420"
+		  poster="<%= wattach.poster_filename %>"
+		  data-setup='{"example_option":true}'>
+	     <source src="<%= wattach.filename %>" type='video/mp4' />
+	     <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+	   </video>
+-->
+	   <br/>
+
+     <% end %>
+<% end %>
+
+
+    </div>
+  </div>
+
+
+  <!-- Address / Premise Row -->
+  <% if @work_order.work_address then %>
+  <div class="row">
+    <div class="col-md-4 openwms-detail-panel">
+      <div class="panel">
+	<div class="panel-body">
+	  <h3><i class="mdi-maps-place" style="padding-right: 0.5em;"></i> <%= link_to @work_order.work_address.sd_address_1, { :controller => 'addresses', :action => 'show', :id => @work_order.work_address.id }, title: 'navigate to detailed address info', rel: 'tooltip', relative: true %></h3>
+	  <div style="padding-left: 3em;">
+	    <% wa = work.work_address %>
+	    <% if wa.sd_address_2 %><%= wa.sd_address_2 %><br/><% end %>
+	    
+	    <% if wa.sd_building_name then %><%= wa.sd_building_name %><br/><% end %>
+	    <% if wa.sd_suite_number then %><%= wa.sd_suite_number %><br/><% end %>
+	    
+	    <%= wa.td_name %>, <%= wa.td_state_province %> <%= wa.td_postal_code %><br/>
+	    <% if wa.td_country then %><%= wa.td_country %><br/><% end %>
+	  </div>
+	</div>
+      </div>
+    </div>
+    <% end %>
+    
+    <% if work.gps_latitude && work.gps_longitude %>
+       <div class="col-md-8 openwms-detail-panel">
+         <iframe style="width:100%;" width="750" height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/view?key=AIzaSyCFSGcCbBl0dq0D_-4-Oanp80EGg5OCImY&amp;zoom=12&amp;center=<%= work.gps_latitude %>%2C<%= work.gps_longitude %>&amp;maptype=roadmap"></iframe>
+         <br/>
+         <iframe style="width:100%;" width="750" height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/view?key=AIzaSyCFSGcCbBl0dq0D_-4-Oanp80EGg5OCImY&amp;zoom=19&amp;center=<%= work.gps_latitude %>%2C<%= work.gps_longitude %>&amp;maptype=satellite"></iframe>
+       </div>
+     </div>
+  <% else %>
+  <h3>No GPS Coordinates</h3>
+  <% end %>
+  
+  
+  

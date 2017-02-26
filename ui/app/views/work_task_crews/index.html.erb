@@ -1,0 +1,27 @@
+<h1>Listing work_task_crews</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Work task</th>
+      <th>Crew</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @work_task_crews.each do |work_task_crew| %>
+      <tr>
+        <td><%= work_task_crew.work_task %></td>
+        <td><%= work_task_crew.crew %></td>
+        <td><%= link_to 'Show', work_task_crew %></td>
+        <td><%= link_to 'Edit', edit_work_task_crew_path(work_task_crew) %></td>
+        <td><%= link_to 'Destroy', work_task_crew, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Work task crew', new_work_task_crew_path %>

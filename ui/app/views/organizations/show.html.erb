@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Mrid:</strong>
+  <%= @organization.mRid %>
+</p>
+
+
+<p>
+  <strong>Address:</strong>
+ <% if @organization.address %>
+    <%= link_to get_basic_address_info(@organization.address), { :controller => 'addresses', :action => 'show', :id => @organization.address.id }, title: 'navigate to detailed address info', rel: 'tooltip', relative: true %>
+ <% end %>
+</p>
+
+<div id="table-wrapper">
+<table class="table">
+   <tr>
+   <td><h3>Phone:</h3></td>
+<% if @organization.phone %>
+      <td>
+      <div id="table-wrapper-ophone">
+         <table>
+         <tr>
+            <td><strong>CountryCode:</strong></td>
+            <td><%= @organization.phone.countrycode %></td>
+            <td><strong>AreaCode:</strong></td>
+            <td><%= @organization.phone.areacode %></td>
+            <td><strong>Local:</strong></td>
+            <td><%= @organization.phone.localnumber %></td>
+            <td><strong>Extension:</strong></td>
+            <td><%= @organization.phone.extension %></td>
+            <td><strong>Type:</strong></td>
+            <td><%= @organization.phone.phonetype %></td>
+         </tr>
+         </table>
+      </div>
+      </td>
+<% else %>
+   <td><h3>No Phone</h3></td>
+<% end %>
+<tr>
+</table>
+</div>
+
+
+<div id="table-wrapper">
+  <div id="table-scroll-onames">
+    <table class="table">
+        <thead>
+            <tr>
+                <th><span class="text">Name</span></th>
+                <th><span class="text">Type</span></th>
+                <th><span class="text">Authority</span></th>
+            </tr>
+        </thead>
+        <tbody>
+<% @organization.organization_names.each do |oname| %>
+           <tr>
+              <td><%= oname.name %></td>
+              <td><%= get_name_type(oname.organization_name_type) %></td>
+              <td><%= get_name_type_authority(oname.organization_name_type) %></td>
+           </tr>
+<% end %>
+        </tbody>
+    </table>
+  </div>
+</div>
+

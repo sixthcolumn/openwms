@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mRID: MyString
+  critical_flag: 1
+  utc_number: MyString
+  address_id: 
+
+two:
+  mRID: MyString
+  critical_flag: 1
+  utc_number: MyString
+  address_id: 

@@ -1,0 +1,59 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  work_order_name: MyString
+  created_by: MyString
+  mRid: MyString
+  kind: MyString
+  request_datetime: 2015-06-04 20:21:43
+  updated_by: MyString
+  status: MyString
+  status_kind: MyString
+  priority_justification: MyString
+  priority_rank: 1
+  priority_type: MyString
+  comments: MyString
+  description: MyString
+  title: MyString
+  request_contact_id: 
+  address_id: 
+  primary_object_ref_id: 
+  grid_location: MyString
+  location_comment: MyString
+  location_contact_id: 
+  gps_latitude: 1.5
+  gps_longitude: 1.5
+  gps_altitude: 1.5
+  internal_building_name: MyString
+  internal_building_num: MyString
+  internal_floor: MyString
+  internal_room_num: MyString
+
+two:
+  work_order_name: MyString
+  created_by: MyString
+  mRid: MyString
+  kind: MyString
+  request_datetime: 2015-06-04 20:21:43
+  updated_by: MyString
+  status: MyString
+  status_kind: MyString
+  priority_justification: MyString
+  priority_rank: 1
+  priority_type: MyString
+  comments: MyString
+  description: MyString
+  title: MyString
+  request_contact_id: 
+  address_id: 
+  primary_object_ref_id: 
+  grid_location: MyString
+  location_comment: MyString
+  location_contact_id: 
+  gps_latitude: 1.5
+  gps_longitude: 1.5
+  gps_altitude: 1.5
+  internal_building_name: MyString
+  internal_building_num: MyString
+  internal_floor: MyString
+  internal_room_num: MyString

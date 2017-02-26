@@ -1,0 +1,25 @@
+<%= form_for(@nametype) do |f| %>
+  <% if @nametype.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@nametype.errors.count, "error") %> prohibited this nametype from being saved:</h2>
+
+      <ul>
+      <% @nametype.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :name_type_authority_id %><br>
+    <%= f.text_field :name_type_authority_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

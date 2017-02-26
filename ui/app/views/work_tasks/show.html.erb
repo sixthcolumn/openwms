@@ -1,0 +1,154 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Work Task</h1>
+<table class="table" border=0>
+   <TR>
+      <TD>
+        <strong>Mrid: </strong>
+        <%= @work_task.mRID %>
+      </TD>
+      <TD>
+        <strong>Crew eta: </strong>
+        <%= @work_task.crew_eta %>
+      </TD>
+      <TD>
+        <strong>Instructions: </strong>
+        <%= @work_task.instructions %>
+      </TD>
+   </TR>
+   <TR>
+      <TD>
+        <strong>Task type: </strong>
+        <%= @work_task.task_type %>
+      </TD>
+      <TD>
+        <strong>Subject: </strong>
+        <%= @work_task.subject %>
+      </TD>
+   </TR>
+
+   <TR>
+     <TD><strong>Names: </strong></TD>
+     <TD>
+     <% if @work_task.work_task_names.first.nil?
+           ttipn = "0"
+           name = ""
+        else
+           ttipn = "#{@work_task.work_task_names.length} names"
+           name="#{@work_task.work_task_names.first.name}"
+     
+        end %>
+     
+        <%= link_to name, { :controller => 'work_task_names', :action => 'show', :id => @work_task.id }, title: ttipn, rel: 'tooltip', relative: true  %>
+     </TD>
+
+     <TD><strong>Schedule: </strong></TD>
+     <TD>
+     <% if @work_task.time_schedules.first.nil?
+           ttip = "0"
+           sched = ""
+        else
+           ttip = "#{@work_task.time_schedules.length} available schedules"
+           sched="#{@work_task.time_schedules.first.schedule_type}: #{@work_task.time_schedules.first.start_tstamp} to #{@work_task.time_schedules.first.end_tstamp}"
+     
+        end %>
+    
+        <%= link_to sched, { :controller => 'work_task_time_schedules', :action => 'show', :id => @work_task.id }, title: ttip, rel: 'tooltip', relative: true  %>
+     </TD>
+
+   <TR>
+</table>
+
+</p></p>   
+<strong>Old Asset: </strong>
+
+<%  if  @work_task.asset.nil? %>
+        <strong>None</strong>
+<%  else %>
+       <table class = "table" border=0 >
+          <TR>
+             <TD><strong>mRid: </strong></TD>
+             <TD>
+                <%= link_to @work_task.asset.mRID, { :controller => 'assets', :action => 'show', :id => @work_task.asset.id }, title: 'navigate to old asset', rel: 'tooltip', relative: true %>
+             </TD>
+             <TD><strong>Critical: </strong></TD>
+             <TD><%= @work_task.asset.critical_flag %></TD>
+             <TD><strong>UTC: </strong></TD>
+             <TD><%= @work_task.asset.utc_number %></TD>
+             <TD><strong>Address: </strong></TD>
+             <TD><%= get_basic_address_info(@work_task.asset.address) %></TD>
+            
+          </TR>
+
+       </table>
+<% end %>
+
+<p></p>
+
+<table border=0 >
+
+<TR>
+<TD> <strong>Assets</strong></TD>
+<TD> <strong>Crews</strong></TD>
+</TR>
+
+<TR>
+<TD>
+<div id="table-wrapper">
+  <div id="table-scroll-wtassets">
+    <table class = "table">
+        <thead>
+            <tr>
+                <th><span class="text">mRid</span></th>
+                <th><span class="text">Critical</span></th>
+                <th><span class="text">UTC</span></th>
+                <th><span class="text">Address</span></th>
+            </tr>
+        </thead>
+        <tbody>
+<% @work_task.assets.each do |wasset| %>
+           <tr>
+              <td>
+                  <%= link_to wasset.mRID, { :controller => 'assets', :action => 'show', :id => wasset.id }, title: 'navigate to asset', rel: 'tooltip', relative: true %>
+              </td>
+              <td><%= wasset.critical_flag %></td>
+              <td><%= wasset.utc_number %></td>
+              <td><%= get_basic_address_info(wasset.address) %></td>
+           </tr>
+<% end %>
+        </tbody>
+    </table>
+  </div>
+</div>
+</TD>
+
+
+<TD>
+<div id="table-wrapper">
+  <div id="table-scroll-wcrews">
+    <table class="table">
+        <thead>
+            <tr>
+                <th><span class="text">mRid</span></th>
+                <th><span class="text">Name</span></th>
+                <th><span class="text">Num Assets</span></th>
+            </tr>
+        </thead>
+        <tbody>
+<% @work_task.crews.each do |wcrew| %>
+           <tr>
+              <td><%= link_to wcrew.id, { :controller => 'crews', :action => 'show', :id => wcrew.id } %></td>
+              <td><%= get_crew_name(wcrew) %></td>
+              <td><%= get_crew_num_assets(wcrew) %></td>
+           </tr>
+<% end %>
+        </tbody>
+    </table>
+  </div>
+</div>
+<TD>
+</TR>
+
+</table>
+
+<%= link_to 'Edit', edit_work_task_path(@work_task) %> |

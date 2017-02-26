@@ -1,0 +1,57 @@
+<%= form_for(@contactperson) do |f| %>
+  <% if @contactperson.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contactperson.errors.count, "error") %> prohibited this contactperson from being saved:</h2>
+
+      <ul>
+      <% @contactperson.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :lastname %><br>
+    <%= f.text_field :lastname %>
+  </div>
+  <div class="field">
+    <%= f.label :firstname %><br>
+    <%= f.text_field :firstname %>
+  </div>
+  <div class="field">
+    <%= f.label :middle %><br>
+    <%= f.text_field :middle %>
+  </div>
+  <div class="field">
+    <%= f.label :prefix %><br>
+    <%= f.text_field :prefix %>
+  </div>
+  <div class="field">
+    <%= f.label :suffix %><br>
+    <%= f.text_field :suffix %>
+  </div>
+  <div class="field">
+    <%= f.label :governmentid %><br>
+    <%= f.text_field :governmentid %>
+  </div>
+  <div class="field">
+    <%= f.label :affiliation %><br>
+    <%= f.text_field :affiliation %>
+  </div>
+  <div class="field">
+    <%= f.label :primary_id %><br>
+    <%= f.text_field :primary_id %>
+  </div>
+  <div class="field">
+    <%= f.label :secondary_id %><br>
+    <%= f.text_field :secondary_id %>
+  </div>
+  <div class="field">
+    <%= f.label :objectid %><br>
+    <%= f.text_field :objectid %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

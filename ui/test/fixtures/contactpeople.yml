@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lastname: MyString
+  firstname: MyString
+  middle: MyString
+  prefix: MyString
+  suffix: MyString
+  governmentid: MyString
+  affiliation: MyString
+  primary_id: 
+  secondary_id: 
+  objectid: MyString
+
+two:
+  lastname: MyString
+  firstname: MyString
+  middle: MyString
+  prefix: MyString
+  suffix: MyString
+  governmentid: MyString
+  affiliation: MyString
+  primary_id: 
+  secondary_id: 
+  objectid: MyString

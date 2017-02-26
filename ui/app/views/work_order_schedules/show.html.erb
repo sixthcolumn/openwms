@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Work Order Schedules</h1>
+
+<p><strong>Work Order:</strong>
+<%= link_to @work_order_schedules.first.work_order.mRid, { :controller => 'work_orders', :action => 'show', :id => @work_order_schedules.first.work_order.id } %>
+
+
+<div id="table-wrapper">
+  <div id="table-scroll-wschedules">
+    <table>
+        <thead>
+            <tr>
+                <th><span class="text">Type</span></th>
+                <th><span class="text">Start</span></th>
+                <th><span class="text">End</span></th>
+            </tr>
+        </thead>
+        <tbody>
+<% @work_order_schedules.each do |tschedule| %>
+           <tr>
+             <td><%= tschedule.time_schedule.schedule_type %></td>
+             <td><%= tschedule.time_schedule.start_tstamp %></td>
+             <td><%= tschedule.time_schedule.end_tstamp %></td>
+           </tr>
+<% end %>
+        </tbody>
+    </table>
+  </div>
+</div>
